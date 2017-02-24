@@ -1,4 +1,7 @@
-test 
+git pull
+git log
+git status
+git diff test.txt
 git add
 git commit -m 'commit'
 git push 
