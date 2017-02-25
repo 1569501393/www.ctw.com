@@ -1,3 +1,35 @@
+Git从远程克隆到本地版本
+211  git clone git@github.com:1569501393/www.ctw.com
+212  ll
+213  cd www.ctw.com/
+215  git status
+216  vim test.txt
+217  git status
+218  git add test.txt
+219  git status
+220  git commit -m 'add test'
+221  git status
+222  git push
+224  history
+$ pwd
+/d/software/phpStudy/WWW/99_ctw/www.ctw.com
+
+
+
+
+git提取出两个版本之间的差异文件并打包
+http://blog.csdn.net/lxf0613050210/article/details/52104287
+
+$ git diff --name-status HEAD~2
+$ git diff --name-status HEAD~ >modify.txt
+
+Git 如何从某个Commit后导出所有修改过的文件?
+$ git diff --name-status HEAD~2
+
+$ git diff --name-status HEAD~2| xargs zip update.zip
+
+
+
 git pull
 git log
 git status
