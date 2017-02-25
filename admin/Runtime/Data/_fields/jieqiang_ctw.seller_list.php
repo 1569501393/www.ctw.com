@@ -1,0 +1,2 @@
+<?php
+return array ( 0 => 'id', 1 => 'sid', 2 => 'cate_id', 3 => 'name', 4 => 'site_logo', 5 => 'net_logo', 6 => 'recommend', 7 => 'click_url', 8 => 'sort', 9 => 'description', 10 => 'freeshipment', 11 => 'installment', 12 => 'has_invoice', 13 => 'cash_back_rate', 14 => 'status', 15 => 'update_time', '_autoinc' => true, '_pk' => 'id', ); ?>

@@ -1,0 +1,2 @@
+<?php
+return array ( 0 => 'id', 1 => 'uid', 2 => 'sex', 3 => 'brithday', 4 => 'address', 5 => 'blog', 6 => 'info', 7 => 'share_num', 8 => 'like_num', 9 => 'follow_num', 10 => 'fans_num', 11 => 'album_num', 12 => 'exchange_num', 13 => 'integral', 14 => 'money', 15 => 'jifenbao', 16 => 'constellation', 17 => 'job', 18 => 'qq', 19 => 'realname', 20 => 'alipay', '_autoinc' => true, '_pk' => 'id', ); ?>

@@ -112,6 +112,9 @@ class DbMysql extends Db{
 	 +----------------------------------------------------------
 	 */
 	public function query($str) {
+		// TODO jieqiangtest
+//		Log::write('querysql============'.$str, 'debug');
+		
 		if(0===stripos($str, 'call')){ // 存储过程查询支持
 			$this->close();
 		}
@@ -148,6 +151,9 @@ class DbMysql extends Db{
 	 +----------------------------------------------------------
 	 */
 	public function execute($str) {
+		// TODO jieqiangtest
+//		Log::write('executesql============'.$str, 'debug');
+		
 		$this->initConnect(true);
 		if ( !$this->_linkID ) return false;
 		$this->queryStr = $str;

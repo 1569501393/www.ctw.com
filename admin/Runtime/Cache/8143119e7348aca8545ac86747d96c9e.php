@@ -1,0 +1,27 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=7" /><link href="__ROOT__/statics/admin/css/style.css" rel="stylesheet" type="text/css"/><link href="__ROOT__/statics/css/dialog.css" rel="stylesheet" type="text/css" /><script language="javascript" type="text/javascript" src="__ROOT__/statics/js/jquery/jquery-1.4.2.min.js"></script><script language="javascript" type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/formvalidator.js"></script><script language="javascript" type="text/javascript" src="__ROOT__/statics/js/jquery/plugins/formvalidatorregex.js"></script><script language="javascript" type="text/javascript" src="__ROOT__/statics/admin/js/admin_common.js"></script><script language="javascript" type="text/javascript" src="__ROOT__/statics/js/dialog.js"></script><script language="javascript" type="text/javascript" src="__ROOT__/statics/js/iColorPicker.js"></script><script language="javascript">var URL = '__URL__';
+var ROOT_PATH = '__ROOT__';
+var APP	 =	 '__APP__';
+var lang_please_select = "<?php echo (L("please_select")); ?>";
+var def=<?php echo ($def); ?>;
+$(function($){
+	$("#ajax_loading").ajaxStart(function(){
+		$(this).show();
+	}).ajaxSuccess(function(){
+		$(this).hide();
+	});
+});
+
+</script><title><?php echo (L("website_manage")); ?></title></head><body><div id="ajax_loading">提交请求中，请稍候...</div><?php if($show_header != false): if(($sub_menu != '') OR ($big_menu != '')): ?><div class="subnav"><div class="content-menu ib-a blue line-x"><?php if(!empty($big_menu)): ?><a class="add fb" href="<?php echo ($big_menu["0"]); ?>"><em><?php echo ($big_menu["1"]); ?></em></a>　<?php endif; ?></div></div><?php endif; endif; ?><form id="myform" name="myform" action="<?php echo u('ucenter/doEdit');?>" enctype="multipart/form-data" method="post"><div class="pad-10"><div class="col-tab"><ul class="tabBut cu-li"><li id="tab_setting_1" class="on">Ucenter设置</li></ul><div id="div_setting_1" class="contentList pad-10"><input type="hidden" name="uc_setings[dbcharset]" value="utf8"/><input type="hidden" name="uc_setings[charset]" value="utf-8"/><input type="hidden" name="uc_setings[dbconnect]" value="0"/><input type="hidden" name="uc_setings[ppp]" value="20"/><table width="100%" cellpadding="2" cellspacing="1" class="table_form"><tr><th width="130">UCenter 应用 ID:</th><td><input type="text" name="uc_setings[appid]"  value="<?php echo ($set["appid"]); ?>"><span>该值为当前站点在 UCenter 的应用 ID，一般情况请不要改动</span></td></tr><tr><th>UCenter 通信密钥:</th><td><input type="text" name="uc_setings[key]"  value="<?php echo ($set["key"]); ?>"><span>只允许使用英文字母及数字，限 64 字节。应用端的通信密钥必须与此设置保持一致，否则该应用将无法与 UCenter 正常通信。</span></td></tr><tr><th width="130">UCenter 访问地址:</th><td><input type="text" name="uc_setings[api]"  value="<?php echo ($set["api"]); ?>" style="width:400px;" /><span>在您 UCenter 地址或者目录改变的情况下，修改此项，一般情况请不要改动
+例如: http://www.site.com/uc_server (最后不要加'/')。</span></td></tr><tr><th width="130">UCenter IP 地址:</th><td><input type="text" name="uc_setings[ip]"  value="<?php echo ($set["ip"]); ?>"><span>正常情况下留空即可。如果由于域名解析问题导致 UCenter 与该应用通信失败，请尝试设置为该应用所在服务器的 IP 地址。</span></td></tr><tr><th>UCenter 连接方式:</th><td><select name="uc_setings[connect]"><option value="mysql">数据库连接方式(mysql)</option><option value=""> 接口方式(fsockopen) </option></select><span>请根据您的服务器网络环境选择适当的连接方式。</span></td></tr><tr><th>UCenter 数据库服务器:</th><td><input type="text" name="uc_setings[dbhost]"  value="<?php echo ($set["dbhost"]); ?>"><span>默认:localhost, 如果 MySQL 端口不是默认的 3306，请填写如下形式：127.0.0.1:6033。</span></td></tr><tr><th>UCenter 数据库用户名:</th><td><input type="text" name="uc_setings[dbuser]"  value="<?php echo ($set["dbuser"]); ?>"><span>登录uc服务端的数据库用户名。</span></td></tr><tr><th width="130">UCenter 数据库密码:</th><td><input type="password" name="uc_setings[dbpw]" class="input-text" value="<?php echo ($set["dbpw"]); ?>"/><span>登录uc服务端数据库使用的密码。</span></td></tr><tr><th width="130">UCenter 数据库名:</th><td><input type="text" name="uc_setings[dbname]" value="<?php echo ($set["dbname"]); ?>"/><span>登录uc服务端的数据库名称。</span></td></tr><tr><th width="120">UCenter 数据库表前缀:</th><td><input type="text" name="uc_setings[dbtablepre]" style="width:400px;" value="<?php echo ($set["dbtablepre"]); ?>"/><span>uc服务端使用的数据库表前缀,一般为 uc_ 。</span></td></tr><tr><th>正确的配置信息:</th><td><textarea rows="3" cols="40"  id="site_share" style="width:400px; height:200px;" ><?php echo ($set["config"]); ?></textarea><span>	当应用的 UCenter 配置信息丢失时可复制左侧的代码到应用的配置文件中</span></td></tr></table></div><div class="bk15"></div><div class="btn"><input type="submit" value="<?php echo (L("submit")); ?>" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit"></div></div></div></form><script type="text/javascript">function SwapTab(name,cls_show,cls_hide,cnt,cur){
+    for(i=1;i<=cnt;i++){
+		if(i==cur){
+			 $('#div_'+name+'_'+i).show();
+			 $('#tab_'+name+'_'+i).attr('class',cls_show);
+		}else{
+			 $('#div_'+name+'_'+i).hide();
+			 $('#tab_'+name+'_'+i).attr('class',cls_hide);
+		}
+	}
+}
+
+</script></body></html>

@@ -1,0 +1,2 @@
+<?php
+return array ( 0 => 'id', 1 => 'uid', 2 => 'uname', 3 => 'before_money', 4 => 'after_money', 5 => 'in_money', 6 => 'out_money', 7 => 'time', 8 => 'type', 9 => 'info', 10 => 'sign', 11 => 'before_jifenbao', 12 => 'after_jifenbao', 13 => 'in_jifenbao', 14 => 'out_jifenbao', '_autoinc' => true, '_pk' => 'id', ); ?>

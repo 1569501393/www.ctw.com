@@ -6,7 +6,10 @@ class cateAction extends baseAction {
 			$miao_api = $this->miao_client();   //获取59秒api设置信息		
 			$adv_data = $miao_api->AdsGet('', '468x60');
 			if(count($adv_data)>0){
-				$ad_rel=$adv_data['ads']['ad'];
+				if ($adv_data) {
+					$ad_rel=$adv_data['ads']['ad'];
+				}
+				
 				$ad_rel=getRandArray($ad_rel);
 				if(count($ad_rel)>0){
 					$this->assign('ad_rel',$ad_rel);

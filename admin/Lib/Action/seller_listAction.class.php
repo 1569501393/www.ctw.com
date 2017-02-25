@@ -291,7 +291,14 @@ class seller_listAction extends baseAction
 	}
 	private function ShopListGet($miao_api,$page_no,$page_size){
 		$data = $miao_api->ListShopListGet('',Array('page_no' =>$page_no, 'page_size' =>$page_size));
-		return $data['shops']['shop'];
+		dump($data);
+		if ($data){
+			return $data['shops']['shop'];
+		}else{
+			return '';
+		}
+		// return $data['shops']['shop'];
+		
 	}
 	//采集成功跳转
 	private function collect_success($message, $jump_url, $dialog='')

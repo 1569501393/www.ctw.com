@@ -11,11 +11,15 @@ $array = array(
        // 'SHOW_PAGE_TRACE' => true, // 显示页面Trace信息
 
 		//缓存时间调用
-        'INDEX_GROUP_CATES' =>864000,//首页分组列表
-        'TOP_ACTIVES'       =>60,    //首页热门活动列表缓存
-        'LATELY_LIKE'       =>300,   //首页大家刚刚喜欢了
-        'REC_SELLER'        =>864000,//首页返利商家
-		
+//        'INDEX_GROUP_CATES' =>864000,//首页分组列表
+//        'TOP_ACTIVES'       =>60,    //首页热门活动列表缓存
+//        'LATELY_LIKE'       =>300,   //首页大家刚刚喜欢了
+//        'REC_SELLER'        =>864000,//首页返利商家
+		// TODO jieiangtest
+		 'INDEX_GROUP_CATES' =>0,//首页分组列表
+        'TOP_ACTIVES'       =>0,    //首页热门活动列表缓存
+        'LATELY_LIKE'       =>0,   //首页大家刚刚喜欢了
+        'REC_SELLER'        =>0,//首页返利商家
 
 		'URL_REWIRTE_MODE_VAL'=>'1',  //U方法中是否使用自定义的U方法的函数
 		'URL_PATHINFO_DEPR'=>'-',  //参数之间的分割符号

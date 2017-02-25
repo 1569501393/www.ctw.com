@@ -7,4 +7,7 @@ if (is_file(ROOT_PATH . '/data/install.lock')) {
 define('THINK_PATH', './includes/thinkphp/');
 define('APP_NAME', 'install');
 define('APP_PATH', './install/');
+
+/* DEBUG开关*/
+define('APP_DEBUG', true);
 require(THINK_PATH."/ThinkPHP.php");

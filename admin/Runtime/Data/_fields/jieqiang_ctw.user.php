@@ -1,0 +1,2 @@
+<?php
+return array ( 0 => 'id', 1 => 'name', 2 => 'passwd', 3 => 'email', 4 => 'ip', 5 => 'add_time', 6 => 'status', 7 => 'last_time', 8 => 'last_ip', 9 => 'is_majia', 10 => 'login_count', '_autoinc' => true, '_pk' => 'id', ); ?>

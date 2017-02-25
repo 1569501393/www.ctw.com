@@ -1,0 +1,2 @@
+<?php
+return array ( 0 => 'id', 1 => 'uid', 2 => 'uname', 3 => 'money', 4 => 'jifenbao', 5 => 'remark', 6 => 'addtime', 7 => 'ip', 8 => 'reply', 9 => 'status', 10 => 'realname', 11 => 'alipay', 12 => 'is_money', '_autoinc' => true, '_pk' => 'id', ); ?>

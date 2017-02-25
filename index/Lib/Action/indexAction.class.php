@@ -46,7 +46,10 @@ class indexAction extends baseAction {
 			//动态广告系统
 			$miao_api = $this->miao_client();   //获取59秒api设置信息		
 			$adv_data = $miao_api->AdsGet('', '468x60');
-			$ad_rel=$adv_data['ads']['ad'];
+			if ($adv_data){
+				$ad_rel=$adv_data['ads']['ad'];
+			}
+			
 			$ad_rel=getRandArray($ad_rel);		
 			//print_r($ad_rel);
 			if(count($ad_rel)>0){
@@ -92,7 +95,7 @@ class indexAction extends baseAction {
 	}
 	private function lately_like(){
 		$like_list_mod=$this->like_list_mod;
-
+		
 		$like_list=$like_list_mod->order('add_time DESC')->limit(28)->select();		
 		
 		$like_list_array=array();

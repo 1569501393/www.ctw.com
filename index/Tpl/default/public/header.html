@@ -116,7 +116,8 @@ $(function(){
 <div class="nav">
 	<div class="naver">
     	<ul>        
-         	 <li style="border-left:none;" class="dangqian"><a href="{$site_domain}" <if condition="MODULE_NAME eq 'index'"> class="hover"</if>>首 页</a></li>
+         	 <!-- <li style="border-left:none;" class="dangqian"><a href="{$site_domain}" <if condition="MODULE_NAME eq 'index'"> class="hover"</if>>首 页</a></li> -->
+         	 <li style="border-left:none;" class="dangqian"><a href="__ROOT__/" <if condition="MODULE_NAME eq 'index'"> class="hover"</if>>首 页</a></li>
              <volist name="nav_list['main']" id="val">
                 <li>
 					<if condition="$val['system'] eq 1">	<!--系统默认导航-->										

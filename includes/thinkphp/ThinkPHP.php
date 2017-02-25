@@ -36,6 +36,7 @@ defined('RUNTIME_PATH') or define('RUNTIME_PATH', APP_PATH . 'Runtime/');
 defined('APP_DEBUG') or define('APP_DEBUG', false); // 是否调试模式
 $runtime = defined('MODE_NAME') ? '~' . strtolower(MODE_NAME) . '_runtime.php' : '~runtime.php';
 defined('RUNTIME_FILE') or define('RUNTIME_FILE', RUNTIME_PATH . $runtime);
+
 if (!APP_DEBUG && is_file(RUNTIME_FILE)) {
 	// 部署模式直接载入运行缓存
 	require RUNTIME_FILE;
