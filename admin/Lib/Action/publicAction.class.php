@@ -13,10 +13,25 @@ class publicAction extends baseAction
 		foreach ($node_ids_res as $row) {
 			array_push($node_ids,$row['node_id']);
 		}
+
+        // var_dump($node_ids);
+        $ids = implode(',', $node_ids);
+
 		//读取数据库模块列表生成菜单项
 		$node    =   M("node");
-		$where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
+//		$where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
+        // 增加在cms_access的条件
+        //如果是超级管理员，则可以执行所有操作
+        if($_SESSION['admin_info']['id'] == 1) {
+            $where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
+        }else{
+            $where = "auth_type<>2 AND status=1 AND is_show=0 AND id in ($ids) AND group_id=".$id;
+        }
+
 		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort DESC')->select();
+
+
+
 		foreach($list as $key=>$action) {
 			$data_arg = array();
 			if ($action['data']){

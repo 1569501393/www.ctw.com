@@ -1,1 +1,0 @@
-<?php if (!defined('THINK_PATH')) exit();?><div class="error">	查询错误：<?php echo ($msg); ?></div>

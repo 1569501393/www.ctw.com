@@ -145,6 +145,7 @@ class itemAction extends baseAction {
 		$id=(intval($_GET['url']));		
 		$seller_list_mod = D('seller_list');
 		$rel=$seller_list_mod->where("id={$id}")->find();
+//        dump($rel);
 		$url=$rel['click_url'];
 		if(strpos($url, 'r.59miao.com') !== false){
 			if($this->setting['is_cashback']==1){   //如果开启返现
@@ -153,6 +154,8 @@ class itemAction extends baseAction {
 				}
 			}
 		}
+
+//        dump($url);
 		redirect($url);	
 		exit;
 				

@@ -1,4 +1,6 @@
 <?php
+header("Content-type: text/html; charset=utf-8");
+
 class baseAction extends Action {
 	public $seo = array();
 	public $setting=array();

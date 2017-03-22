@@ -2,6 +2,7 @@
 /**
  * 基础Action
  */
+header("Content-type: text/html; charset=utf-8");
 class baseAction extends Action {
 	public $user_mode='';  //用户模型
 	public $user_info='';  //用户模型
@@ -23,16 +24,16 @@ class baseAction extends Action {
         $this->seo_mod = M('seo');
 	}
 	function _initialize(){
-		//过滤所有的GET POST请求			
+		//过滤所有的GET POST请求
 		//判断是否允许ip访问
 		$banip=getBanip();
-		if($banip){			
+		if($banip){
 			foreach ($banip as $key=>$value){
 				banip($value[0], $value[1]);
 			}
 		}
-		include ROOT_PATH.'/includes/lib_common.php';	
-		$this->mod_init();		
+		include ROOT_PATH.'/includes/lib_common.php';
+		$this->mod_init();
 		$this->site_root="http://".$_SERVER['SERVER_NAME'].($_SERVER['SERVER_PORT']==80?'':':'.$_SERVER['SERVER_PORT']).__ROOT__."/";
 
 		$this->assign('site_root',$this->site_root);
@@ -40,19 +41,59 @@ class baseAction extends Action {
 		$this->check_priv();
 		//需要登陆
 		$admin_info =$_SESSION['admin_info'];
-        
+
 		$this->role_mod=D("role");
 		//获取用户角色
 		$admin_level=$this->role_mod->field('id','name')->where('id='.$_SESSION['admin_info']['role_id'].'')->find();
-		
+
 		$this->assign('admin_level',$admin_level);
 		$this->assign('my_info', $admin_info);
 
 		// 顶部菜单
 		$model	=	M("group");
-		$top_menu	=$model->field('id,title')->where('status=1')->order('sort ASC')->select();
+//		$top_menu	=$model->field('id,title')->where('status=1')->order('sort ASC')->select();
+		$role_id = D('admin')->where('id='.$_SESSION['admin_info']['id'])->getField('role_id');
+		$node_ids_res = D("access")->where("role_id=".$role_id)->field("node_id")->select();
+
+
+		$node_ids = array();
+		foreach ($node_ids_res as $row) {
+			array_push($node_ids,$row['node_id']);
+		}
+
+		// var_dump($node_ids);
+		// 节点id
+		$ids = implode(',', $node_ids);
+		// 增加在cms_access的条件
+		//如果是超级管理员，则可以执行所有操作
+		// $id	=	intval($_REQUEST['tag'])==0?6:intval($_REQUEST['tag']);
+		if($_SESSION['admin_info']['id'] == 1) {
+			$where = "auth_type<>2 AND status=1 AND is_show=0 ";
+		}else{
+			$where = "auth_type<>2 AND status=1 AND is_show=0 AND id in ($ids)";
+		}
+
+		// var_dump($where);
+		$list	=M("node")->where($where)->Distinct(true)->field('group_id')->order('sort DESC')->select();
+		// var_dump($list);
+		// var_dump(count($list));
+		if (count($list) == 1) {
+			// 分组id
+			$gId = $list[0] ['group_id'];
+			$top_menu	=$model->field('id,title')->where("status=1 AND id = $gId")->order('sort ASC')->select();
+		} else {
+			// 分组id
+			foreach ($list as $key => $value) {
+				$gIds[] = $value['group_id'];
+			}
+			$gIds = implode(',', $gIds);
+			$top_menu	=$model->field('id,title')->where("status=1 AND id in ($gIds)")->order('sort ASC')->select();
+		}
+
+
 		$this->assign('top_menu',$top_menu);
 
+//		var_dump($top_menu);
 		//获取网站配置信息
 		$setting_mod = M('setting');
 		$setting = $setting_mod->select();
@@ -60,7 +101,7 @@ class baseAction extends Action {
 			$set[$val['name']] = $val['data'];
 		}
 		$this->setting = $set;
-   
+
 		//返现形式
 		$this->assign('cashback_type', $this->setting['cashback_type']);
 		//tb_fanxian_name 淘宝返现名称
@@ -69,17 +110,17 @@ class baseAction extends Action {
 		$this->assign('tb_fanxian_unit', $this->setting['tb_fanxian_unit']);
 		//tb_fanxian_bili  淘宝返现比例
 		$this->assign('tb_fanxian_bili', $this->setting['tb_fanxian_bili']);
-		
-		
+
+
 		$this->assign('show_header', true);
 		$this->assign('const',get_defined_constants());
 
 		$this->assign('iframe',$_REQUEST['iframe']);
 		$def=array(
 			'request'=>$_REQUEST
-		);	
+		);
 		$this->assign('def',json_encode($def));
-        
+
 	}
 	//检查权限
 	public function check_priv()
@@ -124,29 +165,29 @@ class baseAction extends Action {
 		$tb_top->secretKey = $this->setting['taobao_appsecret'];
 		return $tb_top;
 	}
-	//配置  微购  api基本信息	
+	//配置  微购  api基本信息
 	public function wegoApiSearch($q='',$page='')
 	{
-		
+
 		if(S('wegoapi')){
             $wegoapi = S('wegoapi');
         }else{
         	//网站配置
 			$wegoapi_mod = M('wegoapi');
-			$setting = $wegoapi_mod->select();			
+			$setting = $wegoapi_mod->select();
 			foreach ($setting as $val) {
 				$wegoapi[$val['name']] = $val['data'];
-			} 	           
+			}
             S('wegoapi',$wegoapi,'3600');
-		}			
+		}
 		$name=$wegoapi['username'];
 		$pwd=$wegoapi['password'];
-		$token=$wegoapi['token'];		
-		$sales=$wegoapi['tao_collect_set']; //促销方式		
+		$token=$wegoapi['token'];
+		$sales=$wegoapi['tao_collect_set']; //促销方式
 		if($sales==0){
 			$sales='';
 		}
-		$order=$wegoapi['order'];   //排序方式		
+		$order=$wegoapi['order'];   //排序方式
 		if($order==0){
 			$order='';
 		}
@@ -155,39 +196,39 @@ class baseAction extends Action {
 		}
 		$p_start=$wegoapi['price_min']; //最小价格
 		$p_end=$wegoapi['price_max'];  //最大价格
-		
+
 		//commission_rate_min 佣金比例
-		
-		$ratio=$wegoapi['commission_rate_min'];		
-		
-		
-		$q=urlencode($q);		
+
+		$ratio=$wegoapi['commission_rate_min'];
+
+
+		$q=urlencode($q);
 		//password     weburl  token   commission_rate_min commission_rate_max
 		//levelstart   levelend    tao_collect_set
-		//order		
+		//order
 		$url="http://m.showcoo.net/collection_tbk.htm?name=$name&pwd=$pwd&token=$token&sales=$sales&p_start=$p_start&p_end=$p_end&order=$order&ratio=$ratio&page=$page&q=$q";
-				
-		$content=file_get_contents($url);		
+
+		$content=file_get_contents($url);
 		$json_content=json_decode($content);
 		return $json_content;
-	}	
-	//配置V购api基本信息	
+	}
+	//配置V购api基本信息
 	public function miao_client()
 	{
 		define('API_CACHETIME','0');  //缓存时间默认为小时   0表示不缓存
 		define('API_CACHEPATH','Runtime/Api59miao_cache'); //缓存目录
 		define('CHARSET','UTF-8');  //编码
-		define('APIURL','http://api.59miao.com/Router/Rest?');  //请求地址		
+		define('APIURL','http://api.59miao.com/Router/Rest?');  //请求地址
 		define('API_CLEARCACHE','1 23 * *');   //自动清除缓存时间
-		vendor('api59miao.init');	
+		vendor('api59miao.init');
 		$appkey = $this->setting['miao_appkey'];
-		$appsecret = $this->setting['miao_appsecret'];			
-		//引入59秒api文件	
+		$appsecret = $this->setting['miao_appsecret'];
+		//引入59秒api文件
 		$AppKeySecret=Api59miao_Toos::GetAppkeySecret($appkey,$appsecret);   //获取appkey appsecret
-		$_api59miao=new Api59miao($AppKeySecret);			
+		$_api59miao=new Api59miao($AppKeySecret);
 		return $_api59miao;
 	}
-	
+
 	//截取中文字符串
 	public function mubstr($str,$start,$length)
 	{
@@ -295,17 +336,17 @@ class baseAction extends Action {
 		$type   = trim($_REQUEST['type']);
 		$num=trim($_REQUEST['num']);
 		if(!is_numeric($num)){
-			$values = $mod->where('id='.$id)->find();			
+			$values = $mod->where('id='.$id)->find();
 			$this->ajaxReturn($values[$type]);
 			exit;
 		}
 		$sql    = "update ".C('DB_PREFIX').MODULE_NAME." set $type=$num where id='$id'";
-        
+
 		$res    = $mod->execute($sql);
 		$values = $mod->where('id='.$id)->find();
 		$this->ajaxReturn($values[$type]);
-	}	
-	
+	}
+
 	/*
 	 * 通用检查值是否存在,存在则返回true
 	 * */
@@ -315,7 +356,7 @@ class baseAction extends Action {
 		if(!isset($clientid))exit;
 
 		$clientid_val=$_REQUEST[$clientid];
-		$id=intval($_REQUEST['id']);	
+		$id=intval($_REQUEST['id']);
 		if($id>0){
 			//edit
 			$where="$clientid='$clientid_val' and id!=$id";
@@ -358,7 +399,7 @@ class baseAction extends Action {
 			$res[$key]['user']=$this->user_mode->where('id='.$val['uid'])->find();
 		}
 		return $res;
-	}	
+	}
 	//公共上传图片方法
 	public function _upload($savePath)
 	{
@@ -378,46 +419,46 @@ class baseAction extends Action {
 			$uploadList = $upload->getUploadFileInfo();
 		}
 		$uploadList='./data/'.$savePath.'/'.$uploadList['0']['savename'];
-		
+
 		return $uploadList;
 	}
 	//发送邮件
 	/*address 表示收件人地址
 	 *title 表示邮件标题
 	 *message表示邮件内容
-	 * 
+	 *
 	 * */
-	public function sendMail($address,$title,$message){ 
+	public function sendMail($address,$title,$message){
 		vendor('mail.mail');
 		$message   = preg_replace('/\\\\/','', $message);
-		$mail=new PHPMailer(); 
-		$mail->IsSMTP();     // 设置PHPMailer使用SMTP服务器发送Email    
-		$mail->CharSet='UTF-8';     // 设置邮件的字符编码，若不指定，则为'UTF-8'    
+		$mail=new PHPMailer();
+		$mail->IsSMTP();     // 设置PHPMailer使用SMTP服务器发送Email
+		$mail->CharSet='UTF-8';     // 设置邮件的字符编码，若不指定，则为'UTF-8'
 		$mail->Port= $this->setting['mail_port'];    //端口号
-		$mail->AddAddress($address);   // 添加收件人地址，可以多次使用来添加多个收件人    
-		$mail->Body=$message;     // 设置邮件正文    
-		$mail->From=$this->setting['mail_username'];    // 设置邮件头的From字段。  
-		$mail->FromName=$this->setting['mail_fromname'];   // 设置发件人名字    
-		$mail->Subject=$title;     // 设置邮件标题    
-		$mail->Host=$this->setting['mail_smtp'];        // 设置SMTP服务器。    
+		$mail->AddAddress($address);   // 添加收件人地址，可以多次使用来添加多个收件人
+		$mail->Body=$message;     // 设置邮件正文
+		$mail->From=$this->setting['mail_username'];    // 设置邮件头的From字段。
+		$mail->FromName=$this->setting['mail_fromname'];   // 设置发件人名字
+		$mail->Subject=$title;     // 设置邮件标题
+		$mail->Host=$this->setting['mail_smtp'];        // 设置SMTP服务器。
 		$mail->SMTPAuth=true;   // 设置为“需要验证”
-		$mail->Username=$this->setting['mail_username'];     // 设置用户名和密码。    
-		$mail->Password=$this->setting['mail_password'];    // 发送邮件。   
+		$mail->Username=$this->setting['mail_username'];     // 设置用户名和密码。
+		$mail->Password=$this->setting['mail_password'];    // 发送邮件。
 		return($mail->Send());
 	}
-    /* 
+    /*
         发送站内信
         array(to_user,form_user,title,content,date)
     */
     function sendMsg($array){
-        
+
         if(is_array($array)){
             $this->sendMsg_mod->add($array);
         }
         return;
     }
 	//查询母个商品的返现金额
-	public function get_commission($title,$num_iid,$p='commission'){		
+	public function get_commission($title,$num_iid,$p='commission'){
 		$tb_top = $this->taobao_client();
 		$req = $tb_top->load_api('TaobaokeItemsGetRequest');
 		$req->setFields("num_iid,title,nick,pic_url,price,click_url,shop_click_url,commission");
@@ -425,32 +466,32 @@ class baseAction extends Action {
 		$req->setNick($this->setting['taobao_usernick']);
 		$req->setKeyword($title);
 		$req->setPageNo(1);
-		$req->setPageSize(40);	
-		$goods_list = get_object_vars_final($tb_top->execute($req));		
+		$req->setPageSize(40);
+		$goods_list = get_object_vars_final($tb_top->execute($req));
 		if($goods_list['total_results']>0){
-			$good_list_rel=$goods_list['taobaoke_items']['taobaoke_item'];	
+			$good_list_rel=$goods_list['taobaoke_items']['taobaoke_item'];
 		}
 		else{
 			if($p=='commission'){
-				return '0';	
+				return '0';
 			}else{
-				return;	
+				return;
 			}
-			
-		}	   
+
+		}
 		if(!is_array($good_list_rel)){
 			if($p=='commission'){
-				return '0';	
+				return '0';
 			}
 			else{
-				return;	
+				return;
 			}
-		    
+
 		}
 		$c=count($good_list_rel);
 	    for($i=0;$i<$c;$i++){
 	        if($good_list_rel[$i]['num_iid']==$num_iid && strip_tags($good_list_rel[$i]['title'])==strip_tags($title)){
-		        $re=$good_list_rel[$i];			   
+		        $re=$good_list_rel[$i];
 		    }
 	    }
 	    if($p=='commission') return $re['commission'];
@@ -459,17 +500,17 @@ class baseAction extends Action {
     function getSign(){
     	$setting_mod = M('wegoapi');
 		$res = $setting_mod->where("name='weburl' OR name='sign'")->select();
-		
+
 		foreach( $res as $val )
 		{
 			$wegoapi[$val['name']] = $val['data'];
-		}		
+		}
 		if($_SERVER['HTTP_HOST']!=$wegoapi['weburl']){
-			return 0;	
-		}		
-		$apiurl="http://www.wego360.com/wegoapi/api.php?url={$wegoapi['weburl']}&sign={$wegoapi['sign']}";			
+			return 0;
+		}
+		$apiurl="http://www.wego360.com/wegoapi/api.php?url={$wegoapi['weburl']}&sign={$wegoapi['sign']}";
 		$result=file_get_contents($apiurl);
-		return $result;	
-    }	
+		return $result;
+    }
 }
 ?>

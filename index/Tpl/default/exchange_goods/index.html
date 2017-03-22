@@ -99,7 +99,7 @@ function set_order(goods_id,goods_title){
 					return false;
 				}				
 				$.post(def.root+"index.php?m=exchange_goods&a=order", 
-					{goods_id:goods_id,address:address,zip:zip,consignee:consignee,mobile_phone:mobile_phone,fax_phone:fax_phone,email:email,qq:qq,submit:"submit"},
+					{goods_id:goods_id,address:address,zip:zip,consignee:consignee,mobile_phone:mobile_phone,fax_phone:fax_phone,email:email,qq:qq,remark:remark,submit:"submit"},
 					function(data){
 						if(data=='success'){
 							window.location.href=""; 

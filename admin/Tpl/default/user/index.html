@@ -25,6 +25,7 @@
                 <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>                
                 <th width=40>{:L('img')}</th>                
                 <th width=80>{:L('name')}</th>
+                <th width=80>{:L('mobile')}</th>
 				<th width=40>{:L('money')}</th>
 				<th width=80><if condition="$cashback_type eq '1'">集分宝
 					  <else/>
@@ -59,6 +60,7 @@
            </td>
            <td align="center"><a href="javascript:edit({$val.id},'{$val.name}')"><em class="blue">{$val.name}</em></a></td>
 		   
+		   <td  align="center">{$val.mobile}</td>
 		   <td  align="center">{$val.money} 元</td>
 		   <td  align="center">{$val.jifenbao}　{$tb_fanxian_unit}</td>
 		   <td  align="center">{$val.integral}</td>

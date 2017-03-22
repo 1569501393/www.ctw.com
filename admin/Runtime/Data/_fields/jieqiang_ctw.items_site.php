@@ -1,2 +1,0 @@
-<?php
-return array ( 0 => 'id', 1 => 'name', 2 => 'alias', 3 => 'site_domain', 4 => 'site_logo', 5 => 'collect_url', 6 => 'collect_time', 7 => 'item_nums', 8 => 'type', '_autoinc' => true, '_pk' => 'id', ); ?>

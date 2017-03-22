@@ -1,2 +1,0 @@
-<?php
-return array ( 0 => 'id', 1 => 'order_time', 2 => 'seller_name', 3 => 'uid', 4 => 'username', 5 => 'order_code', 6 => 'item_count', 7 => 'item_price', 8 => 'sales', 9 => 'commission', 10 => 'cash_back', 11 => 'status', 12 => 'is_update', 13 => 'jiesuan_data', 14 => 'order_id', 15 => 'cash_back_jifenbao', '_autoinc' => true, '_pk' => 'id', ); ?>

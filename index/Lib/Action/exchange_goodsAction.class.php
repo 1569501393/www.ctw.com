@@ -86,7 +86,11 @@ class exchange_goodsAction extends baseAction
 		$info_data['goods_id'] = $goods_id;
 		$info_data['create_time'] = time();
 		$info_data['update_time'] = time();
+
 		$ex_last_id=$ex_order_mod->add($info_data);  //增加订单
+//        Log::write('sql======='.$ex_order_mod->getLastSql());
+//        Log::write('$info_data======='.json_encode($info_data));
+//        var_dump($ex_order_mod->getLastSql());exit;
 		//更新exchange_goods 以及user_info表
 		if($ex_last_id){			
 			$ex_goods_mod->where('id='.$goods_id.'')->setInc('buy_count',1);

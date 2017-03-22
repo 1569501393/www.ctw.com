@@ -1,6 +1,7 @@
 <?php
 return array(
     'name' => '会员名称', 
+    'mobile' => '手机号',
 	'relname'=>'真实姓名',
 	'alipay'=>'支付宝账号',   
     'money' => '余额',

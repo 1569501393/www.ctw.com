@@ -38,7 +38,7 @@ class cateAction extends baseAction {
 		$res=get_items_cate_list($cate_res['id'],$cate_res['level'],0,'collect_miao');	
 		$this->assign('cate_list',$res['list']);
 		S("cate_list{$cid}",$res['list']);
-		//print_r($res['list']);
+//		print_r($res['list']);
 		
 		if($res['sort_list'][$cid]['level']>=2){			
 			$sql_where.= " AND cid IN (" . $cid . ")";		
@@ -78,6 +78,8 @@ class cateAction extends baseAction {
 
 		$show_sp = 0;
 		$count = $items_mod->where($sql_where)->count();
+//        dump($items_mod->getLastSql());
+
 		$this->assign('count', $count);
 
 		$count > $s_list_rows && $show_sp = 1;
@@ -143,6 +145,8 @@ class cateAction extends baseAction {
 		
         $this->nav_seo('cate','items_cate',$_GET['cid']);
 
+        dump($_GET['cid']);
+        dump($select_pid);
 		if($this->isAjax()&&$sp>1){   //判断是否是ajax请求
 			header('Content-Type:text/html; charset=utf-8');
 			echo($this->fetch('public:goods_list'));

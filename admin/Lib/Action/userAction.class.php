@@ -8,11 +8,15 @@ class userAction extends baseAction{
 		if(isset($_REQUEST['keyword'])){
 			$keys = $_REQUEST['keyword'];
 			$this->assign('keyword',$keys);
-			$where.=" and name like '%$keys%'";
+//			$where.=" and name like '%$keys%'";
+			$where.=" and (name like '%$keys%' OR mobile like '%$keys%' )";
 		}
 		$count=$mod->relation('user_info')->where($where)->count();		
 		$p = new Page($count,$pagesize);		
 		$list=$mod->relation('user_info')->where($where)->order("last_time desc")->limit($p->firstRow.','.$p->listRows)->select();
+
+//        dump($list);
+
 		$page=$p->show();  
 		$this->assign('list',$list);
 		$this->assign('page',$page);

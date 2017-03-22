@@ -1,7 +1,9 @@
 <?php
 class indexAction extends baseAction {
-	function index() {	
-	    //分类数据
+	function index() {
+	    /*$adminList = M('admin')->select();
+	    dump($adminList);exit;*/
+        //分类数据
 		$focus_mod = D('focus');
         if(S('index_group_cates')){
             $index_group_cates = S('index_group_cates');
