@@ -8,14 +8,14 @@ $(function(){
 	$(".delete_attatch").click(function(){
 		var article_id = $("#article_id").val();
 		var aid = $(this).attr('aid');
-		$.get("admin.php?m=article&a=delete_attatch&id="+article_id+"&aid="+aid, function(data){
+		$.get("admin.php?m=activity&a=delete_attatch&id="+article_id+"&aid="+aid, function(data){
 			$("#list_"+aid).hide();
 		});
 	});
 })
 </script>
 
-<form action="{:u('article/edit')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
+<form action="{:u('activity/edit')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
   <div class="pad-10">
   <div class="col-tab">
   <ul class="tabBut cu-li">

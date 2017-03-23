@@ -61,9 +61,24 @@ class Log {
 	 +----------------------------------------------------------
 	 */
 	static function record($message,$level=self::ERR,$record=false) {
+//        var_dump($level);
+
+        // 添加数据库日志
+        /*if ($level=='SQL' && $_SESSION ['admin_info'] ['user_name'] ){
+            $op = explode(' ',$message);
+            if (($op[0]=='UPDATE' || $op[0]=='INSERT' || $op[0]=='DELETE' || $op[0]=='SELECT')){
+                admin_log( '添加', '商品222', '标题：'  );
+            }
+        }*/
+
 		if($record || strpos(C('LOG_LEVEL'),$level)) {
 			$now = date(self::$format);
-			self::$log[] =   "{$now} ".$_SERVER['REQUEST_URI']." | {$level}: {$message}\r\n";
+			 self::$log[] =   "{$now} ".$_SERVER['REQUEST_URI']." | {$level}: {$message}\r\n";
+            /*if ($_SESSION ['admin_info'] ['user_name']){
+                self::$log[] =   "{$now} ".$_SERVER['REQUEST_URI']." | {$level}: 用户：{$_SESSION ['admin_info'] ['user_name']}({$_SESSION ['admin_info'] ['id']}){$message}\r\n";
+            }else{
+                self::$log[] =   "{$now} ".$_SERVER['REQUEST_URI']." | {$level}: {$message}\r\n";
+            }*/
 		}
 	}
 
@@ -128,6 +143,10 @@ class Log {
 			$destination   =   $destination?$destination:C('LOG_DEST');
 			$extra   =  $extra?$extra:C('LOG_EXTRA');
 		}
+
+//        var_dump($level,$type);
+
+
 		error_log("{$now} ".$_SERVER['REQUEST_URI']." | {$level}: {$message}\r\n", $type,$destination,$extra );
 		//clearstatcache();
 	}

@@ -21,6 +21,26 @@
  * @version  $Id$
   +------------------------------------------------------------------------------
  */
+
+// 积分管理日志记录表
+function admin_log($log_op = '添加', $log_obj = '积分', $log_desc, $score = 0, $app = 0, $status = 0, $product = 0) {
+//    var_dump(111);
+    $data = array (
+        'user_name' => $_SESSION ['admin_info'] ['user_name'],
+        'op' => $log_op,
+        'op_time' => date ( 'Y-m-d H:i:s' ),
+        'op_object' => $log_obj,
+        'op_desc' => $log_desc,
+        'score' => $score,
+        'user' => $_SESSION ['user_info'] ['id'],
+        'app' => $app,
+        'status' => $status,
+        'product' => $product,
+        'op_desc' => $log_desc
+    );
+    $insertId = M ( 'op_log' )->add ( $data );
+}
+
 // 错误输出
 function halt($error) {
     $e = array();
@@ -89,7 +109,7 @@ function dump($var, $echo = true, $label = null, $strict = true) {
     }
     else {
         ob_start();
-        var_dump($var);
+//        var_dump($var);
         $output = ob_get_clean();
         if (!extension_loaded('xdebug')) {
             $output = preg_replace("/\]\=\>\n(\s+)/m", '] => ', $output);

@@ -8,6 +8,6 @@ define('THINK_PATH', './includes/thinkphp/');
 define('APP_NAME', 'admin');
 define('APP_PATH', './admin/');
 
-//define('APP_DEBUG', true);
+define('APP_DEBUG', true);
 require( THINK_PATH."ThinkPHP.php");
 ?>

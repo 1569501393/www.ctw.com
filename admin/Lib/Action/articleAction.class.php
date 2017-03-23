@@ -8,7 +8,8 @@ class articleAction extends baseAction
 		$article_cate_mod = D('article_cate');
 
 		//搜索
-		$where = '1=1';
+        //		$where = '1=1';
+        $where = '1=1 AND cate_id!=9 ';
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 		    $where .= " AND title LIKE '%".$_GET['keyword']."%'";
 		    $this->assign('keyword', $_GET['keyword']);

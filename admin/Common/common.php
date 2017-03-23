@@ -1,4 +1,23 @@
 <?php
+
+// 积分管理日志记录表
+/*function admin_log($log_op = '添加', $log_obj = '积分', $log_desc, $score = 0, $app = 0, $status = 0, $product = 0) {
+    $data = array (
+        'user_name' => $_SESSION ['admin_info'] ['user_name'],
+        'op' => $log_op,
+        'op_time' => date ( 'Y-m-d H:i:s' ),
+        'op_object' => $log_obj,
+        'op_desc' => $log_desc,
+        'score' => $score,
+        'user' => $_SESSION ['user_info'] ['id'],
+        'app' => $app,
+        'status' => $status,
+        'product' => $product,
+        'op_desc' => $log_desc
+    );
+    $insertId = M ( 'op_log' )->add ( $data );
+}*/
+
 //删除商品图片和目录可以是数组或者文件
 function delDirFile($path,$arr){
     if(is_array($arr)){

@@ -112,9 +112,20 @@ class DbMysql extends Db{
 	 +----------------------------------------------------------
 	 */
 	public function query($str) {
+//        var_dump($_SESSION);exit;
 		// TODO jieqiangtest
 //		Log::write('querysql============'.$str, 'debug');
-		
+
+//        var_dump($str);
+        $op = explode(' ',$str);
+//        var_dump($op);
+
+        if ($_SESSION ['admin_info'] ['user_name'] && ($op[0]=='UPDATE' || $op[0]=='INSERT' || $op[0]=='DELETE' || $op[0]=='SELECT')){
+
+//            var_dump($_SESSION ['admin_info']);
+//            admin_log( '添加', '商品' . $count, '标题：' . $_POST['name'] );
+        }
+
 		if(0===stripos($str, 'call')){ // 存储过程查询支持
 			$this->close();
 		}
@@ -152,7 +163,7 @@ class DbMysql extends Db{
 	 */
 	public function execute($str) {
 		// TODO jieqiangtest
-//		Log::write('executesql============'.$str, 'debug');
+		Log::write('executesql============'.$str, 'debug');
 		
 		$this->initConnect(true);
 		if ( !$this->_linkID ) return false;

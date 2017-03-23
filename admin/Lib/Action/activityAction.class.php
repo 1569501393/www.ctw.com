@@ -1,14 +1,16 @@
 <?php
 
+// 活动
 class activityAction extends baseAction
 {
 	public function index()
 	{
-		$article_mod = D('article');
+		$activity_mod = M('activity');
 		$article_cate_mod = D('article_cate');
 
 		//搜索
-		$where = '1=1';
+//		$where = '1=1';
+		$where = '1=1 AND cate_id=9 ';
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 		    $where .= " AND title LIKE '%".$_GET['keyword']."%'";
 		    $this->assign('keyword', $_GET['keyword']);
@@ -28,9 +30,9 @@ class activityAction extends baseAction
 		    $this->assign('cate_id', $_GET['cate_id']);
 		}
 		import("ORG.Util.Page");
-		$count = $article_mod->where($where)->count();
+		$count = $activity_mod->where($where)->count();
 		$p = new Page($count,20);
-		$article_list = $article_mod->where($where)->limit($p->firstRow.','.$p->listRows)->order('add_time DESC,ordid ASC')->select();
+		$article_list = $activity_mod->where($where)->limit($p->firstRow.','.$p->listRows)->order('add_time DESC,ordid ASC')->select();
 
 		$key = 1;
 		foreach($article_list as $k=>$val){
@@ -58,9 +60,9 @@ class activityAction extends baseAction
 	function edit()
 	{
 		if(isset($_POST['dosubmit'])){
-			$article_mod = D('article');
+			$activity_mod = M('activity');
 			$attatch_mod = D('attatch');
-			$data = $article_mod->create();
+			$data = $activity_mod->create();
 			if($data['cate_id']==0){
 				$this->error('请选择资讯分类');
 			}
@@ -96,20 +98,26 @@ class activityAction extends baseAction
 			        $data['aid'] = implode(',', $aid_arr);
 			    }
 			    if ($data['aid']) {
-			        $article_info = $article_mod->where('id='.$data['id'])->find();
+			        $article_info = $activity_mod->where('id='.$data['id'])->find();
 			        if ($article_info['aid']) {
 			            $data['aid'] = $article_info['aid'].','.$data['aid'];
 			        }
 			    }
 			}
-			$result = $article_mod->save($data);
+
+            // 发布人
+            $data['update_username']=$_SESSION ['admin_info'] ['user_name'];
+            $data['update_uid']=$_SESSION ['admin_info'] ['id'];
+            $data['update_time']=date('Y-m-d H:i:s',time());
+
+			$result = $activity_mod->save($data);
 			if(false !== $result){
-				$this->success(L('operation_success'),U('article/index'));
+				$this->success(L('operation_success'),U('activity/index'));
 			}else{
 				$this->error(L('operation_failure'));
 			}
 		}else{
-			$article_mod = D('article');
+			$activity_mod = M('activity');
 			if( isset($_GET['id']) ){
 				$article_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error(L('please_select'));
 			}
@@ -123,7 +131,7 @@ class activityAction extends baseAction
 		    	    $cate_list['sub'][$val['pid']][] = $val;
 		    	}
 		    }
-			$article_info = $article_mod->where('id='.$article_id)->find();
+			$article_info = $activity_mod->where('id='.$article_id)->find();
 
 			//附件
 			$attatch_mod = D('attatch');
@@ -141,13 +149,13 @@ class activityAction extends baseAction
 	function add()
 	{
 		if(isset($_POST['dosubmit'])){
-			$article_mod = D('article');
+			$activity_mod = M('activity');
 			$attatch_mod = D('attatch');
 			if($_POST['title']==''){
 				$this->error(L('input').L('article_title'));
 			}
-			if(false === $data = $article_mod->create()){
-				$this->error($article_mod->error());
+			if(false === $data = $activity_mod->create()){
+				$this->error($activity_mod->error());
 			}
 			if ($_FILES['img']['name']!=''||$_FILES['attachment']['name'][0]!='') {
 			    if ($_FILES['img']['name']!=''&&$_FILES['attachment']['name'][0]!='') {
@@ -184,7 +192,12 @@ class activityAction extends baseAction
 			    }
 			}
 			$data['add_time']=date('Y-m-d H:i:s',time());
-			$result = $article_mod->add($data);
+
+            // 发布人
+			$data['username']=$_SESSION ['admin_info'] ['user_name'];
+			$data['uid']=$_SESSION ['admin_info'] ['id'];
+
+			$result = $activity_mod->add($data);
 			if($result){
 				$cate = M('article_cate')->field('id,pid')->where("id=".$data['cate_id'])->find();
 				if( $cate['pid']!=0 ){
@@ -193,7 +206,8 @@ class activityAction extends baseAction
 				}else{
 					M('article_cate')->where("id=".$data['cate_id'])->setInc('article_nums');
 				}
-				$this->success('添加成功');
+//				$this->success('添加成功');
+                $this->success(L('operation_success'),U('activity/index'));
 			}else{
 				$this->error('添加失败');
 			}
@@ -216,10 +230,10 @@ class activityAction extends baseAction
 	function delete_attatch()
     {
     	$attatch_mod = D('attatch');
-    	$article_mod = D('article');
+    	$activity_mod = M('activity');
     	$article_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : exit('0');
     	$aid = isset($_GET['aid']) && intval($_GET['aid']) ? intval($_GET['aid']) : exit('0');
-		$article_info = $article_mod->where('id='.$article_id)->find();
+		$article_info = $activity_mod->where('id='.$article_id)->find();
     	$aid_arr = explode(',', $article_info['aid']);
     	foreach ($aid_arr as $key=>$val) {
     	    if ($val == $aid) {
@@ -227,21 +241,21 @@ class activityAction extends baseAction
     	    }
     	}
     	$aids = implode(',', $aid_arr);
-    	$article_mod->where('id='.$article_id)->save(array('aid'=>$aids));
+    	$activity_mod->where('id='.$article_id)->save(array('aid'=>$aids));
     	echo '1';
     	exit;
     }
 
 	function delete()
     {
-		$article_mod = D('article');
+		$activity_mod = M('activity');
 		if((!isset($_GET['id']) || empty($_GET['id'])) && (!isset($_POST['id']) || empty($_POST['id']))) {
             $this->error('请选择要删除的资讯！');
 		}
 		if( isset($_POST['id'])&&is_array($_POST['id']) ){
 			$cate_ids = implode(',',$_POST['id']);
 			foreach( $_POST['id'] as $val ){
-				$article = $article_mod->field("id,cate_id")->where("id=".$val)->find();
+				$article = $activity_mod->field("id,cate_id")->where("id=".$val)->find();
 				$cate = M('article_cate')->field('id,pid')->where("id=".$article['cate_id'])->find();
 				if( $cate['pid']!=0 ){
 					M('article_cate')->where("id=".$cate['pid'])->setDec('article_nums');
@@ -251,12 +265,12 @@ class activityAction extends baseAction
 				}
 
 			}
-			$article_mod->delete($cate_ids);
+			$activity_mod->delete($cate_ids);
 		}else{
 			$cate_id = intval($_GET['id']);
-			$article = $article_mod->field("id,cate_id")->where("id=".$cate_id)->find();
+			$article = $activity_mod->field("id,cate_id")->where("id=".$cate_id)->find();
 			M('article_cate')->where("id=".$article['cate_id'])->setDec('article_nums');
-		    $article_mod->where('id='.$cate_id)->delete();
+		    $activity_mod->where('id='.$cate_id)->delete();
 		}
 		$this->success(L('operation_success'));
     }
@@ -283,11 +297,11 @@ class activityAction extends baseAction
 
 	function sort_order()
     {
-    	$article_mod = D('article');
+    	$activity_mod = M('activity');
 		if (isset($_POST['listorders'])) {
             foreach ($_POST['listorders'] as $id=>$sort_order) {
             	$data['ordid'] = $sort_order;
-                $article_mod->where('id='.$id)->save($data);
+                $activity_mod->where('id='.$id)->save($data);
             }
             $this->success(L('operation_success'));
         }
@@ -297,12 +311,12 @@ class activityAction extends baseAction
     //修改状态
 	function status()
 	{
-		$article_mod = D('article');
+		$activity_mod = M('activity');
 		$id 	= intval($_REQUEST['id']);
 		$type 	= trim($_REQUEST['type']);
-		$sql 	= "update ".C('DB_PREFIX')."article set $type=($type+1)%2 where id='$id'";
-		$res 	= $article_mod->execute($sql);
-		$values = $article_mod->field("id,".$type)->where('id='.$id)->find();
+		$sql 	= "update ".C('DB_PREFIX')."activity set $type=($type+1)%2 where id='$id'";
+		$res 	= $activity_mod->execute($sql);
+		$values = $activity_mod->field("id,".$type)->where('id='.$id)->find();
 		$this->ajaxReturn($values[$type]);
 	}
 
