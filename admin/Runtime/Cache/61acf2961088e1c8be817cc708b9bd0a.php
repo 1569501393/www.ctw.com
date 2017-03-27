@@ -1,7 +1,67 @@
-<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" class="off"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><link href="__ROOT__/statics/admin/css/style.css" rel="stylesheet" type="text/css"/><link href="__ROOT__/statics/css/dialog.css" rel="stylesheet" type="text/css" /><script language="javascript" type="text/javascript" src="__ROOT__/statics/js/jquery/jquery-1.4.2.min.js"></script><script language="javascript" type="text/javascript" src="__ROOT__/statics/js/dialog.js"></script><title><?php echo (L("website_manage")); ?></title></head><body scroll="no"><div id="header"><div class="logo"><a href="__APP__" title="<?php echo (L("website_manage")); ?>"></a></div><div class="fr"><div class="style_but"></div></div><div class="col-auto" style="overflow: visible"><div class="log white cut_line"><?php echo (L("hello")); ?>！<?php echo ($my_info["user_name"]); ?> [<?php echo ($admin_level["name"]); ?>]
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="off">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link href="__ROOT__/statics/admin/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="__ROOT__/statics/css/dialog.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="__ROOT__/statics/js/jquery/jquery-1.4.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="__ROOT__/statics/js/dialog.js"></script>
+<title><?php echo (L("website_manage")); ?></title>
+</head>
+<body scroll="no">
+<div id="header">
+    <div class="logo"><a href="__APP__" title="<?php echo (L("website_manage")); ?>"></a></div>
+    <div class="fr">
+        <div class="style_but"></div>
+    </div>
+    <div class="col-auto" style="overflow: visible">
+        <div class="log white cut_line"> <?php echo (L("hello")); ?>！<?php echo ($my_info["user_name"]); ?> [<?php echo ($admin_level["name"]); ?>]
               |  
             <a href="<?php echo ($site_root); ?>" target="_blank">[站点首页]</a>   |            
-            <a href="<?php echo u('public/logout');?>">[<?php echo (L("logout")); ?>]</a></div><div class="log_right white cut_line"><a target="_blank" href="#">官方网站</a><span>|</span><a target="_blank" href="#">营销联盟</a><span>|</span><a target="_blank" href="#">支持论坛</a><span>|</span><a target="_blank" href="#">帮助？</a></div></div><ul class="nav white" id="top_menu"><?php if(is_array($top_menu)): $i = 0; $__LIST__ = $top_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><li id="_M<?php echo ($val["id"]); ?>" class="top_menu"><a href="javascript:_M(<?php echo ($val["id"]); ?>,'')"  hidefocus="true" style="outline:none;"><?php echo ($val["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?></ul></div><div id="content"><div class="left_menu fl"><div id="leftMain"></div><a href="javascript:;" id="openClose" style="outline-style: none; outline-color: invert; outline-width: medium;" hideFocus="hidefocus" class="open" title="<?php echo ($lang["expand_or_contract"]); ?>"></a></div><div class="right_main"><div class="crumbs"><div class="shortcut cu-span"><a href="<?php echo ($site_root); ?>" target="_blank"><span><?php echo (L("site_home")); ?></span></a><a href="<?php echo u('cache/index');?>" target="right"><span><?php echo (L("flush_cache")); ?></span></a></div><span id="current_pos"></span></div><div class="rmc"><div class="content" style="position:relative; overflow:hidden"><iframe name="right" id="rightMain" src="<?php echo u('public/main');?>" frameborder="false" scrolling="auto" style="overflow-x:hidden;border:none;" width="100%" height="auto" allowtransparency="true"></iframe></div></div></div></div><script type="text/javascript">function windowW(){
+            <a href="<?php echo u('public/logout');?>">[<?php echo (L("logout")); ?>]</a>
+        </div>            
+		<div class="log_right white cut_line">
+	        <a target="_blank" href="#">官方网站</a>
+			<span>|</span>
+			<a target="_blank" href="#">营销联盟</a>
+			<span>|</span>
+			<a target="_blank" href="#">支持论坛</a>
+			<span>|</span>
+			<a target="_blank" href="#">帮助？</a>
+        </div>             
+    </div>
+    <ul class="nav white" id="top_menu">
+        <?php if(is_array($top_menu)): $i = 0; $__LIST__ = $top_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><li id="_M<?php echo ($val["id"]); ?>" class="top_menu">
+            	<a href="javascript:_M(<?php echo ($val["id"]); ?>,'')"  hidefocus="true" style="outline:none;"><?php echo ($val["title"]); ?></a>
+         	</li><?php endforeach; endif; else: echo "" ;endif; ?>
+    </ul>
+</div>
+<div id="content">
+    <div class="left_menu fl">
+        <div id="leftMain"></div>
+        <a href="javascript:;" id="openClose" style="outline-style: none; outline-color: invert; outline-width: medium;" hideFocus="hidefocus" class="open" title="<?php echo ($lang["expand_or_contract"]); ?>"></a>
+	 </div>
+    <div class="right_main">
+        <div class="crumbs">
+            <div class="shortcut cu-span"> 
+				<a href="<?php echo ($site_root); ?>" target="_blank">
+               	 	<span><?php echo (L("site_home")); ?></span>
+                </a>  
+				<a href="<?php echo u('cache/index');?>" target="right">
+               		 <span><?php echo (L("flush_cache")); ?></span>
+                </a></div>
+            <span id="current_pos"></span>
+        </div>
+        <div class="rmc">
+            <div class="content" style="position:relative; overflow:hidden">
+                <iframe name="right" id="rightMain" src="<?php echo u('public/main');?>" frameborder="false" scrolling="auto" style="overflow-x:hidden;border:none;" width="100%" height="auto" allowtransparency="true"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+function windowW(){
 	if($(window).width()<980){
 			$('#header').css('width',980+'px');
 			$('#content').css('width',980+'px');
@@ -90,4 +150,6 @@ function Refresh() {
 	var src = $("#rightMain").attr('src');
 	$("#rightMain").attr('src',src);
 }
-</script></body></html>
+</script>
+</body>
+</html>
