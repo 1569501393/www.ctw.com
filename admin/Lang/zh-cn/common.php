@@ -1,5 +1,7 @@
 <?php
 return array(
+	'PAGE_MSG' => 'JieQiangCms后台管理',
+
     'website_manage' => '管理中心',
     'hello' => '欢迎您',
     'logout' => '退出',
