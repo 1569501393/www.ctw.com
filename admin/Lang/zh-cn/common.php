@@ -1,6 +1,6 @@
 <?php
 return array(
-	'PAGE_MSG' => 'JieQiangCms后台管理',
+	'PAGE_MSG' => '民生银行CPS联盟系统',
 
     'website_manage' => '管理中心',
     'hello' => '欢迎您',
