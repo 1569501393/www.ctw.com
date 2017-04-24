@@ -17,18 +17,20 @@
     </div>
     <div class="col-auto" style="overflow: visible">
         <div class="log white cut_line"> {$Think.lang.hello}！{$my_info.user_name} [{$admin_level.name}]
-              |  
+              | 
+              <a href="javascript:edit({$Think.Session.admin_info.id},'{$Think.Session.admin_info.user_name}')">[修改密码]</a>   |  
+ 
             <a href="{$site_root}" target="_blank">[站点首页]</a>   |            
             <a href="{:u('public/logout')}">[{$Think.lang.logout}]</a>
         </div>            
 		<div class="log_right white cut_line">
-	        <a target="_blank" href="#">官方网站</a>
+	        <!-- <a target="_blank" href="#">官方网站</a>
 			<span>|</span>
 			<a target="_blank" href="#">营销联盟</a>
 			<span>|</span>
 			<a target="_blank" href="#">支持论坛</a>
 			<span>|</span>
-			<a target="_blank" href="#">帮助？</a>
+			<a target="_blank" href="#">帮助？</a> -->
         </div>             
     </div>
     <ul class="nav white" id="top_menu">
@@ -152,6 +154,19 @@ function Refresh() {
 	var src = $("#rightMain").attr('src');
 	$("#rightMain").attr('src',src);
 }
+
+// function edit(id, name) {
+// 	var lang_edit = "{$Think.lang.edit}";
+// 	window.top.art.dialog({id:'edit'}).close();
+// 	window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=admin&a=edit&id='+id,width:'480',height:'250'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
+// }
+
+function edit(id, name) {
+	var lang_edit = "{$Think.lang.edit}";
+	window.top.art.dialog({id:'edit'}).close();
+	window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=admin&a=pwd&id='+id,width:'480',height:'250'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
+}
+
 </script>
 </body>
 </html>

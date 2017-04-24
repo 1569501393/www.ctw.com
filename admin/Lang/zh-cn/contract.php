@@ -5,7 +5,7 @@ return array(
     'url' => '链接地址',
 	'img'=>'图片',
 	'ordid'=>'排序值',
-	'status'=>'审核状态 ',
-	'ADD_CONTRACT'=>'添加合同 ',
+	'add_contract'=>'添加合同',
+	'status'=>'审核状态 '
 );
 ?>

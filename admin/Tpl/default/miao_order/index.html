@@ -7,7 +7,7 @@
             <tr>
             <td>
             <div class="explain-col"> 
-                                     请输入订单号/用户名 :
+                                     请输入订单号 :
                 <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
                 <input type="hidden" name="m" value="miao_order" />
                 <input type="submit" name="search" class="button" value="搜索" />
@@ -26,18 +26,18 @@
                 <th width=30><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>				
 				<th>{:L('order_code')}</th>
                 <th width=60>{:L('order_time')}</th>				
-                <th width=100>{:L('seller_name')}</th>			
+                <th width=100>推广用户</th>			
                 <th>{:L('username')}</th>
 				<th>{:L('item_count')}</th>
 				<th>{:L('item_price')}</th>
 				<th>{:L('commission')}</th>
 				<th>{:L('cash_back')}</th>
-				<th>反<if condition="$cashback_type eq '1'">集分宝
+				<!-- <th>反<if condition="$cashback_type eq '1'">集分宝
 					  <else/>
 					 	{$tb_fanxian_name}
 					  </if>
 					  单位({$tb_fanxian_unit})
-				</th>
+				</th> -->
                 <th width=60>状态</th>				
                 <th width=60>操作</th>
             </tr>
@@ -55,7 +55,7 @@
 			<td align="center">{$val.item_price}</td>
 			<td align="center">{$val.commission}</td>
 			<td align="center">{$val.cash_back}</td>
-			<td align="center">{$val.cash_back_jifenbao}</td>			
+			<!-- <td align="center">{$val.cash_back_jifenbao}</td>			 -->
             <td align="center"><if condition="$val.status eq '未确认' "><span class="red">{$val.status}</span><else /><span class="green">{$val.status}</span></if></td>
             <td align="center"><a href="javascript:edit({$val.id},'订单列表')">编辑</a></td>
         </tr>

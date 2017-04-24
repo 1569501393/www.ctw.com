@@ -1,0 +1,126 @@
+<include file="public:header" />
+<div class="pad-lr-10">
+	<form name="searchform" action="" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+				<!-- 链接分类 :<select name="cate_id" style="width:140px;">
+					<option value="" <if condition="$cate_id eq ''"> selected="selected" </if>>--所有分类--</option>
+					<volist name="flink_cate_list" id="val" >
+        			<option value="{$val.id}" <if condition="$cate_id eq $val['id']"> selected="selected" </if>>{$val.name}</option>
+					</volist>
+				</select> -->
+            	关键字 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+                <input type="hidden" name="m" value="flink" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+	<form id="myform" name="myform" action="{:u('flink/del')}" method="post" onsubmit="return check();">
+
+    <div class="table-list">
+      <table width="100%" cellspacing="0">
+        <thead>
+        <tr>
+			<th width="40">ID</th>
+            <th width="20"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>            
+            <th width="60">合同编号</th>
+            <th width="100">名称</th>
+			<!-- <th width="60">状态</th> -->
+            <th width="100">合同开始时间</th>
+			<th width="100">合同结束时间</th>
+            <th width="40">账期</th>
+            <th width="60">承担运费</th>
+            <th width="60">分销平台</th>
+            <th width="60">审批人</th>
+            <!-- <th width="40">创建人</th> -->
+            <th width="100">审核时间</th>
+            <th width="40">审核</th>
+            <th width="160">编辑</th>
+        </tr>
+        </thead>
+        <tbody>
+          <volist name="link_list" id="val" >
+          <tr>
+            <td width="">ID</td>
+            <td width=""><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></td>            
+            <td width="">ms001</td>
+            <td width="">北京分行合同</td>
+            <!-- <td align=left>&nbsp;&nbsp;&nbsp;&nbsp;通过</td> -->
+            <td width=>2016-12-11</td>
+            <td width="">2020-12-11</td>
+            <td width="">3</td>
+            <td width="">是</td>
+            <td width="">北京分行</td>
+            <td width="">商城001</td>
+            <!-- <td width="">商城001</td> -->
+            <td width="">2016-12-12</td>
+            <td width="">审核</td>
+            <td width=""><a href="">导入分类</a> | <a href="">导入商品</a>| <a href="">编辑</a></td>
+        </tr>
+          </volist>
+        </tbody>
+      </table>
+	  <div class="btn">
+		<label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+		<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+		
+		<div id="pages">{$page}</div>
+      </div>
+	</div>
+  </form>
+</div>
+<script type="text/javascript">
+function edit(flink_id, name) {
+	var lang_edit = "{$Think.lang.edit}";
+	window.top.art.dialog({id:'edit'}).close();
+	window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=flink&a=edit&id='+flink_id,width:'450',height:'220'}, 
+		function(){
+			var d = window.top.art.dialog({id:'edit'}).data.iframe;
+			d.document.getElementById('dosubmit').click();
+			return false;
+		}, 
+		function(){
+			window.top.art.dialog({id:'edit'}).close();
+		}
+	);
+}
+
+var lang_name = "友情链接";
+function check(){
+	if($("#myform").attr('action') != '{:u("flink/ordid")}') {
+		var ids='';
+		$("input[name='id[]']:checked").each(function(i, n){
+			ids += $(n).val() + ',';
+		});
+		if(ids=='') {
+			window.top.art.dialog({content:lang_please_select+lang_name,lock:true,width:'200',height:'50',time:1.5},function(){});
+			return false;
+		}
+	}
+	return true;
+}
+
+function status(id,type){
+    $.get("{:u('flink/status')}", { id: id, type: type }, function(jsondata){
+		var return_data  = eval("("+jsondata+")");
+		$("#"+type+"_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif');
+	}); 
+}
+//排序方法
+function sort(id,type,num){
+    
+    $.get("{:u('flink/sort')}", { id: id, type: type,num:num }, function(jsondata){
+        
+		$("#"+type+"_"+id+" ").attr('value', jsondata.data);
+	},'json'); 
+}
+</script>
+
+</body></html>
