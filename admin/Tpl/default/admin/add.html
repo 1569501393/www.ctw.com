@@ -23,7 +23,53 @@
             </volist>
         </select>
       </td>
-    </tr
+    </tr>
+
+    <tr> 
+    <th>账号 :</th>
+    <td><input type="text" name="user_id" id="user_id" class="input-text"></td>
+    </tr>
+
+    <tr> 
+    <th>家庭地址 :</th>
+    <td><input type="text" name="address" id="address" class="input-text"></td>
+    </tr>
+
+    <tr> 
+    <th>证件号码 :</th>
+    <td><input type="text" name="certificate_no" id="certificate_no" class="input-text"></td>
+    </tr>
+
+    <tr> 
+    <th>手机号 :</th>
+    <td><input type="text" name="mobile" id="mobile" class="input-text"></td>
+    </tr>
+
+    <tr> 
+    <th>电子信箱 :</th>
+    <td><input type="text" name="email" id="email" class="input-text"></td>
+    </tr>
+
+    <tr> 
+    <th>上级 :</th>
+    <td>
+    <!-- <input type="text" name="pid" id="pid" class="input-text"> -->
+
+      <select name="pid">
+      <option value="0">顶级</option>
+          <option value="1">北京分行</option>
+          <option value="2">厦门分行</option>
+          <option value="3">XX分行</option>
+      </select>
+    </td>
+    </tr>
+
+
+    <tr> 
+    <th>结算账户 :</th>
+    <td><input type="text" name="account" id="account" class="input-text"></td>
+    </tr>
+
     <tr>
       <th>{:L('status')} :</th>
       <td>

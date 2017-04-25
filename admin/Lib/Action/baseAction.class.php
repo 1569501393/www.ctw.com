@@ -255,6 +255,10 @@ class baseAction extends Action {
 		$this->assign('returnjs',$returnjs);
 		parent::success($message, $ajax);
 	}
+	
+	
+	
+    
 
 	public function simplexml_obj2array($obj)
 	{

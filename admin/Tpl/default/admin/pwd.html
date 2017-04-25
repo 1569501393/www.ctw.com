@@ -16,6 +16,12 @@
 		<th>{:L('password')} :</th>
 		<td><input type="password" name="password" id="password" class="input-text"></td>
     </tr>
+
+    <tr>
+      <th>{:L('repassword')} :</th>
+      <td><input type="password" name="repassword" id="repassword" class="input-text"></td>
+    </tr>
+    
     <tr> 
 		<th>账号 :</th>
 		<td><input type="text" name="user_id" id="user_id" class="input-text"></td>
@@ -27,7 +33,7 @@
     </tr>
 
     <tr> 
-		<th>电话号码 :</th>
+		<th>证件号码 :</th>
 		<td><input type="text" name="certificate_no" id="certificate_no" class="input-text"></td>
     </tr>
 
@@ -42,8 +48,17 @@
     </tr>
 
     <tr> 
-		<th>分行 :</th>
-		<td><input type="text" name="pid" id="pid" class="input-text"></td>
+		<th>上级 :</th>
+		<td>
+    <!-- <input type="text" name="pid" id="pid" class="input-text"> -->
+
+      <!-- <select name="pid">
+      	  <option value="0">顶级</option>
+          <option value="1">北京分行</option>
+          <option value="2">厦门分行</option>
+          <option value="3">XX分行</option>
+      </select> -->
+    </td>
     </tr>
 
 

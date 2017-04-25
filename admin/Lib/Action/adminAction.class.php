@@ -74,7 +74,7 @@ class adminAction extends baseAction
 		foreach($admin_list as $k=>$val){
 			$admin_list[$k]['key'] = ++$p->firstRow;
 		}
-		$big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=admin&a=add\', title:\'添加管理员\', width:\'480\', height:\'250\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', '添加管理员');
+		$big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=admin&a=add\', title:\'添加管理员\', width:\'480\', height:\'520\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', '添加管理员');
 		$page = $p->show();
 		$this->assign('page',$page);
 		$this->assign('big_menu',$big_menu);

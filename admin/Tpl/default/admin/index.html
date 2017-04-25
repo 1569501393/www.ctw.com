@@ -43,7 +43,7 @@
 function edit(id, name) {
 	var lang_edit = "{$Think.lang.edit}";
 	window.top.art.dialog({id:'edit'}).close();
-	window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=admin&a=edit&id='+id,width:'480',height:'250'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
+	window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=admin&a=edit&id='+id,width:'480',height:'520'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
 }
 
 function status(id,type){
