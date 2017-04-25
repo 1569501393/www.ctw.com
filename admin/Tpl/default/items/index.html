@@ -22,22 +22,23 @@
                 </option>
             	</volist>                
               	</select>
-                &nbsp;
+                <!-- &nbsp;
                 <select name="is_index">
             	<option value="-1">-首页显示-</option>
                 <option value="1" <if condition="$is_index eq 1">selected="selected"</if>>是</option>
                 <option value="0" <if condition="$is_index eq 0">selected="selected"</if>>否</option>
-                </select>
+                </select> -->
 				 &nbsp;
                 <select name="status">
-            	<option value="-1">-是否审核-</option>
-                <option value="1" <if condition="$status eq 1">selected="selected"</if>>已审核</option>
-                <option value="0" <if condition="$status eq 0">selected="selected"</if>>未审核</option>
+            	<option value="-1">-是否推广-</option>
+                <option value="1" <if condition="$status eq 1">selected="selected"</if>>已推广</option>
+                <option value="0" <if condition="$status eq 0">selected="selected"</if>>未推广</option>
                 </select>
                 &nbsp;关键字 :
                 <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
                 <input type="hidden" name="m" value="items" />
                 <input type="submit" name="search" class="button" value="搜索" />
+                <input type="button" name="search2" class="button" value="同步商品" />
         	</div>
             </td>
             </tr>
@@ -49,51 +50,100 @@
     <table width="100%" cellspacing="0">
         <thead>
             <tr>
-                <th width="50">ID</th>
-                <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>                
-                <th width="40">&nbsp;</th>
+                <th width=50>ID</th>
+                <!-- <th width=15><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>                 -->
+                <!-- <th width="40">&nbsp;</th> -->
                 <th>商品名称</th>
                 <th width=60>所属分类</th>
-                <th width=40>来源</th>
-				<th width=80>佣金</th>
+                <!-- <th width=40>来源</th> -->
+				<th width=90>佣金比例(%)</th>
                 <th width=90><a href="{:u('items/index',array('time_start'=>$time_start,'time_end'=>$time_end,'cate_id'=>$cate_id,'is_index'=>$is_index,'keyword'=>$keyword,'order'=>'add_time','sort'=>$sort))}" class="blue <if condition="$order eq 'add_time'">order_sort_<if condition="$sort eq 'desc'">1<else/>0</if></if>">发布时间</a></th>
                 <th width=60><a href="{:u('items/index',array('time_start'=>$time_start,'time_end'=>$time_end,'cate_id'=>$cate_id,'is_index'=>$is_index,'keyword'=>$keyword,'order'=>'price','sort'=>$sort))}" class="blue <if condition="$order eq 'price'">order_sort_<if condition="$sort eq 'desc'">1<else/>0</if></if>">价格(元)</a></th>
-                <th width=40><a href="{:u('items/index',array('time_start'=>$time_start,'time_end'=>$time_end,'cate_id'=>$cate_id,'is_index'=>$is_index,'keyword'=>$keyword,'order'=>'likes','sort'=>$sort))}" class="blue <if condition="$order eq 'likes'">order_sort_<if condition="$sort eq 'desc'">1<else/>0</if></if>">喜欢</a></th>
-				<th width=40><a href="{:u('items/index',array('time_start'=>$time_start,'time_end'=>$time_end,'cate_id'=>$cate_id,'is_index'=>$is_index,'keyword'=>$keyword,'order'=>'hits','sort'=>$sort))}" class="blue <if condition="$order eq 'hits'">order_sort_<if condition="$sort eq 'desc'">1<else/>0</if></if>">人气</a></th>	
-                <th width="30">排序</th>			
-                <th width=30>首页</th>
-				<th width=30>审核</th>
-                <th width=30>操作</th>
+                <!-- <th width=40><a href="{:u('items/index',array('time_start'=>$time_start,'time_end'=>$time_end,'cate_id'=>$cate_id,'is_index'=>$is_index,'keyword'=>$keyword,'order'=>'likes','sort'=>$sort))}" class="blue <if condition="$order eq 'likes'">order_sort_<if condition="$sort eq 'desc'">1<else/>0</if></if>">喜欢</a></th> -->
+				<!-- <th width=40><a href="{:u('items/index',array('time_start'=>$time_start,'time_end'=>$time_end,'cate_id'=>$cate_id,'is_index'=>$is_index,'keyword'=>$keyword,'order'=>'hits','sort'=>$sort))}" class="blue <if condition="$order eq 'hits'">order_sort_<if condition="$sort eq 'desc'">1<else/>0</if></if>">人气</a></th> -->	
+                		
+                <th width=160>推广链接</th>
+                <th width="60">二维码</th> 
+				<th width=30>推广</th>
+                <!-- <th width=30>操作</th> -->
             </tr>
         </thead>
     	<tbody>
         <volist name="items_list" id="val" >
         <tr>
         	<td align="center">{$val.id}</td>
-            <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>           
-            <td align="right"><img src="{$val.simg}" width="35" width="35" class="preview" bimg="{$val.img}"></td>
-            <td align="left"><a href="{:u('items/edit', array('id'=>$val['id']))}">{$val.title}</a></td>
+            <!-- <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>            -->
+            <!-- <td align="right"></td> -->
+            <td align="center"><a href="{:u('items/edit', array('id'=>$val['id']))}">{$val.title}</a></td>
+            <!-- <td align="center"><a href="{:u('items/edit', array('id'=>$val['id']))}">{$val.title}</a></td> -->
             <td align="center"><b>{$val.items_cate.name}</b></td>
-            <td align="center"><img src="__ROOT__/data/author/32_{$val.items_site.site_logo}" width="16" height="16" style="margin-right:5px;" /></td>
+            <!-- <td align="center"><img src="__ROOT__/data/author/32_{$val.items_site.site_logo}" width="16" height="16" style="margin-right:5px;" /></td> -->
 			
-			<td align="center">{$val.cash_back_rate}</td>
+            <!-- <td align="center">{$val.cash_back_rate}</td> -->
+			<td align="center">20</td>
             <td align="center">{$val.add_time|date="Y-m-d H:i:s",###}</td>
             <td align="center"><em style="color:red;">￥{$val.price}</em></td>
-            <td align="center"><em style="color:red;">{$val.likes}</em></td>
-            <td align="center"><em style="color:green;">{$val.hits}</em></td>
-            <td>
-            <input type="text" class="input-text-c input-text" value="{$val.sort_order}" size="4" name="listorders[{$val.id}]" id="sort_{$val.id}" onblur="sort({$val.id},'sort_order',this.value)" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
-            </td>
+            <!-- <td align="center"><em style="color:red;">{$val.likes}</em></td> -->
+            <!-- <td align="center" onclick="status({$val.id},'is_index')" id="is_index_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_index}.gif" /></td> -->
+            <td align="center"><em style="color:green;"><a href="http://sec.msbank.com?sid=10000001" target="_blank">http://sec.msbank.com?sid=10000001</a></em></td>
+            <td align="center" ><img src="__ROOT__/statics/images/erweima.jpg" /></td>
+            <!-- <td align="center"><em style="color:green;"><img src="__ROOT__/statics/images/status_{$val.status}.gif" alt="placeholder+image"></em></td> -->
             <td align="center" onclick="status({$val.id},'is_index')" id="is_index_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_index}.gif" /></td>
-            <td align="center" onclick="status({$val.id},'status')" id="status_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>
-            <td align="center"><a class="blue" href="{:u('items/edit',array('id'=>$val['id']))}">编辑</a></td>
+            <!-- <td align="center"><a class="blue" href="{:u('items/edit',array('id'=>$val['id']))}">编辑</a></td> -->
+        </tr>
+
+        <tr>
+            <td align="center">2</td>
+            <!-- <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>            -->
+            <!-- <td align="right"></td> -->
+            <td align="center"><a href="{:u('items/edit', array('id'=>$val['id']))}">{$val.title}</a></td>
+            <!-- <td align="center"><a href="{:u('items/edit', array('id'=>$val['id']))}">{$val.title}</a></td> -->
+            <td align="center"><b>{$val.items_cate.name}</b></td>
+            <!-- <td align="center"><img src="__ROOT__/data/author/32_{$val.items_site.site_logo}" width="16" height="16" style="margin-right:5px;" /></td> -->
+            
+            <!-- <td align="center">{$val.cash_back_rate}</td> -->
+            <td align="center">20</td>
+            <td align="center">{$val.add_time|date="Y-m-d H:i:s",###}</td>
+            <td align="center"><em style="color:red;">￥{$val.price}</em></td>
+            <!-- <td align="center"><em style="color:red;">{$val.likes}</em></td> -->
+            <!-- <td align="center" onclick="status({$val.id},'is_index')" id="is_index_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_index}.gif" /></td> -->
+            <td align="center"><em style="color:green;"><a href="http://sec.msbank.com?sid=10000001" target="_blank">http://sec.msbank.com?sid=10000001</a></em></td>
+            <td align="center" ><img src="__ROOT__/statics/images/erweima.jpg" /></td>
+            <!-- <td align="center"><em style="color:green;"><img src="__ROOT__/statics/images/status_{$val.status}.gif" alt="placeholder+image"></em></td> -->
+            <td align="center" onclick="status({$val.id},'is_index')" id="is_index_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_index}.gif" /></td>
+            <!-- <td align="center"><a class="blue" href="{:u('items/edit',array('id'=>$val['id']))}">编辑</a></td> -->
+        </tr>
+
+        <tr>
+            <td align="center">3</td>
+            <!-- <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>            -->
+            <!-- <td align="right"></td> -->
+            <td align="center"><a href="{:u('items/edit', array('id'=>$val['id']))}">{$val.title}</a></td>
+            <!-- <td align="center"><a href="{:u('items/edit', array('id'=>$val['id']))}">{$val.title}</a></td> -->
+            <td align="center"><b>{$val.items_cate.name}</b></td>
+            <!-- <td align="center"><img src="__ROOT__/data/author/32_{$val.items_site.site_logo}" width="16" height="16" style="margin-right:5px;" /></td> -->
+            
+            <!-- <td align="center">{$val.cash_back_rate}</td> -->
+            <td align="center">20</td>
+            <td align="center">{$val.add_time|date="Y-m-d H:i:s",###}</td>
+            <td align="center"><em style="color:red;">￥{$val.price}</em></td>
+            <!-- <td align="center"><em style="color:red;">{$val.likes}</em></td> -->
+            <!-- <td align="center" onclick="status({$val.id},'is_index')" id="is_index_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_index}.gif" /></td> -->
+            <td align="center"><em style="color:green;"><a href="http://sec.msbank.com?sid=10000001" target="_blank">http://sec.msbank.com?sid=10000001</a></em></td>
+            <td align="center" ><img src="__ROOT__/statics/images/erweima.jpg" /></td>
+            <!-- <td align="center"><em style="color:green;"><img src="__ROOT__/statics/images/status_{$val.status}.gif" alt="placeholder+image"></em></td> -->
+            <td align="center" onclick="status({$val.id},'is_index')" id="is_index_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_index}.gif" /></td>
+            <!-- <td align="center"><a class="blue" href="{:u('items/edit',array('id'=>$val['id']))}">编辑</a></td> -->
+        </tr>
+
+
         </volist>
     	</tbody>
     </table>
 
     <div class="btn">
-    	<label for="check_box" style="float:left;">全选/取消</label>
-    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
+    	<!-- <label for="check_box" style="float:left;">全选/取消</label>
+    	<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/> -->
         
     	<div id="pages">{$page}</div>
     </div>

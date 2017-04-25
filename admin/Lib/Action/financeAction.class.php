@@ -1,5 +1,26 @@
 <?php
 class financeAction extends baseAction {
+
+    // 佣金管理
+    function commission() {
+        $this->display();
+    }
+
+    // 推广管理
+    function push() {
+        $this->display();
+    }
+
+    // 财务管理
+    function finance() {
+        $this->display();
+    }
+
+    // 结算管理
+    function settle() {
+        $this->display();
+    }
+
 	function index() {
 		$link_mod = M('flink');
 		import("ORG.Util.Page");

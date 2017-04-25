@@ -11,7 +11,7 @@
 				<wego:calendar name="time_start">{$time_start}</wego:calendar>
                 -      
 				<wego:calendar name="time_end" more="true">{$time_end}</wego:calendar>
-            	&nbsp;&nbsp;资讯分类：
+            	<!-- &nbsp;&nbsp;公告分类：
                 <select name="cate_id">
             	<option value="0">--请选择分类--</option>
                 <volist name="cate_list['parent']" id="val">
@@ -27,7 +27,7 @@
                     </volist>
                   </notempty>
                 </volist>
-              </select>
+              </select> -->
                 &nbsp;关键字 :
                 <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
                 <input type="hidden" name="m" value="article" />
@@ -47,11 +47,11 @@
                 <th width=50>ID</th>
                 <th width=25><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>               
                 <th width=280>{:L('title')}</th>
-                <th>{:L('cate_id')}</th>
+                <th>接收对象</th>
                 <th width=150>{:L('time')}</th>
                 <th width=60>{:L('sort')}</th>
-                <th width="40">{:L('hot')}</th>
-                <th width="40">{:L('recommend')}</th>
+                <!-- <th width="40">{:L('hot')}</th>
+                <th width="40">{:L('recommend')}</th> -->
                 <th width="40">{:L('status')}</th>
 				<th width="80">编辑</th>
             </tr>
@@ -64,11 +64,12 @@
            	 <input type="checkbox" value="{$val.id}" name="id[]">
 			</td>           
             <td align="left"><a class="blue" href="{:u('article/edit', array('id'=>$val['id']))}">{$val.title}</a><if condition="$val['url'] neq ''"><br><a href="{$val.url}" target=_blank>{$val.url}</a></if>&nbsp;&nbsp;</td>
-            <td align="center"><b>{$val.cate_name.name}</b></td>
+            <!-- <td align="center"><b>[北京分行，厦门分行]</b></td> -->
+            <td align="center">[北京分行，厦门分行]</td>
             <td align="center">{$val.add_time}</td>
             <td align="center"><input  type="text" class="input-text-c input-text" value="{$val.ordid}" id="sort_{$val.id}" onblur="sort({$val.id},'ordid',this.value)" size="4" name="listorders[{$val.id}]"></td>
-            <td align="center" onclick="status({$val.id},'is_hot')" id="is_hot_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_hot}.gif" /></td>
-            <td align="center" onclick="status({$val.id},'is_best')" id="is_best_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_best}.gif" /></td>
+            <!-- <td align="center" onclick="status({$val.id},'is_hot')" id="is_hot_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_hot}.gif" /></td>
+            <td align="center" onclick="status({$val.id},'is_best')" id="is_best_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.is_best}.gif" /></td> -->
       		<td align="center" onclick="status({$val.id},'status')" id="status_{$val.id}"><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>
 			<td align="center"><a class="blue" href="{:u('article/edit', array('id'=>$val['id']))}">编辑</a></td>
         </volist>
@@ -87,12 +88,12 @@
 </div>
 <script language="javascript">
 function edit(id, name) {
-	var lang_edit = "编辑资讯";
+	var lang_edit = "编辑公告";
 	window.top.art.dialog({id:'edit'}).close();
 	window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=article&a=edit&id='+id,width:'550',height:'400'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
 }
 
-var lang_cate_name = "资讯标题";
+var lang_cate_name = "公告标题";
 function check(){
 	if($("#myform").attr('action') != '{:u("article/sort_order")}') {
 		var ids='';
