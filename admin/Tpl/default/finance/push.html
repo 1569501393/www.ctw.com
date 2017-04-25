@@ -7,10 +7,21 @@
             <tr>
             <td>
             <div class="explain-col"> 
-                                     请输入订单号 :
+                 请输入订单号 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+
+                分行 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+
+                机构 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+
+                客户经理 :
                 <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
                 <input type="hidden" name="m" value="miao_order" />
                 <input type="submit" name="search" class="button" value="搜索" />
+
+                <input type="button" name="search2" class="button" value="同步订单" />
         	</div>
             </td>
             </tr>
@@ -23,15 +34,15 @@
         <thead>
             <tr>
                 <th width=50>ID</th>
-                <th width=30><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>				
+                <!-- <th width=30><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>				 -->
 				<th>{:L('order_code')}</th>
-                <th width=60>{:L('order_time')}</th>				
+                <th width=160>{:L('order_time')}</th>				
                 <th width=100>推广用户</th>			
-                <th>{:L('username')}</th>
+                <th>商品名称</th>
 				<th>{:L('item_count')}</th>
 				<th>{:L('item_price')}</th>
 				<th>{:L('commission')}</th>
-				<th>{:L('cash_back')}</th>
+				<!-- <th>{:L('cash_back')}</th> -->
 				<!-- <th>反<if condition="$cashback_type eq '1'">集分宝
 					  <else/>
 					 	{$tb_fanxian_name}
@@ -39,14 +50,14 @@
 					  单位({$tb_fanxian_unit})
 				</th> -->
                 <th width=60>状态</th>				
-                <th width=60>操作</th>
+                <!-- <th width=60>操作</th> -->
             </tr>
         </thead>
     	<tbody>
         <volist name="miao_order_list" id="val" key="k">
         <tr>
         	<td align="center">{$val.id}</td>
-            <td align="center"><input type="checkbox" value="{$val.id}" name="id[]" </td>			
+            <!-- <td align="center"><input type="checkbox" value="{$val.id}" name="id[]" </td>			 -->
 			<td align="center">{$val.order_code}</td> 
             <td align="center">{$val.order_time}</td>         
             <td align="center">{$val.seller_name}</td> 			
@@ -54,17 +65,70 @@
 			<td align="center">{$val.item_count}</td>
 			<td align="center">{$val.item_price}</td>
 			<td align="center">{$val.commission}</td>
-			<td align="center">{$val.cash_back}</td>
+			<!-- <td align="center">{$val.cash_back}</td> -->
 			<!-- <td align="center">{$val.cash_back_jifenbao}</td>			 -->
             <td align="center"><if condition="$val.status eq '未确认' "><span class="red">{$val.status}</span><else /><span class="green">{$val.status}</span></if></td>
-            <td align="center"><a href="javascript:edit({$val.id},'订单列表')">编辑</a></td>
+            <!-- <td align="center"><a href="javascript:edit({$val.id},'订单列表')">编辑</a></td> -->
         </tr>
         </volist>
+
+        <tr>
+        	<td align="center">1</td>
+            <!-- <td align="center"><input type="checkbox" value="{$val.id}" name="id[]" </td>			 -->
+			<td align="center">20170425202911</td> 
+            <td align="center">2017-04-25 20:29:13</td>   
+            <td align="center">s10001</td>      
+            <td align="center">旺旺雪饼</td> 			
+			<td align="center">11</td>
+			
+			<td align="center">10</td>
+			<td align="center">2</td>
+			<!-- <td align="center">{$val.cash_back}</td> -->
+			<!-- <td align="center">{$val.cash_back_jifenbao}</td>			 -->
+            <td align="center"><if condition="$val.status eq '未确认' "><span class="red">{$val.status}</span><else /><span class="green">未确认</span></if></td>
+            <!-- <td align="center"><a href="javascript:edit({$val.id},'订单列表')">编辑</a></td> -->
+        </tr>
+
+        <tr>
+        	<td align="center">2</td>
+            <!-- <td align="center"><input type="checkbox" value="{$val.id}" name="id[]" </td>			 -->
+			<td align="center">20170425202911</td> 
+            <td align="center">2017-04-25 20:29:13</td>   
+            <td align="center">s10001</td>      
+            <td align="center">旺旺雪饼</td> 			
+			<td align="center">11</td>
+			
+			<td align="center">10</td>
+			<td align="center">2</td>
+			<!-- <td align="center">{$val.cash_back}</td> -->
+			<!-- <td align="center">{$val.cash_back_jifenbao}</td>			 -->
+            <td align="center"><if condition="$val.status eq '未确认' "><span class="red">{$val.status}</span><else /><span class="green">未确认</span></if></td>
+            <!-- <td align="center"><a href="javascript:edit({$val.id},'订单列表')">编辑</a></td> -->
+        </tr>
+
+        <tr>
+        	<td align="center">3</td>
+            <!-- <td align="center"><input type="checkbox" value="{$val.id}" name="id[]" </td>			 -->
+			<td align="center">20170425202911</td> 
+            <td align="center">2017-04-25 20:29:13</td>   
+            <td align="center">s10001</td>      
+            <td align="center">旺旺雪饼</td> 			
+			<td align="center">11</td>
+			
+			<td align="center">10</td>
+			<td align="center">2</td>
+			<!-- <td align="center">{$val.cash_back}</td> -->
+			<!-- <td align="center">{$val.cash_back_jifenbao}</td>			 -->
+            <td align="center"><if condition="$val.status eq '未确认' "><span class="red">{$val.status}</span><else /><span class="green">未确认</span></if></td>
+            <!-- <td align="center"><a href="javascript:edit({$val.id},'订单列表')">编辑</a></td> -->
+        </tr>
+
+
     	</tbody>
     </table>
     <div class="btn">
-		<label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
-		<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin-left:10px;"/>
+		<!-- <label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
+		<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin-left:10px;"/> -->
 		<div id="pages">{$page}</div>
     </div>
     </div>
