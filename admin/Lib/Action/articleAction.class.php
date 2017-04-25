@@ -61,9 +61,9 @@ class articleAction extends baseAction
 			$article_mod = D('article');
 			$attatch_mod = D('attatch');
 			$data = $article_mod->create();
-			if($data['cate_id']==0){
-				$this->error('请选择资讯分类');
-			}
+//			if($data['cate_id']==0){
+//				$this->error('请选择资讯分类');
+//			}
 			if ($_FILES['img']['name']!=''||$_FILES['attachment']['name'][0]!='') {
 			    $upload_list = $this->_upload();
 			    if ($_FILES['img']['name']!=''&&$_FILES['attachment']['name'][0]!='') {
