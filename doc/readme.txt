@@ -1,5 +1,9 @@
-标题写：民生银行CPS联盟系统
+﻿标题写：民生银行CPS联盟系统
 民生银行CPS联盟系统
+
+注册页面
+http://msec.jieqiangtec.bb/index.php?m=index&a=reg
+
 
 2.4权限管理
 角色设定(设定角色选择功能模块，可任意组合选择)
