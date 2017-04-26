@@ -1,5 +1,6 @@
+<script>var jyc_begin=new Date().getTime();</script>
 <?php
-error_reporting(0);
+
 session_start();
 
 $identity = 'fenhang';
