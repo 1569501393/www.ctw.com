@@ -1,4 +1,6 @@
-﻿标题写：民生银行CPS联盟系统
+﻿git clone git@github.com:1569501393/www.ctw.com  ../cps.jieqiangtec.com
+
+标题写：民生银行CPS联盟系统
 民生银行CPS联盟系统
 
 注册页面
