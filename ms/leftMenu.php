@@ -72,7 +72,7 @@
                                 <!-- </ul> -->
                             </li>
 
-                            <li class="text-muted menu-title">____________________________</li>
+                            <li id="split-line" class="text-muted menu-title">____________________________</li>
 
 
                             <li class="">

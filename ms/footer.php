@@ -95,11 +95,17 @@
                 function userIdentity(){
                     var identity = $('body').attr('identity');
                     if (identity=='fenhang') {
-
+                        $('.left-menu').each(function(){
+                            var page = $(this).attr('page');
+                            if (page=='promotionmanager'||page=='contractmanager'||page=='finansialmanager'||page=='character'){
+                                $(this).parent().remove();
+                                // alert('have');
+                            }
+                        })
                     }else if(identity=='zijigou'){
                         $('.left-menu').each(function(){
                             var page = $(this).attr('page');
-                            if (page=='commisionmanager'||page=='character'||page=='announcementmanager'||page=='groupmanager'){
+                            if (page=='commisionmanager'||page=='character'||page=='announcementmanager'||page=='groupmanager'||page=='promotionmanager'||page=='contractmanager'||page=='finansialmanager'){
                                 $(this).parent().remove();
                                 // alert('have');
                             }
@@ -111,6 +117,15 @@
                             if (page=='commisionmanager'||page=='finansialmanager'||page=='groupmanager'||page=='contractmanager'||page=='character'||page=='announcementmanager'||page=='promotionmanager'){
                                 $(this).parent().remove();
                                 // alert('have');
+                            }
+                        })
+                    }else if (identity=='shangcheng') {
+                        $('.left-menu').each(function(){
+                            var page = $(this).attr('page');
+                            if (page=='announcements'||page=='groupmanager'||page=='commisionmanager'||page=='orders'||page=='settle'||page=='user'||page=='promotion'){
+                                $(this).parent().remove();
+                                // alert('have');
+                                $('#split-line').hide();
                             }
                         })
                     }
@@ -152,6 +167,10 @@
                     autoclose: true,
                     todayHighlight: true
                 });
+                jQuery('#datepicker-autoclose2').datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                });                
                 jQuery('#datepicker-inline').datepicker();
                 jQuery('#datepicker-multiple-date').datepicker({
                     format: "mm/dd/yyyy",

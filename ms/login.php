@@ -55,6 +55,7 @@ include 'header.php';
                         <a href="recover.php" class="text-dark"><i class="fa fa-lock m-r-5"></i>找回密码</a>
                     </div>
                     <div style="padding-top: 35px; text-align: center;">
+                    <a href="index.php?identity=shangcheng"><button type="button" class="btn btn-inverse btn-custom waves-effect waves-light">商城</button></a>
                     <a href="index.php?identity=fenhang"><button type="button" class="btn btn-inverse btn-custom waves-effect waves-light">分行</button></a>
                     <a href="index.php?identity=zijigou"><button type="button" class="btn btn-purple btn-custom waves-effect waves-light">子机构</button></a>
                     <a href="index.php?identity=kehujingli"><button type="button" class="btn btn-pink btn-custom waves-effect waves-light">客户经理</button></a>
