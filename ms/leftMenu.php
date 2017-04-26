@@ -76,7 +76,7 @@
 
 
                             <li class="">
-                                <a href="promotionmanager" class="waves-effect left-menu" page="promotionmanager"><i class="ti-bar-chart"></i><span> 推广管理</span></a>
+                                <a href="promotionmanager.php" class="waves-effect left-menu" page="promotionmanager"><i class="ti-bar-chart"></i><span> 推广管理</span></a>
                                 <!-- <ul class="list-unstyled"> -->
                                 	<!-- <li><a href="#">推广平台管理</a></li> -->
                                     <!-- <li><a href="promotion2.php" class="left-menu" page="promotion2">推广商品</a></li> -->
