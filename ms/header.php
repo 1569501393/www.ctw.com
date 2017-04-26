@@ -1,4 +1,3 @@
-<script>var jyc_begin=new Date().getTime();</script>
 <?php
 
 session_start();
@@ -13,6 +12,7 @@ if ($_GET['identity']) {
 }
 
 ?>
+<script>var jyc_begin=new Date().getTime();</script>
 
 
 <!DOCTYPE html>
