@@ -1,0 +1,49 @@
+商城接口：
+说明：
+我方提供推广接口参数供商城下单记录推广信息，方便后面统计
+
+商城提供商品基础数据方便我方签订合同
+商城提供订单基础数据方便我做统计分析
+
+
+我方提供接口
+推广接口拼接参数：
+1.title		商品名称
+2.seller_name	推广人
+3.organization	推广机构
+4.bank_name	推广分行
+5.item_id	商品id	
+6.con_id	合同id
+ 
+ 
+对方提供接口：
+订单接口：
+1.order_id	订单号	
+2.title		商品名称	
+3.item_price	单价(元)	
+4.item_count	数量	
+5.rate		佣金比例	
+6.sum_price	总金额	
+7.settle_price	结算金额(预留)	
+8.status	结算状态
+9.seller_name	推广人(传id)
+10.organization	推广机构
+11.bank_name	推广分行
+12.item_id	商品id	
+13.con_id	合同id
+ 
+ 
+商品接口：
+1.aid		商品id
+2.cid		分类id
+3.title		商品名称
+4.price		商品单价
+5.status	状态
+
+
+item_id	商品id	
+category_id		商品类别id
+con_id	合同id
+bank_id	推广分行id
+bank_subid	子机构id
+seller_id	推广人id
