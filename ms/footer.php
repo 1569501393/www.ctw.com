@@ -97,7 +97,7 @@
                     if (identity=='fenhang') {
                         $('.left-menu').each(function(){
                             var page = $(this).attr('page');
-                            if (page=='promotionmanager'||page=='contractmanager'||page=='finansialmanager'||page=='character'){
+                            if (page=='promotionmanager'||page=='contractmanager'||page=='finansialmanager'||page=='character'||page=='users'){
                                 $(this).parent().remove();
                                 // alert('have');
                             }
@@ -105,7 +105,7 @@
                     }else if(identity=='zijigou'){
                         $('.left-menu').each(function(){
                             var page = $(this).attr('page');
-                            if (page=='commisionmanager'||page=='character'||page=='announcementmanager'||page=='groupmanager'||page=='promotionmanager'||page=='contractmanager'||page=='finansialmanager'){
+                            if (page=='commisionmanager'||page=='character'||page=='announcementmanager'||page=='groupmanager'||page=='promotionmanager'||page=='users'||page=='contractmanager'||page=='finansialmanager'){
                                 $(this).parent().remove();
                                 // alert('have');
                             }
@@ -114,7 +114,7 @@
                         // alert(identity);
                         $('.left-menu').each(function(){
                             var page = $(this).attr('page');
-                            if (page=='commisionmanager'||page=='finansialmanager'||page=='groupmanager'||page=='contractmanager'||page=='character'||page=='announcementmanager'||page=='promotionmanager'){
+                            if (page=='commisionmanager'||page=='finansialmanager'||page=='groupmanager'||page=='contractmanager'||page=='character'||page=='users'||page=='announcementmanager'||page=='promotionmanager'){
                                 $(this).parent().remove();
                                 // alert('have');
                             }

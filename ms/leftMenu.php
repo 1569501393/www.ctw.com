@@ -105,7 +105,13 @@
                                     <!-- <li><a href="#">角色权限设定</a></li> -->
                                 <!-- </ul> -->
                             </li>
-
+                            <li class="">
+                                <a href="users.php" class="waves-effect left-menu" page="users"><i class="ti-user"></i><span> 用户管理</span></a>
+                                <!-- <ul class="list-unstyled"> -->
+                                	<!-- <li><a href="#">角色设定</a></li> -->
+                                    <!-- <li><a href="#">角色权限设定</a></li> -->
+                                <!-- </ul> -->
+                            </li>
                             <li class="">
                                 <a href="announcementmanager.php" class="waves-effect left-menu" page="announcementmanager"><i class="ti-announcement"></i><span> 公告管理</span></a>
                                 <!-- <ul class="list-unstyled"> -->
