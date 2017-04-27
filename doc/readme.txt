@@ -1,4 +1,6 @@
-﻿git clone git@github.com:1569501393/www.ctw.com  ../cps.jieqiangtec.com
+﻿http://stat.adjyc.com登录查看访问统计：
+用户名：mscps 密码：123456
+
 
 标题写：民生银行CPS联盟系统
 民生银行CPS联盟系统
