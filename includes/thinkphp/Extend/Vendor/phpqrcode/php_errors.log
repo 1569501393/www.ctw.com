@@ -1,0 +1,218 @@
+[28-Apr-2017 14:49:07 PRC] PHP Notice:  Undefined index: url in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 3
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  file_get_contents(qrcode.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 12
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 12
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  file_get_contents(jb51.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 13
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 13
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 14
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 15
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 16
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 17
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 19
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 20
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 24
+[28-Apr-2017 14:49:07 PRC] PHP Warning:  imagepng() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 28
+[28-Apr-2017 14:49:42 PRC] PHP Parse error:  syntax error, unexpected '<' in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 31
+[28-Apr-2017 14:49:51 PRC] PHP Notice:  Undefined index: url in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 4
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  file_get_contents(qrcode.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 13
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 13
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  file_get_contents(jb51.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 14
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 14
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 15
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 16
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 17
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 18
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 20
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 21
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 25
+[28-Apr-2017 14:49:51 PRC] PHP Warning:  imagepng() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 29
+[28-Apr-2017 14:50:17 PRC] PHP Notice:  Undefined index: url in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 5
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  file_get_contents(qrcode.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 14
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 14
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  file_get_contents(jb51.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 15
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 15
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 16
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 17
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 18
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 19
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 21
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 22
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 26
+[28-Apr-2017 14:50:17 PRC] PHP Warning:  imagepng() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 30
+[28-Apr-2017 14:51:34 PRC] PHP Notice:  Undefined index: url in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 5
+[28-Apr-2017 14:51:47 PRC] PHP Notice:  Undefined index: url in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 4
+[28-Apr-2017 14:51:50 PRC] PHP Notice:  Undefined index: url in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 4
+[28-Apr-2017 14:51:51 PRC] PHP Notice:  Undefined index: url in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 4
+[28-Apr-2017 14:52:44 PRC] PHP Warning:  file_get_contents(logo.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:52:44 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:52:44 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 17
+[28-Apr-2017 14:52:44 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 18
+[28-Apr-2017 14:52:44 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 21
+[28-Apr-2017 14:52:44 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 25
+[28-Apr-2017 14:52:45 PRC] PHP Warning:  file_get_contents(logo.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:52:45 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:52:45 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 17
+[28-Apr-2017 14:52:45 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 18
+[28-Apr-2017 14:52:45 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 21
+[28-Apr-2017 14:52:45 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 25
+[28-Apr-2017 14:52:46 PRC] PHP Warning:  file_get_contents(logo.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:52:46 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:52:46 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 17
+[28-Apr-2017 14:52:46 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 18
+[28-Apr-2017 14:52:46 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 21
+[28-Apr-2017 14:52:46 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 25
+[28-Apr-2017 14:52:47 PRC] PHP Warning:  file_get_contents(logo.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:52:47 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:52:47 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 17
+[28-Apr-2017 14:52:47 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 18
+[28-Apr-2017 14:52:47 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 21
+[28-Apr-2017 14:52:47 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 25
+[28-Apr-2017 14:56:25 PRC] PHP Warning:  file_get_contents(logo2.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:56:25 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 14
+[28-Apr-2017 14:56:25 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 17
+[28-Apr-2017 14:56:25 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 18
+[28-Apr-2017 14:56:25 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 21
+[28-Apr-2017 14:56:25 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 25
+[28-Apr-2017 14:58:13 PRC] PHP Parse error:  syntax error, unexpected ',' in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 25
+[28-Apr-2017 15:04:11 PRC] PHP Notice:  Undefined variable: logo_qr_width in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 20
+[28-Apr-2017 15:04:11 PRC] PHP Notice:  Undefined variable: logo_qr_width in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 22
+[28-Apr-2017 15:04:11 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 22
+[28-Apr-2017 15:04:11 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 23
+[28-Apr-2017 15:04:11 PRC] PHP Notice:  Undefined variable: logo_qr_width in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 25
+[28-Apr-2017 15:04:11 PRC] PHP Notice:  Undefined variable: logo_qr_width in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 29
+[28-Apr-2017 15:08:56 PRC] PHP Warning:  getimagesize(test.jpg) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 10
+[28-Apr-2017 15:08:56 PRC] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 15
+[28-Apr-2017 15:08:56 PRC] PHP Warning:  imagecreatefromjpeg(test.jpg) [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 16
+[28-Apr-2017 15:08:56 PRC] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 17
+[28-Apr-2017 15:08:56 PRC] PHP Warning:  imagejpeg() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 20
+[28-Apr-2017 15:09:20 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 16
+[28-Apr-2017 15:09:20 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.png' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 16
+[28-Apr-2017 15:09:20 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 17
+[28-Apr-2017 15:11:47 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 16
+[28-Apr-2017 15:11:47 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.png' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 16
+[28-Apr-2017 15:11:47 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 17
+[28-Apr-2017 15:14:40 PRC] PHP Warning:  getimagesize(test.jpg) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 13
+[28-Apr-2017 15:14:40 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 15
+[28-Apr-2017 15:14:40 PRC] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 24
+[28-Apr-2017 15:14:40 PRC] PHP Warning:  imagecreatefromjpeg(test.jpg) [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:14:40 PRC] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:14:40 PRC] PHP Warning:  imagejpeg() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 29
+[28-Apr-2017 15:14:52 PRC] PHP Warning:  getimagesize(test.jpg) [<a href='function.getimagesize'>function.getimagesize</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 13
+[28-Apr-2017 15:14:52 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 15
+[28-Apr-2017 15:14:52 PRC] PHP Warning:  imagecreatetruecolor() [<a href='function.imagecreatetruecolor'>function.imagecreatetruecolor</a>]: Invalid image dimensions in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 24
+[28-Apr-2017 15:14:52 PRC] PHP Warning:  imagecreatefromjpeg(test.jpg) [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:14:52 PRC] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:14:52 PRC] PHP Warning:  imagejpeg() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 29
+[28-Apr-2017 15:15:07 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:07 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:07 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:15:29 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:29 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:29 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:15:37 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:37 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:37 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:15:41 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:41 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:41 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:15:44 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:44 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:15:44 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:16:15 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:15 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:15 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:16:19 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:19 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:19 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:16:21 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:21 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:21 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:16:41 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:41 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:41 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:16:44 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:44 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:16:44 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:17:17 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 25
+[28-Apr-2017 15:17:17 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 25
+[28-Apr-2017 15:17:17 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 26
+[28-Apr-2017 15:17:20 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 16
+[28-Apr-2017 15:17:20 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 16
+[28-Apr-2017 15:17:20 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 17
+[28-Apr-2017 15:24:24 PRC] PHP Parse error:  syntax error, unexpected ')' in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 29
+[28-Apr-2017 15:24:32 PRC] PHP Warning:  imagecopyresampled() expects exactly 10 parameters, 6 given in D:\software\phpStudy\WWW\test\phpqrcode\img2.php on line 29
+[28-Apr-2017 15:25:10 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 16
+[28-Apr-2017 15:25:10 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 16
+[28-Apr-2017 15:25:10 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 17
+[28-Apr-2017 15:25:29 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 18
+[28-Apr-2017 15:25:29 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 18
+[28-Apr-2017 15:25:29 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 19
+[28-Apr-2017 15:25:41 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 18
+[28-Apr-2017 15:25:41 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 18
+[28-Apr-2017 15:25:41 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img4.php on line 19
+[28-Apr-2017 15:28:28 PRC] PHP Warning:  file_get_contents(logo2.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img1.php on line 14
+[28-Apr-2017 15:28:28 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img1.php on line 14
+[28-Apr-2017 15:28:28 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img1.php on line 17
+[28-Apr-2017 15:28:28 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img1.php on line 18
+[28-Apr-2017 15:28:28 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img1.php on line 23
+[28-Apr-2017 15:28:28 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img1.php on line 27
+[28-Apr-2017 15:49:26 PRC] PHP Notice:  Undefined variable: logo in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 16
+[28-Apr-2017 15:49:26 PRC] PHP Notice:  Undefined variable: logo in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 18
+[28-Apr-2017 15:49:26 PRC] PHP Warning:  file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Filename cannot be empty in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 18
+[28-Apr-2017 15:49:26 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 18
+[28-Apr-2017 15:49:26 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 21
+[28-Apr-2017 15:49:26 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 22
+[28-Apr-2017 15:49:26 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 25
+[28-Apr-2017 15:49:26 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 29
+[28-Apr-2017 15:49:34 PRC] PHP Notice:  Undefined variable: QR in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 17
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Filename cannot be empty in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 17
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 17
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 19
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 20
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 24
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 25
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 29
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagepng() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 32
+[28-Apr-2017 15:49:34 PRC] PHP Notice:  Undefined variable: QR in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 17
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  file_get_contents() [<a href='function.file-get-contents'>function.file-get-contents</a>]: Filename cannot be empty in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 17
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 17
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 19
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 20
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 24
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 25
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagecopyresampled() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 29
+[28-Apr-2017 15:49:34 PRC] PHP Warning:  imagepng() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 32
+[28-Apr-2017 15:50:37 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: gd-jpeg: JPEG library reports unrecoverable error:  in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:50:37 PRC] PHP Warning:  imagecreatefromjpeg() [<a href='function.imagecreatefromjpeg'>function.imagecreatefromjpeg</a>]: 'test.jpg' is not a valid JPEG file in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 25
+[28-Apr-2017 15:50:37 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img3.php on line 26
+[28-Apr-2017 15:59:36 PRC] PHP Warning:  imagepng() [<a href='function.imagepng'>function.imagepng</a>]: Unable to open './qrcode/qrcode_1493366376.png' for writing: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\phpqrcode.php on line 954
+[28-Apr-2017 15:59:36 PRC] PHP Warning:  file_get_contents(./qrcode/qrcode_1493366376.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 20
+[28-Apr-2017 15:59:36 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 20
+[28-Apr-2017 15:59:36 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 23
+[28-Apr-2017 15:59:36 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 24
+[28-Apr-2017 15:59:36 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 27
+[28-Apr-2017 15:59:36 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 30
+[28-Apr-2017 16:19:29 PRC] PHP Warning:  imagepng() [<a href='function.imagepng'>function.imagepng</a>]: Unable to open '/qrcode/qrcode_1493367569.png' for writing: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\phpqrcode.php on line 954
+[28-Apr-2017 16:19:29 PRC] PHP Warning:  file_get_contents(/qrcode/qrcode_1493367569.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 22
+[28-Apr-2017 16:19:29 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 22
+[28-Apr-2017 16:19:29 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 25
+[28-Apr-2017 16:19:29 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 26
+[28-Apr-2017 16:19:29 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 29
+[28-Apr-2017 16:19:29 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 32
+[28-Apr-2017 16:57:40 PRC] PHP Warning:  unlink() expects parameter 1 to be string, resource given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 40
+[28-Apr-2017 16:58:54 PRC] PHP Warning:  unlink() expects parameter 1 to be string, resource given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 40
+[28-Apr-2017 17:00:45 PRC] PHP Warning:  unlink() expects parameter 1 to be string, resource given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 40
+[28-Apr-2017 17:06:13 PRC] PHP Warning:  unlink(qrcode_1493369860.png) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 40
+[28-Apr-2017 17:06:13 PRC] PHP Warning:  unlink() expects parameter 1 to be string, resource given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 41
+[28-Apr-2017 17:06:50 PRC] PHP Warning:  unlink(qrcode_1493369860.png) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 40
+[28-Apr-2017 17:06:50 PRC] PHP Warning:  unlink(Resource id #8) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 41
+[28-Apr-2017 17:07:04 PRC] PHP Warning:  unlink(Resource id #8) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 41
+[28-Apr-2017 17:07:57 PRC] PHP Warning:  unlink(Resource id #8) [<a href='function.unlink'>function.unlink</a>]: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 41
+[28-Apr-2017 17:09:11 PRC] PHP Warning:  file_get_contents(qrcode_1493370551.png) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 22
+[28-Apr-2017 17:09:11 PRC] PHP Warning:  imagecreatefromstring() [<a href='function.imagecreatefromstring'>function.imagecreatefromstring</a>]: Empty string or invalid image in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 22
+[28-Apr-2017 17:09:11 PRC] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 25
+[28-Apr-2017 17:09:11 PRC] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 26
+[28-Apr-2017 17:09:11 PRC] PHP Warning:  Division by zero in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 29
+[28-Apr-2017 17:09:11 PRC] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 32
+[28-Apr-2017 17:09:57 PRC] PHP Notice:  Undefined variable: logo_ini in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 43
+[28-Apr-2017 17:09:57 PRC] PHP Warning:  unlink() [<a href='function.unlink'>function.unlink</a>]: No such file or directory in D:\software\phpStudy\WWW\test\phpqrcode\img11_ok.php on line 43
+[28-Apr-2017 17:11:14 PRC] PHP Notice:  Undefined index: url in D:\software\phpStudy\WWW\test\phpqrcode\img.php on line 4

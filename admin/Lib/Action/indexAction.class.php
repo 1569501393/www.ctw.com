@@ -1,4 +1,4 @@
-<?php
+b<?php
 class indexAction extends baseAction
 {
     /**

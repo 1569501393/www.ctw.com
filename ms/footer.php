@@ -90,7 +90,8 @@
 
                 $(".knob").knob();
 
-                userIdentity();
+                // 菜单模拟
+                // userIdentity();
 
                 function userIdentity(){
                     var identity = $('body').attr('identity');

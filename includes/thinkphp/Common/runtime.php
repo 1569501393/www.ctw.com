@@ -34,9 +34,13 @@ define('IS_CLI',PHP_SAPI=='cli'? 1   :   0);
 // 项目名称
 defined('APP_NAME') or define('APP_NAME', basename(dirname($_SERVER['SCRIPT_FILENAME'])));
 
+
+
 if(!IS_CLI) {
+
 	// 当前文件名
 	if(!defined('_PHP_FILE_')) {
+
 		if(IS_CGI) {
 			//CGI/FASTCGI模式下
 			$_temp  = explode('.php',$_SERVER['PHP_SELF']);
