@@ -1,3 +1,5 @@
+ json易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。
+
 库表：
 1.推广商品表：
 产品ID，产品名称，产品链接地址URL，佣金比例，价格，推广开始时间，推广结束时间，创建时间等
@@ -20,3 +22,27 @@
 账期	创建时间	INT(10)			NULL
 承担运费	修改时间	INT(10)			NULL
 分销平台	指定到机构？	INT(10)			NULL
+
+
+1.order_id	订单号	
+2.title		商品名称	
+3.item_price	单价(元)	
+4.item_count	数量	
+5.rate		佣金比例	
+6.sum_price	总金额	
+7.settle_price	结算金额(预留)	
+8.status	结算状态
+9.seller_id	推广人(传id)
+10.bank_subid	 子机构
+11.bank_id	推广分行
+12.item_id	商品id	
+13.con_id	 合同id 
+14. category_id 商品类别id
+
+
+1.aid		商品id
+2.cid		分类id
+3.title		商品名称
+4.price		商品单价
+5.status	状态
+

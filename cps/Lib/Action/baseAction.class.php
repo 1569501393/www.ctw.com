@@ -23,6 +23,60 @@ class baseAction extends Action {
         $this->sendMsg_mod=M('UserMsg');
         $this->seo_mod = M('seo');
 	}
+	
+	
+	// 菜单页面
+	public function menu(){
+		//显示菜单项
+		$id	=	intval($_REQUEST['tag'])==0?6:intval($_REQUEST['tag']);
+		$menu  = array();
+		$role_id = D('admin')->where('id='.$_SESSION['admin_info']['id'])->getField('role_id');
+		$node_ids_res = D("access")->where("role_id=".$role_id)->field("node_id")->select();
+		
+		$node_ids = array();
+		foreach ($node_ids_res as $row) {
+			array_push($node_ids,$row['node_id']);
+		}
+
+// var_dump($node_ids);
+        $ids = implode(',', $node_ids);
+
+		//读取数据库模块列表生成菜单项
+		$node    =   M("node");
+//		$where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
+        // 增加在cms_access的条件
+        //如果是超级管理员，则可以执行所有操作
+        $_SESSION['admin_info']['id'] =1;   // TODO jieqiangtest 写死=1
+        if($_SESSION['admin_info']['id'] == 1) {
+            $where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
+        }else{
+            $where = "auth_type<>2 AND status=1 AND is_show=0 AND id in ($ids) AND group_id=".$id;
+        }
+
+		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort DESC')->select();
+
+
+
+		foreach($list as $key=>$action) {
+			$data_arg = array();
+			if ($action['data']){
+				$data_arr = explode('&', $action['data']);
+				foreach ($data_arr as $data_one) {
+					$data_one_arr = explode('=', $data_one);
+					$data_arg[$data_one_arr[0]] = $data_one_arr[1];
+				}
+			}
+			$action['url'] = U($action['module'].'/'.$action['action'], $data_arg);
+			if ($action['action']) {
+				$menu[$action['module']]['navs'][] = $action;
+			}
+			$menu[$action['module']]['name']	= $action['module_name'];
+			$menu[$action['module']]['id']	= $action['id'];
+		}
+		return  $menu;
+	}
+	
+	
 	function _initialize(){
 		//过滤所有的GET POST请求
 		//判断是否允许ip访问
@@ -41,7 +95,14 @@ class baseAction extends Action {
 
 		$this->assign('site_root',$this->site_root);
 		// 用户权限检查
-		$this->check_priv();
+		
+		//	TODO 暂时屏蔽
+		//		$this->check_priv();
+		
+		// 菜单
+		var_dump($this->menu());
+		$this->assign('menu',$this->menu());
+		
 		//需要登陆
 		$admin_info =$_SESSION['admin_info'];
 

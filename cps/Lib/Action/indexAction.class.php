@@ -1,6 +1,6 @@
 <?php
 class indexAction extends baseAction
-//class indexAction extends Action
+// class indexAction extends Action
 {
     /**
     +----------------------------------------------------------

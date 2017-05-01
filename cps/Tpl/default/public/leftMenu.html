@@ -6,6 +6,21 @@
                     <div id="sidebar-menu">
                         <ul>
 
+
+                            <volist id="item" name="menu" >
+                            <!-- <h3 class="f14"><span class="switchs cu on" title="{$lang.expand_or_contract}"></span>{$item.name}</h3> -->
+                                <volist id="nav" name="item['navs']" >
+                                    <!-- <li id="_MP{$nav.id}" class="sub_menu"><a href="javascript:_MP({$nav.id},'{$nav.url}');" hidefocus="true" style="outline:none;">{$nav.action_name}</a></li> -->
+                                    <li class="">
+                                <a href="{$nav.url}" class="waves-effect left-menu" page="announcements"><i class="ti-announcement"></i><span> {$nav.action_name}</span></a>
+                                <!-- <ul class="list-unstyled"> -->
+                                    <!-- <li><a href="#">公告发布及撤除</a></li> -->
+                                <!-- </ul> -->
+                            </li>
+                            
+                                </volist>
+                            </volist>
+
                         	<!-- <li class="text-muted menu-title">Navigation</li> -->
                             <li class="">
                                 <a href="cps.php?" class="waves-effect left-menu" page="announcements"><i class="ti-announcement"></i><span> 联盟公告</span></a>
@@ -72,7 +87,7 @@
                                 <!-- </ul> -->
                             </li>
 
-                            <li id="split-line" class="text-muted menu-title">____________________________</li>
+                            <!-- <li id="split-line" class="text-muted menu-title">____________________________</li> -->
 
 
                             <li class="">
