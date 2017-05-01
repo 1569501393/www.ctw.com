@@ -100,7 +100,7 @@ class baseAction extends Action {
 		//		$this->check_priv();
 		
 		// 菜单
-		var_dump($this->menu());
+//		var_dump($this->menu());
 		$this->assign('menu',$this->menu());
 		
 		//需要登陆
