@@ -109,7 +109,10 @@ class baseAction extends Action {
 		// 用户权限检查
 		
 		//	TODO 暂时屏蔽
-		$this->check_priv();
+//		if ( (ACTION_NAME !== 'login')|| (ACTION_NAME !== 'register') ||(ACTION_NAME !== 'recover')) {
+		if ( !in_array(ACTION_NAME, array('login','register','recover'))) {
+			$this->check_priv();
+		}
 		
 		// 菜单
 //		var_dump($this->menu());

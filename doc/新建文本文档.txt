@@ -1,3 +1,19 @@
+账号
+商城；adjyc  123456
+
+客户经理：khjl8  12345
+com
+ 
+ git 撤销add
+ http://blog.csdn.net/frank2336/article/details/7358999
+
+git reset 
+
+
+git reset --hard
+http://blog.csdn.net/lincyang/article/details/21519333
+
+
 $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/
 
 
