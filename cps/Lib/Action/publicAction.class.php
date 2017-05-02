@@ -85,6 +85,71 @@ class publicAction extends baseAction
 		$this->assign('server_info',$server_info);	
 		$this->display();
 	}
+	
+	
+// 注册
+	function register() {
+		if ($_POST) {
+//		if (0) {
+			
+			$admin_mod = D('admin');
+			if(!isset($_POST['user_name'])||($_POST['user_name']=='')){
+				$this->error1('用户名不能为空');
+//				echo('用户名不能为空');exit;
+			}
+			
+			if(!isset($_POST['password'])||($_POST['password']=='')){
+				$this->error1('密码不能为空');
+//				echo('用户名不能为空');exit;
+			}
+			
+			if(!isset($_POST['repassword'])||($_POST['repassword']=='') || ($_POST['password'] != $_POST['repassword'])){
+				$this->error('两次输入的密码不相同');
+			}
+			
+//			var_dump(111);exit;
+			
+			$result = $admin_mod->where("user_name='".$_POST['user_name']."'")->count();
+			if($result){
+				$this->error('管理员'.$_POST['user_name'].'已经存在');
+//			    echo('管理员'.$_POST['user_name'].'已经存在');exit;
+			}
+			unset($_POST['repassword']);
+			$_POST['password'] = md5($_POST['password']);
+			$admin_mod->create();
+			
+			// Log::write('$_POST======'.json_encode($_POST), $level);
+			$admin_mod->add_time = time();
+			$admin_mod->last_time = time();
+			$result = $admin_mod->add();
+			// Log::write('getLastSql=$_POST======'.$admin_mod->getLastSql(), $level);
+			
+			if($result){
+				$admin_info=$admin_mod->where("user_name='{$_POST['user_name']}'")->find();
+				// Log::write('getLastSql=$_POST2======'.$admin_mod->getLastSql(), $level);
+				//使用用户名、密码和状态的方式进行认证
+				if(false === $admin_info) {
+					$this->error('帐号不存在或已禁用！');
+				}else {
+					$_SESSION['admin_info'] =$admin_info;
+					if($authInfo['user_name']=='admin') {
+						$_SESSION['administrator'] = true;
+					}
+					$this->success('登录成功！',u('index/index'));
+					exit;
+				}
+			
+//				echo('成功');exit;
+				$this->success(L('operation_success'),u('index/index'));
+			}else{
+//				echo('失败');exit;
+				$this->error(L('operation_failure'));
+			}
+			
+		}
+		$this->display();
+	}
+	
 	public function login()
 	{
 		//unset($_SESSION);

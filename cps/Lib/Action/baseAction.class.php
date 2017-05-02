@@ -109,7 +109,7 @@ class baseAction extends Action {
 		// 用户权限检查
 		
 		//	TODO 暂时屏蔽
-		//		$this->check_priv();
+		$this->check_priv();
 		
 		// 菜单
 //		var_dump($this->menu());
