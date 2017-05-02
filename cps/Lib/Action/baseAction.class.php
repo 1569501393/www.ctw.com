@@ -46,17 +46,28 @@ class baseAction extends Action {
 //		$where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
         // 增加在cms_access的条件
         //如果是超级管理员，则可以执行所有操作
-        $_SESSION['admin_info']['id'] =1;   // TODO jieqiangtest 写死=1
-        if($_SESSION['admin_info']['id'] == 1) {
+//        $_SESSION['admin_info']['id'] =1;   // TODO jieqiangtest 写死=1
+//		var_dump($_SESSION['admin_info']);
+        /*if($_SESSION['admin_info']['id'] == 1) {
             $where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
         }else{
             $where = "auth_type<>2 AND status=1 AND is_show=0 AND id in ($ids) AND group_id=".$id;
-        }
+        }*/
+
+        // 去除组别，显示所有权限，不分组
+		if($_SESSION['admin_info']['id'] == 1) {
+			$where = "auth_type<>2 AND status=1 AND is_show=0 ";
+		}else{
+			$where = "auth_type<>2 AND status=1 AND is_show=0 AND id in ($ids)";
+		}
+
 
 		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort DESC')->select();
 
+//		var_dump('getLastSql==',$node->getLastSql());
 
 
+//var_dump('$list==',$list);
 		foreach($list as $key=>$action) {
 			$data_arg = array();
 			if ($action['data']){
@@ -73,6 +84,7 @@ class baseAction extends Action {
 			$menu[$action['module']]['name']	= $action['module_name'];
 			$menu[$action['module']]['id']	= $action['id'];
 		}
+//		var_dump($menu);
 		return  $menu;
 	}
 	
