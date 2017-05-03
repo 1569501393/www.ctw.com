@@ -94,12 +94,12 @@ class publicAction extends baseAction
 			
 			$admin_mod = D('admin');
 			if(!isset($_POST['user_name'])||($_POST['user_name']=='')){
-				$this->error1('用户名不能为空');
+				$this->error('用户名不能为空');
 //				echo('用户名不能为空');exit;
 			}
 			
 			if(!isset($_POST['password'])||($_POST['password']=='')){
-				$this->error1('密码不能为空');
+				$this->error('密码不能为空');
 //				echo('用户名不能为空');exit;
 			}
 			
