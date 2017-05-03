@@ -28,7 +28,7 @@
                 <form role="form" method="POST">
                   <div class="col-sm-4 col-lg-6">
                       <div class="form-group contact-search m-b-30">
-                        <input type="text" id="search" class="form-control" placeholder="搜索分行、子机构、客户经理..." name="keyword" value="{$keyword}"></div>
+                        <input type="text" id="search" class="form-control" placeholder="搜索用户名、账号名称..." name="keyword" value="{$keyword}"></div>
                   </div>
                   <!-- <div class="col-md-2">
                     <select class="selectpicker m-b-0" multiple data-max-options="1" data-style="btn-white">
@@ -59,6 +59,9 @@
                             <th>账号名称</th>
                             <th>{:L('role_id')}</th>
                             <th>上级</th>
+                            <th>电话</th>
+                            <th>结算账号</th>
+                            <!-- <th>地址</th> -->
                             <th>{:L('add_time')}</th>
                             <!-- <th>{:L('last_time')}</th> -->
                             <th width=60>{:L('status')}</th>
@@ -85,13 +88,18 @@
                           <td >{$val.user_id}</td>
                           <td >{$val.role_name}</td>
                           <td >{$val.pid_name}</td>
+                          <td >{$val.mobile}</td>
+                          <td >{$val.account}</td>
+                          <!-- <td >{$val.address}</td> -->
                           <!-- <td >{$val.parent.user_name}</td> -->
-                          <td >{$val.add_time|date='Y-m-d H:i:s',###}</td>
+                          <!-- <td >{$val.add_time|date='Y-m-d H:i:s',###}</td> -->
+                          <td >{$val.add_time|date='Y-m-d',###}</td>
                           <!-- <td >{$val.last_time|date='Y-m-d H:i:s',###}</td> -->
                           <td  onclick="status({$val.id},'status')" id="status_{$val.id}">
                             <img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>
-                          <td >
-                            <a href="javascript:edit({$val.id},'{$val.user_name}')">编辑</a></td>
+                          <!-- <td ><a href="javascript:edit({$val.id},'{$val.user_name}')">编辑</a></td> -->
+                          <td ><a href="{:u('admin/pwd',array('id'=>$val['id']))}">编辑</a></td>
+                          <!-- <td><a href="{:u('admin/pwd', array('id'=>$val['id']))}">{$val.id}</a></td> -->
                         </tr>
                       </volist>
                     </tbody>

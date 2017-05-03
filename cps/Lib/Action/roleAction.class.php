@@ -3,12 +3,20 @@ class roleAction extends baseAction
 {
 	function index()
 	{
+		
+		//搜索
+		$where = '1=1 ';
+		if (isset($_POST['name']) && trim($_POST['name'])) {
+			$where .= " AND name LIKE '%{$_POST['name']}%'" ;
+			$this->assign('name', $_POST['name']);
+		}
+		
 		$role_mod = D('role');
 		import("ORG.Util.Page");
-		$count = $role_mod->count();
+		$count = $role_mod->where($where)->count();
 		$p = new Page($count,30);
 
-		$role_list = $role_mod->limit($p->firstRow.','.$p->listRows)->select();
+		$role_list = $role_mod->where($where)->limit($p->firstRow.','.$p->listRows)->select();
 		$big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=role&a=add\', title:\'添加角色\', width:\'400\', height:\'220\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', '添加组');
 		$page = $p->show();
 		$this->assign('page',$page);
@@ -28,6 +36,7 @@ class roleAction extends baseAction
 			if($result){
 				$this->error('角色已经存在');
 			}
+			$_POST['create_time'] =$_POST['update_time'] =time();
 			$role_mod->create();
 			$result = $role_mod->add();
 			if($result){
@@ -50,7 +59,8 @@ class roleAction extends baseAction
 			}
 			$result = $role_mod->save();
 			if(false !== $result){
-				$this->success(L('operation_success'), '', '', 'edit');
+//				$this->success(L('operation_success'), '', '', 'index');
+				$this->success(L('operation_success'), U('role/index'));
 			}else{
 				$this->error(L('operation_failure'));
 			}
@@ -128,7 +138,7 @@ class roleAction extends baseAction
 			$data['node_id'] =$node_id ;			
 			$access->add($data);						
 		}	
-		$this->success(L('operation_success'));
+		$this->success(L('operation_success'),U('role/index'));
 	}
 	//修改状态
 	function status()

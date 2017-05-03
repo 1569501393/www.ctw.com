@@ -5,53 +5,68 @@
         </script>
 
         <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/detect.js"></script>
-        <script src="assets/js/fastclick.js"></script>
-        <script src="assets/js/jquery.slimscroll.js"></script>
-        <script src="assets/js/jquery.blockUI.js"></script>
-        <script src="assets/js/waves.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/jquery.nicescroll.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="./assets/js/jquery.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/detect.js"></script>
+        <script src="./assets/js/fastclick.js"></script>
+        <script src="./assets/js/jquery.slimscroll.js"></script>
+        <script src="./assets/js/jquery.blockUI.js"></script>
+        <script src="./assets/js/waves.js"></script>
+        <script src="./assets/js/wow.min.js"></script>
+        <script src="./assets/js/jquery.nicescroll.js"></script>
+        <script src="./assets/js/jquery.scrollTo.min.js"></script>
+        <script src="./assets/js/jquery.core.js"></script>
+        <script src="./assets/js/jquery.app.js"></script>
 
-        <script src="assets/plugins/peity/jquery.peity.min.js"></script>
+
+        <script src="./assets/plugins/peity/jquery.peity.min.js"></script>
 
         <!-- jQuery  -->
-        <script src="assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
-        <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
+        <script src="./assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
+        <script src="./assets/plugins/counterup/jquery.counterup.min.js"></script>
 
-        <script type="text/javascript" src="assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
-        <script type="text/javascript" src="assets/plugins/multiselect/js/jquery.multi-select.js"></script>
-        <script src="assets/plugins/select2/select2.min.js" type="text/javascript"></script>
-        <script src="assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
-        <script src="assets/pages/jquery.widgets.js"></script>
-        <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
-        <script src="assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-        <script src="assets/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-        <script src="assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
-        <script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <script src="assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-        <script src="assets/plugins/morris/morris.min.js"></script>
-        <script src="assets/plugins/raphael/raphael-min.js"></script>
-        <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
-        <script src="assets/pages/jquery.dashboard.js"></script>
-        <script src="assets/js/jquery.core.js"></script>
-        <script src="assets/js/jquery.app.js"></script>
+        <script src="./assets/plugins/jquery-quicksearch/jquery.quicksearch.js" type="text/javascript"></script>
+        <script src="./assets/plugins/multiselect/js/jquery.multi-select.js" type="text/javascript"></script>
+        <script src="./assets/plugins/select2/select2.min.js" type="text/javascript"></script>
+        <script src="./assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
+        <script src="./assets/plugins/jquery-knob/jquery.knob.js"></script>
+        <script src="./assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+        <script src="./assets/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+        <script src="./assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="./assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+        <script src="./assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="./assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <script src="./assets/plugins/raphael/raphael-min.js"></script>
+        <script src="./assets/plugins/jquery-knob/jquery.knob.js"></script>
+        <script src="./assets/pages/jquery.dashboard.js"></script>
+        <script src="./assets/pages/jquery.widgets.js"></script>
+
+
+        <!-- 多文件上传、暂不需要 -->
+        <!-- <script src="assets/plugins/dropzone/dist/dropzone.js"></script> -->
+
+
+
+        <!-- 弹窗提示  -->
+        <script src="assets/plugins/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- <script src="assets/pages/jquery.sweet-alert.init.js"></script> -->
+        <!-- 弹窗提示 end -->
+
+        <!-- 弹窗-Effect -->
+        <script src="./assets/plugins/custombox/dist/custombox.min.js"></script>
+        <script src="./assets/plugins/custombox/dist/legacy.min.js"></script>
 
 
         <!-- 统计图表js -->
-        <script src="assets/plugins/morris/morris.min.js"></script>
-        <script src="assets/plugins/raphael/raphael-min.js"></script>
-        <script src="assets/pages/morris.init.js"></script>
+        <script src="./assets/plugins/morris/morris.min.js"></script>
+        <script src="./assets/plugins/raphael/raphael-min.js"></script>
+        <script src="./assets/pages/morris.init.js"></script>
         <!-- 统计图表js end -->
 
 
         <!-- 文本编辑器相关js -->
-        <script src="assets/plugins/summernote/dist/summernote.min.js"></script>
-        <script src="assets/plugins/summernote/lang/summernote-zh-CN.js"></script>
+        <script src="./assets/plugins/summernote/dist/summernote.min.js"></script>
+        <script src="./assets/plugins/summernote/lang/summernote-zh-CN.js"></script>
         <script>
             jQuery(document).ready(function(){
                 $('.summernote').summernote({
@@ -71,10 +86,11 @@
     <!-- 文本编辑器相关js结束 -->
 
 
-
         <script type="text/javascript">
             jQuery(document).ready(function($) {
 
+
+            	//根据页面所在位置 对左侧导航添加 active
                 var page = $('.content-page').attr('page');
                 $('.left-menu').each(function(){
                     if ($(this).attr('page')==page) {
@@ -90,15 +106,14 @@
 
                 $(".knob").knob();
 
-                // 菜单模拟
-                // userIdentity();
+                userIdentity();
 
                 function userIdentity(){
                     var identity = $('body').attr('identity');
                     if (identity=='fenhang') {
                         $('.left-menu').each(function(){
                             var page = $(this).attr('page');
-                            if (page=='promotionmanager'||page=='contractmanager'||page=='finansialmanager'||page=='character'||page=='users'){
+                            if (page=='promotionmanager'||page=='contractmanager'||page=='finansialmanager'||page=='character'){
                                 $(this).parent().remove();
                                 // alert('have');
                             }
@@ -106,7 +121,7 @@
                     }else if(identity=='zijigou'){
                         $('.left-menu').each(function(){
                             var page = $(this).attr('page');
-                            if (page=='commisionmanager'||page=='character'||page=='announcementmanager'||page=='groupmanager'||page=='promotionmanager'||page=='users'||page=='contractmanager'||page=='finansialmanager'){
+                            if (page=='commisionmanager'||page=='character'||page=='announcementmanager'||page=='groupmanager'||page=='promotionmanager'||page=='contractmanager'||page=='finansialmanager'){
                                 $(this).parent().remove();
                                 // alert('have');
                             }
@@ -115,7 +130,7 @@
                         // alert(identity);
                         $('.left-menu').each(function(){
                             var page = $(this).attr('page');
-                            if (page=='commisionmanager'||page=='finansialmanager'||page=='groupmanager'||page=='contractmanager'||page=='character'||page=='users'||page=='announcementmanager'||page=='promotionmanager'){
+                            if (page=='commisionmanager'||page=='finansialmanager'||page=='groupmanager'||page=='contractmanager'||page=='character'||page=='announcementmanager'||page=='promotionmanager'){
                                 $(this).parent().remove();
                                 // alert('have');
                             }
@@ -126,7 +141,6 @@
                             if (page=='announcements'||page=='groupmanager'||page=='commisionmanager'||page=='orders'||page=='settle'||page=='user'||page=='promotion'){
                                 $(this).parent().remove();
                                 // alert('have');
-                                $('#split-line').hide();
                             }
                         })
                     }
@@ -141,6 +155,7 @@
 
 
 
+        <!-- 日期选择器js -->
         <script>
             jQuery(document).ready(function() {
 
@@ -168,10 +183,6 @@
                     autoclose: true,
                     todayHighlight: true
                 });
-                jQuery('#datepicker-autoclose2').datepicker({
-                    autoclose: true,
-                    todayHighlight: true
-                });                
                 jQuery('#datepicker-inline').datepicker();
                 jQuery('#datepicker-multiple-date').datepicker({
                     format: "mm/dd/yyyy",
@@ -276,10 +287,8 @@
                 });
                 
             });
-</script>
-<!--JYC SCRIPTCODE START-->
-<script>var jyc_end=new Date().getTime();</script><script src="//stat.adjyc.com/count/?uid=3329&logo=0" charset="utf-8"></script><noscript>< a href="//stat.adjyc.com/" target="_blank"><img border="0" width="1" height="1" src="//stat.adjyc.com/count/stat_jyc.asp?uid=3329&vjs=0" title="JYC统计,助您决策!"></ a></noscript>
-<!--JYC SCRIPTCODE END-->
-<!--Copyright (C) 2001-2017 WWW.ADJYC.COM All Rights Reserved-->
+        </script>
+
+
     </body>
 </html>

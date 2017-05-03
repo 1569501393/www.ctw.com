@@ -113,17 +113,6 @@
           ];
         this.createLineChart('morris-line-example', $data, 'y', ['a', 'b','c'], ['日用品', '家用电器', '食品'],['0.1'],['#ffffff'],['#999999'], ['#36404a', '#5fbeaa', '#5d9cec']);
 
-        //creating area chart
-        var $areaData = [
-                { y: '1月', a: 10, b: 20, c:30 },
-                { y: '2月', a: 75, b: 65, c:30 },
-                { y: '3月', a: 50, b: 40, c:30 },
-                { y: '4月', a: 75, b: 65, c:30 },
-                { y: '5月', a: 50, b: 40, c:30 },
-                { y: '6月', a: 75, b: 65, c:30 },
-                { y: '7月', a: 90, b: 60, c:30 }
-            ];
-        this.createAreaChart('morris-area-example', 0, 0, $areaData, 'y', ['a', 'b','c'], ['日用品', '家用电器','食品'], ['#5fbeaa', '#5d9cec', '#bbbbbb']);
 
         //creating area chart with dotted
         var $areaDotData = [

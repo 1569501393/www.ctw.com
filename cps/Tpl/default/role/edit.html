@@ -1,38 +1,72 @@
 <include file="public:header" />
+<body class="fixed-left">
+    <!-- Begin page -->
+    <div id="wrapper">
+        <include file="public:topBar" />
+        <include file="public:leftMenu" />
+        <div class="content-page" page="character">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <h4 class="page-title"><a href="{:u('role/index')}" >角色管理</a></h4>
+                            <ol class="breadcrumb"></ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="nav nav-tabs tabs">
+                                <li class="active tab">
+                                    <a href="#home" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <span class="hidden-xs">编辑角色</span></a>
+                                </li>
 
-<div class="pad_10">
+                                <!-- <li class="tab">
+                                    <a href="{:u('role/index')}" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <span class="hidden-xs">角色列表</span></a>
+                                </li> -->
+                            </ul>
 
-<form action="{:u('role/edit')}" method="post" name="myform" id="myform">
+<div class="tab-content"> 
+                                    <div class="tab-pane active" id="home"> 
+                            <div style="width: 40%">
+                                        <form class="form-horizontal m-t-20" action="{:u('role/edit')}"  method="post">
+                                        <input type="hidden" name="id" value="{$role_info.id}" />
+                                            <div class="form-group">
+                                                <label for="name">角色名
+                                                    <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="name" placeholder="角色名" name="name"   value="{$role_info.name}"></div>
+                                            <div class="form-group">
+                                                <label for="name">{:L('remark')}
+                                                    <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="name" placeholder="{:L('remark')}" name="remark"   value="{$role_info.remark}">
+                                            </div>
 
-<table width="100%" cellpadding="2" cellspacing="1" class="table_form">
-	<tr> 
-      	<th width="60">{:L('name')} :</th>
-      	<td><input type="text" name="name" id="name" class="input-text" value="{$role_info.name}" size="25"></td>
-    </tr>    
-    <tr> 
-      	<th>{:L('remark')} :</th>
-      	<td><textarea name="remark" cols="40" rows="3">{$role_info.remark}</textarea></td>
-    </tr>    
-    <tr>
-      	<th>{:L('status')} :</th>
-      	<td>
-      		<input type="radio" name="status" class="radio_style" value="1" <if condition="$role_info.status eq 1"> checked</if>> &nbsp;有效&nbsp;&nbsp;&nbsp;
-        	<input type="radio" name="status" class="radio_style" value="0" <if condition="$role_info.status eq 0"> checked</if>> &nbsp;禁用
-      	</td>
-    </tr>
-</table>
-<input type="hidden" name="id" value="{$role_info.id}" />
-<input type="submit" name="dosubmit" id="dosubmit" class="dialog" value=" ">
-</form>
-<script type="text/javascript">
-	$(function(){
-		$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'250',height:'50'}, function(){this.close();$(obj).focus();})}});
-		
-		$("#name").formValidator({onshow:"不能为空",onfocus:"不能为空"}).inputValidator({min:1,onerror:"请填写角色名"});
-	})
-</script>
-</div>
+                                            <div class="form-group">
+                                                <label for="name">{:L('status')}
+                                                    <span class="text-danger">*</span></label>
+                                                <input type="radio" name="status" class="radio_style" value="1" <if condition="$role_info.status eq 1"> checked</if>> &nbsp;有效&nbsp;&nbsp;&nbsp;
+          <input type="radio" name="status" class="radio_style" value="0" <if condition="$role_info.status eq 0"> checked</if>> &nbsp;禁用
+                                            </div>
 
-</body>
+                                            <div class="form-group">
+                                                <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="1">更新</button></div>
+                                        </form>
+                                    </div>
 
-</html>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- container --></div>
+            <!-- content --></div>
+        <include file="public:footer" />
