@@ -9,7 +9,6 @@ class indexAction extends baseAction
     */
     public function index()
     {
-    	// var_dump($_SESSION);
         $this->display('index');
     }
 

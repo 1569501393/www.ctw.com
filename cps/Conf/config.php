@@ -12,7 +12,7 @@ $array = array(
  	'APP_AUTOLOAD_PATH'=>'@.TagLib',//	
 	'TMPL_ACTION_ERROR'     => 'public:error',
     'TMPL_ACTION_SUCCESS'   => 'public:success',
-    'SHOW_PAGE_TRACE'=>false,	  //是否显示TRACE信息	
+    'SHOW_PAGE_TRACE'=>false,	  //是否显示TRACE信息
 	'HTML_CACHE_ON'=>false,
 );
 return array_merge($config,$ignorechenk,$array);

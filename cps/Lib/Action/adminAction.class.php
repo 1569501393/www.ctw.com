@@ -14,7 +14,7 @@ class adminAction extends baseAction
 			}
 
 			// 匹配原始密码
-			$count=$admin_mod->where("id=".$_POST['id']." and password='".$_POST['inipassword']."'")->count();
+			// $count=$admin_mod->where("id=".$_POST['id']." and password='".$_POST['inipassword']."'")->count();
 			$count=$admin_mod->where("id=".$_POST['id']." and password='".md5($_POST['inipassword'])."'")->count();
             // dump($count);
             // dump($student_mod->getLastSql());exit;
@@ -45,15 +45,18 @@ class adminAction extends baseAction
 				$this->error(L('operation_failure'));
 			}
 		}else{
-			if( isset($_GET['id']) ){
+			/*if( isset($_GET['id']) ){
 				$id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('参数错误');
-			}
+			}*/
+
+            $id =
 			$role_mod = D('role');
 		    $role_list = $role_mod->where('status=1')->select();
 		    $this->assign('role_list',$role_list);
 
 		    $admin_mod = D('admin');
 			$admin_info = $admin_mod->where('id='.$id)->find();
+            var_dump($admin_info);exit;
 			$this->assign('admin_info', $admin_info);
 			$this->assign('show_header', false);
 			$this->display();
@@ -66,7 +69,7 @@ class adminAction extends baseAction
 		import("ORG.Util.Page");
 		$prex = C('DB_PREFIX');
 		$count = $admin_mod->count();
-		$p = new Page($count,30);
+		$p = new Page($count,10);
 
 		$admin_list = $admin_mod->field($prex.'admin.*,'.$prex.'role.name as role_name')->join('LEFT JOIN '.$prex.'role ON '.$prex.'admin.role_id = '.$prex.'role.id ')->limit($p->firstRow.','.$p->listRows)->order($prex.'admin.add_time DESC')->select();
 
@@ -75,7 +78,12 @@ class adminAction extends baseAction
 			$admin_list[$k]['key'] = ++$p->firstRow;
 		}
 		$big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=admin&a=add\', title:\'添加管理员\', width:\'480\', height:\'520\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', '添加管理员');
+
+//        $p->setConfig('header','个会员');
+//        $p->setConfig('theme',"%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%");
 		$page = $p->show();
+
+
 		$this->assign('page',$page);
 		$this->assign('big_menu',$big_menu);
 		$this->assign('admin_list',$admin_list);
