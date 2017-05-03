@@ -78,6 +78,56 @@ class baseAction extends Action {
 				}
 			}
 			$action['url'] = U($action['module'].'/'.$action['action'], $data_arg);
+
+			// 修改图标 by jieqiang 201705031308  module和action确定唯一图标
+//			var_dump('$action=======',$action['module'].'_'.$action['action']);
+//			$action['module'] = 'user';
+			switch ($action['module'].'_'.$action['action']){
+				case 'role_index': // 权限管理
+					$action['module'] = 'key';
+					break;
+				case 'finance_push': // 推广管理
+					$action['module'] = 'bar-chart';
+					break;
+				case 'contract_index':// 合同管理
+					$action['module'] = 'clipboard';
+					break;
+				case 'finance_finance':// 财务管理
+					$action['module'] = 'write';
+					break;
+				case 'admin_index':// 用户管理
+					$action['module'] = 'user';
+					break;
+				case 'article_index':// 公告管理
+					$action['module'] = 'announcement';
+					break;
+				case 'analyse_index':// 数据分析
+					$action['module'] = 'pie-chart';
+					break;
+				case 'finance_commission':// 佣金管理
+					$action['module'] = 'money';
+					break;
+				case 'finance_settle':// 结算管理
+					$action['module'] = 'wallet';
+					break;
+				case 'items_poster':// 海报管理
+					$action['module'] = 'image';
+					break;
+				case 'items_index':// 推广商品
+					$action['module'] = 'shopping-cart';
+					break;
+				case 'admin_pwd':// 账号管理
+					$action['module'] = 'lock';
+					break;
+				case 'items_cate_index':// 分类管理
+					$action['module'] = 'save';
+					break;
+				default:
+					$action['module'] = 'key';
+
+
+			}
+
 			if ($action['action']) {
 				$menu[$action['module']]['navs'][] = $action;
 			}
