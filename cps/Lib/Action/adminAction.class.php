@@ -2,6 +2,8 @@
 
 class adminAction extends baseAction
 {
+
+
 // 修改密码
     public function pwd()
     {
@@ -56,7 +58,7 @@ class adminAction extends baseAction
 
 		    $admin_mod = D('admin');
 			$admin_info = $admin_mod->where('id='.$id)->find();
-            var_dump($admin_info);exit;
+//            var_dump($admin_info);exit;
 			$this->assign('admin_info', $admin_info);
 			$this->assign('show_header', false);
 			$this->display();
@@ -68,15 +70,51 @@ class adminAction extends baseAction
 		$admin_mod = D('admin');
 		import("ORG.Util.Page");
 		$prex = C('DB_PREFIX');
-		$count = $admin_mod->count();
+
+        //搜索
+        $where = '1=1 ';
+        if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
+            $where .= " AND (user_name LIKE '%{$_POST['keyword']}%' OR user_id LIKE '%{$_POST['keyword']}%' ) ";
+            $this->assign('keyword', $_POST['keyword']);
+        }
+
+		$count = $admin_mod->where($where)->count();
 		$p = new Page($count,10);
 
-		$admin_list = $admin_mod->field($prex.'admin.*,'.$prex.'role.name as role_name')->join('LEFT JOIN '.$prex.'role ON '.$prex.'admin.role_id = '.$prex.'role.id ')->limit($p->firstRow.','.$p->listRows)->order($prex.'admin.add_time DESC')->select();
+		$admin_list = $admin_mod->field($prex.'admin.*,'.$prex.'role.name as role_name')->join('LEFT JOIN '.$prex.'role ON '.$prex.'admin.role_id = '.$prex.'role.id ')->where($where)->limit($p->firstRow.','.$p->listRows)->order($prex.'admin.add_time DESC')->select();
+
+        $admin_list2 = $admin_mod->select();
+
+        // 重组数组
+        foreach($admin_list2 as $val){
+//            var_dump('pid1=======',$val['pid'],$val);
+			$admin_list_new[$val['id']] = $val;
+        }
+
+//        var_dump('$admin_list_new==========',$admin_list_new);
 
 		$key = 1;
+//        $admin_cate_list = array();
 		foreach($admin_list as $k=>$val){
-			$admin_list[$k]['key'] = ++$p->firstRow;
+//            $admin_list_new[$k]['key'] = ++$p->firstRow;
+//			$admin_list[$val['id']]['key'] = ++$p->firstRow;
+
+            if ($val['pid'] <1 ){
+//                $admin_list[$val['id']]['pid_name'] = '顶级';
+                $admin_list[$k]['pid_name'] = '顶级';
+//                $admin_list['sub'][$val['pid']][] = $val;
+            }else{
+                // $admin_list[$k]['pid_name'] =
+//                var_dump('pid=======',$val['pid'],$admin_list_new[$val['pid']]);
+//                $admin_list[$val['id']]['pid_name'] = $admin_list[$val['pid']]['user_name'];
+                $admin_list[$k]['pid_name'] = $admin_list_new[$val['pid']]['user_name'];
+//                var_dump('$admin_list_new[$val[\'pid\']]=====',$val['pid'],$admin_list_new[$val['pid']]);
+//                $admin_list['parent'][$val['id']] = $val;
+            }
 		}
+
+
+
 		$big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=admin&a=add\', title:\'添加管理员\', width:\'480\', height:\'520\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', '添加管理员');
 
 //        $p->setConfig('header','个会员');
