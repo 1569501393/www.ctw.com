@@ -123,12 +123,11 @@
                                             <button class="btn btn-danger waves-effect waves-light">删除</button></td></tr> -->
                                             <volist name="article_list" id="val">
                                                 <tr>
-                                                    <td >
-                                                        <a href="{:u('article/edit', array('id'=>$val['id']))}">{$val.id}</a></td>
+                                                    <td >{$val.id}</td>
                                                     <!-- <td align="center">
                                                         <input type="checkbox" value="{$val.id}" name="id[]"></td> -->
                                                     <td  >
-                                                        <a class="blue" href="{:u('article/edit', array('id'=>$val['id']))}">{$val.title}</a>
+                                                        <a class="blue" href="{:u('article/index', array('id'=>$val['id']))}">{$val.title}</a>
                                                         <if condition="$val['url'] neq ''">
                                                             <br>
                                                             <a href="{$val.url}" target=_blank>{$val.url}</a></if>&nbsp;&nbsp;</td>
