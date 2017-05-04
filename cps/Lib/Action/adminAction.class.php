@@ -111,33 +111,33 @@ class adminAction extends baseAction
 
 		// 重组数组
 		foreach($admin_list2 as $val){
-			//            var_dump('pid1=======',$val['pid'],$val);
 			$admin_list_new[$val['id']] = $val;
 		}
 
-		//        var_dump('$admin_list_new==========',$admin_list_new);
-
 		$key = 1;
-		//        $admin_cate_list = array();
 		foreach($admin_list as $k=>$val){
-			//            $admin_list_new[$k]['key'] = ++$p->firstRow;
-			//			$admin_list[$val['id']]['key'] = ++$p->firstRow;
-
 			if ($val['pid'] <1 ){
-				//                $admin_list[$val['id']]['pid_name'] = '顶级';
 				$admin_list[$k]['pid_name'] = '顶级';
-				//                $admin_list['sub'][$val['pid']][] = $val;
 			}else{
-				// $admin_list[$k]['pid_name'] =
-				//                var_dump('pid=======',$val['pid'],$admin_list_new[$val['pid']]);
-				//                $admin_list[$val['id']]['pid_name'] = $admin_list[$val['pid']]['user_name'];
 				$admin_list[$k]['pid_name'] = $admin_list_new[$val['pid']]['user_name'];
-				//                var_dump('$admin_list_new[$val[\'pid\']]=====',$val['pid'],$admin_list_new[$val['pid']]);
-				//                $admin_list['parent'][$val['id']] = $val;
 			}
 		}
 
 
+        $admin_list3 = array();
+        foreach ($admin_list2 as $val) {
+            if ($val['pid']==0) {
+                $admin_list3['parent'][$val['id']] = $val;
+            } else {
+                $admin_list3['sub'][$val['pid']][] = $val;
+            }
+        }
+        $this->assign('admin_list3', $admin_list3);
+
+
+        $role_mod = D('role');
+        $role_list = $role_mod->where('status=1')->select();
+        $this->assign('role_list',$role_list);
 
 		$big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=admin&a=add\', title:\'添加管理员\', width:\'480\', height:\'520\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', '添加管理员');
 
@@ -149,6 +149,9 @@ class adminAction extends baseAction
 		$this->assign('page',$page);
 		$this->assign('big_menu',$big_menu);
 		$this->assign('admin_list',$admin_list);
+
+
+
 		$this->display();
 	}
 
