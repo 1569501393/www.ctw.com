@@ -15,26 +15,32 @@ class adminAction extends baseAction
 				$this->error('用户名已经存在！');
 			}
 
-			if ($_POST['inipassword']) {
-				// 匹配原始密码
-				$count=$admin_mod->where("id={$id} and password='".md5($_POST['inipassword'])."'")->count();
-					
-				if($count<1){
-					$this->error('原始密码错误！');
-					exit;
-				}
+			if ($_POST['dosubmit']==2){
+                if ($_POST['inipassword']) {
+                    // 匹配原始密码
+                    $count=$admin_mod->where("id={$id} and password='".md5($_POST['inipassword'])."'")->count();
 
-				//print_r($count);exit;
-				if ($_POST['password']) {
-					if($_POST['password'] != $_POST['repassword']){
-						$this->error('两次输入的密码不相同');
-					}
-					$_POST['password'] = md5($_POST['password']);
-				} else {
-					unset($_POST['password']);
-				}
-				unset($_POST['repassword']);;
-			}
+                    if($count<1){
+                        $this->error('原始密码错误！');
+                        exit;
+                    }
+
+
+                    if ($_POST['password']) {
+                        if($_POST['password'] != $_POST['repassword']){
+                            $this->error('两次输入的密码不相同');
+                        }
+                        $_POST['password'] = md5($_POST['password']);
+                    } else {
+                        unset($_POST['password']);
+                    }
+                    unset($_POST['repassword']);;
+                }else{
+                    $this->error('原始密码错误不能为空');
+                }
+
+            }
+
 
 			// 更新时间
 			$_POST['update_time'] = time();

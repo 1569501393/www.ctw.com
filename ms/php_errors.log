@@ -6,3 +6,5 @@
 [26-Apr-2017 09:33:24 PRC] PHP Notice:  Undefined index: identity in D:\software\phpStudy\WWW\99_ctw\msec.jieqiangtec.com\ms\header.php on line 10
 [26-Apr-2017 09:33:28 PRC] PHP Notice:  Undefined index: identity in D:\software\phpStudy\WWW\99_ctw\msec.jieqiangtec.com\ms\header.php on line 7
 [26-Apr-2017 09:33:28 PRC] PHP Notice:  Undefined index: identity in D:\software\phpStudy\WWW\99_ctw\msec.jieqiangtec.com\ms\header.php on line 10
+[04-May-2017 14:11:59 PRC] PHP Notice:  Undefined variable: identity in D:\software\phpStudy\WWW\99_ctw\msec.jieqiangtec.com\ms\header.php on line 45
+[04-May-2017 14:25:18 PRC] PHP Notice:  Undefined variable: identity in D:\software\phpStudy\WWW\99_ctw\msec.jieqiangtec.com\ms\header.php on line 45
