@@ -1,6 +1,16 @@
 <include file="public:header" />
 <div class="account-pages">
-
+    <table class="table">
+        <thead>
+            <tr>
+                <th>范例</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div class="clearfix"></div>
 <script>var resizefunc = [];</script>
@@ -22,7 +32,30 @@
 <!-- <script src="__ROOT__/statics/cps/pages/jquery.sweet-alert.init.js"></script> -->
 <!-- 弹窗提示 end -->
 <script style="text/javascript">
-swal({
+    // swal({
+    //     title: "{$message}",
+    //     text: "{$waitSecond}秒后自动跳转.",
+    //     timer: {
+    //         $waitSecond
+    //     } * 1000,
+    //     showConfirmButton: false
+    // },
+    // function() {
+    //     window.location.href = '{$jumpUrl}'
+    // });
+</script>
+
+
+<script type="text/javascript">!
+        function($) {
+            "use strict";
+
+            var SweetAlert = function() {};
+
+            //examples 
+            SweetAlert.prototype.init = function() {
+
+                    swal({
         title: "{$message}",
         text: "{$waitSecond}秒后自动跳转.",
         timer: {$waitSecond} * 1000,
@@ -31,7 +64,16 @@ swal({
     function() {
         window.location.href = '{$jumpUrl}'
     });
-    </script>
-</body>
+            },
+            //init
+            $.SweetAlert = new SweetAlert,
+            $.SweetAlert.Constructor = SweetAlert
+        } (window.jQuery),
 
+        //initializing 
+        function($) {
+            "use strict";
+            $.SweetAlert.init()
+        } (window.jQuery);</script>
+</body>
 </html>

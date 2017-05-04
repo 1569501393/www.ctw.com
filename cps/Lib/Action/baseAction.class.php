@@ -28,7 +28,7 @@ class baseAction extends Action {
 	// 菜单页面
 	public function menu(){
 		//显示菜单项
-		$id	=	intval($_REQUEST['tag'])==0?6:intval($_REQUEST['tag']);
+//		$id	=	intval($_REQUEST['tag'])==0?6:intval($_REQUEST['tag']);
 		$menu  = array();
 		$role_id = D('admin')->where('id='.$_SESSION['admin_info']['id'])->getField('role_id');
 		$node_ids_res = D("access")->where("role_id=".$role_id)->field("node_id")->select();
@@ -124,8 +124,6 @@ class baseAction extends Action {
 					break;
 				default:
 					$action['module'] = 'key';
-
-
 			}
 
 			if ($action['action']) {
@@ -376,7 +374,7 @@ class baseAction extends Action {
 		parent::error($message, $ajax);
 	}
 	//成功页面重写
-	protected function success($message, $url_forward='',$ms = 3, $dialog=false, $ajax=false, $returnjs = '')
+	protected function success($message, $url_forward='',$ms = 0, $dialog=false, $ajax=false, $returnjs = '')
 	{
 		$this->jumpUrl = $url_forward;
 		$this->waitSecond = $ms;
