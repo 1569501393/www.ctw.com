@@ -170,11 +170,13 @@ class publicAction extends baseAction
 			$map  = array();
 			// 支持使用绑定帐号登录
 			$map['user_name']	= $username;
-			$map["status"]	=	array('gt',0);			
-			$admin_info=$admin_mod->where("user_name='$username'")->find();
-
+			$map["status"]	=	array('gt',0);
+//			$admin_info=$admin_mod->where("user_name='$username'")->find();
+			$admin_info=$admin_mod->where($map)->find();
+//            var_dump($admin_mod->getLastSql());exit;
 			//使用用户名、密码和状态的方式进行认证
-			if(false === $admin_info) {
+//			if(false === $admin_info) {
+			if(empty($admin_info) ) {
 				$this->error('帐号不存在或已禁用！');
 			}else {
 				if($admin_info['password'] != md5($password)) {
