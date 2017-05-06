@@ -273,10 +273,18 @@ class baseAction extends Action {
 			}
 		}
 		$node_mod = D('node');
-		$node_id = $node_mod->where(array('module'=>MODULE_NAME, 'action'=>ACTION_NAME))->getField('id');
+		// 权限到模块，不到操作  By jieqiang20170506
+//		$node_id = $node_mod->where(array('module'=>MODULE_NAME, 'action'=>ACTION_NAME))->getField('id');
+		$node_id = $node_mod->field('id')->where(array('module'=>MODULE_NAME))->select();
+		foreach ($node_id as $v){
+			$ids[] = $v['id'];
+		}
 
 		$access_mod = D('access');
-		$rel = $access_mod->where(array('node_id'=>$node_id, 'role_id'=>$_SESSION['admin_info']['role_id']))->count();
+//		$rel = $access_mod->where(array('node_id'=>$node_id, 'role_id'=>$_SESSION['admin_info']['role_id']))->count();
+		$rel = $access_mod->where(array('node_id'=>array('in',$ids), 'role_id'=>$_SESSION['admin_info']['role_id']))->count();
+		
+//		var_dump($node_id,$node_mod->getLastSql(),$access_mod->getLastSql(),$rel);exit;
 		if ($rel==0) {
 			$this->error(L('_VALID_ACCESS_'));
 		}
@@ -364,8 +372,10 @@ class baseAction extends Action {
 		$b = $a->msubstr($str,$start,$length);
 		return($b);
 	}
-	//失败页面重写
-	protected function error($message, $url_forward='',$ms = 3, $dialog=false, $ajax=false, $returnjs = '')
+	
+	
+	//失败页面重写  默认时间改成0 by jieqiang 20170506
+	protected function error($message, $url_forward='',$ms = 0, $dialog=false, $ajax=false, $returnjs = '')
 	{
 		$this->jumpUrl = $url_forward;
 		$this->waitSecond = $ms;

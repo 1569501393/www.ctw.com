@@ -8,8 +8,15 @@ class articleAction extends baseAction
 		$article_cate_mod = D('article_cate');
 
 		//搜索
-		//		$where = '1=1';
-		$where = '1=1 AND cate_id!=9 ';
+		$where = '1=1';
+		// $where = '1=1 AND cate_id!=9 ';
+		
+		// 判断是否是商城管理员
+		if ( ($_SESSION['admin_info']['role_id'] !=1) && ($_SESSION['admin_info']['role_id'] !=3) ) {
+			// $where .= ' AND status=1 AND platform_id= '.$_SESSION['admin_info']['id'];
+			$where .= " AND status=1 AND (platform_id={$_SESSION['admin_info']['id']} OR platform_id=0) ";
+		}
+		
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 			$where .= " AND title LIKE '%".$_GET['keyword']."%'";
 			$this->assign('keyword', $_GET['keyword']);
@@ -33,24 +40,36 @@ class articleAction extends baseAction
 		$p = new Page($count,20);
 		// $article_list = $article_mod->where($where)->limit($p->firstRow.','.$p->listRows)->order('add_time DESC,ordid ASC')->select();
 		$article_list = $article_mod->where($where)->limit($p->firstRow.','.$p->listRows)->order('id DESC,ordid ASC')->select();
-		
+
 		$key = 1;
 		foreach($article_list as $k=>$val){
 			$article_list[$k]['key'] = ++$p->firstRow;
-			$article_list[$k]['cate_name'] = $article_cate_mod->field('name')->where('id='.$val['cate_id'])->find();
+			// $article_list[$k]['cate_name'] = $article_cate_mod->field('name')->where('id='.$val['cate_id'])->find();
 			$article_list[$k]['platform_name'] = D('admin')->where('id='.$val['platform_id'])->getField('user_name')?:'全部';
 		}
-		$result = $article_cate_mod->order('sort_order ASC')->select();
-		$cate_list = array();
-		foreach ($result as $val) {
-			if ($val['pid']==0) {
-				$cate_list['parent'][$val['id']] = $val;
-			} else {
-				$cate_list['sub'][$val['pid']][] = $val;
+
+
+		// 判断是否是商城管理员
+		/*if ( ($_SESSION['admin_info']['role_id'] ==1) || ($_SESSION['admin_info']['role_id'] ==3) ) {
+			// 商城和分行管理员
+			$admin_list = D('admin')->where('role_id in (3,4)')->select();
+			$this->assign('admin_list', $admin_list);
+				
+			$result = $article_cate_mod->order('sort_order ASC')->select();
+			$cate_list = array();
+			foreach ($result as $val) {
+				if ($val['pid']==0) {
+					$cate_list['parent'][$val['id']] = $val;
+				} else {
+					$cate_list['sub'][$val['pid']][] = $val;
+				}
 			}
-		}
-		 
-		 
+			$this->assign('cate_list', $cate_list);
+
+		}*/
+
+
+			
 		if( isset($_GET['id']) ){
 			$article_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error(L('please_select'));
 			$article_info = $article_mod->where('id='.$article_id)->find();
@@ -61,23 +80,40 @@ class articleAction extends baseAction
 
 			$this->assign('article',$article_info);
 		}
-			
-		// 商城和分行管理员
-		$admin_list = D('admin')->where('role_id in (3,4)')->select();
-		
+
 		//网站信息/应用资讯
 		$page = $p->show();
 		$this->assign('page',$page);
-		$this->assign('cate_list', $cate_list);
-		$this->assign('admin_list', $admin_list);
 		$this->assign('article_list',$article_list);
-		$this->display();
+
+		// 判断是否是商城管理员
+		if ( ($_SESSION['admin_info']['role_id'] ==1) || ($_SESSION['admin_info']['role_id'] ==3) ) {
+			// 商城和分行管理员
+			$admin_list = D('admin')->where('role_id in (3,4)')->select();
+			$this->assign('admin_list', $admin_list);
+				
+			$result = $article_cate_mod->order('sort_order ASC')->select();
+			$cate_list = array();
+			foreach ($result as $val) {
+				if ($val['pid']==0) {
+					$cate_list['parent'][$val['id']] = $val;
+				} else {
+					$cate_list['sub'][$val['pid']][] = $val;
+				}
+			}
+			$this->assign('cate_list', $cate_list);
+			
+			$this->display();
+		}else{
+			$this->display('view');
+		}
+
 	}
 
 	function edit()
 	{
 		if(isset($_POST['dosubmit'])){
-//			var_dump($_POST);exit;
+			//			var_dump($_POST);exit;
 			$article_mod = D('article');
 			$attatch_mod = D('attatch');
 			$data = $article_mod->create();
@@ -122,7 +158,7 @@ class articleAction extends baseAction
 					}
 				}
 			}
-			
+				
 			$data['update_time']=date('Y-m-d H:i:s',time());
 			$result = $article_mod->save($data);
 			if(false !== $result){
@@ -135,7 +171,7 @@ class articleAction extends baseAction
 			if( isset($_GET['id']) ){
 				$article_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error(L('please_select'));
 			}
-			$article_cate_mod = D('article_cate');
+			/*$article_cate_mod = D('article_cate');
 			$result = $article_cate_mod->order('sort_order ASC')->select();
 			$cate_list = array();
 			foreach ($result as $val) {
@@ -145,16 +181,27 @@ class articleAction extends baseAction
 					$cate_list['sub'][$val['pid']][] = $val;
 				}
 			}
+			$this->assign('cate_list',$cate_list);*/
+			
 			$article_info = $article_mod->where('id='.$article_id)->find();
 
 			//附件
-			$attatch_mod = D('attatch');
+			/*$attatch_mod = D('attatch');
 			$article_info['attatch'] = $attatch_mod->where("aid IN (".$article_info['aid'].")")->select();
-
+*/
 			$this->assign('show_header', false);
-			$this->assign('cate_list',$cate_list);
-			$this->assign('article',$article_info);
-			$this->display();
+			
+			// 判断是否是商城管理员
+			if ( ($_SESSION['admin_info']['role_id'] ==1) || ($_SESSION['admin_info']['role_id'] ==3) ) {
+				$this->assign('article',$article_info);
+				$this->display();
+			}else{
+				$article_info['admin_name'] = M('admin')->where("id = {$article_info['uid']} ")->getField('user_id');
+					
+				$this->assign('article',$article_info);
+				$this->display('content');
+			}
+		
 		}
 
 

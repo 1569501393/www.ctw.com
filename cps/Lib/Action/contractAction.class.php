@@ -1,30 +1,45 @@
 <?php
 class contractAction extends baseAction {
 	function index() {
-		$link_mod = M('contract');
+		$contract_mod = M('contract');
 		import("ORG.Util.Page");
 		$prex = C('DB_PREFIX');
 
 		//搜索
 		$where = '1=1';
-		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
-			$where .= " AND (" . $prex . "contract.name LIKE '%" . $_GET['keyword'] . "%' or url LIKE '%" . $_GET['keyword'] . "%')";
-			$this->assign('keyword', $_GET['keyword']);
+		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
+			$where .= " AND (" . $prex . "contract.name LIKE '%" . $_POST['keyword'] . "%' or url LIKE '%" . $_POST['keyword'] . "%')";
+			$this->assign('keyword', $_POST['keyword']);
 		}
-		if (isset($_GET['cate_id']) && intval($_GET['cate_id'])) {
-			$where .= " AND cate_id=" . $_GET['cate_id'];
-			$this->assign('cate_id', $_GET['cate_id']);
+		if (isset($_POST['cate_id']) && intval($_POST['cate_id'])) {
+			$where .= " AND cate_id=" . $_POST['cate_id'];
+			$this->assign('cate_id', $_POST['cate_id']);
 		}
 
-		$count = $link_mod->where($where)->count();
+		$count = $contract_mod->where($where)->count();
 		$p = new Page($count, 20);
-//		$link_list = $link_mod->where($where)->field($prex . 'contract.*,' . $prex . 'contract_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'contract_cate ON ' . $prex . 'contract.cate_id = ' . $prex . 'contract_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'contract.ordid ASC')->select();
-		$link_list = $link_mod->where($where)->select();
+//		$contract_list = $contract_mod->where($where)->field($prex . 'contract.*,' . $prex . 'contract_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'contract_cate ON ' . $prex . 'contract.cate_id = ' . $prex . 'contract_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'contract.ordid ASC')->select();
+		$contract_list = $contract_mod->where($where)->select();
 		
 		$key = 1;
-		foreach ($link_list as $k => $val) {
-			$link_list[$k]['key'] = ++$p->firstRow;
+		foreach ($contract_list as $k => $val) {
+			$contract_list[$k]['key'] = ++$p->firstRow;
 		}
+		
+		
+		
+		// 分销平台  分行
+		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
+		
+		// 商家
+		$shops = M('admin')->where('role_id=3 AND status=1 ')->select();
+		
+		// 角色
+		$roles = M('role')->where('1=1 AND status=1 ')->select();
+		
+		$this->assign('platforms', $platforms);
+		$this->assign('shops', $shops);
+		$this->assign('roles', $roles);
 
 		$contract_cate_mod = D('contract_cate');
 		$contract_cate_list = $contract_cate_mod->select();
@@ -34,7 +49,7 @@ class contractAction extends baseAction {
 		$page = $p->show();
 		$this->assign('page', $page);
 		$this->assign('big_menu', $big_menu);
-		$this->assign('link_list', $link_list);
+		$this->assign('contract_list', $contract_list);
 		$this->display();
 	}
 
@@ -45,16 +60,23 @@ class contractAction extends baseAction {
 			$data = array();
 //			$name = isset($_POST['name']) && trim($_POST['name']) ? trim($_POST['name']) : $this->error(L('input') . L('contract_name'));
 //			$url = isset($_POST['url']) && trim($_POST['url']) ? trim($_POST['url']) : $this->error(L('input') . L('contract_url'));
-			$exist = $contract_mod->where("url='" . $url . "'")->count();
+//			$exist = $contract_mod->where("url='" . $url . "'")->count();
 			/*if ($exist != 0) {
 				$this->error('该链接已经存在');
 			}*/
+			
+			
+			// 合同开始时间
+			$_POST['begin_time']=strtotime($_POST['begin_time']);
+			$_POST['end_time']=strtotime($_POST['end_time']);
+			$_POST['uid']=$_SESSION['admin_info']['id'];
+			$_POST['add_time']=$_POST['update_time']=time();
 			$data = $contract_mod->create();
 			
-			if ($_FILES['img']['name'] != '') {
-				$upload_list=$this->_upload($_FILES['img']);
-				$data['img'] = $upload_list['0']['savename'];
-			}
+//			if ($_FILES['img']['name'] != '') {
+//				$upload_list=$this->_upload($_FILES['img']);
+//				$data['img'] = $upload_list['0']['savename'];
+//			}
 			
 			$contract_mod->add($data);
 			$this->success(L('operation_success'), '', '', 'add');
@@ -86,8 +108,8 @@ class contractAction extends baseAction {
 			}
 		} else {
 			$contract_mod = M('contract');
-			if (isset($_GET['id'])) {
-				$contract_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('请选择要编辑的链接');
+			if (isset($_POST['id'])) {
+				$contract_id = isset($_POST['id']) && intval($_POST['id']) ? intval($_POST['id']) : $this->error('请选择要编辑的链接');
 			}
 			$contract_cate_mod = D('contract_cate');
 			$contract_cate_list = $contract_cate_mod->select();
@@ -102,14 +124,14 @@ class contractAction extends baseAction {
 
 	function del() {
 		$contract_mod = M('contract');
-		if ((!isset($_GET['id']) || empty($_GET['id'])) && (!isset($_POST['id']) || empty($_POST['id']))) {
+		if ((!isset($_POST['id']) || empty($_POST['id'])) && (!isset($_POST['id']) || empty($_POST['id']))) {
 			$this->error('请选择要删除的链接！');
 		}
 		if (isset($_POST['id']) && is_array($_POST['id'])) {
 			$contract_ids = implode(',', $_POST['id']);
 			$contract_mod->delete($contract_ids);
 		} else {
-			$contract_id = intval($_GET['id']);
+			$contract_id = intval($_POST['id']);
 			$contract_mod->where('id=' . $contract_id)->delete();
 		}
 		$this->success(L('operation_success'));

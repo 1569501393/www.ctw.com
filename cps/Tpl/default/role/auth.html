@@ -10,10 +10,11 @@
                 <div class="container">
                     <!-- Page-Title -->
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div style="padding: 10px;">
+                        <!-- <div class="col-sm-12"> -->
+                        <div class="tab-content">
                                 <form action="{:u('role/auth_submit')}" method="post" name="myform" id="myform">
-                                    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+                                    <table class="table table-actions-bar">
+                                    <!-- <table width="100%" cellpadding="2" cellspacing="1" class="table_form"> -->
                                         <foreach name="access_list" item="module_item">
                                             <tr>
                                                 <!-- <td align="right" style="background: #D8E2FA; padding-right: 10px; width: 150px;">
@@ -31,10 +32,11 @@
                                     </table>
                                     <div class="bk15"></div>
                                     <input type="hidden" name="id" value="{$id}" />
-                                    <div class="btn">
-                                        <input type="submit" value="{$Think.lang.submit}" name="dosubmit" class="button" id="dosubmit" /></div>
+                                    <!-- <div class="btn">
+                                        <input type="submit" value="{$Think.lang.submit}" name="dosubmit" class="btn btn-default waves-effect waves-light" id="dosubmit" /></div> -->
+
+                                        <button  type="submit" value="{$Think.lang.submit}" name="dosubmit"  class="btn btn-default waves-effect waves-light">提交</button>
                                 </form>
-                            </div>
                         </div>
                     </div>
                 </div>
