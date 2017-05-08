@@ -19,15 +19,16 @@ class contractAction extends baseAction {
 		$count = $contract_mod->where($where)->count();
 		$p = new Page($count, 20);
 //		$contract_list = $contract_mod->where($where)->field($prex . 'contract.*,' . $prex . 'contract_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'contract_cate ON ' . $prex . 'contract.cate_id = ' . $prex . 'contract_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'contract.ordid ASC')->select();
-		$contract_list = $contract_mod->where($where)->select();
+		$contract_list = $contract_mod->where($where)->order('id DESC')->select();
 		
 		$key = 1;
 		foreach ($contract_list as $k => $val) {
 			$contract_list[$k]['key'] = ++$p->firstRow;
+            $contract_list[$k]['platform_name'] = D('admin')->where('id='.$val['platform_id'])->getField('user_name')?:'全部';
+            $contract_list[$k]['con_type_name'] = D('admin')->where('id='.$val['con_type'])->getField('user_name')?:'全部';
+            $contract_list[$k]['shop_name'] = D('admin')->where('id='.$val['shop_id'])->getField('user_name')?:'全部';
+            $contract_list[$k]['status_name'] = D('parameters')->where('parameter_id='.$val['status'])->getField('parameter_value')?:'全部';
 		}
-		
-		
-		
 		// 分销平台  分行
 		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
 		
@@ -40,6 +41,18 @@ class contractAction extends baseAction {
 		$this->assign('platforms', $platforms);
 		$this->assign('shops', $shops);
 		$this->assign('roles', $roles);
+
+        // 结算周期 审核状态 收款方
+        $period = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'period\' ')->select();
+        $this->assign('period', $period);
+
+        $check_status = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' ')->select();
+        $this->assign('check_status', $check_status);
+
+        $payee = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'payee\' ')->select();
+        $this->assign('payee', $payee);
+
+//        var_dump($periods);
 
 		$contract_cate_mod = D('contract_cate');
 		$contract_cate_list = $contract_cate_mod->select();
