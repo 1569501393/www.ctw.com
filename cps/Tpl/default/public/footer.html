@@ -183,9 +183,29 @@
                     autoclose: true,
                     todayHighlight: true
                 });
+
+                jQuery('#datepicker-autoclose2').datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                });
+
+                jQuery('#datepicker-autoclose3').datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                });
+
+                jQuery('#datepicker-autoclose4').datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                });
+                jQuery('#datepicker-autoclose1').datepicker({
+                    autoclose: true,
+                    todayHighlight: true
+                });
                 jQuery('#datepicker-inline').datepicker();
                 jQuery('#datepicker-multiple-date').datepicker({
-                    format: "mm/dd/yyyy",
+                    // format: "YYYY-MM-DD",
+                    format: "yyyy-mm-dd",
                     clearBtn: true,
                     multidate: true,
                     multidateSeparator: ","
@@ -221,7 +241,7 @@
                 });
                 $('.input-daterange-timepicker').daterangepicker({
                     timePicker: true,
-                    format: 'MM/DD/YYYY h:mm A',
+                    format: 'YYYY-MM-DD h:mm A',
                     timePickerIncrement: 30,
                     timePicker12Hour: true,
                     timePickerSeconds: false,
@@ -230,9 +250,9 @@
                     cancelClass: 'btn-white'
                 });
                 $('.input-limit-datepicker').daterangepicker({
-                    format: 'MM/DD/YYYY',
-                    minDate: '06/01/2015',
-                    maxDate: '06/30/2015',
+                    format: 'YYYY-MM-DD',
+                    minDate: '2015-06-01',
+                    maxDate: '2019-06-01',
                     buttonClasses: ['btn', 'btn-sm'],
                     applyClass: 'btn-default',
                     cancelClass: 'btn-white',
@@ -241,14 +261,15 @@
                     }
                 });
         
-                $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+                // $('#reportrange span').html(moment().subtract(29, 'days').format('YYYY, MMMM D') + ' - ' + moment().format('YYYY, MMMM D'));
+                $('#reportrange span').html(moment().subtract(29, 'days').format('YYYY, MMMM D') + ' - ' + moment().format('YYYY, MMMM D'));
         
                 $('#reportrange').daterangepicker({
-                    format: 'MM/DD/YYYY',
+                    format: 'YYYY-MM-DD',
                     startDate: moment().subtract(29, 'days'),
                     endDate: moment(),
-                    minDate: '01/01/2012',
-                    maxDate: '12/31/2015',
+                    minDate: '2012-01-01',
+                    maxDate: '2112-01-01',
                     dateLimit: {
                         days: 60
                     },
@@ -283,7 +304,7 @@
                     }
                 }, function (start, end, label) {
                     console.log(start.toISOString(), end.toISOString(), label);
-                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                    $('#reportrange span').html(start.format('YYYY, MMMM D') + ' - ' + end.format('YYYY, MMMM D'));
                 });
                 
             });

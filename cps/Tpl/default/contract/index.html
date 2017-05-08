@@ -44,13 +44,13 @@
                                         </span>
                                         <span class="hidden-xs">合同日志</span></a>
                                 </li>
-                                <li class="tab">
+                                <!-- <li class="tab">
                                     <a href="#daochu" data-toggle="tab" aria-expanded="false">
                                         <span class="visible-xs">
                                             <i class="fa fa-user"></i>
                                         </span>
                                         <span class="hidden-xs">导出合同</span></a>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="tab-content">
                                 <div class="table-responsive active" id="guanli">
@@ -60,7 +60,8 @@
                                                 <label class="col-sm-1 control-label">开始时间</label>
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose2" name="startdate">
+                                                        <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose" name="startdate"> -->
+                                                        <input type="text" class="form-control"  id="datepicker-autoclose" name="startdate">
                                                         <span class="input-group-addon bg-custom b-0 text-white">
                                                             <i class="icon-calender"></i>
                                                         </span>
@@ -69,7 +70,8 @@
                                                 <label class="col-sm-1 control-label">结束时间</label>
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose2" name="enddate">
+                                                        <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose2" name="enddate"> -->
+                                                        <input type="text" class="form-control"  id="datepicker-autoclose2" name="enddate">
                                                         <span class="input-group-addon bg-custom b-0 text-white">
                                                             <i class="icon-calender"></i>
                                                         </span>
@@ -152,7 +154,8 @@
                                                     <label for="checkbox2">选择</label></td> -->
                                                     <td>
                                                         <!-- <a href="{:u('contract/auth', array('id'=>$val['id']))}">管理权限</a>| -->
-                                                        <!-- <a href="javascript:edit({$val.id},'{$val.name}')">{$Think.lang.edit}</a></td> -->
+                                                        <a href="{:u('contract/export',array('id'=>$val['id']))}">导入</a>|
+                                                        <a href="{:u('contract/export',array('id'=>$val['id']))}">导出</a>|
                                                         <a href="{:u('contract/edit',array('id'=>$val['id']))}">{$Think.lang.edit}</a></td>
                                                 </tr>
                                             </volist>
@@ -163,16 +166,17 @@
                                 <!-- </div>  -->
                                 <div class="table-responsive" id="luru">
                                     <form role="form2" method="post" action="{:u('contract/add')}">
+                                        <input type="hidden" name="id" value="{$contract_info.id}" />
                                         <!-- <div class="form-group"> -->
                                         <label class="col-sm-1 control-label" for="contractNumber">合同编号</label>
                                         <div class="col-sm-3">
-                                            <input type="text" id="contractNumber" name="con_id" class="form-control" placeholder=""></div>
+                                            <input type="text" id="contractNumber" name="con_id" class="form-control" placeholder=""  value="{$contract_info.con_id}" ></div>
                                         <!-- <div class="form-group"> -->
                                         <label class="col-sm-1 control-label">合同类型</label>
                                         <div class="col-sm-3">
                                             <select class="form-control" name="con_type">
                                                 <volist name="roles" id="val">
-                                                    <option value="{$val.id}" <if condition="$admin_info['role_id'] eq $val['id']">selected="selected"</if>>{$val.name}</option></volist>
+                                                    <option value="{$val.id}" <if condition="$contract_info['con_type'] eq $val['id']">selected="selected"</if>>{$val.name}</option></volist>
                                             </select>
                                         </div>
                                         <!-- </div> -->
@@ -187,7 +191,7 @@
                                         <div class="col-sm-3">
                                             <select class="form-control" name="shop_id">
                                                 <volist name="shops" id="val">
-                                                    <option value="{$val.id}" <if condition="$admin_info['role_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                    <option value="{$val.id}" <if condition="$contract_info['shop_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                             </select>
                                         </div>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
@@ -196,30 +200,35 @@
                                         <div class="col-sm-3">
                                             <select class="form-control" name="period">
                                                         <volist name="period" id="val">
-                                                            <option value="{$val.parameter_id}" <if condition="$contract['period'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                                            <option value="{$val.parameter_id}" <if condition="$contract_info['period'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
                                                     </select>
                                         </div>
                                         <label class="col-sm-1 control-label">分销平台</label>
                                         <div class="col-sm-3">
                                             <select class="form-control" name="platform_id">
                                                 <volist name="platforms" id="val">
-                                                    <option value="{$val.id}" <if condition="$admin_info['role_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
+                                                    <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
 
 
                                             </select>
                                         </div>
+                                        
+
                                         <label class="col-sm-1 control-label">收款方</label>
                                         <div class="col-sm-3">
-                                                <select class="form-control" name="payee">
+                                        <input type="text" class="form-control"  id="sss" name="payee" value="默认分销平台账号" disabled="true">
+                                                <!-- <select class="form-control" name="payee">
                                                         <volist name="payee" id="val">
                                                             <option value="{$val.parameter_id}" <if condition="$contract['payee'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
-                                                    </select>
+                                                    </select> -->
                                         </div>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
                                         <label class="col-sm-1 control-label">开始时间</label>
                                         <div class="col-sm-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose2" name="begin_time">
+                                                <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose3" name="begin_time"> -->
+                                                <input type="text" class="form-control"  id="datepicker-autoclose3" name="begin_time"  value="{$contract_info.begin_time|date='m-d-Y',###}" >
+
                                                 <span class="input-group-addon bg-custom b-0 text-white">
                                                     <i class="icon-calender"></i>
                                                 </span>
@@ -228,7 +237,8 @@
                                         <label class="col-sm-1 control-label">结束时间</label>
                                         <div class="col-sm-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose2" name="end_time">
+                                                <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose4" name="end_time"> -->
+                                                <input type="text" class="form-control"  id="datepicker-autoclose4" name="end_time"  value="{$contract_info.end_time|date='m-d-Y',###}">
                                                 <span class="input-group-addon bg-custom b-0 text-white">
                                                     <i class="icon-calender"></i>
                                                 </span>
@@ -236,14 +246,14 @@
                                             <!-- input-group --></div>
                                         <label class="col-sm-1 control-label" for="long">账期(天)</label>
                                         <div class="col-sm-3">
-                                            <input type="text" id="long" name="period" class="form-control" placeholder=""></div>
+                                            <input type="text" id="long" name="period" class="form-control" placeholder="" value="{$contract_info.period}"></div>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
                                         <label class="col-sm-1 control-label" for="ship">运费(元)</label>
                                         <div class="col-sm-3">
-                                            <input type="text" id="ship" name="freight" class="form-control" placeholder=""></div>
+                                            <input type="text" id="ship" name="freight" class="form-control" placeholder="" value="{$contract_info.freight}"></div>
                                         <label class="col-sm-1 control-label" for="ship">合同名称</label>
                                         <div class="col-sm-3">
-                                            <input type="text" id="ship" name="title" class="form-control" placeholder=""></div>
+                                            <input type="text" id="ship" name="title" class="form-control" placeholder="" value="{$contract_info.title}"></div>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
                                         <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="1">提交</button>

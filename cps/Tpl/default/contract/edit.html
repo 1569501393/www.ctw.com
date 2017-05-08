@@ -1,60 +1,191 @@
 <include file="public:header" />
-<div class="pad_10">
-    <form action="{:u('flink/edit')}" method="post" name="myform" id="myform" enctype="multipart/form-data" >
-        <input type="hidden" name="id" value="{$flink_info.id}" />
-        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
-            <tr>
-                <th>{:L('cate_id')} :</th>
-                <td><select name="cate_id" style="width:140px;">
-                        <volist name="flink_cate_list" id="val" > <option value="{$val.id}" 
-                            <if condition="$flink_info['cate_id'] eq $val['id']"> selected="selected"</if>
-                            >{$val.name}
-                            </option>
-                        </volist>
-                    </select></td>
-            </tr>
-            <tr>
-                <th width="60">{:L('name')}: </th>
-                <td><input type="text" name="name" id="name" size="25" value="{$flink_info.name}" ></td>
-            </tr>
-            <tr>
-                <th>{:L('url')}:</th>
-                <td><input type="text" name="url" id="url" size="25" value="{$flink_info.url}"  ></td>
-            </tr>
-           <!--
-		    <tr>
-                <th>{:L('img')}:</th>
-                <td>
-                	<if condition="$flink_info['img'] neq ''">
-                    	<img src="__ROOT__/data/flink/{$flink_info.img}" width="150px"/>
-                    </if>
-                	<input type="file" name="img" id="img"/>                        
-               	</td>
-            </tr>
-		   -->
-            <tr>
-                <th>{:L('ordid')} :</th>
-                <td><input type="text" name="ordid" id="ordid" class="input-text" value="{$flink_info.ordid}" size=8 onkeyup="value=value.replace(/[^\d]/g,'')"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></td>
-            </tr>
-            <tr>
-                <th>{:L('status')} :</th>
-                <td><input type="radio" name="status" value="1" 
-                    <if condition="$flink_info.status eq 1"> checked</if>
-                    >&nbsp;已审核&nbsp;&nbsp;&nbsp; <input type="radio" name="status" value="0" 
-                    <if condition="$flink_info.status eq 0"> checked</if>
-                    >&nbsp;未审核</td>
-            </tr>
-        </table>
-        <input type="submit" name="dosubmit" id="dosubmit" class="dialog" value="">
-    </form>
-    <script type="text/javascript">
-	$(function(){
-		$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'250',height:'50'}, function(){this.close();$(obj).focus();})}});
-		
-		$("#name").formValidator({onshow:"不能为空",onfocus:"不能为空"}).inputValidator({min:1,onerror:"请填写链接名称"});
-		
-		$("#url").formValidator({onshow:"不能为空",onfocus:"http开头"}).inputValidator({min:1,onerror:"请填写链接地址"});
-	})
-</script>
-</div>
-</body></html>
+<body class="fixed-left">
+    <!-- Begin page -->
+    <div id="wrapper">
+        <include file="public:topBar" />
+        <include file="public:leftMenu" />
+        <div class="content-page" page="contractmanager">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="page-title">合同编辑</h4>
+                            <ol class="breadcrumb">
+                                <!-- <li><a href="#">Ubold</a></li>
+                                <li><a href="#">UI Kit</a></li>
+                                <li class="active">Tabs &amp; Accordions</li>
+                                -->
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="nav nav-tabs tabs">
+                                <li class="active tab">
+                                    <a href="#guanli" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs">
+                                            <i class="fa fa-home"></i>
+                                        </span>
+                                        <span class="hidden-xs">合同编辑</span></a>
+                                </li>
+                                <!-- <li class="tab">
+                                    <a href="#luru" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <span class="hidden-xs">合同录入</span></a>
+                                </li>
+                                <li class="tab">
+                                    <a href="#rizhi" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <span class="hidden-xs">合同日志</span></a>
+                                </li> -->
+                                <!-- <li class="tab">
+                                    <a href="#daochu" data-toggle="tab" aria-expanded="false">
+                                        <span class="visible-xs">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <span class="hidden-xs">导出合同</span></a>
+                                </li> -->
+                            </ul>
+                            <div class="tab-content">
+                                
+                                <div class="table-responsive" id="guanli">
+                                    <form role="form2" method="post" action="{:u('contract/edit')}">
+                                    <input type="hidden" name="id" value="{$contract_info.id}" />
+                                        <!-- <div class="form-group"> -->
+                                        <label class="col-sm-1 control-label" for="contractNumber">合同编号</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="contractNumber" name="con_id" class="form-control" placeholder=""  value="{$contract_info.con_id}" ></div>
+                                        <!-- <div class="form-group"> -->
+                                        <label class="col-sm-1 control-label">合同类型</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control" name="con_type">
+                                                <volist name="roles" id="val">
+                                                    <option value="{$val.id}" <if condition="$contract_info['con_type'] eq $val['id']">selected="selected"</if>>{$val.name}</option></volist>
+                                            </select>
+                                        </div>
+                                        <!-- </div> -->
+                                        <label class="col-sm-1 control-label">商家</label>
+                                        <!-- <div class="col-sm-3">
+                                        <select class="form-control" name="shop_id">
+                                        <option>商家名称1</option>
+                                        <option>商家名称2</option>
+                                        <option>商家名称3</option>
+                                        <option>商家名称4</option>
+                                        <option>商家名称5</option></select></div> -->
+                                        <div class="col-sm-3">
+                                            <select class="form-control" name="shop_id">
+                                                <volist name="shops" id="val">
+                                                    <option value="{$val.id}" <if condition="$contract_info['shop_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                            </select>
+                                        </div>
+                                        <p style="min-height:10px; display: block;">&nbsp;</p>
+                                        <!-- <div class="form-group"> -->
+                                        <label class="col-sm-1 control-label">结算周期</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control" name="period">
+                                                        <volist name="period" id="val">
+                                                            <option value="{$val.parameter_id}" <if condition="$contract_info['period'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                                    </select>
+                                        </div>
+                                        <label class="col-sm-1 control-label">分销平台</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control" name="platform_id">
+                                                <volist name="platforms" id="val">
+                                                    <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
+
+
+                                            </select>
+                                        </div>
+                                        
+
+                                        <label class="col-sm-1 control-label">收款方</label>
+                                        <div class="col-sm-3">
+                                        <input type="text" class="form-control"  id="sss" name="payee" value="默认分销平台账号" disabled="true">
+                                                <!-- <select class="form-control" name="payee">
+                                                        <volist name="payee" id="val">
+                                                            <option value="{$val.parameter_id}" <if condition="$contract['payee'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                                    </select> -->
+                                        </div>
+                                        <p style="min-height:10px; display: block;">&nbsp;</p>
+                                        <label class="col-sm-1 control-label">开始时间</label>
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose3" name="begin_time"> -->
+                                                <input type="text" class="form-control"  id="datepicker-autoclose3" name="begin_time"  value="{$contract_info.begin_time|date='m-d-Y',###}" >
+
+                                                <span class="input-group-addon bg-custom b-0 text-white">
+                                                    <i class="icon-calender"></i>
+                                                </span>
+                                            </div>
+                                            <!-- input-group --></div>
+                                        <label class="col-sm-1 control-label">结束时间</label>
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose4" name="end_time"> -->
+                                                <input type="text" class="form-control"  id="datepicker-autoclose4" name="end_time"  value="{$contract_info.end_time|date='m-d-Y',###}">
+                                                <span class="input-group-addon bg-custom b-0 text-white">
+                                                    <i class="icon-calender"></i>
+                                                </span>
+                                            </div>
+                                            <!-- input-group --></div>
+                                        <label class="col-sm-1 control-label" for="long">账期(天)</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="long" name="period" class="form-control" placeholder="" value="{$contract_info.period}"></div>
+                                        <p style="min-height:10px; display: block;">&nbsp;</p>
+                                        <label class="col-sm-1 control-label" for="ship">运费(元)</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="ship" name="freight" class="form-control" placeholder="" value="{$contract_info.freight}"></div>
+                                        <label class="col-sm-1 control-label" for="ship">合同名称</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="ship" name="title" class="form-control" placeholder="" value="{$contract_info.title}"></div>
+                                        <p style="min-height:10px; display: block;">&nbsp;</p>
+                                        <p style="min-height:10px; display: block;">&nbsp;</p>
+                                        <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="1">提交</button>
+                                        <!-- </div> -->
+                                        <p style="min-height:10px; display: block;">&nbsp;</p></form>
+                                </div>
+
+
+
+<hr />
+                        <form role="form2" method="post" action="{:u('contract/edit')}" enctype="multipart/form-data">
+                                <!-- <div class="tab-pane" id="profile-2"> -->
+                                <input type="hidden" name="id" value="{$contract_info.id}" />
+
+                                
+                        <div class="form-group m-b-0">
+                            <label class="control-label">选择Excel文件进行上传</label>
+                                <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" name="file">
+                                <div class="bootstrap-filestyle input-group">
+                                    <input type="text" class="form-control " placeholder="" >
+                                    <span class="group-span-filestyle input-group-btn" tabindex="0">
+                                    <label for="filestyle-4" class="btn btn-primary ">
+                                    <span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
+                                    <span class="buttonText">选择文件</span>
+                                    </label>
+                                    </span>
+                                </div>
+                                <p style="min-height:10px; display: block;">&nbsp;</p>
+                                <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="2">导入</button>
+
+                            </div>
+                            <br/>
+                            <br/>
+                        <div class="tab-pane" id="messages-2">
+
+                        </div> 
+                    <!-- </div>  -->
+                </form>
+
+
+                            </div>
+                        </div>
+                        <!-- end row --></div>
+                    <!-- END wrapper -->
+                    <include file="public:footer" />
