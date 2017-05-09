@@ -1,305 +1,401 @@
 <?php
-class contractAction extends baseAction {
-	function index() {
-		$contract_mod = M('contract');
-		import("ORG.Util.Page");
-		$prex = C('DB_PREFIX');
 
-		//搜索
-		$where = '1=1';
-		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
-			$where .= " AND (" . $prex . "contract.name LIKE '%" . $_POST['keyword'] . "%' or url LIKE '%" . $_POST['keyword'] . "%')";
-			$this->assign('keyword', $_POST['keyword']);
-		}
-		if (isset($_POST['cate_id']) && intval($_POST['cate_id'])) {
-			$where .= " AND cate_id=" . $_POST['cate_id'];
-			$this->assign('cate_id', $_POST['cate_id']);
-		}
+class contractAction extends baseAction
+{
+    function index()
+    {
+        $contract_mod = M('contract');
+        import("ORG.Util.Page");
+        $prex = C('DB_PREFIX');
 
-		$count = $contract_mod->where($where)->count();
-		$p = new Page($count, 10);
-		//		$contract_list = $contract_mod->where($where)->field($prex . 'contract.*,' . $prex . 'contract_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'contract_cate ON ' . $prex . 'contract.cate_id = ' . $prex . 'contract_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'contract.ordid ASC')->select();
-		$contract_list = $contract_mod->where($where)->order('id DESC')->select();
+        //搜索
+        $where = '1=1';
+        if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
+            $where .= " AND (" . $prex . "contract.name LIKE '%" . $_POST['keyword'] . "%' or url LIKE '%" . $_POST['keyword'] . "%')";
+            $this->assign('keyword', $_POST['keyword']);
+        }
+        if (isset($_POST['cate_id']) && intval($_POST['cate_id'])) {
+            $where .= " AND cate_id=" . $_POST['cate_id'];
+            $this->assign('cate_id', $_POST['cate_id']);
+        }
 
-		$key = 1;
-		foreach ($contract_list as $k => $val) {
-			$contract_list[$k]['key'] = ++$p->firstRow;
-			$contract_list[$k]['platform_name'] = D('admin')->where('id='.$val['platform_id'])->getField('user_name')?:'全部';
-			// $contract_list[$k]['con_type_name'] = D('admin')->where('id='.$val['con_type'])->getField('user_name')?:'全部';
-			$contract_list[$k]['con_type_name'] = D('role')->where('id='.$val['con_type'])->getField('name')?:'全部';
-			$contract_list[$k]['shop_name'] = D('admin')->where('id='.$val['shop_id'])->getField('user_name')?:'全部';
-			$contract_list[$k]['status_name'] = D('parameters')->where('parameter_id='.$val['status'])->getField('parameter_value')?:'全部';
-		}
-		// 分销平台  分行
-		//		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
-		$platforms = M('admin')->where('(role_id=4 OR role_id=1 ) AND status=1 ')->select();
+        $count = $contract_mod->where($where)->count();
+        $p = new Page($count, 10);
+        //		$contract_list = $contract_mod->where($where)->field($prex . 'contract.*,' . $prex . 'contract_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'contract_cate ON ' . $prex . 'contract.cate_id = ' . $prex . 'contract_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'contract.ordid ASC')->select();
+        $contract_list = $contract_mod->where($where)->order('id DESC')->select();
 
-		// 商家
-		$shops = M('admin')->where('role_id=3 AND status=1 ')->select();
+        $key = 1;
+        foreach ($contract_list as $k => $val) {
+            $contract_list[$k]['key'] = ++$p->firstRow;
+            $contract_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+            // $contract_list[$k]['con_type_name'] = D('admin')->where('id='.$val['con_type'])->getField('user_name')?:'全部';
+            $contract_list[$k]['con_type_name'] = D('role')->where('id=' . $val['con_type'])->getField('name') ?: '全部';
+            $contract_list[$k]['shop_name'] = D('admin')->where('id=' . $val['shop_id'])->getField('user_name') ?: '全部';
+            $contract_list[$k]['status_name'] = D('parameters')->where('parameter_id=' . $val['status'])->getField('parameter_value') ?: '全部';
+        }
+        // 分销平台  分行
+        //		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
+        $platforms = M('admin')->where('(role_id=4 OR role_id=1 ) AND status=1 ')->select();
 
-		// 角色
-		$roles = M('role')->where('1=1 AND status=1 ')->select();
+        // 商家
+        $shops = M('admin')->where('role_id=3 AND status=1 ')->select();
 
-		$this->assign('platforms', $platforms);
-		$this->assign('shops', $shops);
-		$this->assign('roles', $roles);
+        // 角色
+        $roles = M('role')->where('1=1 AND status=1 ')->select();
 
-		// 结算周期 审核状态 收款方
-		$period = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'period\' ')->select();
-		$this->assign('period', $period);
+        $this->assign('platforms', $platforms);
+        $this->assign('shops', $shops);
+        $this->assign('roles', $roles);
 
-		$check_status = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' ')->select();
-		$this->assign('check_status', $check_status);
+        // 结算周期 审核状态 收款方
+        $period = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'period\' ')->select();
+        $this->assign('period', $period);
 
-		$payee = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'payee\' ')->select();
-		$this->assign('payee', $payee);
+        $check_status = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' ')->select();
+        $this->assign('check_status', $check_status);
 
-		//        var_dump($periods);
+        $payee = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'payee\' ')->select();
+        $this->assign('payee', $payee);
 
-		$contract_cate_mod = D('contract_cate');
-		$contract_cate_list = $contract_cate_mod->select();
-		$this->assign('contract_cate_list', $contract_cate_list);
+        //        var_dump($periods);
 
-		$big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=contract&a=add\', title:\'' . L('add_contract') . '\', width:\'550\', height:\'350\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', L('add_contract') );
-		$page = $p->show();
-		$this->assign('page', $page);
-		$this->assign('big_menu', $big_menu);
-		$this->assign('contract_list', $contract_list);
-		$this->display();
-	}
+        $contract_cate_mod = D('contract_cate');
+        $contract_cate_list = $contract_cate_mod->select();
+        $this->assign('contract_cate_list', $contract_cate_list);
 
-	function add() {
-		if (isset($_POST['dosubmit'])) {
+        $big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=contract&a=add\', title:\'' . L('add_contract') . '\', width:\'550\', height:\'350\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', L('add_contract'));
+        $page = $p->show();
+        $this->assign('page', $page);
+        $this->assign('big_menu', $big_menu);
+        $this->assign('contract_list', $contract_list);
+        $this->display();
+    }
 
-			$contract_mod = M('contract');
-			$data = array();
-			//			$name = isset($_POST['name']) && trim($_POST['name']) ? trim($_POST['name']) : $this->error(L('input') . L('contract_name'));
-			//			$url = isset($_POST['url']) && trim($_POST['url']) ? trim($_POST['url']) : $this->error(L('input') . L('contract_url'));
-			//			$exist = $contract_mod->where("url='" . $url . "'")->count();
-			/*if ($exist != 0) {
-				$this->error('该链接已经存在');
-				}*/
+    function add()
+    {
+        if (isset($_POST['dosubmit'])) {
+
+            $contract_mod = M('contract');
+            $data = array();
+
+            // 合同开始时间
+            $_POST['begin_time'] = strtotime($_POST['begin_time']);
+            $_POST['end_time'] = strtotime($_POST['end_time']);
+            $_POST['uid'] = $_SESSION['admin_info']['id'];
+            $_POST['add_time'] = $_POST['update_time'] = time();
+            $data = $contract_mod->create();
 
 
-			// 合同开始时间
-			$_POST['begin_time']=strtotime($_POST['begin_time']);
-			$_POST['end_time']=strtotime($_POST['end_time']);
-			$_POST['uid']=$_SESSION['admin_info']['id'];
-			$_POST['add_time']=$_POST['update_time']=time();
-			$data = $contract_mod->create();
 
-			//			if ($_FILES['img']['name'] != '') {
-			//				$upload_list=$this->_upload($_FILES['img']);
-			//				$data['img'] = $upload_list['0']['savename'];
-			//			}
+            $contract_mod->add($data);
+            admin_log($log_op = '添加', $log_obj = '合同', $log_desc=json_encode($_POST),$contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
 
-			$contract_mod->add($data);
-			$this->success(L('operation_success'), '', '', 'add');
-		} else {
-			$contract_cate_mod = D('contract_cate');
-			$contract_cate_list = $contract_cate_mod->select();
-			$this->assign('contract_cate_list', $contract_cate_list);
+            $this->success(L('operation_success'), '', '', 'add');
+        } else {
+            $contract_cate_mod = D('contract_cate');
+            $contract_cate_list = $contract_cate_mod->select();
+            $this->assign('contract_cate_list', $contract_cate_list);
 
-			$this->assign('show_header', false);
-			$this->display();
-		}
-	}
+            $this->assign('show_header', false);
+            $this->display();
+        }
+    }
 
-	function edit() {
-		if (isset($_POST['dosubmit'])) {
 
-			if ($_POST['dosubmit'] ==2) {
-			
-				$upload_list = $this->_upload();
+    /**
+     *
+     * 导出Excel
+     */
+    function export()
+    {//导出Excel
+        $xlsName = "commission";
+        $xlsCell = array(
+            array('id', '序号'),
+//            array('platform_id', '分销平台'),
+//            array('con_type', '合同类型'),
+            array('item_id', '商品编号'),
+            array('item_name', '商品名称'),
+            array('cate_id', '商品分类'),
+            array('rate', '佣金比例'),
+            array('commission', '佣金金额'),
+            array('add_time', ' 添加时间'),
+        );
+        $xlsModel = M('commission');
+        $xlsData = $xlsModel->Field('id,item_id,cate_id,rate,commission,add_time')->where('con_id=' . $_GET['id'])->order('id DESC')->select();
+//        $xlsData = $xlsModel->where('con_id='.$_GET['id'])->select();
+
+        foreach ($xlsData as $k => $v) {
+            $xlsData[$k]['add_time'] = date('Y-m-d H:i:s', $v['add_time']);
+            // 商品名称
+            $xlsData[$k]['item_name'] = '商品名称';
+        }
+
+
+        // 重组另外一张表
+        $contract['cell'] = array(
+            array('id', '序号1'),
+            array('platform_id', '分销平台'),
+            array('con_type', '合同类型'),
+            array('shop_id', '商家名称'),
+            array('title', '合同名称'),
+            array('period', '账期'),
+            array('begin_time', '开始时间'),
+            array('end_time', '结束时间'),
+            array('status', ' 状态'),
+            array('approver', ' 审批人'),
+            array('add_time', ' 添加时间'),
+        );
+        $contract['data'] = M('contract')->where('id=' . $_GET['id'])->select();
+//        $contract['data'] = M('contract')->Field('id,platform_id,con_type,shop_id,title,period,begin_time,end_time,status,approver,add_time')->where('id=' . $_GET['id'])->select();
+        foreach ($contract['data'] as $k => $v) {
+            $contract['data'][$k]['add_time'] = date('Y-m-d H:i:s', $v['add_time']);
+            $contract['data'][$k]['begin_time'] = date('Y-m-d H:i:s', $v['begin_time']);
+            $contract['data'][$k]['end_time'] = date('Y-m-d H:i:s', $v['end_time']);
+
+        }
+
+        $this->exportExcel($contract, $xlsName, $xlsCell, $xlsData, 'commission');
+
+    }
+
+
+    public function exportExcel($header = array(), $expTitle, $expCellName, $expTableData, $fileName = 'file')
+    {
+        $xlsTitle = iconv('utf-8', 'gb2312', $expTitle);//文件名称
+        $fileName = $fileName . date('_YmdHis');//or $xlsTitle 文件名称可根据自己情况设定
+        $cellNum = count($expCellName);
+        $dataNum = count($expTableData);
+
+        vendor("PHPExcel.PHPExcel");
+
+        $objPHPExcel = new \PHPExcel();
+        $cellName = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ');
+
+        $objPHPExcel->getActiveSheet(0)->mergeCells('A1:' . $cellName[$cellNum - 1] . '1');//合并单元格
+        // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1', $expTitle.'  Export time:'.date('Y-m-d H:i:s'));
+        for ($i = 0; $i < $cellNum; $i++) {
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($cellName[$i] . '2', $expCellName[$i][1]);
+        }
+        // Miscellaneous glyphs, UTF-8
+        for ($i = 0; $i < $dataNum; $i++) {
+            for ($j = 0; $j < $cellNum; $j++) {
+                $objPHPExcel->getActiveSheet(0)->setCellValue($cellName[$j] . ($i + 3), $expTableData[$i][$expCellName[$j][0]]);
+            }
+        }
+
+
+        //创建一个新的工作空间(sheet)  合同内容
+        $objPHPExcel->createSheet();
+        $objPHPExcel->setactivesheetindex(1);
+        /*//写入多行数据
+        foreach($header as $k=>$v){
+            $k = $k+1;
+            $objPHPExcel->getactivesheet()->setcellvalue('A'.$k, $v[0]);
+            $objPHPExcel->getactivesheet()->setcellvalue('B'.$k, $v[1]);
+            $objPHPExcel->getactivesheet()->setcellvalue('C'.$k, $v[2]);
+        }*/
+        $cellNum2 = count($header['cell']);
+        $dataNum2 = count($header['data']);
+        $objPHPExcel->getactivesheet()->mergeCells('A1:' . $cellName[$cellNum2 - 1] . '1');//合并单元格
+        // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1', $expTitle.'  Export time:'.date('Y-m-d H:i:s'));
+        for ($i = 0; $i < $cellNum2; $i++) {
+            $objPHPExcel->getactivesheet()->setCellValue($cellName[$i] . '2', $header['cell'][$i][1]);
+        }
+        // Miscellaneous glyphs, UTF-8
+        for ($i = 0; $i < $dataNum2; $i++) {
+            for ($j = 0; $j < $cellNum2; $j++) {
+                $objPHPExcel->getactivesheet()->setCellValue($cellName[$j] . ($i + 3), $header['data'][$i][$header['cell'][$j][0]]);
+            }
+        }
+
+        header('pragma:public');
+        header('Content-type:application/vnd.ms-excel;charset=utf-8;name="' . $xlsTitle . '.xls"');
+        header("Content-Disposition:attachment;filename=$fileName.xls");//attachment新窗口打印inline本窗口打印
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save('php://output');
+        exit;
+    }
+
+    // 合同编辑
+    function edit()
+    {
+        if (isset($_POST['dosubmit'])) {
+            if ($_POST['dosubmit'] == 2) {
+                $upload_list = $this->_upload();
 //				var_dump($upload_list);
-
 //				var_dump($_POST);exit;
-				vendor("PHPExcel.PHPExcel");
-				$file_name=$upload_list[0]['savepath'].$upload_list[0]['savename'];
-				//				var_dump($file_name);exit;
+                vendor("PHPExcel.PHPExcel");
+                $file_name = $upload_list[0]['savepath'] . $upload_list[0]['savename'];
+                //				var_dump($file_name);exit;
 
-				if( $upload_list[0]['extension'] =='xlsx' )
-				{
-					$objReader = new PHPExcel_Reader_Excel2007();
-				}
-				else
-				{
-					$objReader = new PHPExcel_Reader_Excel5();
-				}
+                if ($upload_list[0]['extension'] == 'xlsx') {
+                    $objReader = new PHPExcel_Reader_Excel2007();
+                } else {
+                    $objReader = new PHPExcel_Reader_Excel5();
+                }
 
-				$objPHPExcel = $objReader->load($file_name,$encode='utf-8');
-				$sheet = $objPHPExcel->getSheet(0);
-				$highestRow = $sheet->getHighestRow(); // 取得总行数
-				$highestColumn = $sheet->getHighestColumn(); // 取得总列数
+                $objPHPExcel = $objReader->load($file_name, $encode = 'utf-8');
+                $sheet = $objPHPExcel->getSheet(0);
+                $highestRow = $sheet->getHighestRow(); // 取得总行数
+                $highestColumn = $sheet->getHighestColumn(); // 取得总列数
 
 //				var_dump($sheet,$highestRow,$highestColumn);exit;
-				for($i=2;$i<=$highestRow;$i++)
-				{
-					$data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A".$i)->getValue();
-					$data['rate']= $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B".$i)->getValue();
-					$data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C".$i)->getValue();
-					$data['cate_id']    = $objPHPExcel->getActiveSheet()->getCell("D".$i)->getValue();
-//					$data['class'] = $objPHPExcel->getActiveSheet()->getCell("E".$i)->getValue();
-//					$data['year'] = $objPHPExcel->getActiveSheet()->getCell("F".$i)->getValue();
-//					$data['city']= $objPHPExcel->getActiveSheet()->getCell("G".$i)->getValue();
-//					$data['company']= $objPHPExcel->getActiveSheet()->getCell("H".$i)->getValue();
-//					$data['zhicheng']= $objPHPExcel->getActiveSheet()->getCell("I".$i)->getValue();
-//					$data['zhiwu']= $objPHPExcel->getActiveSheet()->getCell("J".$i)->getValue();
-//					$data['jibie']= $objPHPExcel->getActiveSheet()->getCell("K".$i)->getValue();
-//					$data['honor']= $objPHPExcel->getActiveSheet()->getCell("L".$i)->getValue();
-//					$data['tel']= $objPHPExcel->getActiveSheet()->getCell("M".$i)->getValue();
-//					$data['qq']= $objPHPExcel->getActiveSheet()->getCell("N".$i)->getValue();
-//					$data['email']= $objPHPExcel->getActiveSheet()->getCell("O".$i)->getValue();
-//					$data['remark']= $objPHPExcel->getActiveSheet()->getCell("P".$i)->getValue();
-//					$data['sex']=$sex=='男'?1:0;
-//					$data['res_id'] =1;
+                for ($i = 2; $i <= $highestRow; $i++) {
+                    $data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
+                    $data['rate'] = $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
+                    $data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
+                    $data['cate_id'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
 
-					$data['last_login_time']=0;
-					$data['create_time']=$data['last_login_ip']=$_SERVER['REMOTE_ADDR'];
-					$data['login_count']=0;
-					$data['join']=0;
-					$data['avatar']='';
-					$data['password']=md5('123456');
-					
-					$data['con_id']=$_POST['id'];
-					$data['uid']=$_SESSION['admin_info']['id'];
-					$data['add_time']=$data['update_time']=time();
-					M('commission')->add($data);
+                    $data['last_login_time'] = 0;
+                    $data['create_time'] = $data['last_login_ip'] = $_SERVER['REMOTE_ADDR'];
+                    $data['login_count'] = 0;
+                    $data['join'] = 0;
+                    $data['avatar'] = '';
+                    $data['password'] = md5('123456');
 
-				}
-				
-				exit;
-					
-				$contract_mod = M('contract');
-				// 合同开始时间
-				$_POST['begin_time']=strtotime($_POST['begin_time']);
-				$_POST['end_time']=strtotime($_POST['end_time']);
-				$_POST['uid']=$_SESSION['admin_info']['id'];
-				$_POST['update_time']=time();
-					
-				$data = $contract_mod->create();
-				//			var_dump($_POST,$data);exit;
-				$result = $contract_mod->where("id=" . $data['id'])->save($data);
-				if (false !== $result) {
-					$this->success(L('operation_success'), '', '', 'edit');
-				} else {
-					$this->error(L('operation_failure'));
-				};
-			}else{
-				//			var_dump($_POST);
-				$contract_mod = M('contract');
-				// 合同开始时间
-				$_POST['begin_time']=strtotime($_POST['begin_time']);
-				$_POST['end_time']=strtotime($_POST['end_time']);
-				$_POST['uid']=$_SESSION['admin_info']['id'];
-				$_POST['update_time']=time();
-					
-				$data = $contract_mod->create();
-				//			var_dump($_POST,$data);exit;
-				$result = $contract_mod->where("id=" . $data['id'])->save($data);
-				if (false !== $result) {
-					$this->success(L('operation_success'), '', '', 'edit');
-				} else {
-					$this->error(L('operation_failure'));
-				}
-			}
-		} else {
-			$contract_mod = M('contract');
-			if (isset($_POST['id'])) {
-				$contract_id = isset($_POST['id']) && intval($_POST['id']) ? intval($_POST['id']) : $this->error('请选择要编辑的链接');
-			}
+                    $data['con_id'] = $_POST['id'];
+                    $data['uid'] = $_SESSION['admin_info']['id'];
+                    $data['add_time'] = $data['update_time'] = time();
+                    M('commission')->add($data);
 
-			$contract_id = $_REQUEST['id'];
+                }
+                $this->success(L('operation_success'), '', '', 'edit');
+                exit;
 
-			// 分销平台  分行
-			//		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
-			$platforms = M('admin')->where('(role_id=4 OR role_id=1 ) AND status=1 ')->select();
+                $contract_mod = M('contract');
+                // 合同开始时间
+                $_POST['begin_time'] = strtotime($_POST['begin_time']);
+                $_POST['end_time'] = strtotime($_POST['end_time']);
+                $_POST['uid'] = $_SESSION['admin_info']['id'];
+                $_POST['update_time'] = time();
 
-			// 商家
-			$shops = M('admin')->where('role_id=3 AND status=1 ')->select();
+                $data = $contract_mod->create();
+                //			var_dump($_POST,$data);exit;
+                $result = $contract_mod->where("id=" . $data['id'])->save($data);
+                if (false !== $result) {
+                    $this->success(L('operation_success'), '', '', 'edit');
+                } else {
+                    $this->error(L('operation_failure'));
+                };
+            } else {
+                //			var_dump($_POST);
+                $contract_mod = M('contract');
+                // 合同开始时间
+                $_POST['begin_time'] = strtotime($_POST['begin_time']);
+                $_POST['end_time'] = strtotime($_POST['end_time']);
+                $_POST['uid'] = $_SESSION['admin_info']['id'];
+                $_POST['update_time'] = time();
 
-			// 角色
-			$roles = M('role')->where('1=1 AND status=1 ')->select();
+                $data = $contract_mod->create();
+                //			var_dump($_POST,$data);exit;
+                $result = $contract_mod->where("id=" . $data['id'])->save($data);
+                if (false !== $result) {
+                    $this->success(L('operation_success'), '', '', 'edit');
+                } else {
+                    $this->error(L('operation_failure'));
+                }
+            }
+        } else {
+            $contract_mod = M('contract');
+            if (isset($_POST['id'])) {
+                $contract_id = isset($_POST['id']) && intval($_POST['id']) ? intval($_POST['id']) : $this->error('请选择要编辑的链接');
+            }
 
-			$this->assign('platforms', $platforms);
-			$this->assign('shops', $shops);
-			$this->assign('roles', $roles);
+            $contract_id = $_REQUEST['id'];
 
-			// 结算周期 审核状态 收款方
-			$period = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'period\' ')->select();
-			$this->assign('period', $period);
+            // 分销平台  分行
+            //		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
+            $platforms = M('admin')->where('(role_id=4 OR role_id=1 ) AND status=1 ')->select();
 
-			$check_status = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' ')->select();
-			$this->assign('check_status', $check_status);
+            // 商家
+            $shops = M('admin')->where('role_id=3 AND status=1 ')->select();
 
-			$payee = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'payee\' ')->select();
-			$this->assign('payee', $payee);
+            // 角色
+            $roles = M('role')->where('1=1 AND status=1 ')->select();
+
+            $this->assign('platforms', $platforms);
+            $this->assign('shops', $shops);
+            $this->assign('roles', $roles);
+
+            // 结算周期 审核状态 收款方
+            $period = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'period\' ')->select();
+            $this->assign('period', $period);
+
+            $check_status = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' ')->select();
+            $this->assign('check_status', $check_status);
+
+            $payee = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'payee\' ')->select();
+            $this->assign('payee', $payee);
 
 
-			$contract_info = $contract_mod->where('id=' . $contract_id)->find();
-			//			var_dump($contract_mod->getLastSql());exit;
-			$this->assign('contract_info', $contract_info);
-			$this->assign('show_header', false);
-			$this->display();
-		}
-	}
+            $contract_info = $contract_mod->where('id=' . $contract_id)->find();
+            //			var_dump($contract_mod->getLastSql());exit;
+            $this->assign('contract_info', $contract_info);
+            $this->assign('show_header', false);
+            $this->display();
+        }
+    }
 
-	function del() {
-		$contract_mod = M('contract');
-		if ((!isset($_POST['id']) || empty($_POST['id'])) && (!isset($_POST['id']) || empty($_POST['id']))) {
-			$this->error('请选择要删除的链接！');
-		}
-		if (isset($_POST['id']) && is_array($_POST['id'])) {
-			$contract_ids = implode(',', $_POST['id']);
-			$contract_mod->delete($contract_ids);
-		} else {
-			$contract_id = intval($_POST['id']);
-			$contract_mod->where('id=' . $contract_id)->delete();
-		}
-		$this->success(L('operation_success'));
-	}
+    function del()
+    {
+        $contract_mod = M('contract');
+        if ((!isset($_POST['id']) || empty($_POST['id'])) && (!isset($_POST['id']) || empty($_POST['id']))) {
+            $this->error('请选择要删除的链接！');
+        }
+        if (isset($_POST['id']) && is_array($_POST['id'])) {
+            $contract_ids = implode(',', $_POST['id']);
+            $contract_mod->delete($contract_ids);
+        } else {
+            $contract_id = intval($_POST['id']);
+            $contract_mod->where('id=' . $contract_id)->delete();
+        }
+        $this->success(L('operation_success'));
+    }
 
-	function ordid() {
-		$contract_mod = D('contract');
-		if (isset($_POST['listorders'])) {
-			foreach ($_POST['listorders'] as $id => $sort_order) {
-				$data['ordid'] = $sort_order;
-				$contract_mod->where('id=' . $id)->save($data);
-			}
-			$this->success(L('operation_success'));
-		}
-		$this->error(L('operation_failure'));
-	}
+    function ordid()
+    {
+        $contract_mod = D('contract');
+        if (isset($_POST['listorders'])) {
+            foreach ($_POST['listorders'] as $id => $sort_order) {
+                $data['ordid'] = $sort_order;
+                $contract_mod->where('id=' . $id)->save($data);
+            }
+            $this->success(L('operation_success'));
+        }
+        $this->error(L('operation_failure'));
+    }
 
-	//修改状态
-	function status() {
-		$contract_mod = D('contract');
-		$id = intval($_REQUEST['id']);
-		$type = trim($_REQUEST['type']);
-		$sql = "update " . C('DB_PREFIX') . "contract set $type=($type+1)%2 where id='$id'";
-		$res = $contract_mod->execute($sql);
-		$values = $contract_mod->where('id=' . $id)->find();
-		$this->ajaxReturn($values[$type]);
-	}
+    //修改状态
+    function status()
+    {
+        $contract_mod = D('contract');
+        $id = intval($_REQUEST['id']);
+        $type = trim($_REQUEST['type']);
+        $sql = "update " . C('DB_PREFIX') . "contract set $type=($type+1)%2 where id='$id'";
+        $res = $contract_mod->execute($sql);
+        $values = $contract_mod->where('id=' . $id)->find();
+        $this->ajaxReturn($values[$type]);
+    }
 
-	public function _upload() {
-		import("ORG.Net.UploadFile");
-		$upload = new UploadFile();
-		//设置上传文件大小
-		$upload->maxSize = 3292200;
-		//$upload->allowExts = explode(',', 'jpg,gif,png,jpeg');
-		$upload->savePath = ROOT_PATH.'/data/contract/';
+    public function _upload()
+    {
+        import("ORG.Net.UploadFile");
+        $upload = new UploadFile();
+        //设置上传文件大小
+        $upload->maxSize = 3292200;
+        //$upload->allowExts = explode(',', 'jpg,gif,png,jpeg');
+        $upload->savePath = ROOT_PATH . '/data/contract/';
 
-		$upload->saveRule = uniqid;
-		if (!$upload->upload()) {
-			//捕获上传异常
-			$this->error($upload->getErrorMsg());
-		} else {
-			//取得成功上传的文件信息
-			$uploadList = $upload->getUploadFileInfo();
-		}
-		return $uploadList;
-	}
+        $upload->saveRule = uniqid;
+        if (!$upload->upload()) {
+            //捕获上传异常
+            $this->error($upload->getErrorMsg());
+        } else {
+            //取得成功上传的文件信息
+            $uploadList = $upload->getUploadFileInfo();
+        }
+        return $uploadList;
+    }
 
 }
 
