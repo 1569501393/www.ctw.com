@@ -10,6 +10,12 @@ class contractAction extends baseAction
 
         //搜索
         $where = '1=1';
+
+        // 判断是否是商城管理员  1超级管理员  3 商城  2编辑
+        if (($_SESSION['admin_info']['role_id'] == 4)) {
+            $where .= ' AND platform_id=' . $_SESSION['admin_info']['id'];
+        }
+
         if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
             $where .= " AND (" . $prex . "contract.name LIKE '%" . $_POST['keyword'] . "%' or url LIKE '%" . $_POST['keyword'] . "%')";
             $this->assign('keyword', $_POST['keyword']);
@@ -22,16 +28,18 @@ class contractAction extends baseAction
         $count = $contract_mod->where($where)->count();
         $p = new Page($count, 10);
         //		$contract_list = $contract_mod->where($where)->field($prex . 'contract.*,' . $prex . 'contract_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'contract_cate ON ' . $prex . 'contract.cate_id = ' . $prex . 'contract_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'contract.ordid ASC')->select();
-        $contract_list = $contract_mod->where($where)->order('id DESC')->select();
+        $contract_list = $contract_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
 
         $key = 1;
         foreach ($contract_list as $k => $val) {
             $contract_list[$k]['key'] = ++$p->firstRow;
             $contract_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+            // 审批人
+            $contract_list[$k]['approver_name'] = D('admin')->where('id=' . $val['uid'])->getField('user_name') ?: '全部';
             // $contract_list[$k]['con_type_name'] = D('admin')->where('id='.$val['con_type'])->getField('user_name')?:'全部';
             $contract_list[$k]['con_type_name'] = D('role')->where('id=' . $val['con_type'])->getField('name') ?: '全部';
             $contract_list[$k]['shop_name'] = D('admin')->where('id=' . $val['shop_id'])->getField('user_name') ?: '全部';
-            $contract_list[$k]['status_name'] = D('parameters')->where('parameter_id=' . $val['status'])->getField('parameter_value') ?: '全部';
+            $contract_list[$k]['status_name'] = D('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' AND parameter_id=' . $val['status'])->getField('parameter_value') ?: '全部';
         }
         // 分销平台  分行
         //		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
@@ -78,6 +86,14 @@ class contractAction extends baseAction
             $contract_mod = M('contract');
             $data = array();
 
+//            var_dump(I('con_id'));
+            $result = $contract_mod->where('con_id=' . " '{$_REQUEST['con_id']}' ")->count();
+//            var_dump($contract_mod->getLastSql());
+
+            if ($result) {
+                $this->error('合同编号' . I('con_id') . '已经存在');
+            }
+
             // 合同开始时间
             $_POST['begin_time'] = strtotime($_POST['begin_time']);
             $_POST['end_time'] = strtotime($_POST['end_time']);
@@ -85,10 +101,10 @@ class contractAction extends baseAction
             $_POST['add_time'] = $_POST['update_time'] = time();
             $data = $contract_mod->create();
 
-
-
             $contract_mod->add($data);
-            admin_log($log_op = '添加', $log_obj = '合同', $log_desc=json_encode($_POST),$contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+
+            // 添加合同日志
+            admin_log($log_op = '添加', $log_obj = '合同', $log_desc = json_encode($_POST), $contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
 
             $this->success(L('operation_success'), '', '', 'add');
         } else {
@@ -107,7 +123,7 @@ class contractAction extends baseAction
      * 导出Excel
      */
     function export()
-    {//导出Excel
+    {
         $xlsName = "commission";
         $xlsCell = array(
             array('id', '序号'),
@@ -133,7 +149,7 @@ class contractAction extends baseAction
 
         // 重组另外一张表
         $contract['cell'] = array(
-            array('id', '序号1'),
+            array('id', '序号'),
             array('platform_id', '分销平台'),
             array('con_type', '合同类型'),
             array('shop_id', '商家名称'),
@@ -152,6 +168,12 @@ class contractAction extends baseAction
             $contract['data'][$k]['begin_time'] = date('Y-m-d H:i:s', $v['begin_time']);
             $contract['data'][$k]['end_time'] = date('Y-m-d H:i:s', $v['end_time']);
 
+            $contract['data'][$k]['platform_id'] = D('admin')->where('id=' . $v['platform_id'])->getField('user_name') ?: '全部';
+            // 审批人
+            $contract['data'][$k]['approver'] = D('admin')->where('id=' . $v['uid'])->getField('user_name') ?: '全部';
+            $contract['data'][$k]['con_type'] = D('role')->where('id=' . $v['con_type'])->getField('name') ?: '全部';
+            $contract['data'][$k]['shop_id'] = D('admin')->where('id=' . $v['shop_id'])->getField('user_name') ?: '全部';
+            $contract['data'][$k]['status'] = D('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' AND parameter_id=' . $v['status'])->getField('parameter_value') ?: '全部';
         }
 
         $this->exportExcel($contract, $xlsName, $xlsCell, $xlsData, 'commission');
@@ -170,12 +192,14 @@ class contractAction extends baseAction
 
         $objPHPExcel = new \PHPExcel();
         $cellName = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ');
-
         $objPHPExcel->getActiveSheet(0)->mergeCells('A1:' . $cellName[$cellNum - 1] . '1');//合并单元格
         // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1', $expTitle.'  Export time:'.date('Y-m-d H:i:s'));
         for ($i = 0; $i < $cellNum; $i++) {
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue($cellName[$i] . '2', $expCellName[$i][1]);
         }
+
+        $objPHPExcel->getActiveSheet()->setTitle('商品佣金信息'); //设置工作表名称
+
         // Miscellaneous glyphs, UTF-8
         for ($i = 0; $i < $dataNum; $i++) {
             for ($j = 0; $j < $cellNum; $j++) {
@@ -185,7 +209,10 @@ class contractAction extends baseAction
 
 
         //创建一个新的工作空间(sheet)  合同内容
-        $objPHPExcel->createSheet();
+        //创建第二个工作表
+        $msgWorkSheet = new PHPExcel_Worksheet($objPHPExcel, '合同信息'); //创建一个工作表
+        $objPHPExcel->addSheet($msgWorkSheet); //插入工作表
+//        $objPHPExcel->createSheet();
         $objPHPExcel->setactivesheetindex(1);
         /*//写入多行数据
         foreach($header as $k=>$v){
@@ -222,8 +249,6 @@ class contractAction extends baseAction
         if (isset($_POST['dosubmit'])) {
             if ($_POST['dosubmit'] == 2) {
                 $upload_list = $this->_upload();
-//				var_dump($upload_list);
-//				var_dump($_POST);exit;
                 vendor("PHPExcel.PHPExcel");
                 $file_name = $upload_list[0]['savepath'] . $upload_list[0]['savename'];
                 //				var_dump($file_name);exit;
@@ -239,7 +264,6 @@ class contractAction extends baseAction
                 $highestRow = $sheet->getHighestRow(); // 取得总行数
                 $highestColumn = $sheet->getHighestColumn(); // 取得总列数
 
-//				var_dump($sheet,$highestRow,$highestColumn);exit;
                 for ($i = 2; $i <= $highestRow; $i++) {
                     $data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
                     $data['rate'] = $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
@@ -259,26 +283,13 @@ class contractAction extends baseAction
                     M('commission')->add($data);
 
                 }
+
+                // 添加合同日志
+                admin_log($log_op = '修改', $log_obj = '合同（导入商品）', $log_desc = json_encode($_POST), M('commission')->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+
                 $this->success(L('operation_success'), '', '', 'edit');
                 exit;
-
-                $contract_mod = M('contract');
-                // 合同开始时间
-                $_POST['begin_time'] = strtotime($_POST['begin_time']);
-                $_POST['end_time'] = strtotime($_POST['end_time']);
-                $_POST['uid'] = $_SESSION['admin_info']['id'];
-                $_POST['update_time'] = time();
-
-                $data = $contract_mod->create();
-                //			var_dump($_POST,$data);exit;
-                $result = $contract_mod->where("id=" . $data['id'])->save($data);
-                if (false !== $result) {
-                    $this->success(L('operation_success'), '', '', 'edit');
-                } else {
-                    $this->error(L('operation_failure'));
-                };
             } else {
-                //			var_dump($_POST);
                 $contract_mod = M('contract');
                 // 合同开始时间
                 $_POST['begin_time'] = strtotime($_POST['begin_time']);
@@ -289,6 +300,10 @@ class contractAction extends baseAction
                 $data = $contract_mod->create();
                 //			var_dump($_POST,$data);exit;
                 $result = $contract_mod->where("id=" . $data['id'])->save($data);
+
+                // 添加合同日志
+                admin_log($log_op = '修改', $log_obj = '合同', $log_desc = json_encode($_POST), $contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+
                 if (false !== $result) {
                     $this->success(L('operation_success'), '', '', 'edit');
                 } else {

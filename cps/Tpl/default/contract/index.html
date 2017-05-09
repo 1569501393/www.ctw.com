@@ -149,7 +149,8 @@
                                                     <td>{$val.status}-{$val.status_name}</td>
                                                     <!-- <td>章三{$val.platform_id}</td> -->
                                                     <!-- <td>{$val.update_time|date='Y-m-d',###}</td> -->
-                                                    <td>{$val.approver}</td>
+                                                    <!-- <td>{$val.approver}</td> -->
+                                                    <td>{$val.approver_name}</td>
                                                     <!-- <td><input id="checkbox2" type="checkbox">
                                                     <label for="checkbox2">选择</label></td> -->
                                                     <td>
@@ -160,9 +161,12 @@
                                                 </tr>
                                             </volist>
                                     </table>
-                                    <ul class="pagination">
-                                        <li class="paginate_button previous disabled" aria-controls="datatable" tabindex="0" id="datatable_previous">{$page}</li></ul>
+
+                                    <!-- <ul class="pagination">
+                                        <li class="paginate_button previous disabled" aria-controls="datatable" tabindex="0" id="datatable_previous">{$page}</li>
+                                    </ul> -->
                                 </div>
+                                <div id="pages"> {$page}</div>
                                 <!-- </div>  -->
                                 <div class="table-responsive" id="luru">
                                     <form role="form2" method="post" action="{:u('contract/add')}">
