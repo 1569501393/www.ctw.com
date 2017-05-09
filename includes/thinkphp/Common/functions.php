@@ -22,7 +22,7 @@
   +------------------------------------------------------------------------------
  */
 
-// 积分管理日志记录表
+/*// 积分管理日志记录表
 function admin_log($log_op = '添加', $log_obj = '积分', $log_desc, $score = 0, $app = 0, $status = 0, $product = 0) {
 //    var_dump(111);
     $data = array (
@@ -39,7 +39,7 @@ function admin_log($log_op = '添加', $log_obj = '积分', $log_desc, $score = 
         'op_desc' => $log_desc
     );
     $insertId = M ( 'op_log' )->add ( $data );
-}
+}*/
 
 // 错误输出
 function halt($error) {
