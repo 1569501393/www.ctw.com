@@ -247,6 +247,7 @@ class contractAction extends baseAction
     function edit()
     {
         if (isset($_POST['dosubmit'])) {
+        	// 导入商品
             if ($_POST['dosubmit'] == 2) {
                 $upload_list = $this->_upload();
                 vendor("PHPExcel.PHPExcel");
@@ -269,6 +270,7 @@ class contractAction extends baseAction
                     $data['rate'] = $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
                     $data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
                     $data['cate_id'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
+                    $data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
 
                     $data['last_login_time'] = 0;
                     $data['create_time'] = $data['last_login_ip'] = $_SERVER['REMOTE_ADDR'];
@@ -280,6 +282,17 @@ class contractAction extends baseAction
                     $data['con_id'] = $_POST['id'];
                     $data['uid'] = $_SESSION['admin_info']['id'];
                     $data['add_time'] = $data['update_time'] = time();
+                    
+                    // 写入商品表  价格
+                    // 判断是否存在
+                    $result_flag = M('items')->where(" item_id={$data['item_id']} ")->find();
+                    if ($result_flag) {
+                    	M('items')->where(" item_id={$data['item_id']} ")->save($data);
+                    }else{
+                    	M('items')->add($data);
+                    }
+                    
+                    // 写入佣金表
                     M('commission')->add($data);
 
                 }
@@ -291,6 +304,7 @@ class contractAction extends baseAction
                 exit;
             } else {
                 $contract_mod = M('contract');
+	            
                 // 合同开始时间
                 $_POST['begin_time'] = strtotime($_POST['begin_time']);
                 $_POST['end_time'] = strtotime($_POST['end_time']);

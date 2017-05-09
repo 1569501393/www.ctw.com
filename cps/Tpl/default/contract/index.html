@@ -157,7 +157,9 @@
                                                         <!-- <a href="{:u('contract/auth', array('id'=>$val['id']))}">管理权限</a>| -->
                                                         <!-- <a href="{:u('contract/export',array('id'=>$val['id']))}">导入</a>| -->
                                                         <a href="{:u('contract/export',array('id'=>$val['id']))}">导出</a>|
-                                                        <a href="{:u('contract/edit',array('id'=>$val['id']))}">{$Think.lang.edit}</a></td>
+                                                        <a href="{:u('contract/edit',array('id'=>$val['id']))}">{$Think.lang.edit}</a>|
+                                                        <a href="{:u('finance/push',array('id'=>$val['id']))}">商品详情</a>
+                                                        </td>
                                                 </tr>
                                             </volist>
                                     </table>
@@ -165,8 +167,10 @@
                                     <!-- <ul class="pagination">
                                         <li class="paginate_button previous disabled" aria-controls="datatable" tabindex="0" id="datatable_previous">{$page}</li>
                                     </ul> -->
+                                    <div id="pages"> {$page}</div>
+
                                 </div>
-                                <div id="pages"> {$page}</div>
+                                
                                 <!-- </div>  -->
                                 <div class="table-responsive" id="luru">
                                     <form role="form2" method="post" action="{:u('contract/add')}">
@@ -250,7 +254,7 @@
                                             <!-- input-group --></div>
                                         <label class="col-sm-1 control-label" for="long">账期(天)</label>
                                         <div class="col-sm-3">
-                                            <input type="text" id="long" name="period" class="form-control" placeholder="" value="{$contract_info.period}"></div>
+                                            <input type="text" id="long" name="period_account" class="form-control" placeholder="" value="{$contract_info.period_account}"></div>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
                                         <label class="col-sm-1 control-label" for="ship">运费(元)</label>
                                         <div class="col-sm-3">

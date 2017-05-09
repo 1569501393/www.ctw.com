@@ -8,7 +8,40 @@ class financeAction extends baseAction {
 
     // 推广管理
     function push() {
-        $this->display();
+//		$items_mod = M('items');
+		$commission_mod = M('commission');
+		import("ORG.Util.Page");
+		$prex = C('DB_PREFIX');
+
+		//搜索
+		$where = '1=1';
+		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+			$where .= " AND (" . $prex . "flink.name LIKE '%" . $_GET['keyword'] . "%' or url LIKE '%" . $_GET['keyword'] . "%')";
+			$this->assign('keyword', $_GET['keyword']);
+		}
+		if (isset($_GET['id']) && intval($_GET['id'])) {
+			$where .= " AND con_id=" . $_GET['id'];
+			$this->assign('con_id', $_GET['id']);
+		}
+
+		$count = $commission_mod->where($where)->count();
+		$p = new Page($count, 10);
+		$link_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+
+		$key = 1;
+		foreach ($link_list as $k => $val) {
+			$link_list[$k]['key'] = ++$p->firstRow;
+		}
+
+		$flink_cate_mod = D('flink_cate');
+		$flink_cate_list = $flink_cate_mod->select();
+		$this->assign('flink_cate_list', $flink_cate_list);
+
+		$page = $p->show();
+		$this->assign('page', $page);
+		$this->assign('big_menu', $big_menu);
+		$this->assign('commission_list', $link_list);
+		$this->display();
     }
 
     // 财务管理

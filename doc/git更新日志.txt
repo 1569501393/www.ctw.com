@@ -1,4 +1,56 @@
 
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+$ git pull
+remote: Counting objects: 47, done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 47 (delta 29), reused 43 (delta 25), pack-reused 0
+Unpacking objects: 100% (47/47), done.
+From github.com:1569501393/www.ctw.com
+   bc4424c..bf78300  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+Updating bc4424c..bf78300
+Fast-forward
+ cps/Common/common.php                              |   8 +-
+ cps/Lib/Action/adminAction.class.php               | 482 +++++++-------
+ cps/Lib/Action/contractAction.class.php            | 713 ++++++++++++---------
+ ...57\274\345\205\245\345\257\274\345\207\272.zip" | Bin 0 -> 4783 bytes
+ cps/Tpl/default/contract/edit.html                 |   2 +-
+ cps/Tpl/default/contract/index.html                |  12 +-
+ data/contract/591152d452779.xlsx                   | Bin 0 -> 8687 bytes
+ data/contract/5911aac9f1631.xlsx                   | Bin 0 -> 8687 bytes
+ .../qrcode/23901b9dc3d84176eb001d386a96be9e.png    | Bin 0 -> 220 bytes
+ ...7\273\237\351\234\200\346\261\20220170509.docx" | Bin 0 -> 2223586 bytes
+ ...57\274\345\207\272\346\250\241\346\235\277.xls" | Bin 0 -> 6656 bytes
+ ...41\265\351\235\242\345\216\237\345\236\213.zip" | Bin 0 -> 1521770 bytes
+ includes/thinkphp/Common/functions.php             |   4 +-
+ ms/php_errors.log                                  |   2 +
+ 14 files changed, 673 insertions(+), 550 deletions(-)
+ create mode 100644 "cps/Lib/Action/contractAction.class_20170509excel\345\257\2                                                                                                                74\345\205\245\345\257\274\345\207\272.zip"
+ create mode 100644 data/contract/591152d452779.xlsx
+ create mode 100644 data/contract/5911aac9f1631.xlsx
+ create mode 100644 data/upload/qrcode/23901b9dc3d84176eb001d386a96be9e.png
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351                                                                                                                \234\200\346\261\20220170509.docx"
+ create mode 100644 "doc/commission_20170509131938\345\220\210\345\220\214\345\2                                                                                                                57\274\345\207\272\346\250\241\346\235\277.xls"
+ create mode 100644 "doc/\351\241\265\351\235\242\345\216\237\345\236\213.zip"
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+$
+
+~                                                                               
+".git/MERGE_MSG" 8L, 339C written
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/contractAction.class.php            | 201 +++++++++++++----
+ cps/Tpl/default/contract/edit.html                 | 249 ++++++++++++++++-----
+ cps/Tpl/default/contract/index.html                |  44 ++--
+ cps/Tpl/default/public/footer.html                 |  41 +++-
+ ...7\273\237\351\234\200\346\261\20220170508.docx" | Bin 2223176 -> 2222337 bytes
+ ...7\273\237\351\234\200\346\261\20220170508.docx" | Bin 162 -> 0 bytes
+ ...6\240\274\346\240\267\345\274\217_20170509.xls" | Bin 0 -> 19968 bytes
+ ...\274\346\240\267\345\274\217_20170509v1.2.xlsx" | Bin 0 -> 8687 bytes
+ 8 files changed, 403 insertions(+), 132 deletions(-)
+ delete mode 100644 "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170508.docx"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509.xls"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509v1.2.xlsx"
+
 Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
 $ git pull
 Updating 311d17a..b39899f
