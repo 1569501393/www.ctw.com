@@ -11,13 +11,13 @@ class financeAction extends baseAction {
 //		$items_mod = M('items');
 		$commission_mod = M('commission');
 		import("ORG.Util.Page");
-		$prex = C('DB_PREFIX');
 
 		//搜索
 		$where = '1=1';
-		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
-			$where .= " AND (" . $prex . "flink.name LIKE '%" . $_GET['keyword'] . "%' or url LIKE '%" . $_GET['keyword'] . "%')";
-			$this->assign('keyword', $_GET['keyword']);
+		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
+
+			$where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
+			$this->assign('keyword', $_POST['keyword']);
 		}
 		if (isset($_GET['id']) && intval($_GET['id'])) {
 			$where .= " AND con_id=" . $_GET['id'];
@@ -26,21 +26,21 @@ class financeAction extends baseAction {
 
 		$count = $commission_mod->where($where)->count();
 		$p = new Page($count, 10);
-		$link_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+        $commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
 
 		$key = 1;
-		foreach ($link_list as $k => $val) {
-			$link_list[$k]['key'] = ++$p->firstRow;
+		foreach ($commission_list as $k => $val) {
+            $commission_list[$k]['key'] = ++$p->firstRow;
+//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
+            $commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
 		}
 
-		$flink_cate_mod = D('flink_cate');
-		$flink_cate_list = $flink_cate_mod->select();
-		$this->assign('flink_cate_list', $flink_cate_list);
+//		var_dump($commission_list);exit;
 
 		$page = $p->show();
 		$this->assign('page', $page);
-		$this->assign('big_menu', $big_menu);
-		$this->assign('commission_list', $link_list);
+		$this->assign('commission_list', $commission_list);
 		$this->display();
     }
 

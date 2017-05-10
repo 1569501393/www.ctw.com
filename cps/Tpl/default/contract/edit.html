@@ -30,37 +30,15 @@
                                         </span>
                                         <span class="hidden-xs">合同编辑</span></a>
                                 </li>
-                                <!-- <li class="tab">
-                                    <a href="#luru" data-toggle="tab" aria-expanded="false">
-                                        <span class="visible-xs">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <span class="hidden-xs">合同录入</span></a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#rizhi" data-toggle="tab" aria-expanded="false">
-                                        <span class="visible-xs">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <span class="hidden-xs">合同日志</span></a>
-                                </li> -->
-                                <!-- <li class="tab">
-                                    <a href="#daochu" data-toggle="tab" aria-expanded="false">
-                                        <span class="visible-xs">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <span class="hidden-xs">导出合同</span></a>
-                                </li> -->
-                            </ul>
+                                </ul>
                             <div class="tab-content">
-                                
                                 <div class="table-responsive" id="guanli">
                                     <form role="form2" method="post" action="{:u('contract/edit')}">
-                                    <input type="hidden" name="id" value="{$contract_info.id}" />
+                                        <input type="hidden" name="id" value="{$contract_info.id}" />
                                         <!-- <div class="form-group"> -->
                                         <label class="col-sm-1 control-label" for="contractNumber">合同编号</label>
                                         <div class="col-sm-3">
-                                            <input type="text" id="contractNumber" name="con_id" class="form-control" placeholder=""  value="{$contract_info.con_id}" disabled="disabled" ></div>
+                                            <input type="text" id="contractNumber" name="con_id" class="form-control" placeholder="" value="{$contract_info.con_id}" disabled="disabled"></div>
                                         <!-- <div class="form-group"> -->
                                         <label class="col-sm-1 control-label">合同类型</label>
                                         <div class="col-sm-3">
@@ -71,13 +49,6 @@
                                         </div>
                                         <!-- </div> -->
                                         <label class="col-sm-1 control-label">商家</label>
-                                        <!-- <div class="col-sm-3">
-                                        <select class="form-control" name="shop_id">
-                                        <option>商家名称1</option>
-                                        <option>商家名称2</option>
-                                        <option>商家名称3</option>
-                                        <option>商家名称4</option>
-                                        <option>商家名称5</option></select></div> -->
                                         <div class="col-sm-3">
                                             <select class="form-control" name="shop_id">
                                                 <volist name="shops" id="val">
@@ -89,9 +60,9 @@
                                         <label class="col-sm-1 control-label">结算周期</label>
                                         <div class="col-sm-3">
                                             <select class="form-control" name="period">
-                                                        <volist name="period" id="val">
-                                                            <option value="{$val.parameter_id}" <if condition="$contract_info['period'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
-                                                    </select>
+                                                <volist name="period" id="val">
+                                                    <option value="{$val.parameter_id}" <if condition="$contract_info['period'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                            </select>
                                         </div>
                                         <label class="col-sm-1 control-label">分销平台</label>
                                         <div class="col-sm-3">
@@ -100,18 +71,14 @@
                                                     <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
                                             </select>
                                         </div>
-                                        
-
                                         <label class="col-sm-1 control-label">收款方</label>
                                         <div class="col-sm-3">
-                                        <input type="text" class="form-control"  id="sss" name="payee" value="默认分销平台账号" disabled="true">
-                                        </div>
+                                            <input type="text" class="form-control" id="sss" name="payee" value="默认分销平台账号" disabled="true"></div>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
                                         <label class="col-sm-1 control-label">开始时间</label>
                                         <div class="col-sm-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control"  id="datepicker-autoclose3" name="begin_time"  value="{$contract_info.begin_time|date='m-d-Y',###}" >
-
+                                                <input type="text" class="form-control" id="datepicker-autoclose3" name="begin_time" value="{$contract_info.begin_time|date='m-d-Y',###}">
                                                 <span class="input-group-addon bg-custom b-0 text-white">
                                                     <i class="icon-calender"></i>
                                                 </span>
@@ -120,7 +87,7 @@
                                         <label class="col-sm-1 control-label">结束时间</label>
                                         <div class="col-sm-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control"  id="datepicker-autoclose4" name="end_time"  value="{$contract_info.end_time|date='m-d-Y',###}">
+                                                <input type="text" class="form-control" id="datepicker-autoclose4" name="end_time" value="{$contract_info.end_time|date='m-d-Y',###}">
                                                 <span class="input-group-addon bg-custom b-0 text-white">
                                                     <i class="icon-calender"></i>
                                                 </span>
@@ -136,55 +103,77 @@
                                         <label class="col-sm-1 control-label" for="ship">合同名称</label>
                                         <div class="col-sm-3">
                                             <input type="text" id="ship" name="title" class="form-control" placeholder="" value="{$contract_info.title}"></div>
-
                                         <label class="col-sm-1 control-label">审核状态</label>
-                                            <div class="col-sm-3">
-                                                <select class="form-control" name="status">
-                                                    <volist name="check_status" id="val">
-                                                        <option value="{$val.parameter_id}" <if condition="$contract_info['status'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
-                                                </select>
-
-                                            </div>
+                                        <div class="col-sm-3">
+                                            <select class="form-control" name="status">
+                                                <volist name="check_status" id="val">
+                                                    <option value="{$val.parameter_id}" <if condition="$contract_info['status'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                            </select>
+                                        </div>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
                                         <p style="min-height:10px; display: block;">&nbsp;</p>
                                         <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="1">提交</button>
                                         <!-- </div> -->
                                         <p style="min-height:10px; display: block;">&nbsp;</p></form>
                                 </div>
-
-
-
-<hr />
-                        <form role="form2" method="post" action="{:u('contract/edit')}" enctype="multipart/form-data">
-                                <!-- <div class="tab-pane" id="profile-2"> -->
-                                <input type="hidden" name="id" value="{$contract_info.id}" />
-
-                                
-                        <div class="form-group m-b-0">
-                            <label class="control-label">选择Excel文件进行上传</label>
-                                <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" name="file">
-                                <div class="bootstrap-filestyle input-group">
-                                    <input type="text" class="form-control " placeholder="" >
-                                    <span class="group-span-filestyle input-group-btn" tabindex="0">
-                                    <label for="filestyle-4" class="btn btn-primary ">
-                                    <span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
-                                    <span class="buttonText">选择文件</span>
-                                    </label>
-                                    </span>
-                                </div>
-                                <p style="min-height:10px; display: block;">&nbsp;</p>
-                                <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="2">导入商品</button>
-
-                            </div>
-                            <br/>
-                            <br/>
-                        <div class="tab-pane" id="messages-2">
-
-                        </div> 
-                    <!-- </div>  -->
-                </form>
-
-
+                                <hr />
+                                <!-- 添加商品 -->
+                                <form role="form2" method="post" action="{:u('contract/edit')}" enctype="multipart/form-data">
+                                    <!-- <div class="tab-pane" id="profile-2"> -->
+                                    <input type="hidden" name="id" value="{$contract_info.id}" />
+                                    <input type="hidden" name="shop_id" value="{$contract_info.shop_id}" />
+                                    <input type="hidden" name="contract" value="{$contract_info.title}" />
+                                    <input type="hidden" name="platform_id" value="{$contract_info.platform_id}" />
+                                    <p style="min-height:10px; display: block;">&nbsp;</p>
+                                    <label class="col-sm-1 control-label" for="long">商品ID</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="long" name="item_id" class="form-control" placeholder="" value="{$contract_info.item_id1}"></div>
+                                    <label class="col-sm-1 control-label" for="long">佣金比例</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="long" name="rate" class="form-control" placeholder="" value="{$contract_info.rate1}"></div>
+                                    <label class="col-sm-1 control-label" for="long">佣金金额</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="long" name="commission" class="form-control" placeholder="" value="{$contract_info.commission1}"></div>
+                                    <p style="min-height:10px; display: block;">&nbsp;</p>
+                                    <label class="col-sm-1 control-label" for="long">商品分类</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="long" name="cid" class="form-control" placeholder="" value="{$contract_info.cid1}"></div>
+                                    <label class="col-sm-1 control-label" for="long">商品金额</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="long" name="price" class="form-control" placeholder="" value="{$contract_info.price1}"></div>
+                                    <label class="col-sm-1 control-label" for="long">商品名称</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" id="long" name="title" class="form-control" placeholder="" value="{$contract_info.title1}"></div>
+                                    <p style="min-height:10px; display: block;">&nbsp;</p>
+                                    <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="3">添加商品</button>
+                                    <br/>
+                                    <br/>
+                                    <div class="tab-pane" id="messages-2"></div>
+                                </form>
+                                <hr />
+                                <form role="form2" method="post" action="{:u('contract/edit')}" enctype="multipart/form-data">
+                                    <!-- <div class="tab-pane" id="profile-2"> -->
+                                    <input type="hidden" name="id" value="{$contract_info.id}" />
+                                    <input type="hidden" name="shop_id" value="{$contract_info.shop_id}" />
+                                    <input type="hidden" name="contract" value="{$contract_info.title}" />
+                                    <input type="hidden" name="platform_id" value="{$contract_info.platform_id}" />
+                                    <div class="form-group m-b-0">
+                                        <label class="control-label">选择Excel文件进行上传</label>
+                                        <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" name="file">
+                                        <div class="bootstrap-filestyle input-group">
+                                            <input type="text" class="form-control " placeholder="">
+                                            <span class="group-span-filestyle input-group-btn" tabindex="0">
+                                                <label for="filestyle-4" class="btn btn-primary ">
+                                                    <span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
+                                                    <span class="buttonText">选择文件</span></label>
+                                            </span>
+                                        </div>
+                                        <p style="min-height:10px; display: block;">&nbsp;</p>
+                                        <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="2">导入商品</button></div>
+                                    <br/>
+                                    <br/>
+                                    <div class="tab-pane" id="messages-2"></div>
+                                </form>
                             </div>
                         </div>
                         <!-- end row --></div>

@@ -56,12 +56,13 @@
                                 <div class="table-responsive active" id="guanli">
                                     <div class="row m-t-10 m-b-10">
                                         <div class="col-sm-12">
-                                            <form role="form">
+                                            <!-- <form role="form"> -->
+                                            <form role="form" method="post" action="{:u('contract/index')}">
                                                 <label class="col-sm-1 control-label">开始时间</label>
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
                                                         <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose" name="startdate"> -->
-                                                        <input type="text" class="form-control"  id="datepicker-autoclose" name="startdate">
+                                                        <input type="text" class="form-control"  id="datepicker-autoclose" name="begin_time">
                                                         <span class="input-group-addon bg-custom b-0 text-white">
                                                             <i class="icon-calender"></i>
                                                         </span>
@@ -71,7 +72,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
                                                         <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose2" name="enddate"> -->
-                                                        <input type="text" class="form-control"  id="datepicker-autoclose2" name="enddate">
+                                                        <input type="text" class="form-control"  id="datepicker-autoclose2" name="end_time">
                                                         <span class="input-group-addon bg-custom b-0 text-white">
                                                             <i class="icon-calender"></i>
                                                         </span>
@@ -79,27 +80,30 @@
                                                     <!-- input-group --></div>
                                                 <label class="col-sm-1 control-label" for="contractNumber">合同编号</label>
                                                 <div class="col-sm-3">
-                                                    <input type="text" id="contractNumber" name="contractNumber" class="form-control" placeholder=""></div>
+                                                    <input type="text" id="contractNumber" name="con_id" class="form-control" placeholder=""></div>
                                                 <p style="min-height:10px; display: block;">&nbsp;</p>
                                                 <label class="col-sm-1 control-label">商家</label>
                                                 <div class="col-sm-3">
                                                     <select class="form-control" name="shop_id">
+                                                    <option value="0" >全部</option>
                                                         <volist name="shops" id="val">
-                                                            <option value="{$val.id}" <if condition="$admin_info['role_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                            <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                                     </select>
                                                 </div>
                                                 <label class="col-sm-1 control-label">分销平台</label>
                                                 <div class="col-sm-3">
                                                     <select class="form-control" name="platform_id">
+                                                    <option value="0" >全部</option>
                                                         <volist name="platforms" id="val">
-                                                            <option value="{$val.id}" <if condition="$admin_info['role_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
+                                                            <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
                                                     </select>
                                                 </div>
                                                 <label class="col-sm-1 control-label">审核状态</label>
                                                 <div class="col-sm-3">
                                                     <select class="form-control" name="status">
+                                                    <option value="0" >全部</option>
                                                         <volist name="check_status" id="val">
-                                                            <option value="{$val.parameter_id}" <if condition="$contract['status'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                                            <option value="{$val.parameter_id}" <if condition="$status eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
                                                     </select>
                                                 </div>
                                                 <p style="min-height:10px; display: block;">&nbsp;</p>
@@ -107,8 +111,9 @@
                                                 <label class="col-sm-1 control-label">结算周期</label>
                                                 <div class="col-sm-3">
                                                     <select class="form-control" name="period">
+                                                    <option value="0" >全部</option>
                                                         <volist name="period" id="val">
-                                                            <option value="{$val.parameter_id}" <if condition="$contract['period'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                                            <option value="{$val.parameter_id}" <if condition="$period_input eq $val['parameter_id']">selected="selected"</if>>{$period_input}-{$val.parameter_value}</option></volist>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-1">

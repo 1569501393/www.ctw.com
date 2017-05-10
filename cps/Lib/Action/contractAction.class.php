@@ -20,10 +20,39 @@ class contractAction extends baseAction
             $where .= " AND (" . $prex . "contract.name LIKE '%" . $_POST['keyword'] . "%' or url LIKE '%" . $_POST['keyword'] . "%')";
             $this->assign('keyword', $_POST['keyword']);
         }
-        if (isset($_POST['cate_id']) && intval($_POST['cate_id'])) {
-            $where .= " AND cate_id=" . $_POST['cate_id'];
-            $this->assign('cate_id', $_POST['cate_id']);
+        if (isset($_POST['begin_time']) && intval($_POST['begin_time'])) {
+            $where .= " AND begin_time=" . $_POST['begin_time'];
+            $this->assign('begin_time', $_POST['begin_time']);
         }
+
+        if (isset($_POST['end_time']) && intval($_POST['end_time'])) {
+            $where .= " AND end_time=" . $_POST['end_time'];
+            $this->assign('end_time', $_POST['end_time']);
+        }
+
+        if (isset($_POST['con_id']) && intval($_POST['con_id'])) {
+            $where .= " AND con_id=" . $_POST['con_id'];
+            $this->assign('con_id', $_POST['con_id']);
+        }
+
+        if (isset($_POST['shop_id']) && intval($_POST['shop_id'])) {
+            $where .= " AND shop_id=" . $_POST['shop_id'];
+            $this->assign('shop_id', $_POST['shop_id']);
+        }
+        if (isset($_POST['platform_id']) && intval($_POST['platform_id'])) {
+            $where .= " AND platform_id=" . $_POST['platform_id'];
+            $this->assign('platform_id', $_POST['platform_id']);
+        }
+        if (isset($_POST['status']) && intval($_POST['status'])) {
+            $where .= " AND status=" . $_POST['status'];
+            $this->assign('status', $_POST['status']);
+        }
+        if (isset($_POST['period']) && intval($_POST['period'])) {
+            $where .= " AND period=" . $_POST['period'];
+            $this->assign('period_input', $_POST['period']);
+//            var_dump($_POST['period']);
+        }
+
 
         $count = $contract_mod->where($where)->count();
         $p = new Page($count, 10);
@@ -269,17 +298,25 @@ class contractAction extends baseAction
                     $data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
                     $data['rate'] = $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
                     $data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
-                    $data['cate_id'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
+                    $data['cid'] = $data['cate_id'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
                     $data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
+                    $data['title'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
 
-                    $data['last_login_time'] = 0;
-                    $data['create_time'] = $data['last_login_ip'] = $_SERVER['REMOTE_ADDR'];
-                    $data['login_count'] = 0;
-                    $data['join'] = 0;
-                    $data['avatar'] = '';
-                    $data['password'] = md5('123456');
+//                    $data['last_login_time'] = 0;
+//                    $data['create_time'] = $data['last_login_ip'] = $_SERVER['REMOTE_ADDR'];
+//                    $data['login_count'] = 0;
+//                    $data['join'] = 0;
+//                    $data['avatar'] = '';
+//                    $data['password'] = md5('123456');
 
+
+//                    $data['contract'] = $_POST['contract'];
+//                    $data['shop_id'] = $_POST['shop_id'];
+//                    $data['platform_id'] = $_POST['platform_id'];
+                    $data = $_POST;
                     $data['con_id'] = $_POST['id'];
+                    unset($_POST['id']);
+
                     $data['uid'] = $_SESSION['admin_info']['id'];
                     $data['add_time'] = $data['update_time'] = time();
                     
@@ -302,7 +339,38 @@ class contractAction extends baseAction
 
                 $this->success(L('operation_success'), '', '', 'edit');
                 exit;
-            } else {
+            } elseif($_POST['dosubmit'] == 3) {
+                // 添加商品
+                $data = $_POST;
+                $data['con_id'] = $_POST['id'];
+                // 佣金表 cate_id
+                $data['cate_id'] = $_POST['cid'];
+                unset($data['id']);
+                $data['shop_id'] = $_POST['shop_id'];
+                $data['uid'] = $_SESSION['admin_info']['id'];
+                $data['add_time'] = $data['update_time'] = time();
+
+                // 写入商品表  价格
+                // 判断是否存在
+                $result_flag = M('items')->where(" item_id={$data['item_id']} ")->find();
+                if ($result_flag) {
+                    $result = M('items')->where(" item_id={$data['item_id']} ")->save($data);
+                }else{
+                    $result = M('items')->add($data);
+                }
+
+                // 写入佣金表
+                M('commission')->add($data);
+
+                // 添加合同日志
+                admin_log($log_op = '添加', $log_obj = '商品', $log_desc = json_encode($_POST), M('items')->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+
+                if (false !== $result) {
+                    $this->success(L('operation_success'), '', '', 'edit');
+                } else {
+                    $this->error(L('operation_failure'));
+                }
+            }else {
                 $contract_mod = M('contract');
 	            
                 // 合同开始时间
@@ -330,7 +398,9 @@ class contractAction extends baseAction
                 $contract_id = isset($_POST['id']) && intval($_POST['id']) ? intval($_POST['id']) : $this->error('请选择要编辑的链接');
             }
 
+            // 合同信息
             $contract_id = $_REQUEST['id'];
+            $contract_info = $contract_mod->where('id=' . $contract_id)->find();
 
             // 分销平台  分行
             //		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
@@ -357,7 +427,7 @@ class contractAction extends baseAction
             $this->assign('payee', $payee);
 
 
-            $contract_info = $contract_mod->where('id=' . $contract_id)->find();
+
             //			var_dump($contract_mod->getLastSql());exit;
             $this->assign('contract_info', $contract_info);
             $this->assign('show_header', false);

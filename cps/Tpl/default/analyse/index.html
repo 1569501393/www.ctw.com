@@ -1,116 +1,180 @@
 <include file="public:header" />
-<div class="pad-lr-10">
-	<form name="searchform" action="" method="get" >
-    <table width="100%" cellspacing="0" class="search-form">
-        <tbody>
-            <tr>
-            <td>
-            <div class="explain-col">
-				<!-- 链接分类 :<select name="cate_id" style="width:140px;">
-					<option value="" <if condition="$cate_id eq ''"> selected="selected" </if>>--所有分类--</option>
-					<volist name="flink_cate_list" id="val" >
-        			<option value="{$val.id}" <if condition="$cate_id eq $val['id']"> selected="selected" </if>>{$val.name}</option>
-					</volist>
-				</select> -->
-            	关键字 :
-                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
-                <input type="hidden" name="m" value="flink" />
-                <input type="submit" name="search" class="button" value="搜索" />
-        	</div>
-            </td>
-            </tr>
-        </tbody>
-    </table>
-    </form>
-	<form id="myform" name="myform" action="{:u('flink/del')}" method="post" onsubmit="return check();">
+<!-- Begin page -->
+<div id="wrapper">
+    <include file="public:topBar" />
+    <include file="public:leftMenu" />
+    <div class="content-page" page="statistics">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container">
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">统计分析</h4>
+                        <ol class="breadcrumb"></ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs tabs">
+                            <li class="active tab">
+                                <a href="#yeji" data-toggle="tab" aria-expanded="false">
+                                    <span class="visible-xs">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <span class="hidden-xs">机构销售业绩排行</span></a>
+                            </li>
+                            <li class="tab">
+                                <a href="#yongjin" data-toggle="tab" aria-expanded="false">
+                                    <span class="visible-xs">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <span class="hidden-xs">机构销售佣金收益排行</span></a>
+                            </li>
+                            <li class="tab">
+                                <a href="#shangpin" data-toggle="tab" aria-expanded="false">
+                                    <span class="visible-xs">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <span class="hidden-xs">热销商品排行</span></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="table-responsive active" id="yeji">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-actions-bar">
+                                            <thead>
+                                                <tr>
+                                                    <th>名次</th>
+                                                    <th>机构名称</th>
+                                                    <th>销售金额</th>
+                                                    <th>总销量</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <volist name="order_list" id="val">
+                                                    <tr>
+                                                        <td>{$i}</td>
+                                                        <td>{$val.platform_name|default="默认单价"}</td>
+                                                        <td>¥{$val.amount|default="默认单价"}</td>
+                                                        <td>
+                                                            <b>{$val.sales|default="默认单价"}</b>
+                                                        </td>
+                                                    </tr>
+                                                </volist>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- <div class="col-xs-7">
+                                    1/20
+                                    </div>
+                                    <div class="col-xs-5">
+                                    <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-default waves-effect"><i class="fa fa-chevron-left"></i></button>
+                                    <button type="button" class="btn btn-default waves-effect"><i class="fa fa-chevron-right"></i></button></div>
+                                    </div> -->
+                                </div>
+                                <!-- end col --></div>
+                            <div class="table-responsive" id="yongjin">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-actions-bar">
+                                            <thead>
+                                                <tr>
+                                                    <th>名次</th>
+                                                    <th>机构名称</th>
+                                                    <th>佣金收益</th>
+                                                    <th>总销量</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <tr>
+                                                    <td>1</td>
+                                                    <td>某个支行</td>
+                                                    <td>¥51,999,980</td>
+                                                    <td>
+                                                        <b>28,732</b>
+                                                    </td>
+                                                </tr> -->
+                                                <volist name="commission_list" id="val">
+                                                    <tr>
+                                                        <td>{$i}</td>
+                                                        <td>{$val.platform_name|default="某个支行"}</td>
+                                                        <td>¥{$val.amount|default="51,999,980"}</td>
+                                                        <td>
+                                                            <b>{$val.sales|default="28,732"}</b>
+                                                        </td>
+                                                    </tr>
+                                                </volist>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- <div class="col-xs-7">1/20</div>
+                                    <div class="col-xs-5">
+                                        <div class="btn-group pull-right">
+                                            <button type="button" class="btn btn-default waves-effect">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-default waves-effect">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <!-- end col --></div>
+                            <div class="table-responsive" id="shangpin">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-actions-bar">
+                                            <thead>
+                                                <tr>
+                                                    <th>名次</th>
+                                                    <th>商品</th>
+                                                    <th>推广人数</th>
+                                                    <th>总销量</th>
+                                                    <th>销售金额</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <a href="#">
+                                                            <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm" alt="">Iphone 6s plus</a></td>
+                                                    <td>873</td>
+                                                    <td>
+                                                        <b>28,732</b>
+                                                    </td>
+                                                    <td>¥51,256,938</td></tr> -->
 
-    <div class="table-list">
-      <table width="100%" cellspacing="0">
-        <thead>
-        <tr>
-			<th width=40>ID</th>
-                       
-            <th width="40">名次</th>
-            <th width=200>机构名称</th>
-            <th width=150>销售金额(RMB)</th>
-        </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td align="center">1</td>
-            <td align="center">1</td>
-            <td align="center">机构1</td>
-            <td align="center">999999</td>
-          </tr>
-          <tr>
-            <td align="center">2</td>
-            <td align="center">2</td>
-            <td align="center">机构2</td>
-            <td align="center">888888</td>
-          </tr>
-          <tr>
-            <td align="center">3</td>
-            <td align="center">3</td>
-            <td align="center">机构3</td>
-            <td align="center">777777</td>
-          </tr>
-          
-        </tbody>
-      </table>
-	  <div class="btn">
-		<label for="check_box" style="float:left;">{$Think.lang.select_all}/{$Think.lang.cancel}</label>
-		<input type="submit" class="button" name="dosubmit" value="{$Think.lang.delete}" onclick="return confirm('{$Think.lang.sure_delete}')" style="float:left;margin:0 10px 0 10px;"/>
-		
-		<div id="pages">{$page}</div>
-      </div>
-	</div>
-  </form>
-</div>
-<script type="text/javascript">
-function edit(flink_id, name) {
-	var lang_edit = "{$Think.lang.edit}";
-	window.top.art.dialog({id:'edit'}).close();
-	window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=flink&a=edit&id='+flink_id,width:'450',height:'220'}, 
-		function(){
-			var d = window.top.art.dialog({id:'edit'}).data.iframe;
-			d.document.getElementById('dosubmit').click();
-			return false;
-		}, 
-		function(){
-			window.top.art.dialog({id:'edit'}).close();
-		}
-	);
-}
-
-var lang_name = "友情链接";
-function check(){
-	if($("#myform").attr('action') != '{:u("flink/ordid")}') {
-		var ids='';
-		$("input[name='id[]']:checked").each(function(i, n){
-			ids += $(n).val() + ',';
-		});
-		if(ids=='') {
-			window.top.art.dialog({content:lang_please_select+lang_name,lock:true,width:'200',height:'50',time:1.5},function(){});
-			return false;
-		}
-	}
-	return true;
-}
-
-function status(id,type){
-    $.get("{:u('flink/status')}", { id: id, type: type }, function(jsondata){
-		var return_data  = eval("("+jsondata+")");
-		$("#"+type+"_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif');
-	}); 
-}
-//排序方法
-function sort(id,type,num){
-    
-    $.get("{:u('flink/sort')}", { id: id, type: type,num:num }, function(jsondata){
-        
-		$("#"+type+"_"+id+" ").attr('value', jsondata.data);
-	},'json'); 
-}
-</script>
-
-</body></html>
+                                                    <volist name="items_list" id="val">
+                                                    <tr>
+                                                        <td>{$i}</td>
+                                                        <td>{$val.platform_name|default="Iphone 6s plus"}</td>
+                                                        <td>¥{$val.amount|default="873"}</td>
+                                                        <td>¥{$val.amount|default="28,732"}</td>
+                                                        <td>
+                                                            <b>{$val.sales|default="51,256,938"}</b>
+                                                        </td>
+                                                    </tr>
+                                                </volist>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-xs-7">1/20</div>
+                                    <div class="col-xs-5">
+                                        <div class="btn-group pull-right">
+                                            <button type="button" class="btn btn-default waves-effect">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-default waves-effect">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col --></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row --></div>
+            <!-- END wrapper -->
+            <include file="public:footer" />
