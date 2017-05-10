@@ -1,3 +1,16 @@
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+Updating bf78300..85c8c29
+Fast-forward
+ cps/Lib/Action/contractAction.class.php            |  14 +
+ cps/Lib/Action/financeAction.class.php             |  35 ++-
+ cps/Tpl/default/contract/edit.html                 |  21 +-
+ cps/Tpl/default/contract/index.html                |  10 +-
+ cps/Tpl/default/finance/push.html                  | 332 +++++++++------------
+ ...7\273\237\351\234\200\346\261\20220170509.docx" | Bin 2223586 -> 2223616 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |  52 ++++
+ ...56\241\350\247\204\346\240\27420170427v2.1.doc" | Bin 392117 -> 397349 bytes
+ 8 files changed, 264 insertions(+), 200 deletions(-)
 
 Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
 $ git pull
