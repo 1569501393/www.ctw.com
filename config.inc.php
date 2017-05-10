@@ -1,6 +1,6 @@
 <?php
 return array (
-  'DB_HOST' => 'localhost',
+  'DB_HOST' => '59.56.69.152',
   'DB_PWD' => '123456',
   'DB_NAME' => 'msec',
   'DB_USER' => 'root',
