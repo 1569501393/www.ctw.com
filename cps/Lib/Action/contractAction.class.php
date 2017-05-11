@@ -346,6 +346,14 @@ class contractAction extends baseAction
                     $this->error('佣金和佣金比例设置不对，请重新设置！');
                 }
 
+                if ($_POST['commission'] ) {
+                    $_POST['rate'] = $_POST['commission']/$_POST['price']*100;
+                }
+
+                if ($_POST['rate'] ) {
+                    $_POST['commission'] = $_POST['rate']*$_POST['price']/100;
+                }
+
                 // 添加商品
                 $data = $_POST;
                 $data['con_id'] = $_POST['id'];
