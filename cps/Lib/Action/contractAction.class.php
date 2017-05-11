@@ -21,12 +21,12 @@ class contractAction extends baseAction
             $this->assign('keyword', $_POST['keyword']);
         }
         if (isset($_POST['begin_time']) && intval($_POST['begin_time'])) {
-            $where .= " AND begin_time=" . $_POST['begin_time'];
+            $where .= " AND begin_time>=" . strtotime($_POST['begin_time']);
             $this->assign('begin_time', $_POST['begin_time']);
         }
 
         if (isset($_POST['end_time']) && intval($_POST['end_time'])) {
-            $where .= " AND end_time=" . $_POST['end_time'];
+            $where .= " AND end_time<=" . strtotime($_POST['end_time']);
             $this->assign('end_time', $_POST['end_time']);
         }
 
@@ -159,22 +159,22 @@ class contractAction extends baseAction
 //            array('platform_id', '分销平台'),
 //            array('con_type', '合同类型'),
             array('item_id', '商品编号'),
-            array('item_name', '商品名称'),
+            array('title', '商品名称'),
             array('cate_id', '商品分类'),
+            array('price', '商品价格'),
             array('rate', '佣金比例'),
             array('commission', '佣金金额'),
             array('add_time', ' 添加时间'),
         );
         $xlsModel = M('commission');
-        $xlsData = $xlsModel->Field('id,item_id,cate_id,rate,commission,add_time')->where('con_id=' . $_GET['id'])->order('id DESC')->select();
+        $xlsData = $xlsModel->Field('id,item_id,title,cate_id,price,rate,commission,add_time')->where('con_id=' . $_GET['id'])->order('id DESC')->select();
 //        $xlsData = $xlsModel->where('con_id='.$_GET['id'])->select();
 
         foreach ($xlsData as $k => $v) {
             $xlsData[$k]['add_time'] = date('Y-m-d H:i:s', $v['add_time']);
             // 商品名称
-            $xlsData[$k]['item_name'] = '商品名称';
+//            $xlsData[$k]['item_name'] = '商品名称';
         }
-
 
         // 重组另外一张表
         $contract['cell'] = array(
@@ -190,6 +190,7 @@ class contractAction extends baseAction
             array('approver', ' 审批人'),
             array('add_time', ' 添加时间'),
         );
+//        $contract['data'] = M('contract')->where('id=' . $_GET['id'])->find();
         $contract['data'] = M('contract')->where('id=' . $_GET['id'])->select();
 //        $contract['data'] = M('contract')->Field('id,platform_id,con_type,shop_id,title,period,begin_time,end_time,status,approver,add_time')->where('id=' . $_GET['id'])->select();
         foreach ($contract['data'] as $k => $v) {
@@ -205,7 +206,8 @@ class contractAction extends baseAction
             $contract['data'][$k]['status'] = D('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' AND parameter_id=' . $v['status'])->getField('parameter_value') ?: '全部';
         }
 
-        $this->exportExcel($contract, $xlsName, $xlsCell, $xlsData, 'commission');
+//        $this->exportExcel($contract, $xlsName, $xlsCell, $xlsData, 'commission');
+        $this->exportExcel($contract, $xlsName, $xlsCell, $xlsData, "合同详情_{$contract['data'][0]['con_id']}_{$contract['data'][0]['title']}");
 
     }
 
