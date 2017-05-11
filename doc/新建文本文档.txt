@@ -1,4 +1,9 @@
 
+
+INSERT INTO `ctw_orderlist` (`order_time`, `seller_name`, `uid`, `item_count`, `item_price`, `commission`, `status`, `order_id`, `shop_id`) VALUES ('1487480131', 'khjl_007', '13', '1', '100', '10', '1', '20170511205511', '1')
+
+INSERT INTO `ctw_orderlist` (`order_time`, `seller_name`, `uid`, `item_count`, `item_price`, `commission`, `status`, `order_id`, `shop_id`, `item_id`) VALUES ('1487480131', 'khjl_007', '13', '1', '100', '10', '1', '20170511205511', '1', '1')
+
 Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqi                                                                                                                                                                                               angtec.com (msec.jieqiangtec.com)
 $ git pull
 remote: Counting objects: 27, done.

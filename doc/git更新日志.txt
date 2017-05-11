@@ -1,3 +1,58 @@
+$ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/
+chmod -R 777 ./
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+$ git pull
+Updating 85c8c29..6ca8eff
+Fast-forward
+ config.inc.php                                     |    2 +-
+ cps/Lib/Action/analyseAction.class.php             |  311 ++---
+ cps/Lib/Action/contractAction.class.php            |  124 +-
+ cps/Lib/Action/contractAction.class_20170511.zip   |  Bin 0 -> 5545 bytes
+ cps/Lib/Action/financeAction.class.php             |   24 +-
+ cps/Lib/Action/itemsAction.class.php               | 1409 ++++++++++----------
+ cps/Tpl/default/analyse/index.html                 |  292 ++--
+ cps/Tpl/default/contract/edit.html                 |  157 +--
+ ...\274\345\205\245\345\220\210\345\220\214ok.zip" |  Bin 0 -> 2174 bytes
+ cps/Tpl/default/contract/index.html                |   21 +-
+ cps/Tpl/default/finance/commission.html            |  415 +++---
+ cps/Tpl/default/finance/finance.html               |  580 +++++---
+ cps/Tpl/default/finance/push.html                  |   25 +-
+ cps/Tpl/default/finance/settle.html                |  574 +++++---
+ cps/Tpl/default/items/index.html                   |  352 +++--
+ cps/Tpl/default/items/poster.html                  |  439 +++---
+ ...7\273\237\345\256\211\346\216\22220170506.xlsx" |  Bin 11140 -> 11183 bytes
+ ...7\273\237\351\234\200\346\261\20220170510.docx" |  Bin 0 -> 2228105 bytes
+ ...7\256\351\242\230\346\225\264\347\220\206.docx" |  Bin 0 -> 119457 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.2.docx" |  Bin 0 -> 178046 bytes
+ ...7\256\351\242\230\346\225\264\347\220\206.docx" |  Bin 0 -> 26978 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.2.docx" |  Bin 0 -> 49910 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |   46 +
+ ...64\346\226\260\346\227\245\345\277\227.txt.bak" |  145 ++
+ doc/logo2.png                                      |  Bin 0 -> 186857 bytes
+ ...345\212\240shop_id\345\255\227\346\256\265.zip" |  Bin 0 -> 2677625 bytes
+ ...\246\346\203\205_s10019_222_20170511191148.xls" |  Bin 0 -> 19456 bytes
+ ...\274\346\240\267\345\274\217_20170509v1.3.xlsx" |  Bin 0 -> 8836 bytes
+ ms/php_errors.log                                  |   23 +
+ 29 files changed, 2926 insertions(+), 2013 deletions(-)
+ create mode 100644 cps/Lib/Action/contractAction.class_20170511.zip
+ create mode 100644 "cps/Tpl/default/contract/edit_20170510\345\257\274\345\205\                                                                                                                245\345\220\210\345\220\214ok.zip"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351                                                                                                                \234\200\346\261\20220170510.docx"
+ create mode 100644 "doc/cps-20170510\351\227\256\351\242\230\346\225\264\347\22                                                                                                                0\206.docx"
+ create mode 100644 "doc/cps-20170510\351\227\256\351\242\230\346\225\264\347\22                                                                                                                0\206v1.2.docx"
+ create mode 100644 "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\22                                                                                                                0\206.docx"
+ create mode 100644 "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\22                                                                                                                0\206v1.2.docx"
+ create mode 100644 "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt                                                                                                                .bak"
+ create mode 100644 doc/logo2.png
+ create mode 100644 "doc/msec_20170510\345\225\206\345\223\201\350\241\250\346\2                                                                                                                67\273\345\212\240shop_id\345\255\227\346\256\265.zip"
+ create mode 100644 "doc/\345\220\210\345\220\214\350\257\246\346\203\205_s10019                                                                                                                _222_20170511191148.xls"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\24                                                                                                                0\267\345\274\217_20170509v1.3.xlsx"
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+
+
+
 ".git/MERGE_MSG" 7L, 338C written
 Merge made by the 'recursive' strategy.
  cps/Lib/Action/analyseAction.class.php                                                                             |  311 ++++++++++++-------------

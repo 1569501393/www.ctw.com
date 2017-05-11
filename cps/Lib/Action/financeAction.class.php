@@ -1,14 +1,13 @@
 <?php
 class financeAction extends baseAction {
+	// 佣金管理
+	function commission() {
+		$this->display();
+	}
 
-    // 佣金管理
-    function commission() {
-        $this->display();
-    }
-
-    // 推广管理
-    function push() {
-//		$items_mod = M('items');
+	// 推广管理
+	function push() {
+		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 		import("ORG.Util.Page");
 
@@ -26,33 +25,139 @@ class financeAction extends baseAction {
 
 		$count = $commission_mod->where($where)->count();
 		$p = new Page($count, 10);
-        $commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
 
 		$key = 1;
 		foreach ($commission_list as $k => $val) {
-            $commission_list[$k]['key'] = ++$p->firstRow;
-//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
-            $commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
+			$commission_list[$k]['key'] = ++$p->firstRow;
+			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
+			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
 		}
 
-//		var_dump($commission_list);exit;
+		//		var_dump($commission_list);exit;
 
 		$page = $p->show();
 		$this->assign('page', $page);
 		$this->assign('commission_list', $commission_list);
 		$this->display();
-    }
+	}
 
-    // 财务管理
-    function finance() {
-        $this->display();
-    }
+	// 财务管理
+	function finance() {
+		//搜索
+		$where = '1=1';
+		if (isset($_POST['title']) && trim($_POST['title'])) {
+			$where .= " AND title like '%{$_POST['title']}%' ";
+			$this->assign('title', $_POST['title']);
+		}
+		if (isset($_POST['seller_name']) && trim($_POST['seller_name'])) {
+			$where .= " AND seller_name like '%{$_POST['seller_name']}%' ";
+			$this->assign('seller_name', $_POST['seller_name']);
+		}
 
-    // 结算管理
-    function settle() {
-        $this->display();
-    }
+		$orderlist_mod =M('orderlist');
+
+		// 到处数据
+		if ($_POST['dosubmit']== 2) {
+			$xlsName = "财务详情";
+			$xlsCell = array(
+			array('id', '序号'),
+			array('order_id', '订单号'),
+			array('title', '商品名称'),
+			array('item_price', '单价(元)'),
+			array('item_count', '数量'),
+			array('rate', '佣金比例'),
+			array('sum_price', '总金额'),
+			array('commission', '佣金'),
+			array('order_time', '下单时间'),
+			array('seller_name', '推广人'),
+			array('settle_price', '结算金额'),
+			);
+			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
+			
+//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
+			foreach ($xlsData as $k => $v) {
+				$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
+				$xlsData[$k]['rate'] = $v['commission']/$v['sum_price'];
+			}
+			$this->exportExcel(array(), $xlsName, $xlsCell, $xlsData, $xlsName);
+
+		}
+		import("ORG.Util.Page");
+		$count = $orderlist_mod->where($where)->count();
+		$p = new Page($count, 10);
+		$order_list = $orderlist_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id desc')->select();
+
+		$key = 1;
+		foreach ($order_list as $k => $val) {
+			$order_list[$k]['key'] = ++$p->firstRow;
+			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+
+		}
+		$page = $p->show();
+		$this->assign('page', $page);
+		$this->assign('order_list', $order_list);
+		$this->display();
+	}
+
+	// 结算管理
+	function settle() {
+		//搜索
+		$where = '1=1';
+		if (isset($_POST['title']) && trim($_POST['title'])) {
+			$where .= " AND title like '%{$_POST['title']}%' ";
+			$this->assign('title', $_POST['title']);
+		}
+		if (isset($_POST['seller_name']) && trim($_POST['seller_name'])) {
+			$where .= " AND seller_name like '%{$_POST['seller_name']}%' ";
+			$this->assign('seller_name', $_POST['seller_name']);
+		}
+
+		$orderlist_mod =M('orderlist');
+
+		// 到处数据
+		if ($_POST['dosubmit']== 2) {
+			$xlsName = "结算详情";
+			$xlsCell = array(
+			array('id', '序号'),
+			array('order_id', '订单号'),
+			array('title', '商品名称'),
+			array('item_price', '单价(元)'),
+			array('item_count', '数量'),
+			array('rate', '佣金比例'),
+			array('sum_price', '总金额'),
+			array('commission', '佣金'),
+			array('order_time', '下单时间'),
+			array('seller_name', '推广人'),
+			array('settle_price', '结算金额'),
+			);
+			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
+			
+//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
+			foreach ($xlsData as $k => $v) {
+				$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
+				$xlsData[$k]['rate'] = $v['commission']/$v['sum_price'];
+			}
+			$this->exportExcel(array(), $xlsName, $xlsCell, $xlsData, $xlsName);
+
+		}
+		import("ORG.Util.Page");
+		$count = $orderlist_mod->where($where)->count();
+		$p = new Page($count, 10);
+		$order_list = $orderlist_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id desc')->select();
+
+		$key = 1;
+		foreach ($order_list as $k => $val) {
+			$order_list[$k]['key'] = ++$p->firstRow;
+			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+
+		}
+		$page = $p->show();
+		$this->assign('page', $page);
+		$this->assign('order_list', $order_list);
+		$this->display();
+	}
 
 	function index() {
 		$link_mod = M('flink');
@@ -71,19 +176,13 @@ class financeAction extends baseAction {
 		}
 
 		$count = $link_mod->where($where)->count();
-		$p = new Page($count, 20);
+		$p = new Page($count, 10);
 		$link_list = $link_mod->where($where)->field($prex . 'flink.*,' . $prex . 'flink_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'flink_cate ON ' . $prex . 'flink.cate_id = ' . $prex . 'flink_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'flink.ordid ASC')->select();
 
 		$key = 1;
 		foreach ($link_list as $k => $val) {
 			$link_list[$k]['key'] = ++$p->firstRow;
 		}
-
-		$flink_cate_mod = D('flink_cate');
-		$flink_cate_list = $flink_cate_mod->select();
-		$this->assign('flink_cate_list', $flink_cate_list);
-
-		$big_menu = array('javascript:window.top.art.dialog({id:\'add\',iframe:\'?m=flink&a=add\', title:\'' . L('add_flink') . '\', width:\'450\', height:\'250\', lock:true}, function(){var d = window.top.art.dialog({id:\'add\'}).data.iframe;var form = d.document.getElementById(\'dosubmit\');form.click();return false;}, function(){window.top.art.dialog({id:\'add\'}).close()});void(0);', L('add_flink'));
 		$page = $p->show();
 		$this->assign('page', $page);
 		$this->assign('big_menu', $big_menu);
@@ -103,12 +202,12 @@ class financeAction extends baseAction {
 				$this->error('该链接已经存在');
 			}
 			$data = $flink_mod->create();
-			
+
 			if ($_FILES['img']['name'] != '') {
 				$upload_list=$this->_upload($_FILES['img']);
 				$data['img'] = $upload_list['0']['savename'];
 			}
-			
+
 			$flink_mod->add($data);
 			$this->success(L('operation_success'), '', '', 'add');
 		} else {
@@ -125,12 +224,12 @@ class financeAction extends baseAction {
 		if (isset($_POST['dosubmit'])) {
 			$flink_mod = M('flink');
 			$data = $flink_mod->create();
-			
+
 			if ($_FILES['img']['name'] != '') {
 				$upload_list=$this->_upload($_FILES['img']);
 				$data['img'] = $upload_list['0']['savename'];
 			}
-			
+
 			$result = $flink_mod->where("id=" . $data['id'])->save($data);
 			if (false !== $result) {
 				$this->success(L('operation_success'), '', '', 'edit');
@@ -208,6 +307,40 @@ class financeAction extends baseAction {
 			$uploadList = $upload->getUploadFileInfo();
 		}
 		return $uploadList;
+	}
+
+	public function exportExcel($header = array(), $expTitle, $expCellName, $expTableData, $fileName = 'file')
+	{
+		$xlsTitle = iconv('utf-8', 'gb2312', $expTitle);//文件名称
+		$fileName = $fileName . date('_YmdHis');//or $xlsTitle 文件名称可根据自己情况设定
+		$cellNum = count($expCellName);
+		$dataNum = count($expTableData);
+
+		vendor("PHPExcel.PHPExcel");
+
+		$objPHPExcel = new \PHPExcel();
+		$cellName = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ');
+		$objPHPExcel->getActiveSheet(0)->mergeCells('A1:' . $cellName[$cellNum - 1] . '1');//合并单元格
+		// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1', $expTitle.'  Export time:'.date('Y-m-d H:i:s'));
+		for ($i = 0; $i < $cellNum; $i++) {
+			$objPHPExcel->setActiveSheetIndex(0)->setCellValue($cellName[$i] . '2', $expCellName[$i][1]);
+		}
+
+		$objPHPExcel->getActiveSheet()->setTitle($expTitle); //设置工作表名称
+
+		// Miscellaneous glyphs, UTF-8
+		for ($i = 0; $i < $dataNum; $i++) {
+			for ($j = 0; $j < $cellNum; $j++) {
+				$objPHPExcel->getActiveSheet(0)->setCellValue($cellName[$j] . ($i + 3), $expTableData[$i][$expCellName[$j][0]]);
+			}
+		}
+
+		header('pragma:public');
+		header('Content-type:application/vnd.ms-excel;charset=utf-8;name="' . $xlsTitle . '.xls"');
+		header("Content-Disposition:attachment;filename=$fileName.xls");//attachment新窗口打印inline本窗口打印
+		$objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter->save('php://output');
+		exit;
 	}
 
 }

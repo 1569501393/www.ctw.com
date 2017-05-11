@@ -2,150 +2,162 @@
 
 class analyseAction extends baseAction
 {
-    function index()
-    {
-//        $order_list = M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->order('click DESC')->limit(10)->select();
-        $where = '1=1';
+	function index()
+	{
+		//        $order_list = M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->order('click DESC')->limit(10)->select();
+		$where = '1=1';
 
-        // 机构销售业绩排行
-        $order_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();
-        $this->assign('order_list', $order_list);
+		// 机构销售业绩排行
+		//        $order_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();
+		$order_list = M('orderlist')->field(array('platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('platform_id')->order('sum_price DESC')->limit(10)->select();
 
-        // 机构销售佣金收益排行
-        $commission_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();
-        $this->assign('commission_list', $commission_list);
+		foreach ($order_list as $k => $val) {
+			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+		}
 
-        // 热销商品排行
-        $items_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();
-        $this->assign('items_list', $items_list);
+		$this->assign('order_list', $order_list);
 
-        $this->display();
-    }
+		// 机构销售佣金收益排行
+		//        $commission_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();
+		$commission_list = M('orderlist')->field(array('platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price","SUM(commission)"=>"sum_commission"))->where(" $where ")->group('platform_id')->order('sum_commission DESC')->limit(10)->select();
+		foreach ($commission_list as $k => $val) {
+			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+		}
+		$this->assign('commission_list', $commission_list);
 
-    function add()
-    {
-        if (isset($_POST['dosubmit'])) {
+		// 热销商品排行
+		$items_list = M('orderlist')->field(array("count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('item_id')->order('sum_count DESC')->limit(10)->select();
+		//        $model->where($opt)->field(array("count(comment)"=>"countCom", "title", "artid")->group('artid')->select();
+		//        var_dump($items_list);
+		$this->assign('items_list', $items_list);
 
-            $flink_mod = M('flink');
-            $data = array();
-            $name = isset($_POST['name']) && trim($_POST['name']) ? trim($_POST['name']) : $this->error(L('input') . L('flink_name'));
-            $url = isset($_POST['url']) && trim($_POST['url']) ? trim($_POST['url']) : $this->error(L('input') . L('flink_url'));
-            $exist = $flink_mod->where("url='" . $url . "'")->count();
-            if ($exist != 0) {
-                $this->error('该链接已经存在');
-            }
-            $data = $flink_mod->create();
+		$this->display();
+	}
 
-            if ($_FILES['img']['name'] != '') {
-                $upload_list = $this->_upload($_FILES['img']);
-                $data['img'] = $upload_list['0']['savename'];
-            }
+	function add()
+	{
+		if (isset($_POST['dosubmit'])) {
 
-            $flink_mod->add($data);
-            $this->success(L('operation_success'), '', '', 'add');
-        } else {
-            $flink_cate_mod = D('flink_cate');
-            $flink_cate_list = $flink_cate_mod->select();
-            $this->assign('flink_cate_list', $flink_cate_list);
+			$flink_mod = M('flink');
+			$data = array();
+			$name = isset($_POST['name']) && trim($_POST['name']) ? trim($_POST['name']) : $this->error(L('input') . L('flink_name'));
+			$url = isset($_POST['url']) && trim($_POST['url']) ? trim($_POST['url']) : $this->error(L('input') . L('flink_url'));
+			$exist = $flink_mod->where("url='" . $url . "'")->count();
+			if ($exist != 0) {
+				$this->error('该链接已经存在');
+			}
+			$data = $flink_mod->create();
 
-            $this->assign('show_header', false);
-            $this->display();
-        }
-    }
+			if ($_FILES['img']['name'] != '') {
+				$upload_list = $this->_upload($_FILES['img']);
+				$data['img'] = $upload_list['0']['savename'];
+			}
 
-    function edit()
-    {
-        if (isset($_POST['dosubmit'])) {
-            $flink_mod = M('flink');
-            $data = $flink_mod->create();
+			$flink_mod->add($data);
+			$this->success(L('operation_success'), '', '', 'add');
+		} else {
+			$flink_cate_mod = D('flink_cate');
+			$flink_cate_list = $flink_cate_mod->select();
+			$this->assign('flink_cate_list', $flink_cate_list);
 
-            if ($_FILES['img']['name'] != '') {
-                $upload_list = $this->_upload($_FILES['img']);
-                $data['img'] = $upload_list['0']['savename'];
-            }
+			$this->assign('show_header', false);
+			$this->display();
+		}
+	}
 
-            $result = $flink_mod->where("id=" . $data['id'])->save($data);
-            if (false !== $result) {
-                $this->success(L('operation_success'), '', '', 'edit');
-            } else {
-                $this->error(L('operation_failure'));
-            }
-        } else {
-            $flink_mod = M('flink');
-            if (isset($_GET['id'])) {
-                $flink_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('请选择要编辑的链接');
-            }
-            $flink_cate_mod = D('flink_cate');
-            $flink_cate_list = $flink_cate_mod->select();
-            $this->assign('flink_cate_list', $flink_cate_list);
+	function edit()
+	{
+		if (isset($_POST['dosubmit'])) {
+			$flink_mod = M('flink');
+			$data = $flink_mod->create();
 
-            $flink_info = $flink_mod->where('id=' . $flink_id)->find();
-            $this->assign('flink_info', $flink_info);
-            $this->assign('show_header', false);
-            $this->display();
-        }
-    }
+			if ($_FILES['img']['name'] != '') {
+				$upload_list = $this->_upload($_FILES['img']);
+				$data['img'] = $upload_list['0']['savename'];
+			}
 
-    function del()
-    {
-        $flink_mod = M('flink');
-        if ((!isset($_GET['id']) || empty($_GET['id'])) && (!isset($_POST['id']) || empty($_POST['id']))) {
-            $this->error('请选择要删除的链接！');
-        }
-        if (isset($_POST['id']) && is_array($_POST['id'])) {
-            $flink_ids = implode(',', $_POST['id']);
-            $flink_mod->delete($flink_ids);
-        } else {
-            $flink_id = intval($_GET['id']);
-            $flink_mod->where('id=' . $flink_id)->delete();
-        }
-        $this->success(L('operation_success'));
-    }
+			$result = $flink_mod->where("id=" . $data['id'])->save($data);
+			if (false !== $result) {
+				$this->success(L('operation_success'), '', '', 'edit');
+			} else {
+				$this->error(L('operation_failure'));
+			}
+		} else {
+			$flink_mod = M('flink');
+			if (isset($_GET['id'])) {
+				$flink_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('请选择要编辑的链接');
+			}
+			$flink_cate_mod = D('flink_cate');
+			$flink_cate_list = $flink_cate_mod->select();
+			$this->assign('flink_cate_list', $flink_cate_list);
 
-    function ordid()
-    {
-        $flink_mod = D('flink');
-        if (isset($_POST['listorders'])) {
-            foreach ($_POST['listorders'] as $id => $sort_order) {
-                $data['ordid'] = $sort_order;
-                $flink_mod->where('id=' . $id)->save($data);
-            }
-            $this->success(L('operation_success'));
-        }
-        $this->error(L('operation_failure'));
-    }
+			$flink_info = $flink_mod->where('id=' . $flink_id)->find();
+			$this->assign('flink_info', $flink_info);
+			$this->assign('show_header', false);
+			$this->display();
+		}
+	}
 
-    //修改状态
-    function status()
-    {
-        $flink_mod = D('flink');
-        $id = intval($_REQUEST['id']);
-        $type = trim($_REQUEST['type']);
-        $sql = "update " . C('DB_PREFIX') . "flink set $type=($type+1)%2 where id='$id'";
-        $res = $flink_mod->execute($sql);
-        $values = $flink_mod->where('id=' . $id)->find();
-        $this->ajaxReturn($values[$type]);
-    }
+	function del()
+	{
+		$flink_mod = M('flink');
+		if ((!isset($_GET['id']) || empty($_GET['id'])) && (!isset($_POST['id']) || empty($_POST['id']))) {
+			$this->error('请选择要删除的链接！');
+		}
+		if (isset($_POST['id']) && is_array($_POST['id'])) {
+			$flink_ids = implode(',', $_POST['id']);
+			$flink_mod->delete($flink_ids);
+		} else {
+			$flink_id = intval($_GET['id']);
+			$flink_mod->where('id=' . $flink_id)->delete();
+		}
+		$this->success(L('operation_success'));
+	}
 
-    public function _upload()
-    {
-        import("ORG.Net.UploadFile");
-        $upload = new UploadFile();
-        //设置上传文件大小
-        $upload->maxSize = 3292200;
-        //$upload->allowExts = explode(',', 'jpg,gif,png,jpeg');
-        $upload->savePath = ROOT_PATH . '/data/flink/';
+	function ordid()
+	{
+		$flink_mod = D('flink');
+		if (isset($_POST['listorders'])) {
+			foreach ($_POST['listorders'] as $id => $sort_order) {
+				$data['ordid'] = $sort_order;
+				$flink_mod->where('id=' . $id)->save($data);
+			}
+			$this->success(L('operation_success'));
+		}
+		$this->error(L('operation_failure'));
+	}
 
-        $upload->saveRule = uniqid;
-        if (!$upload->upload()) {
-            //捕获上传异常
-            $this->error($upload->getErrorMsg());
-        } else {
-            //取得成功上传的文件信息
-            $uploadList = $upload->getUploadFileInfo();
-        }
-        return $uploadList;
-    }
+	//修改状态
+	function status()
+	{
+		$flink_mod = D('flink');
+		$id = intval($_REQUEST['id']);
+		$type = trim($_REQUEST['type']);
+		$sql = "update " . C('DB_PREFIX') . "flink set $type=($type+1)%2 where id='$id'";
+		$res = $flink_mod->execute($sql);
+		$values = $flink_mod->where('id=' . $id)->find();
+		$this->ajaxReturn($values[$type]);
+	}
+
+	public function _upload()
+	{
+		import("ORG.Net.UploadFile");
+		$upload = new UploadFile();
+		//设置上传文件大小
+		$upload->maxSize = 3292200;
+		//$upload->allowExts = explode(',', 'jpg,gif,png,jpeg');
+		$upload->savePath = ROOT_PATH . '/data/flink/';
+
+		$upload->saveRule = uniqid;
+		if (!$upload->upload()) {
+			//捕获上传异常
+			$this->error($upload->getErrorMsg());
+		} else {
+			//取得成功上传的文件信息
+			$uploadList = $upload->getUploadFileInfo();
+		}
+		return $uploadList;
+	}
 
 }
 
