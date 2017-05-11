@@ -308,8 +308,6 @@ class contractAction extends baseAction
 //                    $data['join'] = 0;
 //                    $data['avatar'] = '';
 //                    $data['password'] = md5('123456');
-
-
 //                    $data['contract'] = $_POST['contract'];
 //                    $data['shop_id'] = $_POST['shop_id'];
 //                    $data['platform_id'] = $_POST['platform_id'];
@@ -340,6 +338,14 @@ class contractAction extends baseAction
                 $this->success(L('operation_success'), '', '', 'edit');
                 exit;
             } elseif($_POST['dosubmit'] == 3) {
+                if ((empty($_POST['price'])) && (!isset($_POST['price']) )) {
+                    $this->error('请选择要删除的链接！');
+                }
+
+                if ($_POST['rate'] && $_POST['commission'] && ($_POST['rate'] !=($_POST['commission']/$_POST['price']*100))) {
+                    $this->error('佣金和佣金比例设置不对，请重新设置！');
+                }
+
                 // 添加商品
                 $data = $_POST;
                 $data['con_id'] = $_POST['id'];
