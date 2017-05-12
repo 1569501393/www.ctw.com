@@ -78,7 +78,7 @@
                                         <label class="col-sm-1 control-label">开始时间</label>
                                         <div class="col-sm-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="datepicker-autoclose3" name="begin_time" value="{$contract_info.begin_time|date='m-d-Y',###}">
+                                                <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose3" name="begin_time" value="{$contract_info.begin_time|date='Y-m-d',###}">
                                                 <span class="input-group-addon bg-custom b-0 text-white">
                                                     <i class="icon-calender"></i>
                                                 </span>
@@ -87,7 +87,7 @@
                                         <label class="col-sm-1 control-label">结束时间</label>
                                         <div class="col-sm-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="datepicker-autoclose4" name="end_time" value="{$contract_info.end_time|date='m-d-Y',###}">
+                                                <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose4" name="end_time" value="{$contract_info.end_time|date='Y-m-d',###}">
                                                 <span class="input-group-addon bg-custom b-0 text-white">
                                                     <i class="icon-calender"></i>
                                                 </span>

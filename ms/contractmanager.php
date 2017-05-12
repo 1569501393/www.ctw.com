@@ -75,7 +75,7 @@ include 'leftMenu.php';
                                                 <label class="col-sm-1 control-label">开始时间</label>
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose" name="startdate">
+                                                        <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose" name="startdate" data-date-format="yyyy-mm-dd">
                                                         <span class="input-group-addon bg-custom b-0 text-white"><i class="icon-calender"></i></span>
                                                     </div><!-- input-group -->
                                                 </div>

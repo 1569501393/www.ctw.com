@@ -26,7 +26,9 @@ class contractAction extends baseAction
 		}
 
 		if (isset($_POST['end_time']) && intval($_POST['end_time'])) {
-			$where .= " AND end_time<=" . strtotime($_POST['end_time']);
+            $date_obj = new DateTime($_POST['end_time']);
+//            $_POST['end_time'] = $date_obj->format('U')?:0;
+			$where .= " AND end_time<=" . $date_obj->format('U');
 			$this->assign('end_time', $_POST['end_time']);
 		}
 
@@ -112,7 +114,10 @@ class contractAction extends baseAction
 			}
 
 			if (isset($_POST['end_time']) && intval($_POST['end_time'])) {
-				$where .= " AND end_time<=" . strtotime($_POST['end_time']);
+//				$where .= " AND end_time<=" . strtotime($_POST['end_time']);
+                $date_obj = new DateTime($_POST['end_time']);
+//            $_POST['end_time'] = $date_obj->format('U')?:0;
+                $where .= " AND end_time<=" . $date_obj->format('U');
 				$this->assign('end_time', $_POST['end_time']);
 			}
 
@@ -137,6 +142,11 @@ class contractAction extends baseAction
 		$page2 = $p2->show();
 		$this->assign('page2', $page2);
 		$this->assign('log_list', $log_list);
+
+        // 默认当前时间
+        $contract_info['begin_time']=$contract_info['end_time']=time();
+        $this->assign('contract_info', $contract_info);
+
 		$this->display();
 	}
 
@@ -157,7 +167,10 @@ class contractAction extends baseAction
 
 			// 合同开始时间
 			$_POST['begin_time'] = strtotime($_POST['begin_time']);
-			$_POST['end_time'] = strtotime($_POST['end_time']);
+//			$_POST['end_time'] = strtotime($_POST['end_time']);
+            $date_obj = new DateTime($_POST['end_time']);
+//                $_POST['end_time'] = $date_obj->getTimestamp()?:0;
+            $_POST['end_time'] = $date_obj->format('U')?:0;
 			$_POST['uid'] = $_SESSION['admin_info']['id'];
 			$_POST['add_time'] = $_POST['update_time'] = time();
 			$data = $contract_mod->create();
@@ -169,11 +182,6 @@ class contractAction extends baseAction
 
 			$this->success(L('operation_success'), '', '', 'add');
 		} else {
-			$contract_cate_mod = D('contract_cate');
-			$contract_cate_list = $contract_cate_mod->select();
-			$this->assign('contract_cate_list', $contract_cate_list);
-
-			$this->assign('show_header', false);
 			$this->display();
 		}
 	}
@@ -422,13 +430,17 @@ class contractAction extends baseAction
 				$contract_mod = M('contract');
 					
 				// 合同开始时间
+//                var_dump($_POST);
 				$_POST['begin_time'] = strtotime($_POST['begin_time']);
-				$_POST['end_time'] = strtotime($_POST['end_time']);
+//				$_POST['end_time'] = strtotime($_POST['end_time'])?:0;
+                $date_obj = new DateTime($_POST['end_time']);
+//                $_POST['end_time'] = $date_obj->getTimestamp()?:0;
+                $_POST['end_time'] = $date_obj->format('U')?:0;
 				$_POST['uid'] = $_SESSION['admin_info']['id'];
 				$_POST['update_time'] = time();
 
+//                var_dump($_POST);exit;
 				$data = $contract_mod->create();
-				//			var_dump($_POST,$data);exit;
 				$result = $contract_mod->where("id=" . $data['id'])->save($data);
 
 				// 添加合同日志

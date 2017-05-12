@@ -33,6 +33,11 @@
         <script src="__ROOT__/statics/cps/plugins/timepicker/bootstrap-timepicker.min.js"></script>
         <script src="__ROOT__/statics/cps/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
         <script src="__ROOT__/statics/cps/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <!-- 中文日历js -->
+        <!-- <script src="__ROOT__/statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.js"></script> -->
+        <script src="__ROOT__/statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.js"></script>
+
         <script src="__ROOT__/statics/cps/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
         <script src="__ROOT__/statics/cps/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
         <script src="__ROOT__/statics/cps/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
@@ -67,6 +72,10 @@
         <!-- 文本编辑器相关js -->
         <script src="__ROOT__/statics/cps/plugins/summernote/dist/summernote.min.js"></script>
         <script src="__ROOT__/statics/cps/plugins/summernote/lang/summernote-zh-CN.js"></script>
+
+
+        
+
         <script>
             jQuery(document).ready(function(){
                 $('.summernote').summernote({
@@ -178,38 +187,50 @@
                 $('.colorpicker-rgba').colorpicker();
                 
                 // Date Picker
-                jQuery('#datepicker').datepicker();
+                // jQuery('#datepicker').datepicker();
+                jQuery('#datepicker').datepicker({
+                language: 'zh-CN',
+                autoclose: true,
+                todayHighlight: true
+            });
                 jQuery('#datepicker-autoclose').datepicker({
+                    language: 'zh-CN',
                     autoclose: true,
                     todayHighlight: true
                 });
 
                 jQuery('#datepicker-autoclose1').datepicker({
+                    language: 'zh-CN',
                     autoclose: true,
                     todayHighlight: true
                 });
 
                 jQuery('#datepicker-autoclose2').datepicker({
+                    language: 'zh-CN',
                     autoclose: true,
                     todayHighlight: true
                 });
 
                 jQuery('#datepicker-autoclose3').datepicker({
+                    language: 'zh-CN',
                     autoclose: true,
                     todayHighlight: true
                 });
 
                 jQuery('#datepicker-autoclose4').datepicker({
+                    language: 'zh-CN',
                     autoclose: true,
                     todayHighlight: true
                 });
 
                 jQuery('#datepicker-autoclose5').datepicker({
+                    language: 'zh-CN',
                     autoclose: true,
                     todayHighlight: true
                 });
 
                 jQuery('#datepicker-autoclose6').datepicker({
+                    language: 'zh-CN',
                     autoclose: true,
                     todayHighlight: true
                 });
@@ -316,7 +337,8 @@
                     }
                 }, function (start, end, label) {
                     console.log(start.toISOString(), end.toISOString(), label);
-                    $('#reportrange span').html(start.format('YYYY, MMMM D') + ' - ' + end.format('YYYY, MMMM D'));
+                    // $('#reportrange span').html(start.format('YYYY, MMMM D') + ' - ' + end.format('YYYY, MMMM D'));
+                    $('#reportrange span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));  
                 });
                 
             });

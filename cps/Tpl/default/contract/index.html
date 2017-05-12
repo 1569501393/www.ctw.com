@@ -59,8 +59,8 @@
                                                 <label class="col-sm-1 control-label">开始时间</label>
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
-                                                        <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose" name="startdate"> -->
-                                                        <input type="text" class="form-control" id="datepicker-autoclose" name="begin_time" value="{$begin_time}">
+                                                        <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose" name="startdate"> -->
+                                                        <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose" name="begin_time" value="{$begin_time}"  >
                                                         <span class="input-group-addon bg-custom b-0 text-white">
                                                             <i class="icon-calender"></i>
                                                         </span>
@@ -69,8 +69,8 @@
                                                 <label class="col-sm-1 control-label">结束时间</label>
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
-                                                        <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose2" name="enddate"> -->
-                                                        <input type="text" class="form-control" id="datepicker-autoclose2" name="end_time" value="{$end_time}">
+                                                        <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose2" name="enddate"> -->
+                                                        <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose2" name="end_time" value="{$end_time}">
                                                         <span class="input-group-addon bg-custom b-0 text-white">
                                                             <i class="icon-calender"></i>
                                                         </span>
@@ -123,6 +123,7 @@
                                     <table class="table table-actions-bar">
                                         <thead>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>分销平台</th>
                                                 <th>合同编号</th>
                                                 <th>合同类型</th>
@@ -141,6 +142,7 @@
                                         <tbody>
                                             <volist name="contract_list" id="val">
                                                 <tr>
+                                                    <td>{$val.id}</td>
                                                     <td>{$val.platform_id}-{$val.platform_name}</td>
                                                     <td>{$val.con_id}</td>
                                                     <td>{$val.con_type}-{$val.con_type_name}</td>
@@ -226,8 +228,8 @@
                                         <label class="col-sm-1 control-label">开始时间</label>
                                         <div class="col-sm-3">
                                             <div class="input-group">
-                                                <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose3" name="begin_time"> -->
-                                                <input type="text" class="form-control" id="datepicker-autoclose3" name="begin_time" value="{$contract_info.begin_time|date='m-d-Y',###}">
+                                                <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose3" name="begin_time"> -->
+                                                <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose3" name="begin_time" value="{$contract_info.begin_time|date='Y-m-d',###}">
                                                 <span class="input-group-addon bg-custom b-0 text-white">
                                                     <i class="icon-calender"></i>
                                                 </span>
@@ -236,8 +238,8 @@
                                         <label class="col-sm-1 control-label">结束时间</label>
                                         <div class="col-sm-3">
                                             <div class="input-group">
-                                                <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="datepicker-autoclose4" name="end_time"> -->
-                                                <input type="text" class="form-control" id="datepicker-autoclose4" name="end_time" value="{$contract_info.end_time|date='m-d-Y',###}">
+                                                <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose4" name="end_time"> -->
+                                                <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose4" name="end_time" value="{$contract_info.end_time|date='Y-m-d',###}">
                                                 <span class="input-group-addon bg-custom b-0 text-white">
                                                     <i class="icon-calender"></i>
                                                 </span>
@@ -265,7 +267,7 @@
                                             <label class="col-sm-1 control-label">开始时间</label>
                                             <div class="col-sm-3">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" id="datepicker-autoclose5" name="begin_time" value="{$begin_time}">
+                                                    <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose5" name="begin_time" value="{$begin_time}">
                                                     <span class="input-group-addon bg-custom b-0 text-white">
                                                         <i class="icon-calender"></i>
                                                     </span>
@@ -274,7 +276,7 @@
                                             <label class="col-sm-1 control-label">结束时间</label>
                                             <div class="col-sm-3">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" id="datepicker-autoclose6" name="end_time" value="{$end_time}">
+                                                    <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose6" name="end_time" value="{$end_time}">
                                                     <span class="input-group-addon bg-custom b-0 text-white">
                                                         <i class="icon-calender"></i>
                                                     </span>

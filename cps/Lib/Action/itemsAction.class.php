@@ -2,6 +2,70 @@
 
 class itemsAction extends baseAction
 {
+    public function create_poster($poster_bg = '/qrcode/poster_bg.jpg',$qrcode = '/qrcode/qrcode.jpg',$head_source='/qrcode/header.jpg')
+    {
+
+        $APP_URL = 'http://'.$_SERVER['HTTP_HOST'].'/';
+//        var_dump($APP_URL);
+        $poster_bg = $APP_URL.__ROOT__.'/data'.$poster_bg;  // 海报背景图
+        $qrcode = $APP_URL.__ROOT__.'/data'.$qrcode; // 二维码
+        $head_source = $APP_URL.__ROOT__.'/data'.$head_source;
+
+//        echo "<img src ='$head_source'>";
+        $head_source = @imagecreatefromjpeg($head_source); // imagecreatefromjpeg — 由文件或URL创建一个新图象
+        $qrcode_path = $poster_path = __ROOT__.'/data/qrcode/'; //存放目录
+        $openid = 'a123456' . time(); // 文件命名
+//        var_dump(imagecreatefromjpeg($qrcode));exit;
+        header("Content-type: image/jpeg");
+
+
+//创建目标图像
+//$dst_im = imagecreatetruecolor(150, 150);
+        $dst_im = @imagecreatefromjpeg($poster_bg);
+
+//源图像
+//$src_im = @imagecreatefromjpeg("./qrcode/qrcode.jpg");
+        $src_im = @imagecreatefromjpeg($qrcode);
+        $qrcode_srouce = @imagecreatefromjpeg($qrcode);
+
+//微信二维码默认是430像素，将其缩放成300像素，核心代码如下
+        $qrcode_thumb = imagecreatetruecolor(300, 300);
+        imagecopyresampled($qrcode_thumb, $qrcode_srouce, 0, 0, 0, 0, 300, 300, 430, 430);
+
+//头像合成到二维码图片上
+        imagecopy($qrcode_thumb, $head_source, 118, 118, 0, 0, 64, 64);
+
+//拷贝源图像左上角起始 150px 150px
+//imagecopy( $dst_im, $src_im, 0, 0, 0, 0, 430,  430 );
+
+//加水印
+//imagecopy($dst_im, $src_im, 212, 410, 0, 0, 300, 300);    //水印位置
+        imagecopy($dst_im, $qrcode_thumb, 212, 410, 0, 0, 300, 300);    //水印位置
+
+//        imagecreatetruecolor — 新建一个真彩色图像
+        $im = imagecreatetruecolor(400, 30);
+        $textcolor = imagecolorallocate($im, 255, 255, 255);  // 白色
+        $text = 'helloworld';
+        $font = 'arial.ttf';
+
+
+//文字合成到海报中
+        imagettftext($dst_im, 30, 0, 40, 85, $textcolor, $font, $text);
+// Add the text
+//imagettftext($im, 20, 0, 10, 20, $black, $font, $text);
+
+//输出拷贝后图像
+        $qrcode_img = $qrcode_path . $openid . ".jpg";
+//        var_dump($qrcode_img);
+        imagejpeg($dst_im);//输出
+        imagejpeg($dst_im, $qrcode_img, 90);//保存图片
+
+        imagedestroy($dst_im);
+        imagedestroy($src_im);
+
+        return $qrcode_img;
+        exit;
+    }
 
     public function poster()
     {
@@ -15,7 +79,7 @@ class itemsAction extends baseAction
     {
 
 //        var_dump($_REQUEST);
-        M('commission')->where( "item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} " )->setInc('click');
+        M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
         $this->assign('sort', $sort);
 //        redirect('http://baidu.com');
     }

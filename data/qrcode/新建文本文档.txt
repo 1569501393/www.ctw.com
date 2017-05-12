@@ -1,0 +1,15 @@
+php微信海报二维码生成器
+
+微信二维码海报推广示例
+http://blog.csdn.net/phpxiaoxu/article/details/70155249
+
+微信公众平台开发(121) 微信二维码海报
+http://www.cnblogs.com/txw1958/p/weixin-poster.html
+
+
+使用PHP生成二维码的两种方法(带logo图像)
+http://www.thinkphp.cn/topic/44760.html
+
+
+使用php发送自定义背景、头像、文字的二维码海报并带有提示的微信消息
+http://subscribe.mail.10086.cn/subscribe/readAll.do?columnId=563&itemId=3169327

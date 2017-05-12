@@ -1,5 +1,43 @@
-$ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/
+$ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/  statics/ data/
 chmod -R 777 ./
+
+
+        modified:   cps/Lib/Action/contractAction.class.php
+        modified:   cps/Lib/Action/itemsAction.class.php
+        modified:   cps/Tpl/default/contract/edit.html
+        modified:   cps/Tpl/default/contract/index.html
+        modified:   cps/Tpl/default/public/footer.html
+        new file:   data/contract/59129947850ab.xlsx
+        new file:   data/contract/59129a992eefb.xlsx
+        new file:   data/contract/59129ac14f7aa.xlsx
+        new file:   data/contract/5912c9fd5118a.xlsx
+        new file:   data/contract/5912dea662117.xlsx
+        new file:   data/contract/5912dec6dd532.xlsx
+        new file:   data/contract/5912defbdb229.xlsx
+        new file:   data/contract/5912dfd392383.xlsx
+        new file:   data/qrcode/a1234561494565207.jpg
+        new file:   data/qrcode/header.jpg
+        new file:   data/qrcode/poster_bg.jpg
+        new file:   data/qrcode/qrcode.jpg
+        new file:   data/qrcode/qrcode2.jpg
+        new file:   "data/qrcode/\345\217\202\346\225\260\344\272\214\347\273\264\347\240\201.jpg"
+        new file:   "data/qrcode/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"
+        new file:   "data/qrcode/\346\265\267\346\212\245\345\272\225\345\233\276.jpg"
+        new file:   "data/qrcode/\347\224\250\346\210\267\345\244\264\345\203\217\344\277\241\346\201\257.jpg"
+        new file:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"
+        new file:   "doc/msec_ftp20170512\351\200\206\350\214\203\345\274\217_\350\256\242\345\215\225\350\241\250\345\222\214\344\275\243\351\207\221\350\256\276\347\275\256\350\241\250\345\206\227\344\275\231.zip"
+        new file:   "doc/php\345\276\256\344\277\241\346\265\267\346\212\245\344\272\214\347\273\264\347\240\201\347\224\237\346\210\220\345\231\250.zip"
+        deleted:    "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"
+        modified:   ms/contractmanager.php
+        modified:   ms/footer.php
+        modified:   ms/php_errors.log
+        new file:   statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.js
+        new file:   statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.js
+
+
+
 ".git/MERGE_MSG" 7L, 339C written
 Merge made by the 'recursive' strategy.
  cps/Lib/Action/analyseAction.class.php                                                                    |  300 +++++++--------
