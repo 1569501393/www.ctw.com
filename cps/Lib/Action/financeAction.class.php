@@ -7,6 +7,7 @@ class financeAction extends baseAction {
 
 	// 推广管理
 	function push() {
+		
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 		import("ORG.Util.Page");
@@ -18,11 +19,16 @@ class financeAction extends baseAction {
 			$where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
 			$this->assign('keyword', $_POST['keyword']);
 		}
-		if (isset($_GET['id']) && intval($_GET['id'])) {
-			$where .= " AND con_id=" . $_GET['id'];
-			$this->assign('con_id', $_GET['id']);
-		}
+//		if (isset($_POST['id']) && intval($_POST['id'])) {
+//			$where .= " AND con_id=" . $_POST['id'];
+//			$this->assign('con_id', $_POST['id']);
+//		}
 
+		if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
+			$where .= " AND con_id=" . $_REQUEST['id'];
+			$this->assign('id', $_REQUEST['id']);
+		}
+		
 		$count = $commission_mod->where($where)->count();
 		$p = new Page($count, 10);
 		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();

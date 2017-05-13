@@ -337,6 +337,9 @@ class contractAction extends baseAction
 				$highestColumn = $sheet->getHighestColumn(); // 取得总列数
 
 				for ($i = 2; $i <= $highestRow; $i++) {
+					// 添加商品
+					$data = $_POST;
+					
 					$data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
 					$data['rate'] = $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
 					$data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
@@ -353,12 +356,15 @@ class contractAction extends baseAction
 					//                    $data['contract'] = $_POST['contract'];
 					//                    $data['shop_id'] = $_POST['shop_id'];
 					//                    $data['platform_id'] = $_POST['platform_id'];
-					$data = $_POST;
+					
 					$data['con_id'] = $_POST['id'];
-					unset($_POST['id']);
-
+					// 佣金表 cate_id
+					$data['cate_id'] = $_POST['cid'];
+					unset($data['id']);
+					$data['shop_id'] = $_POST['shop_id'];
 					$data['uid'] = $_SESSION['admin_info']['id'];
 					$data['add_time'] = $data['update_time'] = time();
+				
 
 					// 写入商品表  价格
 					// 判断是否存在
@@ -368,6 +374,9 @@ class contractAction extends baseAction
 					}else{
 						M('items')->add($data);
 					}
+					
+					$log[] = M('items')->getLastSql();
+					$log_data[] = $data;
 
 					// 写入佣金表
 					M('commission')->add($data);
@@ -376,8 +385,9 @@ class contractAction extends baseAction
 
 				// 添加合同日志
 				admin_log($log_op = '修改', $log_obj = '合同（导入商品）', $log_desc = json_encode($_POST), M('commission')->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
-
-				$this->success(L('operation_success'), '', '', 'edit');
+				admin_log($log_op = '修改', $log_obj = '合同（导入商品内容）', $log_desc = json_encode($log_data), json_encode($log), $score = 0, $app = 0, $status = 0, $product = 0);
+				
+				$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
 				exit;
 			} elseif($_POST['dosubmit'] == 3) {
 				if ((empty($_POST['price'])) && (!isset($_POST['price']) )) {
@@ -422,7 +432,7 @@ class contractAction extends baseAction
 				admin_log($log_op = '添加', $log_obj = '商品', $log_desc = json_encode($_POST), M('items')->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
 
 				if (false !== $result) {
-					$this->success(L('operation_success'), '', '', 'edit');
+					$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
 				} else {
 					$this->error(L('operation_failure'));
 				}
