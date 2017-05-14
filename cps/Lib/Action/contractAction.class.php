@@ -26,8 +26,8 @@ class contractAction extends baseAction
 		}
 
 		if (isset($_POST['end_time']) && intval($_POST['end_time'])) {
-            $date_obj = new DateTime($_POST['end_time']);
-//            $_POST['end_time'] = $date_obj->format('U')?:0;
+			$date_obj = new DateTime($_POST['end_time']);
+			//            $_POST['end_time'] = $date_obj->format('U')?:0;
 			$where .= " AND end_time<=" . $date_obj->format('U');
 			$this->assign('end_time', $_POST['end_time']);
 		}
@@ -114,10 +114,10 @@ class contractAction extends baseAction
 			}
 
 			if (isset($_POST['end_time']) && intval($_POST['end_time'])) {
-//				$where .= " AND end_time<=" . strtotime($_POST['end_time']);
-                $date_obj = new DateTime($_POST['end_time']);
-//            $_POST['end_time'] = $date_obj->format('U')?:0;
-                $where .= " AND end_time<=" . $date_obj->format('U');
+				//				$where .= " AND end_time<=" . strtotime($_POST['end_time']);
+				$date_obj = new DateTime($_POST['end_time']);
+				//            $_POST['end_time'] = $date_obj->format('U')?:0;
+				$where .= " AND end_time<=" . $date_obj->format('U');
 				$this->assign('end_time', $_POST['end_time']);
 			}
 
@@ -143,9 +143,9 @@ class contractAction extends baseAction
 		$this->assign('page2', $page2);
 		$this->assign('log_list', $log_list);
 
-        // 默认当前时间
-        $contract_info['begin_time']=$contract_info['end_time']=time();
-        $this->assign('contract_info', $contract_info);
+		// 默认当前时间
+		$contract_info['begin_time']=$contract_info['end_time']=time();
+		$this->assign('contract_info', $contract_info);
 
 		$this->display();
 	}
@@ -167,10 +167,10 @@ class contractAction extends baseAction
 
 			// 合同开始时间
 			$_POST['begin_time'] = strtotime($_POST['begin_time']);
-//			$_POST['end_time'] = strtotime($_POST['end_time']);
-            $date_obj = new DateTime($_POST['end_time']);
-//                $_POST['end_time'] = $date_obj->getTimestamp()?:0;
-            $_POST['end_time'] = $date_obj->format('U')?:0;
+			//			$_POST['end_time'] = strtotime($_POST['end_time']);
+			$date_obj = new DateTime($_POST['end_time']);
+			//                $_POST['end_time'] = $date_obj->getTimestamp()?:0;
+			$_POST['end_time'] = $date_obj->format('U')?:0;
 			$_POST['uid'] = $_SESSION['admin_info']['id'];
 			$_POST['add_time'] = $_POST['update_time'] = time();
 			$data = $contract_mod->create();
@@ -339,7 +339,7 @@ class contractAction extends baseAction
 				for ($i = 2; $i <= $highestRow; $i++) {
 					// 添加商品
 					$data = $_POST;
-					
+						
 					$data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
 					$data['rate'] = $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
 					$data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
@@ -356,38 +356,71 @@ class contractAction extends baseAction
 					//                    $data['contract'] = $_POST['contract'];
 					//                    $data['shop_id'] = $_POST['shop_id'];
 					//                    $data['platform_id'] = $_POST['platform_id'];
-					
+						
 					$data['con_id'] = $_POST['id'];
 					// 佣金表 cate_id
 					$data['cate_id'] = $_POST['cid'];
 					unset($data['id']);
-					$data['shop_id'] = $_POST['shop_id'];
+					$data['shop_id'] = $_POST['shop_id']?:0;
 					$data['uid'] = $_SESSION['admin_info']['id'];
 					$data['add_time'] = $data['update_time'] = time();
-				
+						
+					if ($data['rate'] && $data['commission'] && ($data['rate'] !=($data['commission']/$data['price']*100))) {
+						$this->error('佣金和佣金比例设置不对，请重新设置！');
+					}
+
+					if ($data['commission'] ) {
+						$data['rate'] = $data['commission']/$data['price']*100;
+					}
+
+					if ($data['rate'] ) {
+						$data['commission'] = $data['rate']*$data['price']/100;
+					}
+
+
 
 					// 写入商品表  价格
 					// 判断是否存在
-					$result_flag = M('items')->where(" item_id={$data['item_id']} ")->find();
+					//					$result_flag = M('items')->where(" item_id={$data['item_id']} ")->find();
+					$result_flag = M('items')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
 					if ($result_flag) {
-						M('items')->where(" item_id={$data['item_id']} ")->save($data);
+						//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
+						M('items')->where(" item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
 					}else{
 						M('items')->add($data);
 					}
-					
+					// 写入佣金表
+					//					M('commission')->add($data);
+						
+					$commission_flag = M('commission')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						
+					if ($commission_flag) {
+						//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
+						M('commission')->where(" item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+					}else{
+						M('commission')->add($data);
+					}
+						
 					$log[] = M('items')->getLastSql();
 					$log_data[] = $data;
-
-					// 写入佣金表
-					M('commission')->add($data);
+					$log_commission[] = M('commission')->getLastSql();
 
 				}
 
 				// 添加合同日志
-				admin_log($log_op = '修改', $log_obj = '合同（导入商品）', $log_desc = json_encode($_POST), M('commission')->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+				//				admin_log($log_op = '修改', $log_obj = '合同（导入商品）', $log_desc = json_encode($_POST), M('commission')->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+				admin_log($log_op = '修改', $log_obj = '合同（导入商品佣金）', $log_desc = json_encode($_POST), json_encode($log_commission), $score = 0, $app = 0, $status = 0, $product = 0);
 				admin_log($log_op = '修改', $log_obj = '合同（导入商品内容）', $log_desc = json_encode($log_data), json_encode($log), $score = 0, $app = 0, $status = 0, $product = 0);
+
+//				$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
+
+				if ($_REQUEST['profit']) {
+					$this->success(L('operation_success'), U('finance/commission',array('id'=>$data['con_id'])));
 				
-				$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
+				}else{
+					$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
+				
+				}
 				exit;
 			} elseif($_POST['dosubmit'] == 3) {
 				if ((empty($_POST['price'])) && (!isset($_POST['price']) )) {
@@ -426,10 +459,21 @@ class contractAction extends baseAction
 				}
 
 				// 写入佣金表
-				M('commission')->add($data);
+				// M('commission')->add($data);
+						
+					$commission_flag = M('commission')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						
+					if ($commission_flag) {
+						//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
+						M('commission')->where(" item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+					}else{
+						M('commission')->add($data);
+					}
+					
 
 				// 添加合同日志
 				admin_log($log_op = '添加', $log_obj = '商品', $log_desc = json_encode($_POST), M('items')->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+				admin_log($log_op = '添加', $log_obj = '佣金', $log_desc = json_encode($_POST), M('commission')->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
 
 				if (false !== $result) {
 					$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
@@ -440,16 +484,16 @@ class contractAction extends baseAction
 				$contract_mod = M('contract');
 					
 				// 合同开始时间
-//                var_dump($_POST);
+				//                var_dump($_POST);
 				$_POST['begin_time'] = strtotime($_POST['begin_time']);
-//				$_POST['end_time'] = strtotime($_POST['end_time'])?:0;
-                $date_obj = new DateTime($_POST['end_time']);
-//                $_POST['end_time'] = $date_obj->getTimestamp()?:0;
-                $_POST['end_time'] = $date_obj->format('U')?:0;
+				//				$_POST['end_time'] = strtotime($_POST['end_time'])?:0;
+				$date_obj = new DateTime($_POST['end_time']);
+				//                $_POST['end_time'] = $date_obj->getTimestamp()?:0;
+				$_POST['end_time'] = $date_obj->format('U')?:0;
 				$_POST['uid'] = $_SESSION['admin_info']['id'];
 				$_POST['update_time'] = time();
 
-//                var_dump($_POST);exit;
+				//                var_dump($_POST);exit;
 				$data = $contract_mod->create();
 				$result = $contract_mod->where("id=" . $data['id'])->save($data);
 

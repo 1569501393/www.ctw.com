@@ -1,5 +1,6 @@
 php微信海报二维码生成器
 
+
 微信二维码海报推广示例
 http://blog.csdn.net/phpxiaoxu/article/details/70155249
 
@@ -13,3 +14,5 @@ http://www.thinkphp.cn/topic/44760.html
 
 使用php发送自定义背景、头像、文字的二维码海报并带有提示的微信消息
 http://subscribe.mail.10086.cn/subscribe/readAll.do?columnId=563&itemId=3169327
+
+./data/qrcode/tmp/qrcode2_1494648367.jpg

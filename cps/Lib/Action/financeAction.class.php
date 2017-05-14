@@ -2,12 +2,67 @@
 class financeAction extends baseAction {
 	// 佣金管理
 	function commission() {
+
+		//		$items_mod = M('items');
+		$commission_mod = M('commission');
+		import("ORG.Util.Page");
+
+		//搜索
+		$where = '1=1';
+		$where .= " AND con_id>0 ";
+		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
+
+			$where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
+			$this->assign('keyword', $_POST['keyword']);
+		}
+		//		if (isset($_POST['id']) && intval($_POST['id'])) {
+		//			$where .= " AND con_id=" . $_POST['id'];
+		//			$this->assign('con_id', $_POST['id']);
+		//		}
+
+		if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
+			$where .= " AND con_id={$_REQUEST['id']} ";
+			$this->assign('id', $_REQUEST['id']);
+		}
+
+		$count = $commission_mod->where($where)->count();
+		$p = new Page($count, 10);
+		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+
+		$key = 1;
+
+		// 判断角色  分行和商城直接看角色  支行和客户经理看分行  暂时屏蔽
+		$role_id = $_SESSION['admin_info']['role_id'];
+		if (($_SESSION['admin_info']['role_id'] == 5)) { // 支行
+			$role_id = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('role_id');
+		} elseif (($_SESSION['admin_info']['role_id'] == 6)) { // 客户经理
+			$pid = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('pid');
+			$role_id = M('admin')->where('id=' . $pid)->getField('role_id');
+		}
+
+		foreach ($commission_list as $k => $val) {
+			$commission_list[$k]['key'] = ++$p->firstRow;
+			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
+			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			// 分润  根据分行设置 暂时屏蔽
+//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
+			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
+			$commission_list[$k]['commission2'] = $profit['commission'];
+			$commission_list[$k]['rate2'] = $profit['rate'];
+			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
+		}
+
+		//		var_dump($commission_list);exit;
+
+		$page = $p->show();
+		$this->assign('page', $page);
+		$this->assign('commission_list', $commission_list);
 		$this->display();
 	}
 
 	// 推广管理
 	function push() {
-		
+
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 		import("ORG.Util.Page");
@@ -19,16 +74,16 @@ class financeAction extends baseAction {
 			$where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
 			$this->assign('keyword', $_POST['keyword']);
 		}
-//		if (isset($_POST['id']) && intval($_POST['id'])) {
-//			$where .= " AND con_id=" . $_POST['id'];
-//			$this->assign('con_id', $_POST['id']);
-//		}
+		//		if (isset($_POST['id']) && intval($_POST['id'])) {
+		//			$where .= " AND con_id=" . $_POST['id'];
+		//			$this->assign('con_id', $_POST['id']);
+		//		}
 
 		if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
 			$where .= " AND con_id=" . $_REQUEST['id'];
 			$this->assign('id', $_REQUEST['id']);
 		}
-		
+
 		$count = $commission_mod->where($where)->count();
 		$p = new Page($count, 10);
 		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
@@ -81,8 +136,8 @@ class financeAction extends baseAction {
 			array('settle_price', '结算金额'),
 			);
 			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
-			
-//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
+				
+			//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
 			foreach ($xlsData as $k => $v) {
 				$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
 				$xlsData[$k]['rate'] = $v['commission']/$v['sum_price'];
@@ -139,8 +194,8 @@ class financeAction extends baseAction {
 			array('settle_price', '结算金额'),
 			);
 			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
-			
-//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
+				
+			//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
 			foreach ($xlsData as $k => $v) {
 				$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
 				$xlsData[$k]['rate'] = $v['commission']/$v['sum_price'];
