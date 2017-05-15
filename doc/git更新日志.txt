@@ -2,6 +2,121 @@ $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/  st
 chmod -R 777 ./
 
 
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git checkout
+M       cps/Lib/Action/baseAction.class.php
+M       cps/Lib/Action/itemsAction.class.php
+D       cps/Runtime/Cache/6748d5b480b09646a57d41dbfa127b36.php
+D       cps/Runtime/Cache/8b41eeb3278f139483d738331ac9c6b0.php
+M       cps/Tpl/default/public/header.html
+M       "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+M       "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+A       "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+M       "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+M       "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"
+M       ms/php_errors.log
+A       "msec.jieqiangtec.com_20170512\345\205\250\351\207\217\345\244\207\344\273\275.zip"
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git reset --soft e556852007cc987a04a651db8bef506b3a8be167
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   cps/Lib/Action/baseAction.class.php
+        modified:   cps/Lib/Action/itemsAction.class.php
+        modified:   cps/Tpl/default/public/header.html
+        modified:   "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+        modified:   "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+        new file:   "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"
+        modified:   ms/php_errors.log
+        new file:   "msec.jieqiangtec.com_20170512\345\205\250\351\207\217\345\244\207\344\273\275.zip"
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqi
+$ git push
+Username for 'https://github.com': 1569501393@qq.com
+Counting objects: 35, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (33/33), done.
+Writing objects: 100% (35/35), 214.90 MiB | 69.00 KiB/s, done.
+Total 35 (delta 26), reused 0 (delta 0)
+remote: Resolving deltas: 100% (26/26), completed with 18 local objects.
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 515862828f4db749827ceb39fc5779fe
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File msec.jieqiangtec.com_20170512全量备份.zip is 219.15 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/1569501393/www.ctw.com.git
+ ! [remote rejected] msec.jieqiangtec.com -> msec.jieqiangtec.com (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/1569501393/www.ctw.com.git'
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is ahead of 'origin/msec.jieqiangtec.com' by 4 commits.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    cps/Runtime/Cache/6748d5b480b09646a57d41dbfa127b36.php
+        deleted:    cps/Runtime/Cache/8b41eeb3278f139483d738331ac9c6b0.php
+
+
+<<<<<<< HEAD
+".git/MERGE_MSG" 7L, 337C written
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/contractAction.class.php                                                                                                              |   32 +-
+ cps/Lib/Action/itemsAction.class.php                                                                                                                 |   66 ++-
+ cps/Tpl/default/contract/edit.html                                                                                                                   |    4 +-
+ cps/Tpl/default/contract/index.html                                                                                                                  |   22 +-
+ cps/Tpl/default/public/footer.html                                                                                                                   |   26 +-
+ data/contract/59129947850ab.xlsx                                                                                                                     |  Bin 0 -> 8798 bytes
+ data/contract/59129a992eefb.xlsx                                                                                                                     |  Bin 0 -> 8798 bytes
+ data/contract/59129ac14f7aa.xlsx                                                                                                                     |  Bin 0 -> 8798 bytes
+ data/contract/5912c9fd5118a.xlsx                                                                                                                     |  Bin 0 -> 8837 bytes
+ data/contract/5912dea662117.xlsx                                                                                                                     |  Bin 0 -> 8837 bytes
+ data/contract/5912dec6dd532.xlsx                                                                                                                     |  Bin 0 -> 8687 bytes
+ data/contract/5912defbdb229.xlsx                                                                                                                     |  Bin 0 -> 8836 bytes
+ data/contract/5912dfd392383.xlsx                                                                                                                     |  Bin 0 -> 8687 bytes
+ data/qrcode/a1234561494565207.jpg                                                                                                                    |  Bin 0 -> 98063 bytes
+ data/qrcode/header.jpg                                                                                                                               |  Bin 0 -> 886 bytes
+ data/qrcode/poster_bg.jpg                                                                                                                            |  Bin 0 -> 77371 bytes
+ data/qrcode/qrcode.jpg                                                                                                                               |  Bin 0 -> 30573 bytes
+ data/qrcode/qrcode2.jpg                                                                                                                              |  Bin 0 -> 43097 bytes
+ "data/qrcode/\345\217\202\346\225\260\344\272\214\347\273\264\347\240\201.jpg"                                                                       |  Bin 0 -> 38262 bytes
+ "data/qrcode/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"                                                           |   15 +
+ "data/qrcode/\346\265\267\346\212\245\345\272\225\345\233\276.jpg"                                                                                   |  Bin 0 -> 77371 bytes
+ "data/qrcode/\347\224\250\346\210\267\345\244\264\345\203\217\344\277\241\346\201\257.jpg"                                                           |  Bin 0 -> 886 bytes
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"                                                       |  Bin 0 -> 2231348 bytes
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"                                                                                        |   77 ++-
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"                                                                                    |  125 +++++
+ ...274\217_\350\256\242\345\215\225\350\241\250\345\222\214\344\275\243\351\207\221\350\256\276\347\275\256\350\241\250\345\206\227\344\275\231.zip" |  Bin 0 -> 2680275 bytes
+ "doc/php\345\276\256\344\277\241\346\265\267\346\212\245\344\272\214\347\273\264\347\240\201\347\224\237\346\210\220\345\231\250.zip"                |  Bin 0 -> 435207 bytes
+ "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"                                                       |  Bin 162 -> 0 bytes
+ ms/contractmanager.php                                                                                                                               |    2 +-
+ ms/footer.php                                                                                                                                        |    4 +-
+ ms/php_errors.log                                                                                                                                    |    6 +
+ statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.js                                                                        | 2043 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.js                                                                  |   18 +
+ 33 files changed, 2412 insertions(+), 28 deletions(-)
+=======
 Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
 $ git status
 On branch msec.jieqiangtec.com
@@ -202,6 +317,7 @@ Fast-forward
  .../dist/locales/bootstrap-datepicker.js           | 2043 ++++++++++++++++++++
  .../dist/locales/bootstrap-datepicker.zh-CN.js     |   18 +
  33 files changed, 2375 insertions(+), 28 deletions(-)
+>>>>>>> e556852007cc987a04a651db8bef506b3a8be167
  create mode 100644 data/contract/59129947850ab.xlsx
  create mode 100644 data/contract/59129a992eefb.xlsx
  create mode 100644 data/contract/59129ac14f7aa.xlsx
@@ -227,7 +343,10 @@ Fast-forward
  create mode 100644 statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.js
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> e556852007cc987a04a651db8bef506b3a8be167
         modified:   cps/Lib/Action/contractAction.class.php
         modified:   cps/Lib/Action/itemsAction.class.php
         modified:   cps/Tpl/default/contract/edit.html

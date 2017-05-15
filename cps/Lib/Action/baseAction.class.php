@@ -7,21 +7,21 @@ class baseAction extends Action {
 	public $user_mode='';  //用户模型
 	public $user_info='';  //用户模型
 	public $admin_mod='';  //管理员模型
-	public $items_cate_mod='';   //项目分类
+//	public $items_cate_mod='';   //项目分类
 	public $album_mod='';   //专辑模型
 	public $album_cate_mod='';   //专辑分类
 	public $role_mod='';//权限表
     public $sendMsg_mod='';
     protected $seo_mod;
 	function mod_init(){
-		$this->admin_mod=D('admin');
-		$this->items_cate_mod=D('items_cate');
-		$this->user_mode=D('user');
-		$this->user_info=D('user_info');
-		$this->album_mod=D('album');
-		$this->album_cate_mod=D('album_cate');
-        $this->sendMsg_mod=M('UserMsg');
-        $this->seo_mod = M('seo');
+//		$this->admin_mod=D('admin');
+//		$this->items_cate_mod=D('items_cate');
+//		$this->user_mode=D('user');
+//		$this->user_info=D('user_info');
+//		$this->album_mod=D('album');
+//		$this->album_cate_mod=D('album_cate');
+//        $this->sendMsg_mod=M('UserMsg');
+//        $this->seo_mod = M('seo');
 	}
 	
 	
