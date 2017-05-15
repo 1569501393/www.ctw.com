@@ -1,6 +1,39 @@
 $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/  statics/ data/
 chmod -R 777 ./
 
+[root@iZ300nn3dazZ msec.jieqiangtec.com]# git pull 
+^Xremote: Counting objects: 50, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 50 (delta 38), reused 49 (delta 38), pack-reused 0
+Unpacking objects: 100% (50/50), done.
+From https://github.com/1569501393/www.ctw.com
+   e556852..c4a5db8  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+error: Your local changes to the following files would be overwritten by merge:
+        cps/Lib/Action/adminAction.class.php
+        cps/Lib/Action/contractAction.class.php
+        cps/Lib/Action/financeAction.class.php
+        cps/Lib/Action/itemsAction.class.php
+        cps/Lib/Action/roleAction.class.php
+        cps/Tpl/default/admin/index.html
+        cps/Tpl/default/contract/index.html
+        cps/Tpl/default/finance/commission.html
+        cps/Tpl/default/finance/finance.html
+        cps/Tpl/default/finance/push.html
+        cps/Tpl/default/finance/settle.html
+        cps/Tpl/default/items/index.html
+        cps/Tpl/default/public/header.html
+        cps/Tpl/default/public/login.html
+        cps/Tpl/default/public/register.html
+        doc/CPS联盟系统安排20170506.xlsx
+        doc/CPS联盟系统需求00000000.docx
+        doc/cps-20170512问题整理.docx
+        doc/cps-20170512问题整理v1.2.docx
+        doc/git更新日志.txt
+        doc/git更新日志.txt.bak
+        doc/功能完成说明_20170514.docx
+        ms/php_errors.log
+Please, commit your changes or stash them before you can merge.
+
 
 Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
 $ git status
