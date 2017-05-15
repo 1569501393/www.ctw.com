@@ -52,8 +52,10 @@
                                     <div class="row m-t-10 m-b-10">
                                         <div class="col-sm-12">
                                             <!-- <form role="form"> -->
-                                            <form role="form" method="post" action="{:u('contract/index')}">
-                                                <label class="col-sm-1 control-label">开始时间</label>
+                                            <!-- <form role="form" method="post" action="{:u('contract/index')}"> -->
+                                                
+                                            <form role="form" method="get" action="">
+                                            <label class="col-sm-1 control-label">开始时间</label>
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
                                                         <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" id="datepicker-autoclose" name="startdate"> -->
@@ -112,6 +114,8 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-1">
+                                                    <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                                                    <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
                                                     <button class="btn btn-primary waves-effect waves-light">查询</button></div>
                                             </form>
                                             <p style="min-height:10px; display: block;">&nbsp;</p>
@@ -199,13 +203,6 @@
                                         </div>
                                         <!-- </div> -->
                                         <label class="col-sm-1 control-label">商家</label>
-                                        <!-- <div class="col-sm-3">
-                                        <select class="form-control" name="shop_id">
-                                        <option>商家名称1</option>
-                                        <option>商家名称2</option>
-                                        <option>商家名称3</option>
-                                        <option>商家名称4</option>
-                                        <option>商家名称5</option></select></div> -->
                                         <div class="col-sm-3">
                                             <select class="form-control" name="shop_id">
                                                 <volist name="shops" id="val">

@@ -10,10 +10,9 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1';
 		$where .= " AND con_id>0 ";
-		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
-
-			$where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
-			$this->assign('keyword', $_POST['keyword']);
+		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+			$where .= " AND (title like '%{$_GET['keyword']}%' OR contract like '%{$_GET['keyword']}%') ";
+			$this->assign('keyword', $_GET['keyword']);
 		}
 		//		if (isset($_POST['id']) && intval($_POST['id'])) {
 		//			$where .= " AND con_id=" . $_POST['id'];
@@ -45,7 +44,7 @@ class financeAction extends baseAction {
 			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
 			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 			// 分润  根据分行设置 暂时屏蔽
-//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
+			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
 			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
 			$commission_list[$k]['commission2'] = $profit['commission'];
 			$commission_list[$k]['rate2'] = $profit['rate'];
@@ -108,19 +107,37 @@ class financeAction extends baseAction {
 	function finance() {
 		//搜索
 		$where = '1=1';
-		if (isset($_POST['title']) && trim($_POST['title'])) {
-			$where .= " AND title like '%{$_POST['title']}%' ";
-			$this->assign('title', $_POST['title']);
+		if (isset($_GET['title']) && trim($_GET['title'])) {
+			$where .= " AND title like '%{$_GET['title']}%' ";
+			$this->assign('title', $_GET['title']);
 		}
-		if (isset($_POST['seller_name']) && trim($_POST['seller_name'])) {
-			$where .= " AND seller_name like '%{$_POST['seller_name']}%' ";
-			$this->assign('seller_name', $_POST['seller_name']);
+		if (isset($_GET['seller_name']) && trim($_GET['seller_name'])) {
+			$where .= " AND seller_name like '%{$_GET['seller_name']}%' ";
+			$this->assign('seller_name', $_GET['seller_name']);
 		}
+
+		if (isset($_GET['begin_time']) && intval($_GET['begin_time'])) {
+			$where .= " AND order_time>=" . strtotime($_GET['begin_time']);
+			$this->assign('begin_time', $_GET['begin_time']);
+		}
+
+		if (isset($_GET['end_time']) && intval($_GET['end_time'])) {
+			$date_obj = new DateTime($_GET['end_time']);
+			$where .= " AND order_time<=" . $date_obj->format('U');
+			$this->assign('end_time', $_GET['end_time']);
+		}
+		
+//		if (isset($_GET['settle_status']) && intval($_GET['settle_status'])) {
+		if ( $_GET['settle_status']!== '' ) {
+			$where .= " AND settle_status=" . $_GET['settle_status'];
+			$this->assign('settle_status', $_GET['settle_status']);
+		}
+		
 
 		$orderlist_mod =M('orderlist');
 
-		// 到处数据
-		if ($_POST['dosubmit']== 2) {
+		// 导出数据
+		if ($_REQUEST['dosubmit']== 2) {
 			$xlsName = "财务详情";
 			$xlsCell = array(
 			array('id', '序号'),
@@ -136,7 +153,7 @@ class financeAction extends baseAction {
 			array('settle_price', '结算金额'),
 			);
 			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
-				
+
 			//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
 			foreach ($xlsData as $k => $v) {
 				$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
@@ -159,6 +176,11 @@ class financeAction extends baseAction {
 		$page = $p->show();
 		$this->assign('page', $page);
 		$this->assign('order_list', $order_list);
+
+		// 结算状态
+		$settle_status_arr = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'settle_status\' ')->select();
+		$this->assign('settle_status_arr', $settle_status_arr);
+
 		$this->display();
 	}
 
@@ -166,19 +188,19 @@ class financeAction extends baseAction {
 	function settle() {
 		//搜索
 		$where = '1=1';
-		if (isset($_POST['title']) && trim($_POST['title'])) {
-			$where .= " AND title like '%{$_POST['title']}%' ";
+		if (isset($_GET['title']) && trim($_GET['title'])) {
+			$where .= " AND title like '%{$_GET['title']}%' ";
 			$this->assign('title', $_POST['title']);
 		}
-		if (isset($_POST['seller_name']) && trim($_POST['seller_name'])) {
-			$where .= " AND seller_name like '%{$_POST['seller_name']}%' ";
-			$this->assign('seller_name', $_POST['seller_name']);
+		if (isset($_GET['seller_name']) && trim($_GET['seller_name'])) {
+			$where .= " AND seller_name like '%{$_GET['seller_name']}%' ";
+			$this->assign('seller_name', $$_GET['seller_name']);
 		}
 
 		$orderlist_mod =M('orderlist');
 
-		// 到处数据
-		if ($_POST['dosubmit']== 2) {
+		// 导出数据
+		if ($_REQUEST['dosubmit']== 2) {
 			$xlsName = "结算详情";
 			$xlsCell = array(
 			array('id', '序号'),
@@ -194,7 +216,7 @@ class financeAction extends baseAction {
 			array('settle_price', '结算金额'),
 			);
 			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
-				
+
 			//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
 			foreach ($xlsData as $k => $v) {
 				$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
@@ -252,7 +274,7 @@ class financeAction extends baseAction {
 	}
 
 	function add() {
-		if (isset($_POST['dosubmit'])) {
+		if (isset($_REQUEST['dosubmit'])) {
 
 			$flink_mod = M('flink');
 			$data = array();
@@ -342,10 +364,12 @@ class financeAction extends baseAction {
 
 	//修改状态
 	function status() {
-		$flink_mod = D('flink');
+		$flink_mod = M('orderlist');
 		$id = intval($_REQUEST['id']);
 		$type = trim($_REQUEST['type']);
-		$sql = "update " . C('DB_PREFIX') . "flink set $type=($type+1)%2 where id='$id'";
+		$sql = "update " . C('DB_PREFIX') . "orderlist set $type=($type+1)%2 where id='$id'";
+		Log::write('$sql==='.$sql);
+//		var_dump($sql);
 		$res = $flink_mod->execute($sql);
 		$values = $flink_mod->where('id=' . $id)->find();
 		$this->ajaxReturn($values[$type]);

@@ -2,6 +2,53 @@ $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/  st
 chmod -R 777 ./
 
 
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   cps/Lib/Action/adminAction.class.php
+        modified:   cps/Lib/Action/contractAction.class.php
+        modified:   cps/Lib/Action/financeAction.class.php
+        modified:   cps/Lib/Action/itemsAction.class.php
+        modified:   cps/Lib/Action/roleAction.class.php
+        modified:   cps/Tpl/default/admin/index.html
+        modified:   cps/Tpl/default/contract/index.html
+        modified:   cps/Tpl/default/finance/commission.html
+        modified:   cps/Tpl/default/finance/finance.html
+        modified:   cps/Tpl/default/finance/push.html
+        modified:   cps/Tpl/default/finance/settle.html
+        modified:   cps/Tpl/default/items/index.html
+        modified:   cps/Tpl/default/public/login.html
+        modified:   cps/Tpl/default/public/register.html
+        modified:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345\256\211\346\216\22220170506.xlsx"
+        modified:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"
+        new file:   "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+        modified:   "doc/\345\212\237\350\203\275\345\256\214\346\210\220\350\257\264\346\230\216_20170514.docx"
+
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+Updating e556852..12043bd
+Fast-forward
+ cps/Lib/Action/baseAction.class.php                |  18 +-
+ cps/Tpl/default/public/header.html                 |   4 +-
+ ...7\256\351\242\230\346\225\264\347\220\206.docx" | Bin 63823 -> 53922 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.2.docx" | Bin 130398 -> 77640 bytes
+ ...7\256\351\242\230\346\225\264\347\220\206.docx" | Bin 0 -> 348533 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" | 119 +++++++
+ ...64\346\226\260\346\227\245\345\277\227.txt.bak" | 383 ++++++++++++++++++++-
+ ms/php_errors.log                                  |  10 +
+ 8 files changed, 520 insertions(+), 14 deletions(-)
+ create mode 100644 "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+
+
+
+
 Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
 $ git checkout
 M       cps/Lib/Action/baseAction.class.php

@@ -97,9 +97,9 @@ class adminAction extends baseAction
 
         //搜索
         $where = '1=1 ';
-        if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
-            $where .= " AND (user_name LIKE '%{$_POST['keyword']}%' OR user_id LIKE '%{$_POST['keyword']}%' ) ";
-            $this->assign('keyword', $_POST['keyword']);
+        if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+            $where .= " AND (user_name LIKE '%{$_GET['keyword']}%' OR user_id LIKE '%{$_GET['keyword']}%' ) ";
+            $this->assign('keyword', $_GET['keyword']);
         }
 
         $count = $admin_mod->where($where)->count();

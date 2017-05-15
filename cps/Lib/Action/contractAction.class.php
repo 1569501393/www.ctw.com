@@ -11,48 +11,48 @@ class contractAction extends baseAction
 		//搜索
 		$where = '1=1';
 
-		// 判断是否是商城管理员  1超级管理员  3 商城  2编辑
+	// 判断是否是商城管理员  1超级管理员  3 商城  2编辑
 		if (($_SESSION['admin_info']['role_id'] == 4)) {
 			$where .= ' AND platform_id=' . $_SESSION['admin_info']['id'];
 		}
 
-		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
-			$where .= " AND (" . $prex . "contract.name LIKE '%" . $_POST['keyword'] . "%' or url LIKE '%" . $_POST['keyword'] . "%')";
-			$this->assign('keyword', $_POST['keyword']);
+		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+			$where .= " AND (" . $prex . "contract.name LIKE '%" . $_GET['keyword'] . "%' or url LIKE '%" . $_GET['keyword'] . "%')";
+			$this->assign('keyword', $_GET['keyword']);
 		}
-		if (isset($_POST['begin_time']) && intval($_POST['begin_time'])) {
-			$where .= " AND begin_time>=" . strtotime($_POST['begin_time']);
-			$this->assign('begin_time', $_POST['begin_time']);
+		if (isset($_GET['begin_time']) && intval($_GET['begin_time'])) {
+			$where .= " AND begin_time>=" . strtotime($_GET['begin_time']);
+			$this->assign('begin_time', $_GET['begin_time']);
 		}
 
-		if (isset($_POST['end_time']) && intval($_POST['end_time'])) {
-			$date_obj = new DateTime($_POST['end_time']);
-			//            $_POST['end_time'] = $date_obj->format('U')?:0;
+		if (isset($_GET['end_time']) && intval($_GET['end_time'])) {
+			$date_obj = new DateTime($_GET['end_time']);
+			//            $_GET['end_time'] = $date_obj->format('U')?:0;
 			$where .= " AND end_time<=" . $date_obj->format('U');
-			$this->assign('end_time', $_POST['end_time']);
+			$this->assign('end_time', $_GET['end_time']);
 		}
 
-		if (isset($_POST['con_id']) && intval($_POST['con_id'])) {
-			$where .= " AND con_id=" . $_POST['con_id'];
-			$this->assign('con_id', $_POST['con_id']);
+		if (isset($_GET['con_id']) && intval($_GET['con_id'])) {
+			$where .= " AND con_id=" . $_GET['con_id'];
+			$this->assign('con_id', $_GET['con_id']);
 		}
 
-		if (isset($_POST['shop_id']) && intval($_POST['shop_id'])) {
-			$where .= " AND shop_id=" . $_POST['shop_id'];
-			$this->assign('shop_id', $_POST['shop_id']);
+		if (isset($_GET['shop_id']) && intval($_GET['shop_id'])) {
+			$where .= " AND shop_id=" . $_GET['shop_id'];
+			$this->assign('shop_id', $_GET['shop_id']);
 		}
-		if (isset($_POST['platform_id']) && intval($_POST['platform_id'])) {
-			$where .= " AND platform_id=" . $_POST['platform_id'];
-			$this->assign('platform_id', $_POST['platform_id']);
+		if (isset($_GET['platform_id']) && intval($_GET['platform_id'])) {
+			$where .= " AND platform_id=" . $_GET['platform_id'];
+			$this->assign('platform_id', $_GET['platform_id']);
 		}
-		if (isset($_POST['status']) && intval($_POST['status'])) {
-			$where .= " AND status=" . $_POST['status'];
-			$this->assign('status', $_POST['status']);
+		if (isset($_GET['status']) && intval($_GET['status'])) {
+			$where .= " AND status=" . $_GET['status'];
+			$this->assign('status', $_GET['status']);
 		}
-		if (isset($_POST['period']) && intval($_POST['period'])) {
-			$where .= " AND period=" . $_POST['period'];
-			$this->assign('period_input', $_POST['period']);
-			//            var_dump($_POST['period']);
+		if (isset($_GET['period']) && intval($_GET['period'])) {
+			$where .= " AND period=" . $_GET['period'];
+			$this->assign('period_input', $_GET['period']);
+			//            var_dump($_GET['period']);
 		}
 
 

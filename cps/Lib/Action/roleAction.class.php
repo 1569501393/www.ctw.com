@@ -6,9 +6,9 @@ class roleAction extends baseAction
 		
 		//搜索
 		$where = '1=1 ';
-		if (isset($_POST['name']) && trim($_POST['name'])) {
-			$where .= " AND name LIKE '%{$_POST['name']}%'" ;
-			$this->assign('name', $_POST['name']);
+		if (isset($_GET['name']) && trim($_GET['name'])) {
+			$where .= " AND name LIKE '%{$_GET['name']}%'" ;
+			$this->assign('name', $_GET['name']);
 		}
 		
 		$role_mod = D('role');
