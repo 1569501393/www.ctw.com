@@ -128,7 +128,7 @@ class financeAction extends baseAction {
 		}
 		
 //		if (isset($_GET['settle_status']) && intval($_GET['settle_status'])) {
-		if ( $_GET['settle_status']!== '' ) {
+		if ( isset($_GET['settle_status']) && $_GET['settle_status']!== '' ) {
 			$where .= " AND settle_status=" . $_GET['settle_status'];
 			$this->assign('settle_status', $_GET['settle_status']);
 		}
