@@ -3,6 +3,38 @@ chmod -R 777 ./
 
 
 Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git log
+commit 1df5b7ef8c3565890f3d050e163a70903a1f69d7
+Author: 1569501393 <1569501393@qq.com>
+Date:   Mon May 15 11:55:20 2017 +0800
+
+    提交
+
+commit a81d01a7e6220502eac9138c1cc4aebdad0dedc9
+Merge: 5912001 e556852
+Author: 1569501393 <1569501393@qq.com>
+Date:   Mon May 15 09:23:29 2017 +0800
+
+    提交
+
+commit e556852007cc987a04a651db8bef506b3a8be167
+Author: 1569501393 <1569501393@qq.com>
+Date:   Sun May 14 21:14:51 2017 +0800
+
+    佣金管理，海报管理
+
+commit e9cdbfb85c1aa5f77b53d946583b175148518814
+Author: 1569501393 <1569501393@qq.com>
+Date:   Sat May 13 18:12:14 2017 +0800
+
+    合同管理流程优化 二维码添加
+
+
+$ git reset --soft e556852007cc987a04a651db8bef506b3a8be167
+$ git checkout
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
 $ git checkout
 M       cps/Lib/Action/baseAction.class.php
 M       cps/Lib/Action/itemsAction.class.php
