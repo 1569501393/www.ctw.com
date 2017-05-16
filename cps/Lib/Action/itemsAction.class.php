@@ -146,10 +146,10 @@ class itemsAction extends baseAction
 		//        }
 
 
-		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
+		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 			//            $where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
-			$where .= " AND (title like '%{$_POST['keyword']}%' ) ";
-			$this->assign('keyword', $_POST['keyword']);
+			$where .= " AND (title like '%{$_GET['keyword']}%' ) ";
+			$this->assign('keyword', $_GET['keyword']);
 		}
 		if (isset($_GET['id']) && intval($_GET['id'])) {
 			$where .= " AND con_id=" . $_GET['id'];
