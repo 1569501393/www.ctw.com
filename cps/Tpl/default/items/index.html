@@ -1,4 +1,7 @@
 <include file="public:header" />
+<!-- 复制弹窗提示 -->
+<script src="http://www.coding123.net/js/jquery.js"></script>
+<script src="__ROOT__/statics/cps/js/jquery.zclip.js"></script>
 <!-- Begin page -->
 <div id="wrapper">
     <include file="public:topBar" />
@@ -11,27 +14,22 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h4 class="page-title">推广商品</h4>
-                        <ol class="breadcrumb">
-                        </ol>
+                        <ol class="breadcrumb"></ol>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <ul class="nav nav-tabs tabs">
                             <!-- <li class="active tab">
-                                <a href="#home-2" data-toggle="tab" aria-expanded="false">
-                                    <span class="visible-xs">
-                                        <i class="fa fa-home"></i>
-                                    </span>
-                                    <span class="hidden-xs">选择推广商品</span></a>
-                            </li>
+                            <a href="#home-2" data-toggle="tab" aria-expanded="false">
+                            <span class="visible-xs">
+                            <i class="fa fa-home"></i></span>
+                            <span class="hidden-xs">选择推广商品</span></a></li>
                             <li class="tab">
-                                <a href="#profile-2" data-toggle="tab" aria-expanded="false">
-                                    <span class="visible-xs">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <span class="hidden-xs">推广商品列表</span></a>
-                            </li> -->
+                            <a href="#profile-2" data-toggle="tab" aria-expanded="false">
+                            <span class="visible-xs">
+                            <i class="fa fa-user"></i></span>
+                            <span class="hidden-xs">推广商品列表</span></a></li> -->
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="home-2">
@@ -47,8 +45,8 @@
                                         <option>商品名称</option>
                                         <option>商品ID</option></select></div> -->
                                         <div class="col-md-2">
-                                        <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
-<input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+                                            <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                                            <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
                                             <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">搜索</button></div>
                                     </div>
                                 </form>
@@ -69,34 +67,40 @@
                                             <volist name="items_list" id="val">
                                                 <tr>
                                                     <td>{$val.title|default="默认商品名称"}
-                                                    <!-- <a href="" class="text-dark">
-                                                        <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">{$val.title}</a>  -->
-                                                    </td>
+                                                        <!-- <a href="" class="text-dark">
+                                                        <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">{$val.title}</a>  --></td>
                                                     <td>¥{$val.price|default="默认单价"}</td>
                                                     <td>{$val.rate|default="默认佣金比例"}</td>
                                                     <td>{$val.commission|default="默认佣金"}</td>
                                                     <td>{$val.add_time|date='Y-m-d',###}</td>
                                                     <!-- <td><a href="{:u('items/prom',array('id'=>$val['item_id']))}">推广链接</a></td> -->
-                                                    <td><a href="{:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}">推广链接</a><!-- ({:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}) --></td>
-                                                    <td><a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}" target="_blank">推广图片</a></td>
+                                                    <td>
+                                                        <!-- <a href="{:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}">推广链接</a>
+                                                        <input type="button" value="复制链接2" onClick="url.select();document.execCommand('Copy')"> -->
+                                                        <!-- <input type="text" size="30" id="url" value="http://www.baidu.com/">
+                                                        <input type="button" value="复制链接1" onClick="copyUrl()">
+                                                        -->
+                                                        <!-- <a href="#" onclick="window.clipboardData.setData('Text', this.title);alert('复制成功')" title="复制成功">复制</a> -->
+                                                        <textarea id="mytext{$val['item_id']}" rows="6">{:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}</textarea>
+                                                        <br/>
+                                                        <!-- <a href="#" id="copy_input{$val['item_id']}" class="copy">复制内容</a> -->
+                                                        <!-- ({:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}) --></td>
+                                                    <td>
+                                                        <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}" target="_blank">推广图片</a></td>
                                                     <!-- <td><input id="checkbox2" type="checkbox">
-                                                    <label for="checkbox2">选择</label></td> -->
-                                                </tr>
+                                                    <label for="checkbox2">选择</label></td> --></tr>
                                             </volist>
                                             <!-- <tr>
-                                                <td colspan="4"></td>
-                                                <td>
-                                                    <input id="checkbox2" type="checkbox">
-                                                    <label for="checkbox2">全选</label></td>
-                                            </tr> -->
+                                            <td colspan="4"></td>
+                                            <td>
+                                            <input id="checkbox2" type="checkbox">
+                                            <label for="checkbox2">全选</label></td></tr> -->
                                             <!-- <tr>
-                                                <td colspan="4"></td>
-                                                <td>{$page}</td>
-                                            </tr> -->
+                                            <td colspan="4"></td>
+                                            <td>{$page}</td></tr> -->
                                         </tbody>
                                     </table>
-                                    <div id="pages"> {$page}</div>
-                                </div>
+                                    <div id="pages">{$page}</div></div>
                             </div>
                             <div class="tab-pane" id="profile-2">
                                 <!-- <form role="form"> -->
@@ -165,4 +169,17 @@
             </div>
             <!-- container --></div>
         <!-- content --></div>
+    <script type="text/javascript">alert('111');
+        $(function() {
+            $('#copy_input5').zclip({
+                alert(111);
+                path: '__ROOT__/statics/cps/js/ZeroClipboard.swf',
+                copy: function() { //复制内容 
+                    return $('#mytext5').val();
+                },
+                afterCopy: function() { //复制成功 
+                    $("<span id='msg'/>").insertAfter($('#copy_input5')).text('复制成功');
+                }
+            });
+        });</script>
     <include file="public:footer" />

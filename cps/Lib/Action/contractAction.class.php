@@ -32,8 +32,8 @@ class contractAction extends baseAction
 			$this->assign('end_time', $_GET['end_time']);
 		}
 
-		if (isset($_GET['con_id']) && intval($_GET['con_id'])) {
-			$where .= " AND con_id=" . $_GET['con_id'];
+		if (isset($_GET['con_id']) && !empty($_GET['con_id'])) {
+			$where .= " AND con_id='{$_GET['con_id']}' " ;
 			$this->assign('con_id', $_GET['con_id']);
 		}
 
@@ -219,6 +219,7 @@ class contractAction extends baseAction
 		// 重组另外一张表
 		$contract['cell'] = array(
 		array('id', '序号'),
+		array('con_id', '合同编号'),
 		array('platform_id', '分销平台'),
 		array('con_type', '合同类型'),
 		array('shop_id', '商家名称'),

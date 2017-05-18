@@ -170,7 +170,8 @@ class financeAction extends baseAction {
 		$key = 1;
 		foreach ($order_list as $k => $val) {
 			$order_list[$k]['key'] = ++$p->firstRow;
-			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+            $order_list[$k]['rate'] = $val['commission']/$val['sum_price'];
+//			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 
 		}
 		$page = $p->show();
