@@ -1,6 +1,55 @@
 $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/  statics/ data/
 chmod -R 777 ./
 
+免费的Bootstrap管理后台模板集合
+http://wrapbootstrap.com/preview/WB0CX3745
+http://www.open-open.com/news/view/7fbd85
+http://www.topthink.com/topic/5341.html
+http://www.topthink.com/topic/4872.html
+
+ThinkPHP5.0.8_AUTH权限 后台管理系统v2.0
+http://www.topthink.com/topic/25963.html
+http://tp5.ilunhui.cn/admin/index/index.html#
+
+基于ThinkPHP5和Bootstrap的极速后台开发框架
+http://www.topthink.com/topic/25967.html
+http://demo.fastadmin.net/admin/auth/rule
+https://github.com/karsonzhang/fastadmin
+
+免费 ，免费开源 ，ThinkPHP 博客后台管理系统 3.2正式版开发的个人博客 程序开源共享.个人博客系统
+http://www.topthink.com/topic/25407.html
+http://www.jh12.cn/index.php/home/index/index.html
+
+
+解决git pull时出现的几个问题
+http://ritto.blog.51cto.com/427838/741342
+解决方法:
+执行git checkout -f，然后再执行git pull重新checkout
+
+Git:代码冲突常见解决方法
+http://blog.csdn.net/iefreer/article/details/7679631
+反过来,如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:
+git reset --hard
+git pull
+
+
+[root@iZ300nn3dazZ msec.jieqiangtec.com]# git pull
+remote: Counting objects: 28, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 28 (delta 19), reused 26 (delta 17), pack-reused 0
+Unpacking objects: 100% (28/28), done.
+From https://github.com/1569501393/www.ctw.com
+   7a93c34..2e9f66f  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+error: Your local changes to the following files would be overwritten by merge:
+        cps/Tpl/default/article/view.html
+        doc/git更新日志.txt
+        doc/git更新日志.txt.bak
+        doc/联盟系统数据库设计规格20170427v2.1.doc
+        ms/php_errors.log
+Please, commit your changes or stash them before you can merge.
+Aborting
+
+
 Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
 $ git pull
 Updating c70dd56..433e0ff
