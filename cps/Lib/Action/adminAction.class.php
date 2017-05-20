@@ -96,7 +96,7 @@ class adminAction extends baseAction
         $prex = C('DB_PREFIX');
 
         //搜索
-        $where = '1=1 ';
+        $where = '1=1 AND '.$prex.'admin.id!=1 ';
         if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
             $where .= " AND (user_name LIKE '%{$_GET['keyword']}%' OR user_id LIKE '%{$_GET['keyword']}%' ) ";
             $this->assign('keyword', $_GET['keyword']);

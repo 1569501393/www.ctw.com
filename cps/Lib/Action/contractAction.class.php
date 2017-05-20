@@ -11,7 +11,7 @@ class contractAction extends baseAction
 		//搜索
 		$where = '1=1';
 
-	// 判断是否是商城管理员  1超级管理员  3 商城  2编辑
+		// 判断是否是商城管理员  1超级管理员  3 商城  2编辑
 		if (($_SESSION['admin_info']['role_id'] == 4)) {
 			$where .= ' AND platform_id=' . $_SESSION['admin_info']['id'];
 		}
@@ -55,6 +55,27 @@ class contractAction extends baseAction
 			//            var_dump($_GET['period']);
 		}
 
+		if ($_SESSION['admin_info']['role_id'] ==1 ) {
+			// CPS:分销平台  分行
+			//		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
+			$platforms = M('admin')->where('(role_id=4 OR role_id=1 ) AND status=1 ')->select();
+			// 商家
+			$shops = M('admin')->where('(role_id=3 OR role_id=1 ) AND status=1 ')->select();
+		}elseif ($_SESSION['admin_info']['role_id'] ==3 ){
+			// 商家:分销平台  分行
+			$platforms = M('admin')->where('(role_id=1 ) AND status=1 ')->select();
+
+			// 商家
+			$shops = M('admin')->where('role_id=3 AND status=1 ')->select();
+			$where .= " AND shop_id= {$_SESSION['admin_info']['id']} " ;		
+		}else{
+			// 分行:分销平台  分行
+			$platforms = M('admin')->where('(role_id=4 ) AND status=1 ')->select();
+
+			// 商家
+			$shops = M('admin')->where('role_id=1 AND status=1 ')->select();
+			$where .= " AND platform_id= {$_SESSION['admin_info']['id']} " ;
+		}
 
 		$count = $contract_mod->where($where)->count();
 		$p = new Page($count, 10);
@@ -72,19 +93,17 @@ class contractAction extends baseAction
 			$contract_list[$k]['shop_name'] = D('admin')->where('id=' . $val['shop_id'])->getField('user_name') ?: '全部';
 			$contract_list[$k]['status_name'] = D('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' AND parameter_id=' . $val['status'])->getField('parameter_value') ?: '全部';
 		}
-		// 分销平台  分行
-		//		$platforms = M('admin')->where('role_id=4 AND status=1 ')->select();
-		$platforms = M('admin')->where('(role_id=4 OR role_id=1 ) AND status=1 ')->select();
 
-		// 商家
-		$shops = M('admin')->where('role_id=3 AND status=1 ')->select();
+		
+
+//		var_dump($shops);
 
 		// 角色
-		$roles = M('role')->where('1=1 AND status=1 ')->select();
+//		$roles = M('role')->where('1=1 AND status=1 ')->select();
 
 		$this->assign('platforms', $platforms);
 		$this->assign('shops', $shops);
-		$this->assign('roles', $roles);
+//		$this->assign('roles', $roles);
 
 		// 结算周期 审核状态 收款方
 		$period = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'period\' ')->select();
@@ -340,7 +359,7 @@ class contractAction extends baseAction
 				for ($i = 2; $i <= $highestRow; $i++) {
 					// 添加商品
 					$data = $_POST;
-						
+
 					$data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
 					$data['rate'] = $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
 					$data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
@@ -357,7 +376,7 @@ class contractAction extends baseAction
 					//                    $data['contract'] = $_POST['contract'];
 					//                    $data['shop_id'] = $_POST['shop_id'];
 					//                    $data['platform_id'] = $_POST['platform_id'];
-						
+
 					$data['con_id'] = $_POST['id'];
 					// 佣金表 cate_id
 					$data['cate_id'] = $_POST['cid'];
@@ -365,7 +384,7 @@ class contractAction extends baseAction
 					$data['shop_id'] = $_POST['shop_id']?:0;
 					$data['uid'] = $_SESSION['admin_info']['id'];
 					$data['add_time'] = $data['update_time'] = time();
-						
+
 					if ($data['rate'] && $data['commission'] && ($data['rate'] !=($data['commission']/$data['price']*100))) {
 						$this->error('佣金和佣金比例设置不对，请重新设置！');
 					}
@@ -392,16 +411,16 @@ class contractAction extends baseAction
 					}
 					// 写入佣金表
 					//					M('commission')->add($data);
-						
+
 					$commission_flag = M('commission')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
-						
+
 					if ($commission_flag) {
 						//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
 						M('commission')->where(" item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
 					}else{
 						M('commission')->add($data);
 					}
-						
+
 					$log[] = M('items')->getLastSql();
 					$log_data[] = $data;
 					$log_commission[] = M('commission')->getLastSql();
@@ -413,14 +432,14 @@ class contractAction extends baseAction
 				admin_log($log_op = '修改', $log_obj = '合同（导入商品佣金）', $log_desc = json_encode($_POST), json_encode($log_commission), $score = 0, $app = 0, $status = 0, $product = 0);
 				admin_log($log_op = '修改', $log_obj = '合同（导入商品内容）', $log_desc = json_encode($log_data), json_encode($log), $score = 0, $app = 0, $status = 0, $product = 0);
 
-//				$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
+				//				$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
 
 				if ($_REQUEST['profit']) {
 					$this->success(L('operation_success'), U('finance/commission',array('id'=>$data['con_id'])));
-				
+
 				}else{
 					$this->success(L('operation_success'), U('finance/push',array('id'=>$data['con_id'])));
-				
+
 				}
 				exit;
 			} elseif($_POST['dosubmit'] == 3) {
@@ -461,15 +480,15 @@ class contractAction extends baseAction
 
 				// 写入佣金表
 				// M('commission')->add($data);
-						
-					$commission_flag = M('commission')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
-						
-					if ($commission_flag) {
-						//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-						M('commission')->where(" item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
-					}else{
-						M('commission')->add($data);
-					}
+
+				$commission_flag = M('commission')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+
+				if ($commission_flag) {
+					//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
+					M('commission')->where(" item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+				}else{
+					M('commission')->add($data);
+				}
 					
 
 				// 添加合同日志

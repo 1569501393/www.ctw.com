@@ -9,6 +9,22 @@ class indexAction extends baseAction
     */
     public function index()
     {
+    	$where = '1=1 AND data_state=1 AND status=1 ';
+    	
+    	// 角色，用户
+    	$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+    	// 总计收入
+    	$total_commission = M('orderlist')->where(" $where ")->getField('SUM(commission)');
+//    	var_dump(M('orderlist')->getLastSql());
+//		var_dump($total_commission);exit;
+    	// 销售单数
+    	// 转化率
+    	// 展示数  
+    	// 今日销售总计 
+    	// 目标 
+    	// 上周 
+    	// 上个月 
+    	// 近期订单
         $this->display('index');
     }
 

@@ -3086,7 +3086,7 @@
 
             return $this->encodeInput($input);
         }
-        
+//        
         //----------------------------------------------------------------------
         public static function png($text, $outfile = false, $level = QR_ECLEVEL_L, $size = 3, $margin = 4, $saveandprint=false) 
         {

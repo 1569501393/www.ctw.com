@@ -4,8 +4,20 @@ class analyseAction extends baseAction
 {
 	function index()
 	{
+		
 		//        $order_list = M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->order('click DESC')->limit(10)->select();
-		$where = '1=1';
+		
+		
+		//搜索
+		$where = '1=1 AND data_state=1 AND status=1 ';
+		// 所有客户经理和及机构看到自己所在分行信息
+		if (($_SESSION['admin_info']['role_id'] == 5) || ($_SESSION['admin_info']['role_id'] == 6)) {
+			$id = get_platform_id($_SESSION['admin_info']);
+			$where .= ' AND platform_id= '.$id ;
+		}elseif ($_SESSION['admin_info']['role_id'] == 4){
+			$where .= ' AND platform_id= '.$_SESSION['admin_info']['id'] ;
+		}
+		
 
 		// 机构销售业绩排行
 		//        $order_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();
@@ -26,6 +38,7 @@ class analyseAction extends baseAction
 		$this->assign('commission_list', $commission_list);
 
 		// 热销商品排行
+		$where .= ' AND 1=1';
 		$items_list = M('orderlist')->field(array("count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('item_id')->order('sum_count DESC')->limit(10)->select();
 		//        $model->where($opt)->field(array("count(comment)"=>"countCom", "title", "artid")->group('artid')->select();
 		//        var_dump($items_list);
@@ -137,26 +150,6 @@ class analyseAction extends baseAction
 		$res = $flink_mod->execute($sql);
 		$values = $flink_mod->where('id=' . $id)->find();
 		$this->ajaxReturn($values[$type]);
-	}
-
-	public function _upload()
-	{
-		import("ORG.Net.UploadFile");
-		$upload = new UploadFile();
-		//设置上传文件大小
-		$upload->maxSize = 3292200;
-		//$upload->allowExts = explode(',', 'jpg,gif,png,jpeg');
-		$upload->savePath = ROOT_PATH . '/data/flink/';
-
-		$upload->saveRule = uniqid;
-		if (!$upload->upload()) {
-			//捕获上传异常
-			$this->error($upload->getErrorMsg());
-		} else {
-			//取得成功上传的文件信息
-			$uploadList = $upload->getUploadFileInfo();
-		}
-		return $uploadList;
 	}
 
 }
