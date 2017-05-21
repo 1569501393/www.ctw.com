@@ -340,11 +340,13 @@ class contractAction extends baseAction
 		if (isset($_POST['dosubmit'])) {
 			// 导入商品
 			if ($_POST['dosubmit'] == 2) {
-				$upload_list = $this->_upload();
+				$upload_list = $this->_upload('contract');
+//				$file_name = $this->_upload('contract');
 				vendor("PHPExcel.PHPExcel");
 				$file_name = $upload_list[0]['savepath'] . $upload_list[0]['savename'];
 				//				var_dump($file_name);exit;
 
+//				$objReader = new PHPExcel_Reader_Excel2007();
 				if ($upload_list[0]['extension'] == 'xlsx') {
 					$objReader = new PHPExcel_Reader_Excel2007();
 				} else {
@@ -361,7 +363,7 @@ class contractAction extends baseAction
 					$data = $_POST;
 
 					$data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
-					$data['rate'] = $data['truename'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
+					$data['rate']  = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
 					$data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
 					$data['cid'] = $data['cate_id'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
 					$data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
@@ -396,8 +398,6 @@ class contractAction extends baseAction
 					if ($data['rate'] ) {
 						$data['commission'] = $data['rate']*$data['price']/100;
 					}
-
-
 
 					// 写入商品表  价格
 					// 判断是否存在

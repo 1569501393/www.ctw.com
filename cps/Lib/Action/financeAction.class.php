@@ -48,6 +48,7 @@ class financeAction extends baseAction {
 			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
 			$commission_list[$k]['commission2'] = $profit['commission'];
 			$commission_list[$k]['rate2'] = $profit['rate'];
+			$commission_list[$k]['item'] = M('items')->where(" item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
 			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
 		}
 

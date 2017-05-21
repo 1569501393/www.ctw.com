@@ -548,7 +548,7 @@ class baseAction extends Action {
 		$upload = new UploadFile();
 		//设置上传文件大小
 		$upload->maxSize = 32922000;
-		$upload->allowExts = explode(',', 'jpg,gif,png,jpeg');
+		$upload->allowExts = explode(',', 'jpg,gif,png,jpeg,xlsx');
 		$upload->savePath = ROOT_PATH.'/data/'.$savePath.'/';
 		$upload->saveRule = uniqid;
 

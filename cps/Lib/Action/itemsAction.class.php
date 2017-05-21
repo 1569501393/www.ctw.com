@@ -21,12 +21,27 @@ class itemsAction extends baseAction
 	}
 
 
-	public function create_poster($poster_bg = '/qrcode/poster_bg.jpg',$qrcode = '/qrcode/qrcode.jpg',$head_source='/qrcode/header.jpg')
+	public function create_poster($poster_bg = '/qrcode/poster_bg.jpg',$qrcode = '/qrcode/qrcode.jpg',$head_source='/qrcode/header.jpg',$origin_id='1',$item_id='1',$shop_id='1')
 	{
 
+		var_dump($origin_id);
 		$APP_URL = 'http://'.$_SERVER['HTTP_HOST'].'/';
 		//        var_dump($APP_URL);
-		$poster_bg = $APP_URL.__ROOT__.'/data'.$poster_bg;  // 海报背景图
+		
+//		$file = M('file')->find(" id={$_GET['id']}"); 
+//		$file = M('file')->where(" item_id={$_GET['item_id']}")->find(); 
+//		$file = M('file')->where(" origin_id={$_GET['origin_id']}")->order('id DESC')->find(); 
+		/*$file = M('file')->where(" origin_id={$origin_id}")->order('id DESC')->find(); 
+		// 判断是否有底图
+		if ($file) {
+			$poster_bg = $APP_URL.__ROOT__.$file['img'];  // 海报背景图
+		}else{
+			$poster_bg = $APP_URL.__ROOT__.'/data'.$poster_bg;  // 海报背景图
+		}*/
+//		$poster_bg = $APP_URL.__ROOT__.'/data'.$poster_bg;  // 海报背景图
+		$poster_bg = $APP_URL.__ROOT__.$poster_bg;  // 海报背景图
+//		var_dump($poster_bg);exit;	
+		
 		 
 		$head_source = $APP_URL.__ROOT__.'/data'.$head_source;
 
@@ -45,7 +60,7 @@ class itemsAction extends baseAction
 		//        var_dump(imagecreatefromjpeg($qrcode));exit;
 
 		// 测试时屏蔽
-		header("Content-type: image/jpeg");
+//		header("Content-type: image/jpeg");
 
 		//创建目标图像
 		//$dst_im = imagecreatetruecolor(150, 150);
@@ -87,16 +102,22 @@ class itemsAction extends baseAction
 
 		//输出拷贝后图像
 		$poster_img = $qrcode_path . $openid . ".jpg";
+//		写入二维码表，商品表
 		Log::write('$poster_img=='.$poster_img);
+//		M('items')->where("id={$_GET['origin_id']}")->save(array('qrcode'=>$poster_img));
+//		M('items')->where("id={$origin_id}")->save(array('qrcode'=>$poster_img));
+		M('items')->where("item_id={$item_id}")->save(array('qrcode'=>$poster_img));
+		
+//		var_dump(M('items')->getLastSql());exit;
 		//        var_dump($qrcode_img);
-		imagejpeg($dst_im);//输出
+//		imagejpeg($dst_im);//输出
 		imagejpeg($dst_im, $poster_img, 90);// TODO 生产环境屏蔽 保存图片  上线后屏蔽
 //		imagejpeg($dst_im, 'aaa'.time().'.jpg', 90);// TODO 生产环境屏蔽 保存图片  上线后屏蔽
 		unlink($qrcode); // 删除二维码图片
 
 		imagedestroy($dst_im);
 //		return $qrcode_img;
-		exit;
+//		exit;
 	}
 
 
@@ -124,8 +145,9 @@ class itemsAction extends baseAction
 
 	public function index()
 	{
-		//		$items_mod = M('items');
-		$commission_mod = M('commission');
+//		$items_mod = M('items');
+		$commission_mod = M('items');
+//		$commission_mod = M('commission');
 		import("ORG.Util.Page");
 
 		//搜索
@@ -175,7 +197,46 @@ class itemsAction extends baseAction
 
 	}
 
+	// 编辑海报
 	public function edit()
+	{
+//		$items_mod = D('items');
+		$items_mod = M('file');
+//		$items_cate_mod = D('items_cate');
+//		$items_site_mod = D('items_site');
+//		$items_tags_mod = D('items_tags');
+
+		if (isset($_POST['dosubmit'])) {
+			$data = $items_mod->create();
+			unset($data['id']);
+			
+			if ($_FILES['img']['name'] != '') {
+				$upload_list = $this->_upload($_FILES['img']);
+//				$data['img'] = $data['simg'] = $data['bimg'] = $this->site_root . 'data/items/m_' . $upload_list['0']['savename'];
+				$data['img'] = $data['simg'] = $data['bimg'] =  'data/items/m_' . $upload_list['0']['savename'];
+			}
+//			$result = $items_mod->save($data);
+//			$data['update_time'] = time();
+			$data['add_time'] =$data['update_time']= date('Y-m-d H:i:s');
+			$data['status'] =$data['data_state'] = 1;
+			$data['uid'] = $_SESSION['admin_info']['id'] ;
+			
+			$result = $items_mod->add($data);
+			if (false !== $result) {
+				$this->create_poster($poster_bg = $data['img'],$qrcode = '/qrcode/qrcode.jpg',$head_source='/qrcode/header.jpg',$origin_id=$result,$item_id=$_POST['item_id'],$shop_id=$_POST['shop_id']);
+//				exit;
+				$this->success(L('operation_success'), U('items/index'));
+				exit;
+			} else {
+				$this->error(L('operation_failure'));
+			}
+		}
+//		$items_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error(L('please_select'));
+
+		
+		$this->display();
+	}
+	/*public function edit()
 	{
 		$items_mod = D('items');
 		$items_cate_mod = D('items_cate');
@@ -212,7 +273,7 @@ class itemsAction extends baseAction
 		$this->assign('site_list', $site_list);
 		$this->assign('items', $items_info);
 		$this->display();
-	}
+	}*/
 
 	public function collect_item()
 	{
@@ -417,9 +478,13 @@ class itemsAction extends baseAction
 			$upload->thumb = true;
 			$upload->imageClassPath = 'ORG.Util.Image';
 			$upload->thumbPrefix = 'm_';
-			$upload->thumbMaxWidth = '450';
+//			$upload->thumbMaxWidth = '450';
+//			//设置缩略图最大高度
+//			$upload->thumbMaxHeight = '450';
+
+			$upload->thumbMaxWidth = '533';
 			//设置缩略图最大高度
-			$upload->thumbMaxHeight = '450';
+			$upload->thumbMaxHeight = '800';
 			$upload->saveRule = uniqid;
 			$upload->thumbRemoveOrigin = true;
 		}

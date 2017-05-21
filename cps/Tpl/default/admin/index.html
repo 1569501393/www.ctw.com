@@ -55,8 +55,8 @@
                                                 <option>子机构</option>
                                                 <option>客户经理</option></select></div> -->
                                                 <div class="col-md-2">
-                                                <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
-<input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+                                                    <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                                                    <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
                                                     <button class="btn btn-primary waves-effect waves-light">查询</button></div>
                                             </form>
                                         </div>
@@ -109,6 +109,28 @@
                                 </div>
                                 <div class="card-box">
                                     <div class="tab-pane" id="home-2">
+                                    
+                                        <form role="form2" method="post" action="{:u('admin/add')}" enctype="multipart/form-data">
+                                            <div class="form-group m-b-0">
+                                                <label class="control-label">选择Excel文件进行上传</label>
+                                                <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" name="file">
+                                                <div class="bootstrap-filestyle input-group">
+                                                    <input type="text" class="form-control " placeholder="">
+                                                    <span class="group-span-filestyle input-group-btn" tabindex="0">
+                                                        <label for="filestyle-4" class="btn btn-primary ">
+                                                            <span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
+                                                            <span class="buttonText">选择文件</span></label>
+                                                    </span>
+                                                </div>
+                                                <p style="min-height:10px; display: block;">&nbsp;</p>
+                                                <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="2">导入用户</button></div>
+                                            
+                                            <div class="tab-pane" id="messages-2"></div>
+                                        </form>
+                                        <br/>
+                                            <br/>
+
+
                                         <form class="form-horizontal m-t-20" method="POST" action="{:u('admin/add')}">
                                             <div class="form-group">
                                                 <label for="number">账号名称</label>
@@ -158,7 +180,9 @@
                                                 <td>
                                                     <input type="radio" name="status" class="radio_style" value="1" <if condition="$admin_info.status eq 1">checked</if>> &nbsp;有效&nbsp;&nbsp;&nbsp;
                                                     <input type="radio" name="status" class="radio_style" value="0" <if condition="$admin_info.status eq 0">checked</if>> &nbsp;禁用</td></div>
-                                            <button type="submit" class="btn btn-default waves-effect waves-light" name="dosubmit" value="1">确定</button></form>
+                                            <!-- <button type="submit" class="btn btn-default waves-effect waves-light" name="dosubmit" value="1">确定</button> -->
+                                            <button type="submit" class="btn-default btn-block text-uppercase waves-effect waves-light btn-lg" name="dosubmit" value="1">确定</button></form>
+                                        
                                         <!-- </div> --></div>
                                 </div>
                             </div>
@@ -166,23 +190,42 @@
                         <!-- end col --></div>
                 </div>
             </div>
-        <!-- container --></div>
-    <!-- content --></div>
+            <!-- container --></div>
+        <!-- content --></div>
+    <script language="javascript">function edit(id, name) {
+            var lang_edit = "{$Think.lang.edit}";
+            window.top.art.dialog({
+                id: 'edit'
+            }).close();
+            window.top.art.dialog({
+                title: lang_edit + '--' + name,
+                id: 'edit',
+                iframe: '?m=admin&a=edit&id=' + id,
+                width: '480',
+                height: '520'
+            },
+            function() {
+                var d = window.top.art.dialog({
+                    id: 'edit'
+                }).data.iframe;
+                d.document.getElementById('dosubmit').click();
+                return false;
+            },
+            function() {
+                window.top.art.dialog({
+                    id: 'edit'
+                }).close()
+            });
+        }
 
-
-    <script language="javascript">
-function edit(id, name) {
-    var lang_edit = "{$Think.lang.edit}";
-    window.top.art.dialog({id:'edit'}).close();
-    window.top.art.dialog({title:lang_edit+'--'+name,id:'edit',iframe:'?m=admin&a=edit&id='+id,width:'480',height:'520'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
-}
-
-function status(id,type){
-    $.get("{:u('admin/status')}", { id: id, type: type }, function(jsondata){
-        var return_data  = eval("("+jsondata+")");
-        $("#"+type+"_"+id+" img").attr('src', '__ROOT__/statics/images/status_'+return_data.data+'.gif');
-    }); 
-}
-</script>
-
+        function status(id, type) {
+            $.get("{:u('admin/status')}", {
+                id: id,
+                type: type
+            },
+            function(jsondata) {
+                var return_data = eval("(" + jsondata + ")");
+                $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data.data + '.gif');
+            });
+        }</script>
     <include file="public:footer" />

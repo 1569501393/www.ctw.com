@@ -22,10 +22,12 @@ function get_platform_id($admin_info) {
 }
 
 // 日志记录表
-function admin_log($log_op = '添加', $log_obj = '积分', $log_desc='日志描述',$sql, $score = 0, $app = 0, $status = 0, $product = 0) {
+function admin_log($log_op = '添加', $log_obj = '积分', $log_desc='日志描述',$sql, $score = 0, $app = 0, $status = 0, $product = 0, $op_table = '') {
 	$data = array (
         'user_name' => $_SESSION ['admin_info'] ['id'].'-'.$_SESSION ['admin_info'] ['user_name'],
+        'op_table' => $op_table,
         'op' => $log_op,
+        'op_table' => $op_table,
         'sql' => $sql,
         'ip' => get_client_ip(),
         'op_time' => date ( 'Y-m-d H:i:s' ),
