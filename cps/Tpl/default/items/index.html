@@ -84,7 +84,7 @@
                                                         <input type="button" value="复制链接1" onClick="copyUrl()">
                                                         -->
                                                         <!-- <a href="#" onclick="window.clipboardData.setData('Text', this.title);alert('复制成功')" title="复制成功">复制</a> -->
-                                                        <textarea id="mytext{$val['item_id']}" rows="6">{:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'id'=>$val['id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'],'shop_id'=>$val['shop_id'] ))}</textarea>
+                                                        <textarea id="mytext{$val['item_id']}" rows="6">{$site_root}{:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'id'=>$val['id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'],'shop_id'=>$val['shop_id'] ))}</textarea>
                                                         <br/>
                                                         <!-- <a href="#" id="copy_input{$val['item_id']}" class="copy">复制内容</a> -->
                                                         <!-- ({:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}) --></td>

@@ -56,6 +56,7 @@ class financeAction extends baseAction {
 
 		$page = $p->show();
 		$this->assign('page', $page);
+		$this->assign('site_root', $this->site_root);
 		$this->assign('commission_list', $commission_list);
 		$this->display();
 	}

@@ -192,6 +192,7 @@ class itemsAction extends baseAction
 
 		$page = $p->show();
 		$this->assign('page', $page);
+		$this->assign('site_root', $this->site_root);
 		$this->assign('items_list', $commission_list);
 		$this->display();
 
