@@ -97,6 +97,12 @@ class adminAction extends baseAction
 
 		//搜索
 		$where = '1=1 AND '.$prex.'admin.id!=1 ';
+
+		// 分行
+		if ($_SESSION['admin_info']['role_id'] == 4 || $_SESSION['admin_info']['role_id'] == 5) {
+			$where .= '  AND pid= '.$_SESSION['admin_info']['id'];
+		}
+
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 			$where .= " AND (user_name LIKE '%{$_GET['keyword']}%' OR user_id LIKE '%{$_GET['keyword']}%' ) ";
 			$this->assign('keyword', $_GET['keyword']);
@@ -172,6 +178,17 @@ class adminAction extends baseAction
 				//			$_POST['password'] = md5($_POST['password']);
 				$_POST['password'] = md5('a123456');
 				$admin_mod->create();
+				
+				// 判断级别
+				// 分行
+				if ($_SESSION['admin_info']['role_id'] == 4) {
+					$admin_mod->role_id = 5;
+					$admin_mod->pid = $_SESSION['admin_info']['id'];
+				}elseif ($_SESSION['admin_info']['role_id'] == 5) {
+					$admin_mod->role_id = 6;
+					$admin_mod->pid = $_SESSION['admin_info']['id'];
+				}
+				
 				$admin_mod->add_time = time();
 				$admin_mod->last_time = time();
 				$result = $admin_mod->add();
@@ -198,6 +215,16 @@ class adminAction extends baseAction
 				$highestRow = $sheet->getHighestRow(); // 取得总行数
 				$highestColumn = $sheet->getHighestColumn(); // 取得总列数
 
+
+				// 分行
+				if ($_SESSION['admin_info']['role_id'] == 4) {
+					$role_id = 5;
+					$pid = $_SESSION['admin_info']['id'];
+				}elseif ($_SESSION['admin_info']['role_id'] == 5) {
+					$role_id = 6;
+					$pid = $_SESSION['admin_info']['id'];
+				}
+
 				for ($i = 2; $i <= $highestRow; $i++) {
 					// 添加用户
 					$data = $_POST;
@@ -207,9 +234,14 @@ class adminAction extends baseAction
 					$data['email'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
 					$data['account'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
 					$data['address'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
-					$data['role_id'] = $objPHPExcel->getActiveSheet()->getCell("G" . $i)->getValue()?:6;
-					$data['pid'] = $objPHPExcel->getActiveSheet()->getCell("H" . $i)->getValue()?:19;
-
+					if ($role_id) {
+						$data['role_id'] = $role_id;
+						$data['pid'] = $pid;
+					}else{
+						$data['role_id'] = $objPHPExcel->getActiveSheet()->getCell("G" . $i)->getValue()?:6;
+						$data['pid'] = $objPHPExcel->getActiveSheet()->getCell("H" . $i)->getValue()?:19;
+							
+					}
 					//					$data['password'] = 'e10adc3949ba59abbe56e057f20f883e'; // md5('1234566');
 					$data['password'] = 'dc483e80a7a0bd9ef71d8cf973673924'; // md5('a1234566');
 					// 佣金表 cate_id

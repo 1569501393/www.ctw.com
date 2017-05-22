@@ -4,6 +4,9 @@ chmod -R 777 ./
 $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/  statics/ data/
 chmod -R 777 ./
 
+git reset --hard
+git pull
+
 
 免费的Bootstrap管理后台模板集合
 http://wrapbootstrap.com/preview/WB0CX3745
