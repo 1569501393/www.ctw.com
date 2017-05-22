@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <ul class="nav nav-tabs tabs">
-                                <if condition="$_SESSION.admin_info.role_id eq 1">
+                                <if condition="$_SESSION['admin_info']['role_id'] eq 1">
                                     <li class="active tab">
                                         <a href="#guanli" data-toggle="tab" aria-expanded="false">
                                             <span class="visible-xs">
@@ -227,7 +227,7 @@
                                     <li class="paginate_button previous disabled" aria-controls="datatable" tabindex="0" id="datatable_previous">{$page}</li></ul> -->
                                     <div id="pages">{$page}</div></div>
                                 <!-- </div>  -->
-                                <if condition="$_SESSION.admin_info.role_id eq 1">
+                                <if condition="$_SESSION['admin_info']['role_id'] eq 1">
                                     <div class="table-responsive" id="luru">
                                         <form role="form2" method="post" action="{:u('contract/add')}">
                                             <input type="hidden" name="id" value="{$contract_info.id}" />
