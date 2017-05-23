@@ -378,6 +378,7 @@ class adminAction extends baseAction
 		$sql = "update " . C('DB_PREFIX') . "admin set $type=($type+1)%2 where id='$id'";
 		$res = $admin_mod->execute($sql);
 		$values = $admin_mod->where('id=' . $id)->find();
+//        var_dump($values);
 		$this->ajaxReturn($values[$type]);
 	}
 

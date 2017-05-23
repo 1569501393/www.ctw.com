@@ -284,7 +284,8 @@
             },
             function(jsondata) {
                 var return_data = eval("(" + jsondata + ")");
-                $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data.data + '.gif');
+                // $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data.data + '.gif');
+                $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data + '.gif');
             });
         }</script>
     <include file="public:footer" />
