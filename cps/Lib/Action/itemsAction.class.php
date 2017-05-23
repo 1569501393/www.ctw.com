@@ -146,7 +146,7 @@ class itemsAction extends baseAction
 		/*$item = M('commission')->where(" item_id={$_GET['item_id']} ")->find();
 		 $text = $item['title'];
 		 $text = "{$_GET['sname']}向您推荐好货 \n $text ";*/
-		$text = "{$_GET['sname']}向您推荐好货 \n {$_GET['title']} ";
+		$text = "{$_GET['user_id']}({$_GET['sname']})向您推荐好货 \n {$_GET['title']} ";
 		// $qrcode = $APP_URL.__ROOT__.'/data'.$qrcode; // 二维码  jiu
 		//		$qrcode = $this->create_qrcode(U('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_GET['item_id'],'shop_id'=>$_GET['shop_id'],'con_id'=>$_GET['con_id'],'rate'=>$_GET['rate'],'cate_id'=>$_GET['cate_id'] )));
 		$qrcode = $this->create_qrcode($APP_URL.U('items/prom',$_GET)); //生产二维码
@@ -288,7 +288,7 @@ class itemsAction extends baseAction
 		$_GET['add_time'] = time();
 		M('push_log')->add($_GET);
 
-		var_dump("这是跳转页面,您是由{$_GET['sid']}({$_GET['sname']})推广的,我要到商城购物去喽~~");
+		var_dump("这是跳转页面,您是由{$_GET['sid']}({$_GET['sname']}-{$_GET['user_id']})推广的,我要到商城购物去喽~~");
 		$this->assign('sort', $sort);
 		//		$this->display();
 		//        redirect('http://baidu.com');
