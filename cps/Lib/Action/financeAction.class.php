@@ -89,18 +89,24 @@ class financeAction extends baseAction {
 		$p = new Page($count, 10);
 		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
 
+		$bank_id = get_platform_id($_SESSION['admin_info']);
+//		var_dump($bank_id);exit;
 		$key = 1;
 		foreach ($commission_list as $k => $val) {
 			$commission_list[$k]['key'] = ++$p->firstRow;
 			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
-			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$commission_list[$k]['band_id'] = $bank_id;
+//			$commission_list[$k]['band_subid'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
 			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
 		}
 
-		//		var_dump($commission_list);exit;
+//		var_dump($commission_list);exit;
 
 		$page = $p->show();
 		$this->assign('page', $page);
+		
 		$this->assign('commission_list', $commission_list);
 		$this->display();
 	}

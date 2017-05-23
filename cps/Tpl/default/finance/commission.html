@@ -90,9 +90,9 @@
                                                     <th>合同名称</th>
                                                     <th style="min-width: 80px;">分销平台</th>
                                                     <th>入库日期</th>
-                                                    <th>点击量</th>
+                                                    <!-- <th>点击量</th>
                                                     <th style="min-width: 80px;">推广链接</th>
-                                                <th style="min-width: 80px;">推广图片</th>
+                                                <th style="min-width: 80px;">推广图片</th> -->
                                                 </tr>
                                     </thead>
 
@@ -114,15 +114,12 @@
                                                         <td>{$val.platform_name|default="默认分销平台"}</td>
                                                         <!-- <td>{$val.period}</td> -->
                                                         <td>{$val.add_time|date='Y-m-d',###}</td>
-                                                        <td>{$val.click}</td>
-                                                        <!-- <td><input id="checkbox2" type="checkbox">
-                                                        <label for="checkbox2">选择</label></td> -->
+                                                        <!-- <td>{$val.click}</td>
                                                         <td>
                                                         <textarea id="mytext{$val['item_id']}" rows="6">{$site_root}{:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'id'=>$val['id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'],'shop_id'=>$val['shop_id'] ))}</textarea>
                                                         <br/></td>
                                                     <td>
-                                                    <img src="{$val.item.qrcode}" width="80px">
-                                                        <!-- <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'id'=>$val['id'],'origin_id'=>$val['id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'] ))}" target="_blank">推广图片</a> --></td>
+                                                    <img src="{$val.item.qrcode}" width="80px"></td> -->
                                                     </tr>
                                                 </volist>
 

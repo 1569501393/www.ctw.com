@@ -17,6 +17,8 @@ function get_platform_id($admin_info) {
 	} elseif (($admin_info['role_id'] == 6)) { // 客户经理
 		$pid = M('admin')->where('id=' . $admin_info['pid'])->getField('pid');
 		$platform_id = M('admin')->where('id=' . $pid)->getField('id');
+	}else{
+		$platform_id = $admin_info['id'];
 	}
 	return $platform_id;
 }
