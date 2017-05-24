@@ -1,12 +1,11 @@
 $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
 chmod -R 777 ./
 
-$ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Conf/ cps/Lang/  statics/ data/
+$ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/  cps/Conf/
 chmod -R 777 ./
 
 git reset --hard
 git pull
-
 
 免费的Bootstrap管理后台模板集合
 http://wrapbootstrap.com/preview/WB0CX3745
@@ -38,6 +37,30 @@ http://blog.csdn.net/iefreer/article/details/7679631
 反过来,如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:
 git reset --hard
 git pull
+
+$ git pull
+Updating 5ac8295..8653504
+Fast-forward
+ cps/Lib/Action/adminAction.class.php               |  38 ++++++++++-
+ cps/Tpl/default/admin/index.html                   |  71 +++++++++++++++++++--
+ data/admin/59230191ac263.xlsx                      | Bin 0 -> 9984 bytes
+ data/admin/592301c14b286.xlsx                      | Bin 0 -> 9984 bytes
+ data/admin/59230270eefce.xlsx                      | Bin 0 -> 9595 bytes
+ data/admin/5923049ae6dab.xlsx                      | Bin 0 -> 9366 bytes
+ data/admin/592304c67b4ee.xlsx                      | Bin 0 -> 9360 bytes
+ ...6\214\346\210\220\345\212\237\350\203\275.docx" | Bin 0 -> 51347 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.3.docx" | Bin 0 -> 71502 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |   3 +
+ ...6\214\346\210\220\345\212\237\350\203\275.docx" | Bin 162 -> 0 bytes
+ 11 files changed, 103 insertions(+), 9 deletions(-)
+ create mode 100644 data/admin/59230191ac263.xlsx
+ create mode 100644 data/admin/592301c14b286.xlsx
+ create mode 100644 data/admin/59230270eefce.xlsx
+ create mode 100644 data/admin/5923049ae6dab.xlsx
+ create mode 100644 data/admin/592304c67b4ee.xlsx
+ create mode 100644 "doc/cps-20170522\351\227\256\351\242\230\346\225\264\347\220\206_\345\256\214\346\210\220\345\212\237\350\203\275.docx"
+ create mode 100644 "doc/cps-20170522\351\227\256\351\242\230\346\225\264\347\220\206v1.3.docx"
+ delete mode 100644 "doc/~$s-20170517\351\227\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2_\345\256\214\346\210\220\345\212\237\350\203\275.docx"
 
 
 ".git/MERGE_MSG" 7L, 337C written
