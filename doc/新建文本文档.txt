@@ -1,4 +1,61 @@
 
+1.【推广管理】  
+http://msec.jieqiangtec.cn/cps.php?a=push&m=finance
+$commission_mod = M('commission');
+
+2.【合同管理】
+http://msec.jieqiangtec.cn/cps.php?a=index&m=contract
+
+
+3.【财务管理】
+http://msec.jieqiangtec.cn/cps.php?a=finance&m=finance
+
+
+4.【权限管理】 角色管理
+http://msec.jieqiangtec.cn/cps.php?a=index&m=role
+
+
+5.【用户管理】
+http://msec.jieqiangtec.cn/cps.php?a=index&m=admin
+
+
+
+6.【公告管理】
+http://msec.jieqiangtec.cn/cps.php?a=index&m=article
+
+
+7.【数据分析】
+http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
+$order_list = M('orderlist')
+
+8.【机构管理】 同 【权限管理】 角色管理
+http://msec.jieqiangtec.cn/cps.php?a=index&m=admin
+
+9.【佣金管理】
+http://msec.jieqiangtec.cn/cps.php?a=commission&m=finance
+$commission_mod = M('commission');
+
+10.【结算管理】
+http://msec.jieqiangtec.cn/cps.php?a=settle&m=finance
+$orderlist_mod =M('orderlist');
+
+
+11.【账号管理】
+http://msec.jieqiangtec.cn/admin.php?m=admin&a=pwd&id=3
+
+
+
+12.【海报管理】
+http://msec.jieqiangtec.cn/cps.php?a=poster&m=items
+$file_mod = M('file');
+
+13.【推广商品】
+http://msec.jieqiangtec.cn/cps.php?a=index&m=items
+$commission_mod = M('items');
+
+http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
+
+
 
 INSERT INTO `ctw_orderlist` (`order_time`, `seller_name`, `uid`, `item_count`, `item_price`, `commission`, `status`, `order_id`, `shop_id`) VALUES ('1487480131', 'khjl_007', '13', '1', '100', '10', '1', '20170511205511', '1')
 

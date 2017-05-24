@@ -149,7 +149,7 @@ class itemsAction extends baseAction
 		$text = "{$_GET['user_id']}({$_GET['sname']})向您推荐好货 \n {$_GET['title']} ";
 		// $qrcode = $APP_URL.__ROOT__.'/data'.$qrcode; // 二维码  jiu
 		//		$qrcode = $this->create_qrcode(U('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_GET['item_id'],'shop_id'=>$_GET['shop_id'],'con_id'=>$_GET['con_id'],'rate'=>$_GET['rate'],'cate_id'=>$_GET['cate_id'] )));
-		$qrcode = $this->create_qrcode($APP_URL.U('items/prom',$_GET)); //生产二维码
+		$qrcode = $this->create_qrcode($APP_URL.U('desk/prom',$_GET)); //生产二维码
 		$qrcode_url = $APP_URL.__ROOT__.$qrcode; // 二维码
 			
 		$head_source = @imagecreatefromjpeg($head_source); // imagecreatefromjpeg — 由文件或URL创建一个新图象
@@ -289,7 +289,7 @@ class itemsAction extends baseAction
 		M('push_log')->add($_GET);
 
 		var_dump("这是跳转页面,您是由{$_GET['sid']}({$_GET['sname']}-{$_GET['user_id']})推广的,我要到商城购物去喽~~");
-		$this->assign('sort', $sort);
+//		$this->assign('sort', $sort);
 		//		$this->display();
 		//        redirect('http://baidu.com');
 	}

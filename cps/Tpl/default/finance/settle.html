@@ -92,7 +92,9 @@
                                             <th style="min-width: 80px;">商城2CPS</th>
                                             <th style="min-width: 80px;">CPS2对商城</th>
                                             <th style="min-width: 80px;">CPS2分行</th>
-                                            <th style="min-width: 80px;">分行2CPS</th></tr>
+                                            <th style="min-width: 80px;">分行2CPS</th>
+                                            <!-- <th style="min-width: 80px;">最终状态</th> -->
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <volist name="order_list" id="val">
@@ -116,6 +118,9 @@
                                                     <img src="__ROOT__/statics/images/status_{$val.settle_status3_ctb}.gif" /></td>
                                                 <td onclick="status({$val.id},'settle_status4_btc')" id="settle_status4_btc_{$val.id}">
                                                     <img src="__ROOT__/statics/images/status_{$val.settle_status4_btc}.gif" /></td>
+                                                <!-- <td onclick="status({$val.id},'status')" id="status_{$val.id}">
+                                                    <img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td> -->
+                                                <!-- <td ><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td> -->
                                             </tr>
                                         </volist>
                                     </tbody>
