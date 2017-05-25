@@ -62,7 +62,8 @@ class baseAction extends Action {
 		}
 
 
-		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort DESC')->select();
+//		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort DESC')->select();
+		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort ASC')->select();
 
 //		var_dump('getLastSql==',$node->getLastSql());
 

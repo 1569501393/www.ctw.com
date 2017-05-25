@@ -28,9 +28,7 @@ class publicAction extends baseAction
             $where = "auth_type<>2 AND status=1 AND is_show=0 AND id in ($ids) AND group_id=".$id;
         }
 
-		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort DESC')->select();
-
-
+		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort ASC')->select();
 
 		foreach($list as $key=>$action) {
 			$data_arg = array();

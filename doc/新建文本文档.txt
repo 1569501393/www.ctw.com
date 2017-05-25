@@ -1,55 +1,113 @@
 
-1.【推广管理】  
+
+2.【合同管理】 1
+http://msec.jieqiangtec.cn/cps.php?a=index&m=contract
+
+13.【推广商品】 2
+http://msec.jieqiangtec.cn/cps.php?a=index&m=items
+$commission_mod = M('items');
+
+
+6.【公告管理】3
+http://msec.jieqiangtec.cn/cps.php?a=index&m=article
+
+5.【用户管理】5
+http://msec.jieqiangtec.cn/cps.php?a=index&m=admi
+
+
+4.【权限管理】 角色管理 7
+http://msec.jieqiangtec.cn/cps.php?a=index&m=role
+
+12.【海报管理】 8
+http://msec.jieqiangtec.cn/cps.php?a=poster&m=items
+$file_mod = M('file');
+
+
+3.【财务管理】 9
+http://msec.jieqiangtec.cn/cps.php?a=finance&m=finance
+
+1.【推广管理】   11
 http://msec.jieqiangtec.cn/cps.php?a=push&m=finance
 $commission_mod = M('commission');
 
-2.【合同管理】
+9.【佣金管理】 12
+http://msec.jieqiangtec.cn/cps.php?a=commission&m=finance
+$commission_mod = M('commission');
+
+7.【数据分析】 13
+http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
+$order_list = M('orderlist')
+
+10.【结算管理】15
+http://msec.jieqiangtec.cn/cps.php?a=settle&m=finance
+$orderlist_mod =M('orderlist');
+
+
+11.【账号管理】 30
+http://msec.jieqiangtec.cn/admin.php?m=admin&a=pwd&id=3
+
+
+
+
+
+http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
+
+
+
+=============================================================================
+
+
+1.【推广管理】   11
+http://msec.jieqiangtec.cn/cps.php?a=push&m=finance
+$commission_mod = M('commission');
+
+2.【合同管理】 1
 http://msec.jieqiangtec.cn/cps.php?a=index&m=contract
 
 
-3.【财务管理】
+3.【财务管理】 9
 http://msec.jieqiangtec.cn/cps.php?a=finance&m=finance
 
 
-4.【权限管理】 角色管理
+4.【权限管理】 角色管理 7
 http://msec.jieqiangtec.cn/cps.php?a=index&m=role
 
 
-5.【用户管理】
+5.【用户管理】5
 http://msec.jieqiangtec.cn/cps.php?a=index&m=admin
 
 
 
-6.【公告管理】
+6.【公告管理】3
 http://msec.jieqiangtec.cn/cps.php?a=index&m=article
 
 
-7.【数据分析】
+7.【数据分析】 13
 http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
 $order_list = M('orderlist')
 
 8.【机构管理】 同 【权限管理】 角色管理
 http://msec.jieqiangtec.cn/cps.php?a=index&m=admin
 
-9.【佣金管理】
+9.【佣金管理】 12
 http://msec.jieqiangtec.cn/cps.php?a=commission&m=finance
 $commission_mod = M('commission');
 
-10.【结算管理】
+10.【结算管理】15
 http://msec.jieqiangtec.cn/cps.php?a=settle&m=finance
 $orderlist_mod =M('orderlist');
 
 
-11.【账号管理】
+11.【账号管理】 30
 http://msec.jieqiangtec.cn/admin.php?m=admin&a=pwd&id=3
 
 
 
-12.【海报管理】
+12.【海报管理】 8
 http://msec.jieqiangtec.cn/cps.php?a=poster&m=items
 $file_mod = M('file');
 
-13.【推广商品】
+13.【推广商品】 2
 http://msec.jieqiangtec.cn/cps.php?a=index&m=items
 $commission_mod = M('items');
 

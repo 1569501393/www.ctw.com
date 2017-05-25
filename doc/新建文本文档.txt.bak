@@ -1,3 +1,171 @@
+
+
+
+
+$commission_mod = M('commission');
+
+2.【合同管理】 1
+http://msec.jieqiangtec.cn/cps.php?a=index&m=contract
+
+13.【推广商品】 2
+http://msec.jieqiangtec.cn/cps.php?a=index&m=items
+$commission_mod = M('items');
+
+
+6.【公告管理】3
+http://msec.jieqiangtec.cn/cps.php?a=index&m=article
+
+5.【用户管理】5
+http://msec.jieqiangtec.cn/cps.php?a=index&m=admi
+
+
+4.【权限管理】 角色管理 7
+http://msec.jieqiangtec.cn/cps.php?a=index&m=role
+
+12.【海报管理】 8
+http://msec.jieqiangtec.cn/cps.php?a=poster&m=items
+$file_mod = M('file');
+
+
+
+3.【财务管理】 9
+http://msec.jieqiangtec.cn/cps.php?a=finance&m=finance
+
+
+1.【推广管理】   11
+http://msec.jieqiangtec.cn/cps.php?a=push&m=finance
+$commission_mod = M('commission');
+
+
+9.【佣金管理】 12
+http://msec.jieqiangtec.cn/cps.php?a=commission&m=finance
+$commission_mod = M('commission');
+
+
+7.【数据分析】 13
+http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
+$order_list = M('orderlist')
+
+
+
+
+
+10.【结算管理】15
+http://msec.jieqiangtec.cn/cps.php?a=settle&m=finance
+$orderlist_mod =M('orderlist');
+
+
+11.【账号管理】 30
+http://msec.jieqiangtec.cn/admin.php?m=admin&a=pwd&id=3
+
+
+
+
+
+http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
+
+
+
+=============================================================================
+
+
+1.【推广管理】   11
+http://msec.jieqiangtec.cn/cps.php?a=push&m=finance
+$commission_mod = M('commission');
+
+2.【合同管理】 1
+http://msec.jieqiangtec.cn/cps.php?a=index&m=contract
+
+
+3.【财务管理】 9
+http://msec.jieqiangtec.cn/cps.php?a=finance&m=finance
+
+
+4.【权限管理】 角色管理 7
+http://msec.jieqiangtec.cn/cps.php?a=index&m=role
+
+
+5.【用户管理】5
+http://msec.jieqiangtec.cn/cps.php?a=index&m=admin
+
+
+
+6.【公告管理】3
+http://msec.jieqiangtec.cn/cps.php?a=index&m=article
+
+
+7.【数据分析】 13
+http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
+$order_list = M('orderlist')
+
+8.【机构管理】 同 【权限管理】 角色管理
+http://msec.jieqiangtec.cn/cps.php?a=index&m=admin
+
+9.【佣金管理】 12
+http://msec.jieqiangtec.cn/cps.php?a=commission&m=finance
+$commission_mod = M('commission');
+
+10.【结算管理】15
+http://msec.jieqiangtec.cn/cps.php?a=settle&m=finance
+$orderlist_mod =M('orderlist');
+
+
+11.【账号管理】 30
+http://msec.jieqiangtec.cn/admin.php?m=admin&a=pwd&id=3
+
+
+
+12.【海报管理】 8
+http://msec.jieqiangtec.cn/cps.php?a=poster&m=items
+$file_mod = M('file');
+
+13.【推广商品】 2
+http://msec.jieqiangtec.cn/cps.php?a=index&m=items
+$commission_mod = M('items');
+
+http://msec.jieqiangtec.cn/cps.php?a=index&m=analyse&type=1
+
+
+
+INSERT INTO `ctw_orderlist` (`order_time`, `seller_name`, `uid`, `item_count`, `item_price`, `commission`, `status`, `order_id`, `shop_id`) VALUES ('1487480131', 'khjl_007', '13', '1', '100', '10', '1', '20170511205511', '1')
+
+INSERT INTO `ctw_orderlist` (`order_time`, `seller_name`, `uid`, `item_count`, `item_price`, `commission`, `status`, `order_id`, `shop_id`, `item_id`) VALUES ('1487480131', 'khjl_007', '13', '1', '100', '10', '1', '20170511205511', '1', '1')
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqi                                                                                                                                                                                               angtec.com (msec.jieqiangtec.com)
+$ git pull
+remote: Counting objects: 27, done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 27 (delta 18), reused 27 (delta 18), pack-reused 0
+Unpacking objects: 100% (27/27), done.
+From https://github.com/1569501393/www.ctw.com
+   e7a4d86..311d17a  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+Updating e7a4d86..311d17a
+Fast-forward
+ cps/Lib/Action/articleAction.class.php             | 105 ++++--
+ cps/Lib/Action/baseAction.class.php                |  18 +-
+ cps/Lib/Action/contractAction.class.php            |  66 ++--
+ cps/Tpl/default/article/content.html               |  76 ++++
+ cps/Tpl/default/article/edit.html                  |  20 -
+ cps/Tpl/default/article/view.html                  |  74 ++++
+ .../index - \345\211\257\346\234\254.html"         | 126 +++++++
+ cps/Tpl/default/contract/index.html                | 401 ++++++++++++++-------
+ cps/Tpl/default/role/auth.html                     |  14 +-
+ ...3\273\347\273\237\345\256\211\346\216\222.xlsx" | Bin 0 -> 11526 bytes
+ ...7\273\237\345\256\211\346\216\22220170506.xlsx" | Bin 0 -> 11140 bytes
+ ...7\273\237\351\234\200\346\261\20220170506.docx" | Bin 0 -> 2222305 bytes
+ ...56\241\350\247\204\346\240\27420170427v2.1.doc" | Bin 162 -> 0 bytes
+ ...26\207\346\234\254\346\226\207\346\241\243.txt" |  32 ++
+ ...56\241\350\247\204\346\240\27420170427v2.1.doc" | Bin 386861 -> 392117 bytes
+ 15 files changed, 730 insertions(+), 202 deletions(-)
+ create mode 100644 cps/Tpl/default/article/content.html
+ create mode 100644 cps/Tpl/default/article/view.html
+ create mode 100644 "cps/Tpl/default/contract/index - \345\211\257\346\234\254.h                                                                                                                                                                                               tml"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345                                                                                                                                                                                               \256\211\346\216\222.xlsx"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345                                                                                                                                                                                               \256\211\346\216\22220170506.xlsx"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351                                                                                                                                                                                               \234\200\346\261\20220170506.docx"
+ delete mode 100644 "doc/~$\347\263\273\347\273\237\346\225\260\346\215\256\345\                                                                                                                                                                                               272\223\350\256\276\350\256\241\350\247\204\346\240\27420170427v2.1.doc"
+
+
 Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
 $ git pull
 remote: Counting objects: 27, done.
