@@ -10,13 +10,17 @@ class analyseAction extends baseAction
 		//搜索
 		$where = '1=1 AND data_state=1 AND status=1 ';
 		// 所有客户经理和及机构看到自己所在分行信息
-		if (($_SESSION['admin_info']['role_id'] == 5) || ($_SESSION['admin_info']['role_id'] == 6)) {
+		/*if (($_SESSION['admin_info']['role_id'] == 5) || ($_SESSION['admin_info']['role_id'] == 6)) {
 			$id = get_platform_id($_SESSION['admin_info']);
 			$where .= ' AND platform_id= '.$id ;
 		}elseif ($_SESSION['admin_info']['role_id'] == 4){
 			$where .= ' AND platform_id= '.$_SESSION['admin_info']['id'] ;
+		}*/
+		$platform_id = get_platform_id($_SESSION['admin_info']);
+		if ($platform_id) {
+			$where .= ' AND platform_id= '.$platform_id ;
 		}
-		
+			
 
 		// 机构销售业绩排行
 		//        $order_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();

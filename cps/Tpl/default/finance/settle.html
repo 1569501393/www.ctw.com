@@ -83,7 +83,7 @@
                                             <th>单价(元)</th>
                                             <th>数量</th>
                                             <th>佣金比例</th>
-                                            <th>总金额</th>
+                                            <!-- <th>总金额</th> -->
                                             <th>下单时间</th>
                                             <!-- <th>完成时间</th> -->
                                             <th>推广人</th>
@@ -105,11 +105,12 @@
                                                     <a href="" class="text-dark">{$val.title|default="苹果Iphone 7Plus 64GB."}</a></td>
                                                 <td>¥{$val.item_price|default="4,888"}</td>
                                                 <td>{$val.item_count|default="99"}</td>
-                                                <td>{$val.rate|default="0.5%" }</td>
-                                                <td>{$val.sum_price|default="总金额" }</td>
+                                                <!-- <td>{$val.rate|default="0.5%" }</td> -->
+                                                <td>{$val['commission']/$val['item_price']*100|default="5" }%</td>
+                                                <!-- <td>{$val.sum_price|default="总金额" }</td> -->
                                                 <td>{$val.order_time|date='Y-m-d',###}</td>
                                                 <td>{$val.seller_name|default="章三"}</td>
-                                                <td>{$val.settle_price|default="¥125,699"}</td>
+                                                <td>{$val['commission']*$val['item_count']|default="¥125,699"}</td>
                                                 <td onclick="status({$val.id},'settle_status1_stc')" id="settle_status1_stc_{$val.id}">
                                                     <img src="__ROOT__/statics/images/status_{$val.settle_status1_stc}.gif" /></td>
                                                 <td onclick="status({$val.id},'settle_status2_cts')" id="settle_status2_cts_{$val.id}">

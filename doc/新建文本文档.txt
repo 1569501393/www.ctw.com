@@ -1,4 +1,15 @@
+php四舍五入保留两位小数
+$num = 123213.666666;  
+echo sprintf("%.2f", $num); 
 
+D:\WWW\99_ctw\msec2.jieqiangtec.com\statics\cps\css\pages.css
+.morris-hover.morris-default-style
+
+
+日用品2
+D:\WWW\99_ctw\msec2.jieqiangtec.com\statics\cps\pages\morris.init.js
+
+每个商城配置一个接口链接，再用户管理中给商城自行绑定
 
 2.【合同管理】 1
 http://msec.jieqiangtec.cn/cps.php?a=index&m=contract

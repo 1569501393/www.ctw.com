@@ -113,8 +113,20 @@ class financeAction extends baseAction {
 
 	// 财务管理
 	function finance() {
-		//搜索
-		$where = '1=1';
+	//搜索
+		$where = '1=1 AND data_state=1 AND status=1 ';
+	// 角色，用户
+		if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
+			$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+		}elseif ($_SESSION['admin_info']['role_id'] == 5) { // 支行
+			$where .= ' AND bank_subid = '.$_SESSION['admin_info']['id'];
+		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
+			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
+		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
+			// $where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+		}else { // 其它
+			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+		}
 		if (isset($_GET['title']) && trim($_GET['title'])) {
 			$where .= " AND title like '%{$_GET['title']}%' ";
 			$this->assign('title', $_GET['title']);
@@ -196,7 +208,19 @@ class financeAction extends baseAction {
 	// 结算管理
 	function settle() {
 		//搜索
-		$where = '1=1';
+		$where = '1=1 AND data_state=1 AND status=1 ';
+	// 角色，用户
+		if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
+			$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+		}elseif ($_SESSION['admin_info']['role_id'] == 5) { // 支行
+			$where .= ' AND bank_subid = '.$_SESSION['admin_info']['id'];
+		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
+			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
+		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
+			// $where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+		}else { // 其它
+			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+		}
 		if (isset($_GET['title']) && trim($_GET['title'])) {
 			$where .= " AND title like '%{$_GET['title']}%' ";
 			$this->assign('title', $_POST['title']);
