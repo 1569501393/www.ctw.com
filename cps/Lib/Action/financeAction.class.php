@@ -123,7 +123,7 @@ class financeAction extends baseAction {
 		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
 			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
 		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
-			// $where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+            $where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
 		}else { // 其它
 			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
 		}
@@ -217,7 +217,7 @@ class financeAction extends baseAction {
 		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
 			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
 		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
-			// $where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+            $where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
 		}else { // 其它
 			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
 		}
