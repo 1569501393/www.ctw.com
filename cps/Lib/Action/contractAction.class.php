@@ -10,7 +10,6 @@ class contractAction extends baseAction
 
 		//搜索
 		$where = '1=1';
-
 		// 判断是否是商城管理员  1超级管理员  3 商城  2编辑
 		if (($_SESSION['admin_info']['role_id'] == 4)) {
 			$where .= ' AND platform_id=' . $_SESSION['admin_info']['id'];
@@ -93,10 +92,7 @@ class contractAction extends baseAction
 			$contract_list[$k]['shop_name'] = D('admin')->where('id=' . $val['shop_id'])->getField('user_name') ?: '全部';
 			$contract_list[$k]['status_name'] = D('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' AND parameter_id=' . $val['status'])->getField('parameter_value') ?: '全部';
 		}
-
 		
-
-//		var_dump($shops);
 
 		// 角色
 //		$roles = M('role')->where('1=1 AND status=1 ')->select();
@@ -173,9 +169,22 @@ class contractAction extends baseAction
 	{
 		if (isset($_POST['dosubmit'])) {
 
+			// 合法性校验
+			if (empty($_GET['con_id'])) {
+				$this->error('合同编号不能为空');
+			}
+			
+					// 合法性校验
+			if (empty($_GET['period'])) {
+				$this->error('结算周期不能为空');
+			}
+					// 合法性校验
+			if (empty($_GET['title'])) {
+				$this->error('合同名称不能为空');
+			}
+			
 			$contract_mod = M('contract');
 			$data = array();
-
 			//            var_dump(I('con_id'));
 			$result = $contract_mod->where('con_id=' . " '{$_REQUEST['con_id']}' ")->count();
 			//            var_dump($contract_mod->getLastSql());
@@ -443,11 +452,28 @@ class contractAction extends baseAction
 				}
 				exit;
 			} elseif($_POST['dosubmit'] == 3) {
-				if ((empty($_POST['price'])) && (!isset($_POST['price']) )) {
-					$this->error('请选择要删除的链接！');
+//				var_dump($_POST);exit;
+				if ((empty($_POST['item_id'])) || (!isset($_POST['item_id']) )) {
+					$this->error('商品ID不能为空！');
+				}
+				
+				if ((empty($_POST['price'])) || (!isset($_POST['price']) )) {
+					$this->error('商品金额不能为空！');
+				}
+				
+				if ((empty($_POST['title'])) || (!isset($_POST['title']) )) {
+					$this->error('商品名称不能为空！');
 				}
 
-				if ($_POST['rate'] && $_POST['commission'] && ($_POST['rate'] !=($_POST['commission']/$_POST['price']*100))) {
+				/*if ( ($_POST['rate'] || $_POST['commission']) && ($_POST['rate'] !=($_POST['commission']/$_POST['price']*100))) {
+					$this->error('佣金和佣金比例设置不对，请重新设置！');
+				}*/
+				
+				if ( (empty($_POST['rate']) && empty($_POST['commission'])) ) {
+					$this->error('请填写佣金或佣金比例设置！');
+				}
+				
+				if ( ($_POST['rate'] && $_POST['commission']) && ($_POST['rate'] !=($_POST['commission']/$_POST['price']*100))) {
 					$this->error('佣金和佣金比例设置不对，请重新设置！');
 				}
 
@@ -559,8 +585,6 @@ class contractAction extends baseAction
 
 			$payee = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'payee\' ')->select();
 			$this->assign('payee', $payee);
-
-
 
 			//			var_dump($contract_mod->getLastSql());exit;
 			$this->assign('contract_info', $contract_info);

@@ -220,10 +220,9 @@ class itemsAction extends baseAction
 	}
 
 
-	public function poster()
+	// 海报管理
+	/*public function poster()
 	{
-
-
 		//		$file_mod = M('file');
 		$file_mod = M('file');
 		//		$file_mod = M('commission');
@@ -273,30 +272,10 @@ class itemsAction extends baseAction
 		$this->assign('site_root', $this->site_root);
 		$this->assign('file_list', $file_list);
 		$this->display();
-	}
-
-	// 推广链接跳转
-	public function prom()
-	{
-
-		//        var_dump($_REQUEST);
-		M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
-		$_GET['add_time'] =$_GET['update_time']=  time();
-		$_GET['op_time'] =  date('Y-m-d H:i:s');
-		$_GET['status'] = $_GET['data_state'] =1;
-		$_GET['add_time'] = time();
-		$_GET['add_time'] = time();
-		M('push_log')->add($_GET);
-
-		var_dump("这是跳转页面,您是由{$_GET['sid']}({$_GET['sname']}-{$_GET['user_id']})推广的,我要到商城购物去喽~~");
-//		$this->assign('sort', $sort);
-		//		$this->display();
-		//        redirect('http://baidu.com');
-	}
-
-
-	public function index()
-	{
+	}*/
+	
+	// 海报管理
+	public function poster() {
 		//		$items_mod = M('items');
 		$commission_mod = M('items');
 		//		$commission_mod = M('commission');
@@ -318,8 +297,6 @@ class itemsAction extends baseAction
 		//                $where .= " AND (platform_id ={$role_id}) ";
 		//            }
 		//        }
-
-
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 			//            $where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
 			$where .= " AND (title like '%{$_GET['keyword']}%' ) ";
@@ -347,7 +324,128 @@ class itemsAction extends baseAction
 		$this->assign('site_root', $this->site_root);
 		$this->assign('items_list', $commission_list);
 		$this->display();
+	}
 
+	// 推广链接跳转
+	public function prom()
+	{
+
+		//        var_dump($_REQUEST);
+		M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
+		$_GET['add_time'] =$_GET['update_time']=  time();
+		$_GET['op_time'] =  date('Y-m-d H:i:s');
+		$_GET['status'] = $_GET['data_state'] =1;
+		$_GET['add_time'] = time();
+		$_GET['add_time'] = time();
+		M('push_log')->add($_GET);
+
+		var_dump("这是跳转页面,您是由{$_GET['sid']}({$_GET['sname']}-{$_GET['user_id']})推广的,我要到商城购物去喽~~");
+//		$this->assign('sort', $sort);
+		//		$this->display();
+		//        redirect('http://baidu.com');
+	}
+
+
+	/*public function index()
+	{
+		//		$items_mod = M('items');
+		$commission_mod = M('items');
+		//		$commission_mod = M('commission');
+		import("ORG.Util.Page");
+
+		//搜索
+		$where = '1=1';
+
+		// 判断角色  分行和商城直接看角色  支行和客户经理看分行  暂时屏蔽
+		//        if (($_SESSION['admin_info']['role_id'] == 3) || ($_SESSION['admin_info']['role_id'] == 4)) {
+		//            $where .= " AND (platform_id ={$_SESSION['admin_info']['role_id']} ) ";
+		//        } else {
+		//            if (($_SESSION['admin_info']['role_id'] == 5)) { // 支行
+		//                $role_id = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('role_id');
+		//                $where .= " AND (platform_id ={$role_id}) ";
+		//            } elseif (($_SESSION['admin_info']['role_id'] == 6)) { // 客户经理
+		//                $pid = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('pid');
+		//                $role_id = M('admin')->where('id=' . $pid)->getField('role_id');
+		//                $where .= " AND (platform_id ={$role_id}) ";
+		//            }
+		//        }
+		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+			//            $where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
+			$where .= " AND (title like '%{$_GET['keyword']}%' ) ";
+			$this->assign('keyword', $_GET['keyword']);
+		}
+		if (isset($_GET['id']) && intval($_GET['id'])) {
+			$where .= " AND con_id=" . $_GET['id'];
+			$this->assign('con_id', $_GET['id']);
+		}
+
+		$count = $commission_mod->where($where)->count();
+		$p = new Page($count, 10);
+		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+
+		$key = 1;
+		foreach ($commission_list as $k => $val) {
+			$commission_list[$k]['key'] = ++$p->firstRow;
+			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
+			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
+		}
+
+		$page = $p->show();
+		$this->assign('page', $page);
+		$this->assign('site_root', $this->site_root);
+		$this->assign('items_list', $commission_list);
+		$this->display();
+	}*/
+	
+	// 推广商品
+	function index() {
+
+		//		$items_mod = M('items');
+		$commission_mod = M('commission');
+		import("ORG.Util.Page");
+
+		//搜索
+		$where = '1=1';
+		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
+
+			$where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
+			$this->assign('keyword', $_POST['keyword']);
+		}
+		//		if (isset($_POST['id']) && intval($_POST['id'])) {
+		//			$where .= " AND con_id=" . $_POST['id'];
+		//			$this->assign('con_id', $_POST['id']);
+		//		}
+
+		if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
+			$where .= " AND con_id=" . $_REQUEST['id'];
+			$this->assign('id', $_REQUEST['id']);
+		}
+
+		$count = $commission_mod->where($where)->count();
+		$p = new Page($count, 10);
+		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+
+		$bank_id = get_platform_id($_SESSION['admin_info']);
+//		var_dump($bank_id);exit;
+		$key = 1;
+		foreach ($commission_list as $k => $val) {
+			$commission_list[$k]['key'] = ++$p->firstRow;
+			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
+			$commission_list[$k]['band_id'] = $bank_id;
+//			$commission_list[$k]['band_subid'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
+			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
+		}
+
+//		var_dump($commission_list);exit;
+
+		$page = $p->show();
+		$this->assign('page', $page);
+		
+		$this->assign('commission_list', $commission_list);
+		$this->display();
 	}
 
 	// 编辑海报
@@ -355,10 +453,6 @@ class itemsAction extends baseAction
 	{
 		//		$items_mod = D('items');
 		$items_mod = M('file');
-		//		$items_cate_mod = D('items_cate');
-		//		$items_site_mod = D('items_site');
-		//		$items_tags_mod = D('items_tags');
-
 		if (isset($_POST['dosubmit'])) {
 			$data = $items_mod->create();
 			unset($data['id']);
@@ -367,6 +461,8 @@ class itemsAction extends baseAction
 				$upload_list = $this->_upload($_FILES['img']);
 				//				$data['img'] = $data['simg'] = $data['bimg'] = $this->site_root . 'data/items/m_' . $upload_list['0']['savename'];
 				$data['img'] = $data['simg'] = $data['bimg'] = 'data/items/m_' . $upload_list['0']['savename'];
+			}else{
+				$this->error(L('请上传图片'));
 			}
 			//			$result = $items_mod->save($data);
 			//			$data['update_time'] = time();
@@ -379,14 +475,22 @@ class itemsAction extends baseAction
 				$this->create_poster($poster_bg = $data['img'], $qrcode = '/qrcode/qrcode.jpg', $head_source = '/qrcode/header.jpg', $origin_id = $result, $item_id = $_POST['item_id'], $shop_id = $_POST['shop_id']);
 				//				exit;
 				//                $this->success(L('operation_success'), U('items/index'));
-				$this->success(L('operation_success'), U('items/poster'));
+//				$this->success(L('operation_success'), U('items/poster'));
+				$this->success(L('operation_success'));
 				exit;
 			} else {
 				$this->error(L('operation_failure'));
 			}
+		}else{
+			//		$items_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error(L('please_select'));
+//			$files = M()->where($where)->select($options);
+			if (empty($_GET['origin_id'])) {
+				$this->error('非法请求，参数错误');
+			}
+			$files =  M('file')->where(" 1=1 AND data_state=1 AND status=1 AND origin_id={$_GET['origin_id']} ")->order('id DESC')->select();
+			$this->assign('files',$files);
 		}
-		//		$items_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error(L('please_select'));
-
+		
 
 		$this->display();
 	}
