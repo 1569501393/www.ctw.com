@@ -19,13 +19,13 @@
           <div class="row">
             <div class="col-lg-12">
               <ul class="nav nav-tabs tabs">
-                <li class="active tab">
+                <!-- <li class="active tab">
                   <a href="#home-2" data-toggle="tab" aria-expanded="false">
                     <span class="visible-xs">
                       <i class="fa fa-home"></i>
                     </span>
                     <span class="hidden-xs">海报管理</span></a>
-                </li>
+                </li> -->
                 <!-- <li class="tab">
                 <a href="#profile-2" data-toggle="tab" aria-expanded="false">
                 <span class="visible-xs">
@@ -63,7 +63,7 @@
                         <th>佣金</th> -->
                         <th>入库日期</th>
                         <!-- <th style="min-width: 80px;">推广链接</th> -->
-                        <!-- <th style="min-width: 80px;">推广图片</th> -->
+                        <th style="min-width: 80px;">推广图片</th>
                         <th style="min-width: 80px;">操作</th>
                         <!-- <th>选择</th> --></tr>
                     </thead>
@@ -81,6 +81,14 @@
                           <!-- <td>
                             <textarea id="mytext{$val['item_id']}" rows="6">{$site_root}{:u('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'id'=>$val['id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'],'shop_id'=>$val['shop_id'] ))}</textarea>
                             <br/></td> -->
+                          <td>
+                            <volist name="val['file']" id="sval">
+                              <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'id'=>$val['id'],'origin_id'=>$val['id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'],'title'=>$val['title'],'img'=>$sval['img'],'band_id'=>$val['band_id'],'band_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'] ))}" target="_blank">
+                                <!-- <img src="{$sval.simg}" width="30px"> -->
+                                <notempty  name=" $sval['simg'] "><img src="{$sval.simg}" width="30px"><else /> <img src="{$sval.img}" width="30px"></notempty >
+                                <!-- 推广图片 --></a>&nbsp;&nbsp;</volist>
+                          </td>
+
                           <td>
                             <a href="{:u('items/edit',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'title'=>$val['title'],'origin_id'=>$val['id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'],'shop_id'=>$val['shop_id'] ))}">管理海报</a></td>
                         </tr>

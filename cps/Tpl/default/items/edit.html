@@ -50,7 +50,7 @@
                     <div class="col-lg-12">
                       <div class="dropzone" id="dropzone">
                         <div class="form-group m-b-0">
-                          <label class="control-label">上传本地图片(支持小于2M的jpg,gif,png,jpeg图片)</label>
+                          <label class="control-label">上传本地图片(<font color="red">*支持小于2M的jpg,gif,png,jpeg图片</font>)</label>
                           <input type="file" class="filestyle" data-buttonname="btn-primary" name="img"></div>
                         <div class="clearfix pull-right m-t-15">
                           <input type="hidden" name="shop_id" value="{$Think.get.shop_id}" />
@@ -77,7 +77,7 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>商品名称</th>
+                        <!-- <th>商品名称</th> -->
                         <!-- <th>单价(元)</th> -->
                         <th>海报底图</th>
                         <th>添加日期</th>
@@ -88,7 +88,7 @@
                       <volist name="files" id="val">
                         <tr>
                           <td>{$val.id}</td>
-                          <td>{$val.origin_name}</td>
+                          <!-- <td>{$val.origin_name}</td> -->
                           <!-- <td>¥{$val.item.price}</td> -->
                           <td>
                             <!-- <a href="#custom-modal" class="" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a">
