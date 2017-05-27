@@ -3,7 +3,8 @@
 <div id="wrapper">
     <include file="public:topBar" />
     <include file="public:leftMenu" />
-    <div class="content-page" page="announcementmanager">
+    <!-- <div class="content-page" page="announcementmanager"> -->
+    <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
         <!-- Start content -->
         <div class="content">
             <div class="container">
@@ -100,7 +101,7 @@
                                             <th>作者</th>
                                             <th>操作</th></tr> -->
                                             <tr>
-                                                <th >ID</th>
+                                                <!-- <th >ID</th> -->
                                                 <!-- <th width=25>
                                                     <input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th> -->
                                                 <th >{:L('title')}</th>
@@ -123,7 +124,7 @@
                                             <button class="btn btn-danger waves-effect waves-light">删除</button></td></tr> -->
                                             <volist name="article_list" id="val">
                                                 <tr>
-                                                    <td >{$val.id}</td>
+                                                    <!-- <td >{$val.id}</td> -->
                                                     <!-- <td align="center">
                                                         <input type="checkbox" value="{$val.id}" name="id[]"></td> -->
                                                     <td  >

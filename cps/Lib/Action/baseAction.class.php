@@ -85,46 +85,46 @@ class baseAction extends Action {
 //			$action['module'] = 'user';
 			switch ($action['module'].'_'.$action['action']){
 				case 'role_index': // 权限管理
-					$action['module'] = 'key';
+					$action['module2'] = 'key';
 					break;
 				case 'finance_push': // 推广管理
-					$action['module'] = 'bar-chart';
+					$action['module2'] = 'bar-chart';
 					break;
 				case 'contract_index':// 合同管理
-					$action['module'] = 'clipboard';
+					$action['module2'] = 'clipboard';
 					break;
 				case 'finance_finance':// 财务管理
-					$action['module'] = 'write';
+					$action['module2'] = 'write';
 					break;
 				case 'admin_index':// 用户管理
-					$action['module'] = 'user';
+					$action['module2'] = 'user';
 					break;
 				case 'article_index':// 公告管理
-					$action['module'] = 'announcement';
+					$action['module2'] = 'announcement';
 					break;
 				case 'analyse_index':// 数据分析
-					$action['module'] = 'pie-chart';
+					$action['module2'] = 'pie-chart';
 					break;
 				case 'finance_commission':// 佣金管理
-					$action['module'] = 'money';
+					$action['module2'] = 'money';
 					break;
 				case 'finance_settle':// 结算管理
-					$action['module'] = 'wallet';
+					$action['module2'] = 'wallet';
 					break;
 				case 'items_poster':// 海报管理
-					$action['module'] = 'image';
+					$action['module2'] = 'image';
 					break;
 				case 'items_index':// 推广商品
-					$action['module'] = 'shopping-cart';
+					$action['module2'] = 'shopping-cart';
 					break;
 				case 'admin_pwd':// 账号管理
-					$action['module'] = 'lock';
+					$action['module2'] = 'lock';
 					break;
 				case 'items_cate_index':// 分类管理
-					$action['module'] = 'save';
+					$action['module2'] = 'save';
 					break;
 				default:
-					$action['module'] = 'key';
+					$action['module2'] = 'key';
 			}
 
 			if ($action['action']) {

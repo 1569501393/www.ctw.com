@@ -5,21 +5,13 @@
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
-
-
                             <volist id="item" name="menu" >
-                            <!-- <h3 class="f14"><span class="switchs cu on" title="展开或关闭"></span>{$item.name}</h3> -->
                                 <volist id="nav" name="item['navs']" >
-                                <!-- <li id="_MP{$nav.id}" class="sub_menu"><a href="javascript:_MP({$nav.id},'{$nav.url}');" hidefocus="true" style="outline:none;">{$nav.action_name}</a></li> -->
-                                    <li class="">
-                                <!-- <a href="{$nav.url}" class="waves-effect left-menu" page="announcements"><i class="ti-announcement"></i><span> {$nav.action_name}</span></a> -->
-                                <a href="{$nav.url}" class="waves-effect left-menu" page="announcements"><i class="ti-{$nav.module}"></i><span> {$nav.action_name}</span></a>
-                            </li>
-                            
+                                <li class="">
+                                    <a href="{$nav.url}" class="waves-effect left-menu " page="{$nav.module}_{$nav.action}"><i class="ti-{$nav.module2}"></i><span> {$nav.action_name}</span></a>
+                                </li>
                                 </volist>
                             </volist>
-
-                        	
                         </ul>
                         <div class="clearfix"></div>
                     </div>

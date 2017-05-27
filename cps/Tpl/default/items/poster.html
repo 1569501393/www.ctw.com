@@ -4,7 +4,8 @@
   <div id="wrapper">
     <include file="public:topBar" />
     <include file="public:leftMenu" />
-    <div class="content-page" page="posters">
+    <!-- <div class="content-page" page="posters"> -->
+    <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
       <!-- Start content -->
       <div class="content">
         <div class="container">
@@ -55,7 +56,7 @@
                   <table class="table table-actions-bar">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>商品名称</th>
                         <th>单价(元)</th>
                         <!-- <th>佣金比例</th>
@@ -69,7 +70,7 @@
                     <tbody>
                       <volist name="items_list" id="val">
                         <tr>
-                          <td>{$val.id|default="默认单价"}</td>
+                          <!-- <td>{$val.id|default="默认单价"}</td> -->
                           <td>{$val.title|default="默认商品名称"}
                             <!-- <a href="" class="text-dark">
                             <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">{$val.title}</a>  --></td>

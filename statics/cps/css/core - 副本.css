@@ -1279,8 +1279,7 @@ body.fixed-left .side-menu.left {
   margin-top: 2px;
 }
 #sidebar-menu .subdrop {
-  /*background: #f4f8fb !important;*/
-  background: #ddd !important;
+  background: #f4f8fb !important;
   border-left: 3px solid #5fbeaa;
   color: #5fbeaa !important;
 }
@@ -1316,8 +1315,7 @@ body.fixed-left .side-menu.left {
   margin: 3px 0 0 0;
 }
 #sidebar-menu > ul > li > a.active {
-  /*background: #f4f8fb !important;*/
-  background: #ddd !important;
+  background: #f4f8fb !important;
   border-left: 3px solid #5fbeaa;
   color: #5fbeaa !important;
 }

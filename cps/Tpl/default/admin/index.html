@@ -4,7 +4,8 @@
     <div id="wrapper">
         <include file="public:topBar" />
         <include file="public:leftMenu" />
-        <div class="content-page" page="users">
+        <!-- <div class="content-page" page="users"> -->
+        <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
             <!-- Start content -->
             <div class="content">
                 <div class="container">
@@ -64,7 +65,7 @@
                                             <table class="table table-actions-bar">
                                                 <thead>
                                                     <tr>
-                                                        <th width=60>{:L('id')}</th>
+                                                        <!-- <th width=60>{:L('id')}</th> -->
                                                         <!-- <th width=30><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th> -->
                                                         <th width=100>账号名称</th>
                                                         <th>姓名</th>
@@ -84,7 +85,7 @@
                                                             <td>{$val.id}</td>
                                                             <!-- <td>
                                                             <input type="checkbox" value="{$val.id}" name="id[]" <if condition="$val['user_name'] eq 'admin'">disabled="disabled"</if>></td> -->
-                                                            <td>{$val.user_name}</td>
+                                                            <!-- <td>{$val.user_name}</td> -->
                                                             <td>{$val.user_id}</td>
                                                             <td>{$val.role_name}</td>
                                                             <td>{$val.pid_name}</td>
