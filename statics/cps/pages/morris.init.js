@@ -13,6 +13,7 @@
     //creates line chart
     MorrisCharts.prototype.createLineChart = function(element, data, xkey, ykeys, labels, opacity, Pfillcolor, Pstockcolor, lineColors) {
         Morris.Line({
+            parseTime: false,
           element: element,
           data: data,
           xkey: xkey,
@@ -102,16 +103,34 @@
     },
     MorrisCharts.prototype.init = function() {
 
+
+
         //create line chart
-        var $data  = [
-            { y: '2月', a: 30,  b: 20 , c: 10 },
-            { y: '3月', a: 50,  b: 40 , c: 30 },
-            { y: '4月', a: 75,  b: 65 , c: 50 },
-            { y: '5月', a: 50,  b: 40 , c: 22 },
-            { y: '6月', a: 75,  b: 65 , c: 50 },
-            { y: '7月', a: 100, b: 90 , c: 65 }
-          ];
+        // var $data  = [
+        //     { y: '2月', a: 30,  b: 20 , c: 10 },
+        //     { y: '3月', a: 50,  b: 40 , c: 30 },
+        //     { y: '4月', a: 75,  b: 65 , c: 50 },
+        //     { y: '5月', a: 50,  b: 40 , c: 22 },
+        //     { y: '6月', a: 75,  b: 65 , c: 50 },
+        //     { y: '7月', a: 100, b: 90 , c: 65 }
+        //   ];
+
+          var $data  = [];
+
+        $.ajax({ 
+            type: "get", 
+            url: "cps.php?m=index&a=ajaxData", 
+            cache:false, 
+            async:false, 
+            dataType: "json", 
+            success: function(xmlobj){ 
+                // alert('111' + typeof($data));
+                // alert(xmlobj);
+               $data  = xmlobj;
+            } 
+        });
         this.createLineChart('morris-line-example', $data, 'y', ['a', 'b','c'], ['日用品2', '家用电器', '食品'],['0.1'],['#ffffff'],['#999999'], ['#36404a', '#5fbeaa', '#5d9cec']);
+        // this.createLineChart('morris-line-example', $data, 'y', ['1', '2','3'], ['日用品2', '家用电器', '食品'],['0.1'],['#ffffff'],['#999999'], ['#36404a', '#5fbeaa', '#5d9cec']);
 
 
         //creating area chart with dotted

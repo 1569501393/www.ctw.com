@@ -29,7 +29,6 @@ header("Content-type: text/html; charset=utf-8");
         $this->display('index');
     }
 
-
      // 推广链接跳转
      public function prom()
      {
@@ -41,6 +40,7 @@ header("Content-type: text/html; charset=utf-8");
          $_GET['status'] = $_GET['data_state'] =1;
          $_GET['add_time'] = time();
          $_GET['add_time'] = time();
+//         var_dump($_GET);
          M('push_log')->add($_GET);
 
          var_dump("这是跳转页面,您是由{$_GET['sid']}({$_GET['sname']}-{$_GET['user_id']})推广的,我要到商城购物去喽~~");

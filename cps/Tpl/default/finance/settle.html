@@ -29,8 +29,7 @@
                                     <div class="form-group contact-search m-b-30">
                                     <input type="text" id="search" class="form-control" placeholder="搜索订单号、商品名称、推广人、订单状态...">
                                     <button type="submit" class="btn btn-white">
-                                    <i class="fa fa-search"></i></button></div>
-                                    </form> -->
+                                    <i class="fa fa-search"></i></button></div></form> -->
                                     <!-- <form role="form" method="post" action=" "> -->
                                     <form role="form" method="get" action=" ">
                                         <div class="row m-t-10 m-b-10">
@@ -90,12 +89,22 @@
                                             <th>推广人</th>
                                             <!-- <th>结算佣金比例</th> -->
                                             <th style="min-width: 80px;">结算金额</th>
+
+                                            <if condition="$_SESSION['admin_info']['role_id'] eq 1" >
                                             <th style="min-width: 80px;">商城2CPS</th>
                                             <th style="min-width: 80px;">CPS2对商城</th>
                                             <th style="min-width: 80px;">CPS2分行</th>
                                             <th style="min-width: 80px;">分行2CPS</th>
-                                            <!-- <th style="min-width: 80px;">最终状态</th> -->
-                                        </tr>
+                                            <elseif condition="$_SESSION['admin_info']['role_id'] eq 3"/>
+                                            <th style="min-width: 80px;">商城2CPS</th>
+                                            <th style="min-width: 80px;">CPS2对商城</th>
+                                            <else/>
+                                            <th style="min-width: 80px;">CPS2分行</th>
+                                            <th style="min-width: 80px;">分行2CPS</th>
+                                            </if>
+
+                                            
+                                            <!-- <th style="min-width: 80px;">最终状态</th> --></tr>
                                     </thead>
                                     <tbody>
                                         <volist name="order_list" id="val">
@@ -112,6 +121,8 @@
                                                 <td>{$val.order_time|date='Y-m-d',###}</td>
                                                 <td>{$val.seller_name|default="章三"}</td>
                                                 <td>{$val['commission']*$val['item_count']|default="¥125,699"}</td>
+                                                
+                                                <if condition="$_SESSION['admin_info']['role_id'] eq 1" >
                                                 <td onclick="status({$val.id},'settle_status1_stc')" id="settle_status1_stc_{$val.id}">
                                                     <img src="__ROOT__/statics/images/status_{$val.settle_status1_stc}.gif" /></td>
                                                 <td onclick="status({$val.id},'settle_status2_cts')" id="settle_status2_cts_{$val.id}">
@@ -120,10 +131,23 @@
                                                     <img src="__ROOT__/statics/images/status_{$val.settle_status3_ctb}.gif" /></td>
                                                 <td onclick="status({$val.id},'settle_status4_btc')" id="settle_status4_btc_{$val.id}">
                                                     <img src="__ROOT__/statics/images/status_{$val.settle_status4_btc}.gif" /></td>
+                                                <elseif condition="$_SESSION['admin_info']['role_id'] eq 3"/>
+                                                <td onclick="status({$val.id},'settle_status1_stc')" id="settle_status1_stc_{$val.id}">
+                                                    <img src="__ROOT__/statics/images/status_{$val.settle_status1_stc}.gif" /></td>
+                                                <td onclick="status({$val.id},'settle_status2_cts')" id="settle_status2_cts_{$val.id}">
+                                                    <img src="__ROOT__/statics/images/status_{$val.settle_status2_cts}.gif" /></td>
+                                                <else/>
+                                                
+                                                <td onclick="status({$val.id},'settle_status3_ctb')" id="settle_status3_ctb_{$val.id}">
+                                                    <img src="__ROOT__/statics/images/status_{$val.settle_status3_ctb}.gif" /></td>
+                                                <td onclick="status({$val.id},'settle_status4_btc')" id="settle_status4_btc_{$val.id}">
+                                                    <img src="__ROOT__/statics/images/status_{$val.settle_status4_btc}.gif" /></td>
+                                                </if>
+
+                                                
                                                 <!-- <td onclick="status({$val.id},'status')" id="status_{$val.id}">
-                                                    <img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td> -->
-                                                <!-- <td ><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td> -->
-                                            </tr>
+                                                <img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td> -->
+                                                <!-- <td><img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td> --></tr>
                                         </volist>
                                     </tbody>
                                 </table>
