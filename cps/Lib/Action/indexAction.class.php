@@ -12,7 +12,8 @@ class indexAction extends baseAction
     {
         $where = '1=1 AND data_state=1 AND status=1 ';
         // 统计累计总高销量前三
-        $top = M('orderlist')->field('cate_id,sum(item_count) AS sum_count')->where(" $where ")->group('cate_id')->order('sum_count DESC')->limit(3)->select();
+//        $top = M('orderlist')->field('cate_id,sum(item_count) AS sum_count')->where(" $where ")->group('cate_id')->order('sum_count DESC')->limit(3)->select();
+        $top = M('orderlist')->field('cate_name,sum(item_count) AS sum_count')->where(" $where ")->group('cate_name')->order('sum_count DESC')->limit(3)->select();
         foreach ($top as $k => $v) {
             switch ($k) {
                 case 0:
@@ -28,20 +29,27 @@ class indexAction extends baseAction
         }
         $this->assign('top', $top);
 
+        // ajax数据曲线图
         if ($_GET['ajax'] == 1) {
 // 统计累计总高销量前三
             /*$where = ' 1=1 AND data_state=1 ';
             $top = M('orderlist')->field('cate_id,sum(item_count) AS sum_count')->where(" $where ")->group('cate_id')->order('sum_count DESC')->limit(3)->select();*/
 
             foreach ($top as $v) {
-                $cate_id[] = $v['cate_id'];
+                $cate_id[] = $v['cate_name'];
             }
 
-            $cate_ids = implode(',', $cate_id);
+//            $cate_ids = implode(',', $cate_id);
+            $cate_ids = implode('\',\'', $cate_id);
+            $cate_ids = " '$cate_ids' ";
 
             // 按月统计
-            $result = M('orderlist')->field('from_unixtime(`order_time`,\'%Y%m\') as months,cate_id, count(id) as count')->where(" $where AND cate_id in ($cate_ids)  ")->group('months,cate_id')->order('months ASC')->select();
+//            $result = M('orderlist')->field('from_unixtime(`order_time`,\'%Y%m\') as months,cate_id, count(id) as count')->where(" $where AND cate_id in ($cate_ids)  ")->group('months,cate_id')->order('months ASC')->select();
 
+            $result = M('orderlist')->field('from_unixtime(`order_time`,\'%Y%m\') as months,cate_name, count(id) as count')->where(" $where AND cate_name in ($cate_ids)  ")->group('months,cate_name')->order('months ASC')->select();
+
+//            var_dump(M('orderlist')->getLastSql());
+//            var_dump($result);
             foreach ($result as $v) {
                 $months[] = $v['months'];
             }
@@ -51,7 +59,8 @@ class indexAction extends baseAction
             foreach ($months as $val) {
                 foreach ($cate_id as $v) {
                     $result_new[$val]['y'] = $val;
-                    $result_new[$val][$v] = M('orderlist')->where(" $where AND cate_id ='$v' AND from_unixtime(`order_time`,'%Y%m')=$val ")->getField('count(id) as count');
+//                    $result_new[$val][$v] = M('orderlist')->where(" $where AND cate_id ='$v' AND from_unixtime(`order_time`,'%Y%m')=$val ")->getField('count(id) as count');
+                    $result_new[$val][$v] = M('orderlist')->where(" $where AND cate_name ='$v' AND from_unixtime(`order_time`,'%Y%m')=$val ")->getField('count(id) as count');
                 }
             }
 
@@ -67,11 +76,14 @@ class indexAction extends baseAction
                 array(y => '9月', a => 10, b => 20, c => 30,),
             );*/
 
+//            var_dump($cate_id);
+            // 获取数量
             foreach ($result_new as $v) {
 //                $result_new2[] = array('y' => $v['y'], 'a' => $v['3'], 'b' => $v['2'], 'c' => $v['1']);
-                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v['3'], 'b' => $v['2'], 'c' => $v['1']);
+//                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v['3'], 'b' => $v['2'], 'c' => $v['1']);
+//                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v['数码3'], 'b' => $v['食品3'], 'c' => $v['包包']);
+                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v[$cate_id[0]], 'b' => $v[$cate_id[2]], 'c' => $v[$cate_id[1]]);
             }
-
 
 
             $result_new2['cate_ids'] = $cate_id;
