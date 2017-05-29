@@ -24,6 +24,16 @@ class financeAction extends baseAction {
 			$this->assign('id', $_REQUEST['id']);
 		}
 
+        // 分类
+        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
+            $this->assign('cate_id', $_GET['cate_id']);
+        }
+
+        // 分类表
+        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+        $this->assign('cates', $cates);
+
 		$count = $commission_mod->where($where)->count();
 		$p = new Page($count, 10);
 		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
@@ -70,10 +80,10 @@ class financeAction extends baseAction {
 
 		//搜索
 		$where = '1=1';
-		if (isset($_POST['keyword']) && trim($_POST['keyword'])) {
+		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 
-			$where .= " AND (title like '%{$_POST['keyword']}%' OR contract like '%{$_POST['keyword']}%') ";
-			$this->assign('keyword', $_POST['keyword']);
+			$where .= " AND (title like '%{$_GET['keyword']}%' OR contract like '%{$_GET['keyword']}%') ";
+			$this->assign('keyword', $_GET['keyword']);
 		}
 		//		if (isset($_POST['id']) && intval($_POST['id'])) {
 		//			$where .= " AND con_id=" . $_POST['id'];
@@ -84,6 +94,17 @@ class financeAction extends baseAction {
 			$where .= " AND con_id=" . $_REQUEST['id'];
 			$this->assign('id', $_REQUEST['id']);
 		}
+
+        // 分类
+        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
+            $this->assign('cate_id', $_GET['cate_id']);
+        }
+
+        // 分类表
+        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+        $this->assign('cates', $cates);
+
 
 		$count = $commission_mod->where($where)->count();
 		$p = new Page($count, 10);
@@ -227,8 +248,18 @@ class financeAction extends baseAction {
 		}
 		if (isset($_GET['seller_name']) && trim($_GET['seller_name'])) {
 			$where .= " AND seller_name like '%{$_GET['seller_name']}%' ";
-			$this->assign('seller_name', $$_GET['seller_name']);
+			$this->assign('seller_name', $_GET['seller_name']);
 		}
+
+        // 分类
+        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
+            $this->assign('cate_id', $_GET['cate_id']);
+        }
+
+        // 分类表
+        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+        $this->assign('cates', $cates);
 
 		$orderlist_mod =M('orderlist');
 

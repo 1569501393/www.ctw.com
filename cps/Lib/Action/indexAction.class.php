@@ -11,6 +11,74 @@ class indexAction extends baseAction
     public function index()
     {
         $where = '1=1 AND data_state=1 AND status=1 ';
+        // 统计累计总高销量前三
+        $top = M('orderlist')->field('cate_id,sum(item_count) AS sum_count')->where(" $where ")->group('cate_id')->order('sum_count DESC')->limit(3)->select();
+        foreach ($top as $k => $v) {
+            switch ($k) {
+                case 0:
+                    $top[$k]['color'] = '#36404a';
+                    break;
+                case 1:
+                    $top[$k]['color'] = '#5fbeaa';
+                    break;
+                case 2:
+                    $top[$k]['color'] = '#5d9cec';
+                    break;
+            }
+        }
+        $this->assign('top', $top);
+
+        if ($_GET['ajax'] == 1) {
+// 统计累计总高销量前三
+            /*$where = ' 1=1 AND data_state=1 ';
+            $top = M('orderlist')->field('cate_id,sum(item_count) AS sum_count')->where(" $where ")->group('cate_id')->order('sum_count DESC')->limit(3)->select();*/
+
+            foreach ($top as $v) {
+                $cate_id[] = $v['cate_id'];
+            }
+
+            $cate_ids = implode(',', $cate_id);
+
+            // 按月统计
+            $result = M('orderlist')->field('from_unixtime(`order_time`,\'%Y%m\') as months,cate_id, count(id) as count')->where(" $where AND cate_id in ($cate_ids)  ")->group('months,cate_id')->order('months ASC')->select();
+
+            foreach ($result as $v) {
+                $months[] = $v['months'];
+            }
+
+            $months = array_values(array_unique($months));
+
+            foreach ($months as $val) {
+                foreach ($cate_id as $v) {
+                    $result_new[$val]['y'] = $val;
+                    $result_new[$val][$v] = M('orderlist')->where(" $where AND cate_id ='$v' AND from_unixtime(`order_time`,'%Y%m')=$val ")->getField('count(id) as count');
+                }
+            }
+
+            /*$result_new2['data'] = array(
+                array(y => '1月', a => 10, b => 20, c => 30,),
+                array(y => '2月', a => 10, b => 20, c => 30,),
+                array(y => '3月', a => 30, b => 20, c => 30,),
+                array(y => '4月', a => 20, b => 20, c => 30,),
+                array(y => '5月', a => 10, b => 20, c => 30,),
+                array(y => '6月', a => 40, b => 20, c => 30,),
+                array(y => '7月', a => 150, b => 20, c => 30,),
+                array(y => '8月', a => 10, b => 20, c => 30,),
+                array(y => '9月', a => 10, b => 20, c => 30,),
+            );*/
+
+            foreach ($result_new as $v) {
+//                $result_new2[] = array('y' => $v['y'], 'a' => $v['3'], 'b' => $v['2'], 'c' => $v['1']);
+                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v['3'], 'b' => $v['2'], 'c' => $v['1']);
+            }
+
+
+
+            $result_new2['cate_ids'] = $cate_id;
+//            $result_new2['cate_ids'] = json_encode($cate_id);
+            echo json_encode($result_new2);
+            exit;
+        }
 
         // 角色，用户
         if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
@@ -25,10 +93,6 @@ class indexAction extends baseAction
             //    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
         }
 
-        // 统计累计总高销量前三
-        $where = ' 1=1 AND data_state=1 ';
-        $top = M('orderlist')->field('cate_id,sum(item_count) AS sum_count')->where(" $where ")->group('cate_id')->order('sum_count DESC')->limit(3)->select();
-        $this->assign('top',$top);
 
         // 获取所在平台id
         /*$platform_id = get_platform_id($_SESSION['admin_info']);
@@ -70,14 +134,15 @@ class indexAction extends baseAction
         // 统计信息
 //		$result['statistics'] = M('orderlist')->where(" $where ")->order('id DESC')->limit(6)->select();
         $result['statistics'] = array(
-            array('y' => '2月', 'a' => 10, 'b' => 20, 'c' => 30,),
-            array('y' => '3月', 'a' => 10, 'b' => 20, 'c' => 30,),
-            array('y' => '4月', 'a' => 10, 'b' => 20, 'c' => 30,),
-            array('y' => '5月', 'a' => 10, 'b' => 20, 'c' => 30,),
-            array('y' => '6月', 'a' => 10, 'b' => 20, 'c' => 30,),
-            array('y' => '7月', 'a' => 10, 'b' => 20, 'c' => 30,),
-            array('y' => '8月', 'a' => 10, 'b' => 20, 'c' => 30,),
-            array('y' => '9月', 'a' => 10, 'b' => 20, 'c' => 30,),
+            array(y => '1月', a => 10, b => 20, c => 30,),
+            array(y => '2月', a => 10, b => 20, c => 30,),
+            array(y => '3月', a => 30, b => 20, c => 30,),
+            array(y => '4月', a => 20, b => 20, c => 30,),
+            array(y => '5月', a => 10, b => 20, c => 30,),
+            array(y => '6月', a => 40, b => 20, c => 30,),
+            array(y => '7月', a => 150, b => 20, c => 30,),
+            array(y => '8月', a => 10, b => 20, c => 30,),
+            array(y => '9月', a => 10, b => 20, c => 30,),
         );
 
 //        var_dump(json_encode($result['statistics']));
@@ -113,18 +178,13 @@ class indexAction extends baseAction
         $where = ' 1=1 AND data_state=1 ';
         $top = M('orderlist')->field('cate_id,sum(item_count) AS sum_count')->where(" $where ")->group('cate_id')->order('sum_count DESC')->limit(3)->select();
 
-//        var_dump(M('orderlist')->getLastSql());
-//        var_dump($top);
-
         foreach ($top as $v) {
             $cate_id[] = $v['cate_id'];
         }
 
         $cate_ids = implode(',', $cate_id);
-//        var_dump($cate_ids);
 
         // 按月统计
-//        $result = M('orderlist')->field('cate_id, from_unixtime(`order_time`,\'%Y%m\') as months,count(id) as count')->where(" $where AND cate_id in ($cate_ids)  ")->group('months,cate_id')->order('months ASC')->select();
         $result = M('orderlist')->field('from_unixtime(`order_time`,\'%Y%m\') as months,cate_id, count(id) as count')->where(" $where AND cate_id in ($cate_ids)  ")->group('months,cate_id')->order('months ASC')->select();
 
         foreach ($result as $v) {
@@ -132,66 +192,19 @@ class indexAction extends baseAction
         }
 
         $months = array_values(array_unique($months));
-//        var_dump($months);
 
         foreach ($months as $val) {
             foreach ($cate_id as $v) {
-//                $result_new[$val][$v] = array('y'=>$val);
-//                $result_new[$val][$v]  = M('orderlist')->field('from_unixtime(`order_time`,\'%Y%m\') as months,cate_id, count(id) as count')->where(" $where AND cate_id ='$v' AND from_unixtime(`order_time`,'%Y%m')=$val ")->select();
                 $result_new[$val]['y'] = $val;
-                $result_new[$val][$v]  = M('orderlist')->where(" $where AND cate_id ='$v' AND from_unixtime(`order_time`,'%Y%m')=$val ")->getField('count(id) as count');
-
-//                $result_new[$val][$v][]  = $val;
-//                var_dump(M('orderlist')->getLastSql());
+                $result_new[$val][$v] = M('orderlist')->where(" $where AND cate_id ='$v' AND from_unixtime(`order_time`,'%Y%m')=$val ")->getField('count(id) as count');
             }
         }
 
         foreach ($result_new as $v) {
-            /*$result_new2['y'][] = $v['y'];
-            $result_new2['a'][] = $v['3'];
-            $result_new2['b'][] = $v['2'];
-            $result_new2['c'][] = $v['1'];*/
-
-            $result_new2[] = array('y'=>$v['y'],'a'=>$v['3'],'b'=>$v['2'],'c'=>$v['1']);
+            $result_new2[] = array('y' => $v['y'], 'a' => $v['3'], 'b' => $v['2'], 'c' => $v['1']);
         }
-
-
-
-//        var_dump($result_new);
-        echo json_encode($result_new2);exit;
-
-//        var_dump($result_new);
-
-/*        foreach ($months as $val) {
-            foreach ($result as $v) {
-                $result_new[$val][$v['cate_id']][] = array($v['count']);
-//            $result_new[$v['months']][] = $v['count'];
-//            $result_new['y'][] = $v['months'];
-            }
-        }*/
-//        var_dump($result);
-//        var_dump($result_new);
-
-        /*$result = array(
-            array(y => '1月', a => 10, b => 20, c => 30,),
-            array(y => '2月', a => 10, b => 20, c => 30,),
-            array(y => '3月', a => 30, b => 20, c => 30,),
-            array(y => '4月', a => 20, b => 20, c => 30,),
-            array(y => '5月', a => 10, b => 20, c => 30,),
-            array(y => '6月', a => 40, b => 20, c => 30,),
-            array(y => '7月', a => 150, b => 20, c => 30,),
-            array(y => '8月', a => 10, b => 20, c => 30,),
-            array(y => '9月', a => 10, b => 20, c => 30,),
-//            array('y' => '4月', 'a' => 10, 'b' => 20, 'c' => 30,),
-//            array('y' => '5月', 'a' => 10, 'b' => 20, 'c' => 30,),
-//            array('y' => '6月', 'a' => 10, 'b' => 20, 'c' => 30,),
-//            array('y' => '7月', 'a' => 10, 'b' => 20, 'c' => 30,),
-//            array('y' => '8月', 'a' => 10, 'b' => 20, 'c' => 30,),
-//            array('y' => '9月', 'a' => 10, 'b' => 20, 'c' => 30,),
-        );*/
-//        return json_encode($result);
-//        echo json_encode($result);
-
+        echo json_encode($result_new2);
+        exit;
     }
 
     public function qrcode()

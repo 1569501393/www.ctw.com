@@ -201,10 +201,21 @@ class itemsAction extends baseAction
             $where .= " AND (title like '%{$_GET['keyword']}%' ) ";
             $this->assign('keyword', $_GET['keyword']);
         }
+
         if (isset($_GET['id']) && intval($_GET['id'])) {
             $where .= " AND con_id=" . $_GET['id'];
             $this->assign('con_id', $_GET['id']);
         }
+
+        // 分类
+        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
+            $this->assign('cate_id', $_GET['cate_id']);
+        }
+
+        // 分类表
+        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+        $this->assign('cates', $cates);
 
         $count = $commission_mod->where($where)->count();
         $p = new Page($count, 10);
@@ -213,11 +224,10 @@ class itemsAction extends baseAction
         $key = 1;
         foreach ($commission_list as $k => $val) {
             $commission_list[$k]['key'] = ++$p->firstRow;
-            //            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
-//			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-            //            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
             $commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
+//            var_dump($commission_list[$k]['file']);
         }
+
 
         $page = $p->show();
         $this->assign('page', $page);
@@ -322,6 +332,17 @@ class itemsAction extends baseAction
             $where .= " AND con_id=" . $_REQUEST['id'];
             $this->assign('id', $_REQUEST['id']);
         }
+
+
+        // 分类
+        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
+            $this->assign('cate_id', $_GET['cate_id']);
+        }
+
+        // 分类表
+        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+        $this->assign('cates', $cates);
 
         $count = $commission_mod->where($where)->count();
         $p = new Page($count, 10);

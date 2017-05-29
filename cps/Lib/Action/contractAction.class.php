@@ -374,7 +374,7 @@ class contractAction extends baseAction
 					$data['item_id'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
 					$data['rate']  = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
 					$data['commission'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
-					$data['cid'] = $data['cate_id'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
+					$data['cid'] = $data['cate_id']= $data['cate_name'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
 					$data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
 					$data['title'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
 
@@ -390,7 +390,7 @@ class contractAction extends baseAction
 
 					$data['con_id'] = $_POST['id'];
 					// 佣金表 cate_id
-					$data['cate_id'] = $_POST['cid'];
+					// $data['cate_id'] = $_POST['cid'];
 					unset($data['id']);
 					$data['shop_id'] = $_POST['shop_id']?:0;
 					$data['uid'] = $_SESSION['admin_info']['id'];
@@ -429,6 +429,14 @@ class contractAction extends baseAction
 					}else{
 						M('commission')->add($data);
 					}
+
+                    // 写入分类表
+                    $cate_flag = M('items_cate')->where(" name={$data['cate_name']} ")->find();
+
+                    if (!$cate_flag) {
+                        $data['name'] = $data['cate_name'];
+                        M('items_cate')->add($data);
+                    }
 
 					$log[] = M('items')->getLastSql();
 					$log_data[] = $data;
@@ -489,7 +497,7 @@ class contractAction extends baseAction
 				$data = $_POST;
 				$data['con_id'] = $_POST['id'];
 				// 佣金表 cate_id
-				$data['cate_id'] = $_POST['cid'];
+				$data['cate_id'] = $data['cate_name'] =$_POST['cid'];
 				unset($data['id']);
 				$data['shop_id'] = $_POST['shop_id'];
 				$data['uid'] = $_SESSION['admin_info']['id'];
@@ -515,6 +523,14 @@ class contractAction extends baseAction
 				}else{
 					M('commission')->add($data);
 				}
+
+                // 写入分类表
+                $cate_flag = M('items_cate')->where(" name={$data['cate_name']} AND status=1 AND data_state=1 ")->find();
+
+                if (!$cate_flag) {
+                    $data['name'] = $data['cate_name'];
+                    M('items_cate')->add($data);
+                }
 					
 
 				// 添加合同日志

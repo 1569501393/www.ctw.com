@@ -214,9 +214,9 @@
                           <td>
                             <!-- <a href="{:u('contract/auth', array('id'=>$val['id']))}">管理权限</a>| -->
                             <!-- <a href="{:u('contract/export',array('id'=>$val['id']))}">导入</a>| -->
-                            <a href="{:u('contract/export',array('id'=>$val['id']))}">导出</a>|
-                            <a href="{:u('contract/edit',array('id'=>$val['id']))}">{$Think.lang.edit}</a>|
-                            <a href="{:u('finance/push',array('id'=>$val['id']))}">商品详情</a></td>
+                            <a href="{:u('contract/export',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">导出</a>|
+                            <a href="{:u('contract/edit',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">编辑</a>|
+                            <a href="{:u('finance/push',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">商品详情</a></td>
                         </tr>
                       </volist>
                   </table>
