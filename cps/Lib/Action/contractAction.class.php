@@ -95,11 +95,12 @@ class contractAction extends baseAction
 		
 
 		// 角色
-//		$roles = M('role')->where('1=1 AND status=1 ')->select();
+		$roles = M('role')->where('1=1 AND status=1 ')->select();
+		$this->assign('roles', $roles);
 
 		$this->assign('platforms', $platforms);
 		$this->assign('shops', $shops);
-//		$this->assign('roles', $roles);
+		
 
 		// 结算周期 审核状态 收款方
 		$period = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'period\' ')->select();
@@ -587,7 +588,7 @@ class contractAction extends baseAction
 
 			// 角色
 			$roles = M('role')->where('1=1 AND status=1 ')->select();
-
+			// var_dump($roles);
 			$this->assign('platforms', $platforms);
 			$this->assign('shops', $shops);
 			$this->assign('roles', $roles);
