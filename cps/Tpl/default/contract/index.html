@@ -23,8 +23,9 @@
           </div>
           <div class="row">
             <div class="col-lg-12">
-              <ul class="nav nav-tabs tabs">
+              
                 <if condition="$_SESSION['admin_info']['role_id'] eq 1">
+                <ul class="nav nav-tabs tabs">
                   <li class="active tab">
                     <a href="#guanli" data-toggle="tab" aria-expanded="false">
                       <span class="visible-xs">
@@ -39,6 +40,17 @@
                       </span>
                       <span class="hidden-xs">合同录入</span></a>
                   </li>
+                  </ul>
+                  <else />
+                  <!-- <ul class="nav nav-tabs tabs">
+                  <li class="active tab">
+                    <a href="#guanli" data-toggle="tab" aria-expanded="false">
+                      <span class="visible-xs">
+                        <i class="fa fa-home"></i>
+                      </span>
+                      <span class="hidden-xs">合同管理</span></a>
+                  </li>
+                  </ul> -->
                 </if>
                 <!-- <li class="tab">
                 <a href="#rizhi" data-toggle="tab" aria-expanded="false">
@@ -49,8 +61,9 @@
                 <a href="#daochu" data-toggle="tab" aria-expanded="false">
                 <span class="visible-xs">
                 <i class="fa fa-user"></i></span>
-                <span class="hidden-xs">导出合同</span></a></li> --></ul>
-              <div class="tab-content">
+                <span class="hidden-xs">导出合同</span></a></li> -->
+              <!-- <div class="tab-content"> -->
+              <div class="card-box">
                 <div class="table-responsive active" id="guanli" style="overflow-x:visible;">
                   <div class="row m-t-10 m-b-10">
                     <div class="col-sm-12">
@@ -161,6 +174,7 @@
                       <p style="min-height:10px; display: block;">&nbsp;</p>
                       <p style="min-height:10px; display: block;">&nbsp;</p></div>
                   </div>
+                  <div class="table-responsive">
                   <table class="table table-actions-bar">
                     <thead>
                       <tr>
@@ -170,7 +184,7 @@
                         <th>合同类型</th>
                         <th>商家名称</th>
                         <th>合同名称</th>
-                        <th>账期</th>
+                        <!-- <th>账期</th> -->
                         <th>开始时间</th>
                         <th>结束时间</th>
                         <th>状态</th>
@@ -201,7 +215,7 @@
                                 <!-- {$val.platform_id}- -->{$val.shop_name}</a></b>
                           </td>
                           <td>{$val.title}</td>
-                          <td>{$val.period}</td>
+                          <!-- <td>{$val.period}</td> -->
                           <td>{$val.begin_time|date='Y-m-d',###}</td>
                           <td>{$val.end_time|date='Y-m-d',###}</td>
                           <td>{$val.status}-{$val.status_name}</td>
@@ -220,6 +234,7 @@
                         </tr>
                       </volist>
                   </table>
+                </div>
                   <!-- <ul class="pagination">
                   <li class="paginate_button previous disabled" aria-controls="datatable" tabindex="0" id="datatable_previous">{$page}</li></ul> -->
                   <div id="pages">{$page}</div></div>
