@@ -4,7 +4,7 @@ class analyseAction extends baseAction
 {
 	function index()
 	{
-		
+
 		//        $order_list = M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->order('click DESC')->limit(10)->select();
 
 		//搜索
@@ -13,9 +13,9 @@ class analyseAction extends baseAction
 		/*if (($_SESSION['admin_info']['role_id'] == 5) || ($_SESSION['admin_info']['role_id'] == 6)) {
 			$id = get_platform_id($_SESSION['admin_info']);
 			$where .= ' AND platform_id= '.$id ;
-		}elseif ($_SESSION['admin_info']['role_id'] == 4){
+			}elseif ($_SESSION['admin_info']['role_id'] == 4){
 			$where .= ' AND platform_id= '.$_SESSION['admin_info']['id'] ;
-		}*/
+			}*/
 		$platform_id = get_platform_id($_SESSION['admin_info']);
 		if ($platform_id) {
 			$where .= ' AND platform_id= '.$platform_id ;
@@ -24,24 +24,24 @@ class analyseAction extends baseAction
 
 		// 机构销售业绩排行
 		//        $order_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();
-//		$order_list = M('orderlist')->field(array('platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('platform_id')->order('sum_price DESC')->limit(10)->select();
+		//		$order_list = M('orderlist')->field(array('platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('platform_id')->order('sum_price DESC')->limit(10)->select();
 
-        $order_list = M('orderlist')->field(array('bank_subid','platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('bank_subid')->order('sum_price DESC')->limit(10)->select();
+		$order_list = M('orderlist')->field(array('bank_subid','platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('bank_subid')->order('sum_price DESC')->limit(10)->select();
 
 		foreach ($order_list as $k => $val) {
-//            $order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-            $order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_name') ?: '全部';
+			//            $order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_name') ?: '全部';
 		}
 
 		$this->assign('order_list', $order_list);
 
 		// 机构销售佣金收益排行
 		//        $commission_list = M('commission')->where(" $where ")->order('click DESC')->limit(10)->select();
-//		$commission_list = M('orderlist')->field(array('platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price","SUM(commission)"=>"sum_commission"))->where(" $where ")->group('platform_id')->order('sum_commission DESC')->limit(10)->select();
-        $commission_list = M('orderlist')->field(array('bank_subid','platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price","SUM(commission)"=>"sum_commission"))->where(" $where ")->group('bank_subid')->order('sum_commission DESC')->limit(10)->select();
+		//		$commission_list = M('orderlist')->field(array('platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price","SUM(commission)"=>"sum_commission"))->where(" $where ")->group('platform_id')->order('sum_commission DESC')->limit(10)->select();
+		$commission_list = M('orderlist')->field(array('bank_subid','platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price","SUM(commission)"=>"sum_commission"))->where(" $where ")->group('bank_subid')->order('sum_commission DESC')->limit(10)->select();
 		foreach ($commission_list as $k => $val) {
-//            $commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-            $commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_name') ?: '全部';
+			//            $commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_name') ?: '全部';
 		}
 		$this->assign('commission_list', $commission_list);
 

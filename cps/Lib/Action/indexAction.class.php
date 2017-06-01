@@ -38,16 +38,13 @@ class indexAction extends baseAction
             foreach ($top as $v) {
                 $cate_id[] = $v['cate_name'];
             }
-
 //            $cate_ids = implode(',', $cate_id);
             $cate_ids = implode('\',\'', $cate_id);
             $cate_ids = " '$cate_ids' ";
 
             // 按月统计
 //            $result = M('orderlist')->field('from_unixtime(`order_time`,\'%Y%m\') as months,cate_id, count(id) as count')->where(" $where AND cate_id in ($cate_ids)  ")->group('months,cate_id')->order('months ASC')->select();
-
             $result = M('orderlist')->field('from_unixtime(`order_time`,\'%Y%m\') as months,cate_name, count(id) as count')->where(" $where AND cate_name in ($cate_ids)  ")->group('months,cate_name')->order('months ASC')->select();
-
 //            var_dump(M('orderlist')->getLastSql());
 //            var_dump($result);
             foreach ($result as $v) {
@@ -82,7 +79,8 @@ class indexAction extends baseAction
 //                $result_new2[] = array('y' => $v['y'], 'a' => $v['3'], 'b' => $v['2'], 'c' => $v['1']);
 //                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v['3'], 'b' => $v['2'], 'c' => $v['1']);
 //                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v['数码3'], 'b' => $v['食品3'], 'c' => $v['包包']);
-                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v[$cate_id[0]], 'b' => $v[$cate_id[2]], 'c' => $v[$cate_id[1]]);
+//                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v[$cate_id[0]], 'b' => $v[$cate_id[2]], 'c' => $v[$cate_id[1]]);
+                $result_new2['data'][] = array('y' => $v['y'], 'a' => $v[$cate_id[2]], 'b' => $v[$cate_id[1]], 'c' => $v[$cate_id[0]]);
             }
 
 

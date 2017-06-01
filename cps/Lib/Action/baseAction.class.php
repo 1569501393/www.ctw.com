@@ -7,54 +7,54 @@ class baseAction extends Action {
 	public $user_mode='';  //用户模型
 	public $user_info='';  //用户模型
 	public $admin_mod='';  //管理员模型
-//	public $items_cate_mod='';   //项目分类
+	//	public $items_cate_mod='';   //项目分类
 	public $album_mod='';   //专辑模型
 	public $album_cate_mod='';   //专辑分类
 	public $role_mod='';//权限表
-    public $sendMsg_mod='';
-    protected $seo_mod;
+	public $sendMsg_mod='';
+	protected $seo_mod;
 	function mod_init(){
-//		$this->admin_mod=D('admin');
-//		$this->items_cate_mod=D('items_cate');
-//		$this->user_mode=D('user');
-//		$this->user_info=D('user_info');
-//		$this->album_mod=D('album');
-//		$this->album_cate_mod=D('album_cate');
-//        $this->sendMsg_mod=M('UserMsg');
-//        $this->seo_mod = M('seo');
+		//		$this->admin_mod=D('admin');
+		//		$this->items_cate_mod=D('items_cate');
+		//		$this->user_mode=D('user');
+		//		$this->user_info=D('user_info');
+		//		$this->album_mod=D('album');
+		//		$this->album_cate_mod=D('album_cate');
+		//        $this->sendMsg_mod=M('UserMsg');
+		//        $this->seo_mod = M('seo');
 	}
-	
-	
+
+
 	// 菜单页面
 	public function menu(){
 		//显示菜单项
-//		$id	=	intval($_REQUEST['tag'])==0?6:intval($_REQUEST['tag']);
+		//		$id	=	intval($_REQUEST['tag'])==0?6:intval($_REQUEST['tag']);
 		$menu  = array();
 		$role_id = D('admin')->where('id='.$_SESSION['admin_info']['id'])->getField('role_id');
 		$node_ids_res = D("access")->where("role_id=".$role_id)->field("node_id")->select();
-		
+
 		$node_ids = array();
 		foreach ($node_ids_res as $row) {
 			array_push($node_ids,$row['node_id']);
 		}
 
-// var_dump($node_ids);
-        $ids = implode(',', $node_ids);
+		// var_dump($node_ids);
+		$ids = implode(',', $node_ids);
 
 		//读取数据库模块列表生成菜单项
 		$node    =   M("node");
-//		$where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
-        // 增加在cms_access的条件
-        //如果是超级管理员，则可以执行所有操作
-//        $_SESSION['admin_info']['id'] =1;   // TODO jieqiangtest 写死=1
-//		var_dump($_SESSION['admin_info']);
-        /*if($_SESSION['admin_info']['id'] == 1) {
-            $where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
-        }else{
-            $where = "auth_type<>2 AND status=1 AND is_show=0 AND id in ($ids) AND group_id=".$id;
-        }*/
+		//		$where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
+		// 增加在cms_access的条件
+		//如果是超级管理员，则可以执行所有操作
+		//        $_SESSION['admin_info']['id'] =1;   // TODO jieqiangtest 写死=1
+		//		var_dump($_SESSION['admin_info']);
+		/*if($_SESSION['admin_info']['id'] == 1) {
+		 $where = "auth_type<>2 AND status=1 AND is_show=0 AND group_id=".$id;
+		 }else{
+		 $where = "auth_type<>2 AND status=1 AND is_show=0 AND id in ($ids) AND group_id=".$id;
+		 }*/
 
-        // 去除组别，显示所有权限，不分组
+		// 去除组别，显示所有权限，不分组
 		if($_SESSION['admin_info']['id'] == 1) {
 			$where = "auth_type<>2 AND status=1 AND is_show=0 ";
 		}else{
@@ -62,14 +62,14 @@ class baseAction extends Action {
 		}
 
 
-//		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort DESC')->select();
+		//		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort DESC')->select();
 		$list	=$node->where($where)->field('id,action,action_name,module,module_name,data')->order('sort ASC')->select();
 
-//		var_dump('getLastSql==',$node->getLastSql());
+		//		var_dump('getLastSql==',$node->getLastSql());
+		//		var_dump('$list==',$list);
 
-
-//var_dump('$list==',$list);
 		foreach($list as $key=>$action) {
+			//			var_dump('$key=='.$key,'$action==',$action);
 			$data_arg = array();
 			if ($action['data']){
 				$data_arr = explode('&', $action['data']);
@@ -81,8 +81,8 @@ class baseAction extends Action {
 			$action['url'] = U($action['module'].'/'.$action['action'], $data_arg);
 
 			// 修改图标 by jieqiang 201705031308  module和action确定唯一图标
-//			var_dump('$action=======',$action['module'].'_'.$action['action']);
-//			$action['module'] = 'user';
+			//			var_dump('$action=======',$action['module'].'_'.$action['action']);
+			//			$action['module'] = 'user';
 			switch ($action['module'].'_'.$action['action']){
 				case 'role_index': // 权限管理
 					$action['module2'] = 'key';
@@ -132,12 +132,14 @@ class baseAction extends Action {
 			}
 			$menu[$action['module']]['name']	= $action['module_name'];
 			$menu[$action['module']]['id']	= $action['id'];
+			//			var_dump('$action==',$action);
+			//			var_dump('name==='.$menu[$action['module']]['name']);
 		}
-//		var_dump($menu);
+
 		return  $menu;
 	}
-	
-	
+
+
 	function _initialize(){
 		//过滤所有的GET POST请求
 		//判断是否允许ip访问
@@ -156,17 +158,17 @@ class baseAction extends Action {
 
 		$this->assign('site_root',$this->site_root);
 		// 用户权限检查
-		
+
 		//	TODO 暂时屏蔽
-//		if ( (ACTION_NAME !== 'login')|| (ACTION_NAME !== 'register') ||(ACTION_NAME !== 'recover')) {
+		//		if ( (ACTION_NAME !== 'login')|| (ACTION_NAME !== 'register') ||(ACTION_NAME !== 'recover')) {
 		if ( !in_array(ACTION_NAME, array('login','register','recover'))) {
 			$this->check_priv();
 		}
-		
+
 		// 菜单
-//		var_dump($this->menu());
+		//		var_dump($this->menu());
 		$this->assign('menu',$this->menu());
-		
+
 		//需要登陆
 		$admin_info =$_SESSION['admin_info'];
 
@@ -179,7 +181,7 @@ class baseAction extends Action {
 
 		// 顶部菜单
 		$model	=	M("group");
-//		$top_menu	=$model->field('id,title')->where('status=1')->order('sort ASC')->select();
+		//		$top_menu	=$model->field('id,title')->where('status=1')->order('sort ASC')->select();
 		$role_id = D('admin')->where('id='.$_SESSION['admin_info']['id'])->getField('role_id');
 		$node_ids_res = D("access")->where("role_id=".$role_id)->field("node_id")->select();
 
@@ -221,7 +223,7 @@ class baseAction extends Action {
 
 		$this->assign('top_menu',$top_menu);
 
-//		var_dump($top_menu);
+		//		var_dump($top_menu);
 		//获取网站配置信息
 		$setting_mod = M('setting');
 		$setting = $setting_mod->select();
@@ -275,17 +277,17 @@ class baseAction extends Action {
 		}
 		$node_mod = D('node');
 		// 权限到模块，不到操作  By jieqiang20170506
-//		$node_id = $node_mod->where(array('module'=>MODULE_NAME, 'action'=>ACTION_NAME))->getField('id');
+		//		$node_id = $node_mod->where(array('module'=>MODULE_NAME, 'action'=>ACTION_NAME))->getField('id');
 		$node_id = $node_mod->field('id')->where(array('module'=>MODULE_NAME))->select();
 		foreach ($node_id as $v){
 			$ids[] = $v['id'];
 		}
 
 		$access_mod = D('access');
-//		$rel = $access_mod->where(array('node_id'=>$node_id, 'role_id'=>$_SESSION['admin_info']['role_id']))->count();
+		//		$rel = $access_mod->where(array('node_id'=>$node_id, 'role_id'=>$_SESSION['admin_info']['role_id']))->count();
 		$rel = $access_mod->where(array('node_id'=>array('in',$ids), 'role_id'=>$_SESSION['admin_info']['role_id']))->count();
-		
-//		var_dump($node_id,$node_mod->getLastSql(),$access_mod->getLastSql(),$rel);exit;
+
+		//		var_dump($node_id,$node_mod->getLastSql(),$access_mod->getLastSql(),$rel);exit;
 		if ($rel==0) {
 			$this->error(L('_VALID_ACCESS_'));
 		}
@@ -306,15 +308,15 @@ class baseAction extends Action {
 	{
 
 		if(S('wegoapi')){
-            $wegoapi = S('wegoapi');
-        }else{
-        	//网站配置
+			$wegoapi = S('wegoapi');
+		}else{
+			//网站配置
 			$wegoapi_mod = M('wegoapi');
 			$setting = $wegoapi_mod->select();
 			foreach ($setting as $val) {
 				$wegoapi[$val['name']] = $val['data'];
 			}
-            S('wegoapi',$wegoapi,'3600');
+			S('wegoapi',$wegoapi,'3600');
 		}
 		$name=$wegoapi['username'];
 		$pwd=$wegoapi['password'];
@@ -373,8 +375,8 @@ class baseAction extends Action {
 		$b = $a->msubstr($str,$start,$length);
 		return($b);
 	}
-	
-	
+
+
 	//失败页面重写  默认时间改成0 by jieqiang 20170506
 	protected function error($message, $url_forward='',$ms = 0, $dialog=false, $ajax=false, $returnjs = '')
 	{
@@ -393,10 +395,10 @@ class baseAction extends Action {
 		$this->assign('returnjs',$returnjs);
 		parent::success($message, $ajax);
 	}
-	
-	
-	
-    
+
+
+
+
 
 	public function simplexml_obj2array($obj)
 	{
@@ -588,17 +590,17 @@ class baseAction extends Action {
 		$mail->Password=$this->setting['mail_password'];    // 发送邮件。
 		return($mail->Send());
 	}
-    /*
-        发送站内信
-        array(to_user,form_user,title,content,date)
-    */
-    function sendMsg($array){
+	/*
+	 发送站内信
+	 array(to_user,form_user,title,content,date)
+	 */
+	function sendMsg($array){
 
-        if(is_array($array)){
-            $this->sendMsg_mod->add($array);
-        }
-        return;
-    }
+		if(is_array($array)){
+			$this->sendMsg_mod->add($array);
+		}
+		return;
+	}
 	//查询母个商品的返现金额
 	public function get_commission($title,$num_iid,$p='commission'){
 		$tb_top = $this->taobao_client();
@@ -631,16 +633,16 @@ class baseAction extends Action {
 
 		}
 		$c=count($good_list_rel);
-	    for($i=0;$i<$c;$i++){
-	        if($good_list_rel[$i]['num_iid']==$num_iid && strip_tags($good_list_rel[$i]['title'])==strip_tags($title)){
-		        $re=$good_list_rel[$i];
-		    }
-	    }
-	    if($p=='commission') return $re['commission'];
-	    if($p=='click_url') return $re['click_url'];
+		for($i=0;$i<$c;$i++){
+			if($good_list_rel[$i]['num_iid']==$num_iid && strip_tags($good_list_rel[$i]['title'])==strip_tags($title)){
+				$re=$good_list_rel[$i];
+			}
+		}
+		if($p=='commission') return $re['commission'];
+		if($p=='click_url') return $re['click_url'];
 	}
-    function getSign(){
-    	$setting_mod = M('wegoapi');
+	function getSign(){
+		$setting_mod = M('wegoapi');
 		$res = $setting_mod->where("name='weburl' OR name='sign'")->select();
 
 		foreach( $res as $val )
@@ -653,6 +655,6 @@ class baseAction extends Action {
 		$apiurl="http://www.wego360.com/wegoapi/api.php?url={$wegoapi['weburl']}&sign={$wegoapi['sign']}";
 		$result=file_get_contents($apiurl);
 		return $result;
-    }
+	}
 }
 ?>
