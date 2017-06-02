@@ -1,3 +1,13 @@
+php mail()方法发送html格式的邮件
+https://my.oschina.net/Sandyguoguo/blog/159797
+php  qq 邮件服务器不认html
+
+使用 PHPMailer 配合 QQ邮箱 发送邮件
+http://blog.csdn.net/DeepLies/article/details/55808020
+$mail->isHTML(true);//邮件正文是否为html编码 注意此处是一个方法 不再是属性 true或false
+
+
+
 http://msec.jieqiangtec.bb/cps.php?m=desk&a=prom&sid=16&sname=客户经理&item_id=1314520&push_id=405&shop_id=1&con_id=23&rate=11&cate_id=0&cate_name=包包&bank_id=4&bank_subid=6&user_id=khjl
 
 http://msec.jieqiangtec.bb/cps.php?m=desk&a=items&sid=1&sname=admin&item_id=1314520&push_id=405&shop_id=1&con_id=23&rate=11&cate_id=0&cate_name=%E5%8C%85%E5%8C%85&bank_id=0&bank_subid=0&user_id=%E6%88%91%E6%98%AF%E7%AE%A1%E7%90%86%E5%91%98%E5%93%A6

@@ -115,11 +115,11 @@ class publicAction extends baseAction
 					<p>(本地址在2小时内有效)</p>								
 					';*/
 					
-					/*$message='<p>'.$user_rel['user_name'].' 您好:</p>
+					$message='<p>'.$user_rel['user_name'].' 您好:</p>
 					<p>请点击下面的地址或将下面的地址输入到浏览器地址栏完成取回密码操作。 (注意：如果您没有进行过取回密码操作，请不要点击此链接)</p>	
 					<p><a href="'.$url.'" target="_blank">重置密码为:'.$password.'</a></p>			
 					<p>(本地址在2小时内有效)</p>								
-					';*/
+					';
 					
 					/*$message='<p>'.$user_rel['user_name'].' 您好:</p>
 					<p>请点击下面的地址或将下面的地址输入到浏览器地址栏完成取回密码操作。 (注意：如果您没有进行过取回密码操作，请不要点击此链接)</p>	
@@ -127,11 +127,11 @@ class publicAction extends baseAction
 					<p>(本地址在2小时内有效)</p>								
 					';*/
 					
-					$message="<p>{$user_rel['user_name']}您好:</p>
+					/*$message="<p>{$user_rel['user_name']}您好:</p>
 					<p>请点击下面的地址或将下面的地址输入到浏览器地址栏完成取回密码操作。 (注意：如果您没有进行过取回密码操作，请不要点击此链接)</p>	
 					<p><a href='{$url}' target='_blank'>重置密码为:{$password}</a></p>			
 					<p>(本地址在2小时内有效)</p>								
-					";
+					";*/
 					
 					// 替换换行符
 //					$message = str_replace(array('<p>','</p>'), " \n ", $message);
@@ -144,7 +144,7 @@ class publicAction extends baseAction
 					
 					$add_data['result']= $result;
 					M('send_email_log')->add($add_data);
-//					var_dump($result);exit;
+					var_dump($result);exit;
 //					$this->success('恭喜您,提交信息成功 ,请查收邮件',U('public/recover'));exit;
 					$this->success('恭喜您,提交信息成功 ,请查收邮件',U('index/index'));exit;
 				}

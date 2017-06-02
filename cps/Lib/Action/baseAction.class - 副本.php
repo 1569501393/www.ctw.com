@@ -588,7 +588,6 @@ class baseAction extends Action {
 		$mail=new PHPMailer();
 		$mail->IsSMTP();     // 设置PHPMailer使用SMTP服务器发送Email
 		$mail->CharSet='UTF-8';     // 设置邮件的字符编码，若不指定，则为'UTF-8'
-    	$mail->isHTML(true);//邮件正文是否为html编码 注意此处是一个方法 不再是属性 true或false
 		$mail->Port= $this->setting['mail_port'];    //端口号
 		$mail->AddAddress($address);   // 添加收件人地址，可以多次使用来添加多个收件人
 		$mail->Body=$message;     // 设置邮件正文
