@@ -124,20 +124,29 @@ class indexAction extends baseAction
         $result['conversion'] = sprintf("%.2f", $result['total_sales'] / $result['show'] * 100);
 
         // 昨天销售总计
-        $result['yesterday_sales'] = M('orderlist')->where(" $where DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(sum_price)');
+        $result['yesterday_sales'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(sum_price)');
 
         // 今日销售总计
-        $result['today_sales'] = M('orderlist')->where(" $where DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(sum_price)');
+        $result['today_sales'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(sum_price)');
 
-        // 目标
-        $result['today_target'] = $result['yesterday_sales'] * 1.1;
+        
 
         // 上周
-        $result['lastweek_sales'] = M('orderlist')->where(" $where DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(sum_price)');
+        $result['lastweek_sales'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(sum_price)');
 
         // 上个月
         $result['lastmonth_sales'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(sum_price)');
 
+        
+    	// 目标
+        $result['today_target'] = $result['yesterday_sales']?$result['yesterday_sales'] * 1.1:$result['lastmonth_sales']/30 * 1.1;
+        
+        // 目标完成度
+        $result['today_target_rate'] = round($result['today_sales']/$result['today_target']*100);
+        if ($result['today_target_rate']>100){
+        	$result['today_target_rate'] = 100;
+        }
+        
         // 近期订单
         $result['recent_orders'] = M('orderlist')->where(" $where ")->order('id DESC')->limit(9)->select();
 

@@ -1,4 +1,7 @@
 <include file="public:header" />
+<style type="text/css">
+
+</style>
 <body class="fixed-left">
     <!-- Begin page -->
     <div id="wrapper">
@@ -21,7 +24,7 @@
                             <div class="panel panel-default m-t-20">
                                 <div class="panel-body p-0">
                                     <div class="table-responsive">
-                                        <table class="table table-actions-bar">
+                                        <table class="table table-hover mails m-0">
                                             <tbody>
                                             <volist name="article_list" id="val">
                                                 <tr class="read">
@@ -41,7 +44,8 @@
                                                         <i class="fa fa-paperclip"></i>
                                                     </td> -->
                                                     <!-- <td class="text-right" width="200px">{$val.add_time}</td> -->
-                                                    <td width="200px">{$val.add_time}</td>
+                                                    <!-- <td width="200px"> -->
+                                                    <td class="text-right">{$val.add_time}</td>
                                                     </tr>
                                                 </volist>
 

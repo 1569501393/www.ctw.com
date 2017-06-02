@@ -31,7 +31,20 @@
                     </li>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
+
+                            <if condition="$Think.session.admin_info.role_id eq 1">
+                            <img src="__ROOT__/statics/cps/images/users/avatar-2.jpg" alt="user-img" class="img-circle">
+                            <elseif condition="$Think.session.admin_info.role_id eq 3" />
+                            <img src="__ROOT__/statics/cps/images/users/avatar-2.jpg" alt="user-img" class="img-circle">
+                            <elseif condition="$Think.session.admin_info.role_id eq 4" />
+                            <img src="__ROOT__/statics/cps/images/users/avatar-3.jpg" alt="user-img" class="img-circle">
+                            <elseif condition="$Think.session.admin_info.role_id eq 5" />
+                            <img src="__ROOT__/statics/cps/images/users/avatar-4.jpg" alt="user-img" class="img-circle">
+                            <elseif condition="$Think.session.admin_info.role_id eq 6" />
+                            <img src="__ROOT__/statics/cps/images/users/avatar-5.jpg" alt="user-img" class="img-circle">
+                            <else />
                             <img src="__ROOT__/statics/cps/images/users/avatar-7.jpg" alt="user-img" class="img-circle">
+                            </if>
                             <span class="hidden-xs">{$Think.session.admin_info.user_name}</span></a>
                         <ul class="dropdown-menu">
                             <li>

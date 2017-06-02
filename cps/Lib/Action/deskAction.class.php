@@ -64,6 +64,7 @@ class deskAction extends Action
 		$_GET['order_id'] = time();
 		$_GET['order_time'] = time();
 		$_GET['item_count'] = $_GET['item_count']?:1;
+		$_GET['platform_id'] = $_GET['bank_id']?:1;
 		$_GET['item_price'] = $_GET['item_price']?:$item_info['price'];
 		$_GET['commission'] = $_GET['item_price']*$_GET['item_count']*$_GET['rate']/100;
 		$_GET['sum_price'] = $_GET['item_price']*$_GET['item_count'];

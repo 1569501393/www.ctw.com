@@ -231,7 +231,8 @@ class itemsAction extends baseAction
 
         $page = $p->show();
         $this->assign('page', $page);
-        $this->assign('site_root', $this->site_root);
+//        var_dump(substr($this->site_root, -1));exit;
+        $this->assign('site_root', substr($this->site_root, -1));
         $this->assign('items_list', $commission_list);
         $this->display();
     }

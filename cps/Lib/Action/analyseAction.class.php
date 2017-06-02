@@ -46,7 +46,7 @@ class analyseAction extends baseAction
 		$this->assign('commission_list', $commission_list);
 
 		// 热销商品排行
-		$where .= ' AND 1=1';
+//		$where .= ' AND 1=1';
 		$items_list = M('orderlist')->field(array("count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('item_id')->order('sum_count DESC')->limit(10)->select();
 		//        $model->where($opt)->field(array("count(comment)"=>"countCom", "title", "artid")->group('artid')->select();
 		//        var_dump($items_list);

@@ -154,7 +154,8 @@ class baseAction extends Action {
 		include ROOT_PATH.'/includes/lib_common.php';
 		$this->mod_init();
 
-		$this->site_root="http://".$_SERVER['SERVER_NAME'].($_SERVER['SERVER_PORT']==80?'':':'.$_SERVER['SERVER_PORT']).__ROOT__."/";
+//		$this->site_root="http://".$_SERVER['SERVER_NAME'].($_SERVER['SERVER_PORT']==80?'':':'.$_SERVER['SERVER_PORT']).__ROOT__."/";
+		$this->site_root="http://".$_SERVER['SERVER_NAME'].($_SERVER['SERVER_PORT']==80?'':':'.$_SERVER['SERVER_PORT']).__ROOT__;
 
 		$this->assign('site_root',$this->site_root);
 		// 用户权限检查

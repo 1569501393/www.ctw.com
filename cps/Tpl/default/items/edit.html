@@ -5,14 +5,14 @@
     <include file="public:topBar" />
     <include file="public:leftMenu" />
     <!-- Modal -->
-    <div id="custom-modal" class="modal-demo">
+    <!-- <div id="custom-modal" class="modal-demo">
       <button type="button" class="close" onclick="Custombox.close();">
         <span>&times;</span>
         <span class="sr-only">关闭</span></button>
       <h4 class="custom-modal-title">{$Think.get.title}</h4>
       <div class="custom-modal-text">
         <img src="__ROOT__/statics/cps/images/gallery/101.jpg" alt="image" class="img-responsive"></div>
-    </div>
+    </div> -->
     <!-- <div class="content-page" page="posters"> -->
     <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
       <!-- Start content -->
@@ -94,7 +94,13 @@
                             <!-- <a href="#custom-modal" class="" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a">
                             <img src="__ROOT__/{$val.img}" alt="image" class="thumb-md">
                             查看大图</a> -->
-                            <img src="__ROOT__/{$val.img}" alt="image" class="thumb-md"></td>
+                            <!-- <img src="__ROOT__/{$val.img}" alt="image" class="thumb-md"> -->
+
+                            <a href="__ROOT__/{$val.img}" target="_blank" >
+                            <notempty  name="val['simg']"><img src="{$val.simg}"  width="50px"><else /><img src="{$val.img}" width="50px"></notempty ></a>
+                            
+
+                          </td>
                           <td>{$val.add_time|default='2017-05-22 18:50:27'}
                             <!-- 2016-01-01 --></td>
                           <td onclick="status({$val.id},'status')" id="status_{$val.id}">
