@@ -121,15 +121,15 @@ class publicAction extends baseAction
 					<p>(本地址在2小时内有效)</p>								
 					';
 					
+					// 替换换行符
 					$message = str_replace(array('<p>','</p>'), " \n ", $message);
-						
-						
 					$add_data['title']= $title;
 					$add_data['address']= $address;
 					$add_data['message']= $message;
 					M('send_email_log')->add($add_data);
 					//增加成功 发送邮件
-					$this->sendMail($address, $title, $message);
+					$result = $this->sendMail($address, $title, $message);
+//					var_dump($result);exit;
 					$this->success('恭喜您,提交信息成功 ,请查收邮件',U('public/recover'));exit;
 				}
 
