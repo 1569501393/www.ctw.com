@@ -1,3 +1,62 @@
+http://msec.jieqiangtec.bb/cps.php?m=desk&a=prom&sid=16&sname=客户经理&item_id=1314520&push_id=405&shop_id=1&con_id=23&rate=11&cate_id=0&cate_name=包包&bank_id=4&bank_subid=6&user_id=khjl
+
+http://msec.jieqiangtec.bb/cps.php?m=desk&a=items&sid=1&sname=admin&item_id=1314520&push_id=405&shop_id=1&con_id=23&rate=11&cate_id=0&cate_name=%E5%8C%85%E5%8C%85&bank_id=0&bank_subid=0&user_id=%E6%88%91%E6%98%AF%E7%AE%A1%E7%90%86%E5%91%98%E5%93%A6
+
+1.找回密码（注意风格样式匹配）（登录账号和邮件地址共同验证，自动发送系统重置后的密码，或者你看有更方便）
+array(4) { ["username"]=> string(13) "客户经理0" ["email"]=> string(13) "khjl0@jie.com" ["find_password"]=> string(13) "find_password" ["dosubmit"]=> string(1) "1" }
+
+客户经理0
+khjl0@jie.com
+
+645285907@qq.com
+
+
+http://msec.jieqiangtec.com/cps.php?a=ac_pwd&m=public&k=af1075d9a0c681ab2c815aa0436e69be&password=a491030&uid=2
+
+http://msec.jieqiangtec.bb/cps.php?a=ac_pwd&m=public&k=af1075d9a0c681ab2c815aa0436e69be&password=a491030&uid=2
+
+
+
+http://msec.jieqiangtec.com/cps.php?a=ac_pwd&m=public&k=d8648feec42e43bcf1e63c28b0f9cfca
+
+http://msec.jieqiangtec.bb/cps.php?a=ac_pwd&m=public&k=d8648feec42e43bcf1e63c28b0f9cfca
+
+
+
+http://msec.jieqiangtec.com/cps.php?a=ac_pwd&;m=desk&amp;k=f9fdd6826b5c348e10cce1945902d3d1
+
+http://msec.jieqiangtec.bb/cps.php?a=ac_pwd&;m=desk&amp;k=f9fdd6826b5c348e10cce1945902d3d1
+
+
+<p> 您好:</p>
+<p>请点击下面的地址或将下面的地址输入到浏览器地址栏完成取回密码操作。 (注意：如果您没有进行过取回密码操作，请不要点击此链接)</p> 
+<p><a href="http://ctw.jieqiangtec.com?a=ac_pwd&amp;m=uc&;k=7fbb8abbd0d7a2228d5e8e1c48a6d3e4" target="_blank">http://ctw.jieqiangtec.com?a=ac_pwd&amp;m=uc&;k=7fbb8abbd0d7a2228d5e8e1c48a6d3e4&lt;/a></p> 
+<p>(本地址在24小时内有效)</p> 
+
+
+
+找回在CPS联盟系统的密码  
+发件人：CPS管理员 <cps@adjyc.com>     查看  拒收   
+时   间：2017年6月2日(星期五) 下午5:51 显示图片和格式 |  
+收件人：『街＊墙』 <645285907@qq.com> 
+大   小：2.1K
+打印 | 显示邮件原文 | 导出为eml文件 | 邮件有乱码？ | 转发到群邮件 | 保存到记事本 | 添加到日历 | 作为附件转发 
+
+备　注：编辑删除请在此输入备注...取消
+ 
+
+标记：已将此邮件标记为星标邮件。 取消星标
+标记：已将此邮件在列表中置顶。 取消置顶
+标记：已将此邮件标记为星标邮件，并在列表中置顶。 取消星标 取消置顶
+网站安全云检测 这不是腾讯公司的官方邮件。  请勿轻信密保、汇款、中奖信息，勿轻易拨打陌生电话。  举报垃圾邮件 
+<p> 您好:</p>
+<p>请点击下面的地址或将下面的地址输入到浏览器地址栏完成取回密码操作。 (注意：如果您没有进行过取回密码操作，请不要点击此链接)</p> 
+<p><a href="http://msec.jieqiangtec.com/cps.php?a=ac_pwd&;m=public&amp;k=f9fdd6826b5c348e10cce1945902d3d1" target="_blank">重置密码为a123456</a></p> 
+<p>(本地址在24小时内有效)</p> 
+
+
+
+
 php四舍五入保留两位小数
 $num = 123213.666666;  
 echo sprintf("%.2f", $num); 

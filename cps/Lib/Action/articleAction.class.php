@@ -7,7 +7,7 @@ class articleAction extends baseAction
         $article_mod = D('article');
 //		$article_cate_mod = D('article_cate');
         //搜索
-        $where = '1=1 AND data_state=1 AND status=1 ';
+        $where = '1=1 AND data_state=1  ';
         if (($_SESSION['admin_info']['role_id'] != 1)) {
             $where = "1=1 AND (platform_id={$_SESSION['admin_info']['role_id'] } OR platform_id=0 ) ";
         }

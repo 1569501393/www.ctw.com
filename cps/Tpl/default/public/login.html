@@ -4,7 +4,7 @@
 <div class="wrapper-page">
     <div class=" card-box">
         <div class="panel-heading">
-            <img src="__ROOT__/statics/cps/images/logo_color.jpg">CPS
+            <a href="{:u('index/index')}"><img src="__ROOT__/statics/cps/images/logo_color.jpg">CPS</a>
             <!-- <h3 class="text-center"><strong class="text-custom">登录</strong> </h3> --></div>
         <div class="panel-body">
             <form class="form-horizontal m-t-20" action="{:u('public/login')}" method="post">
@@ -28,8 +28,8 @@
                         <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit">登录</button></div>
                 </div>
                 <div class="form-group m-t-30 m-b-0">
-                    <!-- <div class="col-sm-12">
-                    <a href="#{:u('admin/recover')}" class="text-dark"><i class="fa fa-lock m-r-5"></i>找回密码</a></div> -->
+                    <div class="col-sm-12">
+                    <a href="{:u('public/recover')}" class="text-dark"><i class="fa fa-lock m-r-5"></i>找回密码</a></div>
                     <!-- <div style="padding-top: 35px; text-align: center;">
                     <a href="index.php?identity=shangcheng"><button type="button" class="btn btn-inverse btn-custom waves-effect waves-light">商城</button></a>
                     <a href="index.php?identity=fenhang"><button type="button" class="btn btn-inverse btn-custom waves-effect waves-light">分行</button></a>

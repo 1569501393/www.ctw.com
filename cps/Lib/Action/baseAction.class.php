@@ -79,6 +79,10 @@ class baseAction extends Action {
 				}
 			}
 			$action['url'] = U($action['module'].'/'.$action['action'], $data_arg);
+			
+			if ($_SESSION['admin_info']['role_id'] != 1 AND $action['action_name']=='公告管理') {
+				$action['action_name']	= '联盟公告';
+			}
 
 			// 修改图标 by jieqiang 201705031308  module和action确定唯一图标
 			//			var_dump('$action=======',$action['module'].'_'.$action['action']);
@@ -130,7 +134,11 @@ class baseAction extends Action {
 			if ($action['action']) {
 				$menu[$action['module']]['navs'][] = $action;
 			}
-			$menu[$action['module']]['name']	= $action['module_name'];
+			
+			
+			
+//			var_dump($menu[$action['module']]['name']);
+			
 			$menu[$action['module']]['id']	= $action['id'];
 			//			var_dump('$action==',$action);
 			//			var_dump('name==='.$menu[$action['module']]['name']);
@@ -162,7 +170,7 @@ class baseAction extends Action {
 
 		//	TODO 暂时屏蔽
 		//		if ( (ACTION_NAME !== 'login')|| (ACTION_NAME !== 'register') ||(ACTION_NAME !== 'recover')) {
-		if ( !in_array(ACTION_NAME, array('login','register','recover'))) {
+		if ( !in_array(ACTION_NAME, array('login','register','recover','ac_pwd','prom'))) {
 			$this->check_priv();
 		}
 
