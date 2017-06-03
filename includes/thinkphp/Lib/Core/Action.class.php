@@ -390,14 +390,18 @@ abstract class Action {
             $this->display(C('TMPL_ACTION_SUCCESS'));
         }else{
             $this->assign('error',$message);// 提示信息
-            //发生错误时候默认停留3秒
-            if(!isset($this->waitSecond))    $this->assign('waitSecond','3');
+            //发生错误时候默认停留3秒  TODO by jieqiang 20170603
+            // if(!isset($this->waitSecond))    $this->assign('waitSecond','3');
+            if(!isset($this->waitSecond))    $this->assign('waitSecond','1');
             // 默认发生错误的话自动返回上页
             if(!isset($this->jumpUrl)) $this->assign('jumpUrl',"javascript:history.back(-1);");
             $this->display(C('TMPL_ACTION_ERROR'));
             // 中止执行  避免出错后继续执行
-            exit ;
+//            exit ;
         }
+        
+        // 中止执行  避免出错后继续执行 成功后依然终止
+        exit ;
     }
 
    /**

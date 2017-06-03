@@ -1379,10 +1379,10 @@ class PHPMailer {
         break;
       case '7bit':
       case '8bit':
-        $encoded = $this->FixEOL($str);
+        /*$encoded = $this->FixEOL($str);
         //Make sure it ends with a line break
         if (substr($encoded, -(strlen($this->LE))) != $this->LE)
-          $encoded .= $this->LE;
+          $encoded .= $this->LE;*/
         break;
       case 'binary':
         $encoded = $str;
