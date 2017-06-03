@@ -10,6 +10,17 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1';
 		$where .= " AND con_id>0 ";
+		
+		if ($_SESSION['admin_info']['role_id']==3) {
+			$where .= " AND shop_id=={$_SESSION['admin_info']['id']} ";
+		}if ($_SESSION['admin_info']['role_id']==4) {
+			$where .= " AND platform_id=={$_SESSION['admin_info']['id']} ";
+		}if ($_SESSION['admin_info']['role_id']==5) {
+			$where .= " AND platform_id=={$_SESSION['admin_info']['id']} ";
+		}if ($_SESSION['admin_info']['role_id']==6) {
+			$where .= " AND platform_id=={$_SESSION['admin_info']['id']} ";
+		}
+		
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 			$where .= " AND (title like '%{$_GET['keyword']}%' OR contract like '%{$_GET['keyword']}%') ";
 			$this->assign('keyword', $_GET['keyword']);

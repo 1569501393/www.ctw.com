@@ -150,7 +150,7 @@ class publicAction extends baseAction
 				}
 
 			}else{
-				$this->error('您的用户名或者邮箱输入错误');
+				$this->error('您的用户名或者邮箱输入错');
 			}
 
 		}

@@ -1,8 +1,15 @@
 $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
 chmod -R 777 ./
 
-$ git add cps/Lib/ cps/Tpl/ doc/ cps.php cps/Common/ statics/  cps/Lang/   ms/  data/  cps/Conf/
+$ git add cps/Lib/ cps/Tpl/ doc/  cps.php cps/Common/ statics/  cps/Lang/   ms/  data/  cps/Conf/
 chmod -R 777 ./
+
+
+$ git add cps/Lib/ cps/Tpl/ doc/ includes/ cps.php cps/Common/ statics/  cps/Lang/   ms/  data/  cps/Conf/
+chmod -R 777 ./
+
+
+git add cps/Tpl/
 
 git pull放弃本地修改
 git reset --hard

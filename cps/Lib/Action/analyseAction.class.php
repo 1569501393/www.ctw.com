@@ -29,8 +29,8 @@ class analyseAction extends baseAction
 		$order_list = M('orderlist')->field(array('bank_subid','platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price"))->where(" $where ")->group('bank_subid')->order('sum_price DESC')->limit(10)->select();
 
 		foreach ($order_list as $k => $val) {
-			//            $order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_name') ?: '全部';
+			//            $order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
+			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_id') ?: '全部';
 		}
 
 		$this->assign('order_list', $order_list);
@@ -40,8 +40,8 @@ class analyseAction extends baseAction
 		//		$commission_list = M('orderlist')->field(array('platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price","SUM(commission)"=>"sum_commission"))->where(" $where ")->group('platform_id')->order('sum_commission DESC')->limit(10)->select();
 		$commission_list = M('orderlist')->field(array('bank_subid','platform_id',"count(item_id)"=>"cnt", "title", "item_id","sum(sum_price)"=>"sum_price","sum(item_count)"=>"sum_count","SUM(sum_price)"=>"sum_price","SUM(commission)"=>"sum_commission"))->where(" $where ")->group('bank_subid')->order('sum_commission DESC')->limit(10)->select();
 		foreach ($commission_list as $k => $val) {
-			//            $commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_name') ?: '全部';
+			//            $commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
+			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_id') ?: '全部';
 		}
 		$this->assign('commission_list', $commission_list);
 

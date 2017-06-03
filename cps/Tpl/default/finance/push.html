@@ -70,7 +70,10 @@
                         <th>佣金比例</th>
                         <th>佣金</th>
                         <th>合同名称</th>
-                        <th style="min-width: 80px;">分销平台</th>
+                        <!-- <th style="min-width: 80px;">分销平台</th> -->
+                        <if condition="$Think.session.admin_info.role_id eq 1 ">
+                            <th>分销平台</th>
+                        </if>
                         <th>入库日期</th>
                         <th>点击量</th>
                         <!-- <th style="min-width: 80px;">推广链接</th>
@@ -91,7 +94,10 @@
                             <!-- {$val.con_id} -->
                             <a href="{:u('contract/edit',array('id'=>$val['con_id']))}">{$val.contract|default="默认合同名称"}
                               <!-- {$val.contract.con_id}-{$val.contract.title} --></a></td>
-                          <td>{$val.platform_name|default="默认分销平台"}</td>
+                          <!-- <td>{$val.platform_name|default="默认分销平台"}</td> -->
+                          <if condition="$Think.session.admin_info.role_id eq 1 ">
+                              <td>{$val.platform_name|default="默认分销平台"}</td>
+                          </if>
                           <!-- <td>{$val.period}</td> -->
                           <td>{$val.add_time|date='Y-m-d',###}</td>
                           <td>{$val.click}</td>

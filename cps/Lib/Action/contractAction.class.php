@@ -84,12 +84,15 @@ class contractAction extends baseAction
 		$key = 1;
 		foreach ($contract_list as $k => $val) {
 			$contract_list[$k]['key'] = ++$p->firstRow;
-			$contract_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+//			$contract_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
+			$contract_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
 			// 审批人
-			$contract_list[$k]['approver_name'] = D('admin')->where('id=' . $val['uid'])->getField('user_name') ?: '全部';
+//			$contract_list[$k]['approver_name'] = D('admin')->where('id=' . $val['uid'])->getField('user_id') ?: '全部';
+			$contract_list[$k]['approver_name'] = D('admin')->where('id=' . $val['uid'])->getField('user_id') ?: '全部';
 			// $contract_list[$k]['con_type_name'] = D('admin')->where('id='.$val['con_type'])->getField('user_name')?:'全部';
 			$contract_list[$k]['con_type_name'] = D('role')->where('id=' . $val['con_type'])->getField('name') ?: '全部';
-			$contract_list[$k]['shop_name'] = D('admin')->where('id=' . $val['shop_id'])->getField('user_name') ?: '全部';
+//			$contract_list[$k]['shop_name'] = D('admin')->where('id=' . $val['shop_id'])->getField('user_id') ?: '全部';
+			$contract_list[$k]['shop_name'] = D('admin')->where('id=' . $val['shop_id'])->getField('user_id') ?: '全部';
 			$contract_list[$k]['status_name'] = D('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' AND parameter_id=' . $val['status'])->getField('parameter_value') ?: '全部';
 		}
 		
@@ -160,6 +163,7 @@ class contractAction extends baseAction
 		$this->assign('log_list', $log_list);
 
 		// 默认当前时间
+//		$contract_info['begin_time']=$contract_info['end_time']=time();
 		$contract_info['begin_time']=$contract_info['end_time']=time();
 		$this->assign('contract_info', $contract_info);
 
@@ -169,18 +173,19 @@ class contractAction extends baseAction
 	function add()
 	{
 		if (isset($_POST['dosubmit'])) {
+//			dump($_POST);exit;
 
 			// 合法性校验
-			if (empty($_GET['con_id'])) {
+			if (empty($_POST['con_id'])) {
 				$this->error('合同编号不能为空');
 			}
 			
 					// 合法性校验
-			if (empty($_GET['period'])) {
+			if (empty($_POST['period'])) {
 				$this->error('结算周期不能为空');
 			}
 					// 合法性校验
-			if (empty($_GET['title'])) {
+			if (empty($_POST['title'])) {
 				$this->error('合同名称不能为空');
 			}
 			
@@ -253,7 +258,7 @@ class contractAction extends baseAction
 		array('con_type', '合同类型'),
 		array('shop_id', '商家名称'),
 		array('title', '合同名称'),
-		array('period', '账期'),
+		array('period_account', '账期'),
 		array('begin_time', '开始时间'),
 		array('end_time', '结束时间'),
 		array('status', ' 状态'),
@@ -268,11 +273,11 @@ class contractAction extends baseAction
 			$contract['data'][$k]['begin_time'] = date('Y-m-d H:i:s', $v['begin_time']);
 			$contract['data'][$k]['end_time'] = date('Y-m-d H:i:s', $v['end_time']);
 
-			$contract['data'][$k]['platform_id'] = D('admin')->where('id=' . $v['platform_id'])->getField('user_name') ?: '全部';
+			$contract['data'][$k]['platform_id'] = D('admin')->where('id=' . $v['platform_id'])->getField('user_id') ?: '全部';
 			// 审批人
-			$contract['data'][$k]['approver'] = D('admin')->where('id=' . $v['uid'])->getField('user_name') ?: '全部';
+			$contract['data'][$k]['approver'] = D('admin')->where('id=' . $v['uid'])->getField('user_id') ?: '全部';
 			$contract['data'][$k]['con_type'] = D('role')->where('id=' . $v['con_type'])->getField('name') ?: '全部';
-			$contract['data'][$k]['shop_id'] = D('admin')->where('id=' . $v['shop_id'])->getField('user_name') ?: '全部';
+			$contract['data'][$k]['shop_id'] = D('admin')->where('id=' . $v['shop_id'])->getField('user_id') ?: '全部';
 			$contract['data'][$k]['status'] = D('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'check_status\' AND parameter_id=' . $v['status'])->getField('parameter_value') ?: '全部';
 		}
 
@@ -394,6 +399,7 @@ class contractAction extends baseAction
 					// $data['cate_id'] = $_POST['cid'];
 					unset($data['id']);
 					$data['shop_id'] = $_POST['shop_id']?:0;
+					$data['platfom_id'] = $_POST['platform_id']?:0;
 					$data['uid'] = $_SESSION['admin_info']['id'];
 					$data['add_time'] = $data['update_time'] = time();
 
@@ -432,7 +438,7 @@ class contractAction extends baseAction
 					}
 
                     // 写入分类表
-                    $cate_flag = M('items_cate')->where(" name={$data['cate_name']} ")->find();
+                    $cate_flag = M('items_cate')->where(" name='{$data['cate_name']}' ")->find();
 
                     if (!$cate_flag) {
                         $data['name'] = $data['cate_name'];
@@ -501,6 +507,7 @@ class contractAction extends baseAction
 				$data['cate_id'] = $data['cate_name'] =$_POST['cid'];
 				unset($data['id']);
 				$data['shop_id'] = $_POST['shop_id'];
+				$data['platfom_id'] = $_POST['platform_id']?:0;
 				$data['uid'] = $_SESSION['admin_info']['id'];
 				$data['add_time'] = $data['update_time'] = time();
 
@@ -515,7 +522,6 @@ class contractAction extends baseAction
 
 				// 写入佣金表
 				// M('commission')->add($data);
-
 				$commission_flag = M('commission')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
 
 				if ($commission_flag) {
@@ -526,7 +532,7 @@ class contractAction extends baseAction
 				}
 
                 // 写入分类表
-                $cate_flag = M('items_cate')->where(" name={$data['cate_name']} AND status=1 AND data_state=1 ")->find();
+                $cate_flag = M('items_cate')->where(" name='{$data['cate_name']}' AND status=1 AND data_state=1 ")->find();
 
                 if (!$cate_flag) {
                     $data['name'] = $data['cate_name'];

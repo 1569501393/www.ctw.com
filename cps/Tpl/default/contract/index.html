@@ -97,7 +97,7 @@
                           <select class="form-control" name="platform_id">
                             <option value="0">全部</option>
                             <volist name="platforms" id="val">
-                              <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
+                              <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                           </select>
                         </div>
                         <!-- 商城 -->
@@ -112,17 +112,17 @@
                         </div>
                         <label class="col-sm-1 control-label">分销平台</label>
                         <div class="col-sm-3">
-                          <select class="form-control" name="platform_id">
-                            <option value="0">全部</option>
-                            <volist name="platforms" id="val">
-                              <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
+                          <select class="form-control" name="platform_id"  disabled="disabled">
+                            <option value="0">CPS</option>
+                            <!-- <volist name="platforms" id="val">
+                              <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist> -->
                           </select>
                         </div>
                         <!-- 分行 -->
                         <else />
                         <label class="col-sm-1 control-label">商家</label>
                         <div class="col-sm-3">
-                          <select class="form-control" name="shop_id">
+                          <select class="form-control" name="shop_id"  >
                             <option value="0">全部</option>
                             <volist name="shops" id="val">
                               <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
@@ -133,7 +133,7 @@
                           <select class="form-control" name="platform_id" disabled="disabled">
                             <option value="0">全部</option>
                             <volist name="platforms" id="val">
-                              <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
+                              <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                           </select>
                         </div>
                         </if>
@@ -171,10 +171,13 @@
                     <thead>
                       <tr>
                         <th>ID</th>
+                        <if condition="$_SESSION['admin_info']['role_id'] eq 1">
                         <th>分销平台</th>
+                        <th>商家名称</th>
+                        </if>
                         <th>合同编号</th>
                         <th>合同类型</th>
-                        <th>商家名称</th>
+                        
                         <th>合同名称</th>
                         <th>账期</th>
                         <th>开始时间</th>
@@ -191,26 +194,31 @@
                         <tr>
                           <td>{$val.id}</td>
                           <!-- <td id="sa-image"><b>{$val.platform_name}</b></td> -->
+                          <if condition="$_SESSION['admin_info']['role_id'] eq 1">
                           <td id="sa-image2">
-                            <b>
-                              <a href="javascript:edit({$val.platform_id},'{$val.platform_name}')">
-                                <!-- {$val.platform_id}- -->{$val.platform_name}</a></b>
-                          </td>
-                          <td>{$val.con_id}</td>
-                          <td>{$val.con_type}-{$val.con_type_name}</td>
-                          <!-- <td id="sa-image2">
-                          <b>
-                          <a href="{:u('admin/pwd',array('id'=>$val['shop_id']))}">{$val.shop_name}</a></b></td> -->
-                          <td id="sa-image2">
+                              <b>
+                                <a href="javascript:edit({$val.platform_id},'{$val.platform_name}')">
+                                  <!-- {$val.platform_id}- -->{$val.platform_name}</a></b>
+                            </td>
+                            <td id="sa-image2">
                             <b>
                               <a href="javascript:edit({$val.shop_id},'{$val.shop_name}')">
                                 <!-- {$val.platform_id}- -->{$val.shop_name}</a></b>
                           </td>
+                          </if>
+                          
+                          <td>{$val.con_id}</td>
+                          <td><!-- {$val.con_type}- -->{$val.con_type_name}</td>
+                          <!-- <td id="sa-image2">
+                          <b>
+                          <a href="{:u('admin/pwd',array('id'=>$val['shop_id']))}">{$val.shop_name}</a></b></td> -->
+
+                          
                           <td>{$val.title}</td>
-                          <td>{$val.period}</td>
+                          <td>{$val.period_account}</td>
                           <td>{$val.begin_time|date='Y-m-d',###}</td>
                           <td>{$val.end_time|date='Y-m-d',###}</td>
-                          <td>{$val.status}-{$val.status_name}</td>
+                          <td><!-- {$val.status}- -->{$val.status_name}</td>
                           <!-- <td>章三{$val.platform_id}</td> -->
                           <!-- <td>{$val.update_time|date='Y-m-d',###}</td> -->
                           <!-- <td>{$val.approver}</td> -->
@@ -270,7 +278,7 @@
                 <div class="col-sm-3">
                   <select class="form-control" name="platform_id">
                     <volist name="platforms" id="val">
-                      <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
+                      <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                   </select>
                 </div>
                 <label class="col-sm-1 control-label">收款方</label>
@@ -334,7 +342,7 @@
                 <i class="icon-calender"></i></span></div></div>
                 <label class="col-sm-1 control-label" for="contractNumber">修改人</label>
                 <div class="col-sm-3">
-                <input type="text" id="contractNumber" name="user_name" class="form-control" placeholder="" value="{$user_name}"></div>
+                <input type="text" id="contractNumber" name="user_id" class="form-control" placeholder="" value="{$user_id}"></div>
                 <p style="min-height:10px; display: block;">&nbsp;</p>
                 <label class="col-sm-1 control-label">登录IP</label>
                 <div class="col-sm-3">
@@ -358,7 +366,7 @@
                 <volist name="log_list" id="v">
                 <tr>
                 <td>{$v.log_id}</td>
-                <td>{$v.user_name}</td>
+                <td>{$v.user_id}</td>
                 <td>{$v.ip}</td>
                 <td>{$v.op}{$v.op_object}</td>
                 <td>{$v.op_time}</td></tr></volist></table>

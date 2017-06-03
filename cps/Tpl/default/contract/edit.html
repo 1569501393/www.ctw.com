@@ -69,7 +69,7 @@
                                         <div class="col-sm-3">
                                             <select class="form-control" name="platform_id">
                                                 <volist name="platforms" id="val">
-                                                    <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}-{$val.user_name}</option></volist>
+                                                    <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}<!-- -{$val.user_name} --></option></volist>
                                             </select>
                                         </div>
                                         <label class="col-sm-1 control-label">收款方</label>

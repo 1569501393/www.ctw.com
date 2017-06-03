@@ -73,7 +73,7 @@ class deskAction extends Action
 		}else{
 			//执行修改显示操作
 			if(!isset($_GET['k'])){
-//				$this->assign('url',$this->setting['site_domain']);
+				//				$this->assign('url',$this->setting['site_domain']);
 				$this->assign('您的链接地址不正确，请通过正规方式找回密码');
 			}else{
 				$k=trim($_GET['k']);
@@ -200,7 +200,7 @@ class deskAction extends Action
 			}
 			var_dump($item_info);
 			var_dump($commission_info);exit;*/
-		$_GET['order_id'] = time();
+		$_GET['order_id'] = $_GET['order_id']?:time();
 		$_GET['order_time'] = time();
 		$_GET['item_count'] = $_GET['item_count']?:1;
 		$_GET['platform_id'] = $_GET['bank_id']?:1;
@@ -210,13 +210,28 @@ class deskAction extends Action
 		$_GET['title'] = $_GET['title']?:$item_info['title'];
 		//		$_GET['cate_id'] = $_GET['cate_id']?:$item_info['cate_id'];
 		$_GET['cate_name'] = $_GET['cate_name']?:$item_info['cate_name'];
-		$_GET['order_id'] = time();
 		//		var_dump($_GET);exit;
-		$order_id = M('orderlist')->add($_GET);
-		//		var_dump(M('orderlist')->getLastSql());
-		if ($order_id) {
-			$this->success('购买成功');
+		// 查找订单号
+		$order_has = M('orderlist')->where(" shop_id={$_GET['shop_id']} AND order_id='{$_GET['order_id']}' ")->find();
+
+		if ($order_has) {
+			$order_id = M('orderlist')->where(" shop_id={$_GET['shop_id']} AND order_id='{$_GET['order_id']}' ")->save(array('status'=>$_GET['status']));
+			//		var_dump(M('orderlist')->getLastSql());
+			if ($order_id) {
+				/*echo json_encode(array('status'=>1,'msg'=>'购买成功,status=1','data'=>array()));
+				exit;*/
+				$this->success('购买成功,status=1');
+			}
+		}else{
+			$order_id = M('orderlist')->add($_GET);
+			//		var_dump(M('orderlist')->getLastSql());
+			if ($order_id) {
+				/*echo json_encode(array('status'=>1,'msg'=>'购买成功','data'=>array()));
+				exit;*/
+				$this->success('购买成功');
+			}
 		}
+
 	}
 
 
