@@ -210,13 +210,15 @@ class publicAction extends baseAction
 
 				//				$rel=$pass_log_mod->where("md5='{$k}'")->find();
 				$rel=$pass_log_mod->where("md5='{$k}' AND uid={$_GET['uid']}")->find();
+				
 				if(count($rel>0)){
-
+					
 					if($rel['status']==0){
 						$now_time=time();
 						if(($now_time-$rel['create_time'])>60*60*2){
+							
 							//							$this->assign('url',$this->setting['site_domain']);
-							$this->error('您的链接地址已经过期，请重新找回密码',U('public/recover'));
+							$this->error('您的链接地址已经过期，请重新找回密码',U('public/recover'));exit;
 							//错误，时间大于俩小时
 						}else{
 							//修改密码
@@ -230,17 +232,20 @@ class publicAction extends baseAction
 								$this->error('此密码与原来的密码相同');
 							}*/
 							$user_rel=$user_mod->where("id='{$rel['uid']}'")->save($data);
-							if($user_rel){
+//							var_dump($user_rel);
+							if($user_rel!==false){
 								//修改状态
 								$status=array();
 								$status['status']=1;
 								$pass_log_mod->where("md5='{$k}'")->save($status);
-								$this->success('恭喜您，修改密码成功，请重新登录',U('public/login'));
+								$this->success('恭喜您，修改密码成功，请重新登录',U('public/login'));exit;
 								//							$this->assign('url',$this->setting['site_domain'].'/index.php?m=uc&a=login');
+							}else{
+								$this->error('系统出错，请重新找回密码',U('public/recover'));
 							}
-							$this->assign('k',$k);
+							/*$this->assign('k',$k);
 							//执行修改密码操作
-							$this->assign('ac_pwd','重置密码');
+							$this->assign('ac_pwd','重置密码');*/
 						}
 					}
 					else{
@@ -258,7 +263,7 @@ class publicAction extends baseAction
 
 		}
 
-		$this->display();
+//		$this->display();
 	}
 
 
