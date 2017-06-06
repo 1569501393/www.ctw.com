@@ -118,7 +118,7 @@ class indexAction extends baseAction
 		 }*/
 
 		// 总计收入
-		$result['total_commission'] = M('orderlist')->where(" $where ")->getField('SUM(commission)');
+		$result['total_commission'] = round(M('orderlist')->where(" $where ")->getField('SUM(commission)'),2);
 
 		// 销售单数
 		$result['total_sales'] = M('orderlist')->where(" $where ")->getField('count(1)');
@@ -128,28 +128,29 @@ class indexAction extends baseAction
 
 		// 转化率
 		//    	var_dump($result['total_seller']);exit;
-		$result['conversion'] = sprintf("%.2f", $result['total_sales'] / $result['show'] * 100);
+//		$result['conversion'] = sprintf("%.2f", $result['total_sales'] / $result['show'] * 100);
+		$result['conversion'] = round($result['total_sales'] / $result['show'] * 100, 2);
 
 		// 昨天销售总计
-		$result['yesterday_sales'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(sum_price)');
+		$result['yesterday_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(sum_price)'),2);
 
 		// 今日销售总计
-		$result['today_sales'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(sum_price)');
+		$result['today_sales'] =  round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(sum_price)'),2);
 
 
 
 		// 上周
-		$result['lastweek_sales'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(sum_price)');
+		$result['lastweek_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(sum_price)'),2);
 
 		// 上个月
-		$result['lastmonth_sales'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(sum_price)');
+		$result['lastmonth_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(sum_price)'),2);
 
 
 		// 目标
-		$result['today_target'] = $result['yesterday_sales']?$result['yesterday_sales'] * 1.1:$result['lastmonth_sales']/30 * 1.1;
+		$result['today_target'] = round($result['yesterday_sales']?$result['yesterday_sales'] * 1.1:$result['lastmonth_sales']/30 * 1.1,2);
 
 		// 目标完成度
-		$result['today_target_rate'] = round($result['today_sales']/$result['today_target']*100);
+		$result['today_target_rate'] = round($result['today_sales']/$result['today_target']*100,2);
 		if ($result['today_target_rate']>100){
 			$result['today_target_rate'] = 100;
 		}
