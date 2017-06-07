@@ -62,7 +62,7 @@ include 'leftMenu.php';
                                             <div class="p-20">
                                                 <table class="table m-0">
                                                     
-                                                    <thead>
+                                                    <!-- <thead>
                                                         <tr>
                                                             <th class="active">
                                                             <input type="checkbox" name="characterManger" id="characterManger">
@@ -75,13 +75,9 @@ include 'leftMenu.php';
                                                             </td>
                                                         </tr
                                                         >
-                                                    </thead>
+                                                    </thead> -->
                                                     <tbody>
                                                         <tr>
-                                                            <th class="active">
-                                                            <input type="checkbox" name="adminManger" id="adminManger">
-                                                            <label for="adminManger">管理员管理</label>
-                                                            </th>
                                                             
                                                             <td>
                                                             <input type="checkbox" name="userManger" id="userManger">
@@ -93,13 +89,8 @@ include 'leftMenu.php';
                                                             <input type="checkbox" name="accountManger" id="accountManger">
                                                             <label for="accountManger">账号管理</label>
                                                             </td>
-                                                        </tr
-                                                        >
+                                                        </tr>
                                                         <tr>
-                                                            <th class="active">
-                                                            <input type="checkbox" name="announceManger" id="announceManger">
-                                                            <label for="announceManger">公告管理</label>
-                                                            </th>
                                                         
                                                             <td>
                                                             <input type="checkbox" name="announceManger2" id="announceManger2">

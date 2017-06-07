@@ -27,44 +27,40 @@
                                         <span class="hidden-xs">编辑角色</span></a>
                                 </li>
                             </ul>
-                            <div class="tab-content"> 
-                                    <div class="tab-pane active" id="home"> 
-                                        
-
-                                    <div >
-
-                            <!-- <div class="tab-content"> -->
-                            <form action="{:u('role/auth_submit')}" method="post" name="myform" class="form-horizontal m-t-20">
-                                <div class="form-group">
-                                    <label for="name">角色权限
-                                        <span class="text-danger">*</span></label>
-                                    <div class="p-20">
-                                        <table class="table m-0">
-                                            <!-- <table width="100%" cellpadding="2" cellspacing="1" class="table_form"> -->
-                                            <tbody>
-                                                <foreach name="access_list" item="module_item">
-                                                    <tr>
-                                                        <foreach name="module_item.actions" item="action_item">
-                                                            <td>
-                                                                <input type="checkbox" value="{$action_item.id}" name="access_node[]" <if condition="$action_item['checked']">checked="checked"</if>/>
-                                                                <label>{$action_item.action_name}</label>
-                                                            </td>
-                                                        </foreach>
-                                                    </tr>
-                                                </foreach>
-                                            </tbody>
-                                        </table>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home">
+                                    <div>
+                                        <form action="{:u('role/auth_submit')}" method="post" name="myform" class="form-horizontal m-t-20">
+                                            <div class="form-group">
+                                                <label for="name">角色权限
+                                                    <span class="text-danger">*</span></label>
+                                                <div class="p-20">
+                                                    <!-- <div class="table-responsive"> -->
+                                                    <table class="table m-0" >
+                                                        <!-- <table width="100%" cellpadding="2" cellspacing="1" class="table_form"> -->
+                                                        <tbody >
+                                                            <foreach name="access_list" item="module_item">
+                                                                <foreach name="module_item.actions" item="action_item">
+                                                                    <tr >
+                                                                        <td >
+                                                                            <input type="checkbox" value="{$action_item.id}" name="access_node[]" <if condition="$action_item['checked']">checked="checked"</if>/>
+                                                                            <label>{$action_item.action_name}</label></td></tr>
+                                                                    
+                                                                </foreach>
+                                                            </foreach>
+                                                        </tbody>
+                                                    </table>
+                                                    <!-- </div> --></div>
+                                            </div>
+                                            <input type="hidden" name="id" value="{$id}" />
+                                            <div class="form-group">
+                                                <button type="submit" value="1" name="dosubmit" class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg">提交</button></div>
+                                        </form>
                                     </div>
                                 </div>
-                                <input type="hidden" name="id" value="{$id}" />
-                                <div class="form-group">
-                                    <button type="submit" value="1" name="dosubmit" class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg">提交</button></div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </div>
                 </div>
             </div>
             <!-- container --></div>
