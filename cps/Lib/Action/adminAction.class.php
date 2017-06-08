@@ -158,9 +158,14 @@ class adminAction extends baseAction
                 array('email', '邮箱'),
                 array('account', ' 结算账号'),
                 array('address', '地址'),
-                array('role_id', 'role_id'),
-                array('pid', 'pid'),
+                // array('role_id', 'role_id'),
+                // array('pid', 'pid'),
             );
+
+            if ($_SESSION['admin_info']['role_id'] ==1) {
+                $xlsCell[] = array('role_id', 'role_id');
+                $xlsCell[] = array('pid', 'pid');
+            }
 //            $xlsData = $admin_list;
 
             //			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
