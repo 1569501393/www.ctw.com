@@ -162,7 +162,7 @@ class adminAction extends baseAction
                 // array('pid', 'pid'),
             );
 
-            if ($_SESSION['admin_info']['role_id'] ==1) {
+            if ($_SESSION['admin_info']['role_id'] == 1) {
                 $xlsCell[] = array('role_id', 'role_id');
                 $xlsCell[] = array('pid', 'pid');
             }
@@ -170,8 +170,8 @@ class adminAction extends baseAction
 
             //			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
             foreach ($xlsData as $k => $v) {
-                                $xlsData[$k]['account'] = ' '.$v['account'];
-                                $xlsData[$k]['mobile'] = ' '.$v['mobile'];
+                $xlsData[$k]['account'] = ' ' . $v['account'];
+                $xlsData[$k]['mobile'] = ' ' . $v['mobile'];
 //                $xlsData[$k]['account'] = (string)$v['account'];
 //                $xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
 
@@ -266,11 +266,17 @@ class adminAction extends baseAction
                     // 添加用户
                     $data = $_POST;
                     $data['user_name'] = $objPHPExcel->getActiveSheet()->getCell("A" . $i)->getValue();
+                    // 开始格式化
+                    if (is_object($data['user_name'])) {
+                        $data['user_name'] = $data['user_name']->__toString();
+                    }
+
                     $data['user_id'] = $objPHPExcel->getActiveSheet()->getCell("B" . $i)->getValue();
                     $data['mobile'] = $objPHPExcel->getActiveSheet()->getCell("C" . $i)->getValue();
                     $data['email'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
                     $data['account'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
                     $data['address'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
+
                     if ($role_id) {
                         $data['role_id'] = $role_id;
                         $data['pid'] = $pid;
