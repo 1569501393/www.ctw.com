@@ -373,7 +373,9 @@ class contractAction extends baseAction
                 $objPHPExcel = $objReader->load($file_name, $encode = 'utf-8');
                 $sheet = $objPHPExcel->getSheet(0);
                 $highestRow = $sheet->getHighestRow(); // 取得总行数
-                $highestColumn = $sheet->getHighestColumn(); // 取得总列数
+
+                // 未使用
+                // $highestColumn = $sheet->getHighestColumn(); // 取得总列数
 
                 for ($i = 2; $i <= $highestRow; $i++) {
                     // 添加商品
