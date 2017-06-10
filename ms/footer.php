@@ -1,4 +1,7 @@
-
+<!--JYC SCRIPTCODE START-->
+<script>var jyc_end=new Date().getTime();</script><script src="//stat.adjyc.com/count/?uid=3329&logo=0" charset="utf-8"></script><noscript><a href="//stat.adjyc.com/" target="_blank"><img border="0" width="1" height="1" src="//stat.adjyc.com/count/stat_jyc.asp?uid=3329&vjs=0" title="JYC统计,助您决策!"></a></noscript>
+<!--JYC SCRIPTCODE END-->
+<!--Copyright (C) 2001-2017 WWW.ADJYC.COM All Rights Reserved-->
 
         <script>
             var resizefunc = [];

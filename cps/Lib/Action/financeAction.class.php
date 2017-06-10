@@ -10,17 +10,17 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1';
 		$where .= " AND con_id>0 ";
-		
+
 		if ($_SESSION['admin_info']['role_id']==3) {
-			$where .= " AND shop_id=={$_SESSION['admin_info']['id']} ";
+			$where .= " AND shop_id={$_SESSION['admin_info']['id']} ";
 		}if ($_SESSION['admin_info']['role_id']==4) {
-			$where .= " AND platform_id=={$_SESSION['admin_info']['id']} ";
+			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
 		}if ($_SESSION['admin_info']['role_id']==5) {
-			$where .= " AND platform_id=={$_SESSION['admin_info']['id']} ";
+			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
 		}if ($_SESSION['admin_info']['role_id']==6) {
-			$where .= " AND platform_id=={$_SESSION['admin_info']['id']} ";
+			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
 		}
-		
+
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 			$where .= " AND (title like '%{$_GET['keyword']}%' OR contract like '%{$_GET['keyword']}%') ";
 			$this->assign('keyword', $_GET['keyword']);
@@ -35,15 +35,15 @@ class financeAction extends baseAction {
 			$this->assign('id', $_REQUEST['id']);
 		}
 
-        // 分类
-        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
-            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
-            $this->assign('cate_id', $_GET['cate_id']);
-        }
+		// 分类
+		if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+			$where .= " AND cate_name= '{$_GET['cate_id']}' ";
+			$this->assign('cate_id', $_GET['cate_id']);
+		}
 
-        // 分类表
-        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
-        $this->assign('cates', $cates);
+		// 分类表
+		$cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+		$this->assign('cates', $cates);
 
 		$count = $commission_mod->where($where)->count();
 		$p = new Page($count, 10);
@@ -84,37 +84,32 @@ class financeAction extends baseAction {
 
 	// 推广管理
 	function push() {
-
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 		import("ORG.Util.Page");
 
 		//搜索
-		$where = '1=1';
+		$where = '1=1 AND con_id>0 ';
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 
 			$where .= " AND (title like '%{$_GET['keyword']}%' OR contract like '%{$_GET['keyword']}%') ";
 			$this->assign('keyword', $_GET['keyword']);
 		}
-		//		if (isset($_POST['id']) && intval($_POST['id'])) {
-		//			$where .= " AND con_id=" . $_POST['id'];
-		//			$this->assign('con_id', $_POST['id']);
-		//		}
 
 		if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
 			$where .= " AND con_id=" . $_REQUEST['id'];
 			$this->assign('id', $_REQUEST['id']);
 		}
 
-        // 分类
-        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
-            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
-            $this->assign('cate_id', $_GET['cate_id']);
-        }
+		// 分类
+		if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+			$where .= " AND cate_name= '{$_GET['cate_id']}' ";
+			$this->assign('cate_id', $_GET['cate_id']);
+		}
 
-        // 分类表
-        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
-        $this->assign('cates', $cates);
+		// 分类表
+		$cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+		$this->assign('cates', $cates);
 
 
 		$count = $commission_mod->where($where)->count();
@@ -122,32 +117,37 @@ class financeAction extends baseAction {
 		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
 
 		$bank_id = get_platform_id($_SESSION['admin_info']);
-//		var_dump($bank_id);exit;
+		//		var_dump($bank_id);exit;
 		$key = 1;
 		foreach ($commission_list as $k => $val) {
 			$commission_list[$k]['key'] = ++$p->firstRow;
 			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
 			$commission_list[$k]['band_id'] = $bank_id;
-//			$commission_list[$k]['band_subid'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			//			$commission_list[$k]['band_subid'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 			$commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-			$commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
-			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
+			//			$commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
+			// 分润  根据分行设置 暂时屏蔽
+			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
+			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
+			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
+			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
+
 		}
 
-//		var_dump($commission_list);exit;
+		//		var_dump($commission_list);exit;
 
 		$page = $p->show();
 		$this->assign('page', $page);
-		
+
 		$this->assign('commission_list', $commission_list);
 		$this->display();
 	}
 
 	// 财务管理
 	function finance() {
-	//搜索
+		//搜索
 		$where = '1=1 AND data_state=1 AND status=1 ';
-	// 角色，用户
+		// 角色，用户
 		if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
 			$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
 		}elseif ($_SESSION['admin_info']['role_id'] == 5) { // 支行
@@ -155,7 +155,7 @@ class financeAction extends baseAction {
 		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
 			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
 		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
-            $where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
+			$where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
 		}else { // 其它
 			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
 		}
@@ -178,13 +178,13 @@ class financeAction extends baseAction {
 			$where .= " AND order_time<=" . $date_obj->format('U');
 			$this->assign('end_time', $_GET['end_time']);
 		}
-		
-//		if (isset($_GET['settle_status']) && intval($_GET['settle_status'])) {
+
+		//		if (isset($_GET['settle_status']) && intval($_GET['settle_status'])) {
 		if ( isset($_GET['settle_status']) && $_GET['settle_status']!== '' ) {
 			$where .= " AND settle_status=" . $_GET['settle_status'];
 			$this->assign('settle_status', $_GET['settle_status']);
 		}
-		
+
 
 		$orderlist_mod =M('orderlist');
 
@@ -192,24 +192,44 @@ class financeAction extends baseAction {
 		if ($_REQUEST['dosubmit']== 2) {
 			$xlsName = "财务详情";
 			$xlsCell = array(
-			array('id', '序号'),
+			//			array('id', '序号'),
 			array('order_id', '订单号'),
 			array('title', '商品名称'),
 			array('item_price', '单价(元)'),
 			array('item_count', '数量'),
-			array('rate', '佣金比例'),
 			array('sum_price', '总金额'),
-			array('commission', '佣金'),
+			array('rate2', '分润比例'),
+			array('commission2', '分润'),
 			array('order_time', '下单时间'),
 			array('seller_name', '推广人'),
-			array('settle_price', '结算金额'),
 			);
-			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
+				
+			if ($_SESSION['admin_info']['role_id'] !=6 ) {
+				$xlsCell[] = array('rate', '佣金比例');
+				$xlsCell[] = array('commission', '佣金');
+			}
+			//			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
+			$xlsData = $orderlist_mod->Field('*')->where($where)->order('id DESC')->select();
 
 			//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
 			foreach ($xlsData as $k => $v) {
+				/*$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
+				 $xlsData[$k]['rate'] = $v['commission']/$v['item_price'];
+				 // 转化为百分比
+				 $xlsData[$k]['rate'] = $xlsData[$k]['rate']*100 .'%';*/
+
 				$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
-				$xlsData[$k]['rate'] = $v['commission']/$v['sum_price'];
+				$xlsData[$k]['order_id'] = ' '.$v['order_id'];
+				$xlsData[$k]['rate'] = $v['commission']/$v['item_price'];
+				$xlsData[$k]['commission'] = $v['commission']*$v['item_count'];
+
+				$xlsData[$k]['rate2'] = $v['commission2']/$v['item_price']?:$xlsData[$k]['rate'];
+				$xlsData[$k]['commission2'] = $v['commission2']*$v['item_count']?:$xlsData[$k]['commission'];
+
+				// 转化为百分比
+				$xlsData[$k]['rate'] = $xlsData[$k]['rate']*100 .'%';
+				$xlsData[$k]['rate2'] = $xlsData[$k]['rate2']*100 .'%';
+
 			}
 			$this->exportExcel(array(), $xlsName, $xlsCell, $xlsData, $xlsName);
 
@@ -222,8 +242,8 @@ class financeAction extends baseAction {
 		$key = 1;
 		foreach ($order_list as $k => $val) {
 			$order_list[$k]['key'] = ++$p->firstRow;
-            $order_list[$k]['rate'] = $val['commission']/$val['sum_price'];
-//			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$order_list[$k]['rate'] = $val['commission']/$val['sum_price'];
+			//			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 
 		}
 		$page = $p->show();
@@ -241,7 +261,7 @@ class financeAction extends baseAction {
 	function settle() {
 		//搜索
 		$where = '1=1 AND data_state=1 AND status=1 ';
-	// 角色，用户
+		// 角色，用户
 		if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
 			$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
 		}elseif ($_SESSION['admin_info']['role_id'] == 5) { // 支行
@@ -249,7 +269,7 @@ class financeAction extends baseAction {
 		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
 			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
 		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
-            $where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
+			$where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
 		}else { // 其它
 			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
 		}
@@ -262,15 +282,15 @@ class financeAction extends baseAction {
 			$this->assign('seller_name', $_GET['seller_name']);
 		}
 
-        // 分类
-        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
-            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
-            $this->assign('cate_id', $_GET['cate_id']);
-        }
+		// 分类
+		if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+			$where .= " AND cate_name= '{$_GET['cate_id']}' ";
+			$this->assign('cate_id', $_GET['cate_id']);
+		}
 
-        // 分类表
-        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
-        $this->assign('cates', $cates);
+		// 分类表
+		$cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+		$this->assign('cates', $cates);
 
 		$orderlist_mod =M('orderlist');
 
@@ -278,24 +298,38 @@ class financeAction extends baseAction {
 		if ($_REQUEST['dosubmit']== 2) {
 			$xlsName = "结算详情";
 			$xlsCell = array(
-			array('id', '序号'),
+			//			array('id', '序号'),
 			array('order_id', '订单号'),
 			array('title', '商品名称'),
 			array('item_price', '单价(元)'),
 			array('item_count', '数量'),
-			array('rate', '佣金比例'),
 			array('sum_price', '总金额'),
-			array('commission', '佣金'),
+			array('rate2', '分润比例'),
+			array('commission2', '分润'),
 			array('order_time', '下单时间'),
 			array('seller_name', '推广人'),
-			array('settle_price', '结算金额'),
 			);
-			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
+				
+			if ($_SESSION['admin_info']['role_id'] !=6 ) {
+				$xlsCell[] = array('rate', '佣金比例');
+				$xlsCell[] = array('commission', '佣金');
+			}
+			//			$xlsData = $orderlist_mod->Field('id,order_id,title,item_price,item_count,sum_price,commission,order_time,seller_name,settle_price')->where($where)->order('id DESC')->select();
+			$xlsData = $orderlist_mod->Field('*')->where($where)->order('id DESC')->select();
 
 			//			var_dump($orderlist_mod->getLastSql(),$xlsData);exit;
 			foreach ($xlsData as $k => $v) {
 				$xlsData[$k]['order_time'] = date('Y-m-d H:i:s', $v['order_time']);
-				$xlsData[$k]['rate'] = $v['commission']/$v['sum_price'];
+				$xlsData[$k]['order_id'] = ' '.$v['order_id'];
+				$xlsData[$k]['rate'] = $v['commission']/$v['item_price'];
+				$xlsData[$k]['commission'] = $v['commission']*$v['item_count'];
+
+				$xlsData[$k]['rate2'] = $v['commission2']/$v['item_price']?:$xlsData[$k]['rate'];
+				$xlsData[$k]['commission2'] = $v['commission2']*$v['item_count']?:$xlsData[$k]['commission'];
+
+				// 转化为百分比
+				$xlsData[$k]['rate'] = $xlsData[$k]['rate']*100 .'%';
+				$xlsData[$k]['rate2'] = $xlsData[$k]['rate2']*100 .'%';
 			}
 			$this->exportExcel(array(), $xlsName, $xlsCell, $xlsData, $xlsName);
 
@@ -444,7 +478,7 @@ class financeAction extends baseAction {
 		$type = trim($_REQUEST['type']);
 		$sql = "update " . C('DB_PREFIX') . "orderlist set $type=($type+1)%2 where id='$id'";
 		Log::write('$sql==='.$sql);
-//		var_dump($sql);
+		//		var_dump($sql);
 		$res = $flink_mod->execute($sql);
 		$values = $flink_mod->where('id=' . $id)->find();
 		$this->ajaxReturn($values[$type]);

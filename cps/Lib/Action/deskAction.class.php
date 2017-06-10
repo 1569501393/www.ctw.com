@@ -194,18 +194,37 @@ class deskAction extends Action
 	public function buy()
 	{
 		$item_info = M('items')->where(" shop_id={$_GET['shop_id']} AND item_id={$_GET['item_id']}")->find();
-		$commission_info = M('commission')->where(" shop_id={$_GET['shop_id']} AND item_id={$_GET['item_id']} AND platform_id={$_GET['bank_id']} ")->find();
-		/*if (empty($commission_info) || empty($item_info)) {
-			$this->error('推广信息错误');
+		$commission_info = M('commission')->where(" shop_id={$_GET['shop_id']} AND item_id={$_GET['item_id']} AND platform_id={$_GET['bank_id']} ")->select();
+
+		if (is_array($commission_info) && count($commission_info)>1 ) {
+			if ($commission_info[0]['con_id']>0) {
+				$rate =$commission_info[0]['rate'];
+				$rate2 =$commission_info[1]['rate'];
+			}else{
+				$rate =$commission_info[1]['rate'];
+				$rate2 =$commission_info[0]['rate'];
 			}
-			var_dump($item_info);
-			var_dump($commission_info);exit;*/
+		}else{
+			$rate = $rate2 =$commission_info[0]['rate'];
+		}
+		
+		
+		if (empty($commission_info) || empty($item_info)) {
+		 $this->error('推广信息错误');
+		 }
+		 /*var_dump(M('commission')->getLastSql());
+//		 var_dump($item_info);
+		 var_dump($commission_info);exit;*/
 		$_GET['order_id'] = $_GET['order_id']?:time();
 		$_GET['order_time'] = time();
 		$_GET['item_count'] = $_GET['item_count']?:1;
 		$_GET['platform_id'] = $_GET['bank_id']?:1;
 		$_GET['item_price'] = $_GET['item_price']?:$item_info['price'];
-		$_GET['commission'] = $_GET['item_price']*$_GET['item_count']*$_GET['rate']/100;
+		/*$_GET['commission'] = $_GET['item_price']*$_GET['item_count']*$_GET['rate']/100;// 佣金
+		$_GET['commission2'] = $_GET['item_price']*$_GET['item_count']*$_GET['rate2']/100;// 分润*/
+		$_GET['commission'] = $_GET['item_price']*$_GET['item_count']*$rate/100;// 佣金
+		$_GET['commission2'] = $_GET['item_price']*$_GET['item_count']*$rate2/100;// 分润
+		
 		$_GET['sum_price'] = $_GET['item_price']*$_GET['item_count'];
 		$_GET['title'] = $_GET['title']?:$item_info['title'];
 		//		$_GET['cate_id'] = $_GET['cate_id']?:$item_info['cate_id'];
@@ -219,7 +238,7 @@ class deskAction extends Action
 			//		var_dump(M('orderlist')->getLastSql());
 			if ($order_id) {
 				/*echo json_encode(array('status'=>1,'msg'=>'购买成功,status=1','data'=>array()));
-				exit;*/
+				 exit;*/
 				$this->success('购买成功,status=1');
 			}
 		}else{
@@ -227,7 +246,7 @@ class deskAction extends Action
 			//		var_dump(M('orderlist')->getLastSql());
 			if ($order_id) {
 				/*echo json_encode(array('status'=>1,'msg'=>'购买成功','data'=>array()));
-				exit;*/
+				 exit;*/
 				$this->success('购买成功');
 			}
 		}

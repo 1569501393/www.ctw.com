@@ -152,7 +152,7 @@
                                                 <select class="form-control" name="period">
                                                     <option value="0">全部</option>
                                                     <volist name="period" id="val">
-                                                        <option value="{$val.parameter_id}" <if condition="$period_input eq $val['parameter_id']">selected="selected"</if>>{$period_input}-{$val.parameter_value}</option></volist>
+                                                        <option value="{$val.parameter_id}" <if condition="$period_input eq $val['parameter_id']">selected="selected"</if>><!-- {$period_input}- -->{$val.parameter_value}</option></volist>
                                                 </select>
                                             </div>
                                             <div class="col-sm-1">
@@ -175,7 +175,7 @@
                                                     <th>合同编号</th>
                                                     <th>合同类型</th>
                                                     <th>合同名称</th>
-                                                    <th>账期</th>
+                                                    <!-- <th>账期</th> -->
                                                     <th>开始时间</th>
                                                     <th>结束时间</th>
                                                     <th>状态</th>
@@ -189,27 +189,29 @@
                                                 <volist name="contract_list" id="val">
                                                     <tr>
                                                         <td>{$val.id}</td>
-                                                        <!-- <td id="sa-image"><b>{$val.platform_name}</b></td> -->
+                                                        <!-- <td id="sa-image">{$val.platform_name}</td> -->
                                                         <if condition="$_SESSION['admin_info']['role_id'] eq 1">
                                                             <td id="sa-image2">
-                                                                <b>
                                                                     <a href="javascript:edit({$val.platform_id},'{$val.platform_name}')">
-                                                                        <!-- {$val.platform_id}- -->{$val.platform_name}</a></b>
+                                                                        <!-- {$val.platform_id}- -->{$val.platform_name}</a>
                                                             </td>
                                                             <td id="sa-image2">
-                                                                <b>
+                                                                
                                                                     <a href="javascript:edit({$val.shop_id},'{$val.shop_name}')">
-                                                                        <!-- {$val.platform_id}- -->{$val.shop_name}</a></b>
+                                                                        <!-- {$val.platform_id}- -->{$val.shop_name}</a>
                                                             </td>
                                                         </if>
                                                         <td>{$val.con_id}</td>
                                                         <td>
                                                             <!-- {$val.con_type}- -->{$val.con_type_name}</td>
                                                         <!-- <td id="sa-image2">
-                                                        <b>
-                                                        <a href="{:u('admin/pwd',array('id'=>$val['shop_id']))}">{$val.shop_name}</a></b></td> -->
-                                                        <td>{$val.title}</td>
-                                                        <td>{$val.period_account}</td>
+                                                        
+                                                        <a href="{:u('admin/pwd',array('id'=>$val['shop_id']))}">{$val.shop_name}</a></td> -->
+                                                        <!-- <td>{$val.title}</td> -->
+                                                        <td><a href="{:u('contract/edit',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">{$val.title}</a></td>
+                                                        
+                                                        
+                                                        <!-- <td>{$val.period_account}</td> -->
                                                         <td>{$val.begin_time|date='Y-m-d',###}</td>
                                                         <td>{$val.end_time|date='Y-m-d',###}</td>
                                                         <td>
@@ -224,7 +226,7 @@
                                                             <!-- <a href="{:u('contract/auth', array('id'=>$val['id']))}">管理权限</a>| -->
                                                             <!-- <a href="{:u('contract/export',array('id'=>$val['id']))}">导入</a>| -->
                                                             <a href="{:u('contract/export',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">导出</a>|
-                                                            <a href="{:u('contract/edit',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">编辑</a>|
+                                                            <!-- <a href="{:u('contract/edit',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">编辑</a>| -->
                                                             <a href="{:u('finance/push',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">商品详情</a></td>
                                                     </tr>
                                                 </volist>
