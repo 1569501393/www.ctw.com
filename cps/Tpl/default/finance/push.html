@@ -52,7 +52,7 @@
                       <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
                       <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
                       <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button></div>
-                    <if condition=" $_GET['id'] ">
+                    <if condition=" $_GET['id'] && $_SESSION['admin_info']['role_id'] eq 1 ">
                       <div class="col-md-2">
                         <a href="{:u('contract/edit',array('id'=>$_GET['id']))}" class="btn btn-primary waves-effect waves-light">添加商品</a></div>
                     </if>
