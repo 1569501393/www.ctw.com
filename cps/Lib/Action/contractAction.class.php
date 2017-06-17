@@ -2,6 +2,7 @@
 
 class contractAction extends baseAction
 {
+	// 合同首页
 	function index()
 	{
 		$contract_mod = M('contract');
@@ -127,31 +128,31 @@ class contractAction extends baseAction
 		if ($_POST['dosubmit'] == 2) {
 			//搜索
 			$where = '1=1';
-			if (isset($_POST['begin_time']) && intval($_POST['begin_time'])) {
-				$where .= " AND begin_time>=" . strtotime($_POST['begin_time']);
-				$this->assign('begin_time', $_POST['begin_time']);
+			if (isset($_REQUEST['begin_time']) && intval($_REQUEST['begin_time'])) {
+				$where .= " AND begin_time>=" . strtotime($_REQUEST['begin_time']);
+				$this->assign('begin_time', $_REQUEST['begin_time']);
 			}
 
-			if (isset($_POST['end_time']) && intval($_POST['end_time'])) {
-				//				$where .= " AND end_time<=" . strtotime($_POST['end_time']);
-				$date_obj = new DateTime($_POST['end_time']);
-				//            $_POST['end_time'] = $date_obj->format('U')?:0;
+			if (isset($_REQUEST['end_time']) && intval($_REQUEST['end_time'])) {
+				//				$where .= " AND end_time<=" . strtotime($_REQUEST['end_time']);
+				$date_obj = new DateTime($_REQUEST['end_time']);
+				//            $_REQUEST['end_time'] = $date_obj->format('U')?:0;
 				$where .= " AND end_time<=" . $date_obj->format('U');
-				$this->assign('end_time', $_POST['end_time']);
+				$this->assign('end_time', $_REQUEST['end_time']);
 			}
 
-			if (isset($_POST['user_name']) && trim($_POST['user_name'])) {
-				$where .= " AND user_name like '%{$_POST['user_name']}%' ";
-				$this->assign('user_name', $_POST['user_name']);
+			if (isset($_REQUEST['user_name']) && trim($_REQUEST['user_name'])) {
+				$where .= " AND user_name like '%{$_REQUEST['user_name']}%' ";
+				$this->assign('user_name', $_REQUEST['user_name']);
 			}
 
-			if (isset($_POST['ip']) && trim($_POST['ip'])) {
-				$where .= " AND ip='{$_POST['ip']}' ";
-				$this->assign('ip', $_POST['ip']);
+			if (isset($_REQUEST['ip']) && trim($_REQUEST['ip'])) {
+				$where .= " AND ip='{$_REQUEST['ip']}' ";
+				$this->assign('ip', $_REQUEST['ip']);
 			}
-			if (isset($_POST['op_desc']) && trim($_POST['op_desc'])) {
-				$where .= " AND op_desc like '%{$_POST['op_desc']}%' ";
-				$this->assign('op_desc', $_POST['op_desc']);
+			if (isset($_REQUEST['op_desc']) && trim($_REQUEST['op_desc'])) {
+				$where .= " AND op_desc like '%{$_REQUEST['op_desc']}%' ";
+				$this->assign('op_desc', $_REQUEST['op_desc']);
 			}
 
 		}
@@ -169,6 +170,69 @@ class contractAction extends baseAction
 
 		$this->display();
 	}
+
+
+	// 合同日志
+	function log()
+	{
+		import("ORG.Util.Page");
+		$prex = C('DB_PREFIX');
+		if ($_REQUEST['dosubmit'] == 2) {
+			//搜索
+			$where = '1=1';
+			if (isset($_REQUEST['begin_time']) && intval($_REQUEST['begin_time'])) {
+				//				$where .= " AND begin_time>=" . strtotime($_REQUEST['begin_time']);
+				$where .= " AND op_time>='{$_REQUEST['begin_time']}' " ;
+				$this->assign('begin_time', $_REQUEST['begin_time']);
+			}
+
+			if (isset($_REQUEST['end_time']) && intval($_REQUEST['end_time'])) {
+				//				$where .= " AND end_time<=" . strtotime($_REQUEST['end_time']);
+				//				$date_obj = new DateTime($_REQUEST['end_time']);
+				//            $_REQUEST['end_time'] = $date_obj->format('U')?:0;
+				//				$where .= " AND end_time<=" . $date_obj->format('U');
+				$where .= " AND op_time<='{$_REQUEST['end_time']}' " ;
+				$this->assign('end_time', $_REQUEST['end_time']);
+			}
+
+			if (isset($_REQUEST['user_name']) && trim($_REQUEST['user_name'])) {
+				$where .= " AND user_name like '%{$_REQUEST['user_name']}%' ";
+				$this->assign('user_name', $_REQUEST['user_name']);
+			}
+
+			if (isset($_REQUEST['ip']) && trim($_REQUEST['ip'])) {
+				$where .= " AND ip='{$_REQUEST['ip']}' ";
+				$this->assign('ip', $_REQUEST['ip']);
+			}
+				
+
+			if (isset($_REQUEST['op_object']) && trim($_REQUEST['op_object'])) {
+				$where .= " AND op_object like '%{$_REQUEST['op_object']}%' ";
+				$this->assign('op_object', $_REQUEST['op_object']);
+			}
+				
+			if (isset($_REQUEST['op_desc']) && trim($_REQUEST['op_desc'])) {
+				$where .= " AND op_desc like '%{$_REQUEST['op_desc']}%' ";
+				$this->assign('op_desc', $_REQUEST['op_desc']);
+			}
+
+		}
+		$count2 = M('op_log')->where($where)->count();
+		$p2 = new Page($count2, 10);
+		$log_list = M('op_log')->where($where)->limit($p2->firstRow . ',' . $p2->listRows)->order('log_id DESC')->select();
+		//		var_dump($log_list);
+		$page2 = $p2->show();
+		$this->assign('page2', $page2);
+		$this->assign('log_list', $log_list);
+
+		// 默认当前时间
+		//		$contract_info['begin_time']=$contract_info['end_time']=time();
+		$contract_info['begin_time'] = $contract_info['end_time'] = time();
+		$this->assign('contract_info', $contract_info);
+
+		$this->display();
+	}
+
 
 	function add()
 	{
@@ -391,7 +455,7 @@ class contractAction extends baseAction
 						$data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
 						$data['title'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
 						$data['shop_id'] = $objPHPExcel->getActiveSheet()->getCell("H" . $i)->getValue();
-						 
+							
 						$data['con_id'] = $_POST['id'];
 						// 佣金表 cate_id
 						// $data['cate_id'] = $_POST['cid'];
@@ -453,7 +517,7 @@ class contractAction extends baseAction
 							M('items_cate')->add($data);
 						}
 
-						 
+							
 						$log[] = M('items')->getLastSql();
 						$log_data[] = $data;
 						$log_commission[] = M('commission')->getLastSql();
@@ -469,7 +533,7 @@ class contractAction extends baseAction
 						$data['cid'] = $data['cate_id'] = $data['cate_name'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
 						$data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
 						$data['title'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
-						 
+							
 						$data['con_id'] = $_POST['id'];
 						// 佣金表 cate_id
 						// $data['cate_id'] = $_POST['cid'];
@@ -505,7 +569,7 @@ class contractAction extends baseAction
 
 						// 判断是否存在shop_id
 						/*if ($_REQUEST['profit'] && empty($data['shop_id'])) {
-						  
+
 						}*/
 
 						// 写入商品表  价格
@@ -537,7 +601,7 @@ class contractAction extends baseAction
 							M('items_cate')->add($data);
 						}
 
-						 
+							
 						$log[] = M('items')->getLastSql();
 						$log_data[] = $data;
 						$log_commission[] = M('commission')->getLastSql();
@@ -646,6 +710,9 @@ class contractAction extends baseAction
 				}
 			} else {
 				$contract_mod = M('contract');
+				$data = $contract_mod->create();
+				// 合同信息
+				$contract_info = $contract_mod->where('id=' . $data['id'])->find();
 
 				// 合同开始时间
 				//                var_dump($_POST);
@@ -658,11 +725,11 @@ class contractAction extends baseAction
 				$_POST['update_time'] = time();
 
 				//                var_dump($_POST);exit;
-				$data = $contract_mod->create();
+				//				var_dump($data,$contract_mod->getLastSql(),$contract_info);exit;
 				$result = $contract_mod->where("id=" . $data['id'])->save($data);
 
 				// 添加合同日志
-				admin_log($log_op = '修改', $log_obj = '合同', $log_desc = json_encode($_POST), $contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+				admin_log($log_op = '修改', $log_obj = '合同', $log_desc = json_encode($_POST).'==更新前=='.json_encode($contract_info), $contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
 
 				if (false !== $result) {
 					$this->success(L('operation_success'), '', '', 'edit');

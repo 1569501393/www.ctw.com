@@ -67,8 +67,8 @@ class financeAction extends baseAction {
 			// 分润  根据分行设置 暂时屏蔽
 			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
 			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
-			$commission_list[$k]['commission2'] = $profit['commission'];
-			$commission_list[$k]['rate2'] = $profit['rate'];
+			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
+			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
 			$commission_list[$k]['item'] = M('items')->where(" item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
 			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
 		}
@@ -203,7 +203,7 @@ class financeAction extends baseAction {
 			array('order_time', '下单时间'),
 			array('seller_name', '推广人'),
 			);
-				
+
 			if ($_SESSION['admin_info']['role_id'] !=6 ) {
 				$xlsCell[] = array('rate', '佣金比例');
 				$xlsCell[] = array('commission', '佣金');
@@ -309,8 +309,8 @@ class financeAction extends baseAction {
 			array('order_time', '下单时间'),
 			array('seller_name', '推广人'),
 			);
-				
-			if ($_SESSION['admin_info']['role_id'] !=6 ) {
+
+			if ($_SESSION['admin_info']['role_id'] !=6 && $_SESSION['admin_info']['role_id'] !=5 ) {
 				$xlsCell[] = array('rate', '佣金比例');
 				$xlsCell[] = array('commission', '佣金');
 			}
@@ -343,7 +343,10 @@ class financeAction extends baseAction {
 		foreach ($order_list as $k => $val) {
 			$order_list[$k]['key'] = ++$p->firstRow;
 			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-
+			$order_list[$k]['settle_status'] = ($val['settle_status3_ctb'] && $val['settle_status4_btc']) ?:0;
+			$order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
+			$order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
+				
 		}
 		$page = $p->show();
 		$this->assign('page', $page);

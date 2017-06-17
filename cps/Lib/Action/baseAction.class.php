@@ -88,6 +88,9 @@ class baseAction extends Action {
 			//			var_dump('$action=======',$action['module'].'_'.$action['action']);
 			//			$action['module'] = 'user';
 			switch ($action['module'].'_'.$action['action']){
+				case 'contract_log':// 日志管理
+					$action['module2'] = 'search';
+					break;
 				case 'role_index': // 权限管理
 					$action['module2'] = 'key';
 					break;
