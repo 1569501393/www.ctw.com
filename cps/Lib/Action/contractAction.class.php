@@ -177,9 +177,14 @@ class contractAction extends baseAction
 	{
 		import("ORG.Util.Page");
 		$prex = C('DB_PREFIX');
+
+		//搜索
+		$where = '1=1';
+		if ($_SESSION['admin_info']['role_id'] != 1) {
+			$where .= " AND uid={$_SESSION['admin_info']['id']} ";
+		}
+			
 		if ($_REQUEST['dosubmit'] == 2) {
-			//搜索
-			$where = '1=1';
 			if (isset($_REQUEST['begin_time']) && intval($_REQUEST['begin_time'])) {
 				//				$where .= " AND begin_time>=" . strtotime($_REQUEST['begin_time']);
 				$where .= " AND op_time>='{$_REQUEST['begin_time']}' " ;
@@ -204,18 +209,24 @@ class contractAction extends baseAction
 				$where .= " AND ip='{$_REQUEST['ip']}' ";
 				$this->assign('ip', $_REQUEST['ip']);
 			}
-				
+
 
 			if (isset($_REQUEST['op_object']) && trim($_REQUEST['op_object'])) {
 				$where .= " AND op_object like '%{$_REQUEST['op_object']}%' ";
 				$this->assign('op_object', $_REQUEST['op_object']);
 			}
-				
+
 			if (isset($_REQUEST['op_desc']) && trim($_REQUEST['op_desc'])) {
 				$where .= " AND op_desc like '%{$_REQUEST['op_desc']}%' ";
 				$this->assign('op_desc', $_REQUEST['op_desc']);
 			}
-
+				
+				
+			if (isset($_REQUEST['op_content']) && trim($_REQUEST['op_content'])) {
+				$op_content = trim($_REQUEST['op_content']);
+				$where .= " AND op_content like '%{$op_content}%' ";
+				$this->assign('op_content', $_REQUEST['op_content']);
+			}
 		}
 		$count2 = M('op_log')->where($where)->count();
 		$p2 = new Page($count2, 10);
@@ -276,7 +287,7 @@ class contractAction extends baseAction
 			$contract_mod->add($data);
 
 			// 添加合同日志
-			admin_log($log_op = '添加', $log_obj = '合同', $log_desc = json_encode($_POST), $contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
+			admin_log($log_op = '添加', $log_obj = '合同', $log_desc = json_encode($_POST), $contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0,$op_table = 'contract');
 
 			$this->success(L('operation_success'), '', '', 'add');
 		} else {
@@ -710,27 +721,28 @@ class contractAction extends baseAction
 				}
 			} else {
 				$contract_mod = M('contract');
-				$data = $contract_mod->create();
-				// 合同信息
-				$contract_info = $contract_mod->where('id=' . $data['id'])->find();
-
 				// 合同开始时间
-				//                var_dump($_POST);
 				$_POST['begin_time'] = strtotime($_POST['begin_time']);
 				//				$_POST['end_time'] = strtotime($_POST['end_time'])?:0;
 				$date_obj = new DateTime($_POST['end_time']);
 				//                $_POST['end_time'] = $date_obj->getTimestamp()?:0;
 				$_POST['end_time'] = $date_obj->format('U') ?: 0;
+				
+				
+				
 				$_POST['uid'] = $_SESSION['admin_info']['id'];
 				$_POST['update_time'] = time();
 
+				$data = $contract_mod->create();
+				// 合同信息
+				$contract_info = $contract_mod->where('id=' . $data['id'])->find();
 				//                var_dump($_POST);exit;
 				//				var_dump($data,$contract_mod->getLastSql(),$contract_info);exit;
 				$result = $contract_mod->where("id=" . $data['id'])->save($data);
 
 				// 添加合同日志
 				admin_log($log_op = '修改', $log_obj = '合同', $log_desc = json_encode($_POST).'==更新前=='.json_encode($contract_info), $contract_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0);
-
+//var_dump($contract_mod->getLastSql(),$_POST);exit;
 				if (false !== $result) {
 					$this->success(L('operation_success'), '', '', 'edit');
 				} else {

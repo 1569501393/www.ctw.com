@@ -45,13 +45,19 @@ class adminAction extends baseAction
             // 更新时间
             $_POST['update_time'] = time();
 
-            if (false === $admin_mod->create()) {
+            $data = $admin_mod->create();
+            if (false === $data) {
                 $this->error($admin_mod->getError());
             }
 
             $result = $admin_mod->where(" id={$id} ")->save();
             //			var_dump($admin_mod->save(),$admin_mod->create(),$admin_mod->getLastSql());exit;
 
+             $log = $admin_mod->getLastSql();
+                // 添加日志
+            admin_log($log_op = '修改', $log_obj = '用户_'.$_POST['user_id'], $log_desc = json_encode($data), $log, $score = 0, $app = 0, $status = 0, $product = 0, $op_table = 'admin');
+             
+            
             if (false !== $result) {
                 $this->success(L('operation_success'), '', '', 'edit');
             } else {
@@ -214,7 +220,7 @@ class adminAction extends baseAction
                 unset($_POST['repassword']);
                 //			$_POST['password'] = md5($_POST['password']);
                 $_POST['password'] = md5('a123456');
-                $admin_mod->create();
+                $data = $admin_mod->create();
 
                 // 判断级别
                 // 分行
@@ -229,6 +235,12 @@ class adminAction extends baseAction
                 $admin_mod->add_time = time();
                 $admin_mod->last_time = time();
                 $result = $admin_mod->add();
+                
+                $log = $admin_mod->getLastSql();
+                // 添加日志
+                admin_log($log_op = '添加', $log_obj = '用户_'.$_POST['user_id'], $log_desc = json_encode($data), $log, $score = 0, $app = 0, $status = 0, $product = 0, $op_table = 'admin');
+                
+                
                 if ($result) {
                     $this->success(L('operation_success'), '', '', 'add');
                 } else {
@@ -343,11 +355,17 @@ class adminAction extends baseAction
                 unset($_POST['password']);
             }
             unset($_POST['repassword']);
-            if (false === $admin_mod->create()) {
+            $data = $admin_mod->create();
+            if (false === $data) {
                 $this->error($admin_mod->getError());
             }
 
             $result = $admin_mod->save();
+            
+            $log = $admin_mod->getLastSql();
+                // 添加日志
+            admin_log($log_op = '修改', $log_obj = '用户_'.$_POST['user_id'], $log_desc = json_encode($data), $log, $score = 0, $app = 0, $status = 0, $product = 0, $op_table = 'admin');
+                
             if (false !== $result) {
                 $this->success(L('operation_success'), '', '', 'edit');
             } else {

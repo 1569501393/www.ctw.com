@@ -66,7 +66,7 @@ function admin_log($log_op = '添加', $log_obj = '积分', $log_desc='日志描
 //        'user_name' => $_SESSION ['admin_info'] ['id'].'-'.$_SESSION ['admin_info'] ['user_name'],
         'user_name' => $_SESSION ['admin_info'] ['user_name'],
         'uid' => $_SESSION ['admin_info'] ['id'],
-        'op_table' => $op_table,
+        'op_content' => $log_op.$log_obj,
         'op' => $log_op,
         'op_table' => $op_table,
         'sql' => $sql,
@@ -82,6 +82,7 @@ function admin_log($log_op = '添加', $log_obj = '积分', $log_desc='日志描
         'op_desc' => $log_desc
 	);
 	$insertId = M ( 'op_log' )->add ( $data );
+//	var_dump(M ( 'op_log' )->getLastSql());exit;
 }
 
 //删除商品图片和目录可以是数组或者文件
