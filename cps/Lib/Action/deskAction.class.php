@@ -207,7 +207,8 @@ class deskAction extends Action
 		}else{
 			$rate = $rate2 =$commission_info[0]['rate'];
 		}
-		
+
+//		var_dump($commission_info,$item_info);
 		
 		if (empty($commission_info) || empty($item_info)) {
 		 $this->error('推广信息错误');

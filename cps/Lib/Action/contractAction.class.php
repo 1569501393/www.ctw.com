@@ -313,13 +313,15 @@ class contractAction extends baseAction
 		array('cate_name', '商品分类'),
 		array('price', '商品价格'),
 		array('title', '商品名称'),
+		array('img', '图片地址'),
+		array('url', '链接'),
 		//		array('cate_id', '商品分类'),
 		array('add_time', '添加时间'),
 		array('shop_id', 'shop_id'),
 		);
 		$xlsModel = M('commission');
 		//        $xlsData = $xlsModel->Field('id,item_id,title,cate_id,cate_name,price,rate,commission,add_time,shop_id')->where('con_id=' . $_GET['id'])->order('id DESC')->select();
-		$xlsData = $xlsModel->Field('id,item_id,title,cate_id,cate_name,price,rate,commission,add_time,shop_id')->where(" con_id= {$_GET['id']} AND  con_id>1 ")->order('id DESC')->select();
+		$xlsData = $xlsModel->Field('id,img,url,item_id,title,cate_id,cate_name,price,rate,commission,add_time,shop_id')->where(" con_id= {$_GET['id']} AND  con_id>1 ")->order('id DESC')->select();
 		//        $xlsData = $xlsModel->where('con_id='.$_GET['id'])->select();
 
 		foreach ($xlsData as $k => $v) {
@@ -544,7 +546,9 @@ class contractAction extends baseAction
 						$data['cid'] = $data['cate_id'] = $data['cate_name'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
 						$data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
 						$data['title'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
-							
+						$data['img'] = $objPHPExcel->getActiveSheet()->getCell("G" . $i)->getValue();
+						$data['url'] = $objPHPExcel->getActiveSheet()->getCell("H" . $i)->getValue();
+
 						$data['con_id'] = $_POST['id'];
 						// 佣金表 cate_id
 						// $data['cate_id'] = $_POST['cid'];

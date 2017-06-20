@@ -91,9 +91,9 @@
                       <volist name="commission_list" id="val">
                         <tr>
                           <!-- <td>{$val.id|default="0"}</td> -->
-                          <td>{$val.title|default="默认商品名称"}
-                            <!-- <a href="" class="text-dark">
-                            <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">{$val.title}</a>  --></td>
+                          <td><!-- {$val.title|default="默认商品名称"} -->
+                            <a href="{$val.url}" class="text-dark">
+                            <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt=""></a>{$val.title} </td>
                           <td>{$val.cate_name|default="默认商品分类"}</td>
                           <td>¥{$val.price|default="默认单价"}</td>
                           
