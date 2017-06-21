@@ -157,10 +157,15 @@ class indexAction extends baseAction
 
 		// 近期订单
 		$result['recent_orders'] = M('orderlist')->where(" $where ")->order('id DESC')->limit(9)->select();
+        foreach ($result['recent_orders'] as $k=>$v){
+            $item = M('items')->where(" item_id={$v['item_id']} AND shop_id={$v['shop_id']} ")->find();
+            $result['recent_orders'][$k]['url'] = $item['url'];
+            $result['recent_orders'][$k]['img'] = $item['img'];
+        }
 
 		// 统计信息
 		//		$result['statistics'] = M('orderlist')->where(" $where ")->order('id DESC')->limit(6)->select();
-		$result['statistics'] = array(
+		/*$result['statistics'] = array(
 		array(y => '1月', a => 10, b => 20, c => 30,),
 		array(y => '2月', a => 10, b => 20, c => 30,),
 		array(y => '3月', a => 30, b => 20, c => 30,),
@@ -170,7 +175,7 @@ class indexAction extends baseAction
 		array(y => '7月', a => 150, b => 20, c => 30,),
 		array(y => '8月', a => 10, b => 20, c => 30,),
 		array(y => '9月', a => 10, b => 20, c => 30,),
-		);
+		);*/
 
 		//        var_dump(json_encode($result['statistics']));
 		//        var_dump($result['statistics']);

@@ -76,12 +76,11 @@
                                                 <elseif condition="$_SESSION['admin_info']['role_id'] eq 3" />
                                                 <th style="min-width: 80px;">商城2CPS</th>
                                                 <th style="min-width: 80px;">CPS2对商城</th>
-                                                <elseif condition="$_SESSION['admin_info']['role_id'] eq 4"/>
+                                                <elseif condition="$_SESSION['admin_info']['role_id'] eq 4" />
                                                 <th style="min-width: 80px;">CPS2分行</th>
                                                 <th style="min-width: 80px;">分行2CPS</th>
                                                 <else/>
-                                                <th style="min-width: 80px;">结算状态</th>
-                                                </if>
+                                                <th style="min-width: 80px;">结算状态</th></if>
                                             <!-- <th style="min-width: 80px;">最终状态</th> --></tr>
                                     </thead>
                                     <tbody>
@@ -89,7 +88,13 @@
                                             <tr>
                                                 <!-- <td>{$val.id|default="UB#160924"}</td> -->
                                                 <td>{$val.order_id|default="UB#160924"}</td>
-                                                <td>{$val.title|default="苹果Iphone 7Plus 64GB."}</td>
+                                                <!-- <td>{$val.title|default="苹果Iphone 7Plus 64GB."}</td> -->
+                                                <td>
+                                                    <!-- {$val.title|default="默认商品名称"} -->
+                                                    <a href="{$val.url}" class="text-dark">
+                                                        <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
+                                                        <!-- <br />
+                                                        <br />-->{$val.title}</a></td>
                                                 <td>{$val.cate_name|default="默认商品分类"}</td>
                                                 <td>¥{$val.item_price|default="4,888"}</td>
                                                 <td>{$val.item_count|default="99"}</td>
@@ -104,34 +109,33 @@
                                                     <td>{$val['commission']/$val['item_price']*100|default="5" }%</td>
                                                     <td>{$val['commission']*$val['item_count']|default="¥125,699"}</td></if>
                                                 <if condition="$_SESSION['admin_info']['role_id'] eq 1">
-                                                    <td >
+                                                    <td>
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status1_stc}.gif" /></td>
                                                     <td onclick="status({$val.id},'settle_status2_cts')" id="settle_status2_cts_{$val.id}">
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status2_cts}.gif" /></td>
                                                     <td onclick="status({$val.id},'settle_status3_ctb')" id="settle_status3_ctb_{$val.id}">
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status3_ctb}.gif" /></td>
-                                                    <td >
+                                                    <td>
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status4_btc}.gif" /></td>
                                                     <elseif condition="$_SESSION['admin_info']['role_id'] eq 3" />
                                                     <td onclick="status({$val.id},'settle_status1_stc')" id="settle_status1_stc_{$val.id}">
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status1_stc}.gif" /></td>
-                                                    <td >
+                                                    <td>
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status2_cts}.gif" /></td>
                                                     <elseif condition="$_SESSION['admin_info']['role_id'] eq 4" />
-                                                    <td >
+                                                    <td>
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status3_ctb}.gif" /></td>
                                                     <td onclick="status({$val.id},'settle_status4_btc')" id="settle_status4_btc_{$val.id}">
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status4_btc}.gif" /></td>
                                                     <else/>
-                                                    <td ><img src="__ROOT__/statics/images/status_{$val.settle_status}.gif" /></td>
-                                                    </if>
-                                                    </td>
-
-                                                    <!-- <td >
-                                                        <img src="__ROOT__/statics/images/status_{$val.settle_status3_ctb}.gif" /></td>
-                                                    <td onclick="status({$val.id},'settle_status4_btc')" id="settle_status4_btc_{$val.id}">
-                                                        <img src="__ROOT__/statics/images/status_{$val.settle_status4_btc}.gif" /></td> -->
+                                                    <td>
+                                                        <img src="__ROOT__/statics/images/status_{$val.settle_status}.gif" /></td>
                                                 </if>
+                                                </td>
+                                                <!-- <td>
+                                                <img src="__ROOT__/statics/images/status_{$val.settle_status3_ctb}.gif" /></td>
+                                                <td onclick="status({$val.id},'settle_status4_btc')" id="settle_status4_btc_{$val.id}">
+                                                <img src="__ROOT__/statics/images/status_{$val.settle_status4_btc}.gif" /></td> --></if>
                                             </tr>
                                         </volist>
                                     </tbody>

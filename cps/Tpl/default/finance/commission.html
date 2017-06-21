@@ -29,8 +29,7 @@
                                 <!-- <li class="tab"> 
                                 <a href="#profile-2" data-toggle="tab" aria-expanded="false"> 
                                 <span class="visible-xs"><i class="fa fa-user"></i></span> 
-                                <span class="hidden-xs">批量管理</span></a> 
-                                </li>
+                                <span class="hidden-xs">批量管理</span></a></li>
                                 -->
                                 <li class="tab">
                                     <a href="#profile-2" data-toggle="tab" aria-expanded="false">
@@ -88,9 +87,7 @@
                                                         <th>分润</th>
                                                         <th>合同名称</th>
                                                         <if condition="$Think.session.admin_info.role_id eq 1 ">
-                                                            <th >分销平台</th>
-                                                        </if>
-                                                        
+                                                            <th>分销平台</th></if>
                                                         <th>入库日期</th>
                                                         <!-- <th>点击量</th>
                                                         <th style="min-width: 80px;">推广链接</th>
@@ -99,9 +96,12 @@
                                                 <tbody>
                                                     <volist name="commission_list" id="val">
                                                         <tr>
-                                                            <td>{$val.title|default="默认商品名称"}
-                                                                <!-- <a href="" class="text-dark">
-                                                                <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">{$val.title}</a>  --></td>
+                                                            <td>
+                                                                <!-- {$val.title|default="默认商品名称"} -->
+                                                                <a href="{$val.url}" class="text-dark">
+                                                                    <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
+                                                                    <!-- <br />
+                                                                    <br />-->{$val.title}</a></td>
                                                             <td>{$val.cate_name|default="默认商品分类"}</td>
                                                             <td>¥{$val.price|default="默认单价"}</td>
                                                             <td>{$val.rate|default="默认佣金比例"}%</td>
@@ -112,11 +112,8 @@
                                                                 <!-- {$val.con_id} -->
                                                                 <a href="{:u('contract/edit',array('id'=>$val['con_id']))}">{$val.contract|default="默认合同名称"}
                                                                     <!-- {$val.contract.con_id}-{$val.contract.title} --></a></td>
-
                                                             <if condition="$Think.session.admin_info.role_id eq 1 ">
-                                                                <td>{$val.platform_name|default="默认分销平台"}</td>
-                                                            </if>
-                                                            
+                                                                <td>{$val.platform_name|default="默认分销平台"}</td></if>
                                                             <!-- <td>{$val.period}</td> -->
                                                             <td>{$val.add_time|date='Y-m-d',###}</td>
                                                             <!-- <td>{$val.click}</td>
@@ -143,8 +140,7 @@
                                         <span class="group-span-filestyle input-group-btn" tabindex="0">
                                         <label for="filestyle-4" class="btn btn-primary ">
                                         <span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span>
-                                        <span class="buttonText">选择文件</span></label>
-                                        </span>
+                                        <span class="buttonText">选择文件</span></label></span>
                                         </div> -->
                                         <hr />
                                         <form role="form2" method="post" action="{:u('contract/edit',array('profit'=>1))}" enctype="multipart/form-data">

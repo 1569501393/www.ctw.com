@@ -69,7 +69,7 @@ class financeAction extends baseAction {
 			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
 			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
 			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
-			$commission_list[$k]['item'] = M('items')->where(" item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
+			$commission_list[$k]['item'] = M('items')->where(" item_id={$val['item_id']}  AND shop_id={$val['shop_id']}  ")->find() ?: array();
 			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
 		}
 
@@ -245,6 +245,9 @@ class financeAction extends baseAction {
 			$order_list[$k]['rate'] = $val['commission']/$val['sum_price'];
 			//			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 
+            $item = M('items')->where(" item_id={$val['item_id']} AND shop_id={$val['shop_id']} ")->find();
+            $order_list[$k]['url'] = $item['url'];
+            $order_list[$k]['img'] = $item['img'];
 		}
 		$page = $p->show();
 		$this->assign('page', $page);
@@ -346,7 +349,10 @@ class financeAction extends baseAction {
 			$order_list[$k]['settle_status'] = ($val['settle_status3_ctb'] && $val['settle_status4_btc']) ?:0;
 			$order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
 			$order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
-				
+
+            $item = M('items')->where(" item_id={$val['item_id']} AND shop_id={$val['shop_id']} ")->find();
+            $order_list[$k]['url'] = $item['url'];
+            $order_list[$k]['img'] = $item['img'];
 		}
 		$page = $p->show();
 		$this->assign('page', $page);

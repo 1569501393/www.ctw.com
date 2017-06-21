@@ -45,7 +45,9 @@ class itemsAction extends baseAction
 		$text = "{$_GET['user_id']}向您推荐好货 \n {$_GET['title']} ";
 		// $qrcode = $APP_URL.__ROOT__.'/data'.$qrcode; // 二维码  jiu
 		//		$qrcode = $this->create_qrcode(U('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_GET['item_id'],'shop_id'=>$_GET['shop_id'],'con_id'=>$_GET['con_id'],'rate'=>$_GET['rate'],'cate_id'=>$_GET['cate_id'] )));
-		$qrcode = $this->create_qrcode($APP_URL . U('desk/prom', $_GET)); //生产二维码
+//		$qrcode = $this->create_qrcode($APP_URL . U('desk/prom', $_GET)); //生产二维码
+
+		$qrcode = $this->create_qrcode("{$_GET['url']}?sid={$_SESSION['admin_info']['id']}&sname={$_SESSION['admin_info']['user_name']}&item_id={$_GET['item_id']}&push_id={$_GET['id']}&shop_id={$_GET['shop_id']}&con_id={$_GET['con_id']}&rate={$_GET['rate']}&cate_id={$_GET['cate_id']}&cate_name={$_GET['cate_name']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid{$_SESSION['admin_info']['pid']}=&user_id={$_SESSION['admin_info']['user_id']}"); //生产二维码
 		$qrcode_url = $APP_URL . __ROOT__ . $qrcode; // 二维码
 
 		$head_source = @imagecreatefromjpeg($head_source); // imagecreatefromjpeg — 由文件或URL创建一个新图象

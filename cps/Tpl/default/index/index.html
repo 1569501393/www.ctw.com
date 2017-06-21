@@ -162,9 +162,15 @@
                                     <tbody>
                                         <volist name="result['recent_orders']" id="val">
                                             <tr>
-                                                <td>
-                                                    <!-- <img src="__ROOT__/statics/images/masonry_loading.gif" class="thumb-sm pull-left m-r-10" alt=""> -->
-                                                    <!-- <img src="__ROOT__/statics/cps/images/favicon_1.ico" class="thumb-sm pull-left m-r-10" alt=""> -->{$val.title}</td>
+                                                <!-- <td>
+                                                    <img src="__ROOT__/statics/images/masonry_loading.gif" class="thumb-sm pull-left m-r-10" alt="">
+                                                    {$val.title}</td> -->
+
+                                                <td><!-- {$val.title|default="默认商品名称"} -->
+                                                    <a href="{$val.url}" class="text-dark">
+                                                    <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">{$val.title} 
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     <span class="text-custom">{$val.item_count}</span></td><td>
                                                     <span class="text-custom">{$val.item_price}</span></td>
