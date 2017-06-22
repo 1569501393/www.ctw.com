@@ -248,6 +248,9 @@ class financeAction extends baseAction {
             $item = M('items')->where(" item_id={$val['item_id']} AND shop_id={$val['shop_id']} ")->find();
             $order_list[$k]['url'] = $item['url'];
             $order_list[$k]['img'] = $item['img'];
+
+            $order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
+            $order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
 		}
 		$page = $p->show();
 		$this->assign('page', $page);
