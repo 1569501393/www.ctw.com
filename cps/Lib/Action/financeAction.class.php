@@ -11,13 +11,13 @@ class financeAction extends baseAction {
 		$where = '1=1';
 		$where .= " AND con_id>0 ";
 
-		if ($_SESSION['admin_info']['role_id']==3) {
+		if ($_SESSION['admin_info']['commission_id']==3) {
 			$where .= " AND shop_id={$_SESSION['admin_info']['id']} ";
-		}if ($_SESSION['admin_info']['role_id']==4) {
+		}if ($_SESSION['admin_info']['commission_id']==4) {
 			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
-		}if ($_SESSION['admin_info']['role_id']==5) {
+		}if ($_SESSION['admin_info']['commission_id']==5) {
 			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
-		}if ($_SESSION['admin_info']['role_id']==6) {
+		}if ($_SESSION['admin_info']['commission_id']==6) {
 			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
 		}
 
@@ -52,12 +52,12 @@ class financeAction extends baseAction {
 		$key = 1;
 
 		// 判断角色  分行和商城直接看角色  支行和客户经理看分行  暂时屏蔽
-		$role_id = $_SESSION['admin_info']['role_id'];
-		if (($_SESSION['admin_info']['role_id'] == 5)) { // 支行
-			$role_id = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('role_id');
-		} elseif (($_SESSION['admin_info']['role_id'] == 6)) { // 客户经理
+		$commission_id = $_SESSION['admin_info']['commission_id'];
+		if (($_SESSION['admin_info']['commission_id'] == 5)) { // 支行
+			$commission_id = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('commission_id');
+		} elseif (($_SESSION['admin_info']['commission_id'] == 6)) { // 客户经理
 			$pid = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('pid');
-			$role_id = M('admin')->where('id=' . $pid)->getField('role_id');
+			$commission_id = M('admin')->where('id=' . $pid)->getField('commission_id');
 		}
 
 		foreach ($commission_list as $k => $val) {
@@ -65,7 +65,7 @@ class financeAction extends baseAction {
 			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
 			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 			// 分润  根据分行设置 暂时屏蔽
-			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
+			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  commission_id={$commission_id} ")->find() ?: array();
 			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
 			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
 			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
@@ -127,7 +127,7 @@ class financeAction extends baseAction {
 			$commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 			//			$commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
 			// 分润  根据分行设置 暂时屏蔽
-			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
+			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  commission_id={$commission_id} ")->find() ?: array();
 			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
 			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
 			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
@@ -148,13 +148,13 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1 AND data_state=1 AND status=1 ';
 		// 角色，用户
-		if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
+		if ($_SESSION['admin_info']['commission_id'] == 6) { // 客户经理
 			$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['role_id'] == 5) { // 支行
+		}elseif ($_SESSION['admin_info']['commission_id'] == 5) { // 支行
 			$where .= ' AND bank_subid = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
+		}elseif ($_SESSION['admin_info']['commission_id'] == 4) { // 分行
 			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
+		}elseif ($_SESSION['admin_info']['commission_id'] == 3) { // 商城
 			$where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
 		}else { // 其它
 			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
@@ -204,7 +204,7 @@ class financeAction extends baseAction {
 			array('seller_name', '推广人'),
 			);
 
-			if ($_SESSION['admin_info']['role_id'] !=6 ) {
+			if ($_SESSION['admin_info']['commission_id'] !=6 ) {
 				$xlsCell[] = array('rate', '佣金比例');
 				$xlsCell[] = array('commission', '佣金');
 			}
@@ -245,12 +245,12 @@ class financeAction extends baseAction {
 			$order_list[$k]['rate'] = $val['commission']/$val['sum_price'];
 			//			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 
-            $item = M('items')->where(" item_id={$val['item_id']} AND shop_id={$val['shop_id']} ")->find();
-            $order_list[$k]['url'] = $item['url'];
-            $order_list[$k]['img'] = $item['img'];
+			$item = M('items')->where(" item_id={$val['item_id']} AND shop_id={$val['shop_id']} ")->find();
+			$order_list[$k]['url'] = $item['url'];
+			$order_list[$k]['img'] = $item['img'];
 
-            $order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
-            $order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
+			$order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
+			$order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
 		}
 		$page = $p->show();
 		$this->assign('page', $page);
@@ -268,13 +268,13 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1 AND data_state=1 AND status=1 ';
 		// 角色，用户
-		if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
+		if ($_SESSION['admin_info']['commission_id'] == 6) { // 客户经理
 			$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['role_id'] == 5) { // 支行
+		}elseif ($_SESSION['admin_info']['commission_id'] == 5) { // 支行
 			$where .= ' AND bank_subid = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
+		}elseif ($_SESSION['admin_info']['commission_id'] == 4) { // 分行
 			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
+		}elseif ($_SESSION['admin_info']['commission_id'] == 3) { // 商城
 			$where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
 		}else { // 其它
 			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
@@ -316,7 +316,7 @@ class financeAction extends baseAction {
 			array('seller_name', '推广人'),
 			);
 
-			if ($_SESSION['admin_info']['role_id'] !=6 && $_SESSION['admin_info']['role_id'] !=5 ) {
+			if ($_SESSION['admin_info']['commission_id'] !=6 && $_SESSION['admin_info']['commission_id'] !=5 ) {
 				$xlsCell[] = array('rate', '佣金比例');
 				$xlsCell[] = array('commission', '佣金');
 			}
@@ -353,9 +353,9 @@ class financeAction extends baseAction {
 			$order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
 			$order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
 
-            $item = M('items')->where(" item_id={$val['item_id']} AND shop_id={$val['shop_id']} ")->find();
-            $order_list[$k]['url'] = $item['url'];
-            $order_list[$k]['img'] = $item['img'];
+			$item = M('items')->where(" item_id={$val['item_id']} AND shop_id={$val['shop_id']} ")->find();
+			$order_list[$k]['url'] = $item['url'];
+			$order_list[$k]['img'] = $item['img'];
 		}
 		$page = $p->show();
 		$this->assign('page', $page);
@@ -364,14 +364,14 @@ class financeAction extends baseAction {
 	}
 
 	function index() {
-		$link_mod = M('flink');
+		$link_mod = M('commission');
 		import("ORG.Util.Page");
 		$prex = C('DB_PREFIX');
 
 		//搜索
 		$where = '1=1';
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
-			$where .= " AND (" . $prex . "flink.name LIKE '%" . $_GET['keyword'] . "%' or url LIKE '%" . $_GET['keyword'] . "%')";
+			$where .= " AND (" . $prex . "commission.name LIKE '%" . $_GET['keyword'] . "%' or url LIKE '%" . $_GET['keyword'] . "%')";
 			$this->assign('keyword', $_GET['keyword']);
 		}
 		if (isset($_GET['cate_id']) && intval($_GET['cate_id'])) {
@@ -381,7 +381,7 @@ class financeAction extends baseAction {
 
 		$count = $link_mod->where($where)->count();
 		$p = new Page($count, 10);
-		$link_list = $link_mod->where($where)->field($prex . 'flink.*,' . $prex . 'flink_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'flink_cate ON ' . $prex . 'flink.cate_id = ' . $prex . 'flink_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'flink.ordid ASC')->select();
+		$link_list = $link_mod->where($where)->field($prex . 'commission.*,' . $prex . 'commission_cate.name as cate_name')->join('LEFT JOIN ' . $prex . 'commission_cate ON ' . $prex . 'commission.cate_id = ' . $prex . 'commission_cate.id ')->limit($p->firstRow . ',' . $p->listRows)->order($prex . 'commission.ordid ASC')->select();
 
 		$key = 1;
 		foreach ($link_list as $k => $val) {
@@ -397,86 +397,114 @@ class financeAction extends baseAction {
 	function add() {
 		if (isset($_REQUEST['dosubmit'])) {
 
-			$flink_mod = M('flink');
+			$commission_mod = M('commission');
 			$data = array();
-			$name = isset($_POST['name']) && trim($_POST['name']) ? trim($_POST['name']) : $this->error(L('input') . L('flink_name'));
-			$url = isset($_POST['url']) && trim($_POST['url']) ? trim($_POST['url']) : $this->error(L('input') . L('flink_url'));
-			$exist = $flink_mod->where("url='" . $url . "'")->count();
+			$name = isset($_POST['name']) && trim($_POST['name']) ? trim($_POST['name']) : $this->error(L('input') . L('commission_name'));
+			$url = isset($_POST['url']) && trim($_POST['url']) ? trim($_POST['url']) : $this->error(L('input') . L('commission_url'));
+			$exist = $commission_mod->where("url='" . $url . "'")->count();
 			if ($exist != 0) {
 				$this->error('该链接已经存在');
 			}
-			$data = $flink_mod->create();
+			$data = $commission_mod->create();
 
 			if ($_FILES['img']['name'] != '') {
 				$upload_list=$this->_upload($_FILES['img']);
 				$data['img'] = $upload_list['0']['savename'];
 			}
 
-			$flink_mod->add($data);
+			$commission_mod->add($data);
 			$this->success(L('operation_success'), '', '', 'add');
 		} else {
-			$flink_cate_mod = D('flink_cate');
-			$flink_cate_list = $flink_cate_mod->select();
-			$this->assign('flink_cate_list', $flink_cate_list);
+			$commission_cate_mod = D('commission_cate');
+			$commission_cate_list = $commission_cate_mod->select();
+			$this->assign('commission_cate_list', $commission_cate_list);
 
 			$this->assign('show_header', false);
 			$this->display();
 		}
 	}
 
+
+	// 编辑单个佣金
+	function edit_commission() {
+		if(isset($_POST['dosubmit'])){
+			$commission_mod = D('commission');
+			if (false === $commission_mod->create()) {
+				$this->error($commission_mod->getError());
+			}
+			$result = $commission_mod->save();
+//			var_dump($commission_mod->getLastSql());exit;
+			if(false !== $result){
+				$this->success(L('operation_success'), '', '', 'index');
+			}else{
+				$this->error(L('operation_failure'));
+			}
+		}else{
+			if( isset($_GET['id']) ){
+				$id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('参数错误');
+			}
+			$commission_mod = D('commission');
+			$commission_info = $commission_mod->where('id='.$id)->find();
+			$this->assign('commission_info', $commission_info);
+			$this->assign('show_header', false);
+			$this->display();
+		}
+	}
+
+
 	function edit() {
 		if (isset($_POST['dosubmit'])) {
-			$flink_mod = M('flink');
-			$data = $flink_mod->create();
+			$commission_mod = M('commission');
+			$data = $commission_mod->create();
 
 			if ($_FILES['img']['name'] != '') {
 				$upload_list=$this->_upload($_FILES['img']);
 				$data['img'] = $upload_list['0']['savename'];
 			}
 
-			$result = $flink_mod->where("id=" . $data['id'])->save($data);
+			$result = $commission_mod->where("id=" . $data['id'])->save($data);
 			if (false !== $result) {
 				$this->success(L('operation_success'), '', '', 'edit');
 			} else {
 				$this->error(L('operation_failure'));
 			}
 		} else {
-			$flink_mod = M('flink');
+			$commission_mod = M('commission');
 			if (isset($_GET['id'])) {
-				$flink_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('请选择要编辑的链接');
+				$commission_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('请选择要编辑的链接');
 			}
-			$flink_cate_mod = D('flink_cate');
-			$flink_cate_list = $flink_cate_mod->select();
-			$this->assign('flink_cate_list', $flink_cate_list);
+			$commission_cate_mod = D('commission_cate');
+			$commission_cate_list = $commission_cate_mod->select();
+			$this->assign('commission_cate_list', $commission_cate_list);
 
-			$flink_info = $flink_mod->where('id=' . $flink_id)->find();
-			$this->assign('flink_info', $flink_info);
+			$commission_info = $commission_mod->where('id=' . $commission_id)->find();
+			$this->assign('commission_info', $commission_info);
 			$this->assign('show_header', false);
 			$this->display();
 		}
 	}
 
 	function del() {
-		$flink_mod = M('flink');
+		$commission_mod = M('commission');
 		if ((!isset($_GET['id']) || empty($_GET['id'])) && (!isset($_POST['id']) || empty($_POST['id']))) {
 			$this->error('请选择要删除的链接！');
 		}
 		if (isset($_POST['id']) && is_array($_POST['id'])) {
-			$flink_ids = implode(',', $_POST['id']);
-			$flink_mod->delete($flink_ids);
+			$commission_ids = implode(',', $_POST['id']);
+			$commission_mod->delete($commission_ids);
 		} else {
-			$flink_id = intval($_GET['id']);
-			$flink_mod->where('id=' . $flink_id)->delete();
+			$commission_id = intval($_GET['id']);
+			$commission_mod->where('id=' . $commission_id)->delete();
 		}
 		$this->success(L('operation_success'));
 	}
 
 	function ordid() {
-		$flink_mod = D('flink');
+		$commission_mod = D('commission');
 		if (isset($_POST['listorders'])) {
 			foreach ($_POST['listorders'] as $id => $sort_order) {
 				$data['ordid'] = $sort_order;
-				$flink_mod->where('id=' . $id)->save($data);
+				$commission_mod->where('id=' . $id)->save($data);
 			}
 			$this->success(L('operation_success'));
 		}
@@ -485,14 +513,14 @@ class financeAction extends baseAction {
 
 	//修改状态
 	function status() {
-		$flink_mod = M('orderlist');
+		$commission_mod = M('orderlist');
 		$id = intval($_REQUEST['id']);
 		$type = trim($_REQUEST['type']);
 		$sql = "update " . C('DB_PREFIX') . "orderlist set $type=($type+1)%2 where id='$id'";
 		Log::write('$sql==='.$sql);
 		//		var_dump($sql);
-		$res = $flink_mod->execute($sql);
-		$values = $flink_mod->where('id=' . $id)->find();
+		$res = $commission_mod->execute($sql);
+		$values = $commission_mod->where('id=' . $id)->find();
 		$this->ajaxReturn($values[$type]);
 	}
 
@@ -502,7 +530,7 @@ class financeAction extends baseAction {
 		//设置上传文件大小
 		$upload->maxSize = 3292200;
 		//$upload->allowExts = explode(',', 'jpg,gif,png,jpeg');
-		$upload->savePath = ROOT_PATH.'/data/flink/';
+		$upload->savePath = ROOT_PATH.'/data/commission/';
 
 		$upload->saveRule = uniqid;
 		if (!$upload->upload()) {
