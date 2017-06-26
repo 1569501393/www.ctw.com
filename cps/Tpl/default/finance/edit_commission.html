@@ -5,23 +5,38 @@
 
 <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
     <tr> 
-        <th width="60"><if condition="$_SESSION['admin_info']['role_id'] eq 1">佣金<else />分润</if>:</th>
+        <th ><if condition="$_SESSION['admin_info']['role_id'] eq 1">佣金<else />分润</if>:</th>
         <td><input type="text" name="commission" id="name" class="input-text" value="{$commission_info.commission}" size="25"></td>
     </tr>    
     <tr> 
         <th>比例 :</th>
-        <td><textarea name="rate" cols="40" rows="3">{$commission_info.rate}</textarea></td>
+        <td><!-- <textarea name="rate" cols="10" rows="3">{$commission_info.rate}</textarea> -->
+            <input type="text" name="rate" id="name" class="input-text" value="{$commission_info.rate}" size="25">
+        </td>
     </tr>    
 </table>
+<if condition="$is_edit">
 <input type="hidden" name="id" value="{$commission_info.id}" />
+</if>
+
+<input type="hidden" name="shop_id" value="{$commission_info.shop_id}" />
+<input type="hidden" name="item_id" value="{$commission_info.item_id}" />
+<input type="hidden" name="cate_name" value="{$commission_info.cate_name}" />
+<input type="hidden" name="price" value="{$commission_info.price}" />
+<input type="hidden" name="contract" value="{$commission_info.contract}" />
+<input type="hidden" name="img" value="{$commission_info.img}" />
+<input type="hidden" name="url" value="{$commission_info.url}" />
+<input type="hidden" name="platform_id" value="{$commission_info.platform_id}" />
+<input type="hidden" name="title" value="{$commission_info.title}" />
+<input type="hidden" name="is_edit" value="{$is_edit}" />
 <input type="submit" name="dosubmit" id="dosubmit" class="dialog" value=" ">
 </form>
 <script type="text/javascript">
-    $(function(){
+    /*$(function(){
         $.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'250',height:'50'}, function(){this.close();$(obj).focus();})}});
         
         $("#name").formValidator({onshow:"不能为空",onfocus:"不能为空"}).inputValidator({min:1,onerror:"请填写角色名"});
-    })
+    })*/
 </script>
 </div>
 

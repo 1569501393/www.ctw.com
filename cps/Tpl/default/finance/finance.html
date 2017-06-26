@@ -73,7 +73,7 @@
                                             <th>订单号</th>
                                             <th>商品名称</th>
                                             <th>商品分类</th>
-                                            <th>单价(元)</th>
+                                            <!-- <th>单价(元)</th> -->
                                             <th>数量</th>
                                             <th>总金额</th>
                                             <th>下单时间</th>
@@ -109,9 +109,9 @@
                                                     <a href="{$val.url}" target="_blank" class="text-dark">
                                                         <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
                                                         <!-- <br />
-                                                        <br />-->{$val.title}</a></td>
+                                                        <br />-->{$val.title}(¥{$val.item_price|default="4,888"})</a></td>
                                                 <td>{$val.cate_name|default="默认商品分类"}</td>
-                                                <td>¥{$val.item_price|default="4,888"}</td>
+                                                <!-- <td>¥{$val.item_price|default="4,888"}</td> -->
                                                 <td>{$val.item_count|default="99"}</td>
                                                 <td>{$val.sum_price|default="总金额" }</td>
                                                 <td>{$val.order_time|date='Y-m-d',###}</td>

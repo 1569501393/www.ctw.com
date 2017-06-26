@@ -109,18 +109,19 @@
                                                     <td>{$val.add_time|date='Y-m-d',###}</td>
                                                     <td>{$val.click}</td>
 
-                                                    <if condition="$_SESSION['admin_info']['role_id'] neq 3">
-                                                    <td><a href="javascript:edit({$val.id},'{$val.title}')">编辑</a></td>
-                                                    </if>
-                                                
+                                                    <if condition="$_SESSION['admin_info']['role_id'] eq 1">
+                                                    <td><a href="javascript:edit({$val.id},'{$val.title}',1)">编辑</a></td>
+
+                                                    <elseif condition="$_SESSION['admin_info']['role_id'] eq 4" />
+                                                        <if condition="$val['profit_id']">
+                                                        <td><a href="javascript:edit({$val.profit_id},'{$val.title}',1)">编辑</a></td>
+                                                        <else />
+                                                        <td><a href="javascript:edit({$val.id},'{$val.title}',0)">添加</a></td>
+                                                        </if>
                                                     
-                                                    <!-- <td>
-                                                    <textarea id="mytext{$val['item_id']}" rows="6">{$site_root}{:u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'push_id'=>$val['id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'],'shop_id'=>$val['shop_id'],'band_id'=>$val['band_id'],'band_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'] ))}</textarea>
-                                                    <br/></td>
-                                                    <td>
-                                                    <volist name="val['file']" id="sval">
-                                                    <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$val['item_id'],'id'=>$val['id'],'origin_id'=>$val['id'],'shop_id'=>$val['shop_id'],'con_id'=>$val['con_id'],'rate'=>$val['rate'],'cate_id'=>$val['cate_id'],'title'=>$val['title'],'img'=>$sval['img'],'band_id'=>$val['band_id'],'band_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'] ))}" target="_blank">
-                                                    <img src="{$sval.img}" width="30px"></a>&nbsp;&nbsp;</volist></td> --></tr>
+
+                                                    </if>
+                                                    </tr>
                                             </volist>
                                         </tbody>
                                     </table>
@@ -132,7 +133,7 @@
                 <!-- container --></div>
             <!-- content --></div>
 
-            <script type="text/javascript">function edit(id, name) {
+            <script type="text/javascript">function edit(id, name, is_edit) {
                             var lang_edit = "详情";
                             // 弹框后右侧滚动条动不了了。。。
                             // window.top.art.dialog({
@@ -141,7 +142,7 @@
                             window.top.art.dialog({
                                 title: lang_edit + '--' + name,
                                 id: 'edit',
-                                iframe: '?m=finance&a=edit_commission&id=' + id,
+                                iframe: '?m=finance&a=edit_commission&id=' + id+'&is_edit='+is_edit,
                                 // width: '360',
                                 // height: '280'
                             },

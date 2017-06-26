@@ -131,6 +131,7 @@ class financeAction extends baseAction {
 			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
 			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
 			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
+			$commission_list[$k]['profit_id'] = $profit['id']?:0;
 
 		}
 
@@ -429,24 +430,59 @@ class financeAction extends baseAction {
 	function edit_commission() {
 		if(isset($_POST['dosubmit'])){
 			$commission_mod = D('commission');
+				
+			$_POST['platfom_id'] = $_POST['platform_id'] ?: $_SESSION['admin_info']['id'];
+			$_POST['uid'] = $_SESSION['admin_info']['id'];
+			$_POST['role_id'] = $_SESSION['admin_info']['role_id'];
+			$_POST['add_time'] = $_POST['update_time'] = time();
+
+			$rate = ($_POST['commission'] / $_POST['price'] * 100);
+			if ($_POST['rate'] && $_POST['commission'] && ((string)$_POST['rate'] !== (string)$rate) ) {
+				$this->error("{$_POST['item_id']}-{$_POST['title']}：佣金和佣金比例（{$_POST['rate']}-{$rate}）设置不对，请重新设置！");
+			}
+
+			if ($_POST['commission']) {
+				$_POST['rate'] = $_POST['commission'] / $_POST['price'] * 100;
+			}
+
+			if ($_POST['rate']) {
+				$_POST['commission'] = $_POST['rate'] * $_POST['price'] / 100;
+			}
+
 			if (false === $commission_mod->create()) {
 				$this->error($commission_mod->getError());
 			}
-			$result = $commission_mod->save();
+			if ($_POST['is_edit']) {
+				$result = $commission_mod->save();
+				// 添加合同日志
+				admin_log($log_op = '修改', $log_obj = '佣金', $log_desc = json_encode($_POST), $commission_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0,$op_table = 'commission');
+				
+			}else{
+				$result = $commission_mod->add();
+				// 添加合同日志
+				admin_log($log_op = '添加', $log_obj = '佣金', $log_desc = json_encode($_POST), $commission_mod->getLastSql(), $score = 0, $app = 0, $status = 0, $product = 0,$op_table = 'commission');
+				
+			}
+			
 //			var_dump($commission_mod->getLastSql());exit;
 			if(false !== $result){
+				
 				$this->success(L('operation_success'), '', '', 'index');
 			}else{
 				$this->error(L('operation_failure'));
 			}
 		}else{
-			if( isset($_GET['id']) ){
-				$id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('参数错误');
+			if( isset($_GET['id'])  ){
+				//				$id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error('参数错误');
+				$id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : 0;
+				$commission_mod = D('commission');
+				$commission_info = $commission_mod->where('id='.$id)->find();
+				$this->assign('commission_info', $commission_info);
+				$this->assign('is_edit', $_GET['is_edit']);
+				$this->assign('show_header', false);
 			}
-			$commission_mod = D('commission');
-			$commission_info = $commission_mod->where('id='.$id)->find();
-			$this->assign('commission_info', $commission_info);
-			$this->assign('show_header', false);
+				
+//			var_dump($commission_info,$_GET['is_edit']);exit;
 			$this->display();
 		}
 	}
