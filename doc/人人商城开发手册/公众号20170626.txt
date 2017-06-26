@@ -1,0 +1,216 @@
+支付后台登录
+https://pay.weixin.qq.com/index.php/core/trade/search_new
+商户平台登录帐号
+1352819202@1352819202
+商户平台登录密码
+056808
+
+
+尊敬的【连城县冠客隆商行】：
+恭喜你，成功通过微信支付商户资料审核！
+以下为你的账户所需要的重要信息，请注意保密：
+微信支付商户号
+1352819202
+商户平台登录帐号
+1352819202@1352819202
+商户平台登录密码
+056808
+申请对应的公众号
+连城县冠客隆商行支付平台（lc-gklzfpt2016）
+公众号APPID
+wx606b4470e54ff82d
+操作指引
+
+
+
+http://wd.jieqiangtec.com/web/index.php?c=account&a=post&uniacid=4
+admin
+admin555
+
+http://wmwx.jieqiangtec.com/index.php?g=System&m=System&a=index
+admin
+adminadmin
+
+公众号
+连城县冠客隆商行
+trytryzxc@126.com    yql@8920033
+
+冠客隆支付平台
+yqltrytryzxc@163.com
+
+
+图片最佳尺寸：宽700px 高420px
+350*210
+http://wmwx.jieqiangtec.com/index.php?g=User&m=Tmpls&a=index&token=ovxoqk1464690728
+gkl
+gklgkl
+
+装逼
+优惠接力
+砍价传媒
+微召唤
+大转盘
+砸金蛋
+拍卖商品
+砍价商品
+秒杀
+一元夺宝
+
+
+会员卡
+
+刮刮卡
+九宫格
+优惠券
+水果达人
+
+
+
+微排号
+拍卖商品
+砍价商品
+生活圈
+秒杀
+一元夺宝
+
+熊出没
+读心术
+
+配置20170626
+服务器配置(已启用)修改配置 停用 
+停用服务器配置后，用户消息和开发者需要的事件推送，将不会被转发到该URL中
+服务器地址
+(URL)
+http://wmwx.jieqiangtec.com/index.php?g=Home&m=Weixin&a=index&token=ovxoqk1464690728
+令牌
+(Token)
+todNqwemsFPsxtQvdTtp
+消息加解密密钥
+(EncodingAESKey)
+CVctRryJFALUWGHYvvFuievgNtwHpzBVthZueDKcaxa
+消息加解密方式 安全模式
+微信开放平台帐号绑定
+未绑定帐号
+
+
+# 将以下链接链接填入对应输入框：
+
+URL:
+http://wd.jieqiangtec.com/api.php?id=6
+Token:
+STd5S5SP1A9F3PZpU9dAg3FMPM3P5PX9
+EncodingAESKey:
+tT1BUELGNuhe4hZ4hb4LTH4B5eEEn1hBHTeHheHbUus
+
+
+
+URL(服务器地址) http://wd.jieqiangtec.com/api.php?id=4
+Token(令牌) TXKW8zZDA0xx80XX0mK66xkaH4K0T4h7
+EncodingAESKey(消息加解密密钥) t756UJJn256Z6224mz44VUn2644674nUvGvG4X622Mm
+消息加解密方式 明文模式
+
+
+
+模板162
+
+592*420
+
+首页幻灯片
+640*320
+320*160
+
+670*420
+335*210
+trytryzxc@126.com
+yql@8920033
+
+二维码推广：http://wx.jieqiangtec.com/index.php/show/fqwogd1423560692
+
+AppSecret(应用密钥):07f2ff3e8eb09ea05c2a58d49aa673f5
+
+历史信息
+http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzA4MzI1Mzc0MQ==#wechat_webview_type=1&wechat_redirect
+
+
+http://map.baidu.com/?latlng=25.721748,116.780131&title=%E8%BF%9E%E5%9F%8E%E5%8E%BF%E5%86%A0%E5%AE%A2%E9%9A%86%E5%95%86%E8%A1%8C&content=%E8%BF%9E%E5%9F%8E%E5%8E%BF%E5%86%A0%E5%AE%A2%E9%9A%86%E5%95%86%E8%A1%8C&autoOpen=true&l
+
+
+微信公众平台编辑器
+
+http://wxedit.yead.net/
+
+
+http://bjq.e7wei.cn/
+
+
+http://wx.jieqiangtec.com/index.php?g=User&m=Index&a=index
+爵能卫浴
+
+http://weixin.wetourtech.net/index.php?g=Wap&a=index&token=fqwogd1423560692&diymenu=1
+jenner
+
+爵能卫浴
+123456
+
+
+冠客隆支付平台
+yqltrytryzxc@163.com
+
+
+jieqiang
+jieqiang
+
+http://wd.jieqiangtec.com/web/index.php?c=mc&a=fans&
+
+基本配置
+开发者ID
+AppID(应用ID)wx606b4470e54ff82d
+AppSecret(应用密钥)837e0027bbf42205565d4f1735944102 隐藏 重置
+ 扫码关注
+接收重要通知
+服务器配置(未启用)修改配置 启用
+启用并设置服务器配置后，用户发给公众号的消息以及开发者需要的事件推送，将被微信转发到该URL中
+URL(服务器地址) 未填写
+Token(令牌) 未填写
+EncodingAESKey(消息加解密密钥) 未填写
+消息加解密方式 明文模式
+微信开放平台帐号绑定
+未绑定帐号
+
+
+gkl
+123456
+
+开发者ID
+AppID(应用ID)wx5c1fda01a696eae8
+AppSecret(应用密钥) 07f2ff3e8eb09ea05c2a58d49aa673f5 重置
+
+公众号设置
+帐号详情
+功能设置
+公开信息
+头像修改头像
+一个月头像只能申请修改5次
+
+二维码下载更多尺寸 
+名称 连城县冠客隆商行
+微信号lc-gkl2015
+类型
+升级为服务号
+订阅号 类型不可变更
+介绍修改
+一个月内功能介绍只能申请修改5次
+本商行1995年成立，多年坚持来一直坚持诚信为本，服务至上。为广大消费者提供优质放心的酒水、饮料、食用油等产品的促销活动平台。欢迎新老客户来电咨询：13275032207
+认证情况 年审时间：2016年05月23日 - 2016年08月21日
+于2015年08月22日完成微信认证的帐号资质审核
+于2015年08月22日完成微信认证的名称审核
+详情 微信认证
+客服电话设置 未设置
+所在地址设置 中国福建省龙岩市连城县豸前街
+主体信息详情 连城县冠客隆商行 (企业)
+注册信息
+登录邮箱
+修改
+一个月内只能申请修改一次
+trytryzxc@126.com
+原始IDgh_8e93126eeda7
