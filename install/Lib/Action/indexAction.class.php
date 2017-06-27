@@ -45,10 +45,6 @@ class indexAction extends Action
 				'/data/logs',
 				'/data/logs/taobao',
 				'/data/news',
-				'/admin/Runtime',
-				'/index/Runtime',
-				'/index/Html',
-				'/index/Conf/theme.php',
 				'/config.inc.php',
 		);
 		$error= array();
@@ -99,8 +95,8 @@ class indexAction extends Action
 		$this->assign('db_host', 'localhost');
 		$this->assign('db_port', '3306');
 		$this->assign('db_user', 'root');
-		$this->assign('db_name', 'vgou');
-		$this->assign('db_prefix', 'vg_');
+		$this->assign('db_name', 'cps');
+		$this->assign('db_prefix', 'cps_');
 
 		$this->assign('admin_user', 'admin');
 		$this->assign('db_pass', '');
@@ -109,7 +105,7 @@ class indexAction extends Action
 		$this->assign('admin_email', '');
 
 		if (isset($_POST['dosubmit'])) {
-			var_dump($_POST);exit;
+			// var_dump('jieqiang==',$_POST);exit;
 			foreach ($_POST as $key=>$val) {
 				$this->assign($key, $val);
 			}
@@ -138,7 +134,7 @@ class indexAction extends Action
 			}
 			$selected_db = @mysql_select_db($db_name);
 			
-			var_dump($_POST,$selected_db);exit;
+			// var_dump('jieqiang==',$_POST,$selected_db);exit;
 			
 			if ($selected_db) {
 				//如果数据库存在 并且里面安装过   提示是否覆盖
@@ -211,7 +207,7 @@ class indexAction extends Action
 		$sqls = $this->_get_sql(APP_PATH . '/Sql_data/create_table.sql');	
 		foreach ($sqls as $sql) {
 			//替换前缀
-			$sql = str_replace('`vg_', '`'.$temp_info['db_prefix'], $sql);			
+			$sql = str_replace('`ctw_', '`'.$temp_info['db_prefix'], $sql);			
 			//获得表名
 			$run = mysql_query($sql, $conn);
 			if (substr($sql, 0, 12) == 'CREATE TABLE') {
@@ -231,7 +227,7 @@ class indexAction extends Action
 				"('1','".$temp_info['admin_user']."', '".$admin_pass."', '".$add_time."', 1);";
 		foreach ($sqls as $sql) {
 			//替换前缀
-			$sql = str_replace('`vg_', '`'.$temp_info['db_prefix'], $sql);
+			$sql = str_replace('`ctw_', '`'.$temp_info['db_prefix'], $sql);
 			//获得表名
 			if (substr($sql, 0, 11) == 'INSERT INTO') {
 				$table_name = $temp_info['db_prefix'] . preg_replace("/INSERT INTO `" . $temp_info['db_prefix'] . "([a-z0-9_]+)` .*/is", "\\1", $sql);
