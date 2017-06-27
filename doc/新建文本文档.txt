@@ -1,3 +1,7 @@
+string(225) "INSERT INTO `ctw_commission` (`commission`,`rate`,`id`,`shop_id`,`item_id`,`price`,`title`,`uid`,`role_id`,`update_time`,`add_time`) VALUES (600,20,506,'20','100110','3000.00','商城_20商品110',4,'4',1498490543,1498490543)"
+
+
+
 php mail()方法发送html格式的邮件
 https://my.oschina.net/Sandyguoguo/blog/159797
 php  qq 邮件服务器不认html

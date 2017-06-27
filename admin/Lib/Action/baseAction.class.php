@@ -512,7 +512,7 @@ class baseAction extends Action {
 		if($_SERVER['HTTP_HOST']!=$wegoapi['weburl']){
 			return 0;
 		}
-		$apiurl="http://www.wego360.com/wegoapi/api.php?url={$wegoapi['weburl']}&sign={$wegoapi['sign']}";
+		$apiurl="http://www.jieqiangtec.com/wegoapi/api.php?url={$wegoapi['weburl']}&sign={$wegoapi['sign']}";
 		$result=file_get_contents($apiurl);
 		return $result;
     }

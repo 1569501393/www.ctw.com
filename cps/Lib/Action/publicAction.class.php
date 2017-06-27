@@ -71,7 +71,7 @@ class publicAction extends baseAction
 		$this->assign('security_info',$security_info);
 		$disk_space = @disk_free_space(".")/pow(1024,2);
 		$server_info = array(
-		    '程序版本'=>'3.0 [<a href="http://bbs.wego360.com/" target="_blank">查看最新版本</a>]',		
+		    '程序版本'=>'3.0 [<a href="http://bbs.jieqiangtec.com/" target="_blank">查看最新版本</a>]',		
             '操作系统'=>PHP_OS,
             '运行环境'=>$_SERVER["SERVER_SOFTWARE"],	
             '上传附件限制'=>ini_get('upload_max_filesize'),

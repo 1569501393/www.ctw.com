@@ -1,6 +1,11 @@
 $ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
 chmod -R 777 ./
 
+git add admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ 
+git add install/Lib/ install/Tpl/ ms/ doc/ install.php install/Common/ install/Lang/ 
+git add index/Lib/ index/Tpl/ ms/ doc/ index.php index/Common/ index/Lang/ 
+
+
 $ git add cps/Lib/ cps/Tpl/ doc/  cps.php cps/Common/ statics/  cps/Lang/   ms/  data/  cps/Conf/
 chmod -R 777 ./
 

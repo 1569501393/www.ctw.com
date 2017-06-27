@@ -315,7 +315,7 @@ class baseAction extends Action {
 		$tb_top->secretKey = $this->setting['taobao_appsecret'];
 		return $tb_top;
 	}
-	//配置  微购  api基本信息
+	//配置  北京杰网析  api基本信息
 	public function wegoApiSearch($q='',$page='')
 	{
 
@@ -667,7 +667,7 @@ class baseAction extends Action {
 		if($_SERVER['HTTP_HOST']!=$wegoapi['weburl']){
 			return 0;
 		}
-		$apiurl="http://www.wego360.com/wegoapi/api.php?url={$wegoapi['weburl']}&sign={$wegoapi['sign']}";
+		$apiurl="http://www.jieqiangtec.com/wegoapi/api.php?url={$wegoapi['weburl']}&sign={$wegoapi['sign']}";
 		$result=file_get_contents($apiurl);
 		return $result;
 	}

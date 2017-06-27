@@ -109,6 +109,7 @@ class indexAction extends Action
 		$this->assign('admin_email', '');
 
 		if (isset($_POST['dosubmit'])) {
+			var_dump($_POST);exit;
 			foreach ($_POST as $key=>$val) {
 				$this->assign($key, $val);
 			}
@@ -136,6 +137,9 @@ class indexAction extends Action
 				exit;
 			}
 			$selected_db = @mysql_select_db($db_name);
+			
+			var_dump($_POST,$selected_db);exit;
+			
 			if ($selected_db) {
 				//如果数据库存在 并且里面安装过   提示是否覆盖
 				$query = @mysql_query("SHOW TABLES LIKE '{$db_prefix}%'");
