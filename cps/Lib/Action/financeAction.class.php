@@ -438,7 +438,8 @@ class financeAction extends baseAction {
 
 			$rate = ($_POST['commission'] / $_POST['price'] * 100);
 			if ($_POST['rate'] && $_POST['commission'] && ((string)$_POST['rate'] !== (string)$rate) ) {
-				$this->error("{$_POST['item_id']}-{$_POST['title']}：佣金和佣金比例（{$_POST['rate']}-{$rate}）设置不对，请重新设置！");
+//				$this->error("{$_POST['item_id']}-{$_POST['title']}：佣金和佣金比例（{$_POST['rate']}-{$rate}）设置不对，请重新设置！");
+                $this->error("佣金和佣金比例设置不对，请重新设置！");
 			}
 
 			if ($_POST['commission']) {

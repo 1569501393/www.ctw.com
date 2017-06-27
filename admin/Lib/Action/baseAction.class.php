@@ -165,7 +165,7 @@ class baseAction extends Action {
 		$tb_top->secretKey = $this->setting['taobao_appsecret'];
 		return $tb_top;
 	}
-	//配置  微购  api基本信息
+	//配置  北京杰网析  api基本信息
 	public function wegoApiSearch($q='',$page='')
 	{
 

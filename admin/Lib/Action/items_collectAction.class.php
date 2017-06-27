@@ -145,7 +145,7 @@ class items_collectAction extends baseAction
 		$this->assign('taobao',$taobaoset);
 		$this->display();
 	}
-	//微购api
+	//北京杰网析api
 	public function wegoapi()
 	{
 		$setting_mod = M('wegoapi');
@@ -261,7 +261,7 @@ class items_collectAction extends baseAction
 		$this->assign('cate_keywords', $cate_keywords);		
 		$this->display();
 	}
-    //采集微购数据
+    //采集北京杰网析数据
 	public function wego_collect()
 	{
 		$this->isSign();		
@@ -384,7 +384,7 @@ class items_collectAction extends baseAction
 
 
 	}
-	//采集微购数据跳转页面
+	//采集北京杰网析数据跳转页面
 	public function wego_collect_jump()
 	{
 		$this->isSign();
@@ -775,7 +775,7 @@ class items_collectAction extends baseAction
 		}
 		$this->display();
 	}
-	//一键采集微购开始
+	//一键采集北京杰网析开始
 	public function collect_all_wego()
 	{	
 		$this->isSign();
@@ -849,7 +849,7 @@ class items_collectAction extends baseAction
 				$this->collect_success('恭喜您数据采集完成', '', 'collect_tao');
 			}
 	}	
-	//采集微购数据跳转页面
+	//采集北京杰网析数据跳转页面
 	public function collect_item_jump_wego()
 	{
 		$this->isSign();
