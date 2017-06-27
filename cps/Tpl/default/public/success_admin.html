@@ -36,8 +36,7 @@ a:hover,a:active{color:#ff6600;text-decoration: underline}
     <present name="jumpUrl" >
 	{$Think.lang.SYS_WILL} <span style="color:blue;font-weight:bold">{$waitSecond}</span>{$Think.lang.PAGE_JUMP_TIP}<a href="{$jumpUrl}">{$Think.lang.HERE}</a>
 	<script language="javascript">
-		setTimeout("redirect('{$jumpUrl}');",1000);
-		setTimeout("redirects('{$jumpUrl}');",1000);
+		setTimeout("redirect('{$jumpUrl}');",{$waitSecond}*1000);
     </script>
 	</present>
     <present name="returnjs" >
@@ -45,13 +44,10 @@ a:hover,a:active{color:#ff6600;text-decoration: underline}
     </present>
     <present name="dialog" >
     <script style="text/javascript">
-    function redirects(){
-    	var dialog = "{$dialog}";
-		if (dialog!='') {
-			window.top.right.location.reload();window.top.art.dialog({id:dialog}).close();
-		}
-    }
-	
+	var dialog = "{$dialog}";
+	if (dialog!='') {
+		window.top.right.location.reload();window.top.art.dialog({id:dialog}).close();
+	}
     </script>
     </present>
     </div>
