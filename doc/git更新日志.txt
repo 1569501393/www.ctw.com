@@ -7,6 +7,7 @@ git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ admin
 git add admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ 
 git add install/Lib/ install/Tpl/   install.php   install/Lang/ 
 git add index/Lib/ index/Tpl/ ms/ doc/ index.php index/Common/
+git add install/Lib/ install/Tpl/ ms/ doc/ install.php
 
 git add data/logs
 
