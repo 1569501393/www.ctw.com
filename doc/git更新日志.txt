@@ -1,0 +1,1449 @@
+git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
+chmod -R 777 ./
+
+
+git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ install/Lib/ install/Tpl/   install.php   index/Lib/ index/Tpl/ ms/ doc/ index.php index/Common/ install/Lang/ 
+
+git add admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ 
+git add install/Lib/ install/Tpl/   install.php   install/Lang/ 
+git add index/Lib/ index/Tpl/ ms/ doc/ index.php index/Common/
+git add install/Lib/ install/Tpl/ ms/ doc/ install.php
+
+git add data/logs
+
+
+$ git add cps/Lib/ cps/Tpl/ doc/  cps.php cps/Common/ statics/  cps/Lang/   ms/  data/  cps/Conf/
+chmod -R 777 ./
+
+
+$ git add cps/Lib/ cps/Tpl/ doc/ includes/ cps.php cps/Common/ statics/  cps/Lang/   ms/  data/  cps/Conf/
+chmod -R 777 ./
+
+
+git add cps/Tpl/
+
+git pull放弃本地修改
+git reset --hard
+git pull
+
+
+git pull放弃本地修改
+
+免费的Bootstrap管理后台模板集合
+http://wrapbootstrap.com/preview/WB0CX3745
+http://www.open-open.com/news/view/7fbd85
+http://www.topthink.com/topic/5341.html
+http://www.topthink.com/topic/4872.html
+
+ThinkPHP5.0.8_AUTH权限 后台管理系统v2.0
+http://www.topthink.com/topic/25963.html
+http://tp5.ilunhui.cn/admin/index/index.html#
+
+基于ThinkPHP5和Bootstrap的极速后台开发框架
+http://www.topthink.com/topic/25967.html
+http://demo.fastadmin.net/admin/auth/rule
+https://github.com/karsonzhang/fastadmin
+
+免费 ，免费开源 ，ThinkPHP 博客后台管理系统 3.2正式版开发的个人博客 程序开源共享.个人博客系统
+http://www.topthink.com/topic/25407.html
+http://www.jh12.cn/index.php/home/index/index.html
+
+
+解决git pull时出现的几个问题
+http://ritto.blog.51cto.com/427838/741342
+解决方法:
+执行git checkout -f，然后再执行git pull重新checkout
+
+Git:代码冲突常见解决方法
+http://blog.csdn.net/iefreer/article/details/7679631
+反过来,如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:
+git reset --hard
+git pull
+
+$ git pull
+Updating 5ac8295..8653504
+Fast-forward
+ cps/Lib/Action/adminAction.class.php               |  38 ++++++++++-
+ cps/Tpl/default/admin/index.html                   |  71 +++++++++++++++++++--
+ data/admin/59230191ac263.xlsx                      | Bin 0 -> 9984 bytes
+ data/admin/592301c14b286.xlsx                      | Bin 0 -> 9984 bytes
+ data/admin/59230270eefce.xlsx                      | Bin 0 -> 9595 bytes
+ data/admin/5923049ae6dab.xlsx                      | Bin 0 -> 9366 bytes
+ data/admin/592304c67b4ee.xlsx                      | Bin 0 -> 9360 bytes
+ ...6\214\346\210\220\345\212\237\350\203\275.docx" | Bin 0 -> 51347 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.3.docx" | Bin 0 -> 71502 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |   3 +
+ ...6\214\346\210\220\345\212\237\350\203\275.docx" | Bin 162 -> 0 bytes
+ 11 files changed, 103 insertions(+), 9 deletions(-)
+ create mode 100644 data/admin/59230191ac263.xlsx
+ create mode 100644 data/admin/592301c14b286.xlsx
+ create mode 100644 data/admin/59230270eefce.xlsx
+ create mode 100644 data/admin/5923049ae6dab.xlsx
+ create mode 100644 data/admin/592304c67b4ee.xlsx
+ create mode 100644 "doc/cps-20170522\351\227\256\351\242\230\346\225\264\347\220\206_\345\256\214\346\210\220\345\212\237\350\203\275.docx"
+ create mode 100644 "doc/cps-20170522\351\227\256\351\242\230\346\225\264\347\220\206v1.3.docx"
+ delete mode 100644 "doc/~$s-20170517\351\227\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2_\345\256\214\346\210\220\345\212\237\350\203\275.docx"
+
+
+".git/MERGE_MSG" 7L, 337C written
+Merge made by the 'recursive' strategy.
+ cps/Common/common.php                                                                                     |    373 +-
+ cps/Conf/config.php                                                                                       |      4 +
+ cps/Conf/debug.php                                                                                        |     36 +
+ cps/Lib/Action/adminAction.class.php                                                                      |    654 +-
+ cps/Lib/Action/analyseAction.class.php                                                                    |     35 +-
+ cps/Lib/Action/articleAction.class.php                                                                    |     61 +-
+ cps/Lib/Action/baseAction.class.php                                                                       |      2 +-
+ cps/Lib/Action/contractAction.class.php                                                                   |     79 +-
+ cps/Lib/Action/financeAction.class.php                                                                    |      1 +
+ cps/Lib/Action/indexAction.class.php                                                                      |     16 +
+ cps/Lib/Action/itemsAction.class.php                                                                      |     85 +-
+ ...ss_20170522\344\272\214\347\273\264\347\240\201ok\345\225\206\345\223\201\347\256\241\347\220\206.rar" |    Bin 0 -> 8158 bytes
+ cps/Tpl/default/admin/index.html                                                                          |     85 +-
+ cps/Tpl/default/contract/index.html                                                                       |    264 +-
+ "cps/Tpl/default/contract/index_20170520bak\345\244\207\344\273\275.rar"                                  |    Bin 0 -> 3404 bytes
+ cps/Tpl/default/finance/commission.html                                                                   |      8 +
+ "cps/Tpl/default/items/edit - \345\211\257\346\234\254.html"                                              |    109 +
+ cps/Tpl/default/items/edit.html                                                                           |    189 +-
+ cps/Tpl/default/items/index.html                                                                          |     21 +-
+ cps/Tpl/default/public/leftMenu.html                                                                      |      2 +-
+ cps/Tpl/default/public/topBar.html                                                                        |      2 +-
+ data/admin/592190ffbbdad.xlsx                                                                             |    Bin 0 -> 10643 bytes
+ data/admin/59219482961d0.xlsx                                                                             |    Bin 0 -> 10643 bytes
+ data/admin/59219529076af.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/592196e7e3480.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/592197fe333c5.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/5921982f06435.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/5921984894f44.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/592198a2c93d4.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/592198c2743b6.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/592198e5599ea.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/59219950e703b.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/5921997fd1356.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/5921998fe7e4f.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/5921999340374.xlsx                                                                             |    Bin 0 -> 10033 bytes
+ data/admin/592199f34bcfa.xlsx                                                                             |    Bin 0 -> 10000 bytes
+ data/admin/59219a0dc2d55.xlsx                                                                             |    Bin 0 -> 10000 bytes
+ data/admin/59219a2be10a0.xlsx                                                                             |    Bin 0 -> 10000 bytes
+ data/admin/59219a52af49b.xlsx                                                                             |    Bin 0 -> 10000 bytes
+ data/admin/59219a73798be.xlsx                                                                             |    Bin 0 -> 9981 bytes
+ data/admin/59219aca6a672.xlsx                                                                             |    Bin 0 -> 9984 bytes
+ data/contract/59218566ab8a8.xlsx                                                                          |    Bin 0 -> 8746 bytes
+ data/contract/592185a12bf09.xlsx                                                                          |    Bin 0 -> 8746 bytes
+ data/contract/592185a4a747a.xlsx                                                                          |    Bin 0 -> 8746 bytes
+ data/contract/59218646a1baa.xlsx                                                                          |    Bin 0 -> 8746 bytes
+ data/contract/59218688e29e8.xlsx                                                                          |    Bin 0 -> 8696 bytes
+ data/contract/592186c185e77.xlsx                                                                          |    Bin 0 -> 8746 bytes
+ data/contract/5921918c7128d.xlsx                                                                          |    Bin 0 -> 8747 bytes
+ "data/items/m_5921aa70b469e - \345\211\257\346\234\254.png"                                               |    Bin 0 -> 134173 bytes
+ data/items/m_5921aa70b469e.png                                                                            |    Bin 0 -> 77371 bytes
+ data/items/m_5921ac092eb68.png                                                                            |    Bin 0 -> 1420 bytes
+ data/items/m_5921ac2abad48.png                                                                            |    Bin 0 -> 134173 bytes
+ data/items/m_5921af5d22af1.jpg                                                                            |    Bin 0 -> 18271 bytes
+ data/items/m_5921afbf4dcd8.jpg                                                                            |    Bin 0 -> 25528 bytes
+ data/items/m_5921b09052acb.jpg                                                                            |    Bin 0 -> 54953 bytes
+ data/items/m_5921b0b6882fd.jpg                                                                            |    Bin 0 -> 22238 bytes
+ data/items/m_5921b1078f2d8.jpg                                                                            |    Bin 0 -> 22238 bytes
+ data/items/m_5921b1a3f287a.jpg                                                                            |    Bin 0 -> 14149 bytes
+ data/items/m_5921b2746a47c.jpg                                                                            |    Bin 0 -> 54953 bytes
+ data/items/m_5921b47349dd0.jpg                                                                            |    Bin 0 -> 38090 bytes
+ data/items/m_5921b4845fd4a.jpg                                                                            |    Bin 0 -> 58635 bytes
+ data/items/m_5921b496bfca6.jpg                                                                            |    Bin 0 -> 88314 bytes
+ data/items/m_5921b4ad89aa4.jpg                                                                            |    Bin 0 -> 34046 bytes
+ data/items/m_5921c098db563.jpg                                                                            |    Bin 0 -> 34046 bytes
+ "data/items/poster_bg - \345\211\257\346\234\254.rar"                                                     |    Bin 0 -> 74765 bytes
+ data/items/poster_bg.jpg                                                                                  |    Bin 0 -> 77371 bytes
+ data/qrcode/a1234561494858421.jpg                                                                         |    Bin 0 -> 119781 bytes
+ data/qrcode/a1234561494865531.jpg                                                                         |    Bin 0 -> 120271 bytes
+ data/qrcode/a1234561495251589.jpg                                                                         |    Bin 0 -> 121498 bytes
+ data/qrcode/a1234561495379181.jpg                                                                         |    Bin 0 -> 115684 bytes
+ data/qrcode/a1234561495379346.jpg                                                                         |    Bin 0 -> 116498 bytes
+ data/qrcode/a1234561495379397.jpg                                                                         |    Bin 0 -> 115684 bytes
+ data/qrcode/a1234561495379409.jpg                                                                         |    Bin 0 -> 115799 bytes
+ data/qrcode/a1234561495383477.jpg                                                                         |    Bin 0 -> 93027 bytes
+ data/qrcode/a1234561495383538.jpg                                                                         |    Bin 0 -> 93771 bytes
+ data/qrcode/a1234561495383588.jpg                                                                         |    Bin 0 -> 93771 bytes
+ data/qrcode/a1234561495383612.jpg                                                                         |    Bin 0 -> 93027 bytes
+ data/qrcode/a1234561495383737.jpg                                                                         |    Bin 0 -> 93771 bytes
+ data/qrcode/a1234561495384059.jpg                                                                         |    Bin 0 -> 92951 bytes
+ data/qrcode/a1234561495384317.jpg                                                                         |    Bin 0 -> 71645 bytes
+ data/qrcode/tmp/qrcode2_1494647573.png                                                                    |    Bin 310 -> 0 bytes
+ data/qrcode/tmp/qrcode2_1494647949.png                                                                    |    Bin 305 -> 0 bytes
+ data/qrcode/tmp/qrcode2_1494647989.png                                                                    |    Bin 301 -> 0 bytes
+ data/qrcode/tmp/qrcode2_1494648045.png                                                                    |    Bin 301 -> 0 bytes
+ data/qrcode/tmp/qrcode2_1494648063.png                                                                    |    Bin 305 -> 0 bytes
+ data/qrcode/tmp/qrcode2_1494648134.jpg                                                                    |    Bin 304 -> 0 bytes
+ data/qrcode/tmp/qrcode2_1494648167.jpg                                                                    |    Bin 304 -> 0 bytes
+ data/qrcode/tmp/qrcode_1494644712.png                                                                     |    Bin 174 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494650225.jpg                                                                   |    Bin 478 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494655322.jpg                                                                   |    Bin 477 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494657925.jpg                                                                   |    Bin 1554 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494657956.jpg                                                                   |    Bin 1548 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494657962.jpg                                                                   |    Bin 1556 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494657981.jpg                                                                   |    Bin 1583 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494657992.jpg                                                                   |    Bin 1545 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658061.jpg                                                                   |    Bin 1568 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658082.jpg                                                                   |    Bin 1548 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658168.jpg                                                                   |    Bin 1548 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658638.jpg                                                                   |    Bin 1358 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658641.jpg                                                                   |    Bin 1326 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658646.jpg                                                                   |    Bin 1338 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658755.jpg                                                                   |    Bin 1317 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658791.jpg                                                                   |    Bin 1358 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658856.jpg                                                                   |    Bin 850 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658865.jpg                                                                   |    Bin 945 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658876.jpg                                                                   |    Bin 1081 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658883.jpg                                                                   |    Bin 1369 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494658890.jpg                                                                   |    Bin 1323 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659008.jpg                                                                   |    Bin 1310 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659010.jpg                                                                   |    Bin 1316 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659027.jpg                                                                   |    Bin 1317 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659139.jpg                                                                   |    Bin 1326 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659145.jpg                                                                   |    Bin 1069 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659149.jpg                                                                   |    Bin 1320 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659155.jpg                                                                   |    Bin 1320 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659288.jpg                                                                   |    Bin 1337 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659309.jpg                                                                   |    Bin 1347 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659325.jpg                                                                   |    Bin 1330 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659784.jpg                                                                   |    Bin 1338 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659791.jpg                                                                   |    Bin 1565 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659915.jpg                                                                   |    Bin 1565 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659957.jpg                                                                   |    Bin 1541 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659965.jpg                                                                   |    Bin 1556 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494659985.jpg                                                                   |    Bin 1541 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660071.jpg                                                                   |    Bin 1551 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660110.jpg                                                                   |    Bin 1556 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660133.jpg                                                                   |    Bin 1550 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660140.jpg                                                                   |    Bin 1545 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660251.jpg                                                                   |    Bin 1542 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660264.jpg                                                                   |    Bin 1550 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660272.jpg                                                                   |    Bin 1550 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660281.jpg                                                                   |    Bin 1542 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660409.jpg                                                                   |    Bin 1565 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660671.jpg                                                                   |    Bin 1565 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1494660821.jpg                                                                   |    Bin 1556 -> 0 bytes
+ data/qrcode/tmp/ssqrcode_1495382201.jpg                                                                   |    Bin 0 -> 1083 bytes
+ data/qrcode/tmp/ssqrcode_1495383672.jpg                                                                   |    Bin 0 -> 486 bytes
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"            |    Bin 2563992 -> 2566692 bytes
+ ...\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2.docx" |    Bin 223938 -> 788856 bytes
+ ...273\245\346\255\244\344\270\272\345\207\206v1.2_\345\256\214\346\210\220\345\212\237\350\203\275.docx" |    Bin 0 -> 670700 bytes
+ "doc/cps-20170519\351\227\256\351\242\230\346\225\264\347\220\206.docx"                                   |    Bin 0 -> 88391 bytes
+ "doc/cps-20170519\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"                               |    Bin 0 -> 85580 bytes
+ doc/database/ctw_admin.xls                                                                                |    Bin 0 -> 27136 bytes
+ doc/database/ctw_role.xls                                                                                 |    Bin 0 -> 5120 bytes
+ ...170510\345\225\206\345\223\201\350\241\250\346\267\273\345\212\240shop_id\345\255\227\346\256\265.zip" |    Bin
+ ...\225\350\241\250orderlist\346\267\273\345\212\240\347\273\223\347\256\227\347\212\266\346\200\201.zip" |    Bin
+ ...6\267\273\345\212\240\346\226\207\344\273\266\350\241\250v1.2\346\270\205\346\264\201\347\211\210.zip" |    Bin
+ ...267\273\345\212\240\346\226\207\344\273\266\350\241\250v1.2\346\270\205\346\264\201\347\211\210ok.zip" |    Bin
+ ...c_ftp20170427\346\267\273\345\212\240\344\270\244\345\274\240\346\227\245\345\277\227\350\241\250.zip" |    Bin
+ ...0\345\222\214\344\275\243\351\207\221\350\256\276\347\275\256\350\241\250\345\206\227\344\275\231.zip" |    Bin
+ doc/{ => database}/msec_localhost20170424.rar                                                             |    Bin
+ doc/{ => database}/sql.rar                                                                                |    Bin
+ doc/{ => database}/sql20170425.zip                                                                        |    Bin
+ ...45\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170521v1.7_\347\224\250\346\210\267.xlsx" |    Bin 0 -> 9508 bytes
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"                                             |     49 +
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"                                         |     72 +
+ doc/msec_localhost20170424.sql                                                                            | 144374 --------------------------------------------------
+ ...\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2.docx" |    Bin 162 -> 0 bytes
+ ...45\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509v1.6_\345\220\210\345\220\214.xlsx" |    Bin 0 -> 8747 bytes
+ ...45\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170521v1.6_\347\224\250\346\210\267.xlsx" |    Bin 0 -> 10643 bytes
+ ...45\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170521v1.8_\347\224\250\346\210\267.xlsx" |    Bin 0 -> 9981 bytes
+ ...45\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170521v2.0_\347\224\250\346\210\267.xlsx" |    Bin 0 -> 9984 bytes
+ ...273\237\346\225\260\346\215\256\345\272\223\350\256\276\350\256\241\350\247\204\346\240\274000000.doc" |    Bin 433301 -> 439439 bytes
+ includes/thinkphp/Common/common.php                                                                       |    979 +-
+ includes/thinkphp/Common/functions.php                                                                    |    933 +-
+ includes/thinkphp/Common/runtime.php                                                                      |    355 +-
+ includes/thinkphp/Conf/alias.php                                                                          |      7 +-
+ includes/thinkphp/Conf/convention.php                                                                     |    106 +-
+ includes/thinkphp/Conf/debug.php                                                                          |     25 +-
+ includes/thinkphp/Conf/tags.php                                                                           |     38 +-
+ includes/thinkphp/Extend/README.txt                                                                       |      2 +-
+ includes/thinkphp/Extend/Vendor/phpqrcode/phpqrcode.php                                                   |      2 +-
+ includes/thinkphp/Lang/en-us.php                                                                          |     54 +
+ includes/thinkphp/Lang/zh-cn.php                                                                          |     71 +-
+ includes/thinkphp/Lib/Behavior/CheckRouteBehavior.class.php                                               |     37 +-
+ includes/thinkphp/Lib/Behavior/ContentReplaceBehavior.class.php                                           |     81 +-
+ includes/thinkphp/Lib/Behavior/ParseTemplateBehavior.class.php                                            |    197 +-
+ includes/thinkphp/Lib/Behavior/ReadHtmlCacheBehavior.class.php                                            |    206 +-
+ includes/thinkphp/Lib/Behavior/ShowPageTraceBehavior.class.php                                            |    195 +-
+ includes/thinkphp/Lib/Behavior/ShowRuntimeBehavior.class.php                                              |    136 +-
+ includes/thinkphp/Lib/Behavior/TokenBuildBehavior.class.php                                               |     88 +-
+ includes/thinkphp/Lib/Behavior/WriteHtmlCacheBehavior.class.php                                           |     35 +-
+ includes/thinkphp/Lib/Core/Action.class.php                                                               |    732 +-
+ includes/thinkphp/Lib/Core/App.class.php                                                                  |    307 +-
+ includes/thinkphp/Lib/Core/Behavior.class.php                                                             |     75 +-
+ includes/thinkphp/Lib/Core/Cache.class.php                                                                |    215 +-
+ includes/thinkphp/Lib/Core/Db.class.php                                                                   |   1910 +-
+ includes/thinkphp/Lib/Core/Dispatcher.class.php                                                           |    171 +-
+ includes/thinkphp/Lib/Core/Log.class.php                                                                  |    214 +-
+ includes/thinkphp/Lib/Core/Model.class.php                                                                |   3069 +-
+ includes/thinkphp/Lib/Core/Think.class.php                                                                |    559 +-
+ includes/thinkphp/Lib/Core/ThinkException.class.php                                                       |     86 +-
+ includes/thinkphp/Lib/Core/View.class.php                                                                 |    340 +-
+ includes/thinkphp/Lib/Core/Widget.class.php                                                               |    188 +-
+ includes/thinkphp/Lib/Driver/Cache/CacheFile.class.php                                                    |    379 +-
+ includes/thinkphp/Lib/Driver/Db/DbMysql.class.php                                                         |    714 +-
+ includes/thinkphp/Lib/Driver/Db/DbMysqli.class.php                                                        |    687 +-
+ includes/thinkphp/Lib/Driver/TagLib/TagLibCx.class.php                                                    |   1313 +-
+ includes/thinkphp/Lib/Template/TagLib.class.php                                                           |    419 +-
+ includes/thinkphp/Lib/Template/ThinkTemplate.class.php                                                    |   1311 +-
+ includes/thinkphp/README.txt                                                                              |     14 +-
+ includes/thinkphp/ThinkPHP.php                                                                            |     59 +-
+ includes/thinkphp/Tpl/default_index.tpl                                                                   |      7 +
+ includes/thinkphp/Tpl/dispatch_jump.tpl                                                                   |    100 +-
+ "includes/thinkphp/Tpl/page_trace - \345\211\257\346\234\254.tpl"                                         |      9 +
+ includes/thinkphp/Tpl/page_trace.tpl                                                                      |     74 +-
+ includes/thinkphp/Tpl/think_exception.tpl                                                                 |    122 +-
+ includes/thinkphp_20170520tp3.rar                                                                         |    Bin 0 -> 3790169 bytes
+ 208 files changed, 9591 insertions(+), 153551 deletions(-)
+ create mode 100644 cps/Conf/debug.php
+ create mode 100644 "cps/Lib/Action/itemsAction.class_20170522\344\272\214\347\273\264\347\240\201ok\345\225\206\345\223\201\347\256\241\347\220\206.rar"
+ create mode 100644 "cps/Tpl/default/contract/index_20170520bak\345\244\207\344\273\275.rar"
+ create mode 100644 "cps/Tpl/default/items/edit - \345\211\257\346\234\254.html"
+ create mode 100644 data/admin/592190ffbbdad.xlsx
+ create mode 100644 data/admin/59219482961d0.xlsx
+ create mode 100644 data/admin/59219529076af.xlsx
+ create mode 100644 data/admin/592196e7e3480.xlsx
+ create mode 100644 data/admin/592197fe333c5.xlsx
+ create mode 100644 data/admin/5921982f06435.xlsx
+ create mode 100644 data/admin/5921984894f44.xlsx
+ create mode 100644 data/admin/592198a2c93d4.xlsx
+ create mode 100644 data/admin/592198c2743b6.xlsx
+ create mode 100644 data/admin/592198e5599ea.xlsx
+ create mode 100644 data/admin/59219950e703b.xlsx
+ create mode 100644 data/admin/5921997fd1356.xlsx
+ create mode 100644 data/admin/5921998fe7e4f.xlsx
+ create mode 100644 data/admin/5921999340374.xlsx
+ create mode 100644 data/admin/592199f34bcfa.xlsx
+ create mode 100644 data/admin/59219a0dc2d55.xlsx
+ create mode 100644 data/admin/59219a2be10a0.xlsx
+ create mode 100644 data/admin/59219a52af49b.xlsx
+ create mode 100644 data/admin/59219a73798be.xlsx
+ create mode 100644 data/admin/59219aca6a672.xlsx
+ create mode 100644 data/contract/59218566ab8a8.xlsx
+ create mode 100644 data/contract/592185a12bf09.xlsx
+ create mode 100644 data/contract/592185a4a747a.xlsx
+ create mode 100644 data/contract/59218646a1baa.xlsx
+ create mode 100644 data/contract/59218688e29e8.xlsx
+ create mode 100644 data/contract/592186c185e77.xlsx
+ create mode 100644 data/contract/5921918c7128d.xlsx
+ create mode 100644 "data/items/m_5921aa70b469e - \345\211\257\346\234\254.png"
+ create mode 100644 data/items/m_5921aa70b469e.png
+ create mode 100644 data/items/m_5921ac092eb68.png
+ create mode 100644 data/items/m_5921ac2abad48.png
+ create mode 100644 data/items/m_5921af5d22af1.jpg
+ create mode 100644 data/items/m_5921afbf4dcd8.jpg
+ create mode 100644 data/items/m_5921b09052acb.jpg
+ create mode 100644 data/items/m_5921b0b6882fd.jpg
+ create mode 100644 data/items/m_5921b1078f2d8.jpg
+ create mode 100644 data/items/m_5921b1a3f287a.jpg
+ create mode 100644 data/items/m_5921b2746a47c.jpg
+ create mode 100644 data/items/m_5921b47349dd0.jpg
+ create mode 100644 data/items/m_5921b4845fd4a.jpg
+ create mode 100644 data/items/m_5921b496bfca6.jpg
+ create mode 100644 data/items/m_5921b4ad89aa4.jpg
+ create mode 100644 data/items/m_5921c098db563.jpg
+ create mode 100644 "data/items/poster_bg - \345\211\257\346\234\254.rar"
+ create mode 100644 data/items/poster_bg.jpg
+ create mode 100644 data/qrcode/a1234561494858421.jpg
+ create mode 100644 data/qrcode/a1234561494865531.jpg
+ create mode 100644 data/qrcode/a1234561495251589.jpg
+ create mode 100644 data/qrcode/a1234561495379181.jpg
+ create mode 100644 data/qrcode/a1234561495379346.jpg
+ create mode 100644 data/qrcode/a1234561495379397.jpg
+ create mode 100644 data/qrcode/a1234561495379409.jpg
+ create mode 100644 data/qrcode/a1234561495383477.jpg
+ create mode 100644 data/qrcode/a1234561495383538.jpg
+ create mode 100644 data/qrcode/a1234561495383588.jpg
+ create mode 100644 data/qrcode/a1234561495383612.jpg
+ create mode 100644 data/qrcode/a1234561495383737.jpg
+ create mode 100644 data/qrcode/a1234561495384059.jpg
+ create mode 100644 data/qrcode/a1234561495384317.jpg
+ delete mode 100644 data/qrcode/tmp/qrcode2_1494647573.png
+ delete mode 100644 data/qrcode/tmp/qrcode2_1494647949.png
+ delete mode 100644 data/qrcode/tmp/qrcode2_1494647989.png
+ delete mode 100644 data/qrcode/tmp/qrcode2_1494648045.png
+ delete mode 100644 data/qrcode/tmp/qrcode2_1494648063.png
+ delete mode 100644 data/qrcode/tmp/qrcode2_1494648134.jpg
+ delete mode 100644 data/qrcode/tmp/qrcode2_1494648167.jpg
+ delete mode 100644 data/qrcode/tmp/qrcode_1494644712.png
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494650225.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494655322.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494657925.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494657956.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494657962.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494657981.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494657992.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658061.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658082.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658168.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658638.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658641.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658646.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658755.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658791.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658856.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658865.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658876.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658883.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494658890.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659008.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659010.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659027.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659139.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659145.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659149.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659155.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659288.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659309.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659325.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659784.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659791.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659915.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659957.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659965.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494659985.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660071.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660110.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660133.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660140.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660251.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660264.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660272.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660281.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660409.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660671.jpg
+ delete mode 100644 data/qrcode/tmp/ssqrcode_1494660821.jpg
+ create mode 100644 data/qrcode/tmp/ssqrcode_1495382201.jpg
+ create mode 100644 data/qrcode/tmp/ssqrcode_1495383672.jpg
+ create mode 100644 "doc/cps-20170517\351\227\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2_\345\256\214\346\210\220\345\212\237\350\203\275.docx"
+ create mode 100644 "doc/cps-20170519\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+ create mode 100644 "doc/cps-20170519\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+ create mode 100644 doc/database/ctw_admin.xls
+ create mode 100644 doc/database/ctw_role.xls
+ rename "doc/msec_20170510\345\225\206\345\223\201\350\241\250\346\267\273\345\212\240shop_id\345\255\227\346\256\265.zip" => "doc/database/msec_20170510\345\225\206\345\223\201\350\241\250\346\267\273\345\212\240shop_id\345\255\227\346\256\265.zip" (100%)
+ rename "doc/msec_20170516\350\256\242\345\215\225\350\241\250orderlist\346\267\273\345\212\240\347\273\223\347\256\227\347\212\266\346\200\201.zip" => "doc/database/msec_20170516\350\256\242\345\215\225\350\241\250orderlist\346\267\273\345\212\240\347\273\223\347\256\227\347\212\266\346\200\201.zip" (100%)
+ rename "doc/msec_20170518\346\267\273\345\212\240\346\226\207\344\273\266\350\241\250v1.2\346\270\205\346\264\201\347\211\210.zip" => "doc/database/msec_20170518\346\267\273\345\212\240\346\226\207\344\273\266\350\241\250v1.2\346\270\205\346\264\201\347\211\210.zip" (100%)
+ rename "doc/msec_20170518\346\267\273\345\212\240\346\226\207\344\273\266\350\241\250v1.2\346\270\205\346\264\201\347\211\210ok.zip" => "doc/database/msec_20170518\346\267\273\345\212\240\346\226\207\344\273\266\350\241\250v1.2\346\270\205\346\264\201\347\211\210ok.zip" (100%)
+ rename "doc/msec_ftp20170427\346\267\273\345\212\240\344\270\244\345\274\240\346\227\245\345\277\227\350\241\250.zip" => "doc/database/msec_ftp20170427\346\267\273\345\212\240\344\270\244\345\274\240\346\227\245\345\277\227\350\241\250.zip" (100%)
+ rename "doc/msec_ftp20170512\351\200\206\350\214\203\345\274\217_\350\256\242\345\215\225\350\241\250\345\222\214\344\275\243\351\207\221\350\256\276\347\275\256\350\241\250\345\206\227\344\275\231.zip" => "doc/database/msec_ftp20170512\351\200\206\350\214\203\345\274\217_\350\256\242\345\215\225\350\241\250\345\222\214\344\275\243\351\207\221\350\256\276\347\275\256\350\241\250\345\206\227\344\275\231.zip" (100%)
+ rename doc/{ => database}/msec_localhost20170424.rar (100%)
+ rename doc/{ => database}/sql.rar (100%)
+ rename doc/{ => database}/sql20170425.zip (100%)
+ create mode 100644 "doc/database/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170521v1.7_\347\224\250\346\210\267.xlsx"
+ delete mode 100644 doc/msec_localhost20170424.sql
+ delete mode 100644 "doc/~$s-20170517\351\227\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2.docx"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509v1.6_\345\220\210\345\220\214.xlsx"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170521v1.6_\347\224\250\346\210\267.xlsx"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170521v1.8_\347\224\250\346\210\267.xlsx"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170521v2.0_\347\224\250\346\210\267.xlsx"
+ create mode 100644 includes/thinkphp/Lang/en-us.php
+ create mode 100644 includes/thinkphp/Tpl/default_index.tpl
+ create mode 100644 "includes/thinkphp/Tpl/page_trace - \345\211\257\346\234\254.tpl"
+ create mode 100644 includes/thinkphp_20170520tp3.rar
+
+
+[root@iZ300nn3dazZ msec.jieqiangtec.com]# git pull
+remote: Counting objects: 28, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 28 (delta 19), reused 26 (delta 17), pack-reused 0
+Unpacking objects: 100% (28/28), done.
+From https://github.com/1569501393/www.ctw.com
+   7a93c34..2e9f66f  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+error: Your local changes to the following files would be overwritten by merge:
+        cps/Tpl/default/article/view.html
+        doc/git更新日志.txt
+        doc/git更新日志.txt.bak
+        doc/联盟系统数据库设计规格20170427v2.1.doc
+        ms/php_errors.log
+Please, commit your changes or stash them before you can merge.
+Aborting
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+Updating c70dd56..433e0ff
+Fast-forward
+ cps/Lib/Action/contractAction.class.php            |   5 +-
+ cps/Lib/Action/financeAction.class.php             |   3 +-
+ cps/Tpl/default/article/view.html                  |   2 +-
+ cps/Tpl/default/contract/index.html                |   2 +-
+ cps/Tpl/default/items/index.html                   |  83 +++++++++-------
+ cps/Tpl/default/items/index_20170517ok.zip         | Bin 0 -> 2479 bytes
+ cps/Tpl/default/public/footer.html                 |   2 +
+ cps/Tpl/default/public/login.html                  | 105 ++++++++-------------
+ ...5\346\255\244\344\270\272\345\207\206v1.2.docx" | Bin 0 -> 223938 bytes
+ ...5\346\255\244\344\270\272\345\207\206v1.2.docx" | Bin 0 -> 162 bytes
+ 10 files changed, 96 insertions(+), 106 deletions(-)
+ create mode 100644 cps/Tpl/default/items/index_20170517ok.zip
+ create mode 100644 "doc/cps-20170517\351\227\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2.docx"
+ create mode 100644 "doc/~$s-20170517\351\227\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2.docx"
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+Updating c70dd56..433e0ff
+error: Your local changes to the following files would be overwritten by merge:
+        cps/Lib/Action/contractAction.class.php
+        cps/Lib/Action/financeAction.class.php
+        cps/Tpl/default/contract/index.html
+        cps/Tpl/default/items/index.html
+        cps/Tpl/default/public/footer.html
+        cps/Tpl/default/public/login.html
+Please commit your changes or stash them before you can merge.
+error: The following untracked working tree files would be overwritten by merge:
+        cps/Tpl/default/items/index_20170517ok.zip
+        doc/cps-20170517问题整理-new以此为准v1.2.docx
+Please move or remove them before you can merge.
+Aborting
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git  pull
+Auto-merging doc/git更新日志.txt
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/adminAction.class.php               |   6 +-
+ cps/Lib/Action/contractAction.class.php            |  54 +++++-----
+ cps/Lib/Action/financeAction.class.php             |  74 ++++++++-----
+ cps/Lib/Action/itemsAction.class.php               |   6 +-
+ cps/Lib/Action/roleAction.class.php                |   6 +-
+ cps/Tpl/default/admin/index.html                   |  23 ++++-
+ cps/Tpl/default/contract/index.html                |  15 ++-
+ cps/Tpl/default/finance/commission.html            |   5 +-
+ cps/Tpl/default/finance/finance.html               | 103 +++++++++++++------
+ cps/Tpl/default/finance/push.html                  |   6 +-
+ cps/Tpl/default/finance/settle.html                |   5 +-
+ cps/Tpl/default/items/index.html                   |   4 +-
+ cps/Tpl/default/public/login.html                  |   4 +-
+ cps/Tpl/default/public/register.html               |   2 +-
+ ...7\273\237\345\256\211\346\216\22220170506.xlsx" | Bin 11682 -> 11672 bytes
+ ...7\273\237\351\234\200\346\261\20200000000.docx" | Bin 2562087 -> 2563992 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.2.docx" | Bin 0 -> 699531 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" | 114 +++++++++++++++++++++
+ ...\210\220\350\257\264\346\230\216_20170514.docx" | Bin 359359 -> 399959 bytes
+ 19 files changed, 318 insertions(+), 109 deletions(-)
+ create mode 100644 "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+
+
+".git/MERGE_MSG" 7L, 337C written
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/adminAction.class.php                                                           |   6 +-
+ cps/Lib/Action/baseAction.class.php                                                            |  18 +--
+ cps/Lib/Action/contractAction.class.php                                                        |  54 ++++-----
+ cps/Lib/Action/financeAction.class.php                                                         |  74 ++++++++-----
+ cps/Lib/Action/itemsAction.class.php                                                           |   6 +-
+ cps/Lib/Action/roleAction.class.php                                                            |   6 +-
+ cps/Tpl/default/admin/index.html                                                               |  23 +++-
+ cps/Tpl/default/contract/index.html                                                            |  15 +--
+ cps/Tpl/default/finance/commission.html                                                        |   5 +-
+ cps/Tpl/default/finance/finance.html                                                           | 103 ++++++++++++-----
+ cps/Tpl/default/finance/push.html                                                              |   6 +-
+ cps/Tpl/default/finance/settle.html                                                            |   5 +-
+ cps/Tpl/default/items/index.html                                                               |   4 +-
+ cps/Tpl/default/public/header.html                                                             |   4 +-
+ cps/Tpl/default/public/login.html                                                              |   4 +-
+ cps/Tpl/default/public/register.html                                                           |   2 +-
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345\256\211\346\216\22220170506.xlsx" | Bin 11682 -> 11672 bytes
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx" | Bin 2562087 -> 2563992 bytes
+ "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206.docx"                        | Bin 63823 -> 53922 bytes
+ "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"                    | Bin 130398 -> 77640 bytes
+ "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206.docx"                        | Bin 0 -> 348533 bytes
+ "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"                    | Bin 0 -> 699698 bytes
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"                                  | 199 +++++++++++++++++++++++++++++++++
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"                              | 383 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ "doc/\345\212\237\350\203\275\345\256\214\346\210\220\350\257\264\346\230\216_20170514.docx"   | Bin 359359 -> 399959 bytes
+ ms/php_errors.log                                                                              |  10 ++
+ 26 files changed, 804 insertions(+), 123 deletions(-)
+ create mode 100644 "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+ create mode 100644 "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+
+
+[root@iZ300nn3dazZ msec.jieqiangtec.com]# git pull 
+^Xremote: Counting objects: 50, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 50 (delta 38), reused 49 (delta 38), pack-reused 0
+Unpacking objects: 100% (50/50), done.
+From https://github.com/1569501393/www.ctw.com
+   e556852..c4a5db8  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+error: Your local changes to the following files would be overwritten by merge:
+        cps/Lib/Action/adminAction.class.php
+        cps/Lib/Action/contractAction.class.php
+        cps/Lib/Action/financeAction.class.php
+        cps/Lib/Action/itemsAction.class.php
+        cps/Lib/Action/roleAction.class.php
+        cps/Tpl/default/admin/index.html
+        cps/Tpl/default/contract/index.html
+        cps/Tpl/default/finance/commission.html
+        cps/Tpl/default/finance/finance.html
+        cps/Tpl/default/finance/push.html
+        cps/Tpl/default/finance/settle.html
+        cps/Tpl/default/items/index.html
+        cps/Tpl/default/public/header.html
+        cps/Tpl/default/public/login.html
+        cps/Tpl/default/public/register.html
+        doc/CPS联盟系统安排20170506.xlsx
+        doc/CPS联盟系统需求00000000.docx
+        doc/cps-20170512问题整理.docx
+        doc/cps-20170512问题整理v1.2.docx
+        doc/git更新日志.txt
+        doc/git更新日志.txt.bak
+        doc/功能完成说明_20170514.docx
+        ms/php_errors.log
+Please, commit your changes or stash them before you can merge.
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   cps/Lib/Action/adminAction.class.php
+        modified:   cps/Lib/Action/contractAction.class.php
+        modified:   cps/Lib/Action/financeAction.class.php
+        modified:   cps/Lib/Action/itemsAction.class.php
+        modified:   cps/Lib/Action/roleAction.class.php
+        modified:   cps/Tpl/default/admin/index.html
+        modified:   cps/Tpl/default/contract/index.html
+        modified:   cps/Tpl/default/finance/commission.html
+        modified:   cps/Tpl/default/finance/finance.html
+        modified:   cps/Tpl/default/finance/push.html
+        modified:   cps/Tpl/default/finance/settle.html
+        modified:   cps/Tpl/default/items/index.html
+        modified:   cps/Tpl/default/public/login.html
+        modified:   cps/Tpl/default/public/register.html
+        modified:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345\256\211\346\216\22220170506.xlsx"
+        modified:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"
+        new file:   "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+        modified:   "doc/\345\212\237\350\203\275\345\256\214\346\210\220\350\257\264\346\230\216_20170514.docx"
+
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+Updating e556852..12043bd
+Fast-forward
+ cps/Lib/Action/baseAction.class.php                |  18 +-
+ cps/Tpl/default/public/header.html                 |   4 +-
+ ...7\256\351\242\230\346\225\264\347\220\206.docx" | Bin 63823 -> 53922 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.2.docx" | Bin 130398 -> 77640 bytes
+ ...7\256\351\242\230\346\225\264\347\220\206.docx" | Bin 0 -> 348533 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" | 119 +++++++
+ ...64\346\226\260\346\227\245\345\277\227.txt.bak" | 383 ++++++++++++++++++++-
+ ms/php_errors.log                                  |  10 +
+ 8 files changed, 520 insertions(+), 14 deletions(-)
+ create mode 100644 "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git log
+commit 1df5b7ef8c3565890f3d050e163a70903a1f69d7
+Author: 1569501393 <1569501393@qq.com>
+Date:   Mon May 15 11:55:20 2017 +0800
+
+    提交
+
+commit a81d01a7e6220502eac9138c1cc4aebdad0dedc9
+Merge: 5912001 e556852
+Author: 1569501393 <1569501393@qq.com>
+Date:   Mon May 15 09:23:29 2017 +0800
+
+    提交
+
+commit e556852007cc987a04a651db8bef506b3a8be167
+Author: 1569501393 <1569501393@qq.com>
+Date:   Sun May 14 21:14:51 2017 +0800
+
+    佣金管理，海报管理
+
+commit e9cdbfb85c1aa5f77b53d946583b175148518814
+Author: 1569501393 <1569501393@qq.com>
+Date:   Sat May 13 18:12:14 2017 +0800
+
+    合同管理流程优化 二维码添加
+
+
+$ git reset --soft e556852007cc987a04a651db8bef506b3a8be167
+$ git checkout
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git checkout
+M       cps/Lib/Action/baseAction.class.php
+M       cps/Lib/Action/itemsAction.class.php
+D       cps/Runtime/Cache/6748d5b480b09646a57d41dbfa127b36.php
+D       cps/Runtime/Cache/8b41eeb3278f139483d738331ac9c6b0.php
+M       cps/Tpl/default/public/header.html
+M       "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+M       "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+A       "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+M       "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+M       "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"
+M       ms/php_errors.log
+A       "msec.jieqiangtec.com_20170512\345\205\250\351\207\217\345\244\207\344\273\275.zip"
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git reset --soft e556852007cc987a04a651db8bef506b3a8be167
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   cps/Lib/Action/baseAction.class.php
+        modified:   cps/Lib/Action/itemsAction.class.php
+        modified:   cps/Tpl/default/public/header.html
+        modified:   "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+        modified:   "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+        new file:   "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"
+        modified:   ms/php_errors.log
+        new file:   "msec.jieqiangtec.com_20170512\345\205\250\351\207\217\345\244\207\344\273\275.zip"
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqi
+$ git push
+Username for 'https://github.com': 1569501393@qq.com
+Counting objects: 35, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (33/33), done.
+Writing objects: 100% (35/35), 214.90 MiB | 69.00 KiB/s, done.
+Total 35 (delta 26), reused 0 (delta 0)
+remote: Resolving deltas: 100% (26/26), completed with 18 local objects.
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 515862828f4db749827ceb39fc5779fe
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File msec.jieqiangtec.com_20170512全量备份.zip is 219.15 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/1569501393/www.ctw.com.git
+ ! [remote rejected] msec.jieqiangtec.com -> msec.jieqiangtec.com (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/1569501393/www.ctw.com.git'
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is ahead of 'origin/msec.jieqiangtec.com' by 4 commits.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    cps/Runtime/Cache/6748d5b480b09646a57d41dbfa127b36.php
+        deleted:    cps/Runtime/Cache/8b41eeb3278f139483d738331ac9c6b0.php
+
+
+<<<<<<< HEAD
+".git/MERGE_MSG" 7L, 337C written
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/contractAction.class.php                                                                                                              |   32 +-
+ cps/Lib/Action/itemsAction.class.php                                                                                                                 |   66 ++-
+ cps/Tpl/default/contract/edit.html                                                                                                                   |    4 +-
+ cps/Tpl/default/contract/index.html                                                                                                                  |   22 +-
+ cps/Tpl/default/public/footer.html                                                                                                                   |   26 +-
+ data/contract/59129947850ab.xlsx                                                                                                                     |  Bin 0 -> 8798 bytes
+ data/contract/59129a992eefb.xlsx                                                                                                                     |  Bin 0 -> 8798 bytes
+ data/contract/59129ac14f7aa.xlsx                                                                                                                     |  Bin 0 -> 8798 bytes
+ data/contract/5912c9fd5118a.xlsx                                                                                                                     |  Bin 0 -> 8837 bytes
+ data/contract/5912dea662117.xlsx                                                                                                                     |  Bin 0 -> 8837 bytes
+ data/contract/5912dec6dd532.xlsx                                                                                                                     |  Bin 0 -> 8687 bytes
+ data/contract/5912defbdb229.xlsx                                                                                                                     |  Bin 0 -> 8836 bytes
+ data/contract/5912dfd392383.xlsx                                                                                                                     |  Bin 0 -> 8687 bytes
+ data/qrcode/a1234561494565207.jpg                                                                                                                    |  Bin 0 -> 98063 bytes
+ data/qrcode/header.jpg                                                                                                                               |  Bin 0 -> 886 bytes
+ data/qrcode/poster_bg.jpg                                                                                                                            |  Bin 0 -> 77371 bytes
+ data/qrcode/qrcode.jpg                                                                                                                               |  Bin 0 -> 30573 bytes
+ data/qrcode/qrcode2.jpg                                                                                                                              |  Bin 0 -> 43097 bytes
+ "data/qrcode/\345\217\202\346\225\260\344\272\214\347\273\264\347\240\201.jpg"                                                                       |  Bin 0 -> 38262 bytes
+ "data/qrcode/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"                                                           |   15 +
+ "data/qrcode/\346\265\267\346\212\245\345\272\225\345\233\276.jpg"                                                                                   |  Bin 0 -> 77371 bytes
+ "data/qrcode/\347\224\250\346\210\267\345\244\264\345\203\217\344\277\241\346\201\257.jpg"                                                           |  Bin 0 -> 886 bytes
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"                                                       |  Bin 0 -> 2231348 bytes
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"                                                                                        |   77 ++-
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"                                                                                    |  125 +++++
+ ...274\217_\350\256\242\345\215\225\350\241\250\345\222\214\344\275\243\351\207\221\350\256\276\347\275\256\350\241\250\345\206\227\344\275\231.zip" |  Bin 0 -> 2680275 bytes
+ "doc/php\345\276\256\344\277\241\346\265\267\346\212\245\344\272\214\347\273\264\347\240\201\347\224\237\346\210\220\345\231\250.zip"                |  Bin 0 -> 435207 bytes
+ "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"                                                       |  Bin 162 -> 0 bytes
+ ms/contractmanager.php                                                                                                                               |    2 +-
+ ms/footer.php                                                                                                                                        |    4 +-
+ ms/php_errors.log                                                                                                                                    |    6 +
+ statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.js                                                                        | 2043 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.js                                                                  |   18 +
+ 33 files changed, 2412 insertions(+), 28 deletions(-)
+=======
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   cps/Lib/Action/contractAction.class.php
+        modified:   cps/Lib/Action/financeAction.class.php
+        modified:   cps/Tpl/default/finance/commission.html
+        modified:   cps/Tpl/default/finance/push.html
+        modified:   cps/Tpl/default/items/index.html
+        new file:   data/contract/59180b3234503.xlsx
+        new file:   data/contract/591815ba60c3c.xlsx
+        new file:   data/contract/59181605def9f.xlsx
+        new file:   data/contract/5918161e03f61.xlsx
+        new file:   data/contract/591817dbafe6f.xlsx
+        new file:   data/contract/591818697b10c.xlsx
+        new file:   data/contract/5918202e0428b.xlsx
+        new file:   data/contract/5918218ce62cf.xlsx
+        new file:   data/contract/5918513cf3fea.xlsx
+        new file:   data/contract/5918529149b2a.xlsx
+        new file:   data/contract/5918536c721ca.xlsx
+        new file:   data/contract/591853e97e5b2.xlsx
+        new file:   data/qrcode/a1234561494749888.jpg
+        new file:   data/qrcode/a1234561494749894.jpg
+        new file:   data/qrcode/a1234561494749901.jpg
+        modified:   "data/qrcode/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"
+        modified:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345\256\211\346\216\22220170506.xlsx"
+        modified:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"
+        modified:   "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+        deleted:    "doc/~$s-20170512\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+        new file:   "doc/\345\212\237\350\203\275\345\256\214\346\210\220\350\257\264\346\230\216_20170514.docx"
+        new file:   "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509v1.5.xlsx"
+        new file:   "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509v1.6.xlsx"
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   cps/Lib/Action/contractAction.class.php
+        modified:   cps/Lib/Action/financeAction.class.php
+        modified:   cps/Lib/Action/itemsAction.class.php
+        new file:   "cps/Lib/Action/itemsAction.class_20170513\344\272\214\347\273\264\347\240\201ok.rar"
+        new file:   "cps/Tpl/default/admin/edit - \345\211\257\346\234\254 (2).html"
+        new file:   "cps/Tpl/default/admin/edit - \345\211\257\346\234\254 (3).html"
+        modified:   cps/Tpl/default/admin/edit.html
+        copied:     cps/Tpl/default/admin/edit.html -> cps/Tpl/default/admin/info.html
+        modified:   cps/Tpl/default/contract/index.html
+        modified:   cps/Tpl/default/finance/push.html
+        modified:   cps/Tpl/default/items/index.html
+        modified:   cps/Tpl/default/public/footer.html
+        modified:   cps/Tpl/default/public/header.html
+        new file:   data/contract/5910af3960ff8.xlsx
+        new file:   data/contract/5911e7ed97b89.xlsx
+        new file:   data/contract/5911e89a10308.xlsx
+        new file:   data/contract/5916d71121cbc.xlsx
+        new file:   data/contract/5916d7cd0104d.xlsx
+        new file:   data/contract/5916d8990ab44.xlsx
+        new file:   data/contract/5916d972b8a48.xlsx
+        new file:   data/contract/5916da4082632.xlsx
+        new file:   data/contract/5916daa8b893b.xlsx
+        new file:   data/qrcode/a1234561494643437.jpg
+        new file:   data/qrcode/a1234561494648480.jpg
+        new file:   data/qrcode/a1234561494661257.jpg
+        new file:   data/qrcode/a1234561494661273.jpg
+        new file:   data/qrcode/a1234561494661628.jpg
+        new file:   data/qrcode/a1234561494661630.jpg
+        new file:   data/qrcode/myqrcode111ss.jpg
+        new file:   "data/qrcode/poster_bg - \345\211\257\346\234\254.jpg"
+        copied:     data/qrcode/qrcode.jpg -> "data/qrcode/qrcode - \345\211\257\346\234\254.jpg"
+        modified:   data/qrcode/qrcode.jpg
+        new file:   data/qrcode/qrcode3.jpg
+        new file:   data/qrcode/tmp/qrcode2_1494647573.png
+        new file:   data/qrcode/tmp/qrcode2_1494647949.png
+        new file:   data/qrcode/tmp/qrcode2_1494647989.png
+        new file:   data/qrcode/tmp/qrcode2_1494648045.png
+        new file:   data/qrcode/tmp/qrcode2_1494648063.png
+        new file:   data/qrcode/tmp/qrcode2_1494648134.jpg
+        new file:   data/qrcode/tmp/qrcode2_1494648167.jpg
+        new file:   data/qrcode/tmp/qrcode_1494644179.png
+        new file:   data/qrcode/tmp/qrcode_1494644712.png
+        new file:   data/qrcode/tmp/ssqrcode_1494650225.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494655322.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494657925.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494657956.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494657962.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494657981.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494657992.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658061.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658082.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658168.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658638.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658641.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658646.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658755.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658791.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658856.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658865.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658876.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658883.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494658890.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659008.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659010.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659027.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659139.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659145.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659149.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659155.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659288.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659309.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659325.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659784.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659791.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659915.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659957.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659965.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494659985.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660071.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660110.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660133.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660140.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660251.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660264.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660272.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660281.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660409.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660671.jpg
+        new file:   data/qrcode/tmp/ssqrcode_1494660821.jpg
+        modified:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170427.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170428.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170501.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170502.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170503.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170504.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170505.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170506.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170508.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170509.docx"
+        deleted:    "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170510.docx"
+        modified:   "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+        new file:   "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+        new file:   "doc/cps-20170512\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+        renamed:    "doc/~$\347\263\273\347\273\237\346\225\260\346\215\256\345\272\223\350\256\276\350\256\241\350\247\204\346\240\27420170427v2.1.doc" -> "doc/~$s-20170512\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+        modified:   "doc/\350\201\224\347\233\237\347\263\273\347\273\237\346\225\260\346\215\256\345\272\223\350\256\276\350\256\241\350\247\204\346\240\27420170427v2.1.doc"
+        new file:   statics/cps/fonts/simsun.ttc
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+$ git pull
+remote: Counting objects: 44, done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 44 (delta 24), reused 44 (delta 24), pack-reused 0
+Unpacking objects: 100% (44/44), done.
+From github.com:1569501393/www.ctw.com
+   e80fe89..5bd737a  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+Updating e80fe89..5bd737a
+Checking out files: 100% (33/33), done.
+Fast-forward
+ cps/Lib/Action/contractAction.class.php            |   32 +-
+ cps/Lib/Action/itemsAction.class.php               |   66 +-
+ cps/Tpl/default/contract/edit.html                 |    4 +-
+ cps/Tpl/default/contract/index.html                |   22 +-
+ cps/Tpl/default/public/footer.html                 |   26 +-
+ data/contract/59129947850ab.xlsx                   |  Bin 0 -> 8798 bytes
+ data/contract/59129a992eefb.xlsx                   |  Bin 0 -> 8798 bytes
+ data/contract/59129ac14f7aa.xlsx                   |  Bin 0 -> 8798 bytes
+ data/contract/5912c9fd5118a.xlsx                   |  Bin 0 -> 8837 bytes
+ data/contract/5912dea662117.xlsx                   |  Bin 0 -> 8837 bytes
+ data/contract/5912dec6dd532.xlsx                   |  Bin 0 -> 8687 bytes
+ data/contract/5912defbdb229.xlsx                   |  Bin 0 -> 8836 bytes
+ data/contract/5912dfd392383.xlsx                   |  Bin 0 -> 8687 bytes
+ data/qrcode/a1234561494565207.jpg                  |  Bin 0 -> 98063 bytes
+ data/qrcode/header.jpg                             |  Bin 0 -> 886 bytes
+ data/qrcode/poster_bg.jpg                          |  Bin 0 -> 77371 bytes
+ data/qrcode/qrcode.jpg                             |  Bin 0 -> 30573 bytes
+ data/qrcode/qrcode2.jpg                            |  Bin 0 -> 43097 bytes
+ ...25\260\344\272\214\347\273\264\347\240\201.jpg" |  Bin 0 -> 38262 bytes
+ ...26\207\346\234\254\346\226\207\346\241\243.txt" |   15 +
+ ...65\267\346\212\245\345\272\225\345\233\276.jpg" |  Bin 0 -> 77371 bytes
+ ...44\264\345\203\217\344\277\241\346\201\257.jpg" |  Bin 0 -> 886 bytes
+ ...7\273\237\351\234\200\346\261\20200000000.docx" |  Bin 0 -> 2231348 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |   40 +-
+ ...64\346\226\260\346\227\245\345\277\227.txt.bak" |  125 ++
+ ...75\256\350\241\250\345\206\227\344\275\231.zip" |  Bin 0 -> 2680275 bytes
+ ...40\201\347\224\237\346\210\220\345\231\250.zip" |  Bin 0 -> 435207 bytes
+ ...7\273\237\351\234\200\346\261\20220170511.docx" |  Bin 162 -> 0 bytes
+ ms/contractmanager.php                             |    2 +-
+ ms/footer.php                                      |    4 +-
+ ms/php_errors.log                                  |    6 +
+ .../dist/locales/bootstrap-datepicker.js           | 2043 ++++++++++++++++++++
+ .../dist/locales/bootstrap-datepicker.zh-CN.js     |   18 +
+ 33 files changed, 2375 insertions(+), 28 deletions(-)
+>>>>>>> e556852007cc987a04a651db8bef506b3a8be167
+ create mode 100644 data/contract/59129947850ab.xlsx
+ create mode 100644 data/contract/59129a992eefb.xlsx
+ create mode 100644 data/contract/59129ac14f7aa.xlsx
+ create mode 100644 data/contract/5912c9fd5118a.xlsx
+ create mode 100644 data/contract/5912dea662117.xlsx
+ create mode 100644 data/contract/5912dec6dd532.xlsx
+ create mode 100644 data/contract/5912defbdb229.xlsx
+ create mode 100644 data/contract/5912dfd392383.xlsx
+ create mode 100644 data/qrcode/a1234561494565207.jpg
+ create mode 100644 data/qrcode/header.jpg
+ create mode 100644 data/qrcode/poster_bg.jpg
+ create mode 100644 data/qrcode/qrcode.jpg
+ create mode 100644 data/qrcode/qrcode2.jpg
+ create mode 100644 "data/qrcode/\345\217\202\346\225\260\344\272\214\347\273\264\347\240\201.jpg"
+ create mode 100644 "data/qrcode/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"
+ create mode 100644 "data/qrcode/\346\265\267\346\212\245\345\272\225\345\233\276.jpg"
+ create mode 100644 "data/qrcode/\347\224\250\346\210\267\345\244\264\345\203\217\344\277\241\346\201\257.jpg"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"
+ create mode 100644 "doc/msec_ftp20170512\351\200\206\350\214\203\345\274\217_\350\256\242\345\215\225\350\241\250\345\222\214\344\275\243\351\207\221\350\256\276\347\275\256\350\241\250\345\206\227\344\275\231.zip"
+ create mode 100644 "doc/php\345\276\256\344\277\241\346\265\267\346\212\245\344\272\214\347\273\264\347\240\201\347\224\237\346\210\220\345\231\250.zip"
+ delete mode 100644 "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"
+ create mode 100644 statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.js
+ create mode 100644 statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.js
+
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> e556852007cc987a04a651db8bef506b3a8be167
+        modified:   cps/Lib/Action/contractAction.class.php
+        modified:   cps/Lib/Action/itemsAction.class.php
+        modified:   cps/Tpl/default/contract/edit.html
+        modified:   cps/Tpl/default/contract/index.html
+        modified:   cps/Tpl/default/public/footer.html
+        new file:   data/contract/59129947850ab.xlsx
+        new file:   data/contract/59129a992eefb.xlsx
+        new file:   data/contract/59129ac14f7aa.xlsx
+        new file:   data/contract/5912c9fd5118a.xlsx
+        new file:   data/contract/5912dea662117.xlsx
+        new file:   data/contract/5912dec6dd532.xlsx
+        new file:   data/contract/5912defbdb229.xlsx
+        new file:   data/contract/5912dfd392383.xlsx
+        new file:   data/qrcode/a1234561494565207.jpg
+        new file:   data/qrcode/header.jpg
+        new file:   data/qrcode/poster_bg.jpg
+        new file:   data/qrcode/qrcode.jpg
+        new file:   data/qrcode/qrcode2.jpg
+        new file:   "data/qrcode/\345\217\202\346\225\260\344\272\214\347\273\264\347\240\201.jpg"
+        new file:   "data/qrcode/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"
+        new file:   "data/qrcode/\346\265\267\346\212\245\345\272\225\345\233\276.jpg"
+        new file:   "data/qrcode/\347\224\250\346\210\267\345\244\264\345\203\217\344\277\241\346\201\257.jpg"
+        new file:   "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20200000000.docx"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+        modified:   "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"
+        new file:   "doc/msec_ftp20170512\351\200\206\350\214\203\345\274\217_\350\256\242\345\215\225\350\241\250\345\222\214\344\275\243\351\207\221\350\256\276\347\275\256\350\241\250\345\206\227\344\275\231.zip"
+        new file:   "doc/php\345\276\256\344\277\241\346\265\267\346\212\245\344\272\214\347\273\264\347\240\201\347\224\237\346\210\220\345\231\250.zip"
+        deleted:    "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"
+        modified:   ms/contractmanager.php
+        modified:   ms/footer.php
+        modified:   ms/php_errors.log
+        new file:   statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.js
+        new file:   statics/cps/plugins/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.js
+
+
+
+".git/MERGE_MSG" 7L, 339C written
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/analyseAction.class.php                                                                    |  300 +++++++--------
+ cps/Lib/Action/contractAction.class.php                                                                   | 1048 +++++++++++++++++++++++++++-------------------------
+ cps/Lib/Action/contractAction.class_20170511.zip                                                          |  Bin 0 -> 5545 bytes
+ cps/Lib/Action/financeAction.class.php                                                                    |  201 ++++++++--
+ cps/Tpl/default/analyse/index.html                                                                        |   60 +--
+ "cps/Tpl/default/contract/index - \345\211\257\346\234\254.html"                                          |  446 +++++++++++++++-------
+ cps/Tpl/default/contract/index.html                                                                       |  134 ++++---
+ "cps/Tpl/default/contract/index_20170512\345\244\232\347\254\246\345\217\267.rar"                         |  Bin 0 -> 2841 bytes
+ "cps/Tpl/default/contract/index_20170512\345\244\232\347\254\246\345\217\267ok.rar"                       |  Bin 0 -> 2881 bytes
+ cps/Tpl/default/finance/finance.html                                                                      |  516 +++++++-------------------
+ cps/Tpl/default/finance/settle.html                                                                       |  512 +++++++------------------
+ cps/Tpl/default/public/footer.html                                                                        |   14 +-
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345\256\211\346\216\22220170506.xlsx"            |  Bin 11183 -> 11378 bytes
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"            |  Bin 0 -> 2228785 bytes
+ "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\220\206.docx"                                   |  Bin 0 -> 26978 bytes
+ "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"                               |  Bin 0 -> 49910 bytes
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"                                             |   55 +++
+ doc/logo2.png                                                                                             |  Bin 0 -> 186857 bytes
+ "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"            |  Bin 0 -> 162 bytes
+ ...7\346\225\260\346\215\256\345\272\223\350\256\276\350\256\241\350\247\204\346\240\27420170427v2.1.doc" |  Bin 0 -> 162 bytes
+ "doc/\345\220\210\345\220\214\350\257\246\346\203\205_s10019_222_20170511191148.xls"                      |  Bin 0 -> 19456 bytes
+ "doc/\346\226\260\345\273\272\346\226\207\346\234\254\346\226\207\346\241\243.txt"                        |    5 +
+ ...7\346\225\260\346\215\256\345\272\223\350\256\276\350\256\241\350\247\204\346\240\27420170427v2.1.doc" |  Bin 397349 -> 398921 bytes
+ ms/php_errors.log                                                                                         |    2 +
+ 24 files changed, 1615 insertions(+), 1678 deletions(-)
+ create mode 100644 cps/Lib/Action/contractAction.class_20170511.zip
+ create mode 100644 "cps/Tpl/default/contract/index_20170512\345\244\232\347\254\246\345\217\267.rar"
+ create mode 100644 "cps/Tpl/default/contract/index_20170512\345\244\232\347\254\246\345\217\267ok.rar"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"
+ create mode 100644 "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+ create mode 100644 "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+ create mode 100644 doc/logo2.png
+ create mode 100644 "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170511.docx"
+ create mode 100644 "doc/~$\347\263\273\347\273\237\346\225\260\346\215\256\345\272\223\350\256\276\350\256\241\350\247\204\346\240\27420170427v2.1.doc"
+ create mode 100644 "doc/\345\220\210\345\220\214\350\257\246\346\203\205_s10019_222_20170511191148.xls"
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+$ git pull
+Updating 85c8c29..6ca8eff
+Fast-forward
+ config.inc.php                                     |    2 +-
+ cps/Lib/Action/analyseAction.class.php             |  311 ++---
+ cps/Lib/Action/contractAction.class.php            |  124 +-
+ cps/Lib/Action/contractAction.class_20170511.zip   |  Bin 0 -> 5545 bytes
+ cps/Lib/Action/financeAction.class.php             |   24 +-
+ cps/Lib/Action/itemsAction.class.php               | 1409 ++++++++++----------
+ cps/Tpl/default/analyse/index.html                 |  292 ++--
+ cps/Tpl/default/contract/edit.html                 |  157 +--
+ ...\274\345\205\245\345\220\210\345\220\214ok.zip" |  Bin 0 -> 2174 bytes
+ cps/Tpl/default/contract/index.html                |   21 +-
+ cps/Tpl/default/finance/commission.html            |  415 +++---
+ cps/Tpl/default/finance/finance.html               |  580 +++++---
+ cps/Tpl/default/finance/push.html                  |   25 +-
+ cps/Tpl/default/finance/settle.html                |  574 +++++---
+ cps/Tpl/default/items/index.html                   |  352 +++--
+ cps/Tpl/default/items/poster.html                  |  439 +++---
+ ...7\273\237\345\256\211\346\216\22220170506.xlsx" |  Bin 11140 -> 11183 bytes
+ ...7\273\237\351\234\200\346\261\20220170510.docx" |  Bin 0 -> 2228105 bytes
+ ...7\256\351\242\230\346\225\264\347\220\206.docx" |  Bin 0 -> 119457 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.2.docx" |  Bin 0 -> 178046 bytes
+ ...7\256\351\242\230\346\225\264\347\220\206.docx" |  Bin 0 -> 26978 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.2.docx" |  Bin 0 -> 49910 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |   46 +
+ ...64\346\226\260\346\227\245\345\277\227.txt.bak" |  145 ++
+ doc/logo2.png                                      |  Bin 0 -> 186857 bytes
+ ...345\212\240shop_id\345\255\227\346\256\265.zip" |  Bin 0 -> 2677625 bytes
+ ...\246\346\203\205_s10019_222_20170511191148.xls" |  Bin 0 -> 19456 bytes
+ ...\274\346\240\267\345\274\217_20170509v1.3.xlsx" |  Bin 0 -> 8836 bytes
+ ms/php_errors.log                                  |   23 +
+ 29 files changed, 2926 insertions(+), 2013 deletions(-)
+ create mode 100644 cps/Lib/Action/contractAction.class_20170511.zip
+ create mode 100644 "cps/Tpl/default/contract/edit_20170510\345\257\274\345\205\                                                                                                                245\345\220\210\345\220\214ok.zip"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351                                                                                                                \234\200\346\261\20220170510.docx"
+ create mode 100644 "doc/cps-20170510\351\227\256\351\242\230\346\225\264\347\22                                                                                                                0\206.docx"
+ create mode 100644 "doc/cps-20170510\351\227\256\351\242\230\346\225\264\347\22                                                                                                                0\206v1.2.docx"
+ create mode 100644 "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\22                                                                                                                0\206.docx"
+ create mode 100644 "doc/cps-20170511\351\227\256\351\242\230\346\225\264\347\22                                                                                                                0\206v1.2.docx"
+ create mode 100644 "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt                                                                                                                .bak"
+ create mode 100644 doc/logo2.png
+ create mode 100644 "doc/msec_20170510\345\225\206\345\223\201\350\241\250\346\2                                                                                                                67\273\345\212\240shop_id\345\255\227\346\256\265.zip"
+ create mode 100644 "doc/\345\220\210\345\220\214\350\257\246\346\203\205_s10019                                                                                                                _222_20170511191148.xls"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\24                                                                                                                0\267\345\274\217_20170509v1.3.xlsx"
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+
+
+
+".git/MERGE_MSG" 7L, 338C written
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/analyseAction.class.php                                                                             |  311 ++++++++++++-------------
+ cps/Lib/Action/contractAction.class.php                                                                            |   94 +++++++-
+ cps/Lib/Action/financeAction.class.php                                                                             |   24 +-
+ cps/Lib/Action/itemsAction.class.php                                                                               | 1409 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++-------------------------------------------------------
+ cps/Tpl/default/analyse/index.html                                                                                 |  292 +++++++++++++++---------
+ cps/Tpl/default/contract/edit.html                                                                                 |  157 ++++++-------
+ "cps/Tpl/default/contract/edit_20170510\345\257\274\345\205\245\345\220\210\345\220\214ok.zip"                     |  Bin 0 -> 2174 bytes
+ cps/Tpl/default/contract/index.html                                                                                |   21 +-
+ cps/Tpl/default/finance/finance.html                                                                               |  580 +++++++++++++++++++++++++++++++---------------
+ cps/Tpl/default/finance/push.html                                                                                  |   25 +-
+ cps/Tpl/default/finance/settle.html                                                                                |  574 +++++++++++++++++++++++++++++++---------------
+ cps/Tpl/default/items/index.html                                                                                   |  352 +++++++++++++---------------
+ cps/Tpl/default/items/poster.html                                                                                  |  439 ++++++++++++++++++++---------------
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345\256\211\346\216\22220170506.xlsx"                     |  Bin 11140 -> 11183 bytes
+ "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170510.docx"                     |  Bin 0 -> 2228105 bytes
+ "doc/cps-20170510\351\227\256\351\242\230\346\225\264\347\220\206.docx"                                            |  Bin 0 -> 119457 bytes
+ "doc/cps-20170510\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"                                        |  Bin 0 -> 178046 bytes
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"                                                      |   13 ++
+ "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"                                                  |  132 +++++++++++
+ "doc/msec_20170510\345\225\206\345\223\201\350\241\250\346\267\273\345\212\240shop_id\345\255\227\346\256\265.zip" |  Bin 0 -> 2677625 bytes
+ "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509v1.3.xlsx"                   |  Bin 0 -> 8836 bytes
+ ms/php_errors.log                                                                                                  |   19 ++
+ 22 files changed, 2596 insertions(+), 1846 deletions(-)
+ create mode 100644 "cps/Tpl/default/contract/edit_20170510\345\257\274\345\205\245\345\220\210\345\220\214ok.zip"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170510.docx"
+ create mode 100644 "doc/cps-20170510\351\227\256\351\242\230\346\225\264\347\220\206.docx"
+ create mode 100644 "doc/cps-20170510\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+ create mode 100644 "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt.bak"
+ create mode 100644 "doc/msec_20170510\345\225\206\345\223\201\350\241\250\346\267\273\345\212\240shop_id\345\255\227\346\256\265.zip"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509v1.3.xlsx"
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+Updating bf78300..85c8c29
+Fast-forward
+ cps/Lib/Action/contractAction.class.php            |  14 +
+ cps/Lib/Action/financeAction.class.php             |  35 ++-
+ cps/Tpl/default/contract/edit.html                 |  21 +-
+ cps/Tpl/default/contract/index.html                |  10 +-
+ cps/Tpl/default/finance/push.html                  | 332 +++++++++------------
+ ...7\273\237\351\234\200\346\261\20220170509.docx" | Bin 2223586 -> 2223616 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |  52 ++++
+ ...56\241\350\247\204\346\240\27420170427v2.1.doc" | Bin 392117 -> 397349 bytes
+ 8 files changed, 264 insertions(+), 200 deletions(-)
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+$ git pull
+remote: Counting objects: 47, done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 47 (delta 29), reused 43 (delta 25), pack-reused 0
+Unpacking objects: 100% (47/47), done.
+From github.com:1569501393/www.ctw.com
+   bc4424c..bf78300  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+Updating bc4424c..bf78300
+Fast-forward
+ cps/Common/common.php                              |   8 +-
+ cps/Lib/Action/adminAction.class.php               | 482 +++++++-------
+ cps/Lib/Action/contractAction.class.php            | 713 ++++++++++++---------
+ ...57\274\345\205\245\345\257\274\345\207\272.zip" | Bin 0 -> 4783 bytes
+ cps/Tpl/default/contract/edit.html                 |   2 +-
+ cps/Tpl/default/contract/index.html                |  12 +-
+ data/contract/591152d452779.xlsx                   | Bin 0 -> 8687 bytes
+ data/contract/5911aac9f1631.xlsx                   | Bin 0 -> 8687 bytes
+ .../qrcode/23901b9dc3d84176eb001d386a96be9e.png    | Bin 0 -> 220 bytes
+ ...7\273\237\351\234\200\346\261\20220170509.docx" | Bin 0 -> 2223586 bytes
+ ...57\274\345\207\272\346\250\241\346\235\277.xls" | Bin 0 -> 6656 bytes
+ ...41\265\351\235\242\345\216\237\345\236\213.zip" | Bin 0 -> 1521770 bytes
+ includes/thinkphp/Common/functions.php             |   4 +-
+ ms/php_errors.log                                  |   2 +
+ 14 files changed, 673 insertions(+), 550 deletions(-)
+ create mode 100644 "cps/Lib/Action/contractAction.class_20170509excel\345\257\2                                                                                                                74\345\205\245\345\257\274\345\207\272.zip"
+ create mode 100644 data/contract/591152d452779.xlsx
+ create mode 100644 data/contract/5911aac9f1631.xlsx
+ create mode 100644 data/upload/qrcode/23901b9dc3d84176eb001d386a96be9e.png
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351                                                                                                                \234\200\346\261\20220170509.docx"
+ create mode 100644 "doc/commission_20170509131938\345\220\210\345\220\214\345\2                                                                                                                57\274\345\207\272\346\250\241\346\235\277.xls"
+ create mode 100644 "doc/\351\241\265\351\235\242\345\216\237\345\236\213.zip"
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.                                                                                                                jieqiangtec.com)
+$
+
+~                                                                               
+".git/MERGE_MSG" 8L, 339C written
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/contractAction.class.php            | 201 +++++++++++++----
+ cps/Tpl/default/contract/edit.html                 | 249 ++++++++++++++++-----
+ cps/Tpl/default/contract/index.html                |  44 ++--
+ cps/Tpl/default/public/footer.html                 |  41 +++-
+ ...7\273\237\351\234\200\346\261\20220170508.docx" | Bin 2223176 -> 2222337 bytes
+ ...7\273\237\351\234\200\346\261\20220170508.docx" | Bin 162 -> 0 bytes
+ ...6\240\274\346\240\267\345\274\217_20170509.xls" | Bin 0 -> 19968 bytes
+ ...\274\346\240\267\345\274\217_20170509v1.2.xlsx" | Bin 0 -> 8687 bytes
+ 8 files changed, 403 insertions(+), 132 deletions(-)
+ delete mode 100644 "doc/~$S\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170508.docx"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509.xls"
+ create mode 100644 "doc/\345\257\274\345\205\245\350\241\250\346\240\274\346\240\267\345\274\217_20170509v1.2.xlsx"
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+Updating 311d17a..b39899f
+Fast-forward
+ cps/Lib/Action/contractAction.class.php            |  21 +-
+ cps/Tpl/default/contract/index.html                | 104 ++++------
+ cps/Tpl/default/role/auth.html                     |  97 ++++-----
+ cps/Tpl/default/role/index.html                    |   2 +-
+ ...7\273\237\351\234\200\346\261\20220170508.docx" | Bin 0 -> 2223176 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |  59 ++++++
+ ...26\207\346\234\254\346\226\207\346\241\243.txt" |  36 ++++
+ ...07\346\234\254\346\226\207\346\241\243.txt.bak" |  39 ++++
+ ms/character-edit2.php                             | 228 +++++++++++++++++++++
+ ms/php_errors.log                                  |   8 +
+ 10 files changed, 471 insertions(+), 123 deletions(-)
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170508.docx"
+ create mode 100644 "doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+ create mode 100644 ms/character-edit2.php
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqi                                                                                                                                                                                               angtec.com (msec.jieqiangtec.com)
+$ git pull
+remote: Counting objects: 27, done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 27 (delta 18), reused 27 (delta 18), pack-reused 0
+Unpacking objects: 100% (27/27), done.
+From https://github.com/1569501393/www.ctw.com
+   e7a4d86..311d17a  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+Updating e7a4d86..311d17a
+Fast-forward
+ cps/Lib/Action/articleAction.class.php             | 105 ++++--
+ cps/Lib/Action/baseAction.class.php                |  18 +-
+ cps/Lib/Action/contractAction.class.php            |  66 ++--
+ cps/Tpl/default/article/content.html               |  76 ++++
+ cps/Tpl/default/article/edit.html                  |  20 -
+ cps/Tpl/default/article/view.html                  |  74 ++++
+ .../index - \345\211\257\346\234\254.html"         | 126 +++++++
+ cps/Tpl/default/contract/index.html                | 401 ++++++++++++++-------
+ cps/Tpl/default/role/auth.html                     |  14 +-
+ ...3\273\347\273\237\345\256\211\346\216\222.xlsx" | Bin 0 -> 11526 bytes
+ ...7\273\237\345\256\211\346\216\22220170506.xlsx" | Bin 0 -> 11140 bytes
+ ...7\273\237\351\234\200\346\261\20220170506.docx" | Bin 0 -> 2222305 bytes
+ ...56\241\350\247\204\346\240\27420170427v2.1.doc" | Bin 162 -> 0 bytes
+ ...26\207\346\234\254\346\226\207\346\241\243.txt" |  32 ++
+ ...56\241\350\247\204\346\240\27420170427v2.1.doc" | Bin 386861 -> 392117 bytes
+ 15 files changed, 730 insertions(+), 202 deletions(-)
+ create mode 100644 cps/Tpl/default/article/content.html
+ create mode 100644 cps/Tpl/default/article/view.html
+ create mode 100644 "cps/Tpl/default/contract/index - \345\211\257\346\234\254.h                                                                                                                                                                                               tml"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345                                                                                                                                                                                               \256\211\346\216\222.xlsx"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\345                                                                                                                                                                                               \256\211\346\216\22220170506.xlsx"
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351                                                                                                                                                                                               \234\200\346\261\20220170506.docx"
+ delete mode 100644 "doc/~$\347\263\273\347\273\237\346\225\260\346\215\256\345\                                                                                                                                                                                               272\223\350\256\276\350\256\241\350\247\204\346\240\27420170427v2.1.doc"
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+remote: Counting objects: 27, done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 27 (delta 17), reused 23 (delta 15), pack-reused 0
+Unpacking objects: 100% (27/27), done.
+From github.com:1569501393/www.ctw.com
+   db3fdbb..e7a4d86  msec.jieqiangtec.com -> origin/msec.jieqiangtec.com
+Updating db3fdbb..e7a4d86
+Fast-forward
+ cps/Lib/Action/adminAction.class.php               |   3 +-
+ cps/Lib/Action/publicAction.class.php              |  10 ++-
+ cps/Tpl/default/public/error.html                  |  82 +++++++++------------
+ cps/Tpl/default/public/error_20170505.zip          | Bin 0 -> 1358 bytes
+ ...7\273\237\351\234\200\346\261\20220170505.docx" | Bin 0 -> 2199759 bytes
+ ...56\241\350\247\204\346\240\27420170427v2.1.doc" | Bin 0 -> 162 bytes
+ ...56\241\350\247\204\346\240\27420170427v2.1.doc" | Bin 385277 -> 386861 bytes
+ ms/php_errors.log                                  |  16 ++++
+ 8 files changed, 57 insertions(+), 54 deletions(-)
+ create mode 100644 cps/Tpl/default/public/error_20170505.zip
+ create mode 100644 "doc/CPS\350\201\224\347\233\237\347\263\273\347\273\237\351\234\200\346\261\20220170505.docx"
+ create mode 100644 "doc/~$\347\263\273\347\273\237\346\225\260\346\215\256\345\272\223\350\256\276\350\256\241\350\247\204\346\240\27420170427v2.1.doc"
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)
+$ git status
+On branch msec.jieqiangtec.com
+Your branch is up-to-date with 'origin/msec.jieqiangtec.com'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   admin_20170501.rar
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   cps/Conf/config.php
+        modified:   cps/Runtime/Cache/6748d5b480b09646a57d41dbfa127b36.php
+        modified:   cps/Runtime/Cache/8b41eeb3278f139483d738331ac9c6b0.php
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        .buildpath
+        .project
+        .settings/
+        aaa1494661208.jpg
+        admin/Runtime/Cache/0067f653e85eb965e9b9018d0b3ce3f3.php
+        admin/Runtime/Cache/309ba25ba9074de38102d674ee745a9c.php
+        admin/Runtime/Cache/594934953a3dd51f1c9c9805fc23c0ff.php
+        admin/Runtime/Cache/8d5fcd277d642c104bfbe35378a73afd.php
+        admin/Runtime/Cache/a9909fff741c89ff74d1cbb2bbbd723f.php
+        admin/Runtime/Cache/ae5cb7d7b8effc538e06ae264055261e.php
+        admin/Runtime/Cache/d46e150b9d4b25003288261dd1fc1513.php
+        admin/Runtime/Cache/eaaff8f9922b81aad5d8d8b9f07b693c.php
+        config.inc_local.php
+        cps/Runtime/Cache/1cb7a9923ce16dbaf89c33a9391295f3.php
+        cps/Runtime/Cache/2da9469de0d2ebd99c8dab572bd03cec.php
+        cps/Runtime/Cache/30be3510217f991e7f2668c665714010.php
+        cps/Runtime/Cache/42dc4fbc72c1b6729f721ac70976269b.php
+        cps/Runtime/Cache/4bf18161965f3f08146d44e3101fa7a4.php
+        cps/Runtime/Cache/4f9dc930e68f4b6d22250d3666b352a9.php
+        cps/Runtime/Cache/5834e1c22e36e7c7c143bbff86dfe928.php
+        cps/Runtime/Cache/58e6db5655738d92ee564478ddaecc6c.php
+        cps/Runtime/Cache/6191642eae9da2d9ab6aaf9a83512d2c.php
+        cps/Runtime/Cache/6534b0e1dd3d56eeed0c27b9214dce3e.php
+        cps/Runtime/Cache/6b2e4c2f4a0bed90d79812cafa7a9613.php
+        cps/Runtime/Cache/6c87f677812fa8b30af411fc19387392.php
+        cps/Runtime/Cache/6edbe7ae3956f45a004b3c5d7c100535.php
+        cps/Runtime/Cache/76adc36a1395eb67d99011964dd9fffa.php
+        cps/Runtime/Cache/7ceff680596a2205678723b90e683555.php
+        cps/Runtime/Cache/89553e2907a547851b5f9b7d04367e38.php
+        cps/Runtime/Cache/a14b9f16acfc842361312814b4f739e2.php
+        cps/Runtime/Cache/afabda042ddad64d9355621a90664aea.php
+        cps/Runtime/Cache/b060bf48fc01232db030564da20ba5b8.php
+        cps/Runtime/Cache/bb1b42201f161a9f51d6a8bd925af129.php
+        cps/Runtime/Cache/ccae6ef34e125dd3ba943448da491406.php
+        cps/Runtime/Cache/ce0b896fa5ce7fde0338513c0fd8fd7e.php
+        cps/Runtime/Cache/d56e78662910aecb61ebc06a61bd99f5.php
+        cps/Runtime/Cache/e14b6cde4bed46a2b864e9e7ce7bd0ac.php
+        cps/Runtime/Cache/e9c9accfc973cea987f0a8407b4b4b18.php
+        cps/Runtime/Cache/ed4c03182761b176c36990bd341d8abc.php
+        cps/Runtime/Cache/fa621db22bf54d6fa064715f93f5276b.php
+        cps/Runtime/Data/
+        cps/Runtime/Logs/1494403741-17_05_10.log
+        cps/Runtime/Logs/1494664902-17_05_13.log
+        cps/Runtime/Logs/1494669888-17_05_13.log
+        cps/Runtime/Logs/1496237325-17_05_31.log
+        cps/Runtime/Logs/17_04_28.log
+        cps/Runtime/Logs/17_05_02.log
+        cps/Runtime/Logs/17_05_03.log
+        cps/Runtime/Logs/17_05_04.log
+        cps/Runtime/Logs/17_05_05.log
+        cps/Runtime/Logs/17_05_06.log
+        cps/Runtime/Logs/17_05_08.log
+        cps/Runtime/Logs/17_05_09.log
+        cps/Runtime/Logs/17_05_10.log
+        cps/Runtime/Logs/17_05_11.log
+        cps/Runtime/Logs/17_05_12.log
+        cps/Runtime/Logs/17_05_13.log
+        cps/Runtime/Logs/17_05_14.log
+        cps/Runtime/Logs/17_05_15.log
+        cps/Runtime/Logs/17_05_16.log
+        cps/Runtime/Logs/17_05_17.log
+        cps/Runtime/Logs/17_05_18.log
+        cps/Runtime/Logs/17_05_20.log
+        cps/Runtime/Logs/17_05_21.log
+        cps/Runtime/Logs/17_05_22.log
+        cps/Runtime/Logs/17_05_23.log
+        cps/Runtime/Logs/17_05_24.log
+        cps/Runtime/Logs/17_05_25.log
+        cps/Runtime/Logs/17_05_26.log
+        cps/Runtime/Logs/17_05_31.log
+        cps/Runtime/Logs/17_06_01.log
+        cps/Runtime/Logs/17_06_02.log
+        cps/Runtime/Temp/
+        cps/cps_220170503.rar
+        data/items/5930e2ecd6605.jpg
+        data/items/m_5930e2ecd6605.jpg
+        data/items/s_5930e2ecd6605.jpg
+        "data/qrcode/poster_16_\347\200\271\343\210\241\345\237\233\347\274\201\345\277\225\346\202\212_128_1_1496365483.jpg"
+        "data/qrcode/poster_16_\347\200\271\343\210\241\345\237\233\347\274\201\345\277\225\346\202\212_131_1_1496365497.jpg"
+        data/qrcode/poster_1_admin_1314520_1_1496377231.jpg
+        data/qrcode/poster_1_admin_1_0_1496325170.jpg
+        data/qrcode/poster_1_admin_3_0_1496390503.jpg
+        data/qrcode/poster_1_admin_3_0_1496390506.jpg
+        data/qrcode/poster_1_admin_3_0_1496390508.jpg
+        data/qrcode/poster_1_admin_6_3_1496325201.jpg
+        "data_20170522\345\233\276\347\211\207\345\244\207\344\273\275.rar"
+        doc.xls
+        doc2.xlsx
+        index/Runtime/Cache/2a9bbfeeeb995a55425a778d05e3a2c1.php
+        index/Runtime/Cache/2f2cdd41e2fb27f42d3aed49b009f2b9.php
+        index/Runtime/Cache/396bd300c60da25a7c3bd0f8e0842ce7.php
+        index/Runtime/Cache/f8183dfad8aa53313807c473d06e1909.php
+        index/Runtime/Logs/17_04_25.log
+        index/Runtime/Logs/17_04_26.log
+        index/Runtime/Logs/17_05_02.log
+        index/Runtime/Logs/17_05_03.log
+        index/Runtime/Logs/17_05_04.log
+        myqrcode111ss.jpg
+        qrcode_1494644090.png
+        ssqrcode_1494647086.png
+        ssqrcode_1494647127.png
+        ssqrcode_1494647195.png
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)

@@ -1,0 +1,77 @@
+<include file="public:header" />
+<!-- Begin page -->
+<div id="wrapper">
+    <include file="public:topBar" />
+    <include file="public:leftMenu" />
+    <!-- <div class="content-page" page='announcement'> -->
+    <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container">
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">联盟通知</h4>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="{:u('article/index')}">返回</a></li>
+                            <!-- <li><a href="#">eCommerce</a></li> -->
+                            <!-- <li class="active">Orders</li> --></ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box m-t-20">
+                            <h4 class="m-t-0">
+                                <b>{$article.title}</b>
+                            </h4>
+                            <hr/>
+
+                            
+
+                            <div class="media m-b-30 ">
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">{$article.add_time}</span>
+                                    <h4 class="text-primary m-0">{$article.admin_name}</h4></div>
+                            </div>
+                            <!-- media -->
+                            <p>
+                                {$article.info}
+                            </p>
+                            <!-- <p>
+                                <a href="#">
+                                    <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">苹果Iphone 7Plus 64GB.</a></p>
+                            <p>
+                                <a href="#">
+                                    <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">苹果Iphone 7Plus 64GB.</a></p>
+                            <p>
+                                <a href="#">
+                                    <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">苹果Iphone 7Plus 64GB.</a></p>
+                            <p>
+                                <a href="#">
+                                    <img src="__ROOT__/statics/cps/images/products/iphone.jpg" class="thumb-sm pull-left m-r-10" alt="">苹果Iphone 7Plus 64GB.</a></p>
+                            <hr/> -->
+                            <!-- <h4>
+                                <i class="fa fa-paperclip m-r-10 m-b-10"></i>附件
+                                <span>(3)</span></h4>
+                            <div class="row">
+                                <div class="col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="__ROOT__/statics/cps/images/small/img1.jpg" alt="attachment" class="img-thumbnail img-responsive"></a>
+                                </div>
+                                <div class="col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="__ROOT__/statics/cps/images/small/img2.jpg" alt="attachment" class="img-thumbnail img-responsive"></a>
+                                </div>
+                                <div class="col-sm-2 col-xs-4">
+                                    <a href="#">
+                                        <img src="__ROOT__/statics/cps/images/small/img3.jpg" alt="attachment" class="img-thumbnail img-responsive"></a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- container --></div>
+        <!-- content --></div>
+    <include file="public:footer" />

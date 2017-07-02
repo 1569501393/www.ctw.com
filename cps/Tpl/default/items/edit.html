@@ -1,0 +1,160 @@
+<include file="public:header" />
+<body class="fixed-left">
+  <!-- Begin page -->
+  <div id="wrapper">
+    <include file="public:topBar" />
+    <include file="public:leftMenu" />
+    <!-- Modal -->
+    <!-- <div id="custom-modal" class="modal-demo">
+      <button type="button" class="close" onclick="Custombox.close();">
+        <span>&times;</span>
+        <span class="sr-only">关闭</span></button>
+      <h4 class="custom-modal-title">{$Think.get.title}</h4>
+      <div class="custom-modal-text">
+        <img src="__ROOT__/statics/cps/images/gallery/101.jpg" alt="image" class="img-responsive"></div>
+    </div> -->
+    <!-- <div class="content-page" page="posters"> -->
+    <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
+      <!-- Start content -->
+      <div class="content">
+        <div class="container">
+          <!-- Page-Title -->
+          <div class="row">
+            <div class="col-sm-12">
+              <h4 class="page-title">海报编辑</h4>
+              <ol class="breadcrumb">
+                <!-- <li><a href="#">Ubold</a></li> -->
+                <li>
+                  <a href="{:u('items/poster')}">海报管理</a></li>
+                <!-- <li class="active">更改海报图片</li> --></ol>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <ul class="nav nav-tabs tabs">
+                <li class="active tab">
+                  <a href="#home-2" data-toggle="tab" aria-expanded="false">
+                    <span class="visible-xs">编辑海报</span></a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="table-responsive active" id="postmanager">
+                  <!-- <div class="col-md-6"> -->
+                  <!-- <h4 class="m-t-0 header-title"><b></b></h4> -->
+                  <p class="text-muted m-b-30 font-13">
+                    <span class="" style="margin-right: 5%">商品名称：
+                      <b>{$Think.get.title}</b>
+                    </span>
+                  </p>
+                  <form role="form2" method="post" action="{:u('items/edit')}" enctype="multipart/form-data">
+                    <div class="col-lg-12">
+                      <div class="dropzone" id="dropzone">
+                        <div class="form-group m-b-0">
+                          <label class="control-label">上传本地图片(<font color="red">*支持小于2M(533*800)jpg,gif,png,jpeg图片</font>)</label>
+                          <input type="file" class="filestyle" data-buttonname="btn-primary" name="img"></div>
+                        <div class="clearfix pull-right m-t-15">
+                          <input type="hidden" name="shop_id" value="{$Think.get.shop_id}" />
+                          <input type="hidden" name="item_id" value="{$Think.get.item_id}" />
+                          <input type="hidden" name="id" value="{$Think.get.id}" />
+                          <input type="hidden" name="origin_id" value="{$Think.get.origin_id}" />
+                          <input type="hidden" name="origin_name" value="{$Think.get.title}" />
+                          <input type="hidden" name="item_id" value="{$Think.get.item_id}" />
+                          <button type="submit" class="btn btn-pink btn-rounded waves-effect waves-light" name="dosubmit" value="1">上传</button></div>
+                      </div>
+                    </div>
+                  </form>
+                  <!-- <div style="padding:10px;height:10px;margin:10px; display: block;position: relative;clear: both;"></div>
+                  <div class="col-lg-12">
+                  <div action="#" class="dropzone" id="dropzone">
+                  <a href="#custom-modal" class="" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a">
+                  <div class="fallback">图片预览：</div>
+                  <img src="__ROOT__/statics/cps/images/gallery/101.jpg" class="img-thumbnail" style="width: 30%;margin-left: 35%">查看大图</a></div>
+                  <div class="clearfix pull-right m-t-15"></div></div>
+                  <div class="col-xs-12">
+                  <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit">保存</button></div> --></div>
+                <div class="table-responsive active">
+                  <!-- <table class="table table-actions-bar"> -->
+                  <table class="table table-hover mails m-0">
+                    <thead>
+                      <tr>
+                        <!-- <th>ID</th> -->
+                        <!-- <th>商品名称</th> -->
+                        <!-- <th>单价(元)</th> -->
+                        <th>海报底图</th>
+                        <th>添加日期</th>
+                        <th style="min-width: 80px;">状态</th>
+                        <!-- <th>编辑</th> --></tr>
+                    </thead>
+                    <tbody>
+                      <volist name="files" id="val">
+                        <tr>
+                          <!-- <td>{$val.id}</td> -->
+                          <!-- <td>{$val.origin_name}</td> -->
+                          <!-- <td>¥{$val.item.price}</td> -->
+                          <td>
+                            <!-- <a href="#custom-modal" class="" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a">
+                            <img src="__ROOT__/{$val.img}" alt="image" class="thumb-md">
+                            查看大图</a> -->
+                            <!-- <img src="__ROOT__/{$val.img}" alt="image" class="thumb-md"> -->
+
+                            <a href="__ROOT__/{$val.img}" target="_blank" >
+                            <notempty  name="val['simg']"><img src="{$val.simg}"  width="50px"><else /><img src="{$val.img}" width="50px"></notempty ></a>
+                            
+
+                          </td>
+                          <td>{$val.add_time|default='2017-05-22 18:50:27'}
+                            <!-- 2016-01-01 --></td>
+                          <td onclick="status({$val.id},'status')" id="status_{$val.id}">
+                            <img src="__ROOT__/statics/images/status_{$val.status}.gif" />
+                            <!-- <a href="postedit.php">编辑海报</a> --></td>
+                        </tr>
+                      </volist>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <!-- end row --></div>
+    <!-- END wrapper -->
+    <script language="javascript">function edit(id, name) {
+        var lang_edit = "{$Think.lang.edit}";
+        window.top.art.dialog({
+          id: 'edit'
+        }).close();
+        window.top.art.dialog({
+          title: lang_edit + '--' + name,
+          id: 'edit',
+          iframe: '?m=items&a=edit&id=' + id,
+          width: '480',
+          height: '520'
+        },
+        function() {
+          var d = window.top.art.dialog({
+            id: 'edit'
+          }).data.iframe;
+          d.document.getElementById('dosubmit').click();
+          return false;
+        },
+        function() {
+          window.top.art.dialog({
+            id: 'edit'
+          }).close()
+        });
+      }
+
+      function status(id, type) {
+        $.get("{:u('items/status')}", {
+          id: id,
+          type: type
+        },
+        function(jsondata) {
+          var return_data = eval("(" + jsondata + ")");
+          // $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data.data + '.gif');
+          $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data + '.gif');
+        });
+      }</script>
+    <include file="public:footer" />
