@@ -14,6 +14,15 @@ Git从远程克隆到本地版本
 $ pwd
 /d/software/phpStudy/WWW/99_ctw/www.ctw.com
 
+git diff 文件列表
+http://www.cnblogs.com/wish123/p/3963224.html
+查看当前目录和另外一个分支的差别
+    git diff test
+显示当前目录和另一个叫'test'分支的差别
+    git diff HEAD -- ./lib
+显示当前目录下的lib目录和上次提交之间的差别（更准确的说是在当前分支下）
+
+
 
 把分支推到远程分支 
 git 查看远程分支、本地分支、创建分支、把分支推到远程repository、删除本地分支
@@ -76,6 +85,15 @@ Git 如何从某个Commit后导出所有修改过的文件?
 $ git diff --name-status HEAD~2
 $ git diff --name-status HEAD~2| xargs zip update.zip
 
+
+$ git diff --name-status HEAD~2| xargs 'D:\software\WinRAR' update.zip
+
+D:\software\WinRAR
+
+压缩多个文件
+winrar a -ag -ibck bak.rar filename1 filename2
+
+winrar a -ag -ibck update.zip text.txt
 
 
 git pull
