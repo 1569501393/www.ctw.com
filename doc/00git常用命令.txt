@@ -66,7 +66,6 @@ git push origin :branch-name
 
 
 http://blog.csdn.net/arkblue/article/details/9568249/
-
 git提取出两个版本之间的差异文件并打包
 http://blog.csdn.net/lxf0613050210/article/details/52104287
 git diff  HEAD HEAD^ --stat
@@ -93,8 +92,11 @@ D:\software\WinRAR
 压缩多个文件
 winrar a -ag -ibck bak.rar filename1 filename2
 
-winrar a -ag -ibck update.zip text.txt
+win
+rar a -ag -ibck update.zip text.txt
 
+
+        
 
 git pull
 git log

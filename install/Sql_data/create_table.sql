@@ -24,7 +24,7 @@ CREATE TABLE `ctw_access` (
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`),
   KEY `node_id` (`node_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1041 DEFAULT CHARSET=utf8 COMMENT='5.2.4权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.4权限表';
 
 -- ----------------------------
 -- Table structure for ctw_activity
@@ -79,7 +79,7 @@ CREATE TABLE `ctw_activity` (
   KEY `is_best` (`is_best`),
   KEY `add_time` (`add_time`),
   KEY `cate_id` (`cate_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_ad
@@ -100,7 +100,7 @@ CREATE TABLE `ctw_ad` (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `board_id` (`board_id`,`start_time`,`end_time`,`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_adboard
@@ -115,7 +115,7 @@ CREATE TABLE `ctw_adboard` (
   `description` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_admin
@@ -139,7 +139,7 @@ CREATE TABLE `ctw_admin` (
   `pid` int(10) unsigned DEFAULT NULL COMMENT '父id',
   `address` varchar(10) DEFAULT NULL COMMENT '家庭地址',
   PRIMARY KEY (`id`,`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=187 DEFAULT CHARSET=utf8 COMMENT='5.2.1后台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.1后台用户表';
 
 -- ----------------------------
 -- Table structure for ctw_album
@@ -163,7 +163,7 @@ CREATE TABLE `ctw_album` (
   KEY `uid` (`uid`),
   KEY `status` (`status`,`cid`,`sort_order`),
   KEY `recommend_count` (`recommend_count`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_album_cate
@@ -179,7 +179,7 @@ CREATE TABLE `ctw_album_cate` (
   PRIMARY KEY (`id`),
   KEY `sort_order` (`status`,`sort_order`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_album_items
@@ -193,7 +193,7 @@ CREATE TABLE `ctw_album_items` (
   `add_time` int(10) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_album_recommend
@@ -203,7 +203,7 @@ CREATE TABLE `ctw_album_recommend` (
   `album_id` int(10) DEFAULT NULL,
   `uid` int(10) DEFAULT NULL,
   KEY `album_id` (`album_id`,`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_article
@@ -237,7 +237,7 @@ CREATE TABLE `ctw_article` (
   KEY `cate_id` (`cate_id`),
   KEY `status` (`status`),
   KEY `data_state` (`data_state`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='5.2.10公告表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.10公告表';
 
 -- ----------------------------
 -- Table structure for ctw_article_cate
@@ -255,7 +255,7 @@ CREATE TABLE `ctw_article_cate` (
   `seo_keys` varchar(255) NOT NULL,
   `seo_desc` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_article_copy
@@ -286,7 +286,7 @@ CREATE TABLE `ctw_article_copy` (
   KEY `is_best` (`is_best`),
   KEY `add_time` (`add_time`),
   KEY `cate_id` (`cate_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_attatch
@@ -318,7 +318,7 @@ CREATE TABLE `ctw_attatch` (
   KEY `is_best` (`filesize`) USING BTREE,
   KEY `add_time` (`add_time`) USING BTREE,
   KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=153 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
 
 -- ----------------------------
 -- Table structure for ctw_auto_collect
@@ -328,7 +328,7 @@ CREATE TABLE `ctw_auto_collect` (
   `id` char(4) NOT NULL,
   `value` varchar(200) NOT NULL,
   KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_auto_collect_date
@@ -338,7 +338,7 @@ CREATE TABLE `ctw_auto_collect_date` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `add_date` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_cash_back_log
@@ -362,7 +362,7 @@ CREATE TABLE `ctw_cash_back_log` (
   `out_jifenbao` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_collect_miao
@@ -372,7 +372,7 @@ CREATE TABLE `ctw_collect_miao` (
   `cate_id` smallint(4) NOT NULL,
   `collect_time` int(10) NOT NULL DEFAULT '0',
   UNIQUE KEY `cate_id` (`cate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_collect_taobao
@@ -382,7 +382,7 @@ CREATE TABLE `ctw_collect_taobao` (
   `cate_id` smallint(4) NOT NULL,
   `collect_time` int(10) NOT NULL DEFAULT '0',
   UNIQUE KEY `cate_id` (`cate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_commission
@@ -423,7 +423,7 @@ CREATE TABLE `ctw_commission` (
   KEY `title` (`rate`),
   KEY `index_sid` (`approver_id`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=510 DEFAULT CHARSET=utf8 COMMENT='5.2.8商品佣金表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.8商品佣金表';
 
 -- ----------------------------
 -- Table structure for ctw_contract
@@ -462,7 +462,7 @@ CREATE TABLE `ctw_contract` (
   KEY `title` (`title`),
   KEY `index_sid` (`approver_id`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='5.2.7合同表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.7合同表';
 
 -- ----------------------------
 -- Table structure for ctw_contract_log
@@ -487,7 +487,7 @@ CREATE TABLE `ctw_contract_log` (
   `add_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `ip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=141836 DEFAULT CHARSET=utf8 COMMENT='操作日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='操作日志表';
 
 -- ----------------------------
 -- Table structure for ctw_exchange_goods
@@ -518,7 +518,7 @@ CREATE TABLE `ctw_exchange_goods` (
   KEY `status` (`status`),
   KEY `sort` (`sort`),
   KEY `is_best` (`is_best`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_exchange_order
@@ -559,7 +559,7 @@ CREATE TABLE `ctw_exchange_order` (
   KEY `goods_status` (`goods_status`),
   KEY `status` (`status`),
   KEY `goods_id` (`goods_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_file
@@ -597,7 +597,7 @@ CREATE TABLE `ctw_file` (
   KEY `is_best` (`is_best`) USING BTREE,
   KEY `add_time` (`add_time`) USING BTREE,
   KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=193 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
 
 -- ----------------------------
 -- Table structure for ctw_file_copy
@@ -629,7 +629,7 @@ CREATE TABLE `ctw_file_copy` (
   KEY `is_best` (`is_best`) USING BTREE,
   KEY `add_time` (`add_time`) USING BTREE,
   KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=150 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
 
 -- ----------------------------
 -- Table structure for ctw_find_password_log
@@ -647,7 +647,7 @@ CREATE TABLE `ctw_find_password_log` (
   `message` varchar(1024) NOT NULL,
   `result` varchar(1024) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_flink
@@ -662,7 +662,7 @@ CREATE TABLE `ctw_flink` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `ordid` smallint(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_flink_cate
@@ -672,7 +672,7 @@ CREATE TABLE `ctw_flink_cate` (
   `id` smallint(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_focus
@@ -691,7 +691,7 @@ CREATE TABLE `ctw_focus` (
   PRIMARY KEY (`id`),
   KEY `status` (`status`),
   KEY `ordid` (`ordid`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_focus_cate
@@ -703,7 +703,7 @@ CREATE TABLE `ctw_focus_cate` (
   `width` smallint(6) NOT NULL DEFAULT '0',
   `height` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_group
@@ -720,7 +720,7 @@ CREATE TABLE `ctw_group` (
   PRIMARY KEY (`id`),
   KEY `status` (`status`),
   KEY `sort` (`sort`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_items
@@ -769,7 +769,7 @@ CREATE TABLE `ctw_items` (
   KEY `index_sid` (`sid`),
   KEY `uid` (`uid`),
   KEY `item_key` (`item_key`)
-) ENGINE=MyISAM AUTO_INCREMENT=220 DEFAULT CHARSET=utf8 COMMENT='5.2.6推广商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.6推广商品表';
 
 -- ----------------------------
 -- Table structure for ctw_items_cate
@@ -802,7 +802,7 @@ CREATE TABLE `ctw_items_cate` (
   KEY `ordid` (`ordid`),
   KEY `index_pid` (`pid`,`recommend`,`status`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=1038 DEFAULT CHARSET=utf8 COMMENT='5.2.5推广商品分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.5推广商品分类表';
 
 -- ----------------------------
 -- Table structure for ctw_items_comments
@@ -817,7 +817,7 @@ CREATE TABLE `ctw_items_comments` (
   `add_time` int(11) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_items_site
@@ -834,7 +834,7 @@ CREATE TABLE `ctw_items_site` (
   `item_nums` int(10) NOT NULL DEFAULT '0',
   `type` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_items_tags
@@ -850,7 +850,7 @@ CREATE TABLE `ctw_items_tags` (
   `seo_desc` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_items_tags_cate
@@ -861,7 +861,7 @@ CREATE TABLE `ctw_items_tags_cate` (
   `tag_id` int(10) NOT NULL,
   KEY `cate_id` (`cate_id`),
   KEY `tag_id` (`tag_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_items_tags_item
@@ -872,7 +872,7 @@ CREATE TABLE `ctw_items_tags_item` (
   `tag_id` int(10) NOT NULL,
   KEY `item_id` (`item_id`),
   KEY `tag_id` (`tag_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_items_user
@@ -888,7 +888,7 @@ CREATE TABLE `ctw_items_user` (
   KEY `item_id` (`iid`),
   KEY `uid` (`uid`),
   KEY `item_id_2` (`item_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_like_list
@@ -902,7 +902,7 @@ CREATE TABLE `ctw_like_list` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `add_time` (`add_time`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_miao_order
@@ -929,7 +929,7 @@ CREATE TABLE `ctw_miao_order` (
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
   KEY `order_code` (`order_code`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_nav
@@ -954,7 +954,7 @@ CREATE TABLE `ctw_nav` (
   KEY `type` (`type`),
   KEY `sort_order` (`sort_order`),
   KEY `alias` (`alias`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_node
@@ -984,7 +984,7 @@ CREATE TABLE `ctw_node` (
   KEY `is_show` (`is_show`),
   KEY `group_id` (`group_id`),
   KEY `sort` (`sort`)
-) ENGINE=MyISAM AUTO_INCREMENT=295 DEFAULT CHARSET=utf8 COMMENT='5.2.3节点表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.3节点表';
 
 -- ----------------------------
 -- Table structure for ctw_op_log
@@ -1012,7 +1012,7 @@ CREATE TABLE `ctw_op_log` (
   `op_time2` int(11) DEFAULT NULL,
   `op_content` varchar(256) DEFAULT NULL COMMENT '操作对象',
   PRIMARY KEY (`log_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COMMENT='5.2.12合同日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.12合同日志表';
 
 -- ----------------------------
 -- Table structure for ctw_orderlist
@@ -1057,7 +1057,7 @@ CREATE TABLE `ctw_orderlist` (
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
   KEY `order_code` (`order_code`)
-) ENGINE=MyISAM AUTO_INCREMENT=204 DEFAULT CHARSET=utf8 COMMENT='5.2.11订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.11订单表';
 
 -- ----------------------------
 -- Table structure for ctw_parameters
@@ -1072,7 +1072,7 @@ CREATE TABLE `ctw_parameters` (
   `APP_FLAG01` varchar(1024) DEFAULT NULL,
   `data_state` char(1) DEFAULT '1' COMMENT '数据状态：0删除，1正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_poster
@@ -1105,7 +1105,7 @@ CREATE TABLE `ctw_poster` (
   KEY `is_best` (`is_best`) USING BTREE,
   KEY `add_time` (`add_time`) USING BTREE,
   KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=438 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.15 海报二维码表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.15 海报二维码表';
 
 -- ----------------------------
 -- Table structure for ctw_push_log
@@ -1133,7 +1133,7 @@ CREATE TABLE `ctw_push_log` (
   `sid222` varchar(40) DEFAULT NULL,
   `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=503 DEFAULT CHARSET=utf8 COMMENT='5.2.13推广记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.13推广记录表';
 
 -- ----------------------------
 -- Table structure for ctw_role
@@ -1149,7 +1149,7 @@ CREATE TABLE `ctw_role` (
   `data_state` tinyint(1) unsigned DEFAULT NULL COMMENT '数据状态：0删除，1正常',
   PRIMARY KEY (`id`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='5.2.2角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.2角色表';
 
 -- ----------------------------
 -- Table structure for ctw_seller_cate
@@ -1166,7 +1166,7 @@ CREATE TABLE `ctw_seller_cate` (
   PRIMARY KEY (`id`),
   KEY `cid` (`cid`),
   KEY `index_status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_seller_list
@@ -1192,7 +1192,7 @@ CREATE TABLE `ctw_seller_list` (
   PRIMARY KEY (`id`),
   KEY `index_status` (`status`),
   KEY `index_recommend` (`recommend`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_seller_list_cate
@@ -1203,7 +1203,7 @@ CREATE TABLE `ctw_seller_list_cate` (
   `cate_id` int(11) NOT NULL,
   KEY `list_id` (`list_id`),
   KEY `cate_id` (`cate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_seller_list_goods
@@ -1224,7 +1224,7 @@ CREATE TABLE `ctw_seller_list_goods` (
   PRIMARY KEY (`id`),
   KEY `seller_list_id` (`seller_list_id`),
   KEY `seller_cate_id` (`seller_cate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_send_email_log
@@ -1242,7 +1242,7 @@ CREATE TABLE `ctw_send_email_log` (
   `message` varchar(1024) NOT NULL,
   `result` varchar(1024) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_seo
@@ -1256,7 +1256,7 @@ CREATE TABLE `ctw_seo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   KEY `actionname` (`actionname`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_setting
@@ -1268,7 +1268,7 @@ CREATE TABLE `ctw_setting` (
   `data` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_ucenter
@@ -1277,7 +1277,7 @@ DROP TABLE IF EXISTS `ctw_ucenter`;
 CREATE TABLE `ctw_ucenter` (
   `name` varchar(255) DEFAULT NULL,
   `value` varchar(10000) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user
@@ -1300,7 +1300,7 @@ CREATE TABLE `ctw_user` (
   UNIQUE KEY `id` (`id`),
   KEY `add_time` (`add_time`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_comments
@@ -1318,7 +1318,7 @@ CREATE TABLE `ctw_user_comments` (
   PRIMARY KEY (`id`),
   KEY `index_pid` (`pid`),
   KEY `index_status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_consignee
@@ -1340,7 +1340,7 @@ CREATE TABLE `ctw_user_consignee` (
   `create_time` int(11) NOT NULL DEFAULT '0',
   `fax_phone` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_follow
@@ -1354,7 +1354,7 @@ CREATE TABLE `ctw_user_follow` (
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `fans_id` (`fans_id`,`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_history
@@ -1367,7 +1367,7 @@ CREATE TABLE `ctw_user_history` (
   `add_time` int(10) NOT NULL DEFAULT '0',
   `info` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_info
@@ -1398,7 +1398,7 @@ CREATE TABLE `ctw_user_info` (
   PRIMARY KEY (`id`),
   KEY `integral` (`integral`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_msg
@@ -1413,7 +1413,7 @@ CREATE TABLE `ctw_user_msg` (
   `del` tinyint(1) NOT NULL,
   `date` int(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_openid
@@ -1429,7 +1429,7 @@ CREATE TABLE `ctw_user_openid` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `openid` (`openid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_setmsg
@@ -1440,7 +1440,7 @@ CREATE TABLE `ctw_user_setmsg` (
   `key` varchar(20) NOT NULL,
   `val` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_user_tixian
@@ -1461,7 +1461,7 @@ CREATE TABLE `ctw_user_tixian` (
   `alipay` varchar(255) DEFAULT NULL,
   `is_money` int(1) DEFAULT '1' COMMENT '1表示钱2表示集分宝',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_wegoapi
@@ -1471,7 +1471,7 @@ CREATE TABLE `ctw_wegoapi` (
   `name` varchar(100) NOT NULL,
   `data` text NOT NULL,
   KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_word
@@ -1489,7 +1489,7 @@ CREATE TABLE `ctw_word` (
   KEY `status` (`status`),
   KEY `cid` (`cid`),
   KEY `word` (`word`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ctw_word_cate
@@ -1501,4 +1501,4 @@ CREATE TABLE `ctw_word_cate` (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

@@ -1,7 +1,4 @@
 <include file="public:header" />
-
-
-
 <body class="fixed-left">
     <!-- Begin page -->
     <div id="wrapper">
@@ -90,7 +87,7 @@
                                                     <select class="form-control" name="shop_id">
                                                         <option value="0">全部</option>
                                                         <volist name="shops" id="val">
-                                                            <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                            <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
                                             </select>
                                             </div>
                                             <label class="col-sm-1 control-label">分销平台</label>
@@ -98,7 +95,7 @@
                                                 <select class="form-control" name="platform_id">
                                                     <option value="0">全部</option>
                                                     <volist name="platforms" id="val">
-                                                        <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                        <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
                                                 </select>
                                             </div>
                                             <!-- 商城 -->
@@ -108,7 +105,7 @@
                                                 <select class="form-control" name="shop_id" disabled="disabled">
                                                     <option value="0">全部</option>
                                                     <volist name="shops" id="val">
-                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
                                                 </select>
                                             </div>
                                             <label class="col-sm-1 control-label">分销平台</label>
@@ -116,7 +113,7 @@
                                                 <select class="form-control" name="platform_id" disabled="disabled">
                                                     <option value="0">CPS</option>
                                                     <!-- <volist name="platforms" id="val">
-                                                    <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist> --></select>
+                                                    <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist> --></select>
                                             </div>
                                             <!-- 分行 -->
                                             <else />
@@ -125,7 +122,7 @@
                                                 <select class="form-control" name="shop_id">
                                                     <option value="0">全部</option>
                                                     <volist name="shops" id="val">
-                                                        <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                        <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
                                                 </select>
                                             </div>
                                             <label class="col-sm-1 control-label">分销平台</label>
@@ -133,7 +130,7 @@
                                                 <select class="form-control" name="platform_id" disabled="disabled">
                                                     <option value="0">全部</option>
                                                     <volist name="platforms" id="val">
-                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
                                                 </select>
                                             </div>
                                             </if>
@@ -256,7 +253,7 @@
                                 <div class="col-sm-3">
                                     <select class="form-control" name="shop_id">
                                         <volist name="shops" id="val">
-                                            <option value="{$val.id}" <if condition="$contract_info['shop_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                            <option value="{$val.id}" <if condition="$contract_info['shop_id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
                                     </select>
                                 </div>
                                 <p style="min-height:10px; display: block;">&nbsp;</p>
@@ -272,7 +269,7 @@
                                 <div class="col-sm-3">
                                     <select class="form-control" name="platform_id">
                                         <volist name="platforms" id="val">
-                                            <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                            <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
                                     </select>
                                 </div>
                                 <label class="col-sm-1 control-label">收款方</label>
@@ -319,53 +316,7 @@
                                 <p style="min-height:10px; display: block;">&nbsp;</p></form>
                                 </div>
                                 </if>
-                                <!-- <div class="table-responsive" id="rizhi">
-                                <div class="col-sm-12">
-                                <form role="form" method="post" action="{:u('contract/index')}">
-                                <label class="col-sm-1 control-label">开始时间</label>
-                                <div class="col-sm-3">
-                                <div class="input-group">
-                                <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose5" name="begin_time" value="{$begin_time}">
-                                <span class="input-group-addon bg-custom b-0 text-white">
-                                <i class="icon-calender"></i></span></div></div>
-                                <label class="col-sm-1 control-label">结束时间</label>
-                                <div class="col-sm-3">
-                                <div class="input-group">
-                                <input type="text" class="form-control"  data-date-format="yyyy-mm-dd" id="datepicker-autoclose6" name="end_time" value="{$end_time}">
-                                <span class="input-group-addon bg-custom b-0 text-white">
-                                <i class="icon-calender"></i></span></div></div>
-                                <label class="col-sm-1 control-label" for="contractNumber">修改人</label>
-                                <div class="col-sm-3">
-                                <input type="text" id="contractNumber" name="user_id" class="form-control" placeholder="" value="{$user_id}"></div>
-                                <p style="min-height:10px; display: block;">&nbsp;</p>
-                                <label class="col-sm-1 control-label">登录IP</label>
-                                <div class="col-sm-3">
-                                <input type="text" id="contractNumber" name="ip" class="form-control" placeholder="" value="{$ip}"></div>
-                                <label class="col-sm-1 control-label" for="contractNumber">修改内容</label>
-                                <div class="col-sm-3">
-                                <input type="text" id="contractNumber" name="op_desc" class="form-control" placeholder="" value="{$op_desc}"></div>
-                                <div class="col-sm-1">
-                                <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="2">查询</button></div></form>
-                                <p style="min-height:10px; display: block;">&nbsp;</p>
-                                <p style="min-height:10px; display: block;">&nbsp;</p></div></div>
-                                <table class="table table-hover mails m-0">
-                                <thead>
-                                <tr>
-                                <th>id</th>
-                                <th>修改人</th>
-                                <th>登录IP</th>
-                                <th>修改内容</th>
-                                <th>修改时间</th></tr></thead>
-                                <tbody>
-                                <volist name="log_list" id="v">
-                                <tr>
-                                <td>{$v.log_id}</td>
-                                <td>{$v.user_id}</td>
-                                <td>{$v.ip}</td>
-                                <td>{$v.op}{$v.op_object}</td>
-                                <td>{$v.op_time}</td></tr></volist></table>
-                                <div id="pages">{$page2}</div></div> -->
-                                <!-- <div class="table-responsive" id="daochu"></div> --></div>
+                            </div>
                         </div>
                         <!-- end row --></div>
                     <!-- END wrapper -->

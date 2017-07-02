@@ -105,9 +105,7 @@ INSERT INTO `ctw_adboard` VALUES ('4', '详细页横幅', 'banner', '950', '100'
 INSERT INTO `ctw_adboard` VALUES ('5', '详细页右侧', 'banner', '226', '226', '', '1');
 INSERT INTO `ctw_adboard` VALUES ('6', '首页下方横幅', 'banner', '960', '100', '', '0');
 
--- ----------------------------
--- Records of ctw_admin
--- ----------------------------
+
 -- ----------------------------
 -- Records of ctw_album
 -- ----------------------------
@@ -129,26 +127,6 @@ INSERT INTO `ctw_album_cate` VALUES ('5', '鞋子', '1338789120', '0', '2', '1')
 INSERT INTO `ctw_album_items` VALUES ('1', '1', '1', '', '1489544175');
 
 
--- ----------------------------
--- Records of ctw_album_recommend
--- ----------------------------
-
--- ----------------------------
--- Records of ctw_article
--- ----------------------------
-INSERT INTO `ctw_article` VALUES ('1', '0', '民生银行CPS联盟系统', '', '', '', '', '测试内容<img src=\"/data/news/image/20170524/20170524134240_96704.png\" alt=\"\" />', '2017-07-27 00:30:14', '0', '0', '1', '1', '', '', '', '5', '1', '2017-05-05 11:02:48', '1', '');
-INSERT INTO `ctw_article` VALUES ('21', '0', '给商城角色管理员的公告', '', '', '', '', '测试内容', '2017-05-05 00:39:31', '0', '0', '0', '1', '', '', '', '3', '1', '2017-05-05 02:05:27', '1', '');
-INSERT INTO `ctw_article` VALUES ('22', '0', '国际品牌包包免费试用 ', '', '', '', '', '测试内容', '2017-05-05 00:45:53', '0', '0', '0', '1', '', '', '', '0', '1', '2017-05-05 00:45:53', '1', '');
-INSERT INTO `ctw_article` VALUES ('23', '0', '333333', '', '', '', '', '测试内容', '2017-05-05 00:51:49', '0', '0', '0', '1', '', '', '', '0', '1', '2017-05-05 00:51:49', '3', '');
-INSERT INTO `ctw_article` VALUES ('24', '0', '民生银行CPS联盟系统222', '', '', '', '', '测试内容', '2017-05-05 01:12:26', '0', '0', '0', '1', '', '', '', '4', '1', '2017-05-05 02:14:29', '3', '');
-INSERT INTO `ctw_article` VALUES ('25', '0', '单个分行管理员有权限浏览test', '', '', '', '', '测试内容', '2017-05-05 01:53:25', '0', '0', '0', '1', '', '', '', '4', '1', '2017-05-05 10:59:19', '3', '');
-INSERT INTO `ctw_article` VALUES ('26', '0', '全部test', '', '', '', '', '测试内容', '2017-05-05 02:56:04', '0', '0', '0', '0', '', '', '', '0', '1', '2017-05-05 10:59:04', '3', '');
-INSERT INTO `ctw_article` VALUES ('28', '0', 'test', '', '', '', '', '测试内容', '2017-05-06 17:17:33', '0', '0', '0', '0', '', '', '', '0', '1', '2017-05-06 17:17:33', '3', '');
-INSERT INTO `ctw_article` VALUES ('27', '0', '测试附件', '', '', '', '', '<p>\r\n	测试内容<img src=\"/data/news/image/20170524/20170524134137_77269.png\" alt=\"\" />\r\n</p>', '2017-05-06 11:58:50', '0', '0', '0', '1', '', '', '', '0', '1', '2017-05-24 13:37:51', '3', '');
-INSERT INTO `ctw_article` VALUES ('29', '0', '20170602ok', '', '', '', '', '<p>20170602ok<br></p>', '2017-06-02 12:53:11', '0', '0', '0', '1', '', '', '', '0', '1', '2017-06-02 12:53:11', '19', '');
-INSERT INTO `ctw_article` VALUES ('30', '0', 'test', '', '', '', '', '<p>test</p>', '2017-06-02 12:53:38', '0', '0', '0', '1', '', '', '', '0', '1', '2017-06-02 12:53:38', '19', '');
-INSERT INTO `ctw_article` VALUES ('31', '0', 'lala', '', '', '', '', '<p>test</p>', '2017-06-02 12:54:05', '0', '0', '0', '1', '', '', '', '0', '1', '2017-06-02 12:54:05', '19', '');
-INSERT INTO `ctw_article` VALUES ('32', '0', 'ok', '', '', '', '', '<p>ddd</p>', '2017-06-02 19:51:57', '0', '0', '0', '1', '', '', '', '0', '1', '2017-06-02 19:52:09', '19', '');
 
 -- ----------------------------
 -- Records of ctw_article_cate
@@ -159,10 +137,6 @@ INSERT INTO `ctw_article_cate` VALUES ('9', '热门活动', 'activity', '10', '0
 INSERT INTO `ctw_article_cate` VALUES ('10', '资讯活动', 'news', '0', '0', '3', '1', '网站资讯', '', '');
 INSERT INTO `ctw_article_cate` VALUES ('11', '网站帮助', 'sites', '0', '0', '4294967289', '0', '', '', '');
 
--- ----------------------------
--- Records of ctw_article_copy
--- ----------------------------
-INSERT INTO `ctw_article_copy` VALUES ('1', '0', '民生银行CPS联盟系统', '', '', '', '', '<p>\r\n	<img src=\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCAF3BEMDAREAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD+/igAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgAoAKACgD8U/+CsWv6VL8Q/2Uvg14t+JGqeCPDvxh1Txv4p0HxLrHx0+CP7Ovw8+EHxD/Z5i0Pxz4d+KEPxo8V/sgfH74n+B/HuvN4rXwjoWueB/FnheKOWDTPC0Vi8HirxXcXH6/wCGFCqsBxPm2Fy+ljK+U0sFhq+HpZLnOf4/NcBn0q+Cr5c8ow3FeR5djMDRWF+tV6ONwuJbjKpiXNSwuHivzDxBrU3jMgyzEY2phaOY1MVXo16ua5Xk2Dy7GZOqWKo49ZniOHM3x+Fxdb26w9KrhcRQSapYdQaxGIlL8zvG37dfhX4rQfFjxh8Qvib+1H8RPix+wL4p1H4ofDnSfDPxP/Yi8W/s0eMfI+Mfwm/Z8sfi54Y8ZwfsEaFpnifxTp+p/FO48UfCfWfFHwK1/wD4RvQLc+KfAvjPw54m8RXkdv8AoeC4LxOWPLcJgMu4bwGWcb4alluYVcTlvGOF4hwvNlOaZ7PK8ThJcb1qmGw1SnlccNmlHDZ1Q+sV5/VcbhMRh8PFz+HxPFeHzBZjicZjs+xmYcI4iePwVOhj+FsRkeJ5czy7J4ZjQxS4RpU6+IhUzB18vq18qrexox9vhcVRr1pcv9ZO
 -- ----------------------------
 -- Records of ctw_auto_collect
 -- ----------------------------
@@ -182,29 +156,62 @@ INSERT INTO `ctw_collect_taobao` VALUES ('449', '1489541728');
 -- ----------------------------
 -- Records of ctw_commission
 -- ----------------------------
+INSERT INTO `ctw_commission` VALUES ('1', '1', '20', '222.00', '', '2', '0', '1', '1489544101', '0', '4', null, '1', '0.00', null, '1', null, null, '5', '0', '44.40', '122', null, '民生银行CPS联盟系统1', null, '包包', '1', 'https://img11.360buyimg.com/n5/s54x54_jfs/t1162/354/1456287413/207165/86d608e2/572f631fNee6ec9db.jpg', 'https://item.jd.com/2888226.html');
+INSERT INTO `ctw_commission` VALUES ('2', '2', '10', '222.00', null, '0', '0', '1', '1494265139', '3', '4', null, '1', '0.00', null, '1', '1494265139', null, '5', '0', '44.40', '122', null, '厦门分行', null, '包包', '1', 'https://img11.360buyimg.com/n5/s54x54_jfs/t1162/354/1456287413/207165/86d608e2/572f631fNee6ec9db.jpg', 'https://item.jd.com/2888226.html');
+INSERT INTO `ctw_commission` VALUES ('3', '3', '10', '222.00', null, '0', '0', '1', '1494265139', '3', '4', null, '1', '0.00', null, '1', '1494265139', null, '5', '0', '44.40', '122', null, '民生银行CPS联盟系统3', null, '包包', '1', 'https://img11.360buyimg.com/n5/s54x54_jfs/t1162/354/1456287413/207165/86d608e2/572f631fNee6ec9db.jpg', 'https://item.jd.com/2888226.html');
+INSERT INTO `ctw_commission` VALUES ('4', '4', '10', '222.00', null, '0', '0', '1', '1494265139', '3', '4', null, '1', '0.00', null, '1', '1494265139', null, '5', '0', '44.40', '122', null, '民生银行CPS联盟系统4', null, '包包', '1', 'https://img11.360buyimg.com/n5/s54x54_jfs/t1162/354/1456287413/207165/86d608e2/572f631fNee6ec9db.jpg', 'https://item.jd.com/2888226.html');
+INSERT INTO `ctw_commission` VALUES ('5', '5', '10', '222.00', null, '0', '0', '1', '1494265140', '3', '4', null, '1', '0.00', null, '1', '1494265140', null, '5', '0', '44.40', '122', null, '民生银行CPS联盟系统5', null, '包包', '1', 'https://img11.360buyimg.com/n5/s54x54_jfs/t1162/354/1456287413/207165/86d608e2/572f631fNee6ec9db.jpg', 'https://item.jd.com/2888226.html');
+INSERT INTO `ctw_commission` VALUES ('6', '6', '10', '222.00', null, '0', '0', '1', '1494265140', '3', '4', null, '1', '0.00', null, '1', '1494265140', null, '5', '0', '44.40', '122', null, '民生银行CPS联盟系统6', null, '包包', '1', 'https://img11.360buyimg.com/n5/s54x54_jfs/t1162/354/1456287413/207165/86d608e2/572f631fNee6ec9db.jpg', 'https://item.jd.com/2888226.html');
 
 -- ----------------------------
 -- Records of ctw_contract
 -- ----------------------------
+INSERT INTO `ctw_contract` VALUES ('1', 's10001', '民生银行CPS联盟系统1', null, '', '2', '0', '0', '1', '1489544101', '3', '5', '', '', '', null, '1', '12.00', '3', '1', '1494066023', '商家', '3', '民生银行信用卡中心', '1494066131', '1550678400');
+INSERT INTO `ctw_contract` VALUES ('2', 's10002', '厦门分行', null, null, '0', '0', '0', '0', '1489544101', '3', '5', null, '', '', null, '1', '12.00', '3', '1', '1494066023', '商家', '3', '民生银行信用卡中心', '1494066131', '1550678400');
+INSERT INTO `ctw_contract` VALUES ('3', 's10003', '民生银行CPS联盟系统3', null, null, '0', '0', '0', '1', '1489544101', '3', '5', null, '', '', null, '1', '11.00', '3', '1', '1494066023', '商家', '3', '民生银行信用卡中心', '1494066131', '1550678400');
+INSERT INTO `ctw_contract` VALUES ('4', 's10004', '民生银行CPS联盟系统4', null, null, '0', '0', '0', '1', '1489544101', '3', '5', null, '', '', null, '1', '11.00', '22', '1', '1494066023', '商家', '3', '民生银行信用卡中心', '1494066131', '1550678400');
 
 -- ----------------------------
 -- Records of ctw_exchange_goods
 -- ----------------------------
+INSERT INTO `ctw_exchange_goods` VALUES ('2', '自然堂CHCEDO 雪域精粹系列 四件套装 洗+水+乳+霜 (凝润型) 补水', '1', './data/exchangegoods/503473aa672c6.jpg', '自然堂CHCEDO 雪域精粹系列 四件套装 洗+水+乳+霜 (凝润型) 补水', '5000', '10', '0', '1', '1', '0', '0', '1345478400', '1608566400', '100', '1', '自然堂CHCEDO 雪域精粹系列 四件套装 洗+水+乳+霜 (凝润型) 补水', '自然堂CHCEDO 雪域精粹系列 四件套装 洗+水+乳+霜 (凝润型) 补水', '自然堂CHCEDO 雪域精粹系列 四件套装 洗+水+乳+霜 (凝润型) 补水');
+INSERT INTO `ctw_exchange_goods` VALUES ('3', '沙宣修护水养套装（洗发露750ml+润发乳400ml+发质重塑发膜150ml）', '1', './data/exchangegoods/5034740bc7671.jpg', '沙宣修护水养套装（洗发露750ml+润发乳400ml+发质重塑发膜150ml）', '40000', '10', '0', '1', '1', '0', '0', '1345564800', '1666281600', '100', '1', '沙宣修护水养套装（洗发露750ml+润发乳400ml+发质重塑发膜150ml）', '沙宣修护水养套装（洗发露750ml+润发乳400ml+发质重塑发膜150ml）', '沙宣修护水养套装（洗发露750ml+润发乳400ml+发质重塑发膜150ml）');
+INSERT INTO `ctw_exchange_goods` VALUES ('4', 'IPHONE 4s 16G原价4999现在只需要50000积分，快快赚取积分吧', '1', './data/exchangegoods/5034749736066.jpg', 'IPHONE 4s 16G原价4999现在只需要50000积分', '50000', '1', '0', '1', '1', '0', '0', '1345478400', '1608566400', '100', '1', 'IPHONE 4s 16G原价4999现在只需要50000积分', 'IPHONE 4s 16G原价4999现在只需要50000积分', 'IPHONE 4s 16G原价4999现在只需要50000积分');
+INSERT INTO `ctw_exchange_goods` VALUES ('5', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '1', './data/exchangegoods/503474ff36995.jpg', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）<img src=\"/data/news/image/20170315/20170315114353_26081.jpg\" alt=\"\" />', '1', '1000', '4', '1', '100', '0', '0', '1345478400', '1769616000', '100', '1', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）');
 
 -- ----------------------------
 -- Records of ctw_exchange_order
 -- ----------------------------
+INSERT INTO `ctw_exchange_order` VALUES ('1', '20170315114601181', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '0', '1', '0', '1489549561', '1489549561', '366200', '0', '0', '0', '0', '福建省厦门市集美区', '18888888888@163.com', '18888888888', '05922222222', '', '', '', '1569501393', '街墙', '4', 'jieqiang', '', '', '1', '5');
+INSERT INTO `ctw_exchange_order` VALUES ('2', '20170315115024352', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '0', '1', '0', '1489549824', '1489549824', '366200', '0', '0', '0', '0', '福建省厦门市集美区', '18888888888@163.com', '18888888888', '05922222222', '', '', '', '1569501393', '街墙', '4', 'jieqiang', '', '', '1', '5');
+INSERT INTO `ctw_exchange_order` VALUES ('3', '20170315115028886', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '0', '1', '0', '1489549828', '1489549828', '366200', '0', '0', '0', '0', '福建省厦门市集美区', '18888888888@163.com', '18888888888', '05922222222', '', '', '', '1569501393', '街墙', '4', 'jieqiang', '', '', '1', '5');
+INSERT INTO `ctw_exchange_order` VALUES ('4', '20170315115313461', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '0', '1', '0', '1489549993', '1489549993', '366200', '0', '0', '0', '0', '福建省厦门市集美区', '18888888888@163.com', '18888888888', '05922222222', '', '', '', '1569501393', '街墙', '4', 'jieqiang', '', '', '1', '5');
+INSERT INTO `ctw_exchange_order` VALUES ('5', '20170315115558567', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '0', '1', '0', '1489550158', '1489550158', '366200', '0', '0', '0', '0', '福建省厦门市集美区', '18888888888@163.com', '18888888888', '05922222222', '', '', '', '1569501393', '街墙', '4', 'jieqiang', '', '', '1', '5');
+INSERT INTO `ctw_exchange_order` VALUES ('6', '20170315124723967', '佳能（Canon） Power Shot A4000 IS 数码相机 红色（1600万像素 3.0液晶屏 8倍光变 28mm广角）', '1', '1', '0', '1489553243', '1489553243', '366200', '0', '0', '0', '0', '福建省厦门市集美区', '18888888888@163.com', '18888888888', '05922222222', '', '', '', '1569501393', '街墙', '4', 'jieqiang', '阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发阿斯顿发沙发', '', '1', '5');
 
 -- ----------------------------
 -- Records of ctw_file
 -- ----------------------------
+INSERT INTO `ctw_file` VALUES ('106', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '0000-00-00 00:00:00', '0', '0', '0', '0', '0', '0', null, '0', '0', '61', '1', '商品名称', null, null, null, '', '', '1');
+INSERT INTO `ctw_file` VALUES ('107', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:02:33', '0', '0', '0', '1', '0', '1', '0000-00-00 00:00:00', '1', '0', '2', '101', '商品名称', null, null, null, '', '', '1');
+INSERT INTO `ctw_file` VALUES ('108', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:03:06', '0', '0', '0', '1', '0', '1', '0000-00-00 00:00:00', '1', '0', '3', '102', '商品名称', null, null, null, '', '', '1');
+INSERT INTO `ctw_file` VALUES ('109', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:05:36', '0', '0', '0', '1', '0', '1', '2017-05-21 23:05:36', '1', '0', '4', '3', '商品名称', null, null, null, '', '', '1');
+INSERT INTO `ctw_file` VALUES ('110', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:16:45', '0', '0', '0', '1', '0', '1', '2017-05-21 23:16:45', '1', '0', '8', '104', '商品名称', null, null, null, '', '', '1');
+INSERT INTO `ctw_file` VALUES ('111', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:18:23', '0', '0', '0', '1', '0', '1', '2017-05-21 23:18:23', '1', '0', '987', '105', '商品名称', null, null, null, '', '', '1');
+INSERT INTO `ctw_file` VALUES ('112', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:21:53', '0', '0', '0', '1', '0', '1', '2017-05-21 23:21:53', '1', '0', '661', '107', '商品名称', null, null, null, '', '', '1');
 
 -- ----------------------------
 -- Records of ctw_find_password_log
 -- ----------------------------
+INSERT INTO `ctw_find_password_log` VALUES ('1', 'c3fcd98a123da79c81a88f72a71680ee', '1496395404', '127.0.0.1', '2', '0', '', '', '', '');
+INSERT INTO `ctw_find_password_log` VALUES ('2', '636e6fca61078b2500d3407a7792418c', '1496395535', '127.0.0.1', '2', '0', '', '', '', '');
+INSERT INTO `ctw_find_password_log` VALUES ('3', '7fbb8abbd0d7a2228d5e8e1c48a6d3e4', '1496396247', '127.0.0.1', '2', '0', '', '', '', '');
 -- ----------------------------
 -- Records of ctw_flink
 -- ----------------------------
+INSERT INTO `ctw_flink` VALUES ('2', '1', '4f8ceab7e6f6c.jpg', '微购官网', 'http://www.wego360.com', '1', '1');
+INSERT INTO `ctw_flink` VALUES ('5', '2', null, '59秒开放平台', 'http://www.59miao.com', '1', '99');
+INSERT INTO `ctw_flink` VALUES ('6', '2', null, '精品网', 'http://jingpin.59miao.com', '1', '99');
 
 
 -- ----------------------------
@@ -213,62 +220,19 @@ INSERT INTO `ctw_collect_taobao` VALUES ('449', '1489541728');
 INSERT INTO `ctw_flink_cate` VALUES ('1', '友情链接');
 INSERT INTO `ctw_flink_cate` VALUES ('2', '合作伙伴');
 
--- ----------------------------
--- Table structure for ctw_focus
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_focus`;
-CREATE TABLE `ctw_focus` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cate_id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `abst` text NOT NULL,
-  `clicks` int(10) NOT NULL DEFAULT '0',
-  `ordid` smallint(4) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`),
-  KEY `ordid` (`ordid`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
 -- Records of ctw_focus
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_focus_cate
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_focus_cate`;
-CREATE TABLE `ctw_focus_cate` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `width` smallint(6) NOT NULL DEFAULT '0',
-  `height` smallint(6) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+INSERT INTO `ctw_focus` VALUES ('9', '1', 'NOP新秋新体验，8折购新品，限时一周。', '?a=index&m=cate&cid=3', './data/focus/5051891a9e924.jpg', '', '154', '0', '1');
+INSERT INTO `ctw_focus` VALUES ('10', '1', '格子控女生', '?a=index&m=cate&cid=5', './data/focus/5051892acdd67.jpg', '', '105', '0', '1');
+INSERT INTO `ctw_focus` VALUES ('7', '1', '悦己网时装周，2件6折，3件4折。', '?a=index&m=cate&cid=7', './data/focus/50518986355f9.jpg', '', '95', '0', '1');
 
 -- ----------------------------
 -- Records of ctw_focus_cate
 -- ----------------------------
 INSERT INTO `ctw_focus_cate` VALUES ('1', '首页焦点', '580', '280');
-
--- ----------------------------
--- Table structure for ctw_group
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_group`;
-CREATE TABLE `ctw_group` (
-  `id` smallint(3) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(25) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `create_time` int(11) unsigned NOT NULL,
-  `update_time` int(11) unsigned NOT NULL DEFAULT '0',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `sort` smallint(3) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`),
-  KEY `sort` (`sort`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_group
@@ -283,295 +247,54 @@ INSERT INTO `ctw_group` VALUES ('28', 'cash_back', '返利管理', '1340615780',
 INSERT INTO `ctw_group` VALUES ('29', 'other', '其他管理', '1345776358', '0', '1', '7');
 
 -- ----------------------------
--- Table structure for ctw_items
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_items`;
-CREATE TABLE `ctw_items` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `cid` smallint(4) DEFAULT NULL COMMENT '分类id',
-  `item_key` varchar(50) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL COMMENT '标题',
-  `img` varchar(255) DEFAULT '' COMMENT '商品图片URL',
-  `simg` varchar(255) DEFAULT NULL,
-  `bimg` varchar(255) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL COMMENT '单价',
-  `url` varchar(1000) DEFAULT '' COMMENT '商品链接URL',
-  `sid` smallint(4) NOT NULL DEFAULT '0',
-  `hits` int(10) NOT NULL DEFAULT '0',
-  `likes` int(10) NOT NULL DEFAULT '0' COMMENT '喜欢数',
-  `browse_num` int(10) NOT NULL,
-  `haves` int(10) NOT NULL DEFAULT '0' COMMENT '库存数',
-  `comments` int(10) NOT NULL DEFAULT '0' COMMENT '评论数',
-  `comments_last` text COMMENT '最近的N条评论',
-  `is_index` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
-  `add_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `uid` int(10) NOT NULL DEFAULT '0',
-  `seo_title` varchar(255) DEFAULT NULL,
-  `seo_keys` varchar(255) DEFAULT NULL,
-  `sort_order` int(10) DEFAULT '0',
-  `seo_desc` text,
-  `cash_back_rate` varchar(40) NOT NULL,
-  `seller_name` varchar(100) NOT NULL,
-  `remark` varchar(50) DEFAULT NULL,
-  `remark_status` tinyint(6) DEFAULT '1',
-  `is_collect_comments` int(1) DEFAULT '0' COMMENT '是否采集了淘宝评论1表示已经采集了淘宝评论',
-  `data_state` tinyint(1) DEFAULT '1' COMMENT '数据状态：0删除，1正常',
-  `update_time` int(10) unsigned DEFAULT NULL COMMENT '修改时间',
-  `item_id` int(10) unsigned NOT NULL COMMENT '对方商品库id',
-  `shop_id` int(10) unsigned NOT NULL COMMENT '商城id',
-  `qrcode` varchar(1000) DEFAULT NULL COMMENT '二维码图片URL',
-  `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
-  PRIMARY KEY (`id`),
-  KEY `cid` (`cid`),
-  KEY `is_index` (`is_index`),
-  KEY `title` (`title`),
-  KEY `index_sid` (`sid`),
-  KEY `uid` (`uid`),
-  KEY `item_key` (`item_key`)
-) ENGINE=MyISAM AUTO_INCREMENT=220 DEFAULT CHARSET=utf8 COMMENT='5.2.6推广商品表';
-
--- ----------------------------
--- Records of ctw_items
--- ----------------------------
-
--- ----------------------------
 -- Records of ctw_items_cate
 -- ----------------------------
--- ----------------------------
--- Table structure for ctw_items_comments
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_items_comments`;
-CREATE TABLE `ctw_items_comments` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `items_id` int(11) NOT NULL DEFAULT '0',
-  `uid` int(10) NOT NULL,
-  `uname` varchar(50) DEFAULT NULL,
-  `info` text NOT NULL,
-  `add_time` int(11) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+INSERT INTO `ctw_items_cate` VALUES ('2', '鞋子', '鞋子', '', '0', '0', '0', '2', '', '1', '1', '0', '1', '', '', '', '', null, '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('3', '包包', '包包', '', '0', '0', '0', '3', '', '1', '1', '0', '1', '', '', '', '', null, '0', '0', '1');
+INSERT INTO `ctw_items_cate` VALUES ('4', '配饰', '配饰', '', '0', '0', '0', '4', '', '1', '1', '0', '1', '', '', '', '', null, '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('5', '美容', '美容', '', '0', '0', '0', '5', '', '1', '1', '0', '1', '', '', '', '', null, '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('6', '家居', '家居', '', '0', '0', '0', '6', '', '1', '1', '0', '1', '', '', '', '', null, '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('443', '数码', '数码', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('493', '家电', '家电', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('548', '女装', '女装', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('590', '男装', '男装', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('611', '护理', '护理', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('656', '美装', '美装', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('682', '母婴', '母婴', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('733', '美食', '美食', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('788', '宠物', '宠物', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('853', '运动', '运动', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('903', '鲜花', '鲜花', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('928', '汽车配件', '汽车配件', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', '', '', '', '0', '0', null);
+INSERT INTO `ctw_items_cate` VALUES ('1035', 'hhh', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1497708632', '1497708632', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1034', '商品分类1211', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1497059695', '1497059695', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1036', '666666', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1497935472', '1497935472', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1037', '平板电视', '', 'https://img11.360buyimg.com/n5/jfs/t3514/213/2256693815/416437/1bbb4c23/584cfbbfN25d205dd.jpg', '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1497936380', '1497936380', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1019', '日用', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496507948', '1496507948', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1024', '我是管理员哦', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496920620', '1496920620', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1025', '院系', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496920682', '1496920682', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1026', '1', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496920682', '1496920682', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1027', '商品分类121', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496921921', '1496921921', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1014', '数码3', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496045753', '1496045753', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1015', '食品3', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496045753', '1496045753', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1016', '美容3', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496045753', '1496045753', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1017', '家居3', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496045753', '1496045753', '1');
+INSERT INTO `ctw_items_cate` VALUES ('1018', '商品分类', '', null, '0', '0', '0', '0', '', '0', '1', '0', '1', '', '', null, '', null, '1496045932', '1496045932', '1');
 
--- ----------------------------
--- Records of ctw_items_comments
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_items_site
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_items_site`;
-CREATE TABLE `ctw_items_site` (
-  `id` smallint(4) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `alias` varchar(255) NOT NULL,
-  `site_domain` varchar(255) NOT NULL,
-  `site_logo` varchar(255) NOT NULL,
-  `collect_url` varchar(255) NOT NULL,
-  `collect_time` int(10) NOT NULL DEFAULT '0',
-  `item_nums` int(10) NOT NULL DEFAULT '0',
-  `type` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_items_site
 -- ----------------------------
+INSERT INTO `ctw_items_site` VALUES ('1', '淘宝', 'taobao', 'open.taobao.com', '4f62c63e7b59d.jpg', '', '0', '0', '1');
+INSERT INTO `ctw_items_site` VALUES ('2', '59秒', 'miao', 'www.59miao.com', '4fe7cefb6dde7.png', 'www.59miao.com', '0', '0', '1');
+INSERT INTO `ctw_items_site` VALUES ('3', '微购api', 'wego', 'api.wego360.com', 'asdf', ' ', '0', '0', '0');
 
--- ----------------------------
--- Table structure for ctw_items_tags
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_items_tags`;
-CREATE TABLE `ctw_items_tags` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `item_nums` int(11) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `seo_title` varchar(255) NOT NULL,
-  `seo_keys` varchar(255) NOT NULL,
-  `seo_desc` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ctw_items_tags
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_items_tags_cate
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_items_tags_cate`;
-CREATE TABLE `ctw_items_tags_cate` (
-  `cate_id` smallint(4) NOT NULL,
-  `tag_id` int(10) NOT NULL,
-  KEY `cate_id` (`cate_id`),
-  KEY `tag_id` (`tag_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ctw_items_tags_cate
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_items_tags_item
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_items_tags_item`;
-CREATE TABLE `ctw_items_tags_item` (
-  `item_id` int(10) NOT NULL,
-  `tag_id` int(10) NOT NULL,
-  KEY `item_id` (`item_id`),
-  KEY `tag_id` (`tag_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ctw_items_tags_item
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_items_user
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_items_user`;
-CREATE TABLE `ctw_items_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `iid` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `add_time` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `item_id` (`iid`),
-  KEY `uid` (`uid`),
-  KEY `item_id_2` (`item_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ctw_items_user
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_like_list
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_like_list`;
-CREATE TABLE `ctw_like_list` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `items_id` int(10) NOT NULL DEFAULT '0',
-  `uid` int(10) NOT NULL DEFAULT '0',
-  `add_time` bigint(12) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `uid` (`uid`),
-  KEY `add_time` (`add_time`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_like_list
 -- ----------------------------
 INSERT INTO `ctw_like_list` VALUES ('1', '1', '4', '1489544165');
 
--- ----------------------------
--- Table structure for ctw_miao_order
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_miao_order`;
-CREATE TABLE `ctw_miao_order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_time` varchar(20) DEFAULT NULL,
-  `seller_name` varchar(20) DEFAULT NULL,
-  `uid` int(11) NOT NULL,
-  `username` varchar(50) DEFAULT NULL,
-  `order_code` varchar(50) DEFAULT NULL,
-  `item_count` int(5) DEFAULT NULL,
-  `item_price` varchar(10) DEFAULT NULL,
-  `sales` varchar(20) DEFAULT NULL,
-  `commission` varchar(10) DEFAULT NULL,
-  `cash_back` varchar(10) DEFAULT NULL,
-  `status` varchar(20) NOT NULL COMMENT '//订单状态',
-  `is_update` int(1) NOT NULL DEFAULT '0' COMMENT '0表示未更新用户表，以及返现表，1表示已经更新，不需要再次更新',
-  `jiesuan_data` datetime NOT NULL COMMENT '结算日期',
-  `order_id` varchar(20) NOT NULL,
-  `cash_back_jifenbao` varchar(10) DEFAULT NULL,
-  `shop_id` bigint(10) unsigned NOT NULL COMMENT '商户id',
-  PRIMARY KEY (`id`),
-  KEY `order_id` (`order_id`),
-  KEY `order_code` (`order_code`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ctw_miao_order
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_nav
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_nav`;
-CREATE TABLE `ctw_nav` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `alias` varchar(50) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `sort_order` smallint(4) NOT NULL,
-  `system` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1-系统 0-自定义',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '导航位置1-顶部 2-底部',
-  `in_site` tinyint(1) NOT NULL COMMENT '1-本站内 0-站外',
-  `is_show` tinyint(1) NOT NULL DEFAULT '1',
-  `seo_title` varchar(255) NOT NULL,
-  `seo_keys` text NOT NULL,
-  `seo_desc` text NOT NULL,
-  `items_cate_id` int(11) DEFAULT NULL COMMENT '//分类id',
-  PRIMARY KEY (`id`),
-  KEY `is_show` (`is_show`),
-  KEY `type` (`type`),
-  KEY `sort_order` (`sort_order`),
-  KEY `alias` (`alias`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ctw_nav
--- ----------------------------
-INSERT INTO `ctw_nav` VALUES ('1', '逛宝贝', 'search', '', '1', '1', '1', '1', '1', '', '', '', '0');
-INSERT INTO `ctw_nav` VALUES ('2', '专辑', 'album', '', '2', '1', '1', '1', '1', '', '', '', '0');
-INSERT INTO `ctw_nav` VALUES ('3', '促销活动', 'promo', '', '3', '1', '1', '1', '1', '', '', '', '0');
-INSERT INTO `ctw_nav` VALUES ('4', '返现商家', 'seller', '', '4', '1', '1', '1', '1', '', '', '', null);
-INSERT INTO `ctw_nav` VALUES ('5', '积分商城', 'exchange_goods', '', '5', '1', '1', '1', '1', '', '', '', null);
-INSERT INTO `ctw_nav` VALUES ('7', '鞋子', 'xiezi', '', '8', '0', '1', '1', '1', '', '', '', '2');
-INSERT INTO `ctw_nav` VALUES ('8', '包包', 'baobao', '', '9', '0', '1', '1', '1', '', '', '', '3');
-INSERT INTO `ctw_nav` VALUES ('9', '配饰', 'peishi', '', '10', '0', '1', '0', '0', '', '', '', '0');
-INSERT INTO `ctw_nav` VALUES ('10', '美容', 'meirong', '', '11', '0', '1', '1', '1', '', '', '', '5');
-INSERT INTO `ctw_nav` VALUES ('11', '家居', 'jiaju', '', '12', '0', '1', '1', '1', '', '', '', '6');
-INSERT INTO `ctw_nav` VALUES ('14', '帮助中心', 'bangzhu', 'http://bbs.wego360.com', '0', '0', '1', '0', '0', '', '', '', '0');
-INSERT INTO `ctw_nav` VALUES ('15', '女装', 'nvzhuang', 'http://', '6', '0', '1', '1', '1', '', '', '', '548');
-INSERT INTO `ctw_nav` VALUES ('16', '男装', 'nanzhuang', 'http://', '7', '0', '1', '1', '1', '', '', '', '590');
-INSERT INTO `ctw_nav` VALUES ('17', '母婴', '母婴', 'http://', '13', '0', '1', '1', '1', '', '', '', '682');
-INSERT INTO `ctw_nav` VALUES ('18', '家电', 'jiadian', 'http://', '14', '0', '1', '1', '1', '', '', '', '493');
-INSERT INTO `ctw_nav` VALUES ('19', '美食', 'meishi', 'http://', '15', '0', '1', '1', '1', '', '', '', '733');
-
--- ----------------------------
--- Table structure for ctw_node
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_node`;
-CREATE TABLE `ctw_node` (
-  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `module` varchar(255) NOT NULL COMMENT '模块',
-  `module_name` varchar(50) NOT NULL COMMENT '模块名称',
-  `action` varchar(255) NOT NULL COMMENT '操作',
-  `action_name` varchar(50) DEFAULT NULL COMMENT '操作名称',
-  `data` varchar(255) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '0' COMMENT '状态',
-  `remark` varchar(255) DEFAULT NULL,
-  `sort` smallint(6) unsigned NOT NULL DEFAULT '0',
-  `auth_type` tinyint(1) NOT NULL DEFAULT '0',
-  `group_id` tinyint(3) unsigned DEFAULT '0',
-  `often` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-不常用 1-常用',
-  `is_show` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-不常用 1-常用',
-  `add_time` int(11) unsigned NOT NULL COMMENT '创建时间',
-  `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
-  `data_state` tinyint(1) DEFAULT NULL COMMENT '数据状态：0删除，1正常',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`),
-  KEY `module` (`module`),
-  KEY `auth_type` (`auth_type`),
-  KEY `is_show` (`is_show`),
-  KEY `group_id` (`group_id`),
-  KEY `sort` (`sort`)
-) ENGINE=MyISAM AUTO_INCREMENT=295 DEFAULT CHARSET=utf8 COMMENT='5.2.3节点表';
 
 -- ----------------------------
 -- Records of ctw_node
@@ -770,239 +493,193 @@ INSERT INTO `ctw_node` VALUES ('294', 'contract', '合同管理', 'log', '日志
 
 
 -- ----------------------------
--- Records of ctw_op_log
--- ----------------------------
-
--- ----------------------------
--- Records of ctw_orderlist
--- ----------------------------
-
--- ----------------------------
 -- Records of ctw_parameters
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_poster
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_poster`;
-CREATE TABLE `ctw_poster` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cate_id` tinyint(4) unsigned NOT NULL,
-  `title` varchar(255) NOT NULL COMMENT '标题',
-  `orig` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `path` varchar(255) NOT NULL COMMENT '文件路径',
-  `info` mediumtext NOT NULL COMMENT '信息',
-  `add_time` datetime NOT NULL,
-  `ordid` tinyint(4) NOT NULL,
-  `is_hot` tinyint(1) NOT NULL DEFAULT '0',
-  `is_best` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-待审核 1-已审核',
-  `platform_id` int(10) unsigned NOT NULL COMMENT '分销机构（发布的时候可指定全部或者具体分行、子机构的人员能看到）',
-  `data_state` tinyint(1) DEFAULT NULL COMMENT '数据状态：0删除，1正常',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-  `uid` int(10) NOT NULL DEFAULT '0' COMMENT '创建人',
-  `shop_id` int(10) unsigned DEFAULT '0' COMMENT '商户id',
-  `item_id` bigint(20) DEFAULT NULL COMMENT '商品id',
-  `origin_id` bigint(20) unsigned DEFAULT NULL COMMENT '商品原始id',
-  `origin_name` varchar(32) DEFAULT NULL COMMENT '商品原始title',
-  `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
-  PRIMARY KEY (`id`),
-  KEY `is_best` (`is_best`) USING BTREE,
-  KEY `add_time` (`add_time`) USING BTREE,
-  KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=438 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.15 海报二维码表';
+INSERT INTO `ctw_parameters` VALUES ('39', 'DONATE_STATUS', '3', '已申请', '捐赠状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('2', 'period', '1', '半月', '结算周期', '', '1');
+INSERT INTO `ctw_parameters` VALUES ('22', 'ORDER_TIME', '3', '11:00-12:00', '预约时间', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('5', 'period', '2', '一月', '结算周期', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('6', 'period', '3', '季度', '结算周期', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('7', 'period', '4', '年度', '结算周期', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('8', 'period', '5', '结算周期1', '结算周期', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('9', 'period', '6', '结算周期2', '结算周期', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('10', 'period', '7', '结算周期3', '结算周期', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('21', 'ORDER_TIME', '2', '10:00-11:00', '预约时间', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('11', 'check_status', '1', '已通过', '审核状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('12', 'check_status', '2', '审核中', '审核状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('13', 'check_status', '3', '已打回', '审核状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('14', 'payee', '1', '民生银行信用卡中心1', '收款方', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('15', 'payee', '2', '民生银行信用卡中心2', '收款方', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('16', 'payee', '3', '民生银行信用卡中心3', '收款方', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('17', 'payee', '4', '民生银行信用卡中心4', '收款方', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('18', 'settle_status', '0', '未结算', '结算状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('19', 'settle_status', '1', '已结算', '结算状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('20', 'settle_status', '2', '待审批', '结算状态', null, '0');
+INSERT INTO `ctw_parameters` VALUES ('23', 'ORDER_TIME', '4', '14:30-15:30', '预约时间', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('24', 'ORDER_TIME', '5', '15:30-16:30', '预约时间', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('25', 'ORDER_TIME', '6', '16:30-17:30', '预约时间', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('26', 'IDEA_STATUS', '0', '已处理', '金点子状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('27', 'IDEA_STATUS', '1', '待处理', '金点子状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('28', 'IDEA_STATUS', '2', '处理中', '金点子状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('34', 'CAMP_STATE', '1', '进行中', '活动状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('33', 'CAMP_STATE', '0', '已结束', '活动状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('40', 'OBJECT_TYPE', '1', '生活必需品', '置换类别', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('41', 'OBJECT_TYPE', '2', '装饰物品', '置换类别', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('42', 'OBJECT_TYPE', '3', '学习用品', '置换类别', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('43', 'OBJECT_TYPE', '4', '办公用品', '置换类别', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('44', 'SERVICE_TYPE', '1', '交通', '生活服务类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('45', 'SERVICE_TYPE', '2', '娱乐', '生活服务类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('46', 'SERVICE_TYPE', '3', '餐饮', '生活服务类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('47', 'SERVICE_TYPE', '4', '生活', '生活服务类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('48', 'SERVICE_TYPE', '5', '银行', '生活服务类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('49', 'SERVICE_TYPE', '6', '住宿', '生活服务类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('50', 'SERVICE_TYPE', '7', '购物', '生活服务类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('92', 'IDEA_TYPE', '1', '建议', '金点子类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('52', 'SERVICE_TYPE', '11', '公交站', '交通', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('53', 'SERVICE_TYPE', '12', '加油站', '交通', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('54', 'SERVICE_TYPE', '13', '停车场', '交通', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('55', 'SERVICE_TYPE', '19', '其他', '交通', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('56', 'SERVICE_TYPE', '21', 'KTV', '娱乐', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('57', 'SERVICE_TYPE', '22', '电影院', '娱乐', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('58', 'SERVICE_TYPE', '23', '酒吧', '娱乐', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('59', 'SERVICE_TYPE', '24', '网吧', '娱乐', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('60', 'SERVICE_TYPE', '29', '其他', '娱乐', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('61', 'SERVICE_TYPE', '31', '餐馆', '餐饮', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('62', 'SERVICE_TYPE', '32', '中餐', '餐饮', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('63', 'SERVICE_TYPE', '33', '西餐', '餐饮', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('64', 'SERVICE_TYPE', '34', '咖啡馆', '餐饮', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('65', 'SERVICE_TYPE', '39', '其他', '餐饮', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('66', 'SERVICE_TYPE', '41', '学校', '生活', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('67', 'SERVICE_TYPE', '42', '医院', '生活', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('68', 'SERVICE_TYPE', '43', '公园', '生活', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('69', 'SERVICE_TYPE', '49', '其他', '生活', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('70', 'SERVICE_TYPE', '501', '中国银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('71', 'SERVICE_TYPE', '502', '建设银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('72', 'SERVICE_TYPE', '503', '工商银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('73', 'SERVICE_TYPE', '504', '农业银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('74', 'SERVICE_TYPE', '505', '中国银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('75', 'SERVICE_TYPE', '506', '兴业银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('76', 'SERVICE_TYPE', '507', '招商银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('77', 'SERVICE_TYPE', '508', '厦门银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('78', 'SERVICE_TYPE', '509', '交通银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('79', 'SERVICE_TYPE', '510', '平安银行', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('80', 'SERVICE_TYPE', '511', '农村信用社', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('81', 'SERVICE_TYPE', '599', '其他', '银行', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('82', 'SERVICE_TYPE', '61', '宾馆', '住宿', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('83', 'SERVICE_TYPE', '62', '酒店', '住宿', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('84', 'SERVICE_TYPE', '63', '旅馆', '住宿', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('85', 'SERVICE_TYPE', '69', '其他', '住宿', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('86', 'SERVICE_TYPE', '71', '超市', '购物', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('87', 'SERVICE_TYPE', '72', '商场', '购物', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('88', 'SERVICE_TYPE', '73', '菜市场', '购物', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('89', 'SERVICE_TYPE', '74', '书店', '购物', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('90', 'SERVICE_TYPE', '75', '花店', '购物', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('91', 'SERVICE_TYPE', '79', '其他', '购物', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('93', 'EXCHANGE_STATUS', '0', '已处理', '置换状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('94', 'EXCHANGE_STATUS', '1', '进行中', '置换状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('95', 'EXCHANGE_STATUS', '2', '待审批', '置换状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('96', 'LOVE_STATE', '0', '已结束', '爱心帮扶状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('97', 'LOVE_STATE', '1', '进行中', '爱心帮扶状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('98', 'LOVE_STATE', '2', '待审批', '爱心帮扶状态', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('99', 'LOVE_TYPE', '1', '寻求帮助', '爱心帮扶类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('100', 'LOVE_TYPE', '2', '提供帮助', '爱心帮扶类型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('101', 'APART_TYPE', '1', '一室一厅', '户型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('102', 'APART_TYPE', '2', '两室一厅', '户型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('103', 'APART_TYPE', '3', '三室一厅', '户型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('104', 'APART_TYPE', '4', '一房', '户型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('105', 'APART_TYPE', '5', '两房', '户型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('106', 'APART_TYPE', '6', '三房', '户型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('107', 'DECOR_TYPE', '1', '精装', '装修', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('108', 'DECOR_TYPE', '2', '简装', '装修', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('109', 'DECOR_TYPE', '3', '毛胚', '装修', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('111', 'APART_TYPE', '7', '两室两厅', '户型', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('112', 'Rentmoney_TYPE', '1', '0~500', '租金', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('113', 'Rentmoney_TYPE', '2', '500~1000', '租金', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('114', 'Rentmoney_TYPE', '3', '1000~2000', '租金', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('115', 'Rentmoney_TYPE', '4', '2000~3000', '租金', null, '1');
+INSERT INTO `ctw_parameters` VALUES ('116', 'Rentmoney_TYPE', '5', '3000~10000', '租金', null, '1');
 
 -- ----------------------------
 -- Records of ctw_poster
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_push_log
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_push_log`;
-CREATE TABLE `ctw_push_log` (
-  `id` bigint(40) NOT NULL AUTO_INCREMENT,
-  `sname` varchar(40) DEFAULT NULL,
-  `op_time` datetime DEFAULT NULL,
-  `con_id` bigint(10) DEFAULT NULL COMMENT '合同编号id=cps_contract.id',
-  `cate_id` bigint(10) DEFAULT NULL COMMENT '商品类别id',
-  `item_id` bigint(20) DEFAULT NULL COMMENT '商品id',
-  `bank_id` bigint(20) DEFAULT NULL COMMENT '推广分行id',
-  `bank_subid` int(11) unsigned DEFAULT '0' COMMENT '子机构id',
-  `data_state` char(1) DEFAULT NULL COMMENT '数据状态：0删除，1正常',
-  `score` int(10) DEFAULT '0' COMMENT '所需积分',
-  `sid` int(10) unsigned DEFAULT '0' COMMENT '推广人id',
-  `app` int(11) DEFAULT NULL COMMENT '活动',
-  `status` char(1) DEFAULT NULL COMMENT '数据状态：2成功，1审核中',
-  `content` varchar(255) DEFAULT NULL,
-  `reply_time` datetime DEFAULT NULL COMMENT '审核时间',
-  `add_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `ip` varchar(255) DEFAULT NULL,
-  `update_time` int(10) unsigned DEFAULT NULL COMMENT '修改时间',
-  `sid222` varchar(40) DEFAULT NULL,
-  `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=503 DEFAULT CHARSET=utf8 COMMENT='5.2.13推广记录表';
-
--- ----------------------------
--- Records of ctw_push_log
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_role
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_role`;
-CREATE TABLE `ctw_role` (
-  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(20) NOT NULL COMMENT '角色名称',
-  `status` tinyint(1) unsigned DEFAULT NULL COMMENT '状态',
-  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
-  `create_time` int(11) unsigned NOT NULL COMMENT '创建时间',
-  `update_time` int(11) unsigned NOT NULL COMMENT '更新时间',
-  `data_state` tinyint(1) unsigned DEFAULT NULL COMMENT '数据状态：0删除，1正常',
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='5.2.2角色表';
+INSERT INTO `ctw_poster` VALUES ('106', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '0000-00-00 00:00:00', '0', '0', '0', '0', '0', '0', null, '0', '0', '61', '1', '商品名称', '1');
+INSERT INTO `ctw_poster` VALUES ('107', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:02:33', '0', '0', '0', '1', '0', '1', '0000-00-00 00:00:00', '1', '0', '2', '106', '商品名称', '1');
+INSERT INTO `ctw_poster` VALUES ('108', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:03:06', '0', '0', '0', '1', '0', '1', '0000-00-00 00:00:00', '1', '0', '3', '106', '商品名称', '1');
+INSERT INTO `ctw_poster` VALUES ('109', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:05:36', '0', '0', '0', '1', '0', '1', '2017-05-21 23:05:36', '1', '0', '4', '106', '商品名称', '1');
+INSERT INTO `ctw_poster` VALUES ('110', '0', '', '', 'data/items/m_5921aa70b469e.png', '', '', '', '2017-05-21 23:16:45', '0', '0', '0', '1', '0', '1', '2017-05-21 23:16:45', '1', '0', '8', '106', '商品名称', '1');
 
 -- ----------------------------
 -- Records of ctw_role
 -- ----------------------------
-INSERT INTO `ctw_role` VALUES ('1', '管理员(CPS)', '1', 'CPS平台', '1208784792', '1254325558', null);
+INSERT INTO `ctw_role` VALUES ('1', '管理员(CPS)', '1', 'CPS平台666', '1208784792', '1254325558', null);
 INSERT INTO `ctw_role` VALUES ('2', '编辑', '1', '编辑', '1208784792', '1254325558', null);
 INSERT INTO `ctw_role` VALUES ('3', '商城', '1', '商城', '0', '0', null);
 INSERT INTO `ctw_role` VALUES ('4', '分行', '1', '分行', '0', '0', null);
 INSERT INTO `ctw_role` VALUES ('5', '支行', '1', '支行（机构）', '0', '0', null);
 INSERT INTO `ctw_role` VALUES ('6', '客户经理', '1', '客户经理', '0', '0', null);
+INSERT INTO `ctw_role` VALUES ('7', '测试角色2', '0', '测试角色2333', '0', '0', null);
 INSERT INTO `ctw_role` VALUES ('8', '后台管理员', '1', '后台管理员', '1493825551', '1493825551', null);
-
--- ----------------------------
--- Table structure for ctw_seller_cate
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_seller_cate`;
-CREATE TABLE `ctw_seller_cate` (
-  `id` int(8) NOT NULL AUTO_INCREMENT,
-  `cid` int(8) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `count` int(8) NOT NULL,
-  `seller_status` int(1) NOT NULL DEFAULT '1',
-  `status` int(1) NOT NULL,
-  `sort` int(6) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `cid` (`cid`),
-  KEY `index_status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
+INSERT INTO `ctw_role` VALUES ('9', 'test', '0', 'test', '1493874274', '1493874274', null);
 
 -- ----------------------------
 -- Records of ctw_seller_cate
 -- ----------------------------
+INSERT INTO `ctw_seller_cate` VALUES ('122', '22', '食品饮料', '20', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('121', '21', '箱包皮具', '22', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('120', '20', '宠物用品', '1', '0', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('119', '19', '成人保健', '3', '0', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('118', '18', '饰品配饰', '14', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('117', '17', '汽车用品', '4', '0', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('116', '16', '旅游订票', '2', '0', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('115', '15', '钟表眼镜', '8', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('103', '3', '电脑笔记本', '14', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('102', '2', '手机数码', '24', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('114', '14', '药品保健', '8', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('113', '13', '数字卡软件', '3', '0', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('112', '12', '玩具礼品', '8', '0', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('111', '11', '办公用品', '1', '0', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('110', '10', '母婴用品', '14', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('109', '9', '居家生活', '18', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('108', '8', '家用电器', '16', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('107', '7', '户外休闲', '2', '0', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('106', '6', '综合百货', '15', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('105', '5', '化妆美容', '31', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('104', '4', '服装服饰', '79', '1', '1', '10');
+INSERT INTO `ctw_seller_cate` VALUES ('101', '1', '图书音像', '9', '1', '1', '10');
 
--- ----------------------------
--- Table structure for ctw_seller_list
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_seller_list`;
-CREATE TABLE `ctw_seller_list` (
-  `id` int(8) NOT NULL AUTO_INCREMENT,
-  `sid` int(8) NOT NULL,
-  `cate_id` int(8) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `site_logo` varchar(200) DEFAULT NULL,
-  `net_logo` varchar(200) NOT NULL,
-  `recommend` int(1) NOT NULL,
-  `click_url` varchar(400) NOT NULL,
-  `sort` int(6) NOT NULL,
-  `description` varchar(200) NOT NULL,
-  `freeshipment` int(1) NOT NULL,
-  `installment` int(1) NOT NULL,
-  `has_invoice` int(1) NOT NULL,
-  `cash_back_rate` varchar(64) NOT NULL,
-  `status` int(1) NOT NULL,
-  `update_time` int(10) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `index_status` (`status`),
-  KEY `index_recommend` (`recommend`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_seller_list
 -- ----------------------------
+INSERT INTO `ctw_seller_list` VALUES ('1', '0', '0', '测试商家', './data/seller_list/58be96a17c57e.jpg', '', '1', '', '0', '测试商家\r\n测试商家\r\n测试商家\r\n测试商家\r\n测试商家', '1', '1', '1', '11', '1', '0');
+INSERT INTO `ctw_seller_list` VALUES ('2', '0', '0', '测试商家2', './data/seller_list/58c89dc76a889.jpg', '', '1', '', '0', '测试商家2测试商家2测试商家2', '1', '0', '0', '1', '1', '0');
 
--- ----------------------------
--- Table structure for ctw_seller_list_cate
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_seller_list_cate`;
-CREATE TABLE `ctw_seller_list_cate` (
-  `list_id` int(11) NOT NULL,
-  `cate_id` int(11) NOT NULL,
-  KEY `list_id` (`list_id`),
-  KEY `cate_id` (`cate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_seller_list_cate
 -- ----------------------------
+INSERT INTO `ctw_seller_list_cate` VALUES ('1', '101');
+INSERT INTO `ctw_seller_list_cate` VALUES ('1', '118');
+INSERT INTO `ctw_seller_list_cate` VALUES ('1', '104');
+INSERT INTO `ctw_seller_list_cate` VALUES ('1', '110');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '122');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '112');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '111');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '110');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '108');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '106');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '105');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '104');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '114');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '120');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '119');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '118');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '116');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '103');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '102');
+INSERT INTO `ctw_seller_list_cate` VALUES ('2', '101');
 
--- ----------------------------
--- Table structure for ctw_seller_list_goods
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_seller_list_goods`;
-CREATE TABLE `ctw_seller_list_goods` (
-  `id` int(11) NOT NULL,
-  `seller_list_id` int(11) NOT NULL,
-  `seller_cate_id` int(11) NOT NULL,
-  `title` varchar(200) NOT NULL,
-  `seller_name` varchar(100) NOT NULL,
-  `pic_url` varchar(400) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `original_price` decimal(10,2) NOT NULL,
-  `desc` tinytext NOT NULL,
-  `click_url` varchar(400) NOT NULL,
-  `seller_url` varchar(400) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `seller_list_id` (`seller_list_id`),
-  KEY `seller_cate_id` (`seller_cate_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of ctw_seller_list_goods
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_send_email_log
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_send_email_log`;
-CREATE TABLE `ctw_send_email_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `md5` char(32) NOT NULL,
-  `create_time` varchar(20) NOT NULL,
-  `ip` varchar(100) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `status` int(1) NOT NULL COMMENT '0表示没有激活，1表示激活',
-  `address` varchar(100) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `message` varchar(1024) NOT NULL,
-  `result` varchar(1024) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ctw_send_email_log
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_seo
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_seo`;
-CREATE TABLE `ctw_seo` (
-  `description` text,
-  `keywords` text,
-  `title` varchar(250) DEFAULT NULL,
-  `actionname` varchar(30) DEFAULT NULL,
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`),
-  KEY `actionname` (`actionname`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_seo
@@ -1016,17 +693,6 @@ INSERT INTO `ctw_seo` VALUES ('{$name}让你发现当前流行的服饰搭配元
 INSERT INTO `ctw_seo` VALUES ('{$site_name}让你发现当前流行的服饰搭配元素，喜欢逛街，逛宝贝，想要把衣服搭得美丽，来{$site_name}看时尚网友精心挑选出的当季最流行的衣服单品、最佳搭配、购买心得、购物链接，购物分享，逛街分享无处不做，让你感受逛街的乐趣。\r\n', '{$tags}', '【图】{$title}{$site_name}', 'item', '17');
 INSERT INTO `ctw_seo` VALUES ('积分兑换', '积分兑换', '积分兑换 - {$site_name}', 'exchange_goods', '18');
 
--- ----------------------------
--- Table structure for ctw_setting
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_setting`;
-CREATE TABLE `ctw_setting` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `data` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_setting
@@ -1039,7 +705,7 @@ INSERT INTO `ctw_setting` VALUES ('5', 'site_status', '1');
 INSERT INTO `ctw_setting` VALUES ('6', 'site_icp', '京ICP备88888888号');
 INSERT INTO `ctw_setting` VALUES ('7', 'statistics_code', '');
 INSERT INTO `ctw_setting` VALUES ('8', 'closed_reason', '升级');
-INSERT INTO `ctw_setting` VALUES ('9', 'site_domain', 'http://www.adjyc.com');
+INSERT INTO `ctw_setting` VALUES ('9', 'site_domain', 'http://msec.jieqiangtec.com');
 INSERT INTO `ctw_setting` VALUES ('10', 'taobao_usernick', '');
 INSERT INTO `ctw_setting` VALUES ('11', 'taobao_pid', '');
 INSERT INTO `ctw_setting` VALUES ('12', 'taobao_appkey', '');
@@ -1111,14 +777,6 @@ INSERT INTO `ctw_setting` VALUES ('77', 'collect_cate', '');
 INSERT INTO `ctw_setting` VALUES ('78', 'tao_collect_set', '0');
 INSERT INTO `ctw_setting` VALUES ('79', 'taobao_search_pid', '');
 
--- ----------------------------
--- Table structure for ctw_ucenter
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_ucenter`;
-CREATE TABLE `ctw_ucenter` (
-  `name` varchar(255) DEFAULT NULL,
-  `value` varchar(10000) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_ucenter
@@ -1140,238 +798,66 @@ INSERT INTO `ctw_ucenter` VALUES ('dbtablepre', '`vgou_bbs`.pre_ucenter_');
 INSERT INTO `ctw_ucenter` VALUES ('uc_config', null);
 
 -- ----------------------------
--- Table structure for ctw_user
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user`;
-CREATE TABLE `ctw_user` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '0',
-  `passwd` varchar(50) NOT NULL DEFAULT '0',
-  `email` varchar(100) NOT NULL,
-  `ip` varchar(15) NOT NULL,
-  `add_time` int(11) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `last_time` int(11) NOT NULL DEFAULT '0',
-  `last_ip` varchar(15) DEFAULT '0',
-  `is_majia` int(1) DEFAULT '0' COMMENT '0表示普通用户 1表示马甲',
-  `login_count` int(10) DEFAULT '0',
-  `mobile` varchar(13) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`),
-  KEY `add_time` (`add_time`),
-  KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- ----------------------------
 -- Records of ctw_user
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_user_comments
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_comments`;
-CREATE TABLE `ctw_user_comments` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `uid` int(10) NOT NULL DEFAULT '0',
-  `uname` varchar(100) NOT NULL,
-  `pid` int(10) NOT NULL DEFAULT '0',
-  `info` text,
-  `type` varchar(255) DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1',
-  `add_time` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `index_pid` (`pid`),
-  KEY `index_status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+INSERT INTO `ctw_user` VALUES ('4', 'jieqiang', 'de562e3ceca28974c305237f2751ee6c', 'jieqiang@qq.com', '127.0.0.1', '1489051295', '1', '1489543034', '127.0.0.1', '0', '1', '18959269002');
 
 -- ----------------------------
 -- Records of ctw_user_comments
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_user_consignee
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_consignee`;
-CREATE TABLE `ctw_user_consignee` (
-  `uid` int(11) NOT NULL,
-  `region_lv1` int(11) NOT NULL DEFAULT '0',
-  `region_lv2` int(11) NOT NULL DEFAULT '0',
-  `region_lv3` int(11) NOT NULL DEFAULT '0',
-  `region_lv4` int(11) NOT NULL DEFAULT '0',
-  `address` varchar(255) NOT NULL DEFAULT '',
-  `mobile_phone` varchar(255) NOT NULL DEFAULT '',
-  `fix_phone` varchar(255) NOT NULL DEFAULT '',
-  `consignee` varchar(255) NOT NULL DEFAULT '',
-  `zip` varchar(255) NOT NULL DEFAULT '',
-  `qq` varchar(255) NOT NULL DEFAULT '',
-  `email` varchar(255) NOT NULL DEFAULT '',
-  `create_time` int(11) NOT NULL DEFAULT '0',
-  `fax_phone` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+INSERT INTO `ctw_user_comments` VALUES ('1', '4', 'jieqiang', '1', 'ggggggggggggggg', 'item,index', '1', '1489544161');
 
 -- ----------------------------
 -- Records of ctw_user_consignee
 -- ----------------------------
+INSERT INTO `ctw_user_consignee` VALUES ('4', '0', '0', '0', '0', '福建省厦门市集美区', '18888888888', '', '街墙', '366200', '1569501393', '18888888888@163.com', '1489553243', '05922222222');
 
--- ----------------------------
--- Table structure for ctw_user_follow
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_follow`;
-CREATE TABLE `ctw_user_follow` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `fans_id` int(10) NOT NULL DEFAULT '0',
-  `uid` int(10) NOT NULL DEFAULT '0',
-  `add_time` int(10) NOT NULL DEFAULT '0',
-  `status` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `fans_id` (`fans_id`,`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
 -- Records of ctw_user_follow
 -- ----------------------------
 
--- ----------------------------
--- Table structure for ctw_user_history
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_history`;
-CREATE TABLE `ctw_user_history` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `uid` int(10) NOT NULL DEFAULT '0',
-  `uname` varchar(100) NOT NULL,
-  `add_time` int(10) NOT NULL DEFAULT '0',
-  `info` text,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_user_history
 -- ----------------------------
+INSERT INTO `ctw_user_history` VALUES ('1', '4', 'jieqiang', '1489544165', '喜欢了一个宝贝~<br/><a href=\'http://www.ctw.com/index.php?a=index&m=item&id=1\' target=\'_blank\'><img src=\'http://www.ctw.com/data/items/m_58c8a3a5417e5.jpg\'/></a>');
+INSERT INTO `ctw_user_history` VALUES ('2', '4', '', '1489544175', '添加了一个宝贝到专辑中~<br/><a href=\'http://www.ctw.com/index.php?a=index&m=item&id=1\' target=\'_blank\'><img src=\'http://www.ctw.com/data/items/m_58c8a3a5417e5.jpg\'/></a>');
 
--- ----------------------------
--- Table structure for ctw_user_info
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_info`;
-CREATE TABLE `ctw_user_info` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `uid` int(10) NOT NULL,
-  `sex` tinyint(4) NOT NULL DEFAULT '0' COMMENT '//0表示男，1表示女，2表示未知',
-  `brithday` varchar(50) NOT NULL DEFAULT '1985|1|1',
-  `address` varchar(50) NOT NULL DEFAULT '请选择|请选择',
-  `blog` varchar(200) NOT NULL DEFAULT 'http://',
-  `info` varchar(500) NOT NULL DEFAULT '自我介绍',
-  `share_num` int(11) DEFAULT '0',
-  `like_num` int(11) DEFAULT '0',
-  `follow_num` int(10) DEFAULT '0',
-  `fans_num` int(10) DEFAULT '0',
-  `album_num` int(10) DEFAULT '0',
-  `exchange_num` int(8) NOT NULL DEFAULT '0',
-  `integral` int(10) DEFAULT '0',
-  `money` decimal(10,2) DEFAULT '0.00' COMMENT '用户资金',
-  `jifenbao` decimal(10,0) DEFAULT '0',
-  `constellation` tinyint(4) NOT NULL DEFAULT '0' COMMENT '星座',
-  `job` tinyint(4) NOT NULL DEFAULT '0' COMMENT '职业',
-  `qq` varchar(20) DEFAULT NULL,
-  `realname` varchar(64) DEFAULT NULL,
-  `alipay` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `integral` (`integral`),
-  KEY `uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_user_info
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_user_msg
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_msg`;
-CREATE TABLE `ctw_user_msg` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `to_user` varchar(40) NOT NULL,
-  `from_user` varchar(40) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `content` text NOT NULL,
-  `del` tinyint(1) NOT NULL,
-  `date` int(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+INSERT INTO `ctw_user_info` VALUES ('4', '4', '2', '1985|1|1', '1|1', 'http://', '自我介绍', '0', '1', '0', '0', '0', '6', '49', '0.00', '0', '0', '0', '655555555', '街墙', 'jieqiangzhifubao@qq.com');
 
 -- ----------------------------
 -- Records of ctw_user_msg
 -- ----------------------------
+INSERT INTO `ctw_user_msg` VALUES ('1', 'jieqiang', 'admin', '用户注册短信', '尊敬的jieqiang您好:欢迎注册v购,凡是通过v购提供的链接去淘宝购物进行购物，都将享受到1%到50%成交额的返现，推广其他用户，即可获取被推广用户返现额的50%的推广佣金，推广越多挣钱越轻松。祝您购物愉快！也欢迎您把我们的网站告诉更多的淘宝买家，谢谢！', '0', '1489051295');
+INSERT INTO `ctw_user_msg` VALUES ('2', 'jieqiang', 'admin', '赠送积分短信', '恭喜您，您获得本站注册赠送积分51。', '0', '1489051295');
+INSERT INTO `ctw_user_msg` VALUES ('3', 'jieqiang', '', '积分兑换短信', '', '0', '1490240337');
+INSERT INTO `ctw_user_msg` VALUES ('4', 'jieqiang', '', '积分兑换短信', '', '0', '1490240344');
 
--- ----------------------------
--- Table structure for ctw_user_openid
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_openid`;
-CREATE TABLE `ctw_user_openid` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `type` varchar(50) NOT NULL DEFAULT '0',
-  `uid` int(11) NOT NULL DEFAULT '0',
-  `uname` varchar(100) NOT NULL,
-  `openid` varchar(50) NOT NULL DEFAULT '0',
-  `info` text,
-  PRIMARY KEY (`id`),
-  KEY `uid` (`uid`),
-  KEY `openid` (`openid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of ctw_user_openid
--- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_user_setmsg
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_setmsg`;
-CREATE TABLE `ctw_user_setmsg` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `key` varchar(20) NOT NULL,
-  `val` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_user_setmsg
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_user_tixian
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_user_tixian`;
-CREATE TABLE `ctw_user_tixian` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL,
-  `uname` varchar(100) NOT NULL,
-  `money` decimal(10,2) DEFAULT NULL,
-  `jifenbao` decimal(10,0) DEFAULT '0',
-  `remark` varchar(1000) NOT NULL,
-  `addtime` varchar(40) NOT NULL,
-  `ip` varchar(40) NOT NULL,
-  `reply` varchar(1000) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '0' COMMENT '//0表示没正在处理，1表示已经审核，2表示退回',
-  `realname` varchar(64) DEFAULT NULL,
-  `alipay` varchar(255) DEFAULT NULL,
-  `is_money` int(1) DEFAULT '1' COMMENT '1表示钱2表示集分宝',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+INSERT INTO `ctw_user_setmsg` VALUES ('51', 'msg_zhuce', '尊敬的[name]您好:欢迎注册[WEBTITLE],凡是通过[WEBTITLE]提供的链接去淘宝购物进行购物，都将享受到1%到50%成交额的返现，推广其他用户，即可获取被推广用户返现额的[tg]%的推广佣金，推广越多挣钱越轻松。祝您购物愉快！也欢迎您把我们的网站告诉更多的淘宝买家，谢谢！');
+INSERT INTO `ctw_user_setmsg` VALUES ('52', 'msg_zhucesong', '恭喜您，您获得本站注册赠送现金[ZHUCESONG]元。');
+INSERT INTO `ctw_user_setmsg` VALUES ('53', 'msg_zsjifen', '恭喜您，您获得本站注册赠送积分[ZSJIFEN]。');
+INSERT INTO `ctw_user_setmsg` VALUES ('54', 'msg_tabao', '交易号为：[trade_id]的交易确认完毕，您获得了[fxje]元的返现！');
+INSERT INTO `ctw_user_setmsg` VALUES ('55', 'msg_taobaotuiguang', '您推荐的会员[ddusername]，完成一笔交易，交易号为：[trade_id]确认完毕，您获得了[tgje]元的推广佣金！');
+INSERT INTO `ctw_user_setmsg` VALUES ('56', 'msg_tixianok', '尊敬的[ddusername]，您好：您的提现申请已经受理完毕！本次提现金额[txje]已经支付到您提供的账户，查看明细进入“我的账户明细”！[addition]');
+INSERT INTO `ctw_user_setmsg` VALUES ('57', 'msg_tixianfail', '您有一笔提现申请失败，原因是：[why]');
+INSERT INTO `ctw_user_setmsg` VALUES ('58', 'msg_deltrade', '交易号为：[trade_id]的交易确被取消，您减少了[fxje]元的返现！');
+INSERT INTO `ctw_user_setmsg` VALUES ('59', 'msg_deltradetuiguang', '您推荐的会员[ddusername]，取消了一笔交易，交易号为[trade_id]被确认无效，您减少了[tgje]元的推广佣金！');
+INSERT INTO `ctw_user_setmsg` VALUES ('60', 'msg_dhjifen', '您在本站使用积分兑换的商品订单[STATE]。');
 
 -- ----------------------------
 -- Records of ctw_user_tixian
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ctw_wegoapi
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_wegoapi`;
-CREATE TABLE `ctw_wegoapi` (
-  `name` varchar(100) NOT NULL,
-  `data` text NOT NULL,
-  KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_wegoapi
@@ -1391,71 +877,12 @@ INSERT INTO `ctw_wegoapi` VALUES ('price_max', '200');
 INSERT INTO `ctw_wegoapi` VALUES ('sign', '123456789');
 
 -- ----------------------------
--- Table structure for ctw_word
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_word`;
-CREATE TABLE `ctw_word` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `cid` smallint(6) NOT NULL DEFAULT '0',
-  `word` varchar(255) NOT NULL DEFAULT '',
-  `replacement` varchar(255) NOT NULL DEFAULT '',
-  `type` tinyint(2) NOT NULL DEFAULT '1',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `sort` int(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `status` (`status`),
-  KEY `cid` (`cid`),
-  KEY `word` (`word`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
 -- Records of ctw_word
 -- ----------------------------
 
--- ----------------------------
--- Table structure for ctw_word_cate
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_word_cate`;
-CREATE TABLE `ctw_word_cate` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL DEFAULT '',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ctw_word_cate
 -- ----------------------------
 INSERT INTO `ctw_word_cate` VALUES ('3', '政治', '1');
 INSERT INTO `ctw_word_cate` VALUES ('4', '时政', '1');
-
--- ----------------------------
--- Table structure for test_tr
--- ----------------------------
-DROP TABLE IF EXISTS `test_tr`;
-CREATE TABLE `test_tr` (
-  `id` smallint(4) NOT NULL DEFAULT '0',
-  `name` varchar(50) NOT NULL,
-  `keywords` varchar(128) NOT NULL,
-  `img` varchar(255) DEFAULT NULL,
-  `pid` smallint(4) NOT NULL DEFAULT '0',
-  `item_nums` int(10) NOT NULL DEFAULT '0',
-  `item_likes` int(11) NOT NULL,
-  `ordid` smallint(4) NOT NULL DEFAULT '0',
-  `tags` varchar(50) NOT NULL,
-  `is_hots` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `recommend` int(1) NOT NULL DEFAULT '0' COMMENT '0表示不推荐，1表示推荐',
-  `import_status` int(1) NOT NULL DEFAULT '1',
-  `seo_title` varchar(255) NOT NULL,
-  `seo_keys` varchar(255) NOT NULL,
-  `color` varchar(255) DEFAULT NULL,
-  `seo_desc` text NOT NULL,
-  `matching_title` varchar(2000) DEFAULT NULL,
-  KEY `idex_id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of test_tr
--- ----------------------------

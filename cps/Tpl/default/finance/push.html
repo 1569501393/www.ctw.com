@@ -75,7 +75,7 @@
                                                 <th>入库日期</th>
                                                 <th>点击量</th>
 
-                                                <if condition="$_SESSION['admin_info']['role_id'] neq 3">
+                                                <if condition="$_SESSION['admin_info']['role_id'] eq 1 || $_SESSION['admin_info']['role_id'] eq 4">
                                                 <th>编辑</th>
                                                 </if>
                                                 <!-- <th style="min-width: 80px;">推广链接</th>
