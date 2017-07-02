@@ -10,6 +10,10 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1';
 		$where .= " AND con_id>0 ";
+		if ($_SESSION['admin_info']['role_id'] !=1 ) {
+			$platform_id = get_platform_id($_SESSION['admin_info']);
+			$where .= " AND platform_id=" . $platform_id;
+		}
 
 		if ($_SESSION['admin_info']['commission_id']==3) {
 			$where .= " AND shop_id={$_SESSION['admin_info']['id']} ";
@@ -90,6 +94,10 @@ class financeAction extends baseAction {
 
 		//搜索
 		$where = '1=1 AND con_id>0 ';
+		if ($_SESSION['admin_info']['role_id'] !=1 ) {
+			$platform_id = get_platform_id($_SESSION['admin_info']);
+			$where .= " AND platform_id=" . $platform_id;
+		}
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 
 			$where .= " AND (title like '%{$_GET['keyword']}%' OR contract like '%{$_GET['keyword']}%') ";
@@ -134,9 +142,7 @@ class financeAction extends baseAction {
 			$commission_list[$k]['profit_id'] = $profit['id']?:0;
 
 		}
-
 		//		var_dump($commission_list);exit;
-
 		$page = $p->show();
 		$this->assign('page', $page);
 

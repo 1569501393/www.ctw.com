@@ -321,7 +321,8 @@ class contractAction extends baseAction
 		);
 		$xlsModel = M('commission');
 		//        $xlsData = $xlsModel->Field('id,item_id,title,cate_id,cate_name,price,rate,commission,add_time,shop_id')->where('con_id=' . $_GET['id'])->order('id DESC')->select();
-		$xlsData = $xlsModel->Field('id,img,url,item_id,title,cate_id,cate_name,price,rate,commission,add_time,shop_id')->where(" con_id= {$_GET['id']} AND  con_id>1 ")->order('id DESC')->select();
+		$xlsData = $xlsModel->Field('id,img,url,item_id,title,cate_id,cate_name,price,rate,commission,add_time,shop_id')->where(" con_id= {$_GET['id']} AND  con_id>0 ")->order('id DESC')->select();
+//		var_dump($xlsModel->getLastSql(),$xlsData);exit;
 		//        $xlsData = $xlsModel->where('con_id='.$_GET['id'])->select();
 
 		foreach ($xlsData as $k => $v) {
@@ -434,15 +435,12 @@ class contractAction extends baseAction
 	function edit()
 	{
 		if (isset($_POST['dosubmit'])) {
-			// 导入商品
+			// 导入商品excel
 			if ($_POST['dosubmit'] == 2) {
 				$upload_list = $this->_upload('contract');
 				//				$file_name = $this->_upload('contract');
 				vendor("PHPExcel.PHPExcel");
 				$file_name = $upload_list[0]['savepath'] . $upload_list[0]['savename'];
-				//				var_dump($file_name);exit;
-
-				//				$objReader = new PHPExcel_Reader_Excel2007();
 				if ($upload_list[0]['extension'] == 'xlsx') {
 					$objReader = new PHPExcel_Reader_Excel2007();
 				} else {
@@ -467,14 +465,14 @@ class contractAction extends baseAction
 						$data['cid'] = $data['cate_id'] = $data['cate_name'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
 						$data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
 						$data['title'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
-						// $data['shop_id'] = $objPHPExcel->getActiveSheet()->getCell("H" . $i)->getValue();
+						$data['shop_id'] = $objPHPExcel->getActiveSheet()->getCell("J" . $i)->getValue();
 							
 						$data['con_id'] = $_POST['id'];
 						// 佣金表 cate_id
 						// $data['cate_id'] = $_POST['cid'];
 						unset($data['id']);
-						$data['shop_id'] = $_POST['shop_id'] ?: 0;
-						$data['platfom_id'] = $_POST['platform_id'] ?: $_SESSION['admin_info']['id'];
+						$data['shop_id'] = $data['shop_id']?:$_POST['shop_id'] ;
+						$data['platform_id'] = $_POST['platform_id'] ?: $_SESSION['admin_info']['id'];
 						$data['uid'] = $_SESSION['admin_info']['id'];
 						$data['role_id'] = $_SESSION['admin_info']['role_id'];
 						$data['add_time'] = $data['update_time'] = time();
@@ -513,11 +511,12 @@ class contractAction extends baseAction
 						}
 						// 写入佣金表
 						//					M('commission')->add($data);
-						$commission_flag = M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
-
+						// $commission_flag = M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						// var_dump('TODO jieiangtest1--',M('commission')->getLastSql());exit;
 						if ($commission_flag) {
 							//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-							M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+							M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
 						} else {
 							M('commission')->add($data);
 						}
@@ -548,13 +547,14 @@ class contractAction extends baseAction
 						$data['title'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
 						$data['img'] = $objPHPExcel->getActiveSheet()->getCell("G" . $i)->getValue();
 						$data['url'] = $objPHPExcel->getActiveSheet()->getCell("H" . $i)->getValue();
+						$data['shop_id'] = $objPHPExcel->getActiveSheet()->getCell("J" . $i)->getValue();
 
 						$data['con_id'] = $_POST['id'];
 						// 佣金表 cate_id
 						// $data['cate_id'] = $_POST['cid'];
 						unset($data['id']);
-						$data['shop_id'] = $_POST['shop_id'] ?: 0;
-						$data['platfom_id'] = $_POST['platform_id'] ?: $_SESSION['admin_info']['id'];
+						$data['shop_id'] = $data['shop_id']?:$_POST['shop_id'];
+						$data['platform_id'] = $_POST['platform_id'] ?: $_SESSION['admin_info']['id'];
 						$data['uid'] = $_SESSION['admin_info']['id'];
 						$data['role_id'] = $_SESSION['admin_info']['role_id'];
 						$data['add_time'] = $data['update_time'] = time();
@@ -599,11 +599,12 @@ class contractAction extends baseAction
 						}
 						// 写入佣金表
 						//					M('commission')->add($data);
-						$commission_flag = M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
-
+						$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						// var_dump('TODO jieiangtest2--',M('commission')->getLastSql());exit;
+						
 						if ($commission_flag) {
 							//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-							M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+							M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
 						} else {
 							M('commission')->add($data);
 						}
@@ -680,7 +681,7 @@ class contractAction extends baseAction
 				$data['cate_id'] = $data['cate_name'] = $_POST['cid'];
 				unset($data['id']);
 				$data['shop_id'] = $_POST['shop_id'];
-				$data['platfom_id'] = $_POST['platform_id'] ?: $_SESSION['admin_info']['id'];
+				$data['platform_id'] = $_POST['platform_id'] ?: $_SESSION['admin_info']['id'];
 				$data['uid'] = $_SESSION['admin_info']['id'];
 				$data['role_id'] = $_SESSION['admin_info']['role_id'];
 				$data['add_time'] = $data['update_time'] = time();
@@ -696,11 +697,12 @@ class contractAction extends baseAction
 
 				// 写入佣金表
 				// M('commission')->add($data);
-				$commission_flag = M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+//				$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+				$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
 
 				if ($commission_flag) {
 					//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-					M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+					M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
 				} else {
 					M('commission')->add($data);
 				}

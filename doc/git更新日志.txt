@@ -1,3 +1,5 @@
+http://localhost/99_ctw/msec3.jieqiangtec.com/cps.php?m=public&a=login
+
 git提取出两个版本之间的差异文件并打包
 http://blog.csdn.net/lxf0613050210/article/details/52104287
 $ git diff --name-only HEAD~
@@ -7,8 +9,12 @@ $ git diff --name-status HEAD~ >./doc/modify/modify_201707021032.txt
 git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
 chmod -R 777 ./
 
+git add cps/Lib/ cps/Tpl/ cps.php cps/Common/ cps/Lang/  statics/  install/Lib/ install/Tpl/   install.php   index/Lib/ index/Tpl/  doc/ index.php index/Common/ install/Lang/ 
 
-git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ install/Lib/ install/Tpl/   install.php   index/Lib/ index/Tpl/ ms/ doc/ index.php index/Common/ install/Lang/ 
+git add cps/Lib/ cps/Tpl/ cps.php cps/Common/ cps/Lang/  statics/  install/Lib/ install/Tpl/   install.php   index/Lib/ index/Tpl/  doc/ index.php index/Common/ install/Lang/ 
+
+
+git add cps/Lib/ cps/Tpl/ doc/ cps.php cps/Common/ cps/Lang/  statics/ admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ install/Lib/ install/Tpl/   install.php   index/Lib/ index/Tpl/ ms/ doc/ index.php index/Common/ install/Lang/ 
 
 git add admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ 
 git add install/Lib/ install/Tpl/   install.php   install/Lang/ 

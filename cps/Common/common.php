@@ -54,6 +54,8 @@ function get_platform_id($admin_info) {
 		$platform_id = M('admin')->where('id=' . $pid)->getField('id');
 	}elseif (($admin_info['role_id'] == 4)) { // 分行
 		$platform_id = $admin_info['id'];
+	}elseif (($admin_info['role_id'] == 1)) { // 分行
+		$platform_id = $admin_info['id'];
 	}else{// 顶级
 		$platform_id = 0;
 	}

@@ -258,37 +258,6 @@ CREATE TABLE `ctw_article_cate` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_article_copy
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_article_copy`;
-CREATE TABLE `ctw_article_copy` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cate_id` tinyint(4) unsigned NOT NULL,
-  `title` varchar(255) NOT NULL COMMENT '标题',
-  `orig` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `abst` varchar(255) NOT NULL,
-  `info` mediumtext NOT NULL COMMENT '信息',
-  `add_time` datetime NOT NULL,
-  `ordid` tinyint(4) NOT NULL,
-  `is_hot` tinyint(1) NOT NULL DEFAULT '0',
-  `is_best` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-待审核 1-已审核',
-  `seo_title` varchar(255) NOT NULL,
-  `seo_keys` varchar(255) NOT NULL,
-  `seo_desc` text NOT NULL,
-  `platform_id` int(10) unsigned NOT NULL COMMENT '分销机构（发布的时候可指定全部或者具体分行、子机构的人员能看到）',
-  `data_state` tinyint(1) DEFAULT NULL COMMENT '数据状态：0删除，1正常',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-  `uid` int(10) NOT NULL DEFAULT '0' COMMENT '创建人',
-  PRIMARY KEY (`id`),
-  KEY `is_best` (`is_best`),
-  KEY `add_time` (`add_time`),
-  KEY `cate_id` (`cate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- ----------------------------
 -- Table structure for ctw_attatch
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_attatch`;
@@ -410,7 +379,7 @@ CREATE TABLE `ctw_commission` (
   `item_id` bigint(255) unsigned DEFAULT NULL COMMENT '商品id',
   `shop_id` bigint(10) unsigned NOT NULL COMMENT '商户id',
   `commission` decimal(10,2) DEFAULT NULL COMMENT '佣金金额',
-  `click` int(10) DEFAULT '100',
+  `click` int(10) DEFAULT '0',
   `title` varchar(255) DEFAULT NULL COMMENT '标题',
   `contract` varchar(255) DEFAULT NULL COMMENT '合同名称',
   `platform` varchar(255) DEFAULT NULL COMMENT '分销平台',
@@ -593,38 +562,6 @@ CREATE TABLE `ctw_file` (
   `bimg` varchar(255) NOT NULL COMMENT '原图',
   `simg` varchar(255) NOT NULL COMMENT '缩略图',
   `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
-  PRIMARY KEY (`id`),
-  KEY `is_best` (`is_best`) USING BTREE,
-  KEY `add_time` (`add_time`) USING BTREE,
-  KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
-
--- ----------------------------
--- Table structure for ctw_file_copy
--- ----------------------------
-DROP TABLE IF EXISTS `ctw_file_copy`;
-CREATE TABLE `ctw_file_copy` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cate_id` tinyint(4) unsigned NOT NULL,
-  `title` varchar(255) NOT NULL COMMENT '标题',
-  `orig` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `path` varchar(255) NOT NULL COMMENT '文件路径',
-  `info` mediumtext NOT NULL COMMENT '信息',
-  `add_time` datetime NOT NULL,
-  `ordid` tinyint(4) NOT NULL,
-  `is_hot` tinyint(1) NOT NULL DEFAULT '0',
-  `is_best` tinyint(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-待审核 1-已审核',
-  `platform_id` int(10) unsigned NOT NULL COMMENT '分销机构（发布的时候可指定全部或者具体分行、子机构的人员能看到）',
-  `data_state` tinyint(1) DEFAULT NULL COMMENT '数据状态：0删除，1正常',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-  `uid` int(10) NOT NULL DEFAULT '0' COMMENT '创建人',
-  `shop_id` int(10) unsigned DEFAULT '0' COMMENT '商户id',
-  `item_id` bigint(20) DEFAULT NULL COMMENT '商品id',
-  `origin_id` bigint(20) unsigned DEFAULT NULL COMMENT '商品原始id',
-  `origin_name` varchar(32) DEFAULT NULL COMMENT '商品原始title',
   PRIMARY KEY (`id`),
   KEY `is_best` (`is_best`) USING BTREE,
   KEY `add_time` (`add_time`) USING BTREE,
