@@ -90,8 +90,8 @@
                                                             <input type="checkbox" value="{$val.id}" name="id[]" <if condition="$val['user_name'] eq 'admin'">disabled="disabled"</if>></td> -->
                                                             <td>{$val.user_name}</td>
                                                             <td>{$val.user_id}</td>
-                                                            <td>{$val.role_name}</td>
-                                                            <td>{$val.pid_name}</td>
+                                                            <td>{$val.role_name}[{$val.role_id}]</td>
+                                                            <td>{$val.pid_name}[{$val.id}]</td>
                                                             <td>{$val.mobile}</td>
                                                             <td>{$val.account}</td>
                                                             <!-- <td>{$val.address}</td> -->
@@ -169,13 +169,13 @@
                                                 <select name="pid" class="form-control"  disabled="disabled">
                                                     <option value="0" <if condition="$_SESSION['admin_info']['id'] eq 0">selected="selected"</if>>--顶级--</option>
                                                     <volist name="admin_list3['parent']" id="val">
-                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option>
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option>
                                                         <notempty name="admin_list3['sub'][$val['id']]">
                                                             <volist name="admin_list3['sub'][$val['id']]" id="sval">
-                                                                <option value="{$sval.id}" <if condition="$_SESSION['admin_info']['id']  eq $sval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;{$sval.user_name}</option>
+                                                                <option value="{$sval.id}" <if condition="$_SESSION['admin_info']['id']  eq $sval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;{$sval.user_id}</option>
                                                                 <notempty name="admin_list3['sub'][$sval['id']]">
                                                                     <volist name="admin_list3['sub'][$sval['id']]" id="ssval">
-                                                                        <option value="{$ssval.id}" <if condition="$_SESSION['admin_info']['id']  eq $ssval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$ssval.user_name}</option></volist>
+                                                                        <option value="{$ssval.id}" <if condition="$_SESSION['admin_info']['id']  eq $ssval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$ssval.user_id}</option></volist>
                                                                 </notempty>
                                                             </volist>
                                                         </notempty>
@@ -196,13 +196,13 @@
                                                 <select name="pid" class="form-control"  disabled="disabled">
                                                     <option value="0" <if condition="$_SESSION['admin_info']['id'] eq 0">selected="selected"</if>>--顶级--</option>
                                                     <volist name="admin_list3['parent']" id="val">
-                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option>
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option>
                                                         <notempty name="admin_list3['sub'][$val['id']]">
                                                             <volist name="admin_list3['sub'][$val['id']]" id="sval">
-                                                                <option value="{$sval.id}" <if condition="$_SESSION['admin_info']['id']  eq $sval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;{$sval.user_name}</option>
+                                                                <option value="{$sval.id}" <if condition="$_SESSION['admin_info']['id']  eq $sval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;{$sval.user_id}</option>
                                                                 <notempty name="admin_list3['sub'][$sval['id']]">
                                                                     <volist name="admin_list3['sub'][$sval['id']]" id="ssval">
-                                                                        <option value="{$ssval.id}" <if condition="$_SESSION['admin_info']['id']  eq $ssval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$ssval.user_name}</option></volist>
+                                                                        <option value="{$ssval.id}" <if condition="$_SESSION['admin_info']['id']  eq $ssval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$ssval.user_id}</option></volist>
                                                                 </notempty>
                                                             </volist>
                                                         </notempty>
@@ -223,13 +223,13 @@
                                                 <select name="pid" class="form-control"  >
                                                     <option value="0" <if condition="$_SESSION['admin_info']['id'] eq 0">selected="selected"</if>>--顶级--</option>
                                                     <volist name="admin_list3['parent']" id="val">
-                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option>
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option>
                                                         <notempty name="admin_list3['sub'][$val['id']]">
                                                             <volist name="admin_list3['sub'][$val['id']]" id="sval">
-                                                                <option value="{$sval.id}" <if condition="$_SESSION['admin_info']['id']  eq $sval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;{$sval.user_name}</option>
+                                                                <option value="{$sval.id}" <if condition="$_SESSION['admin_info']['id']  eq $sval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;{$sval.user_id}</option>
                                                                 <notempty name="admin_list3['sub'][$sval['id']]">
                                                                     <volist name="admin_list3['sub'][$sval['id']]" id="ssval">
-                                                                        <option value="{$ssval.id}" <if condition="$_SESSION['admin_info']['id']  eq $ssval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$ssval.user_name}</option></volist>
+                                                                        <option value="{$ssval.id}" <if condition="$_SESSION['admin_info']['id']  eq $ssval['id']">selected="selected"</if>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$ssval.user_id}</option></volist>
                                                                 </notempty>
                                                             </volist>
                                                         </notempty>

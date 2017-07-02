@@ -228,7 +228,7 @@ class itemsAction extends baseAction
 		$key = 1;
 		foreach ($commission_list as $k => $val) {
 			$commission_list[$k]['key'] = ++$p->firstRow;
-			$commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
+			$commission_list[$k]['file'] = M('file')->where(" item_id='{$val['item_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
 			//            var_dump($commission_list[$k]['file']);
 		}
 

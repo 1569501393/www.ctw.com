@@ -131,7 +131,8 @@ class adminAction extends baseAction
             if ($val['pid'] < 1) {
                 $admin_list[$k]['pid_name'] = '顶级';
             } else {
-                $admin_list[$k]['pid_name'] = $admin_list_new[$val['pid']]['user_name'];
+//                $admin_list[$k]['pid_name'] = $admin_list_new[$val['pid']]['user_name'];
+                $admin_list[$k]['pid_name'] = $admin_list_new[$val['pid']]['user_id'];
             }
         }
 

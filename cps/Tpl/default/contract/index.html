@@ -87,7 +87,7 @@
                                                     <select class="form-control" name="shop_id">
                                                         <option value="0">全部</option>
                                                         <volist name="shops" id="val">
-                                                            <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
+                                                            <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                             </select>
                                             </div>
                                             <label class="col-sm-1 control-label">分销平台</label>
@@ -95,7 +95,7 @@
                                                 <select class="form-control" name="platform_id">
                                                     <option value="0">全部</option>
                                                     <volist name="platforms" id="val">
-                                                        <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
+                                                        <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                                 </select>
                                             </div>
                                             <!-- 商城 -->
@@ -105,7 +105,7 @@
                                                 <select class="form-control" name="shop_id" disabled="disabled">
                                                     <option value="0">全部</option>
                                                     <volist name="shops" id="val">
-                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                                 </select>
                                             </div>
                                             <label class="col-sm-1 control-label">分销平台</label>
@@ -113,7 +113,7 @@
                                                 <select class="form-control" name="platform_id" disabled="disabled">
                                                     <option value="0">CPS</option>
                                                     <!-- <volist name="platforms" id="val">
-                                                    <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist> --></select>
+                                                    <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist> --></select>
                                             </div>
                                             <!-- 分行 -->
                                             <else />
@@ -122,7 +122,7 @@
                                                 <select class="form-control" name="shop_id">
                                                     <option value="0">全部</option>
                                                     <volist name="shops" id="val">
-                                                        <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
+                                                        <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                                 </select>
                                             </div>
                                             <label class="col-sm-1 control-label">分销平台</label>
@@ -130,7 +130,7 @@
                                                 <select class="form-control" name="platform_id" disabled="disabled">
                                                     <option value="0">全部</option>
                                                     <volist name="platforms" id="val">
-                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                                 </select>
                                             </div>
                                             </if>
@@ -253,7 +253,7 @@
                                 <div class="col-sm-3">
                                     <select class="form-control" name="shop_id">
                                         <volist name="shops" id="val">
-                                            <option value="{$val.id}" <if condition="$contract_info['shop_id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
+                                            <option value="{$val.id}" <if condition="$contract_info['shop_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                     </select>
                                 </div>
                                 <p style="min-height:10px; display: block;">&nbsp;</p>
@@ -269,7 +269,7 @@
                                 <div class="col-sm-3">
                                     <select class="form-control" name="platform_id">
                                         <volist name="platforms" id="val">
-                                            <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_name}</option></volist>
+                                            <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
                                     </select>
                                 </div>
                                 <label class="col-sm-1 control-label">收款方</label>
