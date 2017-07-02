@@ -26,6 +26,8 @@ class itemsAction extends baseAction
 	public function create_poster($poster_bg = '/qrcode/poster_bg.jpg', $qrcode = '/qrcode/qrcode.jpg', $head_source = '/qrcode/header.jpg')
 	{
 		$APP_URL = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+//		$APP_URL = 'http://localhost/99_ctw/msec3.jieqiangtec.com/';
+//		var_dump($APP_URL);exit;
 		$file = $_GET['img'];
 		// 判断是否有底图
 		if ($file) {
@@ -321,6 +323,10 @@ class itemsAction extends baseAction
 
 		//搜索
 		$where = '1=1 AND con_id>0 ';
+		if ($_SESSION['admin_info']['role_id'] !=1 ) {
+			$platform_id = get_platform_id($_SESSION['admin_info']);
+			$where .= " AND platform_id=" . $platform_id;
+		}
 		if (isset($_REQUEST['keyword']) && trim($_REQUEST['keyword'])) {
 
 			$where .= " AND (title like '%{$_REQUEST['keyword']}%' OR contract like '%{$_REQUEST['keyword']}%') ";
