@@ -1,2 +1,0 @@
-<?php
-return array ( 0 => 'id', 1 => 'sn', 2 => 'data_name', 3 => 'goods_status', 4 => 'data_num', 5 => 'status', 6 => 'create_time', 7 => 'update_time', 8 => 'zip', 9 => 'region_lv1', 10 => 'region_lv2', 11 => 'region_lv3', 12 => 'region_lv4', 13 => 'address', 14 => 'email', 15 => 'mobile_phone', 16 => 'fax_phone', 17 => 'fix_phone', 18 => 'alim', 19 => 'msn', 20 => 'qq', 21 => 'consignee', 22 => 'uid', 23 => 'user_name', 24 => 'remark', 25 => 'adm_memo', 26 => 'order_score', 27 => 'goods_id', '_autoinc' => true, '_pk' => 'id', ); ?>
