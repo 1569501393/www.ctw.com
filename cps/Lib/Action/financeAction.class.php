@@ -140,7 +140,7 @@ class financeAction extends baseAction {
 			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
 			$commission_list[$k]['band_id'] = $bank_id;
 			//			$commission_list[$k]['band_subid'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-			$commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+			$commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
 			//			$commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
 			// 分润  根据分行设置 暂时屏蔽
 			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  commission_id={$commission_id} ")->find() ?: array();

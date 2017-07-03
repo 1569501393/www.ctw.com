@@ -67,6 +67,7 @@ function admin_log($log_op = '添加', $log_obj = '积分', $log_desc='日志描
 	$data = array (
 //        'user_name' => $_SESSION ['admin_info'] ['id'].'-'.$_SESSION ['admin_info'] ['user_name'],
         'user_name' => $_SESSION ['admin_info'] ['user_name'],
+        'user_id' => $_SESSION ['admin_info'] ['user_id'],
         'uid' => $_SESSION ['admin_info'] ['id'],
         'op_content' => $log_op.$log_obj,
         'op' => $log_op,
