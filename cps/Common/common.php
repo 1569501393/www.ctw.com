@@ -47,6 +47,7 @@ function get_role($admin_info) {
 
 // 判断父类id
 function get_platform_id($admin_info) {
+
 	if ($admin_info['role_id'] == 5) { // 支行
 		$platform_id = M('admin')->where('id=' . $admin_info['pid'])->getField('id');
 	} elseif (($admin_info['role_id'] == 6)) { // 客户经理

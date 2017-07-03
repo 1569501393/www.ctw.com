@@ -102,7 +102,8 @@ class adminAction extends baseAction
         $prex = C('DB_PREFIX');
 
         //搜索
-        $where = '1=1 AND ' . $prex . 'admin.id!=1 ';
+        // $where = '1=1 AND ' . $prex . 'admin.id!=1 ';
+        $where = '1=1 ';
 
         // 分行
         if ($_SESSION['admin_info']['role_id'] == 4 || $_SESSION['admin_info']['role_id'] == 5) {

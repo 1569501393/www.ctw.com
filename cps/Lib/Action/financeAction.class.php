@@ -95,9 +95,18 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1 AND con_id>0 ';
 		if ($_SESSION['admin_info']['role_id'] !=1 ) {
-			$platform_id = get_platform_id($_SESSION['admin_info']);
-			$where .= " AND platform_id=" . $platform_id;
+            if ($_SESSION['admin_info']['role_id'] ==3 ) {
+                /*$platform_id = get_platform_id($_SESSION['admin_info']);
+                $where .= " AND platform_id=" . $platform_id;*/
+                $where .= " AND platform_id=" . $_SESSION['admin_info']['id'];
+            }else{
+                $platform_id = get_platform_id($_SESSION['admin_info']);
+                $where .= " AND platform_id=" . $platform_id;
+            }
+
 		}
+
+//		var_dump($where);exit;
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 
 			$where .= " AND (title like '%{$_GET['keyword']}%' OR contract like '%{$_GET['keyword']}%') ";

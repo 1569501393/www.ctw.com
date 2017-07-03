@@ -223,8 +223,8 @@ class indexAction extends Action
 		//添加管理员帐号
 		$admin_pass = md5($temp_info['admin_pass']);
 		$add_time = time();
-		$sqls[] = "INSERT INTO `" . $temp_info['db_prefix'] . "admin` (`id`,`user_name`, `password`, `add_time`, `role_id`) VALUES " .
-				"('1','".$temp_info['admin_user']."', '".$admin_pass."', '".$add_time."', 1);";
+		$sqls[] = "INSERT INTO `" . $temp_info['db_prefix'] . "admin` (`id`,`user_name`, `password`, `add_time`, `user_id`,`role_id`) VALUES " .
+				"('1','".$temp_info['admin_user']."', '".$admin_pass."', '".$add_time."','cps平台', 1);";
 		foreach ($sqls as $sql) {
 			//替换前缀
 			$sql = str_replace('`ctw_', '`'.$temp_info['db_prefix'], $sql);

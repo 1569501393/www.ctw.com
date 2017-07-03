@@ -90,7 +90,7 @@ label {
                                         <input type="radio" name="platform_id" value="0" name="platform_id" <if condition="$article.platform_id eq 0 ">checked</if> />全部<br />
 
                                         <volist name="admin_list" id="val"  key="k">
-                                            <input type="radio" name="platform_id" value="{$val['id']}" <if condition="$article.platform_id eq $val['id'] ">checked</if> name="platform_id" />{$val['user_name']}&nbsp;&nbsp;
+                                            <input type="radio" name="platform_id" value="{$val['id']}" <if condition="$article.platform_id eq $val['id'] ">checked</if> name="platform_id" />{$val['user_id']}&nbsp;&nbsp;
                                             <if condition="($k-1)%5==4 ">
                                             <br />
                                             </if>

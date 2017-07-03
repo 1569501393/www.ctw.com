@@ -165,7 +165,8 @@ class contractAction extends baseAction
 
 		// 默认当前时间
 		//		$contract_info['begin_time']=$contract_info['end_time']=time();
-		$contract_info['begin_time'] = $contract_info['end_time'] = time();
+		$contract_info['begin_time'] = time();
+		$contract_info['end_time'] = strtotime("+1 year");
 		$this->assign('contract_info', $contract_info);
 
 		$this->display();

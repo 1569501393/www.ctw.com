@@ -16,7 +16,10 @@ class articleAction extends baseAction
         // 判断是否是商城管理员
         if (($_SESSION['admin_info']['role_id'] != 1) && ($_SESSION['admin_info']['role_id'] != 3)) {
             // $where .= ' AND status=1 AND platform_id= '.$_SESSION['admin_info']['id'];
-            $where .= " AND status=1 AND (platform_id={$_SESSION['admin_info']['id']} OR platform_id=0) ";
+//            $where .= " AND status=1 AND (platform_id={$_SESSION['admin_info']['id']} OR platform_id=0) ";
+            $platform_id = get_platform_id($_SESSION['admin_info']);
+
+            $where .= " AND status=1 AND (platform_id={$platform_id} OR platform_id=0) ";
         }
 
         if (isset($_GET['keyword']) && trim($_GET['keyword'])) {

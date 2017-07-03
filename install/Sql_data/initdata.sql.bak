@@ -552,6 +552,7 @@ INSERT INTO `ctw_poster` VALUES ('110', '0', '', '', 'data/items/m_5921aa70b469e
 -- Records of ctw_role
 -- ----------------------------
 INSERT INTO `ctw_role` VALUES ('1', '管理员(CPS)', '1', 'CPS平台666', '1208784792', '1254325558', null);
+INSERT INTO `ctw_role` VALUES ('2', '编辑', '1', '编辑', '1208784792', '1254325558', null);
 INSERT INTO `ctw_role` VALUES ('3', '商城', '1', '商城', '0', '0', null);
 INSERT INTO `ctw_role` VALUES ('4', '分行', '1', '分行', '0', '0', null);
 INSERT INTO `ctw_role` VALUES ('5', '支行', '1', '支行（机构）', '0', '0', null);

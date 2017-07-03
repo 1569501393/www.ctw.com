@@ -26,31 +26,21 @@
                                     <div class="table-responsive">
                                         <table class="table table-hover mails m-0">
                                             <tbody>
+                                            <if condition="$article_list">
                                             <volist name="article_list" id="val">
                                                 <tr class="read">
-                                                    <!-- <td class="mail-select">
-                                                        <div class="checkbox checkbox-primary m-r-15">
-                                                            <input id="checkbox1" type="checkbox">
-                                                            <label for="checkbox1"></label>
-                                                        </div>
-                                                        <i class="fa fa-star m-r-15 text-muted"></i>
-                                                        <i class="fa fa-circle m-l-5 text-warning"></i>
-                                                    </td> -->
                                                     <td >
                                                         <a href="{:u('article/edit',array('id'=>$val['id']))}" >{$val.title}</a></td>
-                                                    <!-- <td>
-                                                        <a href="announcement.php" class="email-msg">{$val.info|substr=0,23}</a></td> -->
-                                                    <!-- <td style="width: 20px;">
-                                                        <i class="fa fa-paperclip"></i>
-                                                    </td> -->
-                                                    <!-- <td class="text-right" width="200px">{$val.add_time}</td> -->
-                                                    <!-- <td width="200px"> -->
                                                     <td class="text-right">{$val.add_time}</td>
-                                                    </tr>
-                                                </volist>
-
-                                                    
-                                               
+                                                </tr>
+                                            </volist>
+                                            <else />
+                                                <tr class="read">
+                                                    <td >暂无公告</td>
+                                                    <!-- <td class="text-right">{$val.add_time}</td> -->
+                                                </tr>
+                                            </if>
+                                            
                                             </tbody>
                                         </table>
                                     </div>
