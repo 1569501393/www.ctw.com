@@ -100,9 +100,21 @@ class adminAction extends baseAction
         $admin_mod = M('admin');
         import("ORG.Util.Page");
         $prex = C('DB_PREFIX');
+        
+        
+	    
 
         //搜索
         $where = '1=1 AND ' . $prex . 'admin.id!=1 ';
+        
+        // 角色
+		if (isset($_GET['role_id']) && !empty($_GET['role_id'])) {
+			$where .= " AND role_id= '{$_GET['role_id']}' ";
+			$this->assign('role_id', $_GET['role_id']);
+		}
+        // 角色表
+		$roles = M('role')->where(" status=1 AND data_state=1 ")->select();
+		$this->assign('roles', $roles);
 
         // 分行
         if ($_SESSION['admin_info']['role_id'] == 4 || $_SESSION['admin_info']['role_id'] == 5) {
