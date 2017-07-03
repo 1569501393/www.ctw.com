@@ -81,7 +81,11 @@
                                                     <th>入库日期</th>
                                                     <!-- <th>点击量</th>
                                                     <th style="min-width: 80px;">推广链接</th>
-                                                    <th style="min-width: 80px;">推广图片</th> --></tr>
+                                                    <th style="min-width: 80px;">推广图片</th> -->
+                                                    <if condition="$_SESSION['admin_info']['role_id'] eq 1 || $_SESSION['admin_info']['role_id'] eq 4">
+                                                <th>编辑</th>
+                                                </if>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                                 <volist name="commission_list" id="val">
@@ -105,7 +109,21 @@
                                                         <if condition="$Think.session.admin_info.role_id eq 1 ">
                                                             <td>{$val.platform_name|default="默认分销平台"}</td></if>
                                                         <!-- <td>{$val.period}</td> -->
-                                                        <td>{$val.add_time|date='Y-m-d',###}</td></tr>
+                                                        <td>{$val.add_time|date='Y-m-d',###}</td>
+                                                        <if condition="$_SESSION['admin_info']['role_id'] eq 1">
+                                                    <td><a href="javascript:edit({$val.id},'{$val.title}',1)">编辑</a></td>
+
+                                                    <elseif condition="$_SESSION['admin_info']['role_id'] eq 4" />
+                                                    <!-- <td><a href="javascript:edit({$val.profit_id},'{$val.title}',1)">编辑</a></td> -->
+                                                        <if condition="$val['profit_id']">
+                                                        <td><a href="javascript:edit({$val.profit_id},'{$val.title}',1)">编辑</a></td>
+                                                        <else />
+                                                        <td><a href="javascript:edit({$val.id},'{$val.title}',0)">编辑</a></td>
+                                                        </if>
+                                                    
+
+                                                    </if>
+                                                        </tr>
                                                 </volist>
                                                 <tr>
                                                     <td colspan="9"></td>
@@ -147,4 +165,32 @@
                     </div>
                     <!-- end row --></div>
                 <!-- END wrapper -->
+
+                <script type="text/javascript">function edit(id, name, is_edit) {
+                            var lang_edit = "详情";
+                            // 弹框后右侧滚动条动不了了。。。
+                            // window.top.art.dialog({
+                            //     id: 'edit'
+                            // }).close();
+                            window.top.art.dialog({
+                                title: lang_edit + '--' + name,
+                                id: 'edit',
+                                iframe: '?m=finance&a=edit_commission&id=' + id+'&is_edit='+is_edit,
+                                // width: '360',
+                                // height: '280'
+                            },
+                            function() {
+                                var d = window.top.art.dialog({
+                                    id: 'edit'
+                                }).data.iframe;
+                                d.document.getElementById('dosubmit').click();
+                                return false;
+                            },
+                            function() {
+                                window.top.art.dialog({
+                                    id: 'edit'
+                                }).close()
+                            });
+                        }</script>
+
                 <include file="public:footer" />
