@@ -25,6 +25,7 @@ class itemsAction extends baseAction
 	// 生成海报
 	public function create_poster($poster_bg = '/qrcode/poster_bg.jpg', $qrcode = '/qrcode/qrcode.jpg', $head_source = '/qrcode/header.jpg')
 	{
+		
 		$APP_URL = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 //		$APP_URL = 'http://localhost/99_ctw/msec3.jieqiangtec.com/';
 //		var_dump($APP_URL);exit;
@@ -32,7 +33,9 @@ class itemsAction extends baseAction
 		// 判断是否有底图
 		if ($file) {
 			//			$poster_bg = $APP_URL.__ROOT__.$file['img'];  // 海报背景图  从库中取得
-			$poster_bg = $APP_URL . __ROOT__ . $file;  // 海报背景图
+//			$poster_bg = $APP_URL . __ROOT__ . $file;  // 海报背景图
+			$poster_bg = $APP_URL . __ROOT__.'/' . $file;  // 海报背景图
+//			var_dump(__ROOT__,$poster_bg);exit;
 		} else {
 			$poster_bg = $APP_URL . __ROOT__ . '/data' . $poster_bg;  // 海报背景图
 		}
@@ -246,7 +249,7 @@ class itemsAction extends baseAction
 	{
 
 		//        var_dump($_REQUEST);
-		M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
+		M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
 		$_GET['add_time'] = $_GET['update_time'] = time();
 		$_GET['op_time'] = date('Y-m-d H:i:s');
 		$_GET['status'] = $_GET['data_state'] = 1;
@@ -301,7 +304,7 @@ class itemsAction extends baseAction
 	 $key = 1;
 	 foreach ($commission_list as $k => $val) {
 	 $commission_list[$k]['key'] = ++$p->firstRow;
-	 //            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
+	 //            $commission_list[$k]['title'] = M('items')->where(" item_id='{$val['item_id']}' ")->getField('title')?:'未入库';
 	 $commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 	 //            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
 	 }
@@ -358,15 +361,15 @@ class itemsAction extends baseAction
 		$key = 1;
 		foreach ($commission_list as $k => $val) {
 			$commission_list[$k]['key'] = ++$p->firstRow;
-			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
+			//            $commission_list[$k]['title'] = M('items')->where(" item_id='{$val['item_id']}' ")->getField('title')?:'未入库';
 			$commission_list[$k]['bank_id'] = $bank_id;
 			//			$commission_list[$k]['bank_subid'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
 			$commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
-            $commission_list[$k]['file'] = M('file')->where(" item_id={$val['item_id']} AND status=1 AND data_state=1 ")->select() ?: array();
+            $commission_list[$k]['file'] = M('file')->where(" item_id='{$val['item_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
 
 			// 分润  根据分行设置 暂时屏蔽
-			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
-			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']}   ")->order('id desc')->find() ?: array();
+			//			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
+			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'   ")->order('id desc')->find() ?: array();
 			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
 			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
 			 
@@ -413,6 +416,7 @@ class itemsAction extends baseAction
 
 			$result = $items_mod->add($data);
 			if (false !== $result) {
+//				var_dump($data['img']);exit;
 				$this->create_poster($poster_bg = $data['img'], $qrcode = '/qrcode/qrcode.jpg', $head_source = '/qrcode/header.jpg', $origin_id = $result, $item_id = $_REQUEST['item_id'], $shop_id = $_REQUEST['shop_id']);
 				//				exit;
 				//                $this->success(L('operation_success'), U('items/index'));

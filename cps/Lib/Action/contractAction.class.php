@@ -481,8 +481,8 @@ class contractAction extends baseAction
 						$rate = ($data['commission'] / $data['price'] * 100);
 						//                    if ($data['rate'] && $data['commission'] && ($data['rate'] != ($data['commission'] / $data['price'] * 100))) {
 						if ($data['rate'] && $data['commission'] && ((string)$data['rate'] !== (string)$rate) ) {
-							//                        $this->error("{$data['item_id']}-{$data['title']}：佣金和佣金比例（{$data['rate']}-{$data['price']}-{$data['commission']}）设置不对，请重新设置！");
-							$this->error("{$data['item_id']}-{$data['title']}：佣金和佣金比例（{$data['rate']}-{$rate}）设置不对，请重新设置！");
+							//                        $this->error("'{$data['item_id']}'-{$data['title']}：佣金和佣金比例（{$data['rate']}-{$data['price']}-{$data['commission']}）设置不对，请重新设置！");
+							$this->error("'{$data['item_id']}'-{$data['title']}：佣金和佣金比例（{$data['rate']}-{$rate}）设置不对，请重新设置！");
 						}
 
 						if ($data['commission']) {
@@ -502,22 +502,22 @@ class contractAction extends baseAction
 
 						// 写入商品表  价格
 						// 判断是否存在
-						//					$result_flag = M('items')->where(" item_id={$data['item_id']} ")->find();
-						$result_flag = M('items')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						//					$result_flag = M('items')->where(" item_id='{$data['item_id']}' ")->find();
+						$result_flag = M('items')->where(" item_id='{$data['item_id']}' AND  shop_id={$data['shop_id']}")->find();
 						if ($result_flag) {
-							//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-							M('items')->where("  item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+							//						M('items')->where(" item_id='{$data['item_id']}' ")->save($data);
+							M('items')->where("  item_id='{$data['item_id']}'  AND  shop_id={$data['shop_id']} ")->save($data);
 						} else {
 							M('items')->add($data);
 						}
 						// 写入佣金表
 						//					M('commission')->add($data);
-						// $commission_flag = M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
-						$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						// $commission_flag = M('commission')->where("role_id={$_SESSION['admin_info']['role_id']} AND   item_id='{$data['item_id']}' AND  shop_id={$data['shop_id']}")->find();
+						$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND role_id={$_SESSION['admin_info']['role_id']} AND   item_id='{$data['item_id']}' AND  shop_id={$data['shop_id']}")->find();
 						// var_dump('TODO jieiangtest1--',M('commission')->getLastSql());exit;
 						if ($commission_flag) {
-							//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-							M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+							//						M('items')->where(" item_id='{$data['item_id']}' ")->save($data);
+							M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id='{$data['item_id']}'  AND  shop_id={$data['shop_id']} ")->save($data);
 						} else {
 							M('commission')->add($data);
 						}
@@ -563,8 +563,8 @@ class contractAction extends baseAction
 						$rate = ($data['commission'] / $data['price'] * 100);
 						//                    if ($data['rate'] && $data['commission'] && ($data['rate'] != ($data['commission'] / $data['price'] * 100))) {
 						if ($data['rate'] && $data['commission'] && ((string)$data['rate'] !== (string)$rate) ) {
-							//                        $this->error("{$data['item_id']}-{$data['title']}：佣金和佣金比例（{$data['rate']}-{$data['price']}-{$data['commission']}）设置不对，请重新设置！");
-							$this->error("{$data['item_id']}-{$data['title']}：佣金和佣金比例（{$data['rate']}-{$rate}）设置不对，请重新设置！");
+							//                        $this->error("'{$data['item_id']}'-{$data['title']}：佣金和佣金比例（{$data['rate']}-{$data['price']}-{$data['commission']}）设置不对，请重新设置！");
+							$this->error("'{$data['item_id']}'-{$data['title']}：佣金和佣金比例（{$data['rate']}-{$rate}）设置不对，请重新设置！");
 						}
 
 						if ($data['commission']) {
@@ -590,22 +590,22 @@ class contractAction extends baseAction
 
 						// 写入商品表  价格
 						// 判断是否存在
-						//					$result_flag = M('items')->where(" item_id={$data['item_id']} ")->find();
-						$result_flag = M('items')->where(" item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						//					$result_flag = M('items')->where(" item_id='{$data['item_id']}' ")->find();
+						$result_flag = M('items')->where(" item_id='{$data['item_id']}' AND  shop_id={$data['shop_id']}")->find();
 						if ($result_flag) {
-							//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-							M('items')->where("  item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+							//						M('items')->where(" item_id='{$data['item_id']}' ")->save($data);
+							M('items')->where("  item_id='{$data['item_id']}'  AND  shop_id={$data['shop_id']} ")->save($data);
 						} else {
 							M('items')->add($data);
 						}
 						// 写入佣金表
 						//					M('commission')->add($data);
-						$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+						$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id='{$data['item_id']}' AND  shop_id={$data['shop_id']}")->find();
 						// var_dump('TODO jieiangtest2--',M('commission')->getLastSql());exit;
 						
 						if ($commission_flag) {
-							//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-							M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+							//						M('items')->where(" item_id='{$data['item_id']}' ")->save($data);
+							M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id='{$data['item_id']}'  AND  shop_id={$data['shop_id']} ")->save($data);
 						} else {
 							M('commission')->add($data);
 						}
@@ -689,21 +689,21 @@ class contractAction extends baseAction
 
 				// 写入商品表  价格
 				// 判断是否存在
-				$result_flag = M('items')->where(" item_id={$data['item_id']}   AND  shop_id={$data['shop_id']} ")->find();
+				$result_flag = M('items')->where(" item_id='{$data['item_id']}'   AND  shop_id={$data['shop_id']} ")->find();
 				if ($result_flag) {
-					$result = M('items')->where(" item_id={$data['item_id']}   AND  shop_id={$data['shop_id']} ")->save($data);
+					$result = M('items')->where(" item_id='{$data['item_id']}'   AND  shop_id={$data['shop_id']} ")->save($data);
 				} else {
 					$result = M('items')->add($data);
 				}
 
 				// 写入佣金表
 				// M('commission')->add($data);
-//				$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
-				$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']} AND  shop_id={$data['shop_id']}")->find();
+//				$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id='{$data['item_id']}' AND  shop_id={$data['shop_id']}")->find();
+				$commission_flag = M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id='{$data['item_id']}' AND  shop_id={$data['shop_id']}")->find();
 
 				if ($commission_flag) {
-					//						M('items')->where(" item_id={$data['item_id']} ")->save($data);
-					M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id={$data['item_id']}  AND  shop_id={$data['shop_id']} ")->save($data);
+					//						M('items')->where(" item_id='{$data['item_id']}' ")->save($data);
+					M('commission')->where("platform_id={$data['platform_id']} AND  role_id={$_SESSION['admin_info']['role_id']} AND   item_id='{$data['item_id']}'  AND  shop_id={$data['shop_id']} ")->save($data);
 				} else {
 					M('commission')->add($data);
 				}

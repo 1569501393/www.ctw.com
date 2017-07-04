@@ -171,7 +171,7 @@ class deskAction extends Action
     public function prom()
     {
         //        var_dump($_REQUEST);
-        M('commission')->where("item_id={$_REQUEST['item_id']} AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
+        M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
         $_GET['add_time'] = $_GET['update_time'] = time();
         $_GET['op_time'] = date('Y-m-d H:i:s');
         $_GET['status'] = $_GET['data_state'] = 1;
@@ -192,8 +192,8 @@ class deskAction extends Action
     // 推广链接跳转
     public function buy()
     {
-        $item_info = M('items')->where(" shop_id={$_GET['shop_id']} AND item_id={$_GET['item_id']}")->find();
-        $commission_info = M('commission')->where(" shop_id={$_GET['shop_id']} AND item_id={$_GET['item_id']} AND platform_id={$_GET['bank_id']} ")->select();
+        $item_info = M('items')->where(" shop_id={$_GET['shop_id']} AND item_id='{$_GET['item_id']}' ")->find();
+        $commission_info = M('commission')->where(" shop_id={$_GET['shop_id']} AND item_id='{$_GET['item_id']}' AND platform_id={$_GET['bank_id']} ")->select();
 
         if (is_array($commission_info) && count($commission_info) > 1) {
             if ($commission_info[0]['con_id'] > 0) {

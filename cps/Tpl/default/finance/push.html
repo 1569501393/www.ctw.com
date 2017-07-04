@@ -66,20 +66,17 @@
                                                     <th>佣金(比例)</th>
                                                     <!-- <th>佣金</th> -->
                                                 </if>
-                                                <th>分润(比例)</th>
+                                                <if condition="$Think.session.admin_info.role_id neq 3 ">
+                                                    <th>分润(比例)</th>
+                                                </if>
+                                                
                                                 <!-- <th>分润</th> -->
                                                 <th>合同名称</th>
                                                 <!-- <th style="min-width: 80px;">分销平台</th> -->
                                                 <if condition="$Think.session.admin_info.role_id eq 1 ">
                                                     <th>分销平台</th></if>
                                                 <th>入库日期</th>
-                                                <th>点击量</th>
-
-                                                <if condition="$_SESSION['admin_info']['role_id'] eq 1 || $_SESSION['admin_info']['role_id'] eq 4">
-                                                <th>编辑</th>
-                                                </if>
-                                                <!-- <th style="min-width: 80px;">推广链接</th>
-                                                <th style="min-width: 80px;">推广图片</th> --></tr>
+                                                <th>点击量</th></tr>
                                         </thead>
                                         <tbody>
                                             <volist name="commission_list" id="val">
@@ -97,7 +94,11 @@
                                                         <!-- <td>{$val.rate|default="默认佣金比例"}%</td> -->
                                                         <td>{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)</td></if>
                                                     <!-- <td>{$val.rate2|default="默认分润比例"}%</td> -->
-                                                    <td>{$val.commission2|default="默认分润"}({$val.rate2|default="默认分润比例"}%)</td>
+                                                    <if condition="$Think.session.admin_info.role_id neq 3 ">
+                                                        <td>{$val.commission2|default="默认分润"}({$val.rate2|default="默认分润比例"}%)</td>
+                                                    </if>
+
+                                                    
                                                     <td>
                                                         <!-- {$val.con_id} -->
                                                         <a href="{:u('contract/edit',array('id'=>$val['con_id']))}">{$val.contract|default="默认合同名称"}
@@ -108,19 +109,6 @@
                                                     <!-- <td>{$val.period}</td> -->
                                                     <td>{$val.add_time|date='Y-m-d',###}</td>
                                                     <td>{$val.click}</td>
-
-                                                    <if condition="$_SESSION['admin_info']['role_id'] eq 1">
-                                                    <td><a href="javascript:edit({$val.id},'{$val.title}',1)">编辑</a></td>
-
-                                                    <elseif condition="$_SESSION['admin_info']['role_id'] eq 4" />
-                                                        <if condition="$val['profit_id']">
-                                                        <td><a href="javascript:edit({$val.profit_id},'{$val.title}',1)">编辑</a></td>
-                                                        <else />
-                                                        <td><a href="javascript:edit({$val.id},'{$val.title}',0)">添加</a></td>
-                                                        </if>
-                                                    
-
-                                                    </if>
                                                     </tr>
                                             </volist>
                                         </tbody>

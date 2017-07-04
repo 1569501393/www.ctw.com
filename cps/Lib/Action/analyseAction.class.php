@@ -49,7 +49,7 @@ class analyseAction extends baseAction
 //		$where .= ' AND 1=1';
         $items_list = M('orderlist')->field(array("count(item_id)" => "cnt", "title", "item_id", "shop_id", "sum(sum_price)" => "sum_price", "sum(item_count)" => "sum_count", "SUM(sum_price)" => "sum_price"))->where(" $where ")->group('item_id')->order('sum_count DESC')->limit(10)->select();
         foreach ($items_list as $k => $v) {
-            $item = M('items')->where(" item_id={$v['item_id']} AND shop_id={$v['shop_id']} ")->find();
+            $item = M('items')->where(" item_id='{$v['item_id']}' AND shop_id={$v['shop_id']} ")->find();
             $items_list[$k]['url'] = $item['url'];
             $items_list[$k]['img'] = $item['img'];
         }

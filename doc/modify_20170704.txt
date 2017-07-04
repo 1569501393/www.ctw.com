@@ -1,0 +1,9 @@
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/www/users/cps.jieqiangtec.com (cps.jieqiangtec.com)
+$ git pull
+Auto-merging cps/Lib/Action/financeAction.class.php
+CONFLICT (content): Merge conflict in cps/Lib/Action/financeAction.class.php
+Auto-merging cps/Lib/Action/contractAction.class.php
+Auto-merging cps/Lib/Action/adminAction.class.php
+CONFLICT (content): Merge conflict in cps/Lib/Action/adminAction.class.php
+Auto-merging cps/Common/common.php
+Automatic merge failed; fix conflicts and then commit the result.

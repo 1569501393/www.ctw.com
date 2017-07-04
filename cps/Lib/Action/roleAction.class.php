@@ -5,7 +5,7 @@ class roleAction extends baseAction
 	{
 		
 		//搜索
-		$where = '1=1 ';
+		$where = '1=1 AND  data_state=1 ';
 		if (isset($_GET['name']) && trim($_GET['name'])) {
 			$where .= " AND name LIKE '%{$_GET['name']}%'" ;
 			$this->assign('name', $_GET['name']);

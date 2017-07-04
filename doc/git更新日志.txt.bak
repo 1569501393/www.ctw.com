@@ -9,7 +9,7 @@ $ git diff --name-only HEAD~ >./doc/modify/modify_201707021032.txt
 $ git diff --name-status HEAD~ >./doc/modify/modify_201707021032.txt
 
 去除没有ms目录
-git add cps/Lib/ cps/Tpl/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
+git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
 chmod -R 777 ./
 
 

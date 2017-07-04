@@ -87,6 +87,29 @@ $ git diff --name-status HEAD~2| xargs zip update.zip
 
 $ git diff --name-status HEAD~2| xargs 'D:\software\WinRAR' update.zip
 
+
+利用WinRAR命令行压缩文件或文件夹
+http://blog.csdn.net/diligentcatrich/article/details/5823193
+
+添加rar程序到系统变量
+rar a -ag -ibck update.zip text.txt
+rar a -ag -r -ibck update.zip text.txt
+rar a -r -ibck update.zip ../
+
+rar a -ag -r -ibck ./doc/modify/update.zip config.inc.php cps/Conf/config.php
+
+
+
+rar a -ag -r -ibck ./doc/modify/update.zip cps/Tpl/default/contract/index.html cps/Tpl/default/finance/push.html  cps/Tpl/default/items/index.html
+rar a -ag -r -ibck update.zip cps/Tpl/default/contract/index.html cps/Tpl/default/finance/push.html  cps/Tpl/default/items/index.html
+
+
+压缩文件夹
+winrar.exe a -ag -k -r -s -ibck c:/bak.rar c:/dat/ 
+压缩多个文件
+winrar a -ag -ibck bak.rar filename1 filename2
+
+
 D:\software\WinRAR
 
 压缩多个文件
