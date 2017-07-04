@@ -326,10 +326,15 @@ class itemsAction extends baseAction
 
 		//搜索
 		$where = '1=1 AND con_id>0 ';
-		if ($_SESSION['admin_info']['role_id'] !=1 ) {
-			$platform_id = get_platform_id($_SESSION['admin_info']);
-			$where .= " AND platform_id=" . $platform_id;
-		}
+        if ($_SESSION['admin_info']['role_id'] !=1 ) {
+            if ($_SESSION['admin_info']['role_id'] ==3 ) {
+//				$platform_id = get_platform_id($_SESSION['admin_info']['id']);
+                $where .= " AND shop_id=" . $_SESSION['admin_info']['id'];
+            }else{
+                $platform_id = get_platform_id($_SESSION['admin_info']);
+                $where .= " AND platform_id=" . $platform_id;
+            }
+        }
 		if (isset($_REQUEST['keyword']) && trim($_REQUEST['keyword'])) {
 
 			$where .= " AND (title like '%{$_REQUEST['keyword']}%' OR contract like '%{$_REQUEST['keyword']}%') ";
