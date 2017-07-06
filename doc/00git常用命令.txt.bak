@@ -14,9 +14,6 @@ Git从远程克隆到本地版本
 $ pwd
 /d/software/phpStudy/WWW/99_ctw/www.ctw.com
 
-
-git clone https://github.com/1569501393/www.ctw.com.git ./cps.jieqiangtec.com
-
 git diff 文件列表
 http://www.cnblogs.com/wish123/p/3963224.html
 查看当前目录和另外一个分支的差别
