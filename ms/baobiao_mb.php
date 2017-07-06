@@ -4,6 +4,8 @@ include 'header_mb.php';
 // include 'mobile.php';
 
 ?>
+<title>报表</title>
+</head>
 
     <div id="wrapper">
 
@@ -30,7 +32,7 @@ include 'header_mb.php';
     <a href="lib_mb.php">
         <li class="bottomnav lib">
         <i class="bottomicon glyphicon glyphicon-folder-open"></i>
-        <span class="navtitle">推广库</span>
+        <span class="navtitle">我的推广</span>
         </li>
     </a>
     <a href="baobiao_mb.php">
@@ -49,12 +51,12 @@ include 'header_mb.php';
 </ul>
 
 <!-- Top Bar Start -->
-<div class="topbar">
+<!-- <div class="topbar"> -->
         <!-- <i class="backicon glyphicon glyphicon-chevron-left"></i> -->
     <!-- LOGO -->
-    报表
+    <!-- 报表 -->
     <!-- Button mobile view to collapse sidebar menu -->
-</div>
+<!-- </div> -->
 <!-- Top Bar End -->
 
 
@@ -120,9 +122,6 @@ include 'header_mb.php';
 
                 </div>
 
-                <footer class="footer text-right">
-                    2017 © MS CPS SYSTEM.
-                </footer>
 
             </div>
 

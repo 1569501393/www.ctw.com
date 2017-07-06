@@ -3,17 +3,11 @@
 include 'header_mb.php';
 
 ?>
+<title>民商智惠CPS</title>
+</head>
 
-    <div id="wrapper">
 
-<!-- Top Bar Start -->
-<div class="topbar">
-
-    <!-- LOGO -->
-    民商智惠<span class="small">CPS</span>
-    <!-- Button mobile view to collapse sidebar menu -->
-</div>
-<!-- Top Bar End -->
+<div id="wrapper">
 
 
 <ul class="bottombar">
@@ -33,7 +27,7 @@ include 'header_mb.php';
     <a href="lib_mb.php">
         <li class="bottomnav lib">
         <i class="bottomicon glyphicon glyphicon-folder-open"></i>
-        <span class="navtitle">推广库</span>
+        <span class="navtitle">我的推广</span>
         </li>
     </a>
     <a href="baobiao_mb.php">
@@ -65,6 +59,16 @@ include 'header_mb.php';
                             </div>
                         </div>
 
+
+                        <div class="row">
+                            <a href="#">
+                            <div class="homebanner">
+                            <img class="wid" src="./assets/images/huawei.jpg">
+                            </div>
+                            </a>
+                        </div>
+
+
                         <div class="row">
                             <button type="button" class="btn btn-default notification">
                             <span class="notiTitle">公告:</span>
@@ -79,13 +83,6 @@ include 'header_mb.php';
                             </button>
                         </div>
 
-                        <div class="row">
-                            <a href="#">
-                            <div class="homebanner">
-                            <img class="wid" src="./assets/images/huawei.jpg">
-                            </div>
-                            </a>
-                        </div>
 
 
                         <div class="row goodslist contentlist">
@@ -98,30 +95,10 @@ include 'header_mb.php';
                             <div class="singlegoods">
                                 <a href="#"><div class="thumbs"><img class="wid" src="./assets/images/unknown.jpeg"></div></a>
                                 <div class="goodsinfo">
-                                    <span class="goodstitle">华为 （HUAWEI） nova 4GB+64GB 全</span>
-                                    <span class="goodsdetials">商品佣金范围:<span class="num">20-100 </span></span>
-                                    <span class="goodsdetials">佣金比例范围:<span class="num">5%-10% </span></span>
-                                    <button type="button" class="btn btn-default btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">立即推广</button>
-                                </div>
-                            </div>
-
-                            <div class="singlegoods">
-                                <a href="#"><div class="thumbs"><img class="wid" src="./assets/images/unknown.jpeg"></div></a>
-                                <div class="goodsinfo">
-                                    <span class="goodstitle">华为 （HUAWEI） nova 4GB+64GB 全</span>
-                                    <span class="goodsdetials">商品佣金范围:<span class="num">20-100 </span></span>
-                                    <span class="goodsdetials">佣金比例范围:<span class="num">5%-10% </span></span>
-                                    <button type="button" class="btn btn-default btn-rounded waves-effect waves-light">立即推广</button>
-                                </div>
-                            </div>
-
-                            <div class="singlegoods">
-                                <a href="#"><div class="thumbs"><img class="wid" src="./assets/images/unknown.jpeg"></div></a>
-                                <div class="goodsinfo">
-                                    <span class="goodstitle">华为 （HUAWEI） nova 4GB+64GB 全</span>
-                                    <span class="goodsdetials">商品佣金范围:<span class="num">20-100 </span></span>
-                                    <span class="goodsdetials">佣金比例范围:<span class="num">5%-10% </span></span>
-                                    <button type="button" class="btn btn-default btn-rounded waves-effect waves-light">立即推广</button>
+                                    <span class="goodstitle">华为 （HUAWEI） nova 4GB+64GB 全金属机身、超级好用</span>
+                                    <span class="goodsdetials">价格:<span class="num">100 </span></span>
+                                    <span class="goodsdetials importantinfo">佣金:<span class="num">30</span> <span class="linespace"></span>佣金比例:<span class="num">30%</span></span>
+                                    <button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this);" promoteid="goodsid">立即推广</button>
                                 </div>
                             </div>
 
@@ -132,9 +109,8 @@ include 'header_mb.php';
 
                 </div>
 
-                <footer class="footer text-right">
-                    2017 © MS CPS SYSTEM.
-                </footer>
+
+
 
             </div>
 

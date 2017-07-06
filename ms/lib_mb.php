@@ -4,6 +4,8 @@ include 'header_mb.php';
 // include 'mobile.php';
 
 ?>
+<title>我的推广</title>
+</head>
 
     <div id="wrapper">
 
@@ -30,7 +32,7 @@ include 'header_mb.php';
     <a href="lib_mb.php">
         <li class="bottomnav lib active">
         <i class="bottomicon glyphicon glyphicon-folder-open"></i>
-        <span class="navtitle">推广库</span>
+        <span class="navtitle">我的推广</span>
         </li>
     </a>
     <a href="baobiao_mb.php">
@@ -49,17 +51,17 @@ include 'header_mb.php';
 </ul>
 
 <!-- Top Bar Start -->
-<div class="topbar">
+<!-- <div class="topbar"> -->
     <!-- 单个标题直接写名字就好 -->
-    <!-- 推广库 -->
+    <!-- 我的推广 -->
 
 
     <!-- 需要做切换到时候用 -->
-    <a href="#"><div class="togglenav active">推广商品库</div></a>
-    <a href="#"><div class="togglenav">推广活动库</div></a>
+    <!-- <a href="#"><div class="togglenav active">推广商品库</div></a> -->
+    <!-- <a href="#"><div class="togglenav">推广活动库</div></a> -->
     
     <!-- Button mobile view to collapse sidebar menu -->
-</div>
+<!-- </div> -->
 <!-- Top Bar End -->
 
 
@@ -80,7 +82,7 @@ include 'header_mb.php';
                         <div class="row liblist contentlist">
                             <div class="singlelib">
                                 <div class="promotiondate">
-                                    推广时间:<span class="info">2017-11-11</span>
+                                    分享时间:<span class="info">2017-11-11</span>
                                     <a href="promotions_mb.php"><div class="enterbtn">查看商品<i class="settingenter ti-angle-right"></i></div></a>
                                 </div>
                                 <a href="#"><div class="thumbs"><img class="wid" src="./assets/images/unknown.jpeg"></div></a>
@@ -88,7 +90,8 @@ include 'header_mb.php';
                                 <a href="#"><div class="thumbs"><img class="wid" src="./assets/images/unknown.jpeg"></div></a>
                                 <a href="#"><div class="thumbs"><img class="wid" src="./assets/images/unknown.jpeg"></div></a>
                                 <div class="libdetials">
-                                    创建时间:<span class="weakinfo">2011-11-11 13:33</span>商品数:<span class="num">4</span>
+                                    <!-- 创建时间:<span class="weakinfo">2011-11-11 13:33</span> -->
+                                    商品数:<span class="num">4</span>
                                 </div>
                                 <div class="bottomfunc">
 <!--                                     <button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this);" promoteid="goodsid">立即推广</button> -->

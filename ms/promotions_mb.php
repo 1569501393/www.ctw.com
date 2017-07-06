@@ -1,7 +1,7 @@
 <?php
 
 include 'header_mb.php';
-// include 'mobile.php';
+include 'mobile.php';
 
 ?>
 
@@ -12,7 +12,7 @@ include 'header_mb.php';
 <div class="topnavbar">
         <a href="lib_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a>
     <!-- LOGO -->
-    推广时间: 2017-11-11 至 2017-11-18
+    分享时间: 2017-11-11
     <!-- Button mobile view to collapse sidebar menu -->
 </div>
 <!-- Top Bar End -->
@@ -36,7 +36,7 @@ include 'header_mb.php';
                                 <div class="bottominfo">
                                     <p>30天引入订单量: <span class="num">9999</span></p>
                                     <p>30天佣金收入: <span class="num">9999</span></p>
-                                    <p><span class="num">2017年11月11日</span> 至 <span class="num">2017年11月18日</span></p>
+                                    <p>活动时间: <span class="num">2017年11月11日</span> 至 <span class="num">2017年11月18日</span></p>
                                 </div>
 
                                 <div class="bottomfunc">

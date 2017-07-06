@@ -9,8 +9,8 @@
 
         <link rel="shortcut icon" href="./assets/images/favicon_1.ico">
 
-        <title>CPS System</title>
-
+        
+        
         <!--Morris Chart CSS -->
 
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -23,8 +23,8 @@
         <link href="./assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" /><!-- 多选框 -->
         <link href="./assets/plugins/select2/select2.css" rel="stylesheet" type="text/css" /><!-- 单选 -->
         <link href="./assets/plugins/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" /><!-- 单选基础样式 -->
-        
-        <!-- 移动端样式修复 -->
+
+
         <link href="./assets/css/mobile.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,4 +37,3 @@
         <!-- <script src="assets/js/modernizr.min.js"></script> -->
 
 
-    </head>

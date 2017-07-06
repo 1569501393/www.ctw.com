@@ -4,6 +4,8 @@ include 'header_mb.php';
 // include 'mobile.php';
 
 ?>
+<title>账户</title>
+</head>
 
     <div id="wrapper">
 
@@ -30,7 +32,7 @@ include 'header_mb.php';
     <a href="lib_mb.php">
         <li class="bottomnav lib">
         <i class="bottomicon glyphicon glyphicon-folder-open"></i>
-        <span class="navtitle">推广库</span>
+        <span class="navtitle">我的推广</span>
         </li>
     </a>
     <a href="baobiao_mb.php">

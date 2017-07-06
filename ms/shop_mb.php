@@ -4,6 +4,8 @@ include 'header_mb.php';
 // include 'mobile.php';
 
 ?>
+<title>推广商品</title>
+</head>
 
     <div id="wrapper">
 
@@ -30,7 +32,7 @@ include 'header_mb.php';
     <a href="lib_mb.php">
         <li class="bottomnav lib">
         <i class="bottomicon glyphicon glyphicon-folder-open"></i>
-        <span class="navtitle">推广库</span>
+        <span class="navtitle">我的推广</span>
         </li>
     </a>
     <a href="baobiao_mb.php">
@@ -49,12 +51,12 @@ include 'header_mb.php';
 </ul>
 
 <!-- Top Bar Start -->
-<div class="topbar">
+<!-- <div class="topbar"> -->
         <!-- <i class="backicon glyphicon glyphicon-chevron-left"></i> -->
     <!-- LOGO -->
-    推广商品
+    <!-- 推广商品 -->
     <!-- Button mobile view to collapse sidebar menu -->
-</div>
+<!-- </div> -->
 <!-- Top Bar End -->
 
 
@@ -106,6 +108,9 @@ include 'header_mb.php';
                                     <span class="goodstitle">华为 （HUAWEI） nova 4GB+64GB 全金属机身、超级好用</span>
                                     <span class="goodsdetials">价格:<span class="num">100 </span></span>
                                     <span class="goodsdetials importantinfo">佣金:<span class="num">30</span> <span class="linespace"></span>佣金比例:<span class="num">30%</span></span>
+                                </div>
+                                <div class="bottominfo">
+                                    <p>活动时间: <span class="num">2017年11月11日</span> 至 <span class="num">2017年11月18日</span></p>
                                 </div>
                                 <div class="bottomfunc">
                                     <button type="button" class="btn btn-default btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">立即推广</button>

@@ -5,7 +5,7 @@
 .topbar .small{ font-size: 0.8rem }
 .topnavbar{height: 2.6rem; font-size: 0.7rem;  text-align: center; line-height: 2.6rem; font-weight: bold; color: #666;/*color:#fff; */position: fixed; top: 0;width: 100%;background:#eee;/*background:#5d9cec;*/ z-index: 9999}
 .backicon{ font-size: 0.8rem; color:#888; width: 1rem; height: 1rem; line-height: 1rem; position: absolute; left: 0.5rem; top: 0.7rem }
-.content-page .content{ margin-top: 2.2rem !important; }
+.content-page .content{ margin-top: -0.5rem !important; }
 .secondpage .content-page .content{ margin-top: 1.2rem !important; }
 .bottombar{ height: 2.8rem; font-size: 1rem; background: #18181d; position: fixed; bottom: 0; z-index: 9999; width: 100%; margin:0 !important; padding: 0 !important }
 .bottombar li{ width: 19.75%; float: left; list-style: none; text-align: center; color: #888 ; display: inline-block;}
@@ -18,7 +18,7 @@
 .input-group.searchinput{ width: 100%; }
 .input-group.searchinput .form-control{ width: 80%; margin-left: 2.5% }
 .input-group.searchinput .btn{ width: 12.5%; margin-left:2.5%; }
-.notification{ width: 100%; text-align: left; margin-top: 0.5rem; height: 2.5rem; position: relative; }
+.notification{ width: 100%; text-align: left; margin-top: 0rem; height: 2.5rem; position: relative; }
 .notification .notiTitle{ position: absolute; left: 0.5rem; top: 0.2rem; font-weight: 600 }
 .notification .noticontent{ position: absolute; width: 14rem; left: 3rem; height: 3rem; top: 0; overflow: hidden;}
 .notification .noticontent .title{ margin-top: 0.3rem !important; display: block; font-size: 0.7rem; font-size: bold }
@@ -28,12 +28,13 @@
 .areatitle{width: 100%;height: 1.4rem;line-height: 1.8rem;font-size: 0.8rem;text-align: center;color:#aaa;}
 .singlegoods{ width: 100%; height: 8rem; background: #fff; margin:0.5rem 0; }
 .singlegoods .thumbs{ width:7rem; margin-top: 0.5rem; height: 7rem; float:left; }
-.singlegoods .goodsinfo{ width:10rem; float:left; margin-left: 0.5rem }
-.singlegoods .goodstitle{ font-size:0.9rem; padding-top: 0.6rem; display: block;padding-bottom: 0.3rem; color: #444; font-weight: 600 }
-.singlegoods .goodsdetials{ display: block; }
+.singlegoods .goodsinfo{ width:11rem; float:left; margin-left: 0.5rem }
+.singlegoods .goodstitle{ font-size:0.8rem; padding-top: 0.6rem; display: block;padding-bottom: 0.3rem; color: #444; font-weight: 600; height: 3rem;overflow: hidden; }
+.singlegoods .goodsdetials{ display: block; font-size: 0.7rem;margin-top: 0.2rem }
 .singlegoods .btn{ margin-top: 0.4rem; padding:0.15rem 0.5rem !important; }
+.singlegoods .btn.right{ float: right; }
 
-.singleshop{ width: 100%; height: 7rem; background: #fff; margin:0.5rem 0; position: relative; }
+.singleshop{ width: 100%; background: #fff; margin:0.5rem 0; position: relative; }
 .singleshop .thumbs{ width:4rem; margin: 0.5rem 0 0 0.5rem; height: 4rem; float:left; }
 .singleshop .goodsinfo{ width:13.5rem; float:left; margin-left: 0.5rem; height: 4.5rem }
 .singleshop .goodstitle{ font-size:0.65rem; padding-top: 0.6rem; display: block;padding-bottom: 0.5rem; color: #444; font-weight: 600; height: 2.7rem }
@@ -41,7 +42,10 @@
 .singleshop .btn{ margin-top: 0.2rem; padding:0.15rem 0.5rem !important; width: 30%; float: right; margin-right: 5% }
 .singleshop .linespace{ width: 2rem; display: inline-block; }
 .singleshop .importantinfo{ color: #ff3366 }
-.singleshop .bottomfunc{ position: absolute; bottom: 0; width: 100%; height: 2rem; border-top: 2px solid #f3f3f3 }
+/*.singleshop .bottomfunc{ position: absolute; bottom: 0; width: 100%; height: 2rem; border-top: 2px solid #f3f3f3 }*/
+.singleshop .bottomfunc{ position: relative; bottom: 0; width: 100%; border-top: 2px solid #f3f3f3;clear: both; text-align: right; padding-bottom: 0.4rem; height: 2rem }
+.singleshop .bottominfo{ position: relative; bottom: 0; width: 100%;clear: both; text-align: left; padding-top: 0.7rem}
+.singleshop .bottominfo p{ font-size: 0.7rem; line-height: 1rem; padding-left: 1rem; margin:0 0 0.2rem 0 !important; color: #aaa }
 
 
 .singlepromotion{ width: 100%;background: #fff; margin:0.5rem 0; position: relative; }
@@ -88,7 +92,7 @@
 .swiper-wrapper{ width: 100%; height: 100%; position: relative; display: block; }
 .swiper-slide{ position: relative; display: inline-block;}
 
-.homebanner{ width: 100%; height: 45%; }
+.homebanner{ width: 100%; height: 45%;  margin-top:0.6rem}
 .accountpage{margin-top: 0rem; min-height: 100px}
 .accountpage .content{ min-height: 200px !important ; padding:0 !important; margin-top: 0 !important;}
 /*.accountpage .content-page .content{ padding:0; }*/
