@@ -11,12 +11,12 @@ include 'header_mb.php';
 
 
 <!-- Top Bar Start -->
-    <div class="topnavbar">
-            <a href="messagelist_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a>
+    <!-- <div class="topnavbar"> -->
+            <!-- <a href="messagelist_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
         <!-- LOGO -->
-        查看消息
+        <!-- 查看消息 -->
         <!-- Button mobile view to collapse sidebar menu -->
-    </div>
+    <!-- </div> -->
 
 
     <div class="content-page">

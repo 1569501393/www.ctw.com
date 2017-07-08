@@ -1,7 +1,4 @@
-<!--JYC SCRIPTCODE START-->
-<script>var jyc_end=new Date().getTime();</script><script src="//stat.adjyc.com/count/?uid=3329&logo=0" charset="utf-8"></script><noscript><a href="//stat.adjyc.com/" target="_blank"><img border="0" width="1" height="1" src="//stat.adjyc.com/count/stat_jyc.asp?uid=3329&vjs=0" title="JYC统计,助您决策!"></a></noscript>
-<!--JYC SCRIPTCODE END-->
-<!--Copyright (C) 2001-2017 WWW.ADJYC.COM All Rights Reserved-->
+
 
         <script>
             var resizefunc = [];
@@ -48,7 +45,8 @@
         <!-- 多文件上传、暂不需要 -->
         <!-- <script src="assets/plugins/dropzone/dist/dropzone.js"></script> -->
 
-
+        <script src="./assets/js/mobile.js" type="text/javascript"></script>
+        <!-- 手机端用来调整部分 -->
 
         <!-- 弹窗提示  -->
         <script src="assets/plugins/sweetalert/dist/sweetalert.min.js"></script>
@@ -92,8 +90,6 @@
         <script type="text/javascript">
             jQuery(document).ready(function($) {
 
-
-            	//根据页面所在位置 对左侧导航添加 active
                 var page = $('.content-page').attr('page');
                 $('.left-menu').each(function(){
                     if ($(this).attr('page')==page) {
@@ -157,8 +153,6 @@
         </script>
 
 
-
-        <!-- 日期选择器js -->
         <script>
             jQuery(document).ready(function() {
 
@@ -286,9 +280,7 @@
                     }
                 }, function (start, end, label) {
                     console.log(start.toISOString(), end.toISOString(), label);
-                    // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                    $('#reportrange span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));  
-                    
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
                 });
                 
             });

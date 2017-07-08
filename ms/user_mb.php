@@ -11,12 +11,12 @@ include 'header_mb.php';
 
 
 <!-- Top Bar Start -->
-    <div class="topnavbar">
-            <a href="account_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a>
+    <!-- <div class="topnavbar"> -->
+            <!-- <a href="account_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
         <!-- LOGO -->
-        个人设置
+        <!-- 个人设置 -->
         <!-- Button mobile view to collapse sidebar menu -->
-    </div>
+    <!-- </div> -->
 
 
     <div class="content-page">

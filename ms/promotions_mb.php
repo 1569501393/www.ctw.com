@@ -1,20 +1,22 @@
 <?php
 
 include 'header_mb.php';
-include 'mobile.php';
+// include 'mobile.php';
 
 ?>
+<title>分享时间: 2017-11-11</title>
+</head>
 
 <div id="wrapper" class="secondpage">
 
 
 <!-- Top Bar Start -->
-<div class="topnavbar">
-        <a href="lib_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a>
+<!-- <div class="topnavbar"> -->
+        <!-- <a href="lib_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
     <!-- LOGO -->
-    分享时间: 2017-11-11
+    <!-- 分享时间: 2017-11-11 -->
     <!-- Button mobile view to collapse sidebar menu -->
-</div>
+<!-- </div> -->
 <!-- Top Bar End -->
 
             <div class="content-page">

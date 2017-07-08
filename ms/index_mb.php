@@ -45,7 +45,7 @@ include 'header_mb.php';
 
 </ul>
 
-            <div class="content-page">
+            <div class="content-page homepage">
 
                 <div class="content">
                     <div class="container">

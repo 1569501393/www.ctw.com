@@ -74,8 +74,8 @@ include 'header_mb.php';
                     </div>
 
 
-                    <button type="button"  class="btn btn-white incomebtn" value="">申请提现</button>
-                    <button type="button"  class="btn btn-white incomebtn" value="">申请记录</button>
+                    <!-- <button type="button"  class="btn btn-white incomebtn" value="">申请提现</button> -->
+                    <!-- <button type="button"  class="btn btn-white incomebtn" value="">申请记录</button> -->
 
                 </div>
 

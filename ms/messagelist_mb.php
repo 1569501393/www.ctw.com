@@ -9,12 +9,12 @@ include 'header_mb.php';
 
 <div id="wrapper">
 
-    <div class="topnavbar">
-            <a href="account_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a>
+    <!-- <div class="topnavbar"> -->
+            <!-- <a href="account_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
         <!-- LOGO -->
-        消息列表
+        <!-- 消息列表 -->
         <!-- Button mobile view to collapse sidebar menu -->
-    </div>
+    <!-- </div> -->
 
 
 

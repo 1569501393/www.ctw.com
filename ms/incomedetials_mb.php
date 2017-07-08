@@ -11,18 +11,17 @@ include 'header_mb.php';
 
 
 <!-- Top Bar Start -->
-    <div class="topnavbar">
-            <a href="baobiao_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a>
+    <!-- <div class="topnavbar"> -->
+            <!-- <a href="baobiao_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
         <!-- LOGO -->
-        收入明细
+        <!-- 收入明细 -->
         <!-- Button mobile view to collapse sidebar menu -->
-    </div>
+    <!-- </div> -->
 
 
     <div class="content-page">
 
         <div class="content">
-
         
             <div class="row liblist contentlist">
                 <div class="singlelib">
