@@ -64,15 +64,18 @@ class financeAction extends baseAction {
 			$commission_id = M('admin')->where('id=' . $pid)->getField('commission_id');
 		}
 
+		$platform_id = get_platform_id($_SESSION['admin_info']);
+
 		foreach ($commission_list as $k => $val) {
 			$commission_list[$k]['key'] = ++$p->firstRow;
 			//            $commission_list[$k]['title'] = M('items')->where(" item_id={$val['item_id']} ")->getField('title')?:'未入库';
 			$commission_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
 			// 分润  根据分行设置 暂时屏蔽
 			//			$profit = M('commission')->where(" con_id<1 AND item_id={$val['item_id']} AND  shop_id={$val['shop_id']} AND  commission_id={$commission_id} ")->find() ?: array();
-			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'   ")->order('id desc')->find() ?: array();
-			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
-			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
+//            $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'   ")->order('id desc')->find() ?: array();
+            $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'  AND platform_id='{$platform_id}'   ")->order('id desc')->find() ?: array();
+            $commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
+            $commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
 			$commission_list[$k]['item'] = M('items')->where(" item_id='{$val['item_id']}'  AND shop_id={$val['shop_id']}  ")->find() ?: array();
 			//            $commission_list[$k]['contract'] = M('contract')->where(" id={$val['con_id']} ")->find()?:'未入库';
 			

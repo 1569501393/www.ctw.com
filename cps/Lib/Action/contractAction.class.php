@@ -771,13 +771,15 @@ class contractAction extends baseAction
 			$platforms = M('admin')->where('(role_id=4 OR role_id=1 ) AND status=1 ')->select();
 
 			// 商家
-			$shops = M('admin')->where('role_id=3 AND status=1 ')->select();
+            $shops2 = M('admin')->where('role_id=3 AND status=1 ')->select();
+            $shops = M('admin')->where(' (role_id=3 OR role_id=1) AND status=1 ')->select();
 
 			// 角色
 			$roles = M('role')->where('1=1 AND status=1 ')->select();
 			// var_dump($roles);
 			$this->assign('platforms', $platforms);
 			$this->assign('shops', $shops);
+            $this->assign('shops2', $shops2);
 			$this->assign('roles', $roles);
 
 			// 结算周期 审核状态 收款方
