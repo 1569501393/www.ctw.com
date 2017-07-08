@@ -1,4 +1,15 @@
-
+function checkcustomincome(){
+    if ($('.tab-pane#custom')) {
+        if ($('.tab-pane#custom').hasClass('active')) {
+            // alert('active');
+            $('.tab-pane#custom').hide();
+        }else{
+            // alert('not');
+            // $(this).hide();
+        }
+        // alert('have');
+    }
+}
 
 ;(function(window) {
     'use strict';
@@ -459,6 +470,7 @@ Tabs
         // window.location.hash = $active.attr('href');
 
         $content.show();
+        checkcustomincome();
 
         // Update indicator
         if (($index - $prev_index) >= 0) {

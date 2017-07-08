@@ -7,13 +7,8 @@ include 'header_mb.php';
 <title>账户</title>
 </head>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-<?php
-
-// include 'leftMenu.php';
-
-?>
 
 <ul class="bottombar">
 
@@ -66,8 +61,11 @@ include 'header_mb.php';
 
                         <div class="row setting">
 
-                            <a href="#">
+                            <a href="messagelist_mb.php">
                                 <div class="settingsingle">
+
+                                    <div class="redpoint"></div>
+
                                     <i class="settingicon ti-comment-alt"></i>消息中心<i class="settingenter ti-angle-right"></i>
                                 </div>
                             </a>
@@ -75,7 +73,7 @@ include 'header_mb.php';
                         </div>
 
 
-                        <div class="row setting">
+<!--                         <div class="row setting">
 
                             <a href="#">
                                 <div class="settingsingle">
@@ -95,10 +93,10 @@ include 'header_mb.php';
                                 </div>
                             </a>
 
-                        </div>
+                        </div> -->
 
 
-                        <div class="row setting">
+<!--                         <div class="row setting">
 
                             <a href="#">
                                 <div class="settingsingle">
@@ -112,18 +110,18 @@ include 'header_mb.php';
                                 </div>
                             </a>
 
-                        </div>
+                        </div> -->
 
-                        <div class="row setting">
+<!--                         <div class="row setting">
                             <a href="#">
                                 <div class="settingsingle">
                                     <i class="settingicon ti-shield"></i>隐私声明<i class="settingenter ti-angle-right"></i>
                                 </div>
                             </a>
-                        </div>
+                        </div> -->
 
                         <div class="row setting">
-                            <a href="#">
+                            <a href="user_mb.php">
                                 <div class="settingsingle">
                                     <i class="settingicon ti-settings"></i>设置<i class="settingenter ti-angle-right"></i>
                                 </div>

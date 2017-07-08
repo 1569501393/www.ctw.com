@@ -5,7 +5,7 @@ include 'mobile.php';
 
 ?>
 
-    <div id="wrapper" class="secondpage">
+<div id="wrapper" class="secondpage">
 
 
 <!-- Top Bar Start -->

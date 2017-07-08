@@ -3,10 +3,13 @@
 .card-box{ margin-bottom: 5px !important; }
 .topbar{ height: 2.6rem; font-size: 1rem;  text-align: center; line-height: 2.6rem; color: #fff; background: #5d9cec; font-weight: bold; }
 .topbar .small{ font-size: 0.8rem }
-.topnavbar{height: 2.6rem; font-size: 0.7rem;  text-align: center; line-height: 2.6rem; font-weight: bold; color: #666;/*color:#fff; */position: fixed; top: 0;width: 100%;background:#eee;/*background:#5d9cec;*/ z-index: 9999}
+.topnavbar{height: 2.6rem; font-size: 0.7rem;  text-align: center; line-height: 2.6rem; font-weight: bold; color: #666;/*color:#fff; */position: fixed; top: 0; left:0;width: 100%;background:#eee;/*background:#5d9cec;*/ z-index: 9999}
 .backicon{ font-size: 0.8rem; color:#888; width: 1rem; height: 1rem; line-height: 1rem; position: absolute; left: 0.5rem; top: 0.7rem }
 .content-page .content{ margin-top: -0.5rem !important; }
 .secondpage .content-page .content{ margin-top: 1.2rem !important; }
+.secondpage.incomepage .content-page .content{ margin-top: 1.8rem !important; }
+.secondpage.incomepage .content-page > .content{ margin-bottom: 10px !important }
+
 .bottombar{ height: 2.8rem; font-size: 1rem; background: #18181d; position: fixed; bottom: 0; z-index: 9999; width: 100%; margin:0 !important; padding: 0 !important }
 .bottombar li{ width: 19.75%; float: left; list-style: none; text-align: center; color: #888 ; display: inline-block;}
 .bottomicon{ display: block; width:1.8rem; height: 1.8rem; font-size: 0.8rem; line-height: 1.8rem; color: #666; border-radius: 1rem;margin:0rem auto;border:1px solid #444; margin-top: 0.2rem }
@@ -14,6 +17,9 @@
 .active .bottomicon{ background-color: #5d9cec !important; color:#fff; border:none;}
 .active .navtitle{ color: #fff !important }
 .navtitle{ display: block; font-size: 0.6rem; margin-top: 0.1rem }
+
+
+/*.fiexdsearch{position: fixed;width: 100%;height: 3rem;background: #eee;padding: 0.5rem 0 ;margin: 0;left: 0;top: 0;z-index: 99999;}*/
 
 .input-group.searchinput{ width: 100%; }
 .input-group.searchinput .form-control{ width: 80%; margin-left: 2.5% }
@@ -66,11 +72,11 @@
 .singlelib .goodstitle{ font-size:0.65rem; padding-top: 0.6rem; display: block;padding-bottom: 0.5rem; color: #444; font-weight: 600; height: 2.7rem }
 .singlelib .goodsdetials{ display: block; font-size: 0.65rem; margin-top: 0.1rem }
 .singlelib .btn{ margin-top: 0.2rem; padding:0.15rem 0.5rem !important; width: 22%; }
-.singlelib .btn.right{float: right; margin-right: 0.6rem }
-.singlelib .btn.left{float: left; margin-left:0.6rem }
+.singlelib .btn.right{ margin-right: 0.6rem }
+.singlelib .btn.left{ margin-left:0.6rem }
 .singlelib .linespace{ width: 2rem; display: inline-block; }
 .singlelib .importantinfo{ color: #ff3366 }
-.singlelib .bottomfunc{  width: 100%; height: 2rem; border-top: 2px solid #f3f3f3 }
+.singlelib .bottomfunc{  width: 100%; border-top: 2px solid #f3f3f3; text-align: right; padding-bottom: 0.4rem }
 .singlelib .libdetials{ clear: both; }
 .singlelib .libdetials{ color: #999; padding:0.5rem 1rem; }
 .singlelib .weakinfo{ margin:0 1.5rem 0 0.5rem; }
@@ -82,12 +88,15 @@
 .promote .portlet-heading{ height: 3.6rem }
 .promote .tab-content{ padding:10px !important; height: 18.5rem; box-shadow: none; }
 /*.promote .postpreview{ width: 10rem; height: 15rem }*/
-.promote .tab{ background: #f9f9f9 !important;background-color: #f9f9f9 !important }
+.promote .tab{ background: #f9f9f9 !important;background-color: #f9f9f9 !important; border-bottom: 0.2rem solid #f9f9f9 }
+.promote .tab.active{border-bottom: 0.2rem solid #5fbeaa;}
 .promote .tabs{ background: #f9f9f9 !important;background-color: #f9f9f9 !important }
 .promote .nav.nav-tabs > li.active > a{background: #f9f9f9 !important; background-color: #f9f9f9;}
-.promote .nav.nav-tabs + .tab-content{ background-color: #fff }
+.promote .nav.nav-tabs + .tab-content{ background-color: #fff; }
 .promote .linkcontent{word-wrap:break-word; padding:15px 20px;}
 .promote .postpreview{ width: 11.5rem; height: 17.5rem; margin:0 auto; }
+.closepromote{font-size: 1rem}
+
 .swiper-container{ width: 100%; height: 100%; margin:0 auto;position: relative; overflow: hidden;}
 .swiper-wrapper{ width: 100%; height: 100%; position: relative; display: block; }
 .swiper-slide{ position: relative; display: inline-block;}
@@ -98,7 +107,7 @@
 /*.accountpage .content-page .content{ padding:0; }*/
 
 .setting{ width: 100%; padding: 0.5rem; background:#fff; margin:0 !important; margin:0.5rem 0 !important; }
-.setting .settingsingle{ font-size: 0.8rem; line-height: 1.5rem; height: 1.5rem; display: block;color: #555 }
+.setting .settingsingle{ font-size: 0.8rem; line-height: 1.5rem; height: 1.5rem; display: block;color: #555 ; position: relative;}
 .setting .settingicon{ font-size: 1.2rem; float: left; margin-right: 1rem; margin-left: 0.3rem; color: #5d9cec;}
 .setting .settingenter{ float: right; font-size: 1rem; line-height: 1.5rem }
 .setting .settingline{ width: 100%; height: 2px; background:#eee; margin:0.5rem 0; }
@@ -124,6 +133,50 @@
 
 .togglenav{ width: 35%; display: inline-block; color: #95c9ff; line-height: 2.2rem}
 .togglenav.active{  border-bottom: 0.3rem solid #fff ;color: #fff;padding-bottom:0; }
+
+.income{ padding:0.5rem 1rem ; background:#fff;text-align: center;  }
+.incomehalf{ width: 49%; display: inline-block;margin-bottom: 0.5rem }
+.incomebtn{ margin:0 0.5rem; }
+.content-page > .content.incomepage{ margin-bottom: 0 !important }
+
+.recentincome{ width: 100%; padding:0; margin:0; margin-top: 0.5rem }
+.recentincome .indicator{ display: none }
+.recentincome .tab{border-bottom: #fff solid 0.15rem;}
+.recentincome .tab.active{border-bottom: #5fbeaa solid 0.15rem;}
+.recentincome .nav.nav-tabs + .tab-content{ margin-bottom: 0; padding: 1rem !important }
+.recentsingle{width: 49%; display: inline-block;}
+.recentincome .bottomfunc{ width: 100%; padding-top: 0.6rem;border-top:0.1rem solid #eee;margin-bottom: -0.5rem }
+
+.ordername{margin:0 !important; color: #333; font-weight: 500}
+
+.singledetial{ width: 3.2rem; display: inline-block; margin-bottom: 0.5rem }
+.singledetial .ordername{ font-size: 0.65rem; color: #666 }
+.singledetial .num{ font-size: 0.65rem;color: #999 }
+.extendbtn{ margin-right: 1rem; margin-top: 0.5rem; display: inline-block; }
+.extendbtn i{ font-size: 1rem; margin-right: 0.3rem }
+
+.allinorder{ text-align: left;}
+.allinorder .singlelib{ padding:0 1rem; background:#fafafa;  }
+.allinorder .singlelib .ordername.name{ margin-bottom: 0.4rem !important; }
+.allinorder .singlelib .libdetials{ padding:0.5rem;border-top: 2px solid #e6e6e6; }
+.allinorder .singledetial{ width: 3.8rem; display: inline-block; margin-bottom: 0.5rem }
+.allinorder .singledetial .ordername{ font-size: 0.65rem; color: #666;}
+.allinorder .singledetial .num{ font-size: 0.65rem;color: #999 }
+.orderpage .bottomfunc{ background:#fafafa; }
+
+
+.userpage .form-group{ margin-bottom:0.4rem; }
+.userpage .btn-block{ height: 2rem; border-radius: 5px }
+.userpage .indicator{ max-width:49%;  }
+.userpage.personalset .content-page .content{ margin-bottom: 0 !important; margin-top: 1.6rem !important; padding-bottom: 0 !important }
+
+.messagepage .indicator{ max-width:49%;  }
+
+
+.messagepage.content-page .content{ margin-top: 2rem !important; }
+.messagepage .tab-content{ padding:0 !important; }
+
+.singlemessage{ margin-top:0.5rem; padding:0.5rem;background:#fff; }
 
 .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom,
 .swiper-pagination-fraction {
@@ -173,4 +226,11 @@
 .swiper-pagination-black .swiper-pagination-bullet-active {
     background: #000
 }
+
+
+
+.redpoint{ position: absolute; width: 10px; height: 10px; background:#ff3366; border-radius: 5px; left: 1.4rem; top: -5px; }
+
+/*.content-page > .content{margin-bottom: 0}*/
+
 

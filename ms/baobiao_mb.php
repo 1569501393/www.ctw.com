@@ -1,19 +1,13 @@
 <?php
 
 include 'header_mb.php';
-// include 'mobile.php';
 
 ?>
-<title>报表</title>
+
+<title>效果报表</title>
 </head>
 
-    <div id="wrapper">
-
-<?php
-
-// include 'leftMenu.php';
-
-?>
+<div id="wrapper">
 
 <ul class="bottombar">
 
@@ -60,72 +54,153 @@ include 'header_mb.php';
 <!-- Top Bar End -->
 
 
-            <div class="content-page">
+<div class="content-page">
 
-                <div class="content">
-                    <div class="container">
+    <div class="content incomepage">
+        <div class="container">
 
-                        <div class="row">
-                            <div class="input-group searchinput">
-                                <!-- <span class="input-group-btn"> -->
-                                
-                                <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="请输入商品名称或者ID搜索"><button type="button" class="btn waves-effect waves-light btn-primary"><i class="fa fa-search"></i></button>
-                                <!-- </span> -->
-                            </div>
-                        </div>
+            <div class="row">
 
-                        <div class="row mbselect">
-                            
-                            <select class="selectpicker" data-max-options="1" data-style="btn-white">
-                                <option selected="selected">全部分类</option>
-                                <option>数码产品</option>
-                                <option>电脑产品</option>
-                                <option>电脑附件</option>
-                                <option>数码</option>
-                                <option>其他</option>
-                            </select> 
-
-                        </div>
-                        <div class="row mbselect weakselect">
-                            
-                            <select class="selectpicker" data-max-options="1" data-style="btn-white">
-                                <option selected="selected">综合排序</option>
-                                <option>单价从高到低</option>
-                                <option>押金从低到高</option>
-                                <option>佣金比例从高到低</option>
-                                <option>30天引入订单从高到低</option>
-                                <option>30天累计支出佣金从高到低</option>
-                            </select> 
-
-                        </div>
-
-
-                        <div class="row shopslist contentlist">
-                            
-                            <div class="singleshop">
-                                <a href="#"><div class="thumbs"><img class="wid" src="./assets/images/unknown.jpeg"></div></a>
-                                <div class="goodsinfo">
-                                    <span class="goodstitle">华为 （HUAWEI） nova 4GB+64GB 全金属机身、超级好用</span>
-                                    <span class="goodsdetials">价格:<span class="num">100 </span></span>
-                                    <span class="goodsdetials importantinfo">佣金:<span class="num">30</span> <span class="linespace"></span>佣金比例:<span class="num">30%</span></span>
-                                </div>
-                                <div class="bottomfunc">
-                                    <button type="button" class="btn btn-default btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">立即推广</button>
-                                    <!-- <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">复制链接</button> -->
-                                </div>
-                            </div>
-
-
-
-                        </div>
+                <div class="income">
+                    
+                    <div class="incomehalf">
+                    <h4>可结算金额</h4>
+                    <p>¥1,170</p>
                     </div>
+                    
+                    <div class="incomehalf">
+                    <h4>年度收入总额</h4>
+                    <p>¥1,170,000</p>
+                    </div>
+
+
+                    <button type="button"  class="btn btn-white incomebtn" value="">申请提现</button>
+                    <button type="button"  class="btn btn-white incomebtn" value="">申请记录</button>
 
                 </div>
 
+            </div>
+
+            <dir class="row recentincome">
+                
+                <ul class="nav nav-tabs tabs">
+                    <li class="tab active" style="width:33%">
+                        <a href="#yesterday" data-toggle="tab" aria-expanded="false">
+                        <span class="visible-xs">昨日</span>
+                        <span class="hidden-xs">昨日</span>
+                        </a>
+                    </li>
+                    <li class="tab" style="width:33%">
+                        <a href="#weekly" data-toggle="tab" aria-expanded="flase">
+                        <span class="visible-xs">最近7天</span>
+                        <span class="hidden-xs">最近7天</span>
+                        </a>
+                    </li>
+                    <li class="tab" style="width:33%">
+                        <a href="#monthly" data-toggle="tab" aria-expanded="flase">
+                        <span class="visible-xs">最近30天</span>
+                        <span class="hidden-xs">最近30天</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="yesterday">
+
+                        <div class="recentsingle">
+                            <h5>引入订单量</h5>
+                            <p>13</p>
+                        </div>
+                        <div class="recentsingle">
+                            <h5>引入订单金额</h5>
+                            <p>¥133</p>
+                        </div>
+                        <div class="recentsingle">
+                            <h5>预计佣金</h5>
+                            <p>¥131</p>
+                        </div>
+
+                    <div class="row bottomfunc">
+                        <a class="btn btn-white incomebtn" href="moreincome_mb.php">查看更多</a> 
+                    </div>
+
+                    </div>
+                    <div class="tab-pane " id="weekly">
+
+                        <div class="recentsingle">
+                            <h5>引入订单量</h5>
+                            <p>133</p>
+                        </div>
+                        <div class="recentsingle">
+                            <h5>引入订单金额</h5>
+                            <p>¥1333</p>
+                        </div>
+                        <div class="recentsingle">
+                            <h5>预计佣金</h5>
+                            <p>¥1313</p>
+                        </div>
+
+                    <div class="row bottomfunc">
+                        <button type="button"  class="btn btn-white incomebtn" value="">查看更多</button> 
+                    </div>
+
+                    </div>
+                    <div class="tab-pane " id="monthly">
+
+                        <div class="recentsingle">
+                            <h5>引入订单量</h5>
+                            <p>1333</p>
+                        </div>
+                        <div class="recentsingle">
+                            <h5>引入订单金额</h5>
+                            <p>¥13333</p>
+                        </div>
+                        <div class="recentsingle">
+                            <h5>预计佣金</h5>
+                            <p>¥13133</p>
+                        </div>
+
+                    <div class="row bottomfunc">
+                        <button type="button"  class="btn btn-white incomebtn" value="">查看更多</button> 
+                    </div>
+
+
+                    </div>
+                </div>
+
+
+            </dir>
+
+
+                
+            <div class="row setting">
+
+                <a href="incomedetials_mb.php">
+                    <div class="settingsingle">
+                        收入明细<i class="settingenter ti-angle-right"></i>
+                    </div>
+                </a>
+                <div class="settingline"></div>
+                <a href="orderdetials_mb.php">
+                    <div class="settingsingle">
+                        订单明细<i class="settingenter ti-angle-right"></i>
+                    </div>
+                </a>
 
             </div>
 
+
+
+
+            </div>
         </div>
+
+    </div>
+
+
+    </div>
+
+</div>
 
 
 

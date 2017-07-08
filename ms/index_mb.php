@@ -50,7 +50,7 @@ include 'header_mb.php';
                 <div class="content">
                     <div class="container">
 
-                        <div class="row">
+                        <div class="row fiexdsearch">
                             <div class="input-group searchinput">
                                 <!-- <span class="input-group-btn"> -->
                                 

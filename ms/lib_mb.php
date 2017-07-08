@@ -1,19 +1,13 @@
 <?php
 
 include 'header_mb.php';
-// include 'mobile.php';
 
 ?>
+
 <title>我的推广</title>
 </head>
 
-    <div id="wrapper">
-
-<?php
-
-// include 'leftMenu.php';
-
-?>
+<div id="wrapper">
 
 <ul class="bottombar">
 
@@ -53,7 +47,7 @@ include 'header_mb.php';
 <!-- Top Bar Start -->
 <!-- <div class="topbar"> -->
     <!-- 单个标题直接写名字就好 -->
-    <!-- 我的推广 -->
+    <!-- 推广库 -->
 
 
     <!-- 需要做切换到时候用 -->

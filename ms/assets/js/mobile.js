@@ -26,6 +26,8 @@ jQuery(document).ready(function(){
       }  
   });  	
 
+  $('.allinorder .singlelib').hide();
+
 });
 
 function checkContentType(){
@@ -54,7 +56,7 @@ function promote(which){
 	// var url = 'url.php';
 	// $.get(url,content,function(data,status){
 		//这个是弹窗
-		$('#wrapper').append("<div class='promotemask'><div class='promote portlet'><div class='portlet-heading'><h3 class='portlet-title text-dark'>华为 （HUAWEI） nova 4GB+64GB 全金属机身、超级好用</h3><div class='portlet-widgets'><span class='divider'></span><a href='#' data-toggle='remove'><i class='ion-close-round'></i></a></div></div></div></div>");
+		$('#wrapper').append("<div class='promotemask'><div class='promote portlet'><div class='portlet-heading'><h3 class='portlet-title text-dark'>华为 （HUAWEI） nova 4GB+64GB 全金属机身、超级好用</h3><div class='portlet-widgets'><span class='divider'></span><a href='#' data-toggle='remove'><i class='fa fa-times closepromote'></i></a></div></div></div></div>");
 		$('.promote').append("<ul class='nav nav-tabs tabs'><li class='tab' style='width:49%'><a href='#linkshare' data-toggle='tab' aria-expanded='false'><span class='visible-xs'>链接推广</span><span class='hidden-xs'>链接推广</span></a></li><li class='tab active' style='width:49%'><a href='#imageshare' data-toggle='tab' aria-expanded='flase'><span class='visible-xs'>图片推广</span><span class='hidden-xs'>图片推广</span></a></li><div class='indicator'></div></ul><div class='tab-content'><div class='tab-pane' id='linkshare'></div><div class='tab-pane active' id='imageshare'></div></div> ");
 		
 		$('#linkshare').append("<p class='linkcontent'>http://union-click.jd.com/jdc?e=0&p=AyIHZR1eFQITAlweWyUCFQZdH1IdARsFZV8ETVxNNwxeHlQJDBkNXg9JHUlSSkkFSRwSAFQTXxwKEQ5XBAJQXk83VBgySVhqUgt5LUlqa3tTXydtVFtaAxdXewETB1MHWhIeEQREG1IeABsMURJrFDISBlQaWBwAFQRWK2sVAiJGOx1aEwoXN1wdXhYEFg9SG2sVBxoOVRhdHQAbAVweaxcCItDzr4KFv8aY0sLrsNS4qWUrayU%3D&t=W1dCFBBFC1pXUwkEAEAdQFkJBVsSAxoDXBNYHAANXhBHBg%3D%3D</p>");
@@ -101,5 +103,38 @@ function loadingstart(type){
 
 function loadingend(){
 	$('.partloading').remove();
+}
+
+
+function customincomesearch(form){
+	// alert(form.start.value);
+	$('.tab.active').removeClass('active').children('a').removeClass('active');
+	$('.tab-content .tab-pane.active').removeClass('active');
+	$('#customincometab').addClass('active');
+	$('.tab-content .tab-pane').each(function(){
+		$(this).hide();
+	});
+
+	// ajax调取数据
+	// $.get();
+	$('.tab-content #custom').empty().addClass('active');
+	$('.tab-content #custom').append("<div class='recentsingle'><h5>引入订单量</h5><p>13333333</p></div><div class='recentsingle'><h5>引入订单金额</h5><p>¥1333333333</p></div><div class='recentsingle'><h5>预计佣金</h5><p>¥1313333333</p></div>");
+	
+	$('.tab-content .tab-pane.active').toggle();
+
+}
+
+function extendorder(which){
+	if ($(which).hasClass('open')) {
+		$(which).parent().children('.allinorder').children('.singlelib').hide();
+		$(which).children('.fa').removeClass('fa-angle-up').addClass('fa-angle-down');
+		$(which).children('span').empty().text('全部商品订单');
+		$(which).removeClass('open');
+	}else{
+		$(which).parent().children('.allinorder').children('.singlelib').show();
+		$(which).children('.fa').removeClass('fa-angle-down').addClass('fa-angle-up');
+		$(which).children('span').empty().text('收起');
+		$(which).addClass('open');
+	}
 }
 
