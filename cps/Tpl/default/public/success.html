@@ -29,7 +29,12 @@ swal({
         showConfirmButton: false
     },
     function() {
-        window.location.href = '{$jumpUrl}'
+        //window.location.href = '{$jumpUrl}';
+        //document.write(window.location);
+        //http://192.168.89.154/cps.php?m=finance&a=edit_commission
+        window.location.replace('{$jumpUrl}');
+        //window.parent.close();
+        //window.top.location.reload();
     });
     </script>
 </body>

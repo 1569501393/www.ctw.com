@@ -70,18 +70,13 @@
                                                 <tr>
                                                     <th>商品名称</th>
                                                     <th>商品分类</th>
-                                                    <th>单价(元)</th>
+                                                    <!-- <th>单价(元)</th>
                                                     <th>佣金(比例)</th>
-                                                    <!-- <th>佣金</th> -->
-                                                    <th>分润(比例)</th>
-                                                    <!-- <th>分润</th> -->
+                                                    <th>分润(比例)</th> -->
                                                     <th>合同名称</th>
                                                     <if condition="$Think.session.admin_info.role_id eq 1 ">
                                                         <th>分销平台</th></if>
                                                     <th>入库日期</th>
-                                                    <!-- <th>点击量</th>
-                                                    <th style="min-width: 80px;">推广链接</th>
-                                                    <th style="min-width: 80px;">推广图片</th> -->
                                                     <if condition="$_SESSION['admin_info']['role_id'] eq 1 || $_SESSION['admin_info']['role_id'] eq 4">
                                                 <th>编辑</th>
                                                 </if>
@@ -90,20 +85,39 @@
                                             <tbody>
                                                 <volist name="commission_list" id="val">
                                                     <tr>
-                                                        <td>
-                                                            <!-- {$val.title|default="默认商品名称"} -->
-                                                            <a href="{$val.url}" target="_blank" class="text-dark">
-                                                                <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
-                                                                <!-- <br />
-                                                                <br />-->{$val.title}</a></td>
+                                                        <td width="380">
+                                                        <!-- {$val.title|default="默认商品名称"} -->
+                                                        <a href="{$val.url}" target="_blank" class="text-dark">
+                                                            <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
+                                                            <br />
+                                                            <br />{$val.title}</a><br />
+                                                            ¥{$val.price|default="默认单价"}
+                                                            <br />
+
+                                                            <font color="red">
+                                                           
+
+                                                            <if condition=" ($Think.session.admin_info.role_id eq 1 OR $Think.session.admin_info.role_id eq 3) ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)</if>
+                                                            <if condition="$Think.session.admin_info.role_id eq 4 ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)&nbsp;&nbsp;
+                                                            分润:{$val.commission2|default="默认分润"}({$val.rate2|default="默认分润比例"}%)
+                                                            </if>
+
+                                                            <if condition="$Think.session.admin_info.role_id egt 5 ">佣金:{$val.commission2|default="默认佣金"}({$val.rate2|default="默认佣金比例"}%)
+                                                            </if>
+
+                                                            </font>
+
+                                                            <!-- <br />
+                                                            入库日期:{$val.add_time|date='Y-m-d',###} -->
+                                                            
+                                                            </td>
                                                         <td>{$val.cate_name|default="默认商品分类"}</td>
-                                                        <td>¥{$val.price|default="默认单价"}</td>
-                                                        <!-- <td>{$val.rate|default="默认佣金比例"}%</td> -->
+                                                        <!-- <td>¥{$val.price|default="默认单价"}</td>
+                                                        
                                                         <td>{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)</td>
-                                                        <!-- <td>{$val.rate2|default="默认分润比例"}%</td> -->
-                                                        <td>{$val.commission2|default="默认佣分润金"}({$val.rate2|default="默认分润比例"}%)</td>
+                                                        
+                                                        <td>{$val.commission2|default="默认佣分润金"}({$val.rate2|default="默认分润比例"}%)</td> -->
                                                         <td>
-                                                            <!-- {$val.con_id} -->
                                                             <a href="{:u('contract/edit',array('id'=>$val['con_id']))}">{$val.contract|default="默认合同名称"}
                                                                 <!-- {$val.contract.con_id}-{$val.contract.title} --></a></td>
                                                         <if condition="$Think.session.admin_info.role_id eq 1 ">

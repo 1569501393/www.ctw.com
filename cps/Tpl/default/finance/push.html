@@ -61,16 +61,14 @@
                                                 <!-- <th>ID</th> -->
                                                 <th>商品名称</th>
                                                 <th>商品分类</th>
-                                                <th>单价(元)</th>
+                                                <!-- <th>单价(元)</th>
                                                 <if condition="$Think.session.admin_info.role_id neq 6 ">
                                                     <th>佣金(比例)</th>
-                                                    <!-- <th>佣金</th> -->
                                                 </if>
                                                 <if condition="$Think.session.admin_info.role_id neq 3 ">
                                                     <th>分润(比例)</th>
-                                                </if>
+                                                </if> -->
                                                 
-                                                <!-- <th>分润</th> -->
                                                 <th>合同名称</th>
                                                 <!-- <th style="min-width: 80px;">分销平台</th> -->
                                                 <if condition="$Think.session.admin_info.role_id eq 1 ">
@@ -82,21 +80,37 @@
                                             <volist name="commission_list" id="val">
                                                 <tr>
                                                     <!-- <td>{$val.id|default="0"}</td> -->
-                                                    <td>
+                                                    
+                                                    <td width="380">
                                                         <!-- {$val.title|default="默认商品名称"} -->
                                                         <a href="{$val.url}" target="_blank" class="text-dark">
                                                             <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
+                                                            <br />
+                                                            <br />{$val.title}</a><br />
+                                                            <font color="red">¥{$val.price|default="默认单价"}</font>
+                                                            <br />
+
+                                                        
+                                                            <if condition=" ($Think.session.admin_info.role_id eq 1 OR $Think.session.admin_info.role_id eq 3) ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)</if>
+                                                            <if condition="$Think.session.admin_info.role_id eq 4 ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)&nbsp;&nbsp;
+                                                            分润:{$val.commission2|default="默认分润"}({$val.rate2|default="默认分润比例"}%)
+                                                            </if>
+
+                                                            <if condition="$Think.session.admin_info.role_id egt 5 ">佣金:{$val.commission2|default="默认佣金"}({$val.rate2|default="默认佣金比例"}%)
+                                                            </if>
+
                                                             <!-- <br />
-                                                            <br />-->{$val.title}</a></td>
+                                                            入库日期:{$val.add_time|date='Y-m-d',###} -->
+                                                            
+                                                            </td>
+
                                                     <td>{$val.cate_name|default="默认商品分类"}</td>
-                                                    <td>¥{$val.price|default="默认单价"}</td>
+                                                    <!-- <td>¥{$val.price|default="默认单价"}</td>
                                                     <if condition="$Think.session.admin_info.role_id neq 6 ">
-                                                        <!-- <td>{$val.rate|default="默认佣金比例"}%</td> -->
                                                         <td>{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)</td></if>
-                                                    <!-- <td>{$val.rate2|default="默认分润比例"}%</td> -->
                                                     <if condition="$Think.session.admin_info.role_id neq 3 ">
                                                         <td>{$val.commission2|default="默认分润"}({$val.rate2|default="默认分润比例"}%)</td>
-                                                    </if>
+                                                    </if> -->
 
                                                     
                                                     <td>

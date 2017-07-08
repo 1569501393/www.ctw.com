@@ -12,9 +12,9 @@ class contractAction extends baseAction
 		//搜索
 		$where = '1=1';
 		// 判断是否是商城管理员  1超级管理员  3 商城  2编辑
-		if (($_SESSION['admin_info']['role_id'] == 4)) {
-			$where .= ' AND platform_id=' . $_SESSION['admin_info']['id'];
-		}
+//		if (($_SESSION['admin_info']['role_id'] == 4)) {
+//			$where .= ' AND platform_id=' . $_SESSION['admin_info']['id'];
+//		}
 
 		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
 			$where .= " AND (" . $prex . "contract.name LIKE '%" . $_GET['keyword'] . "%' or url LIKE '%" . $_GET['keyword'] . "%')";
@@ -41,10 +41,10 @@ class contractAction extends baseAction
 			$where .= " AND shop_id=" . $_GET['shop_id'];
 			$this->assign('shop_id', $_GET['shop_id']);
 		}
-		if (isset($_GET['platform_id']) && intval($_GET['platform_id'])) {
-			$where .= " AND platform_id=" . $_GET['platform_id'];
-			$this->assign('platform_id', $_GET['platform_id']);
-		}
+//		if (isset($_GET['platform_id']) && intval($_GET['platform_id'])) {
+//			$where .= " AND platform_id=" . $_GET['platform_id'];
+//			$this->assign('platform_id', $_GET['platform_id']);
+//		}
 		if (isset($_GET['status']) && intval($_GET['status'])) {
 			$where .= " AND status=" . $_GET['status'];
 			$this->assign('status', $_GET['status']);

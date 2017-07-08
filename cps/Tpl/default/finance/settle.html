@@ -55,7 +55,7 @@
                                             <th>订单号</th>
                                             <th>商品名称</th>
                                             <th>商品分类</th>
-                                            <th>单价(元)</th>
+                                            <!-- <th>单价(元)</th> -->
                                             <th>数量</th>
                                             <!-- <th>佣金比例</th> -->
                                             <!-- <th>总金额</th> -->
@@ -63,12 +63,10 @@
                                             <!-- <th>完成时间</th> -->
                                             <th>推广人</th>
                                             <!-- <th>结算佣金比例</th> -->
-                                            <th>分润(比例)</th>
-                                            <!-- <th style="min-width: 80px;">分润</th> -->
+                                            <!-- <th>分润(比例)</th>
                                             <if condition="($Think.session.admin_info.role_id neq 6) && ($Think.session.admin_info.role_id neq 5) ">
                                                 <th>佣金(比例)</th>
-                                                <!-- <th style="min-width: 80px;">佣金</th> -->
-                                            </if>
+                                            </if> -->
                                             <if condition="$_SESSION['admin_info']['role_id'] eq 1">
                                                 <th style="min-width: 80px;">商城2CPS</th>
                                                 <th style="min-width: 80px;">CPS2对商城</th>
@@ -87,28 +85,41 @@
                                     <tbody>
                                         <volist name="order_list" id="val">
                                             <tr>
-                                                <!-- <td>{$val.id|default="UB#160924"}</td> -->
                                                 <td>{$val.order_id|default="UB#160924"}</td>
-                                                <!-- <td>{$val.title|default="苹果Iphone 7Plus 64GB."}</td> -->
-                                                <td>
-                                                    <!-- {$val.title|default="默认商品名称"} -->
-                                                    <a href="{$val.url}" target="_blank" class="text-dark">
-                                                        <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
-                                                        <!-- <br />
-                                                        <br />-->{$val.title}</a></td>
+                                                
+                                                <td width="380">
+                                                        <!-- {$val.title|default="默认商品名称"} -->
+                                                        <a href="{$val.url}" target="_blank" class="text-dark">
+                                                            <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
+                                                            <br />
+                                                            <br />{$val.title}</a><br />
+                                                            ¥{$val.price|default="默认单价"}
+                                                            <br />
+
+                                                            <font color="red">
+                                                            <if condition=" ($Think.session.admin_info.role_id eq 1 OR $Think.session.admin_info.role_id eq 3) ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)</if>
+                                                            <if condition="$Think.session.admin_info.role_id eq 4 ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)&nbsp;&nbsp;
+                                                            分润:{$val.commission2|default="默认分润"}({$val.rate2|default="默认分润比例"}%)
+                                                            </if>
+
+                                                            <if condition="$Think.session.admin_info.role_id egt 5 ">佣金:{$val.commission2|default="默认佣金"}({$val.rate2|default="默认佣金比例"}%)
+                                                            </if>
+                                                            </font>
+
+                                                            <!-- <br />
+                                                            入库日期:{$val.add_time|date='Y-m-d',###} -->
+                                                            
+                                                            </td>
                                                 <td>{$val.cate_name|default="默认商品分类"}</td>
-                                                <td>¥{$val.item_price|default="4,888"}</td>
+                                                <!-- <td>¥{$val.item_price|default="4,888"}</td> -->
                                                 <td>{$val.item_count|default="99"}</td>
-                                                <!-- <td>{$val.rate|default="0.5%" }</td> -->
-                                                <!-- <td>{$val['commission']/$val['item_price']*100|default="5" }%</td> -->
-                                                <!-- <td>{$val.sum_price|default="总金额" }</td> -->
+                                                
                                                 <td>{$val.order_time|date='Y-m-d',###}</td>
                                                 <td>{$val.seller_name|default="章三"}</td>
                                                 <!-- <td>{$val['commission2']/$val['item_price']*100|default="5" }%</td> -->
-                                                <td>{$val['commission2']*$val['item_count']|default="¥125,699"}({$val['commission2']/$val['item_price']*100|default="5" }%)</td>
+                                                <!-- <td>{$val['commission2']*$val['item_count']|default="¥125,699"}({$val['commission2']/$val['item_price']*100|default="5" }%)</td>
                                                 <if condition="($Think.session.admin_info.role_id neq 6) && ($Think.session.admin_info.role_id neq 5)  ">
-                                                    <!-- <td>{$val['commission']/$val['item_price']*100|default="5" }%</td> -->
-                                                    <td>{$val['commission']*$val['item_count']|default="¥125,699"}({$val['commission']/$val['item_price']*100|default="5" }%)</td></if>
+                                                    <td>{$val['commission']*$val['item_count']|default="¥125,699"}({$val['commission']/$val['item_price']*100|default="5" }%)</td></if> -->
                                                 <if condition="$_SESSION['admin_info']['role_id'] eq 1">
                                                     <td>
                                                         <img src="__ROOT__/statics/images/status_{$val.settle_status1_stc}.gif" /></td>
