@@ -4,17 +4,19 @@ Navicat MySQL Data Transfer
 Source Server         : 59.56.69.152
 Source Server Version : 50163
 Source Host           : 59.56.69.152:3306
-Source Database       : msec
+Source Database       : cps
 
 Target Server Type    : MYSQL
 Target Server Version : 50163
 File Encoding         : 65001
 
-Date: 2017-06-28 00:35:53
+Date: 2017-07-08 16:18:11
 */
 
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
--- Table structure for ctw_access
+-- Table structure for cps_access
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_access`;
 CREATE TABLE `ctw_access` (
@@ -24,10 +26,10 @@ CREATE TABLE `ctw_access` (
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`),
   KEY `node_id` (`node_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.4权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=1070 DEFAULT CHARSET=utf8 COMMENT='5.2.4权限表';
 
 -- ----------------------------
--- Table structure for ctw_activity
+-- Table structure for cps_activity
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_activity`;
 CREATE TABLE `ctw_activity` (
@@ -79,10 +81,10 @@ CREATE TABLE `ctw_activity` (
   KEY `is_best` (`is_best`),
   KEY `add_time` (`add_time`),
   KEY `cate_id` (`cate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_ad
+-- Table structure for cps_ad
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_ad`;
 CREATE TABLE `ctw_ad` (
@@ -100,10 +102,10 @@ CREATE TABLE `ctw_ad` (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `board_id` (`board_id`,`start_time`,`end_time`,`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_adboard
+-- Table structure for cps_adboard
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_adboard`;
 CREATE TABLE `ctw_adboard` (
@@ -115,10 +117,10 @@ CREATE TABLE `ctw_adboard` (
   `description` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_admin
+-- Table structure for cps_admin
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_admin`;
 CREATE TABLE `ctw_admin` (
@@ -139,10 +141,10 @@ CREATE TABLE `ctw_admin` (
   `pid` int(10) unsigned DEFAULT NULL COMMENT '父id',
   `address` varchar(10) DEFAULT NULL COMMENT '家庭地址',
   PRIMARY KEY (`id`,`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.1后台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='5.2.1后台用户表';
 
 -- ----------------------------
--- Table structure for ctw_album
+-- Table structure for cps_album
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_album`;
 CREATE TABLE `ctw_album` (
@@ -163,10 +165,10 @@ CREATE TABLE `ctw_album` (
   KEY `uid` (`uid`),
   KEY `status` (`status`,`cid`,`sort_order`),
   KEY `recommend_count` (`recommend_count`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_album_cate
+-- Table structure for cps_album_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_album_cate`;
 CREATE TABLE `ctw_album_cate` (
@@ -179,10 +181,10 @@ CREATE TABLE `ctw_album_cate` (
   PRIMARY KEY (`id`),
   KEY `sort_order` (`status`,`sort_order`),
   KEY `status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_album_items
+-- Table structure for cps_album_items
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_album_items`;
 CREATE TABLE `ctw_album_items` (
@@ -193,10 +195,10 @@ CREATE TABLE `ctw_album_items` (
   `add_time` int(10) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_album_recommend
+-- Table structure for cps_album_recommend
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_album_recommend`;
 CREATE TABLE `ctw_album_recommend` (
@@ -206,7 +208,7 @@ CREATE TABLE `ctw_album_recommend` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_article
+-- Table structure for cps_article
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_article`;
 CREATE TABLE `ctw_article` (
@@ -237,10 +239,10 @@ CREATE TABLE `ctw_article` (
   KEY `cate_id` (`cate_id`),
   KEY `status` (`status`),
   KEY `data_state` (`data_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.10公告表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='5.2.10公告表';
 
 -- ----------------------------
--- Table structure for ctw_article_cate
+-- Table structure for cps_article_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_article_cate`;
 CREATE TABLE `ctw_article_cate` (
@@ -255,10 +257,10 @@ CREATE TABLE `ctw_article_cate` (
   `seo_keys` varchar(255) NOT NULL,
   `seo_desc` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_attatch
+-- Table structure for cps_attatch
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_attatch`;
 CREATE TABLE `ctw_attatch` (
@@ -287,10 +289,10 @@ CREATE TABLE `ctw_attatch` (
   KEY `is_best` (`filesize`) USING BTREE,
   KEY `add_time` (`add_time`) USING BTREE,
   KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
 
 -- ----------------------------
--- Table structure for ctw_auto_collect
+-- Table structure for cps_auto_collect
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_auto_collect`;
 CREATE TABLE `ctw_auto_collect` (
@@ -300,7 +302,7 @@ CREATE TABLE `ctw_auto_collect` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_auto_collect_date
+-- Table structure for cps_auto_collect_date
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_auto_collect_date`;
 CREATE TABLE `ctw_auto_collect_date` (
@@ -310,7 +312,7 @@ CREATE TABLE `ctw_auto_collect_date` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_cash_back_log
+-- Table structure for cps_cash_back_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_cash_back_log`;
 CREATE TABLE `ctw_cash_back_log` (
@@ -334,7 +336,7 @@ CREATE TABLE `ctw_cash_back_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_collect_miao
+-- Table structure for cps_collect_miao
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_collect_miao`;
 CREATE TABLE `ctw_collect_miao` (
@@ -344,7 +346,7 @@ CREATE TABLE `ctw_collect_miao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_collect_taobao
+-- Table structure for cps_collect_taobao
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_collect_taobao`;
 CREATE TABLE `ctw_collect_taobao` (
@@ -354,7 +356,7 @@ CREATE TABLE `ctw_collect_taobao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_commission
+-- Table structure for cps_commission
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_commission`;
 CREATE TABLE `ctw_commission` (
@@ -376,7 +378,7 @@ CREATE TABLE `ctw_commission` (
   `data_state` tinyint(1) unsigned DEFAULT '1' COMMENT '数据状态：0删除，1正常',
   `update_time` int(10) unsigned DEFAULT NULL COMMENT '修改时间',
   `cate_id` bigint(255) unsigned DEFAULT NULL COMMENT '分类id',
-  `item_id` bigint(32) unsigned DEFAULT NULL COMMENT '商品id',
+  `item_id` varchar(32) DEFAULT NULL COMMENT '商品id',
   `shop_id` bigint(10) unsigned NOT NULL COMMENT '商户id',
   `commission` decimal(10,2) DEFAULT NULL COMMENT '佣金金额',
   `click` int(10) DEFAULT '0',
@@ -392,10 +394,10 @@ CREATE TABLE `ctw_commission` (
   KEY `title` (`rate`),
   KEY `index_sid` (`approver_id`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.8商品佣金表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='5.2.8商品佣金表';
 
 -- ----------------------------
--- Table structure for ctw_contract
+-- Table structure for cps_contract
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_contract`;
 CREATE TABLE `ctw_contract` (
@@ -431,10 +433,10 @@ CREATE TABLE `ctw_contract` (
   KEY `title` (`title`),
   KEY `index_sid` (`approver_id`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.7合同表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='5.2.7合同表';
 
 -- ----------------------------
--- Table structure for ctw_contract_log
+-- Table structure for cps_contract_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_contract_log`;
 CREATE TABLE `ctw_contract_log` (
@@ -456,10 +458,10 @@ CREATE TABLE `ctw_contract_log` (
   `add_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `ip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='操作日志表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='操作日志表';
 
 -- ----------------------------
--- Table structure for ctw_exchange_goods
+-- Table structure for cps_exchange_goods
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_exchange_goods`;
 CREATE TABLE `ctw_exchange_goods` (
@@ -487,10 +489,10 @@ CREATE TABLE `ctw_exchange_goods` (
   KEY `status` (`status`),
   KEY `sort` (`sort`),
   KEY `is_best` (`is_best`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_exchange_order
+-- Table structure for cps_exchange_order
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_exchange_order`;
 CREATE TABLE `ctw_exchange_order` (
@@ -528,10 +530,10 @@ CREATE TABLE `ctw_exchange_order` (
   KEY `goods_status` (`goods_status`),
   KEY `status` (`status`),
   KEY `goods_id` (`goods_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_file
+-- Table structure for cps_file
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_file`;
 CREATE TABLE `ctw_file` (
@@ -566,10 +568,10 @@ CREATE TABLE `ctw_file` (
   KEY `is_best` (`is_best`) USING BTREE,
   KEY `add_time` (`add_time`) USING BTREE,
   KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.14文件图片管理表';
 
 -- ----------------------------
--- Table structure for ctw_find_password_log
+-- Table structure for cps_find_password_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_find_password_log`;
 CREATE TABLE `ctw_find_password_log` (
@@ -584,10 +586,10 @@ CREATE TABLE `ctw_find_password_log` (
   `message` varchar(1024) NOT NULL,
   `result` varchar(1024) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_flink
+-- Table structure for cps_flink
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_flink`;
 CREATE TABLE `ctw_flink` (
@@ -599,20 +601,20 @@ CREATE TABLE `ctw_flink` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `ordid` smallint(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_flink_cate
+-- Table structure for cps_flink_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_flink_cate`;
 CREATE TABLE `ctw_flink_cate` (
   `id` smallint(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_focus
+-- Table structure for cps_focus
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_focus`;
 CREATE TABLE `ctw_focus` (
@@ -628,10 +630,10 @@ CREATE TABLE `ctw_focus` (
   PRIMARY KEY (`id`),
   KEY `status` (`status`),
   KEY `ordid` (`ordid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_focus_cate
+-- Table structure for cps_focus_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_focus_cate`;
 CREATE TABLE `ctw_focus_cate` (
@@ -640,10 +642,10 @@ CREATE TABLE `ctw_focus_cate` (
   `width` smallint(6) NOT NULL DEFAULT '0',
   `height` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_group
+-- Table structure for cps_group
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_group`;
 CREATE TABLE `ctw_group` (
@@ -657,10 +659,10 @@ CREATE TABLE `ctw_group` (
   PRIMARY KEY (`id`),
   KEY `status` (`status`),
   KEY `sort` (`sort`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_items
+-- Table structure for cps_items
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_items`;
 CREATE TABLE `ctw_items` (
@@ -695,7 +697,7 @@ CREATE TABLE `ctw_items` (
   `is_collect_comments` int(1) DEFAULT '0' COMMENT '是否采集了淘宝评论1表示已经采集了淘宝评论',
   `data_state` tinyint(1) DEFAULT '1' COMMENT '数据状态：0删除，1正常',
   `update_time` int(10) unsigned DEFAULT NULL COMMENT '修改时间',
-  `item_id` varchar(32) unsigned NOT NULL COMMENT '对方商品库id',
+  `item_id` varchar(32) NOT NULL COMMENT '对方商品库id',
   `shop_id` int(10) unsigned NOT NULL COMMENT '商城id',
   `qrcode` varchar(1000) DEFAULT NULL COMMENT '二维码图片URL',
   `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
@@ -706,10 +708,10 @@ CREATE TABLE `ctw_items` (
   KEY `index_sid` (`sid`),
   KEY `uid` (`uid`),
   KEY `item_key` (`item_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.6推广商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='5.2.6推广商品表';
 
 -- ----------------------------
--- Table structure for ctw_items_cate
+-- Table structure for cps_items_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_items_cate`;
 CREATE TABLE `ctw_items_cate` (
@@ -739,10 +741,10 @@ CREATE TABLE `ctw_items_cate` (
   KEY `ordid` (`ordid`),
   KEY `index_pid` (`pid`,`recommend`,`status`),
   KEY `status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.5推广商品分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='5.2.5推广商品分类表';
 
 -- ----------------------------
--- Table structure for ctw_items_comments
+-- Table structure for cps_items_comments
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_items_comments`;
 CREATE TABLE `ctw_items_comments` (
@@ -757,7 +759,7 @@ CREATE TABLE `ctw_items_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_items_site
+-- Table structure for cps_items_site
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_items_site`;
 CREATE TABLE `ctw_items_site` (
@@ -771,10 +773,10 @@ CREATE TABLE `ctw_items_site` (
   `item_nums` int(10) NOT NULL DEFAULT '0',
   `type` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_items_tags
+-- Table structure for cps_items_tags
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_items_tags`;
 CREATE TABLE `ctw_items_tags` (
@@ -790,7 +792,7 @@ CREATE TABLE `ctw_items_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_items_tags_cate
+-- Table structure for cps_items_tags_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_items_tags_cate`;
 CREATE TABLE `ctw_items_tags_cate` (
@@ -801,24 +803,24 @@ CREATE TABLE `ctw_items_tags_cate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_items_tags_item
+-- Table structure for cps_items_tags_item
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_items_tags_item`;
 CREATE TABLE `ctw_items_tags_item` (
-  `item_id` int(10) NOT NULL,
+  `item_id` varchar(32) NOT NULL,
   `tag_id` int(10) NOT NULL,
   KEY `item_id` (`item_id`),
   KEY `tag_id` (`tag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_items_user
+-- Table structure for cps_items_user
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_items_user`;
 CREATE TABLE `ctw_items_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `iid` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
+  `item_id` varchar(32) NOT NULL,
   `uid` int(11) NOT NULL,
   `add_time` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -828,7 +830,7 @@ CREATE TABLE `ctw_items_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_like_list
+-- Table structure for cps_like_list
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_like_list`;
 CREATE TABLE `ctw_like_list` (
@@ -839,10 +841,10 @@ CREATE TABLE `ctw_like_list` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `add_time` (`add_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_miao_order
+-- Table structure for cps_miao_order
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_miao_order`;
 CREATE TABLE `ctw_miao_order` (
@@ -869,7 +871,7 @@ CREATE TABLE `ctw_miao_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_nav
+-- Table structure for cps_nav
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_nav`;
 CREATE TABLE `ctw_nav` (
@@ -891,10 +893,10 @@ CREATE TABLE `ctw_nav` (
   KEY `type` (`type`),
   KEY `sort_order` (`sort_order`),
   KEY `alias` (`alias`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_node
+-- Table structure for cps_node
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_node`;
 CREATE TABLE `ctw_node` (
@@ -921,10 +923,10 @@ CREATE TABLE `ctw_node` (
   KEY `is_show` (`is_show`),
   KEY `group_id` (`group_id`),
   KEY `sort` (`sort`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.3节点表';
+) ENGINE=InnoDB AUTO_INCREMENT=295 DEFAULT CHARSET=utf8 COMMENT='5.2.3节点表';
 
 -- ----------------------------
--- Table structure for ctw_op_log
+-- Table structure for cps_op_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_op_log`;
 CREATE TABLE `ctw_op_log` (
@@ -948,11 +950,12 @@ CREATE TABLE `ctw_op_log` (
   `uid` bigint(40) unsigned NOT NULL,
   `op_time2` int(11) DEFAULT NULL,
   `op_content` varchar(256) DEFAULT NULL COMMENT '操作对象',
+  `user_id` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.12合同日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='5.2.12合同日志表';
 
 -- ----------------------------
--- Table structure for ctw_orderlist
+-- Table structure for cps_orderlist
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_orderlist`;
 CREATE TABLE `ctw_orderlist` (
@@ -973,7 +976,7 @@ CREATE TABLE `ctw_orderlist` (
   `order_id` varchar(20) NOT NULL,
   `cash_back_jifenbao` varchar(10) DEFAULT NULL,
   `shop_id` bigint(10) unsigned NOT NULL COMMENT '商户id',
-  `item_id` varchar(32) unsigned NOT NULL COMMENT '商品id',
+  `item_id` varchar(32) NOT NULL COMMENT '商品id',
   `sum_price` varchar(10) DEFAULT '0' COMMENT '商品总价',
   `title` varchar(255) DEFAULT NULL COMMENT '标题',
   `platform_id` int(10) unsigned DEFAULT '0' COMMENT '分销平台，指定到机构？对，必须对应机构。',
@@ -994,10 +997,10 @@ CREATE TABLE `ctw_orderlist` (
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
   KEY `order_code` (`order_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.11订单表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='5.2.11订单表';
 
 -- ----------------------------
--- Table structure for ctw_parameters
+-- Table structure for cps_parameters
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_parameters`;
 CREATE TABLE `ctw_parameters` (
@@ -1009,10 +1012,10 @@ CREATE TABLE `ctw_parameters` (
   `APP_FLAG01` varchar(1024) DEFAULT NULL,
   `data_state` char(1) DEFAULT '1' COMMENT '数据状态：0删除，1正常',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_poster
+-- Table structure for cps_poster
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_poster`;
 CREATE TABLE `ctw_poster` (
@@ -1042,10 +1045,10 @@ CREATE TABLE `ctw_poster` (
   KEY `is_best` (`is_best`) USING BTREE,
   KEY `add_time` (`add_time`) USING BTREE,
   KEY `cate_id` (`cate_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.15 海报二维码表';
+) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='5.2.15 海报二维码表';
 
 -- ----------------------------
--- Table structure for ctw_push_log
+-- Table structure for cps_push_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_push_log`;
 CREATE TABLE `ctw_push_log` (
@@ -1070,10 +1073,10 @@ CREATE TABLE `ctw_push_log` (
   `sid222` varchar(40) DEFAULT NULL,
   `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.13推广记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='5.2.13推广记录表';
 
 -- ----------------------------
--- Table structure for ctw_role
+-- Table structure for cps_role
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_role`;
 CREATE TABLE `ctw_role` (
@@ -1086,10 +1089,10 @@ CREATE TABLE `ctw_role` (
   `data_state` tinyint(1) unsigned DEFAULT NULL COMMENT '数据状态：0删除，1正常',
   PRIMARY KEY (`id`),
   KEY `status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5.2.2角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='5.2.2角色表';
 
 -- ----------------------------
--- Table structure for ctw_seller_cate
+-- Table structure for cps_seller_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_seller_cate`;
 CREATE TABLE `ctw_seller_cate` (
@@ -1103,10 +1106,10 @@ CREATE TABLE `ctw_seller_cate` (
   PRIMARY KEY (`id`),
   KEY `cid` (`cid`),
   KEY `index_status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_seller_list
+-- Table structure for cps_seller_list
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_seller_list`;
 CREATE TABLE `ctw_seller_list` (
@@ -1129,10 +1132,10 @@ CREATE TABLE `ctw_seller_list` (
   PRIMARY KEY (`id`),
   KEY `index_status` (`status`),
   KEY `index_recommend` (`recommend`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_seller_list_cate
+-- Table structure for cps_seller_list_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_seller_list_cate`;
 CREATE TABLE `ctw_seller_list_cate` (
@@ -1143,7 +1146,7 @@ CREATE TABLE `ctw_seller_list_cate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_seller_list_goods
+-- Table structure for cps_seller_list_goods
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_seller_list_goods`;
 CREATE TABLE `ctw_seller_list_goods` (
@@ -1164,7 +1167,7 @@ CREATE TABLE `ctw_seller_list_goods` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_send_email_log
+-- Table structure for cps_send_email_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_send_email_log`;
 CREATE TABLE `ctw_send_email_log` (
@@ -1179,10 +1182,10 @@ CREATE TABLE `ctw_send_email_log` (
   `message` varchar(1024) NOT NULL,
   `result` varchar(1024) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_seo
+-- Table structure for cps_seo
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_seo`;
 CREATE TABLE `ctw_seo` (
@@ -1193,10 +1196,10 @@ CREATE TABLE `ctw_seo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   KEY `actionname` (`actionname`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_setting
+-- Table structure for cps_setting
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_setting`;
 CREATE TABLE `ctw_setting` (
@@ -1205,10 +1208,10 @@ CREATE TABLE `ctw_setting` (
   `data` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_ucenter
+-- Table structure for cps_ucenter
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_ucenter`;
 CREATE TABLE `ctw_ucenter` (
@@ -1217,7 +1220,7 @@ CREATE TABLE `ctw_ucenter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user
+-- Table structure for cps_user
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user`;
 CREATE TABLE `ctw_user` (
@@ -1237,10 +1240,10 @@ CREATE TABLE `ctw_user` (
   UNIQUE KEY `id` (`id`),
   KEY `add_time` (`add_time`),
   KEY `status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_comments
+-- Table structure for cps_user_comments
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_comments`;
 CREATE TABLE `ctw_user_comments` (
@@ -1255,10 +1258,10 @@ CREATE TABLE `ctw_user_comments` (
   PRIMARY KEY (`id`),
   KEY `index_pid` (`pid`),
   KEY `index_status` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_consignee
+-- Table structure for cps_user_consignee
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_consignee`;
 CREATE TABLE `ctw_user_consignee` (
@@ -1280,7 +1283,7 @@ CREATE TABLE `ctw_user_consignee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_follow
+-- Table structure for cps_user_follow
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_follow`;
 CREATE TABLE `ctw_user_follow` (
@@ -1294,7 +1297,7 @@ CREATE TABLE `ctw_user_follow` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_history
+-- Table structure for cps_user_history
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_history`;
 CREATE TABLE `ctw_user_history` (
@@ -1304,10 +1307,10 @@ CREATE TABLE `ctw_user_history` (
   `add_time` int(10) NOT NULL DEFAULT '0',
   `info` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_info
+-- Table structure for cps_user_info
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_info`;
 CREATE TABLE `ctw_user_info` (
@@ -1335,10 +1338,10 @@ CREATE TABLE `ctw_user_info` (
   PRIMARY KEY (`id`),
   KEY `integral` (`integral`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_msg
+-- Table structure for cps_user_msg
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_msg`;
 CREATE TABLE `ctw_user_msg` (
@@ -1350,10 +1353,10 @@ CREATE TABLE `ctw_user_msg` (
   `del` tinyint(1) NOT NULL,
   `date` int(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_openid
+-- Table structure for cps_user_openid
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_openid`;
 CREATE TABLE `ctw_user_openid` (
@@ -1369,7 +1372,7 @@ CREATE TABLE `ctw_user_openid` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_setmsg
+-- Table structure for cps_user_setmsg
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_setmsg`;
 CREATE TABLE `ctw_user_setmsg` (
@@ -1377,10 +1380,10 @@ CREATE TABLE `ctw_user_setmsg` (
   `key` varchar(20) NOT NULL,
   `val` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_user_tixian
+-- Table structure for cps_user_tixian
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_user_tixian`;
 CREATE TABLE `ctw_user_tixian` (
@@ -1401,7 +1404,7 @@ CREATE TABLE `ctw_user_tixian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_wegoapi
+-- Table structure for cps_wegoapi
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_wegoapi`;
 CREATE TABLE `ctw_wegoapi` (
@@ -1411,7 +1414,7 @@ CREATE TABLE `ctw_wegoapi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_word
+-- Table structure for cps_word
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_word`;
 CREATE TABLE `ctw_word` (
@@ -1429,7 +1432,7 @@ CREATE TABLE `ctw_word` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for ctw_word_cate
+-- Table structure for cps_word_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `ctw_word_cate`;
 CREATE TABLE `ctw_word_cate` (
@@ -1438,4 +1441,4 @@ CREATE TABLE `ctw_word_cate` (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;

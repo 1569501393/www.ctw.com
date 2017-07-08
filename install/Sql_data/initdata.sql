@@ -441,9 +441,6 @@ INSERT INTO `ctw_parameters` VALUES ('22', 'ORDER_TIME', '3', '11:00-12:00', '�
 INSERT INTO `ctw_parameters` VALUES ('5', 'period', '2', '一月', '结算周期', null, '1');
 INSERT INTO `ctw_parameters` VALUES ('6', 'period', '3', '季度', '结算周期', null, '1');
 INSERT INTO `ctw_parameters` VALUES ('7', 'period', '4', '年度', '结算周期', null, '1');
-INSERT INTO `ctw_parameters` VALUES ('8', 'period', '5', '结算周期1', '结算周期', null, '1');
-INSERT INTO `ctw_parameters` VALUES ('9', 'period', '6', '结算周期2', '结算周期', null, '1');
-INSERT INTO `ctw_parameters` VALUES ('10', 'period', '7', '结算周期3', '结算周期', null, '1');
 INSERT INTO `ctw_parameters` VALUES ('21', 'ORDER_TIME', '2', '10:00-11:00', '预约时间', null, '1');
 INSERT INTO `ctw_parameters` VALUES ('11', 'check_status', '1', '已通过', '审核状态', null, '1');
 INSERT INTO `ctw_parameters` VALUES ('12', 'check_status', '2', '审核中', '审核状态', null, '1');
