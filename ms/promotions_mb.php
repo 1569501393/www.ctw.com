@@ -1,7 +1,6 @@
 <?php
 
 include 'header_mb.php';
-// include 'mobile.php';
 
 ?>
 <title>分享时间: 2017-11-11</title>

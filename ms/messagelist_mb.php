@@ -7,7 +7,7 @@ include 'header_mb.php';
 <title>消息列表</title>
 </head>
 
-<div id="wrapper">
+<div id="wrapper" class="secondpage">
 
     <!-- <div class="topnavbar"> -->
             <!-- <a href="account_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->

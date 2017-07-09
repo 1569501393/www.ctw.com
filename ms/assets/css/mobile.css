@@ -6,9 +6,9 @@
 .topnavbar{height: 2.6rem; font-size: 0.7rem;  text-align: center; line-height: 2.6rem; font-weight: bold; color: #666;/*color:#fff; */position: fixed; top: 0; left:0;width: 100%;background:#eee;/*background:#5d9cec;*/ z-index: 9999}
 .backicon{ font-size: 0.8rem; color:#888; width: 1rem; height: 1rem; line-height: 1rem; position: absolute; left: 0.5rem; top: 0.7rem }
 .content-page .content{ margin-top: -0.5rem !important; }
-.secondpage .content-page .content{ margin-top: 1.2rem !important; }
-.secondpage.incomepage .content-page .content{ margin-top: 1.8rem !important; }
-.secondpage.incomepage .content-page > .content{ margin-bottom: 10px !important }
+.secondpage .content-page .content{ margin-top: 1.2rem !important; padding-top:0.5rem !important; }
+.secondpage .content-page .content{ margin-top: 0rem !important; }
+.secondpage .incomepage .content-page > .content{ margin-bottom: 10px !important }
 
 
 
@@ -21,9 +21,10 @@
 .active .navtitle{ color: #fff !important }
 .navtitle{ display: block; font-size: 0.6rem; margin-top: 0.1rem }
 
-.homepage .fiexdsearch{ position: fixed; width: 100%; height: 3rem; top: 0; left: 0;background:#eee; margin:0; z-index: 99999 }
-.homepage .fiexdsearch .searchinput{margin-top:0.5rem;}
-.homepage.content-page .content{ margin-top: 1.6rem !important; }
+.fiexdsearch{ position: fixed; width: 100%; height: 3rem; top: 0; left: 0;background:#eee; margin:0; z-index: 99999 }
+.fiexdsearch .searchinput{margin-top:0.5rem;}
+.fiexdsearch form{ margin-top: 0.5rem }
+.homepage .content-page .content{ margin-top: 1.6rem !important; }
 
 /*.fiexdsearch{position: fixed;width: 100%;height: 3rem;background: #eee;padding: 0.5rem 0 ;margin: 0;left: 0;top: 0;z-index: 99999;}*/
 
@@ -72,6 +73,8 @@
 .singlepromotion .bottominfo{ position: relative; bottom: 0; width: 100%;clear: both; text-align: left; padding-top: 0.7rem}
 .singlepromotion .bottominfo p{ font-size: 0.7rem; line-height: 1rem; padding-left: 1rem; margin:0 0 0.2rem 0 !important; color: #aaa }
 
+
+.libpage{ margin-top: 2.3rem }
 .singlelib{ width: 100%;  background: #fff; margin:0.5rem 0; position: relative; }
 .singlelib .thumbs{ width:4rem; margin: 0.5rem 0 0 0.5rem; height: 4rem; float:left; }
 .singlelib .goodsinfo{ width:13.5rem; float:left; margin-left: 0.5rem; height: 4.5rem }
@@ -131,7 +134,7 @@
 .weakselect .btn-white{ background:#eee; }
 .mbselect{ width: 43%; margin:2.5%; display: inline-block; }
 .dateselect{ width: 80%; margin:2.5%; display: inline-block; }
-.mbdate{ width: 5rem; max-width: 160px; border-radius: 5px; border:none; padding-left: 0.3rem; margin-right: 0.4rem;font-size:0.7rem; }
+.mbdate{ width: 4.5rem; max-width: 160px; border-radius: 5px; border:none; padding-left: 0.3rem; margin-right: 0.4rem;font-size:0.7rem; }
 .libdate{ padding:0rem 0rem 0.5rem 0.8rem; }
 .promotiondate{ padding:0.5rem 0 0 1rem; position: relative; }
 .promotiondate .enterbtn{ float: right; margin-right: 1rem; color: #999 }
@@ -143,7 +146,7 @@
 .income{ padding:0.5rem 1rem ; background:#fff;text-align: center;  }
 .incomehalf{ width: 49%; display: inline-block;margin-bottom: 0rem }
 .incomebtn{ margin:0 0.5rem; }
-.content-page > .content.incomepage{ margin-bottom: 0 !important }
+.incomepage .content {margin-bottom: 0 !important }
 
 .recentincome{ width: 100%; padding:0; margin:0; margin-top: 0.5rem }
 .recentincome .indicator{ display: none }
@@ -179,10 +182,12 @@
 .messagepage .indicator{ max-width:49%;  }
 
 
-.messagepage.content-page .content{ margin-top: 2rem !important; }
+.messagepage.content-page .content{ margin-top: 0rem !important; padding-top: 0 !important; }
+/*.singlemessage.content-page .content{ margin-top: 0rem !important; padding-top: 0 !important; }*/
+
 .messagepage .tab-content{ padding:0 !important; }
 
-.singlemessage{ margin-top:0.5rem; padding:0.5rem;background:#fff; }
+.singlemessage{/* margin-top:0.5rem;*/ padding:0.5rem;background:#fff; }
 
 .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom,
 .swiper-pagination-fraction {

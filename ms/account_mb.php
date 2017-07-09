@@ -7,7 +7,7 @@ include 'header_mb.php';
 <title>账户</title>
 </head>
 
-<div id="wrapper">
+<div id="wrapper" class="accountpage">
 
 
 <ul class="bottombar">

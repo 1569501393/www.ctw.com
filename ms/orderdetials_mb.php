@@ -14,7 +14,7 @@ include 'header_mb.php';
     <!-- <div class="topnavbar"> -->
             <!-- <a href="baobiao_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
         <!-- LOGO -->
-        订单明细
+        <!-- 订单明细 -->
         <!-- Button mobile view to collapse sidebar menu -->
     <!-- </div> -->
 

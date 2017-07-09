@@ -7,7 +7,7 @@ include 'header_mb.php';
 </head>
 
 
-<div id="wrapper">
+<div id="wrapper" class="homepage">
 
 
 <ul class="bottombar">
@@ -45,7 +45,7 @@ include 'header_mb.php';
 
 </ul>
 
-            <div class="content-page homepage">
+            <div class="content-page">
 
                 <div class="content">
                     <div class="container">

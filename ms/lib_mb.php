@@ -7,7 +7,7 @@ include 'header_mb.php';
 <title>我的推广</title>
 </head>
 
-<div id="wrapper">
+<div id="wrapper" class="libpage">
 
 <ul class="bottombar">
 
@@ -64,7 +64,7 @@ include 'header_mb.php';
                 <div class="content">
                     <div class="container">
 
-                        <div class="row libdate">
+                        <div class="row libdate fiexdsearch">
                             <form name="">
                                 开始时间:
                                 <input type="date" class="mbdate" placeholder="2017-11-11" name="start" />至

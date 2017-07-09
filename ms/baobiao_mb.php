@@ -7,7 +7,7 @@ include 'header_mb.php';
 <title>效果报表</title>
 </head>
 
-<div id="wrapper">
+<div id="wrapper" class="incomepage">
 
 <ul class="bottombar">
 
@@ -56,7 +56,7 @@ include 'header_mb.php';
 
 <div class="content-page">
 
-    <div class="content incomepage">
+    <div class="content">
         <div class="container">
 
             <div class="row">
@@ -74,8 +74,8 @@ include 'header_mb.php';
                     </div>
 
 
-                    <!-- <button type="button"  class="btn btn-white incomebtn" value="">申请提现</button> -->
-                    <!-- <button type="button"  class="btn btn-white incomebtn" value="">申请记录</button> -->
+                    <button type="button"  class="btn btn-white incomebtn" value="">申请提现</button>
+                    <button type="button"  class="btn btn-white incomebtn" value="">申请记录</button>
 
                 </div>
 
