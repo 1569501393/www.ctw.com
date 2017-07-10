@@ -91,18 +91,18 @@
                                                             <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
                                                             <br />
                                                             <br />{$val.title}</a><br />
-                                                            ¥{$val.price|default="默认单价"}
+                                                            ¥{$val.price|default="默认单价"|round=###,2}
                                                             <br />
 
                                                             <font color="red">
                                                            
 
-                                                            <if condition=" ($Think.session.admin_info.role_id eq 1 OR $Think.session.admin_info.role_id eq 3) ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)</if>
-                                                            <if condition="$Think.session.admin_info.role_id eq 4 ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)&nbsp;&nbsp;
-                                                            分润:{$val.commission2|default="默认分润"}({$val.rate2|default="默认分润比例"}%)
+                                                            <if condition=" ($Think.session.admin_info.role_id eq 1 OR $Think.session.admin_info.role_id eq 3) ">佣金:{$val.commission|default="默认佣金"|round=###,2}({$val.rate|default="默认佣金比例"|round=###,2}%)</if>
+                                                            <if condition="$Think.session.admin_info.role_id eq 4 ">佣金:{$val.commission|default="默认佣金"|round=###,2}({$val.rate|default="默认佣金比例"|round=###,2}%)&nbsp;&nbsp;
+                                                            分润:{$val.commission2|default="默认分润"|round=###,2}({$val.rate2|default="默认分润比例"|round=###,2}%)
                                                             </if>
 
-                                                            <if condition="$Think.session.admin_info.role_id egt 5 ">佣金:{$val.commission2|default="默认佣金"}({$val.rate2|default="默认佣金比例"}%)
+                                                            <if condition="$Think.session.admin_info.role_id egt 5 ">佣金:{$val.commission2|default="默认佣金"|round=###,2}({$val.rate2|default="默认佣金比例"|round=###,2}%)
                                                             </if>
 
                                                             </font>
