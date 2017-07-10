@@ -179,70 +179,86 @@ class itemsAction extends baseAction
 	 $this->display();
 	 }*/
 
-	// 海报管理
-	public function poster()
-	{
-		//		$items_mod = M('items');
-		$commission_mod = M('items');
-		//		$commission_mod = M('commission');
-		import("ORG.Util.Page");
+    // 海报管理
+    public function poster()
+    {
+        $items_mod = M('items');
+        import("ORG.Util.Page");
 
-		//搜索
-		$where = '1=1';
+        //搜索
+        $where = '1=1 AND data_state=1';
 
-		// 判断角色  分行和商城直接看角色  支行和客户经理看分行  暂时屏蔽
-		//        if (($_SESSION['admin_info']['role_id'] == 3) || ($_SESSION['admin_info']['role_id'] == 4)) {
-		//            $where .= " AND (platform_id ={$_SESSION['admin_info']['role_id']} ) ";
-		//        } else {
-		//            if (($_SESSION['admin_info']['role_id'] == 5)) { // 支行
-		//                $role_id = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('role_id');
-		//                $where .= " AND (platform_id ={$role_id}) ";
-		//            } elseif (($_SESSION['admin_info']['role_id'] == 6)) { // 客户经理
-		//                $pid = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('pid');
-		//                $role_id = M('admin')->where('id=' . $pid)->getField('role_id');
-		//                $where .= " AND (platform_id ={$role_id}) ";
-		//            }
-		//        }
-		if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
-			//            $where .= " AND (title like '%{$_REQUEST['keyword']}%' OR contract like '%{$_REQUEST['keyword']}%') ";
-			$where .= " AND (title like '%{$_GET['keyword']}%' ) ";
-			$this->assign('keyword', $_GET['keyword']);
-		}
+        if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+            //            $where .= " AND (title like '%{$_REQUEST['keyword']}%' OR contract like '%{$_REQUEST['keyword']}%') ";
+            $where .= " AND (title like '%{$_GET['keyword']}%' ) ";
+            $this->assign('keyword', $_GET['keyword']);
+        }
 
-		if (isset($_GET['id']) && intval($_GET['id'])) {
-			$where .= " AND con_id=" . $_GET['id'];
-			$this->assign('con_id', $_GET['id']);
-		}
+        if (isset($_GET['id']) && intval($_GET['id'])) {
+            $where .= " AND con_id=" . $_GET['id'];
+            $this->assign('con_id', $_GET['id']);
+        }
 
-		// 分类
-		if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
-			$where .= " AND cate_name= '{$_GET['cate_id']}' ";
-			$this->assign('cate_id', $_GET['cate_id']);
-		}
-
-		// 分类表
-		$cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
-		$this->assign('cates', $cates);
-
-		$count = $commission_mod->where($where)->count();
-		$p = new Page($count, 10);
-		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
-
-		$key = 1;
-		foreach ($commission_list as $k => $val) {
-			$commission_list[$k]['key'] = ++$p->firstRow;
-			$commission_list[$k]['file'] = M('file')->where(" item_id='{$val['item_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
-			//            var_dump($commission_list[$k]['file']);
-		}
+        // 分类
+        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
+            $this->assign('cate_id', $_GET['cate_id']);
+        }
 
 
-		$page = $p->show();
-		$this->assign('page', $page);
-		//        var_dump(substr($this->site_root, -1));exit;
-		$this->assign('site_root', substr($this->site_root, -1));
-		$this->assign('items_list', $commission_list);
-		$this->display();
-	}
+        // 导出excel
+        if ($_GET['dosubmit'] ==2){
+            $items_list = $items_mod->where($where)->order('id DESC')->select();
+            foreach ($items_list as $k => $v) {
+                $items_list[$k]['add_time'] = date('Y-m-d H:i:s', $v['add_time']);
+                $items_list[$k]['shop_name'] = M('admin')->where(' id= '.$v['shop_id'])->getField('user_id')?:'商铺名称';
+            }
+
+            $expCellName = array(
+                //		array('id', '序号'),
+                //            array('platform_id', '分销平台'),
+                //            array('con_type', '合同类型'),
+                array('item_id', '商品编号'),
+                array('rate', '佣金比例'),
+                array('commission', '佣金金额'),
+                array('cate_name', '商品分类'),
+                array('price', '商品价格'),
+                array('title', '商品名称'),
+                array('img', '图片地址'),
+                array('url', '链接'),
+                //		array('cate_id', '商品分类'),
+                array('add_time', '添加时间'),
+                array('shop_id', 'shop_id'),
+                array('shop_name', '商铺名称'),
+            );
+
+
+            exportExcel('商品详情', $expCellName, $items_list, $fileName = '商品详情');
+
+        }
+        // 分类表
+        $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+        $this->assign('cates', $cates);
+
+        $count = $items_mod->where($where)->count();
+        $p = new Page($count, 10);
+        $items_list = $items_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+
+        $key = 1;
+        foreach ($items_list as $k => $val) {
+            $items_list[$k]['key'] = ++$p->firstRow;
+            $items_list[$k]['file'] = M('file')->where(" item_id='{$val['item_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
+            //            var_dump($items_list[$k]['file']);
+        }
+
+
+        $page = $p->show();
+        $this->assign('page', $page);
+        //        var_dump(substr($this->site_root, -1));exit;
+        $this->assign('site_root', substr($this->site_root, -1));
+        $this->assign('items_list', $items_list);
+        $this->display();
+    }
 
 	// 推广链接跳转
 	public function prom()

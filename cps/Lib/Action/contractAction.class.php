@@ -318,7 +318,8 @@ class contractAction extends baseAction
 		array('url', '链接'),
 		//		array('cate_id', '商品分类'),
 		array('add_time', '添加时间'),
-		array('shop_id', 'shop_id'),
+        array('shop_id', 'shop_id'),
+        array('shop_name', '商铺名称'),
 		);
 		$xlsModel = M('commission');
 		//        $xlsData = $xlsModel->Field('id,item_id,title,cate_id,cate_name,price,rate,commission,add_time,shop_id')->where('con_id=' . $_GET['id'])->order('id DESC')->select();
@@ -330,6 +331,7 @@ class contractAction extends baseAction
 			$xlsData[$k]['add_time'] = date('Y-m-d H:i:s', $v['add_time']);
 			// 商品名称
 			//            $xlsData[$k]['item_name'] = '商品名称';
+            $xlsData[$k]['shop_name'] = M('admin')->where(' id= '.$v['shop_id'])->getField('user_id')?:'商铺名称';
 		}
 
 		// 重组另外一张表
