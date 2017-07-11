@@ -57,10 +57,10 @@
                                         <volist name="order_list" id="val">
                                             <tr>
                                                 <td>{$i}</td>
-                                                <td>{$val.platform_name|default="默认单价"}</td>
-                                                <td>¥{$val.sum_price|default="默认单价"}</td>
+                                                <td>{$val.platform_name|default="默认单价"|round=###,2}</td>
+                                                <td>¥{$val.sum_price|default="默认单价"|round=###,2}</td>
                                                 <td>
-                                                    <b>{$val.sum_count|default="默认单价"}</b>
+                                                    <b>{$val.sum_count|default="默认单价"|round=###,2}</b>
                                                 </td>
                                             </tr>
                                         </volist>
@@ -87,7 +87,7 @@
                                                 <td>{$i}</td>
                                                 <td>{$val.platform_name|default="某个支行"}</td>
                                                 <td>
-                                                    <b>¥{$val.sum_commission|default="51,999,980"}</b>
+                                                    <b>¥{$val.sum_commission|default="51,999,980"|round=###,2}</b>
                                                 </td>
                                                 <td>{$val.sum_count|default="28,732"}</td></tr>
                                         </volist>
@@ -120,9 +120,9 @@
                                                         <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">{$val.title}</a></td>
                                                 <td>{$val.cnt|default="873"}</td>
                                                 <td>
-                                                    <b>{$val.sum_count|default="28,732"}</b>
+                                                    <b>{$val.sum_count|default="28,732"|round=###,2}</b>
                                                 </td>
-                                                <td>¥{$val.sum_price|default="51,256,938"}</td></tr>
+                                                <td>¥{$val.sum_price|default="51,256,938"|round=###,2}</td></tr>
                                         </volist>
                                     </tbody>
                                 </table>

@@ -1,7 +1,7 @@
 <?php
 return array (
-  'DB_HOST' => 'localhost',
-  'DB_PWD' => 'root',
+  'DB_HOST' => '59.56.69.152',
+  'DB_PWD' => '123456',
   'DB_NAME' => 'cps',
   'DB_USER' => 'root',
   'DB_PORT' => '3306',
