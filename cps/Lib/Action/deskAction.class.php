@@ -193,8 +193,10 @@ class deskAction extends Action
     public function buy()
     {
         $item_info = M('items')->where(" shop_id={$_GET['shop_id']} AND item_id='{$_GET['item_id']}' ")->find();
-        $commission_info = M('commission')->where(" shop_id={$_GET['shop_id']} AND item_id='{$_GET['item_id']}' AND platform_id={$_GET['bank_id']} ")->select();
 
+
+        $commission_info = M('commission')->where(" shop_id={$_GET['shop_id']} AND item_id='{$_GET['item_id']}' AND platform_id={$_GET['bank_id']} ")->select();
+//        var_dump(M('commission')->getLastSql());exit;
         if (is_array($commission_info) && count($commission_info) > 1) {
             if ($commission_info[0]['con_id'] > 0) {
                 $rate = $commission_info[0]['rate'];
@@ -235,14 +237,19 @@ class deskAction extends Action
         // 查找订单号
         $order_has = M('orderlist')->where(" shop_id={$_GET['shop_id']} AND order_id='{$_GET['order_id']}' ")->find();
 
+//        var_dump($order_has);
+
         if ($order_has) {
             $order_id = M('orderlist')->where(" shop_id={$_GET['shop_id']} AND order_id='{$_GET['order_id']}' ")->save(array('status' => $_GET['status']));
-            //		var_dump(M('orderlist')->getLastSql());
-            if ($order_id) {
-                /*echo json_encode(array('status'=>1,'msg'=>'购买成功,status=1','data'=>array()));
-                 exit;*/
-                $this->success('购买成功,status=1');
-            }
+            echo json_encode(array('status'=>1,'msg'=>'购买成功,status=1','data'=>array()));
+            exit;
+            		var_dump(M('orderlist')->getLastSql());
+            var_dump($order_id);
+            /*if ($order_id) {
+                echo json_encode(array('status'=>1,'msg'=>'购买成功,status=1','data'=>array()));
+                 exit;
+//                $this->success('购买成功,status=1');
+            }*/
         } else {
             $order_id = M('orderlist')->add($_GET);
             //		var_dump(M('orderlist')->getLastSql());
