@@ -247,9 +247,9 @@ class deskAction extends Action
             $order_id = M('orderlist')->add($_GET);
             //		var_dump(M('orderlist')->getLastSql());
             if ($order_id) {
-                /*echo json_encode(array('status'=>1,'msg'=>'购买成功','data'=>array()));
-                 exit;*/
-                $this->success('购买成功');
+                echo json_encode(array('status'=>1,'msg'=>'购买成功','data'=>array()));
+                 exit;
+//                $this->success('购买成功');
             }
         }
 
