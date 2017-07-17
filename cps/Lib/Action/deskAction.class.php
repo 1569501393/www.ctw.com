@@ -176,9 +176,9 @@ class deskAction extends Action
         $url = M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->getField('url');
 
         if (strpos($url,'?') === false){
-            $res_url = "$url?sid={$_SESSION['admin_info']['id']}&sname={$_SESSION['admin_info']['user_name']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&rate={$_GET['rate']}&cate_id={$_GET['cate_id']}&cate_name={$_GET['cate_name']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}&user_id={$_SESSION['admin_info']['user_id']}";
+            $res_url = "$url?sid={$_GET['sid']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&cate_id={$_GET['cate_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['pid']}&user_id={$_GET['user_id']}";
         }else{
-            $res_url = "$url&sid={$_SESSION['admin_info']['id']}&sname={$_SESSION['admin_info']['user_name']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&rate={$_GET['rate']}&cate_id={$_GET['cate_id']}&cate_name={$_GET['cate_name']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}&user_id={$_SESSION['admin_info']['user_id']}";
+            $res_url = "$url&sid={$_GET['sid']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&cate_id={$_GET['cate_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['pid']}&user_id={$_GET['user_id']}";
         }
 
 //        var_dump($res_url);
