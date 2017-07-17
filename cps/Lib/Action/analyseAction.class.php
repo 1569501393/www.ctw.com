@@ -30,6 +30,7 @@ class analyseAction extends baseAction
 
         foreach ($order_list as $k => $val) {
             //            $order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
+//            var_dump($val['bank_subid']);
             $order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['bank_subid'])->getField('user_id') ?: '全部';
         }
 
