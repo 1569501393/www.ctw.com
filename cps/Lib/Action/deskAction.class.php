@@ -172,6 +172,19 @@ class deskAction extends Action
     {
         //        var_dump($_REQUEST);
         M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
+
+        $url = M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->getField('url');
+
+        if (strpos($url,'?') === false){
+            $res_url = "$url?sid={$_SESSION['admin_info']['id']}&sname={$_SESSION['admin_info']['user_name']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&rate={$_GET['rate']}&cate_id={$_GET['cate_id']}&cate_name={$_GET['cate_name']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}&user_id={$_SESSION['admin_info']['user_id']}";
+        }else{
+            $res_url = "$url&sid={$_SESSION['admin_info']['id']}&sname={$_SESSION['admin_info']['user_name']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&rate={$_GET['rate']}&cate_id={$_GET['cate_id']}&cate_name={$_GET['cate_name']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}&user_id={$_SESSION['admin_info']['user_id']}";
+        }
+
+//        var_dump($res_url);
+        redirect($res_url);exit;
+
+
         $_GET['add_time'] = $_GET['update_time'] = time();
         $_GET['op_time'] = date('Y-m-d H:i:s');
         $_GET['status'] = $_GET['data_state'] = 1;
