@@ -176,9 +176,9 @@ class deskAction extends Action
         $url = M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->getField('url');
 
         if (strpos($url,'?') === false){
-            $res_url = "$url?sid={$_GET['sid']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&cate_id={$_GET['cate_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['pid']}&user_id={$_GET['user_id']}";
+            $res_url = "$url?sid={$_GET['sid']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&cate_id={$_GET['cate_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['bank_subid']}";
         }else{
-            $res_url = "$url&sid={$_GET['sid']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&cate_id={$_GET['cate_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['pid']}&user_id={$_GET['user_id']}";
+            $res_url = "$url&sid={$_GET['sid']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&cate_id={$_GET['cate_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['bank_subid']}";
         }
 
 //        var_dump($res_url);
