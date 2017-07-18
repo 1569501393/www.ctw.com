@@ -226,9 +226,11 @@ class deskAction extends Action
 //		var_dump(M('commission')->getLastSql(),$commission_info,$item_info);exit;
 
         // TODO by jieqiang 测试屏蔽
-//		if (empty($commission_info) || empty($item_info)) {
+		if (empty($commission_info) || empty($item_info)) {
+            echo json_encode(array('status'=>0,'msg'=>'推广信息错误,status=0','data'=>array()));
+            exit;
 //		 $this->error('推广信息错误');
-//		 }
+		 }
         /*var_dump(M('commission')->getLastSql());
 //		 var_dump($item_info);
         var_dump($commission_info);exit;*/
