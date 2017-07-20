@@ -182,7 +182,13 @@ class indexAction extends baseAction
 
 
 		$this->assign('result', $result);
-		$this->display('index');
+        // 角色，用户
+        if ($_SESSION['admin_info']['role_id'] == 1) { // 客户经理 6
+            $this->display('index_mb');
+        }else{
+            $this->display('index');
+        }
+
 	}
 
 	public function ajaxData()
