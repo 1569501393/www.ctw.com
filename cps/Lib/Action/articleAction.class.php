@@ -111,6 +111,11 @@ class articleAction extends baseAction
 
             $this->display();
         } else {
+            // 角色，用户
+            if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+                $this->display('index_mb');exit;
+            }
+
             $this->display('view');
         }
 
@@ -209,6 +214,12 @@ class articleAction extends baseAction
                 $article_info['admin_name'] = M('admin')->where("id = {$article_info['uid']} ")->getField('user_id');
 
                 $this->assign('article', $article_info);
+
+                // 角色，用户
+                if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+                    $this->display('content_mb');exit;
+                }
+
                 $this->display('content');
             }
 

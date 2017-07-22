@@ -89,14 +89,22 @@ class adminAction extends baseAction
                 }
             }
             $this->assign('admin_list', $admin_list);
-            //		    var_dump($admin_list);
-
-            $this->display();
+            // 角色，用户
+            if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+                $this->display('pwd_mb');
+            }else{
+                $this->display();
+            }
         }
     }
 
     function index()
     {
+        // 角色，用户
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+            $this->display('index_mb');exit;
+        }
+
         $admin_mod = M('admin');
         import("ORG.Util.Page");
         $prex = C('DB_PREFIX');

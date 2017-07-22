@@ -172,6 +172,10 @@ class deskAction extends Action
     {
         //        var_dump($_REQUEST);
         M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
+//        var_dump(M('commission')->getLastSql());exit;
+
+        $_REQUEST['add_time'] = time();
+        M('push_log')->add($_REQUEST);
 
         $url = M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->getField('url');
 

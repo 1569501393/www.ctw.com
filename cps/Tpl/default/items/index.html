@@ -75,11 +75,11 @@
 
                                                             <font color="red">
                                                             <if condition=" ($Think.session.admin_info.role_id eq 1 OR $Think.session.admin_info.role_id eq 3) ">佣金:{$val.commission|default="默认佣金"|round=###,2}({$val.rate|default="默认佣金比例"|round=###,2}%)</if>
-                                                            <if condition="$Think.session.admin_info.role_id eq 4 ">佣金:{$val.commission|default="默认佣金"}({$val.rate|default="默认佣金比例"}%)&nbsp;&nbsp;
-                                                            分润:{$val.commission2|default="默认分润"}({$val.rate2|default="默认分润比例"}%)
+                                                            <if condition="$Think.session.admin_info.role_id eq 4 ">佣金:{$val.commission|default="默认佣金"|round=###,2}({$val.rate|default="默认佣金比例"|round=###,2}%)&nbsp;&nbsp;
+                                                            分润:{$val.commission2|default="默认分润"|round=###,2}({$val.rate2|default="默认分润比例"|round=###,2}%)
                                                             </if>
 
-                                                            <if condition="$Think.session.admin_info.role_id egt 5 ">佣金:{$val.commission2|default="默认佣金"}({$val.rate2|default="默认佣金比例"}%)
+                                                            <if condition="$Think.session.admin_info.role_id egt 5 ">佣金:{$val.commission2|default="默认佣金"|round=###,2}({$val.rate2|default="默认佣金比例"|round=###,2}%)
                                                             </if>
                                                             </font>
 
@@ -112,10 +112,10 @@
                                                         <br/></td> -->
                                                     <td>
                                                         <empty name="val['file'] ">
-                                                            <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'push_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'title'=>$val['title']))}" target="_blank">默认图片</a>
+                                                            <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'push_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title']))}" target="_blank">默认图片</a>
                                                             <else />
                                                             <volist name="val['file']" id="sval">
-                                                                <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'push_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'title'=>$val['title'],'img'=>$sval['img']))}" target="_blank">
+                                                                <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'push_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title'],'img'=>$sval['img']))}" target="_blank">
                                                                     <!-- <img src="{$sval.simg}" width="30px"> -->
                                                                     <notempty name="sval['simg'] ">
                                                                         <img src="{$sval.simg}" width="30px">

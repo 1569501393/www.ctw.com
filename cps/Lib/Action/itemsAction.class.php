@@ -335,7 +335,6 @@ class itemsAction extends baseAction
 	// 推广商品
 	function index()
 	{
-
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 		import("ORG.Util.Page");
@@ -403,7 +402,13 @@ class itemsAction extends baseAction
 		$this->assign('page', $page);
 
 		$this->assign('commission_list', $commission_list);
-		$this->display();
+        // 角色，用户
+//        $this->display();exit;
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+            $this->display('index_mb');
+        }else{
+            $this->display();
+        }
 	}
 
 

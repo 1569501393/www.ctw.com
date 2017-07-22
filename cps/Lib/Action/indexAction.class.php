@@ -183,10 +183,72 @@ class indexAction extends baseAction
 
 		$this->assign('result', $result);
         // 角色，用户
-        if ($_SESSION['admin_info']['role_id'] == 1) { // 客户经理 6
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+
+            $commission_mod = M('commission');
+            import("ORG.Util.Page");
+
+            //搜索
+            $where = '1=1 AND con_id>0 ';
+            $platform_id = get_platform_id($_SESSION['admin_info']);
+            $where .= " AND platform_id=" . $platform_id;
+
+            if (isset($_REQUEST['keyword']) && trim($_REQUEST['keyword'])) {
+
+                $where .= " AND (title like '%{$_REQUEST['keyword']}%' OR contract like '%{$_REQUEST['keyword']}%') ";
+                $this->assign('keyword', $_REQUEST['keyword']);
+            }
+
+            if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
+                $where .= " AND con_id=" . $_REQUEST['id'];
+                $this->assign('id', $_REQUEST['id']);
+            }
+
+
+            // 分类
+            if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
+                $where .= " AND cate_name= '{$_GET['cate_id']}' ";
+                $this->assign('cate_id', $_GET['cate_id']);
+            }
+
+            // 分类表
+            $cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
+            $this->assign('cates', $cates);
+
+            $count = $commission_mod->where($where)->count();
+            $p = new Page($count, 10);
+            $commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+//var_dump($commission_mod->getLastSql(),$commission_list);exit;
+            $bank_id = get_platform_id($_SESSION['admin_info']);
+            //		var_dump($bank_id);exit;
+            $key = 1;
+            foreach ($commission_list as $k => $val) {
+                $commission_list[$k]['key'] = ++$p->firstRow;
+                //            $commission_list[$k]['title'] = M('items')->where(" item_id='{$val['item_id']}' ")->getField('title')?:'未入库';
+                $commission_list[$k]['bank_id'] = $bank_id;
+                //			$commission_list[$k]['bank_subid'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_name') ?: '全部';
+                $commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
+                $commission_list[$k]['file'] = M('file')->where(" item_id='{$val['item_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
+
+                // 分润  根据分行设置 暂时屏蔽
+                //			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
+                $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'   ")->order('id desc')->find() ?: array();
+                $commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
+                $commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
+
+            }
+
+
+            //		var_dump($commission_list);exit;
+
+            $page = $p->show();
+            $this->assign('page', $page);
+
+            $this->assign('commission_list', $commission_list);
+
             $this->display('index_mb');
         }else{
-            $this->display('index');
+            $this->display();
         }
 
 	}

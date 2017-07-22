@@ -1,56 +1,54 @@
 <!-- 引入头部 -->
 <include file="public:header_mb" />
 
-<title>民商智惠CPS</title></head>
-<div id="wrapper" class="homepage">
+<title>推广商品</title>
+</head>
+
+<div id="wrapper" class="shoppage">
 
 <!-- 引入导航 -->
   <include file="public:leftMenu_mb" />
 
-  <div class="content-page">
-    <div class="content">
-      <div class="container">
+<!-- Top Bar Start -->
+<!-- <div class="topbar"> -->
+        <!-- <i class="backicon glyphicon glyphicon-chevron-left"></i> -->
+    <!-- LOGO -->
+    <!-- 推广商品 -->
+    <!-- Button mobile view to collapse sidebar menu -->
+<!-- </div> -->
+<!-- Top Bar End -->
 
-        <form role="form" method="get" action="">
-            <div class="row m-t-10 m-b-10">
-                <div class="col-sm-4 col-lg-6">
-                    <div class="col-md-5">
-                        <input type="text" name="keyword" id="search" value="{$keyword}" class="form-control" placeholder="搜索商品名称......"></div>
-                    <div class="col-md-5">
-                        <select class="form-control" name="cate_id">
-                            <option value="0">全部分类</option>
-                            <volist name="cates" id="val">
-                                <option value="{$val.name}" <if condition="$cate_id eq $val['name']">selected="selected"</if>>{$val.name}</option></volist>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
-                    <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
-                    <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button></div>
-            </div>
-        </form>
-        
-        <div class="row">
-          <a href="#">
-            <div class="homebanner">
-              <img class="wid" src="__ROOT__/statics/cps/images/huawei.jpg"></div>
-          </a>
-        </div>
-        <div class="row">
-          <button type="button" class="btn btn-default notification">
-            <span class="notiTitle">公告:</span>
-            <span class="noticontent">
-              <span class="title">公告标题</span>
-              <span class="detials">公告内容公告内容公告内容公告内容公告内容公告内容</span></span>
-            <span class="btn-label btn-label-right">
-              <i class="fa fa-arrow-right"></i>
-            </span>
-          </button>
-        </div>
-        <div class="row shopslist2 contentlist">
-          <div class="areatitle">推荐商品</div>
-          <volist name="commission_list" id="val">
+
+            <div class="content-page">
+
+                <div class="content">
+                    <div class="container">
+
+                    <form role="form" method="get" action="">
+                        <div class="row m-t-10 m-b-10">
+                            <div class="col-sm-4 col-lg-6">
+                                <!-- <div class="form-group contact-search m-b-30"> -->
+                                <div class="col-md-5">
+                                    <input type="text" name="keyword" id="search" value="{$keyword}" class="form-control" placeholder="搜索商品名称......"></div>
+                                <div class="col-md-5">
+                                    <select class="form-control" name="cate_id">
+                                        <option value="0">全部分类</option>
+                                        <volist name="cates" id="val">
+                                            <option value="{$val.name}" <if condition="$cate_id eq $val['name']">selected="selected"</if>>{$val.name}</option></volist>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                                <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+                                <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button></div>
+                        </div>
+                    </form>
+
+                        <!-- <div class="row shopslist contentlist"> -->
+                        <div class="row shopslist2 contentlist">
+
+                        <volist name="commission_list" id="val">
 
                             
                             <div class="singleshop">
@@ -98,10 +96,15 @@
                             </volist>
                         </div>
                         <div id="pages">{$page}</div>
+                    </div>
+
+                </div>
+
+
+                <footer class="footer text-right">
+                    2017 © MS CPS SYSTEM.
+                </footer>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- 引入尾部 -->
 <include file="public:footer_mb" />

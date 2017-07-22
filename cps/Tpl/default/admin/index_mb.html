@@ -1,0 +1,100 @@
+<include file="public:header_mb" />
+<title>账户</title>
+</head>
+
+<div id="wrapper" class="accountpage">
+
+
+<!-- 引入导航 -->
+  <include file="public:leftMenu_mb" />
+
+<!-- Top Bar Start -->
+<div class="topbar userbg">
+    <div class="userAvatar"><img class="wid" src="__ROOT__/statics/cps/images/avatar2.png"></div>
+    <h3 class="username">{$Think.session.admin_info.user_id}</h3>
+    <!-- <h5 class="userinfo">账户类型:  <span class="infodetials"> 企业</span> 联盟ID: <span class="infodetials"> 1234567</span></h5> -->
+    <h5 class="userstatus">当前状态: <span class="infodetials"> 已通过</span></h5>
+</div>
+<!-- Top Bar End -->
+
+
+            <div class="content-page accountpage">
+
+                <div class="content">
+
+                        <div class="row setting">
+
+                            <a href="{:u('article/index')}">
+                                <div class="settingsingle">
+
+                                    <div class="redpoint"></div>
+
+                                    <i class="settingicon ti-comment-alt"></i>消息中心<i class="settingenter ti-angle-right"></i>
+                                </div>
+                            </a>
+
+                        </div>
+
+
+<!--                         <div class="row setting">
+
+                            <a href="#">
+                                <div class="settingsingle">
+                                    <i class="settingicon ti-lock"></i>设置个人和收款账户信息<i class="settingenter ti-angle-right"></i>
+                                </div>
+                            </a>
+                            <div class="settingline"></div>
+                            <a href="#">
+                                <div class="settingsingle">
+                                    <i class="settingicon ti-upload"></i>上传资质<i class="settingenter ti-angle-right"></i>
+                                </div>
+                            </a>
+                            <div class="settingline"></div>
+                            <a href="#">
+                                <div class="settingsingle">
+                                    <i class="settingicon ti-layers"></i>设置默认推广位<i class="settingenter ti-angle-right"></i>
+                                </div>
+                            </a>
+
+                        </div> -->
+
+
+<!--                         <div class="row setting">
+
+                            <a href="#">
+                                <div class="settingsingle">
+                                    <i class="settingicon ti-comments-smiley"></i>新手引导<i class="settingenter ti-angle-right"></i>
+                                </div>
+                            </a>
+                            <div class="settingline"></div>
+                            <a href="#">
+                                <div class="settingsingle">
+                                    <i class="settingicon ti-write"></i>联盟上线协议<i class="settingenter ti-angle-right"></i>
+                                </div>
+                            </a>
+
+                        </div> -->
+
+<!--                         <div class="row setting">
+                            <a href="#">
+                                <div class="settingsingle">
+                                    <i class="settingicon ti-shield"></i>隐私声明<i class="settingenter ti-angle-right"></i>
+                                </div>
+                            </a>
+                        </div> -->
+
+                        <div class="row setting">
+                            <a href="{:u('admin/pwd')}">
+                                <div class="settingsingle">
+                                    <i class="settingicon ti-settings"></i>设置<i class="settingenter ti-angle-right"></i>
+                                </div>
+                            </a>
+                        </div>
+
+
+        </div>
+
+
+
+
+<include file="public:footer_mb" />
