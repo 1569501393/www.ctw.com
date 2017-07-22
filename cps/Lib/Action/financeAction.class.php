@@ -159,7 +159,13 @@ class financeAction extends baseAction {
 		$this->assign('page', $page);
 
 		$this->assign('commission_list', $commission_list);
-		$this->display();
+        // 角色，用户
+//        $this->display();exit;
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+            $this->display('push_mb');
+        }else{
+            $this->display();
+        }
 	}
 
 	// 财务管理
@@ -279,7 +285,12 @@ class financeAction extends baseAction {
 		$settle_status_arr = M('parameters')->where('1=1 AND data_state=1 AND parameter_name=\'settle_status\' ')->select();
 		$this->assign('settle_status_arr', $settle_status_arr);
 
-		$this->display();
+        // 角色，用户
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+            $this->display('finance_mb');
+        }else{
+            $this->display();
+        }
 	}
 
 	// 结算管理
@@ -379,7 +390,12 @@ class financeAction extends baseAction {
 		$page = $p->show();
 		$this->assign('page', $page);
 		$this->assign('order_list', $order_list);
-		$this->display();
+        // 角色，用户
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+            $this->display('settle_mb');
+        }else{
+            $this->display();
+        }
 	}
 
 	function index() {
@@ -410,7 +426,12 @@ class financeAction extends baseAction {
 		$this->assign('page', $page);
 		$this->assign('big_menu', $big_menu);
 		$this->assign('link_list', $link_list);
-		$this->display();
+        // 角色，用户
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+            $this->display('index_mb');
+        }else{
+            $this->display();
+        }
 	}
 
 	function add() {
