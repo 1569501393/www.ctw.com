@@ -52,7 +52,7 @@ class itemsAction extends baseAction
 		//		$qrcode = $this->create_qrcode(U('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_GET['item_id'],'shop_id'=>$_GET['shop_id'],'con_id'=>$_GET['con_id'],'rate'=>$_GET['rate'],'cate_id'=>$_GET['cate_id'] )));
 		$qrcode = $this->create_qrcode($APP_URL . U('desk/prom', $_GET)); //生产二维码
 
-//		$qrcode = $this->create_qrcode("{$_GET['url']}?sid={$_SESSION['admin_info']['id']}&item_id={$_GET['item_id']}&push_id={$_GET['id']}&shop_id={$_GET['shop_id']}&con_id={$_GET['con_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}"); //生产二维码
+//		$qrcode = $this->create_qrcode("{$_GET['url']}?sid={$_SESSION['admin_info']['id']}&item_id={$_GET['item_id']}&commission_id={$_GET['id']}&shop_id={$_GET['shop_id']}&con_id={$_GET['con_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}"); //生产二维码
 		$qrcode_url = $APP_URL . __ROOT__ . $qrcode; // 二维码
 
 		$head_source = @imagecreatefromjpeg($head_source); // imagecreatefromjpeg — 由文件或URL创建一个新图象

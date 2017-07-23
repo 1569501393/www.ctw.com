@@ -2,14 +2,19 @@
 jieyancai666
 
 
+eshop支付目录
+http://shop2.jieqiangtec.com/mobile/
+
+oauth认证
+http://shop2.jieqiangtec.com/
+
 
 请添加支付授权目录
-http://
-   添加
-http://wd.jieqiangtec.com/payment/wechat/删除
-http://wmwx.jieqiangtec.com/wxpay/
+
 
 http://shop.adjyc.com/app/
+
+shop.adjyc.com
 
 
 余额支付(当前余额:9999071.00)

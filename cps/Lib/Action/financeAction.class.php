@@ -15,13 +15,13 @@ class financeAction extends baseAction {
 			$where .= " AND platform_id=" . $platform_id;
 		}
 
-		if ($_SESSION['admin_info']['commission_id']==3) {
+		if ($_SESSION['admin_info']['role_id']==3) {
 			$where .= " AND shop_id={$_SESSION['admin_info']['id']} ";
-		}if ($_SESSION['admin_info']['commission_id']==4) {
+		}if ($_SESSION['admin_info']['role_id']==4) {
 			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
-		}if ($_SESSION['admin_info']['commission_id']==5) {
+		}if ($_SESSION['admin_info']['role_id']==5) {
 			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
-		}if ($_SESSION['admin_info']['commission_id']==6) {
+		}if ($_SESSION['admin_info']['role_id']==6) {
 			$where .= " AND platform_id={$_SESSION['admin_info']['id']} ";
 		}
 
@@ -56,10 +56,10 @@ class financeAction extends baseAction {
 		$key = 1;
 
 		// 判断角色  分行和商城直接看角色  支行和客户经理看分行  暂时屏蔽
-		$commission_id = $_SESSION['admin_info']['commission_id'];
-		if (($_SESSION['admin_info']['commission_id'] == 5)) { // 支行
+		$commission_id = $_SESSION['admin_info']['role_id'];
+		if (($_SESSION['admin_info']['role_id'] == 5)) { // 支行
 			$commission_id = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('commission_id');
-		} elseif (($_SESSION['admin_info']['commission_id'] == 6)) { // 客户经理
+		} elseif (($_SESSION['admin_info']['role_id'] == 6)) { // 客户经理
 			$pid = M('admin')->where('id=' . $_SESSION['admin_info']['pid'])->getField('pid');
 			$commission_id = M('admin')->where('id=' . $pid)->getField('commission_id');
 		}
@@ -173,13 +173,13 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1 AND data_state=1 AND status=1 ';
 		// 角色，用户
-		if ($_SESSION['admin_info']['commission_id'] == 6) { // 客户经理
+		if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
 			$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['commission_id'] == 5) { // 支行
+		}elseif ($_SESSION['admin_info']['role_id'] == 5) { // 支行
 			$where .= ' AND bank_subid = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['commission_id'] == 4) { // 分行
+		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
 			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['commission_id'] == 3) { // 商城
+		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
 			$where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
 		}else { // 其它
 			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
@@ -229,7 +229,7 @@ class financeAction extends baseAction {
 			array('seller_name', '推广人'),
 			);
 
-			if ($_SESSION['admin_info']['commission_id'] !=6 ) {
+			if ($_SESSION['admin_info']['role_id'] !=6 ) {
 				$xlsCell[] = array('rate', '佣金比例');
 				$xlsCell[] = array('commission', '佣金');
 			}
@@ -298,13 +298,13 @@ class financeAction extends baseAction {
 		//搜索
 		$where = '1=1 AND data_state=1 AND status=1 ';
 		// 角色，用户
-		if ($_SESSION['admin_info']['commission_id'] == 6) { // 客户经理
+		if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理
 			$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['commission_id'] == 5) { // 支行
+		}elseif ($_SESSION['admin_info']['role_id'] == 5) { // 支行
 			$where .= ' AND bank_subid = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['commission_id'] == 4) { // 分行
+		}elseif ($_SESSION['admin_info']['role_id'] == 4) { // 分行
 			$where .= ' AND bank_id = '.$_SESSION['admin_info']['id'];
-		}elseif ($_SESSION['admin_info']['commission_id'] == 3) { // 商城
+		}elseif ($_SESSION['admin_info']['role_id'] == 3) { // 商城
 			$where .= ' AND shop_id = '.$_SESSION['admin_info']['id'];
 		}else { // 其它
 			//    		$where .= ' AND sid = '.$_SESSION['admin_info']['id'];
@@ -346,7 +346,7 @@ class financeAction extends baseAction {
 			array('seller_name', '推广人'),
 			);
 
-			if ($_SESSION['admin_info']['commission_id'] !=6 && $_SESSION['admin_info']['commission_id'] !=5 ) {
+			if ($_SESSION['admin_info']['role_id'] !=6 && $_SESSION['admin_info']['role_id'] !=5 ) {
 				$xlsCell[] = array('rate', '佣金比例');
 				$xlsCell[] = array('commission', '佣金');
 			}
@@ -392,7 +392,13 @@ class financeAction extends baseAction {
 		$this->assign('order_list', $order_list);
         // 角色，用户
         if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
-            $this->display('settle_mb');
+            if ($_GET['mb'] == 1){
+                $this->display('settle_mb_1');
+            }elseif ($_GET['mb'] == 2){
+                $this->display('settle_mb_2');
+            }else{
+                $this->display('settle_mb');
+            }
         }else{
             $this->display();
         }

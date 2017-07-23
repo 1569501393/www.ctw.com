@@ -26,8 +26,9 @@
                                 <h4>年度收入总额</h4>
                                 <p>¥1,170,000</p>
                             </div>
-                            <button type="button" class="btn btn-white incomebtn" value="">申请提现</button>
-                            <button type="button" class="btn btn-white incomebtn" value="">申请记录</button></div>
+                            <!-- <button type="button" class="btn btn-white incomebtn" value="">申请提现</button>
+                            <button type="button" class="btn btn-white incomebtn" value="">申请记录</button> -->
+                        </div>
                     </div>
                     <dir class="row recentincome">
                         <ul class="nav nav-tabs tabs">
@@ -62,7 +63,7 @@
                                     <p>¥131</p>
                                 </div>
                                 <div class="row bottomfunc">
-                                    <a class="btn btn-white incomebtn" href="moreincome_mb.php">查看更多</a></div>
+                                    <!-- <a class="btn btn-white incomebtn" href="moreincome_mb.php">查看更多</a></div> -->
                             </div>
                             <div class="tab-pane " id="weekly">
                                 <div class="recentsingle">
@@ -99,12 +100,12 @@
                         </div>
                     </dir>
                     <div class="row setting">
-                        <a href="incomedetials_mb.php">
+                        <a href="{:u('finance/settle',array('mb'=>'1'))}">
                             <div class="settingsingle">收入明细
                                 <i class="settingenter ti-angle-right"></i></div>
                         </a>
                         <div class="settingline"></div>
-                        <a href="orderdetials_mb.php">
+                        <a href="{:u('finance/settle',array('mb'=>'2'))}">
                             <div class="settingsingle">订单明细
                                 <i class="settingenter ti-angle-right"></i></div>
                         </a>

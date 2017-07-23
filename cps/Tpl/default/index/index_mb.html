@@ -69,7 +69,7 @@
                                     <!-- <button type="button" class="btn btn-default btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">链接推广</button> -->
                                     <!-- <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">复制链接</button> -->
 
-                                    推广链接:<textarea id="mytext{$val['item_id']}" rows="6" >{$site_root}{:u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'push_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']))}
+                                    推广链接:<textarea id="mytext{$val['item_id']}" rows="6" >{$site_root}{:u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']))}
                                     </textarea>
                                 </div>
                                 <br>
@@ -79,10 +79,10 @@
 
                                 <div class="goodsinfo">
                                 推广图片:<empty name="val['file'] ">
-                                    <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'push_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title']))}" target="_blank">默认图片</a>
+                                    <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title']))}" target="_blank">默认图片</a>
                                     <else />
                                     <volist name="val['file']" id="sval">
-                                        <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'push_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title'],'img'=>$sval['img']))}" target="_blank">
+                                        <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title'],'img'=>$sval['img']))}" target="_blank">
                                             <!-- <img src="{$sval.simg}" width="30px"> -->
                                             <notempty name="sval['simg'] ">
                                                 <img src="{$sval.simg}" width="30px">

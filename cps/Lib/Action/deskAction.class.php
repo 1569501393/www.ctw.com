@@ -180,9 +180,9 @@ class deskAction extends Action
         $url = M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->getField('url');
 
         if (strpos($url,'?') === false){
-            $res_url = "$url?sid={$_GET['sid']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['bank_subid']}";
+            $res_url = "$url?sid={$_GET['sid']}&item_id={$_GET['item_id']}&commission_id={$_GET['commission_id']}&con_id={$_GET['con_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['bank_subid']}";
         }else{
-            $res_url = "$url&sid={$_GET['sid']}&item_id={$_GET['item_id']}&push_id={$_GET['push_id']}&con_id={$_GET['con_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['bank_subid']}";
+            $res_url = "$url&sid={$_GET['sid']}&item_id={$_GET['item_id']}&commission_id={$_GET['commission_id']}&con_id={$_GET['con_id']}&shop_id={$_GET['shop_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_GET['bank_subid']}";
         }
 
 //        var_dump($res_url);
@@ -198,8 +198,8 @@ class deskAction extends Action
         M('push_log')->add($_GET);
 
         var_dump("这是跳转页面,您是由{$_GET['sid']}({$_GET['sname']}-{$_GET['user_id']})推广的,我要到商城购物去喽~~");
-        //		$url =u('desk/buy',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$_GET['item_id'],'push_id'=>$_GET['id'],'shop_id'=>$_GET['shop_id'],'con_id'=>$_GET['con_id'],'rate'=>$_GET['rate'],'cate_id'=>$_GET['cate_id'],'shop_id'=>$_GET['shop_id'],'bank_id'=>$_GET['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'] ));
-        $url = u('desk/buy', array('sid' => $_GET['sid'], 'seller_name' => $_GET['sname'], 'item_id' => $_GET['item_id'], 'push_id' => $_GET['id'], 'shop_id' => $_GET['shop_id'], 'con_id' => $_GET['con_id'], 'rate' => $_GET['rate'], 'cate_id' => $_GET['cate_id'], 'cate_name' => $_GET['cate_name'], 'shop_id' => $_GET['shop_id'], 'bank_id' => $_GET['bank_id'], 'bank_subid' => $_GET['bank_subid']));
+        //		$url =u('desk/buy',array('sid'=>$_SESSION['admin_info']['id'],'sname'=>$_SESSION['admin_info']['user_name'],'item_id'=>$_GET['item_id'],'commission_id'=>$_GET['id'],'shop_id'=>$_GET['shop_id'],'con_id'=>$_GET['con_id'],'rate'=>$_GET['rate'],'cate_id'=>$_GET['cate_id'],'shop_id'=>$_GET['shop_id'],'bank_id'=>$_GET['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'] ));
+        $url = u('desk/buy', array('sid' => $_GET['sid'], 'seller_name' => $_GET['sname'], 'item_id' => $_GET['item_id'], 'commission_id' => $_GET['id'], 'shop_id' => $_GET['shop_id'], 'con_id' => $_GET['con_id'], 'rate' => $_GET['rate'], 'cate_id' => $_GET['cate_id'], 'cate_name' => $_GET['cate_name'], 'shop_id' => $_GET['shop_id'], 'bank_id' => $_GET['bank_id'], 'bank_subid' => $_GET['bank_subid']));
         echo("模拟购买~<a href='$url'>点击购买</a>");
         //		$this->assign('sort', $sort);
         //		$this->display();
