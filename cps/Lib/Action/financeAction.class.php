@@ -93,6 +93,39 @@ class financeAction extends baseAction {
 
 	// 推广管理
 	function push() {
+
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+            $where = " sid={$_SESSION['admin_info']['id']}" ;
+
+
+            if (isset($_GET['begin_time']) && intval($_GET['begin_time'])) {
+                $where .= " AND add_time>=" . strtotime($_GET['begin_time']);
+                $this->assign('begin_time', $_GET['begin_time']);
+            }
+
+            if (isset($_GET['end_time']) && intval($_GET['end_time'])) {
+                $date_obj = new DateTime($_GET['end_time']);
+                $where .= " AND add_time<=" . $date_obj->format('U');
+                $this->assign('end_time', $_GET['end_time']);
+            }else{
+//                $this->assign('begin_time', time());
+//                $this->assign('end_time', strtotime("+1 month"));
+            }
+
+
+            $push_list = M('push_log')->where($where)->select();
+//            var_dump($push_list);
+
+            foreach ($push_list as $k => $val) {
+                $push_list[$k]['img'] = M('commission')->where('id=' . $val['commission_id'])->getField('img') ?: '';
+            }
+
+
+
+            $this->assign('push_list', $push_list);
+            $this->display('push_mb');exit;
+        }
+        
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 		import("ORG.Util.Page");
@@ -397,6 +430,58 @@ class financeAction extends baseAction {
             }elseif ($_GET['mb'] == 2){
                 $this->display('settle_mb_2');
             }else{
+
+                $where = '1=1 AND data_state=1 AND status=1 ';
+                $where .= ' AND sid = ' . $_SESSION['admin_info']['id'];
+                // 总计收入
+                $result['total_commission'] = round(M('orderlist')->where(" $where   ")->getField('SUM(commission)'),2);
+
+                // 年度总计收入
+                $year = date('Y');
+                $newyear = strtotime("$year-01-01 0:0:0");
+//                var_dump($newyear);
+                $result['total_commission'] = round(M('orderlist')->where(" $where AND order_time>$newyear  ")->getField('SUM(commission)'),2);
+
+                // 销售单数
+//                $result['total_sales'] = M('orderlist')->where(" $where ")->getField('count(1)');
+
+                // 展示数
+//                $result['show'] = M('push_log')->where(" $where ")->getField('count(1)');
+
+                // 转化率
+                //    	var_dump($result['total_seller']);exit;
+//		$result['conversion'] = sprintf("%.2f", $result['total_sales'] / $result['show'] * 100);
+//                $result['conversion'] = round($result['total_sales'] / $result['show'] * 100, 2);
+
+                // 昨天销售总计
+                $result['yesterday_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(sum_price)'),2);
+                // 昨天引入订单量
+                $result['yesterday_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('count(1)');
+                // 昨天引入订单金额
+                $result['yesterday_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(commission*item_count)'),2);
+
+               /* // 今日销售总计
+                $result['today_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(sum_price)'),2);
+                // 今日引入订单量
+                $result['today_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('count(1)');
+                // 今日引入订单金额
+                $result['today_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(commission*item_count)'),2);*/
+
+                // 上周
+                $result['lastweek_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(sum_price)'),2);
+                // 上周引入订单量
+                $result['lastweek_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('count(1)');
+                // 上周引入订单金额
+                $result['lastweek_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(commission*item_count)'),2);
+
+                // 上个月销售总计
+                $result['lastmonth_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(sum_price)'),2);
+                // 上个月引入订单量
+                $result['lastmonth_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('count(1)');
+                // 上个月引入订单金额
+                $result['lastmonth_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(commission*item_count)'),2);
+
+                $this->assign('result', $result);
                 $this->display('settle_mb');
             }
         }else{

@@ -18,44 +18,35 @@
         <div class="content">
             <div class="container">
                 <div class="row libdate fiexdsearch">
-                    <form name="">开始时间:
-                        <input type="date" class="mbdate" placeholder="2017-11-11" name="start" />至
-                        <input type="date" class="mbdate" placeholder="2017-11-18" name="end" />
-                        <button type="button" class="btn waves-effect waves-light btn-primary" name="confirm">确定</button></form>
+                    <form role="form" method="get" action="">
+                    开始时间:
+                        <input type="date" class="mbdate" placeholder="2017-11-11" name="begin_time" value="{$begin_time}" />至
+                        <input type="date" class="mbdate" placeholder="2017-11-18" name="end_time" value="{$end_time}" />
+                        <!-- <button type="button" class="btn waves-effect waves-light btn-primary" name="confirm">确定</button> -->
+
+                        <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                        <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+                        <button class="btn waves-effect waves-light btn-primary">查询</button>
+                        
+                    </form>
                 </div>
                 <div class="row liblist contentlist">
+                <volist name="push_list" id="val">
                     <div class="singlelib">
                         <div class="promotiondate">分享时间:
-                            <span class="info">2017-11-11</span>
-                            <a href="promotions_mb.php">
+                            <span class="info">{$val.add_time|date='Y-m-d',###}</span>
+                            <a href="__ROOT__/">
                                 <div class="enterbtn">查看商品
                                     <i class="settingenter ti-angle-right"></i></div>
                             </a>
                         </div>
                         <a href="#">
                             <div class="thumbs">
-                                <img class="wid" src="./assets/images/unknown.jpeg"></div>
+                                <img class="wid" src="{$val.img}"></div>
                         </a>
-                        <a href="#">
-                            <div class="thumbs">
-                                <img class="wid" src="./assets/images/unknown.jpeg"></div>
-                        </a>
-                        <a href="#">
-                            <div class="thumbs">
-                                <img class="wid" src="./assets/images/unknown.jpeg"></div>
-                        </a>
-                        <a href="#">
-                            <div class="thumbs">
-                                <img class="wid" src="./assets/images/unknown.jpeg"></div>
-                        </a>
-                        <div class="libdetials">
-                            <!-- 创建时间:<span class="weakinfo">2011-11-11 13:33</span> -->商品数:
-                            <span class="num">4</span></div>
-                        <div class="bottomfunc">
-                            <!-- <button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this);" promoteid="goodsid">立即推广</button> -->
-                            <button type="button" class="btn btn-white btn-rounded waves-effect waves-light right">添加商品</button>
-                            <button type="button" class="btn btn-white btn-rounded waves-effect waves-light right">删除</button></div>
+                        <div class="libdetials"><!-- 商品数:<span class="num">4</span> --></div>
                     </div>
+                  </volist>
                 </div>
             </div>
         </div>
