@@ -24,10 +24,9 @@
                 <div class="content">
                     <div class="container">
 
-                    <form role="form" method="get" action="">
+                    <!-- <form role="form" method="get" action="">
                         <div class="row m-t-10 m-b-10">
                             <div class="col-sm-4 col-lg-6">
-                                <!-- <div class="form-group contact-search m-b-30"> -->
                                 <div class="col-md-5">
                                     <input type="text" name="keyword" id="search" value="{$keyword}" class="form-control" placeholder="搜索商品名称......"></div>
                                 <div class="col-md-5">
@@ -43,9 +42,48 @@
                                 <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
                                 <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button></div>
                         </div>
-                    </form>
+                    </form> -->
+                    <div class="row fiexdsearch">
+                        <form role="form" method="get" action="">
+                        <div class="input-group searchinput">
+                            <!-- <span class="input-group-btn"> -->
+                            
+                            <input type="text" id="example-input1-group2" name="keyword"  value="{$keyword}"  class="form-control" placeholder="请输入商品名称搜索">
 
-                        <!-- <div class="row shopslist contentlist"> -->
+                            <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                            <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+                            <!-- <button type="button" class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1"><i class="fa fa-search"></i></button> -->
+                            <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button>
+                            <!-- </span> -->
+                        </div>
+
+                        <!-- <div class="row mbselect"> -->
+                        <div class="input-group searchinput">
+                            
+                            <select class="form-control" name="cate_id">
+                                <option value="0">全部分类</option>
+                                <volist name="cates" id="val">
+                                    <option value="{$val.name}" <if condition="$cate_id eq $val['name']">selected="selected"</if>>{$val.name}</option></volist>
+                            </select>
+
+                        </div>
+                        <!-- <div class="row mbselect weakselect">
+                            
+                            <select class="selectpicker" data-max-options="1" data-style="btn-white">
+                                <option selected="selected">综合排序</option>
+                                <option>单价从高到低</option>
+                                <option>押金从低到高</option>
+                                <option>佣金比例从高到低</option>
+                                <option>30天引入订单从高到低</option>
+                                <option>30天累计支出佣金从高到低</option>
+                            </select> 
+
+                        </div> -->
+                        
+                        </form>
+                        
+                    </div>
+
                         <div class="row shopslist2 contentlist">
 
                         <volist name="commission_list" id="val">

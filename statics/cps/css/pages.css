@@ -1080,10 +1080,10 @@ File: Pages
   vertical-align: middle !important;
   position: relative;
 }
-/*.mails td:last-of-type {
+.mails td:last-of-type {
   width: 100px;
   padding-right: 20px;
-}*/
+}
 .mails tr:hover .text-white {
   display: none;
 }
