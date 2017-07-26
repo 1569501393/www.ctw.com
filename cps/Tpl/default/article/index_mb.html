@@ -26,7 +26,7 @@
                     <ul class="nav nav-tabs tabs">
                         <li class="active tab"  width=100%>
                             <a href="#personal" data-toggle="tab" aria-expanded="false" > 
-                                <!-- <span class="visible-xs">个人消息</span>  -->
+                                <span class="visible-xs">个人消息</span> 
                                 <span class="hidden-xs">个人消息</span> 
                             </a> 
                         </li> 
@@ -61,12 +61,16 @@
 
                             <if condition="$article_list">
                             <volist name="article_list" id="val">
+
                             <a href="{:u('article/edit',array('id'=>$val['id']))}">
                                 <div class="settingsingle">
-                                    <div class="redpoint"></div>
-                                    <i class="settingicon ti-comment-alt"></i>{$val.title}
-                                    <i class="settingenter ti-angle-right"></i></div>
+
+                                    <!-- <div class="redpoint"></div> -->
+
+                                    <i class="settingicon ti-comment-alt"></i>{$val.title}<i class="settingenter ti-angle-right"></i>
+                                </div>
                             </a>
+                            <div class="settingline"></div>
 
                             </volist>
                             <else />

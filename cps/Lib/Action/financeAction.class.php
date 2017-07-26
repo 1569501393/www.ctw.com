@@ -117,7 +117,8 @@ class financeAction extends baseAction {
 //            var_dump($push_list);
 
             foreach ($push_list as $k => $val) {
-                $push_list[$k]['img'] = M('commission')->where('id=' . $val['commission_id'])->getField('img') ?: '';
+//                $push_list[$k]['img'] = M('commission')->where('id=' . $val['commission_id'])->getField('img') ?: '';
+                $push_list[$k]['commission'] = M('commission')->where('id=' . $val['commission_id'])->find() ?: '';
             }
 
 
@@ -187,7 +188,7 @@ class financeAction extends baseAction {
 			$commission_list[$k]['profit_id'] = $profit['id']?:0;
 
 		}
-		//		var_dump($commission_list);exit;
+//				var_dump($commission_list);exit;
 		$page = $p->show();
 		$this->assign('page', $page);
 

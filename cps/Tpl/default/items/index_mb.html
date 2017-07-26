@@ -43,7 +43,7 @@
                                 <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button></div>
                         </div>
                     </form> -->
-                    <div class="row fiexdsearch">
+                    <div class="row fiexdsearch" style="height: 6rem; ">
                         <form role="form" method="get" action="">
                         <div class="input-group searchinput">
                             <!-- <span class="input-group-btn"> -->
@@ -84,54 +84,23 @@
                         
                     </div>
 
-                        <div class="row shopslist2 contentlist">
+                        <!-- <div class="row shopslist2 contentlist" style="margin: 0rem 0;"> -->
+                        <div class="row shopslist2 contentlist" >
+                        <!-- <div class="row liblist contentlist"> -->
 
                         <volist name="commission_list" id="val">
-
-                            
-                            <div class="singleshop">
-                                <a href="#"><div class="thumbs"><img class="wid" src="{$val.img}"></div></a>
-                                <div class="goodsinfo">
-                                    <span class="goodstitle">{$val.title}</span>
-                                    <span class="goodsdetials">价格:<span class="num">¥{$val.price|default="默认单价"|round=###,2}</span></span>
-                                    <span class="goodsdetials importantinfo">佣金:<span class="num">{$val.commission2|default="默认佣金"|round=###,2}</span> <span class="linespace"></span>佣金比例:<span class="num">{$val.rate2|default="默认佣金比例"|round=###,2}%</span></span>
-                                </div>
-                                <div class="bottominfo">
-                                   <!--  <p>活动时间: <span class="num">{$val.add_time|date='Y-m-d',###}</span> 至 <span class="num">2017年11月18日</span></p> -->
-
-                                    <p>入库时间: <span class="num">{$val.add_time|date='Y-m-d',###}</span></p>
-                                </div>
-                                <div class="bottomfunc">
-                                    <!-- <button type="button" class="btn btn-default btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">链接推广</button> -->
-                                    <!-- <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">复制链接</button> -->
-
-                                    推广链接:<textarea id="mytext{$val['item_id']}" rows="6" >{$site_root}{:u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']))}
-                                    </textarea>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-
-                                <div class="goodsinfo">
-                                推广图片:<empty name="val['file'] ">
-                                    <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title']))}" target="_blank">默认图片</a>
-                                    <else />
-                                    <volist name="val['file']" id="sval">
-                                        <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title'],'img'=>$sval['img']))}" target="_blank">
-                                            <!-- <img src="{$sval.simg}" width="30px"> -->
-                                            <notempty name="sval['simg'] ">
-                                                <img src="{$sval.simg}" width="30px">
-                                                <else />
-                                                <img src="{$sval.img}" width="30px"></notempty>
-                                            <!-- 推广图片 --></a>&nbsp;&nbsp;</volist>
-                                </empty>
-
-                                    <!-- <button type="button" class="btn btn-default btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">图片推广</button> -->
-                                    <!-- <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" onclick="promote(this);" promoteid="goodsid">复制链接</button> -->
-                                </div>
-                            </div>
-                            </volist>
+                            <div class="singlegoods" >
+                            <!-- <div class="singlelib"> -->
+                                  <a href="{:u('items/index',array('id'=>$val['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'commission'=>$val['commission'],'rate'=>$val['rate'],'price'=>$val['price'],'title'=>$val['title'],'img'=>$val['img']))}">
+                                  <div class="thumbs"><img class="wid" src="{$val.img}"></div></a>
+                                  <div class="goodsinfo">
+                                      <span class="goodstitle"><a href="{:u('items/index',array('id'=>$val['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'commission'=>$val['commission'],'rate'=>$val['rate'],'price'=>$val['price'],'title'=>$val['title'],'img'=>$val['img']))}">{$val.title}</a></span>
+                                      <span class="goodsdetials">价格:<span class="num">{$val.price|default="默认单价"|round=###,2} </span></span>
+                                      <span class="goodsdetials importantinfo">佣金:<span class="num">{$val.commission2|default="默认佣金"|round=###,2}</span> <span class="linespace"></span>佣金比例:<span class="num">{$val.rate2|default="默认佣金比例"|round=###,2}%</span></span>
+                                      <!-- <button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this);" promoteid="goodsid">立即推广</button> -->
+                                  </div>
+                              </div>
+                        </volist>
                         </div>
                         <div id="pages">{$page}</div>
                     </div>

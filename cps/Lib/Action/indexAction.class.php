@@ -185,13 +185,24 @@ class indexAction extends baseAction
         // 角色，用户
         if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
 
+            $where = '1=1 AND data_state=1  ';
+            $platform_id = get_platform_id($_SESSION['admin_info']);
+
+            $where .= " AND status=1 AND (platform_id={$platform_id} OR platform_id=0) ";
+            $article_list = D('article')->where($where)->limit('0,1')->order('id DESC,ordid ASC')->select();
+//            var_dump($article_list);exit;
+            $this->assign('article_list',$article_list);
+
             $commission_mod = M('commission');
             import("ORG.Util.Page");
+
 
             //搜索
             $where = '1=1 AND con_id>0 ';
             $platform_id = get_platform_id($_SESSION['admin_info']);
             $where .= " AND platform_id=" . $platform_id;
+
+
 
             if (isset($_REQUEST['keyword']) && trim($_REQUEST['keyword'])) {
 
