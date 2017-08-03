@@ -339,9 +339,15 @@ class itemsAction extends baseAction
 		$commission_mod = M('commission');
 
         if ($_GET['id']){
-
             $files = M('file')->where(" item_id='{$_GET['item_id']}' AND shop_id='{$_GET['shop_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
-//            var_dump($files);
+//            var_dump($_GET);
+            if ($_GET['json']){
+                $url = $this->site_root .u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_GET['item_id'],'commission_id'=>$_GET['id'],'con_id'=>$_GET['con_id'],'shop_id'=>$_GET['shop_id'],'bank_id'=>$_GET['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']));
+
+                $res['data'] = $files;
+                $res['url'] = $url;
+                echo json_encode($res);exit;
+            }
 
             $this->assign('files',$files);
             $this->display('detail_mb');exit;
@@ -350,6 +356,16 @@ class itemsAction extends baseAction
 
 		//搜索
 		$where = '1=1 AND con_id>0 ';
+        if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+            $where = '1=1 AND con_id<1 ';
+        }
+
+
+        if ($_GET['commission_id']){
+//            $where .= " AND commission_id=" . $_GET['commission_id'];
+            $where .= " AND id in ({$_GET['commission_id']}) " ;
+        }
+
         if ($_SESSION['admin_info']['role_id'] !=1 ) {
             if ($_SESSION['admin_info']['role_id'] ==3 ) {
 //				$platform_id = get_platform_id($_SESSION['admin_info']['id']);
@@ -377,14 +393,31 @@ class itemsAction extends baseAction
 			$this->assign('cate_id', $_GET['cate_id']);
 		}
 
+
+		$order = 'id DESC';
+        // 分类
+        if (isset($_GET['order']) && !empty($_GET['order'])) {
+            if ($_GET['order'] == 1){
+                $order = 'price DESC';
+            }elseif ($_GET['order'] == 2){
+                $order = 'commission DESC';
+            }elseif ($_GET['order'] == 3){
+                $order = 'rate DESC';
+            }
+
+            $this->assign('order', $_GET['order'] );
+        }
+
+
 		// 分类表
 		$cates = M('items_cate')->where(" status=1 AND data_state=1 ")->select();
 		$this->assign('cates', $cates);
 
 		$count = $commission_mod->where($where)->count();
 		$p = new Page($count, 10);
-		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
+		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order($order)->select();
 
+//        var_dump($commission_mod->getLastSql());
 		$bank_id = get_platform_id($_SESSION['admin_info']);
 		//		var_dump($bank_id);exit;
 		$key = 1;
@@ -398,8 +431,9 @@ class itemsAction extends baseAction
             $commission_list[$k]['file'] = M('file')->where(" item_id='{$val['item_id']}' AND shop_id='{$val['shop_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
 
 			// 分润  根据分行设置 暂时屏蔽
-			//			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
-			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'   ")->order('id desc')->find() ?: array();
+						$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$bank_id} ")->find() ?: array();
+//			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'  AND  shop_id={$val['shop_id']}   ")->order('id desc')->find() ?: array();
+//            var_dump(M('commission')->getLastSql());exit;
 			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
 			$commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
 			 

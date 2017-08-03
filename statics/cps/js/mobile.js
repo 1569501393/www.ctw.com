@@ -44,7 +44,7 @@ function refresh(){
   //top.location.reload()刷新最顶端对象（用于多开窗口）
 }
 
-function promote(which){
+function promote(which,id,item_id,shop_id,commission,rate,price,title,img,sid,bank_subid,user_id){
 	// ajax调取数据
 	// var goodsid = $(which).attr('goodsid');
 
@@ -53,17 +53,30 @@ function promote(which){
 
 	// }
 
-	// var url = 'url.php';
-	// $.get(url,content,function(data,status){
+	var url = 'cps.php?m=items&a=index&id='+id+'&item_id='+item_id+'&shop_id='+shop_id+'&commission='+commission+'&rate='+rate+'&price='+price+'&json=1';
+	$.get(url,function(data,status){
+		
+		var json = JSON.parse(data);
+		// alert(json.data);
+		var imgs = json.data;
+		var imgs_html = '';
 		//这个是弹窗
-		$('#wrapper').append("<div class='promotemask'><div class='promote portlet'><div class='portlet-heading'><h3 class='portlet-title text-dark'>华为 （HUAWEI） nova 4GB+64GB 全金属机身、超级好用</h3><div class='portlet-widgets'><span class='divider'></span><a href='#' data-toggle='remove'><i class='fa fa-times closepromote'></i></a></div></div></div></div>");
+		$('#wrapper').append("<div class='promotemask'><div class='promote portlet'><div class='portlet-heading'><h3 class='portlet-title text-dark'>"+imgs[0].origin_name+"</h3><div class='portlet-widgets'><span class='divider'></span><a href='#' data-toggle='remove'><i class='fa fa-times closepromote'></i></a></div></div></div></div>");
 		$('.promote').append("<ul class='nav nav-tabs tabs'><li class='tab' style='width:49%'><a href='#linkshare' data-toggle='tab' aria-expanded='false'><span class='visible-xs'>链接推广</span><span class='hidden-xs'>链接推广</span></a></li><li class='tab active' style='width:49%'><a href='#imageshare' data-toggle='tab' aria-expanded='flase'><span class='visible-xs'>图片推广</span><span class='hidden-xs'>图片推广</span></a></li><div class='indicator'></div></ul><div class='tab-content'><div class='tab-pane' id='linkshare'></div><div class='tab-pane active' id='imageshare'></div></div> ");
 		
-		$('#linkshare').append("<p class='linkcontent'>http://union-click.jd.com/jdc?e=0&p=AyIHZR1eFQITAlweWyUCFQZdH1IdARsFZV8ETVxNNwxeHlQJDBkNXg9JHUlSSkkFSRwSAFQTXxwKEQ5XBAJQXk83VBgySVhqUgt5LUlqa3tTXydtVFtaAxdXewETB1MHWhIeEQREG1IeABsMURJrFDISBlQaWBwAFQRWK2sVAiJGOx1aEwoXN1wdXhYEFg9SG2sVBxoOVRhdHQAbAVweaxcCItDzr4KFv8aY0sLrsNS4qWUrayU%3D&t=W1dCFBBFC1pXUwkEAEAdQFkJBVsSAxoDXBNYHAANXhBHBg%3D%3D</p>");
-		$('#imageshare').append("<div class='postpreview'><div class='swiper-container'><div class='swiper-wrapper'><div class='swiper-slide'><img class='wid' src='./assets/images/gallery/101.jpg'></div><div class='swiper-slide'><img class='wid' src='./assets/images/gallery/101.jpg'></div><div class='swiper-slide'><img class='wid' src='./assets/images/gallery/103.jpg'></div></div><div class='swiper-pagination'></div></div></div>");
+		$('#linkshare').append("<p class='linkcontent'>"+json.url+"</p>");
+
+		for(var o in imgs){   
+	        imgs_html = imgs_html+"<div class='swiper-slide'><a href='http://cps.jieqiangtec.cn/cps.php?m=items&a=create_poster&sid="+sid+"&item_id="+imgs[o].item_id+"&commission_id="+imgs[o].commission_id+"&shop_id="+imgs[o].shop_id+"&bank_subid="+bank_subid+"&user_id="+
+user_id+"&img="+imgs[o].bimg+"&title="+title+"'><img class='wid' src='"+imgs[o].bimg+"'></a></div>";	        
+
+	    }  
+	    // alert(imgs_html);
+
+		$('#imageshare').append("<div class='postpreview'><div class='swiper-container'><div class='swiper-wrapper'>"+imgs_html+"</div><div class='swiper-pagination'></div></div></div>");
 		//这里是把内容添加到弹窗里
 		initSwiper();
-	// });
+	});
 
 
 }

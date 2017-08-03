@@ -113,7 +113,7 @@ class financeAction extends baseAction {
             }
 
 
-            $push_list = M('push_log')->where($where)->select();
+            $push_list = M('push_log')->where($where)->order('add_time desc')->select();
 //            var_dump($push_list);
 
             foreach ($push_list as $k => $val) {

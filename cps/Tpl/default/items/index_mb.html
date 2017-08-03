@@ -35,8 +35,8 @@
                             <!-- </span> -->
                         </div>
 
-                        <!-- <div class="row mbselect"> -->
-                        <div class="input-group searchinput">
+                        <div class="row mbselect">
+                        <!-- <div class="input-group searchinput"> -->
                             
                             <select class="form-control" name="cate_id">
                                 <option value="0">全部分类</option>
@@ -45,18 +45,18 @@
                             </select>
 
                         </div>
-                        <!-- <div class="row mbselect weakselect">
-                            
-                            <select class="selectpicker" data-max-options="1" data-style="btn-white">
+                        <div class="row mbselect ">
+                            <!-- <select class="selectpicker" data-max-options="1" data-style="btn-white"> -->
+                            <select class="form-control" name="order">
                                 <option selected="selected">综合排序</option>
-                                <option>单价从高到低</option>
-                                <option>押金从低到高</option>
-                                <option>佣金比例从高到低</option>
-                                <option>30天引入订单从高到低</option>
-                                <option>30天累计支出佣金从高到低</option>
+                                <option value="1" <if condition="$order eq 1">selected="selected"</if> >单价从高到低</option>
+                                <option value="2" <if condition="$order eq 2">selected="selected"</if> >佣金从高到低</option>
+                                <option value="3" <if condition="$order eq 3">selected="selected"</if> >佣金比例从高到低</option>
+                                <!-- <option value="4">30天引入订单从高到低</option>
+                                <option value="5">30天累计支出佣金从高到低</option> -->
                             </select> 
 
-                        </div> -->
+                        </div>
                         
                         </form>
                         
@@ -72,10 +72,16 @@
                                   <div class="thumbs"><img class="wid" src="{$val.img}"></div></a> -->
                                   <div class="thumbs"><img class="wid" src="{$val.img}"></div>
                                   <div class="goodsinfo">
-                                      <span class="goodstitle"><a href="{:u('items/index',array('id'=>$val['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'commission'=>$val['commission'],'rate'=>$val['rate'],'price'=>$val['price'],'title'=>$val['title'],'img'=>$val['img']))}">{$val.title}</a></span>
+                                      <span class="goodstitle">
+                                      <!-- <a href="{:u('items/index',array('id'=>$val['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'commission'=>$val['commission'],'rate'=>$val['rate'],'price'=>$val['price'],'title'=>$val['title'],'img'=>$val['img']))}">{$val.title}</a> -->
+
+                                        {$val.title}
+
+                                      </span>
                                       <span class="goodsdetials">价格:<span class="num">{$val.price|default="默认单价"|round=###,2} </span></span>
                                       <span class="goodsdetials importantinfo">佣金:<span class="num">{$val.commission2|default="默认佣金"|round=###,2}</span> <span class="linespace"></span>佣金比例:<span class="num">{$val.rate2|default="默认佣金比例"|round=###,2}%</span></span>
-                                      <!-- <button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this);" promoteid="goodsid">立即推广</button> -->
+
+                                      <button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this,{$val['id']},'{$val['item_id']}','{$val['shop_id']}',{$val['commission']},{$val['rate']},{$val['price']},'{$val['title']}','{$val['img']}','{$_SESSION['admin_info']['id']}','{$_SESSION['admin_info']['pid']}','{$_SESSION['admin_info']['user_id']}');" promoteid="goodsid">立即推广</button>
                                   </div>
                               </div>
                         </volist>
