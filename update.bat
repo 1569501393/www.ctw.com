@@ -1,0 +1,1 @@
+rar a -ag -r -ibck ./doc/modify/update.zip cps/Tpl/default/contract/index.html cps/Tpl/default/finance/push.html  cps/Tpl/default/items/index.html

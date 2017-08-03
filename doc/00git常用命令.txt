@@ -1,0 +1,145 @@
+Git从远程克隆到本地版本
+211  git clone git@github.com:1569501393/www.ctw.com
+212  ll
+213  cd www.ctw.com/
+215  git status
+216  vim test.txt
+217  git status
+218  git add test.txt
+219  git status
+220  git commit -m 'add test'
+221  git status
+222  git push
+224  history
+$ pwd
+/d/software/phpStudy/WWW/99_ctw/www.ctw.com
+
+
+git clone https://github.com/1569501393/www.ctw.com.git ./cps.jieqiangtec.com
+
+git diff 文件列表
+http://www.cnblogs.com/wish123/p/3963224.html
+查看当前目录和另外一个分支的差别
+    git diff test
+显示当前目录和另一个叫'test'分支的差别
+    git diff HEAD -- ./lib
+显示当前目录下的lib目录和上次提交之间的差别（更准确的说是在当前分支下）
+
+
+
+把分支推到远程分支 
+git 查看远程分支、本地分支、创建分支、把分支推到远程repository、删除本地分支
+http://blog.csdn.net/arkblue/article/details/9568249/
+$ git push origin test 
+$ git push origin test.jieqiangtec.com
+
+
+
+查看远程分支
+$ git branch -a 
+
+查看本地分支
+$ git branch 
+
+创建分支
+
+[plain] view plain copy
+shuohailhl@SHUOHAILHL-PC /f/ggg/jingwei (br-2.1.2.2)  
+$ git branch test
+
+把分支推到远程分支 
+$ git push origin test 
+
+
+切换分支到test
+git checkout test  
+
+删除本地分支   
+Git branch -d xxxxx
+
+
+查看本地和远程分支  -a。前面带*号的代表你当前工作目录所处的分支
+
+删除远程版本
+git push origin :br-1.0.0  
+
+删除远程分支  
+git branch -r -d origin/branch-name  
+git push origin :branch-name  
+
+
+http://blog.csdn.net/arkblue/article/details/9568249/
+git提取出两个版本之间的差异文件并打包
+http://blog.csdn.net/lxf0613050210/article/details/52104287
+git diff  HEAD HEAD^ --stat
+HEAD和HEAD^可以换成两次提交的版本号
+
+$ git diff --name-only HEAD~
+$ git diff --name-status HEAD~ >./doc/modify/modify_20170702.txt
+
+$ git diff --name-status HEAD~2
+$ git diff --name-status HEAD~2 >./doc/modify/modify_20170702.txt
+
+$ git diff --name-status HEAD~ >modify.txt
+
+
+Git 如何从某个Commit后导出所有修改过的文件?
+$ git diff --name-status HEAD~2
+$ git diff --name-status HEAD~2| xargs zip update.zip
+
+
+$ git diff --name-status HEAD~2| xargs 'D:\software\WinRAR' update.zip
+
+
+利用WinRAR命令行压缩文件或文件夹
+http://blog.csdn.net/diligentcatrich/article/details/5823193
+
+添加rar程序到系统变量
+rar a -ag -ibck update.zip text.txt
+rar a -ag -r -ibck update.zip text.txt
+rar a -r -ibck update.zip ../
+
+rar a -ag -r -ibck ./doc/modify/update.zip config.inc.php cps/Conf/config.php
+
+
+
+rar a -ag -r -ibck ./doc/modify/update.zip cps/Tpl/default/contract/index.html cps/Tpl/default/finance/push.html  cps/Tpl/default/items/index.html
+rar a -ag -r -ibck update.zip cps/Tpl/default/contract/index.html cps/Tpl/default/finance/push.html  cps/Tpl/default/items/index.html
+
+
+压缩文件夹
+winrar.exe a -ag -k -r -s -ibck c:/bak.rar c:/dat/ 
+压缩多个文件
+winrar a -ag -ibck bak.rar filename1 filename2
+
+
+D:\software\WinRAR
+
+压缩多个文件
+winrar a -ag -ibck bak.rar filename1 filename2
+
+win
+rar a -ag -ibck update.zip text.txt
+
+
+        
+
+git pull
+git log
+git status
+git diff test.txt
+git add
+git commit -m 'commit'
+git push 
+
+jaksldfjaslkfjaksdfjalskdfj
+
+
+add content by jieqiang 201702221744
+
+modify in 111
+
+this is test file
+
+make a modify AND commit
+

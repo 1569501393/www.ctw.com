@@ -1,0 +1,42 @@
+M	cps/Tpl/default/admin/index.html
+R100	data/items/m_58a93599122b2.jpg	data/items/m_58a934eaddca8.jpg
+D	data/items/m_58c8a2c4f1511.jpg
+D	data/items/m_5921ac092eb68.png
+D	data/items/m_5921afbf4dcd8.jpg
+D	data/items/m_5921b1078f2d8.jpg
+A	data/items/m_5922c272e2d0a.jpg
+D	data/items/s_59511dfe4dc7a.jpg
+A	data/qrcode/a1234561494648480.jpg
+A	data/qrcode/a1234561494661257.jpg
+A	data/qrcode/a1234561495384317.jpg
+A	data/qrcode/a1234561495547548.jpg
+A	data/qrcode/poster_1_admin_1008689_3_1495806726.jpg
+A	data/qrcode/poster_1_admin_1008689_3_1495806727.jpg
+A	data/qrcode/poster_1_admin_1008689_3_1495806731.jpg
+A	data/qrcode/poster_1_admin_1314520_1_1496377231.jpg
+A	"doc/00git\345\270\270\347\224\250\345\221\275\344\273\244.txt"
+M	"doc/git\346\233\264\346\226\260\346\227\245\345\277\227.txt"
+A	doc/modify/modify_201707021032.txt
+M	doc/test.txt
+M	install/Lang/common.php
+M	install/Lang/eula.html
+M	install/Sql_data/initdata.sql
+M	install/Tpl/index/setconf.html
+M	install/Tpl/public/header.html
+M	readme.txt
+
+
+
+
+winrar命令行 winrar压缩文件列表
+
+error: Your local changes to the following files would be overwritten by merge:
+        cps/Tpl/default/admin/index.html
+        cps/Tpl/default/contract/index.html
+        cps/Tpl/default/finance/push.html
+        cps/Tpl/default/items/index.html
+        doc/CPS联盟系统需求00000000.docx
+        doc/git更新日志.txt
+        doc/~$S-20170615问题v1.2.docx
+        doc/人人商城开发手册/副本-厂家版商城产品功能列表信息_2017027jieqiang.xls
+        doc/项目任务计划20170626_jieqiang.xlsx

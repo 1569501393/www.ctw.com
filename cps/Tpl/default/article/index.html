@@ -1,0 +1,219 @@
+<include file="public:header" />
+<style type="text/css">
+label {
+    float: left;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    width: 100px;
+}
+
+.form-control {
+    /*width: 95%;*/
+}
+</style>
+<!-- Begin page -->
+<div id="wrapper">
+    <include file="public:topBar" />
+    <include file="public:leftMenu" />
+    <!-- <div class="content-page" page="announcementmanager"> -->
+    <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container">
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">公告管理</h4>
+                        <ol class="breadcrumb"></ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-tabs tabs">
+                            <li class="active tab">
+                                <a href="#home-2" data-toggle="tab" aria-expanded="false">
+                                    <span class="visible-xs">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                    <empty name="_GET['id']">
+                                    <span class="hidden-xs">发布新公告</span>
+                                    <else /> 
+                                    <span class="hidden-xs">编辑公告</span>
+                                    </empty>
+
+                                </a>
+                            </li>
+                            <li class="tab">
+                                <a href="#profile-2" data-toggle="tab" aria-expanded="false">
+                                    <span class="visible-xs">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    <span class="hidden-xs">公告列表</span></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="table-responsive active" id="home-2">
+                                <!-- <div class="col-md-6"> -->
+                                <h4 class="m-t-0 header-title">
+                                    <b><!-- 发布新公告 -->
+                                        <empty name="_GET['id']">
+                                    <span class="hidden-xs">发布新公告</span>
+                                    <else /> 
+                                    <span class="hidden-xs">编辑公告</span>
+                                    </empty>
+                                    </b>
+                                </h4>
+                                <p class="text-muted m-b-30 font-13">
+                                    <!-- 您还可以创建999+个子机构. --></p>
+                                <!-- <form role="form" action="{:u('article/add')}" method="post"> -->
+
+                                <empty name="_GET['id']">
+                                    <form role="form" action="{:u('article/add')}" method="post">
+                                    <else /> 
+                                    <form role="form" action="{:u('article/edit')}" method="post">
+                                    </empty>
+
+                                    <div class="form-group">
+                                        <label for="title">公告标题</label>
+                                        <input type="text" class="form-control" id="title" placeholder="" name="title" value="{$article.title}" style="width: 9x%"></div>
+                                    <div class="form-group">
+                                        <label for="number">接收对象</label>
+                                        <!-- <select class="selectpicker" multiple data-style="btn-white">
+                                            <option selected="" name='platform_id[]' value="0">全部</option>
+                                            <option selected="" name='platform_id[]' value="1">分行</option>
+                                            <option selected="" name='platform_id[]' value="2">机构</option>
+                                            <option selected="" name='platform_id[]' value="3">客户经理</option>
+                                        </select> -->
+                                        <div class="radio_style" style="float:left;">
+                                        <input type="radio" name="platform_id" value="0" name="platform_id" <if condition="$article.platform_id eq 0 ">checked</if> />全部<br />
+
+                                        <volist name="admin_list" id="val"  key="k">
+                                            <input type="radio" name="platform_id" value="{$val['id']}" <if condition="$article.platform_id eq $val['id'] ">checked</if> name="platform_id" />{$val['user_id']}&nbsp;&nbsp;
+                                            <if condition="($k-1)%5==4 ">
+                                            <br />
+                                            </if>
+                                            <!-- <eq name="mod" value="4"><neq name="k" value="$count"><br /></neq></eq> -->
+                                        </volist>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <label for="content">公告内容</label>
+                                    <textarea name="info" class="summernote" id="content">{$article.info}</textarea>
+                                    <div class="form-group">
+                                        <label for="title">{:L('status')}</label>
+                                        <input type="radio" name="status" class="radio_style" value="1" <if condition="$article.status eq 1">checked</if>> &nbsp;已审核&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="status" class="radio_style" value="0" <if condition="$article.status eq 0">checked</if>> &nbsp;未审核</div>
+                                    <notempty name="article['id']">
+                                        <input type="hidden" name="id" value="{$article.id}" id="article_id" /></notempty>
+                                    <button type="submit" value="1" name="dosubmit" class="btn btn-default waves-effect waves-light">发布</button></form>
+                                <!-- </div> --></div>
+                            <!-- </div>  -->
+                            <div class="tab-pane" id="profile-2">
+                                <div class="table-responsive">
+                                    <!-- <table class="table table-actions-bar"> -->
+                                    <table class="table table-hover mails m-0">
+                                        <thead>
+                                            <!-- <tr>
+                                            <th>文章标题</th>
+                                            <th>公告时间</th>
+                                            <th>作者</th>
+                                            <th>操作</th></tr> -->
+                                            <tr>
+                                                <!-- <th >ID</th> -->
+                                                <!-- <th width=25>
+                                                    <input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th> -->
+                                                <th >{:L('title')}</th>
+                                                <th>接收对象</th>
+                                                <th >{:L('time')}</th>
+                                                <!-- <th width=60>{:L('sort')}</th> -->
+                                                <!-- <th width="40">{:L('hot')}</th>
+                                                <th width="40">{:L('recommend')}</th> -->
+                                                <th >{:L('status')}</th>
+                                                <th >操作</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- <tr>
+                                            <td>
+                                            <a href="announcement.php">这是一条公告！！！</a></td>
+                                            <td>2017-1-1</td>
+                                            <td>章三</td>
+                                            <td>
+                                            <button class="btn btn-default waves-effect waves-light">编辑</button>
+                                            <button class="btn btn-danger waves-effect waves-light">删除</button></td></tr> -->
+                                            <volist name="article_list" id="val">
+                                                <tr>
+                                                    <!-- <td >{$val.id}</td> -->
+                                                    <!-- <td align="center">
+                                                        <input type="checkbox" value="{$val.id}" name="id[]"></td> -->
+                                                    <td  >
+                                                        <a class="blue" href="{:u('article/index', array('id'=>$val['id']))}">{$val.title}</a>
+                                                        <if condition="$val['url'] neq ''">
+                                                            <br>
+                                                            <a href="{$val.url}" target=_blank>{$val.url}</a></if>&nbsp;&nbsp;</td>
+                                                    <!-- <td align="center"><b>[北京分行，厦门分行]</b></td> -->
+                                                    <td >{$val.platform_name}</td>
+                                                    <td >{$val.add_time}</td>
+                                                    <!-- <td align="center"><input  type="text" class="input-text-c input-text" value="{$val.ordid}" id="sort_{$val.id}" onblur="sort({$val.id},'ordid',this.value)" size="4" name="listorders[{$val.id}]"></td> -->
+                                                    <td onclick="status({$val.id},'status')" id="status_{$val.id}">
+                                                        <img src="__ROOT__/statics/images/status_{$val.status}.gif" /></td>
+                                                    <!-- <td >
+                                                        <a class="blue" href="{:u('article/edit', array('id'=>$val['id']))}">编辑</a></td> -->
+                                                    <td>
+                                            <a class="blue" href="{:u('article/index', array('id'=>$val['id']))}"><button class="btn btn-default waves-effect waves-light">编辑</button></a>
+                                            <!-- <button class="btn btn-danger waves-effect waves-light">删除</button> --></td>
+                                                </tr>
+                                            </volist>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="pagination">
+                                    <div id="pages">{$page}</div></ul>
+                            </div>
+                            <div class="tab-pane" id="messages-2"></div>
+                            <div class="tab-pane" id="settings-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row --></div>
+            <!-- END wrapper -->
+
+            <script language="javascript">function edit(id, name) {
+            var lang_edit = "{$Think.lang.edit}";
+            window.top.art.dialog({
+                id: 'edit'
+            }).close();
+            window.top.art.dialog({
+                title: lang_edit + '--' + name,
+                id: 'edit',
+                iframe: '?m=article&a=edit&id=' + id,
+                width: '480',
+                height: '520'
+            },
+            function() {
+                var d = window.top.art.dialog({
+                    id: 'edit'
+                }).data.iframe;
+                d.document.getElementById('dosubmit').click();
+                return false;
+            },
+            function() {
+                window.top.art.dialog({
+                    id: 'edit'
+                }).close()
+            });
+        }
+
+        function status(id, type) {
+            $.get("{:u('article/status')}", {
+                id: id,
+                type: type
+            },
+            function(jsondata) {
+                var return_data = eval("(" + jsondata + ")");
+                // $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data.data + '.gif');
+                $("#" + type + "_" + id + " img").attr('src', '__ROOT__/statics/images/status_' + return_data + '.gif');
+            });
+        }</script>
+            <include file="public:footer" />

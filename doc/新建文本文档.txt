@@ -1,0 +1,29 @@
+CREATE TABLE `cps_push_log` (
+  `id` bigint(40) NOT NULL AUTO_INCREMENT,
+  `sname` varchar(40) DEFAULT NULL,
+  `op_time` datetime DEFAULT NULL,
+  `con_id` bigint(10) DEFAULT NULL COMMENT '合同编号id=cps_contract.id',
+  `cate_id` bigint(10) DEFAULT NULL COMMENT '商品类别id',
+  `item_id` varchar(32) DEFAULT NULL COMMENT '商品id',
+  `bank_id` bigint(20) DEFAULT NULL COMMENT '推广分行id',
+  `bank_subid` int(11) unsigned DEFAULT '0' COMMENT '子机构id',
+  `data_state` char(1) DEFAULT '1' COMMENT '数据状态：0删除，1正常',
+  `score` int(10) DEFAULT '0' COMMENT '所需积分',
+  `sid` int(10) unsigned DEFAULT '0' COMMENT '推广人id',
+  `app` int(11) DEFAULT NULL COMMENT '活动',
+  `status` char(1) DEFAULT NULL COMMENT '数据状态：2成功，1审核中',
+  `content` varchar(255) DEFAULT NULL,
+  `reply_time` datetime DEFAULT NULL COMMENT '审核时间',
+  `add_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `ip` varchar(255) DEFAULT NULL,
+  `update_time` int(10) unsigned DEFAULT NULL COMMENT '修改时间',
+  `sid222` varchar(40) DEFAULT NULL,
+  `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='5.2.13推广记录表';
+
+http://cps.jieqiangtec.cn/cps.php?m=desk&a=prom&sid=25&item_id=34390342&push_id=23&con_id=6&shop_id=12&bank_id=14&bank_subid=15          
+
+
+,array('income'=>'1'
+,array('order'=>'1'

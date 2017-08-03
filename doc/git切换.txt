@@ -1,0 +1,6 @@
+gitÇĞ»»
+¿ËÂ¡£º
+git clone https://github.com/1569501393/www.ctw.com.git ./cps.jieqiangtec.com
+
+ÇĞ»»·ÖÖ§£º
+git checkout cps.jieqiangtec.com

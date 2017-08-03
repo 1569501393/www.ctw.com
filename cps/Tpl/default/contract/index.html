@@ -1,0 +1,352 @@
+<include file="public:header" />
+<body class="fixed-left">
+    <!-- Begin page -->
+    <div id="wrapper">
+        <include file="public:topBar" />
+        <include file="public:leftMenu" />
+        <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="page-title">合同管理</h4>
+                            <ol class="breadcrumb">
+                                <!-- <li><a href="#">Ubold</a></li>
+                                <li><a href="#">UI Kit</a></li>
+                                <li class="active">Tabs &amp; Accordions</li>
+                                -->
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <if condition="$_SESSION['admin_info']['role_id'] eq 1">
+                                <ul class="nav nav-tabs tabs">
+                                    <li class="active tab">
+                                        <a href="#guanli" data-toggle="tab" aria-expanded="false">
+                                            <span class="visible-xs">
+                                                <i class="fa fa-home"></i>
+                                            </span>
+                                            <span class="hidden-xs">合同管理</span></a>
+                                    </li>
+                                    <li class="tab">
+                                        <a href="#luru" data-toggle="tab" aria-expanded="false">
+                                            <span class="visible-xs">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <span class="hidden-xs">合同录入</span></a>
+                                    </li>
+                                </ul>
+                                <else />
+                                <!-- <ul class="nav nav-tabs tabs">
+                                <li class="active tab">
+                                <a href="#guanli" data-toggle="tab" aria-expanded="false">
+                                <span class="visible-xs">
+                                <i class="fa fa-home"></i></span>
+                                <span class="hidden-xs">合同管理</span></a></li>
+                                </ul> -->
+                            </if>
+                            <!-- <div class="tab-content"> -->
+                            <div class="card-box">
+                                <!-- <div class="table-responsive active" id="guanli" style="overflow-x:visible;"> -->
+                                <div class="tab-pane active" id="guanli">
+                                    <div class="row m-t-10 m-b-10">
+                                        <!-- <div class="col-sm-12"> -->
+                                        <!-- <form role="form"> -->
+                                        <!-- <form role="form" method="post" action="{:u('contract/index')}"> -->
+                                        <form role="form" method="get" action="">
+                                            <label class="col-sm-1 control-label">开始时间</label>
+                                            <div class="col-sm-3">
+                                                <div class="input-group">
+                                                    <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" id="datepicker-autoclose" name="startdate"> -->
+                                                    <input type="text" class="form-control" data-date-format="yyyy-mm-dd" id="datepicker-autoclose" name="begin_time" value="{$begin_time}">
+                                                    <span class="input-group-addon bg-custom b-0 text-white">
+                                                        <i class="icon-calender"></i>
+                                                    </span>
+                                                </div>
+                                                <!-- input-group --></div>
+                                            <label class="col-sm-1 control-label">结束时间</label>
+                                            <div class="col-sm-3">
+                                                <div class="input-group">
+                                                    <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" id="datepicker-autoclose2" name="enddate"> -->
+                                                    <input type="text" class="form-control" data-date-format="yyyy-mm-dd" id="datepicker-autoclose2" name="end_time" value="{$end_time}">
+                                                    <span class="input-group-addon bg-custom b-0 text-white">
+                                                        <i class="icon-calender"></i>
+                                                    </span>
+                                                </div>
+                                                <!-- input-group --></div>
+                                            <label class="col-sm-1 control-label" for="contractNumber">合同编号</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" id="contractNumber" name="con_id" class="form-control" placeholder="" value="{$con_id}"></div>
+                                            <p style="min-height:10px; display: block;">&nbsp;</p>
+                                            <if condition="$_SESSION['admin_info']['role_id'] eq 1">
+                                                <label class="col-sm-1 control-label">商家</label>
+                                                <div class="col-sm-3">
+                                                    <select class="form-control" name="shop_id">
+                                                        <option value="0">全部</option>
+                                                        <volist name="shops" id="val">
+                                                            <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                            </select>
+                                            </div>
+                                            <label class="col-sm-1 control-label">分销平台</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" name="platform_id">
+                                                    <option value="0">全部</option>
+                                                    <volist name="platforms" id="val">
+                                                        <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                </select>
+                                            </div>
+                                            <!-- 商城 -->
+                                            <elseif condition=" $_SESSION['admin_info']['role_id'] eq 3" />
+                                            <label class="col-sm-1 control-label">商家</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" name="shop_id" disabled="disabled">
+                                                    <option value="0">全部</option>
+                                                    <volist name="shops" id="val">
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                </select>
+                                            </div>
+                                            <label class="col-sm-1 control-label">分销平台</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" name="platform_id" disabled="disabled">
+                                                    <option value="0">CPS</option>
+                                                    <!-- <volist name="platforms" id="val">
+                                                    <option value="{$val.id}" <if condition="$platform_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist> --></select>
+                                            </div>
+                                            <!-- 分行 -->
+                                            <else />
+                                            <label class="col-sm-1 control-label">商家</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" name="shop_id">
+                                                    <option value="0">全部</option>
+                                                    <volist name="shops" id="val">
+                                                        <option value="{$val.id}" <if condition="$shop_id eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                </select>
+                                            </div>
+                                            <label class="col-sm-1 control-label">分销平台</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" name="platform_id" disabled="disabled">
+                                                    <option value="0">全部</option>
+                                                    <volist name="platforms" id="val">
+                                                        <option value="{$val.id}" <if condition="$_SESSION['admin_info']['id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                                </select>
+                                            </div>
+                                            </if>
+                                            <label class="col-sm-1 control-label">审核状态</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" name="status">
+                                                    <option value="0">全部</option>
+                                                    <volist name="check_status" id="val">
+                                                        <option value="{$val.parameter_id}" <if condition="$status eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                                </select>
+                                            </div>
+                                            <p style="min-height:10px; display: block;">&nbsp;</p>
+                                            <!-- <div class="form-group"> -->
+                                            <label class="col-sm-1 control-label">结算周期</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" name="period">
+                                                    <option value="0">全部</option>
+                                                    <volist name="period" id="val">
+                                                        <option value="{$val.parameter_id}" <if condition="$period_input eq $val['parameter_id']">selected="selected"</if>><!-- {$period_input}- -->{$val.parameter_value}</option></volist>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                                                <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+                                                <button class="btn btn-primary waves-effect waves-light">查询</button></div>
+                                        </form>
+                                        <!-- <p style="min-height:10px; display: block;">&nbsp;</p> -->
+                                        <!-- <p style="min-height:10px; display: block;">&nbsp;</p> --></div>
+                                    <!-- </div> -->
+                                    <div class="table-responsive">
+                                        <!-- <table class="table table-actions-bar"> -->
+                                        <table class="table table-hover mails m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <if condition="$_SESSION['admin_info']['role_id'] eq 1">
+                                                        <th>分销平台</th>
+                                                        <th>商家名称</th></if>
+                                                    <th>合同编号</th>
+                                                    <th>合同类型</th>
+                                                    <th>合同名称</th>
+                                                    <!-- <th>账期</th> -->
+                                                    <th>开始时间</th>
+                                                    <th>结束时间</th>
+                                                    <th>状态</th>
+                                                    <!-- <th>修改人</th> -->
+                                                    <!-- <th>修改时间</th> -->
+                                                    <th>审批人</th>
+                                                    <th>操作</th>
+                                                    <!-- <th>修改时间</th> --></tr>
+                                            </thead>
+                                            <tbody>
+                                                <volist name="contract_list" id="val">
+                                                    <tr>
+                                                        <td>{$val.id}</td>
+                                                        <!-- <td id="sa-image">{$val.platform_name}</td> -->
+                                                        <if condition="$_SESSION['admin_info']['role_id'] eq 1">
+                                                            <td id="sa-image2">
+                                                                    <a href="javascript:edit({$val.platform_id},'{$val.platform_name}')">
+                                                                        <!-- {$val.platform_id}- -->{$val.platform_name}</a>
+                                                            </td>
+                                                            <td id="sa-image2">
+                                                                
+                                                                    <a href="javascript:edit({$val.shop_id},'{$val.shop_name}')">
+                                                                        <!-- {$val.platform_id}- -->{$val.shop_name}</a>
+                                                            </td>
+                                                        </if>
+                                                        <td>{$val.con_id}</td>
+                                                        <td>
+                                                            <!-- {$val.con_type}- -->{$val.con_type_name}</td>
+                                                        <!-- <td id="sa-image2">
+                                                        
+                                                        <a href="{:u('admin/pwd',array('id'=>$val['shop_id']))}">{$val.shop_name}</a></td> -->
+                                                        <!-- <td>{$val.title}</td> -->
+                                                        <td><a href="{:u('contract/edit',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">{$val.title}</a></td>
+                                                        
+                                                        
+                                                        <!-- <td>{$val.period_account}</td> -->
+                                                        <td>{$val.begin_time|date='Y-m-d',###}</td>
+                                                        <td>{$val.end_time|date='Y-m-d',###}</td>
+                                                        <td>
+                                                            <!-- {$val.status}- -->{$val.status_name}</td>
+                                                        <!-- <td>章三{$val.platform_id}</td> -->
+                                                        <!-- <td>{$val.update_time|date='Y-m-d',###}</td> -->
+                                                        <!-- <td>{$val.approver}</td> -->
+                                                        <td>{$val.approver_name}</td>
+                                                        <!-- <td><input id="checkbox2" type="checkbox">
+                                                        <label for="checkbox2">选择</label></td> -->
+                                                        <td>
+                                                            <!-- <a href="{:u('contract/auth', array('id'=>$val['id']))}">管理权限</a>| -->
+                                                            <!-- <a href="{:u('contract/export',array('id'=>$val['id']))}">导入</a>| -->
+                                                            <a href="{:u('contract/export',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">导出</a>|
+                                                            <!-- <a href="{:u('contract/edit',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">编辑</a>| -->
+                                                            <a href="{:u('finance/push',array('id'=>$val['id'],'shop_id'=>$val['shop_id']))}">商品详情</a></td>
+                                                    </tr>
+                                                </volist>
+                                        </table>
+                                        <!-- <ul class="pagination">
+                                        <li class="paginate_button previous disabled" aria-controls="datatable" tabindex="0" id="datatable_previous">{$page}</li></ul> --></div>
+                                    <div id="pages">{$page}</div></div>
+                                <!-- </div>  -->
+                                <if condition="$_SESSION['admin_info']['role_id'] eq 1">
+                                    <div class="table-responsive" id="luru">
+                                        <form role="form2" method="post" action="{:u('contract/add')}">
+                                            <input type="hidden" name="id" value="{$contract_info.id}" />
+                                            <!-- <div class="form-group"> -->
+                                            <label class="col-sm-1 control-label" for="contractNumber">合同编号</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" id="contractNumber" name="con_id" class="form-control" placeholder="" value="{$contract_info.con_id}"></div>
+                                            <!-- <div class="form-group"> -->
+                                            <label class="col-sm-1 control-label">合同类型</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" name="con_type">
+                                                    <volist name="roles" id="val">
+                                                        <option value="{$val.id}" <if condition="$contract_info['con_type'] eq $val['id']">selected="selected"</if>>{$val.name}</option></volist>
+                                </select>
+                                </div>
+                                <!-- </div> -->
+                                <label class="col-sm-1 control-label">商家</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="shop_id">
+                                        <volist name="shops" id="val">
+                                            <option value="{$val.id}" <if condition="$contract_info['shop_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                    </select>
+                                </div>
+                                <p style="min-height:10px; display: block;">&nbsp;</p>
+                                <!-- <div class="form-group"> -->
+                                <label class="col-sm-1 control-label">结算周期</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="period">
+                                        <volist name="period" id="val">
+                                            <option value="{$val.parameter_id}" <if condition="$contract_info['period'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist>
+                                    </select>
+                                </div>
+                                <label class="col-sm-1 control-label">分销平台</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" name="platform_id">
+                                        <volist name="platforms" id="val">
+                                            <option value="{$val.id}" <if condition="$contract_info['platform_id'] eq $val['id']">selected="selected"</if>>{$val.user_id}</option></volist>
+                                    </select>
+                                </div>
+                                <label class="col-sm-1 control-label">收款方</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="sss" name="payee" value="默认分销平台账号" disabled="true">
+                                    <!-- <select class="form-control" name="payee">
+                                    <volist name="payee" id="val">
+                                    <option value="{$val.parameter_id}" <if condition="$contract['payee'] eq $val['parameter_id']">selected="selected"</if>>{$val.parameter_value}</option></volist></select> --></div>
+                                <p style="min-height:10px; display: block;">&nbsp;</p>
+                                <label class="col-sm-1 control-label">开始时间</label>
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" id="datepicker-autoclose3" name="begin_time"> -->
+                                        <input type="text" class="form-control" data-date-format="yyyy-mm-dd" id="datepicker-autoclose3" name="begin_time" value="{$contract_info.begin_time|date='Y-m-d',###}">
+                                        <span class="input-group-addon bg-custom b-0 text-white">
+                                            <i class="icon-calender"></i>
+                                        </span>
+                                    </div>
+                                    <!-- input-group --></div>
+                                <label class="col-sm-1 control-label">结束时间</label>
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <!-- <input type="text" class="form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" id="datepicker-autoclose4" name="end_time"> -->
+                                        <input type="text" class="form-control" data-date-format="yyyy-mm-dd" id="datepicker-autoclose4" name="end_time" value="{$contract_info.end_time|date='Y-m-d',###}">
+                                        <span class="input-group-addon bg-custom b-0 text-white">
+                                            <i class="icon-calender"></i>
+                                        </span>
+                                    </div>
+                                    <!-- input-group --></div>
+                                <label class="col-sm-1 control-label" for="long">账期(天)</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="long" name="period_account" class="form-control" placeholder="" value="{$contract_info.period_account}"></div>
+                                <p style="min-height:10px; display: block;">&nbsp;</p>
+                                <label class="col-sm-1 control-label" for="ship">运费(元)</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="ship" name="freight" class="form-control" placeholder="" value="{$contract_info.freight}"></div>
+                                <label class="col-sm-1 control-label" for="ship">合同名称</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="ship" name="title" class="form-control" placeholder="" value="{$contract_info.title}"></div>
+                                <p style="min-height:10px; display: block;">&nbsp;</p>
+                                <p style="min-height:10px; display: block;">&nbsp;</p>
+                                <button class="btn btn-default btn-block text-uppercase waves-effect waves-light btn-lg" type="submit" name="dosubmit" value="1">提交</button>
+                                <!-- </div> -->
+                                <p style="min-height:10px; display: block;">&nbsp;</p></form>
+                                </div>
+                                </if>
+                            </div>
+                        </div>
+                        <!-- end row --></div>
+                    <!-- END wrapper -->
+                    <script type="text/javascript">function edit(id, name) {
+                            var lang_edit = "详情";
+                            // 弹框后右侧滚动条动不了了。。。
+                            // window.top.art.dialog({
+                            //     id: 'edit'
+                            // }).close();
+                            window.top.art.dialog({
+                                title: lang_edit + '--' + name,
+                                id: 'edit',
+                                iframe: '?m=admin&a=edit&id=' + id,
+                                // width: '360',
+                                // height: '280'
+                            },
+                            // function() {
+                            //     var d = window.top.art.dialog({
+                            //         id: 'edit'
+                            //     }).data.iframe;
+                            //     d.document.getElementById('dosubmit').click();
+                            //     return false;
+                            // },
+                            function() {
+                                window.top.art.dialog({
+                                    id: 'edit'
+                                }).close()
+                            });
+                        }</script>
+
+                    
+                    <include file="public:footer" />
+

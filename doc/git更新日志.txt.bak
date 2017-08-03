@@ -1,0 +1,159 @@
+59.56.69.152
+http://localhost/99_ctw/msec3.jieqiangtec.com/cps.php?m=public&a=login
+
+git提取出两个版本之间的差异文件并打包
+http://blog.csdn.net/lxf0613050210/article/details/52104287
+$ git diff --name-only HEAD~
+$ git diff --name-only HEAD~ >./doc/modify/modify_201707021032.txt
+
+$ git diff --name-status HEAD~ >./doc/modify/modify_201707021032.txt
+
+去除没有ms目录
+git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
+chmod -R 777 ./
+
+
+git add cps/Lib/ cps/Tpl/ ms/ doc/ cps.php cps/Common/ cps/Lang/  statics/ data/
+chmod -R 777 ./
+
+
+git add cps/Lib/ cps/Tpl/  doc/ cps.php cps/Common/ cps/Lang/  statics/ data/  install/Lib/ install/Tpl/   install/Tpl/  install/Tpl/  install/Sql_data/  install.php  
+chmod -R 777 ./
+
+
+git add cps/Lib/ cps/Tpl/ cps.php cps/Common/ cps/Lang/  statics/  install/Lib/ install/Tpl/   install.php   index/Lib/ index/Tpl/  doc/ index.php index/Common/ install/Lang/ 
+
+git add cps/Lib/ cps/Tpl/ cps.php cps/Common/ cps/Lang/  statics/  install/Lib/ install/Tpl/   install.php   index/Lib/ index/Tpl/  doc/ index.php index/Common/ install/Lang/ 
+
+
+git add cps/Lib/ cps/Tpl/ doc/ cps.php cps/Common/ cps/Lang/  statics/ admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ install/Lib/ install/Tpl/   install.php   index/Lib/ index/Tpl/ ms/ doc/ index.php index/Common/ install/Lang/ 
+
+git add admin/Lib/ admin/Tpl/ ms/ doc/ admin.php admin/Common/ admin/Lang/ 
+git add install/Lib/ install/Tpl/   install.php   install/Lang/ 
+git add index/Lib/ index/Tpl/ ms/ doc/ index.php index/Common/
+git add install/Lib/ install/Tpl/ ms/ doc/ install.php
+
+git add data/logs
+
+
+$ git add cps/Lib/ cps/Tpl/ doc/  cps.php cps/Common/ statics/  cps/Lang/   ms/  data/  cps/Conf/
+chmod -R 777 ./
+
+
+$ git add cps/Lib/ cps/Tpl/ doc/ includes/ cps.php cps/Common/ statics/  cps/Lang/   ms/  data/  cps/Conf/
+chmod -R 777 ./
+
+
+git add cps/Tpl/
+
+git pull放弃本地修改
+git reset --hard
+git pull
+
+
+git pull放弃本地修改
+
+免费的Bootstrap管理后台模板集合
+http://wrapbootstrap.com/preview/WB0CX3745
+http://www.open-open.com/news/view/7fbd85
+http://www.topthink.com/topic/5341.html
+http://www.topthink.com/topic/4872.html
+
+ThinkPHP5.0.8_AUTH权限 后台管理系统v2.0
+http://www.topthink.com/topic/25963.html
+http://tp5.ilunhui.cn/admin/index/index.html#
+
+基于ThinkPHP5和Bootstrap的极速后台开发框架
+http://www.topthink.com/topic/25967.html
+http://demo.fastadmin.net/admin/auth/rule
+https://github.com/karsonzhang/fastadmin
+
+免费 ，免费开源 ，ThinkPHP 博客后台管理系统 3.2正式版开发的个人博客 程序开源共享.个人博客系统
+http://www.topthink.com/topic/25407.html
+http://www.jh12.cn/index.php/home/index/index.html
+
+
+解决git pull时出现的几个问题
+http://ritto.blog.51cto.com/427838/741342
+解决方法:
+执行git checkout -f，然后再执行git pull重新checkout
+
+Git:代码冲突常见解决方法
+http://blog.csdn.net/iefreer/article/details/7679631
+反过来,如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:
+git reset --hard
+git pull
+
+$ git pull
+Updating 5ac8295..8653504
+Fast-forward
+ cps/Lib/Action/adminAction.class.php               |  38 ++++++++++-
+ cps/Tpl/default/admin/index.html                   |  71 +++++++++++++++++++--
+ data/admin/59230191ac263.xlsx                      | Bin 0 -> 9984 bytes
+ data/admin/592301c14b286.xlsx                      | Bin 0 -> 9984 bytes
+ data/admin/59230270eefce.xlsx                      | Bin 0 -> 9595 bytes
+ data/admin/5923049ae6dab.xlsx                      | Bin 0 -> 9366 bytes
+ data/admin/592304c67b4ee.xlsx                      | Bin 0 -> 9360 bytes
+ ...6\214\346\210\220\345\212\237\350\203\275.docx" | Bin 0 -> 51347 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.3.docx" | Bin 0 -> 71502 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" |   3 +
+ ...6\214\346\210\220\345\212\237\350\203\275.docx" | Bin 162 -> 0 bytes
+ 11 files changed, 103 insertions(+), 9 deletions(-)
+ create mode 100644 data/admin/59230191ac263.xlsx
+ create mode 100644 data/admin/592301c14b286.xlsx
+ create mode 100644 data/admin/59230270eefce.xlsx
+ create mode 100644 data/admin/5923049ae6dab.xlsx
+ create mode 100644 data/admin/592304c67b4ee.xlsx
+ create mode 100644 "doc/cps-20170522\351\227\256\351\242\230\346\225\264\347\220\206_\345\256\214\346\210\220\345\212\237\350\203\275.docx"
+ create mode 100644 "doc/cps-20170522\351\227\256\351\242\230\346\225\264\347\220\206v1.3.docx"
+ delete mode 100644 "doc/~$s-20170517\351\227\256\351\242\230\346\225\264\347\220\206-new\344\273\245\346\255\244\344\270\272\345\207\206v1.2_\345\256\214\346\210\220\345\212\237\350\203\275.docx"
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git pull
+Updating c70dd56..433e0ff
+error: Your local changes to the following files would be overwritten by merge:
+        cps/Lib/Action/contractAction.class.php
+        cps/Lib/Action/financeAction.class.php
+        cps/Tpl/default/contract/index.html
+        cps/Tpl/default/items/index.html
+        cps/Tpl/default/public/footer.html
+        cps/Tpl/default/public/login.html
+Please commit your changes or stash them before you can merge.
+error: The following untracked working tree files would be overwritten by merge:
+        cps/Tpl/default/items/index_20170517ok.zip
+        doc/cps-20170517问题整理-new以此为准v1.2.docx
+Please move or remove them before you can merge.
+Aborting
+
+
+
+Administrator@JG76ALN7Y22GGHS MINGW64 /d/software/phpStudy/WWW/99_ctw/msec.jieqiangtec.com (msec.jieqiangtec.com)
+$ git  pull
+Auto-merging doc/git更新日志.txt
+Merge made by the 'recursive' strategy.
+ cps/Lib/Action/adminAction.class.php               |   6 +-
+ cps/Lib/Action/contractAction.class.php            |  54 +++++-----
+ cps/Lib/Action/financeAction.class.php             |  74 ++++++++-----
+ cps/Lib/Action/itemsAction.class.php               |   6 +-
+ cps/Lib/Action/roleAction.class.php                |   6 +-
+ cps/Tpl/default/admin/index.html                   |  23 ++++-
+ cps/Tpl/default/contract/index.html                |  15 ++-
+ cps/Tpl/default/finance/commission.html            |   5 +-
+ cps/Tpl/default/finance/finance.html               | 103 +++++++++++++------
+ cps/Tpl/default/finance/push.html                  |   6 +-
+ cps/Tpl/default/finance/settle.html                |   5 +-
+ cps/Tpl/default/items/index.html                   |   4 +-
+ cps/Tpl/default/public/login.html                  |   4 +-
+ cps/Tpl/default/public/register.html               |   2 +-
+ ...7\273\237\345\256\211\346\216\22220170506.xlsx" | Bin 11682 -> 11672 bytes
+ ...7\273\237\351\234\200\346\261\20200000000.docx" | Bin 2562087 -> 2563992 bytes
+ ...6\351\242\230\346\225\264\347\220\206v1.2.docx" | Bin 0 -> 699531 bytes
+ ...33\264\346\226\260\346\227\245\345\277\227.txt" | 114 +++++++++++++++++++++
+ ...\210\220\350\257\264\346\230\216_20170514.docx" | Bin 359359 -> 399959 bytes
+ 19 files changed, 318 insertions(+), 109 deletions(-)
+ create mode 100644 "doc/cps-20170515\351\227\256\351\242\230\346\225\264\347\220\206v1.2.docx"
+
+
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec2.jieqiangtec.com (msec.jieqiangtec.com)

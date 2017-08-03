@@ -1,0 +1,22 @@
+            <!-- ========== Left Sidebar Start ========== -->
+
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+                    <!--- Divider -->
+                    <div id="sidebar-menu">
+                        <ul>
+                            <volist id="item" name="menu" >
+                                <volist id="nav" name="item['navs']" >
+                                <li class="">
+                                    <a href="{$nav.url}" class="waves-effect left-menu " page="{$nav.module}_{$nav.action}"><i class="ti-{$nav.module2}"></i><span> {$nav.action_name}</span></a>
+                                </li>
+                                </volist>
+                            </volist>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+

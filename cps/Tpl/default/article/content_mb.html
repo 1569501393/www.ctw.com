@@ -1,0 +1,38 @@
+<!-- 引入头部 -->
+<include file="public:header_mb" />
+<title>查看消息</title></head>
+<!-- <div id="wrapper" class="secondpage singlemessage"> -->
+<div id="wrapper" class="secondpage">
+    <!-- 引入导航 -->
+    <include file="public:leftMenu_mb" />
+    <!-- Top Bar Start -->
+    <!-- <div class="topnavbar"> -->
+    <!-- <a href="messagelist_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
+    <!-- LOGO -->
+    <!-- 查看消息 -->
+    <!-- Button mobile view to collapse sidebar menu -->
+    <!-- </div> -->
+    <div class="content-page singlemessage">
+        <div class="content ">
+            <h4 class="m-t-0">
+                <b>{$article.title}</b>
+            </h4>
+            <hr/>
+            <div class="media m-b-30 ">
+                <!-- <a href="#" class="pull-left"> -->
+                <!-- <img alt="" src="assets/images/users/avatar-2.jpg" class="media-object thumb-sm img-circle"> -->
+                <!-- </a> -->
+                <div class="media-body">
+                    <span class="media-meta pull-right">{$article.add_time}</span>
+                    <h4 class="text-primary m-0">联盟系统</h4>
+                    <!-- <small class="text-muted">发送方: jonathan@domain.com</small> --></div>
+            </div>
+            <!-- media -->
+            
+            <p>
+                {$article.info}
+            </p>
+            </div>
+    </div>
+    <!-- 引入尾部 -->
+    <include file="public:footer_mb" />

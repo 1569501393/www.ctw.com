@@ -511,10 +511,13 @@ class PHPMailer {
       // Choose the mailer and send through it
       switch($this->Mailer) {
         case 'sendmail':
+//        	var_dump(111);exit;
           return $this->SendmailSend($header, $body);
         case 'smtp':
+//        	var_dump(1112);exit;
           return $this->SmtpSend($header, $body);
         case 'mail':
+//        	var_dump(1113);exit;
         default:
           return $this->MailSend($header, $body);
       }
@@ -938,7 +941,7 @@ class PHPMailer {
     if($this->WordWrap < 1) {
       return;
     }
-
+//var_dump($this->message_type);
     switch($this->message_type) {
       case 'alt':
       case 'alt_attachments':
@@ -1075,6 +1078,7 @@ class PHPMailer {
 
     $this->SetWordWrap();
 
+//    var_dump('$this->message_type====',$this->message_type);
     switch($this->message_type) {
       case 'alt':
         $body .= $this->GetBoundary($this->boundary[1], '', 'text/plain', '');

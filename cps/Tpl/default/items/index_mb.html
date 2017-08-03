@@ -1,0 +1,95 @@
+<!-- 引入头部 -->
+<include file="public:header_mb" />
+
+<title>推广商品</title>
+</head>
+
+<div id="wrapper" class="shoppage">
+
+<!-- 引入导航 -->
+  <include file="public:leftMenu_mb" />
+
+<!-- Top Bar Start -->
+<!-- <div class="topbar"> -->
+        <!-- <i class="backicon glyphicon glyphicon-chevron-left"></i> -->
+    <!-- LOGO -->
+    <!-- 推广商品 -->
+    <!-- Button mobile view to collapse sidebar menu -->
+<!-- </div> -->
+<!-- Top Bar End -->
+            <div class="content-page">
+
+                <div class="content">
+                    <div class="container">
+                    <div class="row fiexdsearch" style="height: 6rem; ">
+                        <form role="form" method="get" action="">
+                        <div class="input-group searchinput">
+                            <!-- <span class="input-group-btn"> -->
+                            
+                            <input type="text" id="example-input1-group2" name="keyword"  value="{$keyword}"  class="form-control" placeholder="请输入商品名称搜索">
+
+                            <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                            <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+                            <!-- <button type="button" class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1"><i class="fa fa-search"></i></button> -->
+                            <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button>
+                            <!-- </span> -->
+                        </div>
+
+                        <!-- <div class="row mbselect"> -->
+                        <div class="input-group searchinput">
+                            
+                            <select class="form-control" name="cate_id">
+                                <option value="0">全部分类</option>
+                                <volist name="cates" id="val">
+                                    <option value="{$val.name}" <if condition="$cate_id eq $val['name']">selected="selected"</if>>{$val.name}</option></volist>
+                            </select>
+
+                        </div>
+                        <!-- <div class="row mbselect weakselect">
+                            
+                            <select class="selectpicker" data-max-options="1" data-style="btn-white">
+                                <option selected="selected">综合排序</option>
+                                <option>单价从高到低</option>
+                                <option>押金从低到高</option>
+                                <option>佣金比例从高到低</option>
+                                <option>30天引入订单从高到低</option>
+                                <option>30天累计支出佣金从高到低</option>
+                            </select> 
+
+                        </div> -->
+                        
+                        </form>
+                        
+                    </div>
+
+                        <!-- <div class="row shopslist2 contentlist" style="margin: 0rem 0;"> -->
+                        <div class="row shopslist2 contentlist" style="    margin-top: 133px;" >
+                        <!-- <div class="row liblist contentlist"> -->
+                        <volist name="commission_list" id="val">
+                            <div class="singlegoods" >
+                            <!-- <div class="singlelib"> -->
+                                  <!-- <a href="{:u('items/index',array('id'=>$val['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'commission'=>$val['commission'],'rate'=>$val['rate'],'price'=>$val['price'],'title'=>$val['title'],'img'=>$val['img']))}">
+                                  <div class="thumbs"><img class="wid" src="{$val.img}"></div></a> -->
+                                  <div class="thumbs"><img class="wid" src="{$val.img}"></div>
+                                  <div class="goodsinfo">
+                                      <span class="goodstitle"><a href="{:u('items/index',array('id'=>$val['id'],'item_id'=>$val['item_id'],'shop_id'=>$val['shop_id'],'commission'=>$val['commission'],'rate'=>$val['rate'],'price'=>$val['price'],'title'=>$val['title'],'img'=>$val['img']))}">{$val.title}</a></span>
+                                      <span class="goodsdetials">价格:<span class="num">{$val.price|default="默认单价"|round=###,2} </span></span>
+                                      <span class="goodsdetials importantinfo">佣金:<span class="num">{$val.commission2|default="默认佣金"|round=###,2}</span> <span class="linespace"></span>佣金比例:<span class="num">{$val.rate2|default="默认佣金比例"|round=###,2}%</span></span>
+                                      <!-- <button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this);" promoteid="goodsid">立即推广</button> -->
+                                  </div>
+                              </div>
+                        </volist>
+                        </div>
+                        <div id="pages">{$page}</div>
+                    </div>
+
+                </div>
+
+
+                <footer class="footer text-right">
+                    2017 © MS CPS SYSTEM.
+                </footer>
+            </div>
+        </div>
+<!-- 引入尾部 -->
+<include file="public:footer_mb" />

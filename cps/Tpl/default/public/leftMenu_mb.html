@@ -1,0 +1,47 @@
+<ul class="bottombar">
+
+    <a href="{:u('index/index')}">
+        <li class='bottomnav home <if condition=" strtolower($Think.const.MODULE_NAME) eq 'index'  && strtolower($Think.const.ACTION_NAME) eq 'index' ">active</if> '>
+        <i class="bottomicon glyphicon glyphicon-home"></i>
+        <span class="navtitle">首页</span>
+        </li>
+    </a>
+
+    <a href="{:u('items/index')}">
+        <li class='bottomnav home <if condition=" strtolower($Think.const.MODULE_NAME) eq 'items'  && strtolower($Think.const.ACTION_NAME) eq 'index' ">active</if> '>
+        <i class="bottomicon glyphicon glyphicon-shopping-cart"></i>
+        <span class="navtitle">推广商品</span>
+        </li>
+    </a>
+
+    <a href="{:u('finance/push')}">
+        <li class='bottomnav lib <if condition=" strtolower($Think.const.MODULE_NAME) eq 'finance'  && strtolower($Think.const.ACTION_NAME) eq 'push' ">active</if> '>
+        <i class="bottomicon glyphicon glyphicon-folder-open"></i>
+        <span class="navtitle">我的推广</span>
+        </li>
+    </a>
+
+    <a href="{:u('finance/settle')}">
+        <!-- <li class="bottomnav baobiao"> -->
+        <li class='bottomnav baobiao <if condition=" strtolower($Think.const.MODULE_NAME) eq 'finance'  && strtolower($Think.const.ACTION_NAME) eq 'settle' ">active</if> '>
+        <i class="bottomicon glyphicon glyphicon-list-alt"></i>
+        <span class="navtitle">报表</span>
+        </li>
+    </a>
+
+    <!-- <a href="{:u('admin/pwd')}">
+        <li class='bottomnav account <if condition=" strtolower($Think.const.MODULE_NAME) eq 'admin'  && strtolower($Think.const.ACTION_NAME) eq 'pwd' ">active</if> '>
+        <i class="bottomicon glyphicon glyphicon-user"></i>
+        <span class="navtitle">账户</span>
+        </li>
+    </a> -->
+
+    <a href="{:u('admin/index')}">
+        <li class='bottomnav account <if condition=" (strtolower($Think.const.MODULE_NAME) eq 'admin' ) || (strtolower($Think.const.MODULE_NAME) eq 'article'  && strtolower($Think.const.ACTION_NAME) eq 'index') ">active</if> '>
+        <i class="bottomicon glyphicon glyphicon-user"></i>
+        <span class="navtitle">账户</span>
+        </li>
+    </a>
+</ul>
+
+            

@@ -1,0 +1,79 @@
+<include file="public:header" />
+<div class="account-pages">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>范例</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="clearfix"></div>
+<script>var resizefunc = [];</script>
+<!-- jQuery -->
+<script src="__ROOT__/statics/cps/js/jquery.min.js"></script>
+<script src="__ROOT__/statics/cps/js/bootstrap.min.js"></script>
+<script src="__ROOT__/statics/cps/js/detect.js"></script>
+<script src="__ROOT__/statics/cps/js/fastclick.js"></script>
+<script src="__ROOT__/statics/cps/js/jquery.slimscroll.js"></script>
+<script src="__ROOT__/statics/cps/js/jquery.blockUI.js"></script>
+<script src="__ROOT__/statics/cps/js/waves.js"></script>
+<script src="__ROOT__/statics/cps/js/wow.min.js"></script>
+<script src="__ROOT__/statics/cps/js/jquery.nicescroll.js"></script>
+<script src="__ROOT__/statics/cps/js/jquery.scrollTo.min.js"></script>
+<script src="__ROOT__/statics/cps/js/jquery.core.js"></script>
+<script src="__ROOT__/statics/cps/js/jquery.app.js"></script>
+<!-- 弹窗提示 -->
+<script src="__ROOT__/statics/cps/plugins/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="__ROOT__/statics/cps/pages/jquery.sweet-alert.init.js"></script> -->
+<!-- 弹窗提示 end -->
+<script style="text/javascript">
+    // swal({
+    //     title: "{$message}",
+    //     text: "{$waitSecond}秒后自动跳转.",
+    //     timer: {
+    //         $waitSecond
+    //     } * 1000,
+    //     showConfirmButton: false
+    // },
+    // function() {
+    //     window.location.href = '{$jumpUrl}'
+    // });
+</script>
+
+
+<script type="text/javascript">!
+        function($) {
+            "use strict";
+
+            var SweetAlert = function() {};
+
+            //examples 
+            SweetAlert.prototype.init = function() {
+
+                    swal({
+        title: "{$message}",
+        text: "{$waitSecond}秒后自动跳转.",
+        timer: {$waitSecond} * 1000,
+        showConfirmButton: false
+    },
+    function() {
+        window.location.href = '{$jumpUrl}'
+    });
+            },
+            //init
+            $.SweetAlert = new SweetAlert,
+            $.SweetAlert.Constructor = SweetAlert
+        } (window.jQuery),
+
+        //initializing 
+        function($) {
+            "use strict";
+            $.SweetAlert.init()
+        } (window.jQuery);</script>
+</body>
+</html>

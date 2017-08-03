@@ -1,0 +1,119 @@
+利用WinRAR命令行压缩文件或文件夹
+http://blog.csdn.net/diligentcatrich/article/details/5823193
+
+添加rar程序到系统变量
+rar a -ag -ibck update.zip text.txt
+rar a -ag -r -ibck update.zip text.txt
+rar a -r -ibck update.zip ../
+
+
+rar a -ag -r -ibck ./doc/modify/update.zip cps/Tpl/default/contract/index.html cps/Tpl/default/finance/push.html  cps/Tpl/default/items/index.html
+rar a -ag -r -ibck update.zip cps/Tpl/default/contract/index.html cps/Tpl/default/finance/push.html  cps/Tpl/default/items/index.html
+
+
+压缩文件夹
+winrar.exe a -ag -k -r -s -ibck c:/bak.rar c:/dat/ 
+压缩多个文件
+winrar a -ag -ibck bak.rar filename1 filename2
+
+
+http://blog.csdn.net/arkblue/article/details/9568249/
+
+git提取出两个版本之间的差异文件并打包
+http://blog.csdn.net/lxf0613050210/article/details/52104287
+git diff  HEAD HEAD^ --stat
+HEAD和HEAD^可以换成两次提交的版本号
+
+$ git diff --name-only HEAD~
+$ git diff --name-status HEAD~ >./doc/modify/modify_20170702.txt
+
+$ git diff --name-status HEAD~2
+$ git diff --name-status HEAD~2 >./doc/modify/modify_20170702.txt
+
+$ git diff --name-status HEAD~ >modify.txt
+
+
+
+D:\WWW\99_ctw\msec3.jieqiangtec.com\doc\modify>rar a -ag -ibck update.zip modify
+_20170702.txt
+
+RAR 5.01    版权 (C) 1993-2013 Alexander Roshal    1 十二月 2013
+已注册给 Federal Agency for Education
+
+正在创建 archive update20170702111742.zip
+
+正在添加    modify_20170702.txt                                        确定
+完成
+
+D:\WWW\99_ctw\msec3.jieqiangtec.com\doc\modify>rar a -ag -ibck update.zip ../
+
+RAR 5.01    版权 (C) 1993-2013 Alexander Roshal    1 十二月 2013
+已注册给 Federal Agency for Education
+
+正在创建 archive update20170702111910.zip
+
+正在添加    ..\00git常用命令.txt                                           确定
+
+正在添加    ..\git更新日志.txt                                             确定
+
+正在添加    ..\modify_20170701.txt                                     确定
+正在添加    ..\test.txt                                                确定
+完成
+
+D:\WWW\99_ctw\msec3.jieqiangtec.com\doc\modify>
+
+
+压缩多个文件
+winrar a -ag -ibck bak.rar filename1 filename2
+
+
+git diff 608e120 4abe32e --name-only
+
+$ git diff --name-only HEAD~
+
+git diff  411ce28b2733c868f0befc8afd1d3411c57b7b6b 78ed003380e0fa10fcc6f8cbc3019c9c296440ff --stat
+Administrator@PC-201604171411 MINGW64 /d/WWW/99_ctw/msec3.jieqiangtec.com (cps.jieqiangtec.com)
+$ git log
+commit 4ca34ba6df6380ebedab6fcdbbe8d0eab13cb012
+Author: 1569501393 <1569501393@qq.com>
+Date:   Sun Jul 2 10:29:16 2017 +0800
+
+    清除上传文件
+
+commit 5cf3bfe3a4f876ad2ce9b0dbbde5813542ceca2e
+Author: 1569501393 <1569501393@qq.com>
+Date:   Sun Jul 2 09:55:26 2017 +0800
+
+    民生联盟初始化
+
+commit 411ce28b2733c868f0befc8afd1d3411c57b7b6b
+Author: 1569501393 <1569501393@qq.com>
+Date:   Sun Jul 2 09:47:00 2017 +0800
+
+    清除内容
+
+commit 78ed003380e0fa10fcc6f8cbc3019c9c296440ff
+Author: 1569501393 <1569501393@qq.com>
+Date:   Wed Apr 19 13:22:04 2017 +0800
+
+    ctw
+
+commit 4d265ce2cf83d3551403ec47f163961c604999fc
+Author: 1569501393 <1569501393@qq.com>
+Date:   Wed Apr 19 13:12:30 2017 +0800
+
+    数据库连接msec
+
+commit 7fcdb4166df642f4991be81cc27ce05508d398bb
+Author: 1569501393 <1569501393@qq.com>
+Date:   Thu Mar 30 19:32:23 2017 +0800
+
+    首页9张图
+
+commit 4e05d4dbd9d310b5ab45dfd42f707df778b01e11
+Author: 1569501393 <1569501393@qq.com>
+Date:   Thu Mar 30 19:27:45 2017 +0800
+
+    添加城动网宣传页
+
+

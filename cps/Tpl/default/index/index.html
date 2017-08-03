@@ -1,0 +1,197 @@
+<include file="public:header" />
+<div id="wrapper">
+    <include file="public:topBar" />
+    <include file="public:leftMenu" />
+    <!-- <div class="content-page"> -->
+    <div class="content-page" page="{$Think.MODULE_NAME}_{$Think.ACTION_NAME}">
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- <h4 class="page-title">Dashboard</h4> -->
+                        <!-- <p class="text-muted page-title-alt">欢迎回来! X经理!</p> --></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="widget-bg-color-icon card-box fadeInDown animated">
+                            <div class="bg-icon bg-icon-info pull-left">
+                                <i class="md text-info">¥</i></div>
+                            <div class="text-right">
+                                <h3 class="text-dark">
+                                    <b class="counter">{$result.total_commission|default='0'}</b></h3>
+                                <p class="text-muted">总计收入</p></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="widget-bg-color-icon card-box">
+                            <div class="bg-icon bg-icon-pink pull-left">
+                                <i class="md md-add-shopping-cart text-pink"></i>
+                            </div>
+                            <div class="text-right">
+                                <h3 class="text-dark">
+                                    <b class="counter">{$result.total_sales|default='0'}</b></h3>
+                                <p class="text-muted">销售单数</p></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="widget-bg-color-icon card-box">
+                            <div class="bg-icon bg-icon-success pull-left">
+                                <i class="md md-remove-red-eye text-success"></i>
+                            </div>
+                            <div class="text-right">
+                                <h3 class="text-dark">
+                                    <b class="counter">{$result.show|default='0'}</b></h3>
+                                <p class="text-muted">展示数</p></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="widget-bg-color-icon card-box">
+                            <div class="bg-icon bg-icon-purple pull-left">
+                                <i class="md md-equalizer text-purple"></i>
+                            </div>
+                            <div class="text-right">
+                                <h3 class="text-dark">
+                                    <b class="counter">{$result.conversion|default='0'}</b>%</h3>
+                                <p class="text-muted">转化率</p></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                	<if condition= " $_SESSION[admin_info][role_id] eq 6">
+                    <div class="col-lg-4">
+                        <div class="card-box">
+                            <h4 class="text-dark header-title m-t-0 m-b-30">今日目标</h4>
+                            <div class="widget-chart text-center">
+                                <!-- <input class="knob" data-width="150" data-height="150" data-linecap=round data-fgColor="#fb6d9d" value="{$result.today_sales|default='0'}" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".15" /> -->
+                                <input class="knob" data-width="150" data-height="150" data-linecap=round data-fgColor="#fb6d9d" value="{$result.today_target_rate|default='0'}%" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".15" />
+                                <h5 class="text-muted m-t-20">今日销售总计</h5>
+                                <h2 class="font-600">¥{$result.today_sales|default='0'}</h2>
+                                <ul class="list-inline m-t-15">
+                                    <li>
+                                        <h5 class="text-muted m-t-20">目标</h5>
+                                        <h4 class="m-b-0">¥{$result.today_target|default='1000'}</h4></li>
+                                    <li>
+                                        <h5 class="text-muted m-t-20">上周</h5>
+                                        <h4 class="m-b-0">¥{$result.lastweek_sales|default='0'}</h4></li>
+                                    <li>
+                                        <h5 class="text-muted m-t-20">上个月</h5>
+                                        <h4 class="m-b-0">¥{$result.lastmonth_sales|default='0'}</h4></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                    <else />
+                    <div class="col-lg-12">
+                    </if>
+                    
+                        <div class="portlet">
+                            <div class="portlet-heading">
+                                <h3 class="portlet-title text-dark">统计信息</h3>
+                                <div class="portlet-widgets">
+                                    <a href="javascript:;" data-toggle="reload">
+                                        <i class="ion-refresh"></i>
+                                    </a>
+                                    <span class="divider"></span>
+                                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet4">
+                                        <i class="ion-minus-round"></i>
+                                    </a>
+                                    <span class="divider"></span>
+                                    <a href="#" data-toggle="remove">
+                                        <i class="ion-close-round"></i>
+                                    </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="portlet4" class="panel-collapse collapse in">
+                                <div class="portlet-body">
+                                    <div class="text-center">
+                                        <ul class="list-inline chart-detail-list">
+                                        <volist name="top" id="val">
+                                        	<li>
+                                                <h5>
+                                                    <i class="fa fa-circle m-r-5" style="color: {$val.color};"></i>{$val.cate_name}</h5>
+                                            </li>
+
+                                        </volist>
+                                            <!-- <li>
+                                                <h5>
+                                                    <i class="fa fa-circle m-r-5" style="color: #36404a;"></i>日用品</h5>
+                                            </li>
+                                            <li>
+                                                <h5>
+                                                    <i class="fa fa-circle m-r-5" style="color: #5fbeaa;"></i>家用电器</h5>
+                                            </li>
+                                            <li>
+                                                <h5>
+                                                    <i class="fa fa-circle m-r-5" style="color: #5d9cec;"></i>食品</h5>
+                                            </li> -->
+                                        </ul>
+                                    </div>
+                                    <div id="morris-line-example" style="height: 300px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                    <!-- <div class="col-lg-8"> -->
+                        <div class="card-box">
+                            <a href="{:u('finance/settle')}" class="pull-right btn btn-default btn-sm waves-effect waves-light">查看全部</a>
+                            <h4 class="text-dark header-title m-t-0">近期订单</h4>
+                            <!-- <p class="text-muted m-b-30 font-13">点击可以查看详情</p> -->
+                            <div class="table-responsive">
+                                <!-- <table class="table table-actions-bar"> -->
+                                <table class="table table-hover mails m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>商品信息</th>
+                                            <th>数量</th>
+                                            <th>单价</th>
+                                            <th>交易额</th>
+                                            <th>佣金</th>
+                                            <th>推广人</th>
+                                            <th>下单时间</th>
+                                            <!-- <th style="min-width: 80px;">管理</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <volist name="result['recent_orders']" id="val">
+                                            <tr>
+                                                <!-- <td>
+                                                    <img src="__ROOT__/statics/images/masonry_loading.gif" class="thumb-sm pull-left m-r-10" alt="">
+                                                    {$val.title}</td> -->
+
+                                                <td><!-- {$val.title|default="默认商品名称"} -->
+                                                    <a href="{$val.url}" target="_blank" class="text-dark">
+                                                    <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">{$val.title} 
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span class="text-custom">{$val.item_count}</span></td><td>
+                                                    <span class="text-custom">{$val.item_price}</span></td>
+                                                    <td>
+                                                    <span class="text-custom">¥{$val.sum_price}</span></td>
+                                                <td>
+                                                    <span class="text-custom">¥{$val['commission']*$val['item_count']}</span></td>
+                                                    <td>
+                                                    <span class="text-custom">{$val.seller_name}</span></td>
+                                                <td>
+                                                    <span class="text-custom">{$val.order_time|date='Y-m-d H:i:s',###}</span></td>
+                                            </tr>
+                                        </volist>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-right">2017 © MS CPS SYSTEM.</footer></div>
+</div>
+<include file="public:footer" />
