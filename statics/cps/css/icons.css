@@ -3110,13 +3110,13 @@ File: Icons
  *  Material Design Iconic Font 1.0.1 by Sergey Kupletsky (@zavoloklom) - http://zavoloklom.github.io/material-design-iconic-font/
  *  License - https://github.com/zavoloklom/material-design-iconic-font/blob/gh-pages/License.md (Attribution-ShareAlike 4.0 International license)
  */
-/*@font-face {
+@font-face {
   font-family: 'Material Design Iconic Font';
   src: url('../fonts/Material-Design-Iconic-Font.eot?v=1.0.1');
   src: url('../fonts/Material-Design-Iconic-Font.eot?#iefix&v=1.0.1') format('embedded-opentype'), url('../fonts/Material-Design-Iconic-Font.woff?v=1.0.1') format('woff'), url('../fonts/Material-Design-Iconic-Font.ttf?v=1.0.1') format('truetype'), url('../fonts/Material-Design-Iconic-Font.svg?v=1.0.1#Material-Design-Iconic-Font') format('svg');
   font-weight: normal;
   font-style: normal;
-}*/
+}
 [class^="md-"],
 [class*=" md-"] {
   display: inline-block;
@@ -5488,13 +5488,13 @@ File: Icons
 .md-star-outline:before {
   content: "\f2e7";
 }
-/*@font-face {
+@font-face {
   font-family: 'simple-line-icons';
   src: url('../fonts/Simple-Line-Icons.eot?-i3a2kk');
   src: url('../fonts/Simple-Line-Icons.eot?#iefix-i3a2kk') format('embedded-opentype'), url('../fonts/Simple-Line-Icons.ttf?-i3a2kk') format('truetype'), url('../fonts/Simple-Line-Icons.woff2?-i3a2kk') format('woff2'), url('../fonts/Simple-Line-Icons.woff?-i3a2kk') format('woff'), url('../fonts/Simple-Line-Icons.svg?-i3a2kk#simple-line-icons') format('svg');
   font-weight: normal;
   font-style: normal;
-}*/
+}
 /*
  Use the following CSS code if you want to have a class per icon.
  Instead of a list of all class selectors, you can use the generic [class*="icon-"] selector, but it's slower: 
@@ -6248,13 +6248,13 @@ Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
 https://twitter.com/benjsperry  https://twitter.com/ionicframework
 MIT License: https://github.com/driftyco/ionicons
 */
-/*@font-face {
+@font-face {
   font-family: "Ionicons";
   src: url("../fonts/ionicons.eot?v=1.5.0");
   src: url("../fonts/ionicons.eot?v=1.5.0#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.5.0") format("truetype"), url("../fonts/ionicons.woff?v=1.5.0") format("woff"), url("../fonts/ionicons.svg?v=1.5.0#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal;
-}*/
+}
 .ion,
 .ion-loading-a,
 .ion-loading-b,
@@ -8759,13 +8759,13 @@ MIT License: https://github.com/driftyco/ionicons
  *  - Inspired by and works great as a companion with Font Awesome
  *    "Font Awesome by Dave Gandy - http://fontawesome.io"
  */
-/*@font-face {
+@font-face {
   font-family: 'weathericons';
   src: url('../fonts/weathericons-regular-webfont.eot');
   src: url('../fonts/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/weathericons-regular-webfont.woff2') format('woff2'), url('../fonts/weathericons-regular-webfont.woff') format('woff'), url('../fonts/weathericons-regular-webfont.ttf') format('truetype'), url('../fonts/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
   font-weight: normal;
   font-style: normal;
-}*/
+}
 .wi {
   display: inline-block;
   font-family: 'weathericons';
