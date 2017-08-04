@@ -198,7 +198,8 @@ class indexAction extends baseAction
 
 
             //搜索
-            $where = '1=1 AND con_id>0 ';
+//            $where = '1=1 AND con_id>0 ';
+            $where = '1=1 AND con_id<1 ';
             $platform_id = get_platform_id($_SESSION['admin_info']);
             $where .= " AND platform_id=" . $platform_id;
 
@@ -243,7 +244,7 @@ class indexAction extends baseAction
 
                 // 分润  根据分行设置 暂时屏蔽
                 //			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
-                $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'   ")->order('id desc')->find() ?: array();
+                $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'     ")->order('id desc')->find() ?: array();
                 $commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
                 $commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
 
