@@ -67,8 +67,8 @@ function promote(which,id,item_id,shop_id,commission,rate,price,title,img,sid,ba
 		$('#linkshare').append("<p class='linkcontent'>"+json.url+"</p>");
 
 		for(var o in imgs){   
-	        imgs_html = imgs_html+"<div class='swiper-slide'><a href='http://cps.jieqiangtec.cn/cps.php?m=items&a=create_poster&sid="+sid+"&item_id="+imgs[o].item_id+"&commission_id="+imgs[o].commission_id+"&shop_id="+imgs[o].shop_id+"&bank_subid="+bank_subid+"&user_id="+
-user_id+"&img="+imgs[o].bimg+"&title="+title+"'><img class='wid' src='"+imgs[o].bimg+"'></a></div>";	        
+	        imgs_html = imgs_html+"<div class='swiper-slide'><a href='./cps.php?m=items&a=create_poster&sid="+sid+"&item_id="+imgs[o].item_id+"&commission_id="+imgs[o].commission_id+"&shop_id="+imgs[o].shop_id+"&bank_subid="+bank_subid+"&user_id="+
+user_id+"&img="+imgs[o].bimg+"&title="+title+"' target='_blank'><img class='wid' src='"+imgs[o].bimg+"'></a></div>";	        
 
 	    }  
 	    // alert(imgs_html);
