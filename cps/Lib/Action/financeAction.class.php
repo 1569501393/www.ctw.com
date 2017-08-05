@@ -96,8 +96,6 @@ class financeAction extends baseAction {
 
         if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
             $where = " sid={$_SESSION['admin_info']['id']}" ;
-
-
             if (isset($_GET['begin_time']) && intval($_GET['begin_time'])) {
                 $where .= " AND add_time>=" . strtotime($_GET['begin_time']);
                 $this->assign('begin_time', $_GET['begin_time']);
@@ -112,14 +110,32 @@ class financeAction extends baseAction {
 //                $this->assign('end_time', strtotime("+1 month"));
             }
 
+            $days = M('push_log')->field(" FROM_UNIXTIME(add_time,'%Y%m%d') day ")->where($where)->order('add_time desc')->group('day')->select();
 
-            $push_list = M('push_log')->where($where)->order('add_time desc')->select();
-//            var_dump($push_list);
+            foreach ($days as $k=>$v){
+//                $push_list[$v['day']] = M('push_log')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->order('add_time desc')->select();
+                $push_list[$v['day']]['res'] = M('push_log')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->order('add_time desc')->select();
+                foreach ($push_list[$v['day']]['res'] as $k => $val) {
+                    $push_list[$v['day']]['res'][$k]['commission'] = M('commission')->where('id=' . $val['commission_id'])->find() ?: '';
+                    // 获取佣金id,查看当天列表
+                    $push_list[$v['day']]['ids'][] = $val['commission_id'];
+                }
 
-            foreach ($push_list as $k => $val) {
-//                $push_list[$k]['img'] = M('commission')->where('id=' . $val['commission_id'])->getField('img') ?: '';
-                $push_list[$k]['commission'] = M('commission')->where('id=' . $val['commission_id'])->find() ?: '';
+//                $push_list[$v['day']]['day'] = $v['day'];
+                $push_list[$v['day']]['day'] = date('Y-m-d',$push_list[$v['day']]['res'][0]['add_time'] );
+                $push_list[$v['day']]['ids'] = implode(',',$push_list[$v['day']]['ids']);
+                $push_list[$v['day']]['cnt'] = count($push_list[$v['day']]['res']);
+
+//                $push_list[$v['day']]['day'] = $v['day'];
+//                var_dump(M('push_log')->getLastSql(),$days);exit;
             }
+//            $push_list = M('push_log')->where($where)->order('add_time desc')->select();
+//            var_dump($push_list);exit;
+
+/*            foreach ($push_list as $k => $val) {
+                $push_list[$k]['commission'] = M('commission')->where('id=' . $val['commission_id'])->find() ?: '';
+            }*/
+
 
 
 
