@@ -125,24 +125,24 @@ function loadSingle(type){
         "maxrow":maxrow,
     };
 
-    alert('=====================');
+    /*alert('=====================');
     alert(done);
     alert(maxrow);
     alert(nextrow);
-    alert('=====================');
-    
+    alert('=====================');*/
+
     if (!done) {
 	    if (maxrow>nextrow) {
 		    // $.post(url,content,function(data,status){
 		    $.get(url,function(data,status){
 			    $('.'+type).append(data);
-			    $('.'+type).attr('nextrow':nextrow+rowlength);
+			    $('.'+type).attr('nextrow',nextrow+rowlength);
 			    //移除加载动画
 			    loadingend();
 		    });
 	    }else{
 		    $('.'+type).append("<p style='text-align:center;color:#888'>已经加载全部</p >");
-			// $('.'+type).attr('done':'done');
+			$('.'+type).attr('done','done');
 	    }
     }
 
