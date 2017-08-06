@@ -145,12 +145,11 @@ function loadSingle(type){
 				var admin_info = json.admin_info;
 				var items_html = '';
 				
-				$('#linkshare').append("<p class='linkcontent'>"+json.url+"</p>");
 
 				for(var o in items){
-					items_html = items_html+"<div class='singlegoods'><div class='thumbs'><img class='wid' src='"+items[o].img+"'></div><div class='goodsinfo'><span class='goodstitle'>"+items[o].title+"</span><span class='goodsdetials'>价格:<span class='num'>"+items[o].price+"</span></span><span class='goodsdetials importantinfo'>佣金:<span class='num'>"+items[o].commission2+"</span> <span class='linespace'></span>佣金比例:<span class='num'>"+items[o].rate2+"%</span></span><button type='button' class='btn btn-default btn-rounded waves-effect waves-light right' onclick='promote(this,"+items[o].id+",'"+items[o].item_id+","+items[o].shop_id+","+items[o].commission+","+items[o].rate+","+items[o].price+","+items[o].title+","+items[o].img+","+admin_info.id+","+admin_info.pid+","+admin_info.user_id+");' promoteid='goodsid'>立即推广</button></div></div>";  
+					items_html = items_html+"<div class='singlegoods'><div class='thumbs'><img class='wid' src='"+items[o].img+"'></div><div class='goodsinfo'><span class='goodstitle'>"+items[o].title+"</span><span class='goodsdetials'>价格:<span class='num'>"+items[o].price+"</span></span><span class='goodsdetials importantinfo'>佣金:<span class='num'>"+items[o].commission2+"</span> <span class='linespace'></span>佣金比例:<span class='num'>"+items[o].rate2+"%</span></span><button type='button' class='btn btn-default btn-rounded waves-effect waves-light right' onclick='promote(this,"+items[o].id+","+items[o].item_id+","+items[o].shop_id+","+items[o].commission+","+items[o].rate+","+items[o].price+","+items[o].title+","+items[o].img+","+admin_info.id+","+admin_info.pid+","+admin_info.user_id+");' promoteid='goodsid'>立即推广</button></div></div>"; 
 			    } 
-			    
+
 			    // $('.'+type).append(data);
 			    $('.'+type).append(items_html);
 
