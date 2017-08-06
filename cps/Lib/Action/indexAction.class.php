@@ -228,7 +228,10 @@ class indexAction extends baseAction
             $this->assign('cates', $cates);
 
             $count = $commission_mod->where($where)->count();
-            $p = new Page($count, 10);
+            $this->assign('count', $count);
+
+            // 每页记录数
+            $p = new Page($count, 5);
             $commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
 //var_dump($commission_mod->getLastSql(),$commission_list);exit;
             $bank_id = get_platform_id($_SESSION['admin_info']);
@@ -255,6 +258,30 @@ class indexAction extends baseAction
 
             $page = $p->show();
             $this->assign('page', $page);
+
+
+            // 获取分页页码
+            if($_GET['nextrow']){
+                if ($_GET['id']==1){
+                    echo "1";
+                    exit();
+                }
+                //下拉的时候的条件
+                if($_GET['nextrow']){
+                    $pagestart=$_GET['nextrow'];
+                }else{
+                    $pagestart=0;
+                }
+                $data = $commission_mod->where($where)->limit($pagestart . ','.$p->listRows)->order('id DESC')->select();
+//                var_dump($commission_mod->getLastSql());
+                if ($data){
+                    echo json_encode( $data );
+                }else{
+                    echo "1";
+                    exit();
+                }
+                exit;
+            }
 
             $this->assign('commission_list', $commission_list);
 

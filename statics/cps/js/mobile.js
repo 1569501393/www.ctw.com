@@ -12,8 +12,8 @@ jQuery(document).ready(function(){
 	});
 
   $(window).scroll(function() {  
-  	var nextrow=$("#nextrow").val();	//下次加载从nextrow条开始	
-  	// alert(nextrow);
+  	// var nextrow=$("#nextrow").val();	//下次加载从nextrow条开始	
+  	
       //当内容滚动到底部时加载新的内容  
     if ($(this).scrollTop() + $(window).height() + 10 >= $(document).height() && $(this).scrollTop() > 20) {  
           //当前要加载的页码  
@@ -24,11 +24,17 @@ jQuery(document).ready(function(){
           loadingstart(type);
 
           //在加载程序的最后 移除加载动画
-          loadSingle(type,nextrow);  
+          // loadSingle2(type,nextrow);  
+          // loadSingle2(type);  
+          loadSingle(type);  
+          // alert(type);
+
 
     }
 
-    $("#nextrow").val(parseInt(nextrow)+10);	//每次加载10条  
+    // $("#nextrow").val(parseInt(nextrow)+10);	//每次加载10条  
+
+    // alert('nextrow==='+nextrow);
  
   });  	
 
@@ -100,41 +106,48 @@ function initSwiper(){
     });
 }
 
-function loadSingle(type,nextrow){
+
+
+function loadSingle(type){
+
     //这个地方放置 动态加载的语句. 如果加载速度不快的话。建议加一个局部菊花效果. 用ajax重写Content
 
-    if (type=='goodslist') {
-	    // var content = "<div class='singlegoods'><a href='#'><div class='thumbs'><img class='wid' src='./assets/images/unknown.jpeg'></div></a><div class='goodsinfo'><span class='goodstitle'>华为 （HUAWEI） nova 4GB+64GB 全金属机身、超级好用</span><span class='goodsdetials'>价格:<span class='num'>100</span></span><span class='goodsdetials importantinfo'>佣金:<span class='num'>30</span><span class='linespace'></span>佣金比例:<span class='num'>30%</span></span><button type='button' class='btn btn-default btn-rounded waves-effect waves-light right' onclick='promote(this);' promoteid='goodsid'>立即推广</button></div></div>";
+    var rowlength = 5;
+    var nextrow = $('.'+type).attr('nextrow') ? Number($('.'+type).attr('nextrow')) : rowlength ;
+    var maxrow = $('.'+type).attr('maxrow') ? Number($('.'+type).attr('maxrow')) : false ;
+    //maxrow需要直接写入到 type 这个div 的 maxrow属性里 如<div class='type' maxrow='100'></div>
+    var done = $('.'+type).attr('done') ? $('.'+type).attr('done') : false ;
 
+    var url = 'cps.php?m=index&a=index&json=1&nextrow='+nextrow+'&type='+type;
+    var content = {
+        "type":type,
+        "nextrow":nextrow,
+        "maxrow":maxrow,
+    };
 
-	    var url = 'cps.php?m=index&a=index&json=1&nextrow='+nextrow;
-	    $.get(url,function(data,status){
-		
-		// var json = JSON.parse(data);
-		var json = data;
-		alert(json.data);
-		var imgs = json.data;
-		var imgs_html = '';
-
-		for(var o in imgs){   
-	        imgs_html = imgs_html+imgs[o].title;	        
-
-	    }  
-	    alert(imgs_html);
-
-	});
-
-
-    }else if(type=='shopslist'){
-    	var content = "<div class='singleshop'><a href='#'><div class='thumbs'><img class='wid' src='./assets/images/unknown.jpeg'></div></a><div class='goodsinfo'><span class='goodstitle'>华为 （HUAWEI） nova 4GB+64GB 全金属机身、超级好用</span><span class='goodsdetials'>价格:<span class='num'>100 </span></span><span class='goodsdetials importantinfo'>佣金:<span class='num'>30</span> <span class='linespace'></span>佣金比例:<span class='num'>30%</span></span></div><div class='bottominfo'><p>活动时间: <span class='num'>2017年11月11日</span> 至 <span class='num'>2017年11月18日</span></p></div><div class='bottomfunc'><button type='button' class='btn btn-default btn-rounded waves-effect waves-light' onclick='promote(this);' promoteid='goodsid'>立即推广</button></div></div>";
+    alert('=====================');
+    alert(done);
+    alert(maxrow);
+    alert(nextrow);
+    alert('=====================');
+    
+    if (!done) {
+	    if (maxrow>nextrow) {
+		    // $.post(url,content,function(data,status){
+		    $.get(url,function(data,status){
+			    $('.'+type).append(data);
+			    $('.'+type).attr('nextrow':nextrow+rowlength);
+			    //移除加载动画
+			    loadingend();
+		    });
+	    }else{
+		    $('.'+type).append("<p style='text-align:center;color:#888'>已经加载全部</p >");
+			// $('.'+type).attr('done':'done');
+	    }
     }
 
-    $('.'+type).append(content);
-
-    //移除加载动画
-    loadingend();
-
 }
+
 
 function loadingstart(type){
     $('.'+type).append("<div class='partloading'><i class='loadingicon ion-load-c fa-spin'></i></div>");
