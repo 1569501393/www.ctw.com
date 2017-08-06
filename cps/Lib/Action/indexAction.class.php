@@ -275,7 +275,9 @@ class indexAction extends baseAction
                 $data = $commission_mod->where($where)->limit($pagestart . ','.$p->listRows)->order('id DESC')->select();
 //                var_dump($commission_mod->getLastSql());
                 if ($data){
-                    echo json_encode( $data );
+                    $res['data'] = $data;
+                    $res['admin_info'] = $_SESSION['admin_info'];
+                    echo json_encode( $res );
                 }else{
                     echo "1";
                     exit();
