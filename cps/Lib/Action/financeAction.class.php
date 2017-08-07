@@ -114,7 +114,9 @@ class financeAction extends baseAction {
 
             foreach ($days as $k=>$v){
 //                $push_list[$v['day']] = M('push_log')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->order('add_time desc')->select();
-                $push_list[$v['day']]['res'] = M('push_log')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->order('add_time desc')->select();
+//                $push_list[$v['day']]['res'] = M('push_log')->field('DISTINCT(item_id),add_time,bank_subid,sid,commission_id ')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->order('add_time desc')->select();
+                $push_list[$v['day']]['res'] = M('push_log')->field('id,item_id,add_time,bank_subid,sid,commission_id ')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->group('item_id')->order('add_time desc')->select();
+//                var_dump(M('push_log')->getLastSql());exit;
                 foreach ($push_list[$v['day']]['res'] as $k => $val) {
                     $push_list[$v['day']]['res'][$k]['commission'] = M('commission')->where('id=' . $val['commission_id'])->find() ?: '';
                     // 获取佣金id,查看当天列表
