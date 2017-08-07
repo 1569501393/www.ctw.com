@@ -247,13 +247,11 @@ class indexAction extends baseAction
 
                 // 分润  根据分行设置 暂时屏蔽
                 //			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$role_id} ")->find() ?: array();
-                $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'     ")->order('id desc')->find() ?: array();
+                $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$bank_id} ")->find() ?: array();
                 $commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
                 $commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
 
             }
-
-
             //		var_dump($commission_list);exit;
 
             $page = $p->show();
@@ -272,10 +270,25 @@ class indexAction extends baseAction
                 }else{
                     $pagestart=0;
                 }
-                $data = $commission_mod->where($where)->limit($pagestart . ','.$p->listRows)->order('id DESC')->select();
-//                var_dump($commission_mod->getLastSql());
-                if ($data){
-                    $res['data'] = $data;
+                $commission_list = $commission_mod->where($where)->limit($pagestart . ','.$p->listRows)->order('id DESC')->select();
+
+                $bank_id = get_platform_id($_SESSION['admin_info']);
+                //		var_dump($bank_id);exit;
+                $key = 1;
+                foreach ($commission_list as $k => $val) {
+                    $commission_list[$k]['key'] = ++$p->firstRow;
+                    $commission_list[$k]['bank_id'] = $bank_id;
+                    $commission_list[$k]['platform_name'] = M('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
+                    $commission_list[$k]['file'] = M('file')->where(" item_id='{$val['item_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
+//                    $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'     ")->order('id desc')->find() ?: array();
+                    $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$bank_id} ")->find() ?: array();
+                    $commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
+                    $commission_list[$k]['rate2'] = $profit['rate']?:$val['rate'];
+
+                }
+
+                if ($commission_list){
+                    $res['data'] = $commission_list;
                     $res['admin_info'] = $_SESSION['admin_info'];
                     echo json_encode( $res );
                 }else{

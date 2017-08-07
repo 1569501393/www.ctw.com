@@ -29,7 +29,7 @@ class itemsAction extends baseAction
 		$APP_URL = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 //		$APP_URL = 'http://localhost/99_ctw/msec3.jieqiangtec.com/';
 //		var_dump($APP_URL);exit;
-		$file = $_GET['img'];
+		$file = $_REQUEST['img'];
 		// 判断是否有底图
 		if ($file) {
 			//			$poster_bg = $APP_URL.__ROOT__.$file['img'];  // 海报背景图  从库中取得
@@ -43,21 +43,21 @@ class itemsAction extends baseAction
 		$head_source = $APP_URL . __ROOT__ . '/data' . $head_source;
 
 		// 商品信息取商品表
-		/*$item = M('commission')->where(" item_id={$_GET['item_id']} ")->find();
+		/*$item = M('commission')->where(" item_id={$_REQUEST['item_id']} ")->find();
 		 $text = $item['title'];
-		 $text = "{$_GET['sname']}向您推荐好货 \n $text ";*/
-		//        $text = "{$_GET['user_id']}({$_GET['sname']})向您推荐好货 \n {$_GET['title']} ";
-		$text = "{$_GET['user_id']}向您推荐好货 \n {$_GET['title']} ";
+		 $text = "{$_REQUEST['sname']}向您推荐好货 \n $text ";*/
+		//        $text = "{$_REQUEST['user_id']}({$_REQUEST['sname']})向您推荐好货 \n {$_REQUEST['title']} ";
+		$text = "{$_REQUEST['user_id']}向您推荐好货 \n {$_REQUEST['title']} ";
 		// $qrcode = $APP_URL.__ROOT__.'/data'.$qrcode; // 二维码  jiu
-		//		$qrcode = $this->create_qrcode(U('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_GET['item_id'],'shop_id'=>$_GET['shop_id'],'con_id'=>$_GET['con_id'],'rate'=>$_GET['rate'],'cate_id'=>$_GET['cate_id'] )));
-		$qrcode = $this->create_qrcode($APP_URL . U('desk/prom', $_GET)); //生产二维码
+		//		$qrcode = $this->create_qrcode(U('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'shop_id'=>$_REQUEST['shop_id'],'con_id'=>$_REQUEST['con_id'],'rate'=>$_REQUEST['rate'],'cate_id'=>$_REQUEST['cate_id'] )));
+		$qrcode = $this->create_qrcode($APP_URL . U('desk/prom', $_REQUEST)); //生产二维码
 
-//		$qrcode = $this->create_qrcode("{$_GET['url']}?sid={$_SESSION['admin_info']['id']}&item_id={$_GET['item_id']}&commission_id={$_GET['id']}&shop_id={$_GET['shop_id']}&con_id={$_GET['con_id']}&bank_id={$_GET['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}"); //生产二维码
+//		$qrcode = $this->create_qrcode("{$_REQUEST['url']}?sid={$_SESSION['admin_info']['id']}&item_id={$_REQUEST['item_id']}&commission_id={$_REQUEST['id']}&shop_id={$_REQUEST['shop_id']}&con_id={$_REQUEST['con_id']}&bank_id={$_REQUEST['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}"); //生产二维码
 		$qrcode_url = $APP_URL . __ROOT__ . $qrcode; // 二维码
 
 		$head_source = @imagecreatefromjpeg($head_source); // imagecreatefromjpeg — 由文件或URL创建一个新图象
 		$qrcode_path = $poster_path = './data/qrcode/'; //存放目录
-		$poster_name = 'poster_' . $_GET['sid'] . '_' . $_GET['sname'] . '_' . $_GET['item_id'] . '_' . $_GET['shop_id'] . '_' . time(); // 文件命名
+		$poster_name = 'poster_' . $_REQUEST['sid'] . '_' . $_REQUEST['sname'] . '_' . $_REQUEST['item_id'] . '_' . $_REQUEST['shop_id'] . '_' . time(); // 文件命名
 		//        var_dump(imagecreatefromjpeg($qrcode));exit;
 
 		// 测试时屏蔽
@@ -107,10 +107,10 @@ class itemsAction extends baseAction
 		$poster_img = $qrcode_path . $poster_name . ".jpg";
 		//		写入二维码表，商品表
 		Log::write('$poster_img==' . $poster_img);
-		M('items')->where("id={$_GET['origin_id']}")->save(array('qrcode' => $poster_img));
+		M('items')->where("id={$_REQUEST['origin_id']}")->save(array('qrcode' => $poster_img));
 
 		// 写入海报表
-		$data = array('img' => $poster_img, 'origin_name' => $_GET['title'], 'origin_id' => $_GET['origin_id'], 'item_id' => $_GET['item_id'], 'con_id' => $_GET['con_id'], 'shop_id' => $_GET['shop_id'], 'add_time' => date('Y-m-d H:i:s'), 'update_time' => date('Y-m-d H:i:s'), 'status' => 1, 'data_state' => 1);
+		$data = array('img' => $poster_img, 'origin_name' => $_REQUEST['title'], 'origin_id' => $_REQUEST['origin_id'], 'item_id' => $_REQUEST['item_id'], 'con_id' => $_REQUEST['con_id'], 'shop_id' => $_REQUEST['shop_id'], 'add_time' => date('Y-m-d H:i:s'), 'update_time' => date('Y-m-d H:i:s'), 'status' => 1, 'data_state' => 1);
 		M('poster')->add(array_merge($data));
 		//		var_dump(M('items')->getLastSql());exit;
 		//        var_dump($qrcode_img);
@@ -151,14 +151,14 @@ class itemsAction extends baseAction
 	 //        }
 
 
-	 if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+	 if (isset($_REQUEST['keyword']) && trim($_REQUEST['keyword'])) {
 	 //            $where .= " AND (title like '%{$_REQUEST['keyword']}%' OR contract like '%{$_REQUEST['keyword']}%') ";
-	 $where .= " AND (origin_name like '%{$_GET['keyword']}%' ) ";
-	 $this->assign('keyword', $_GET['keyword']);
+	 $where .= " AND (origin_name like '%{$_REQUEST['keyword']}%' ) ";
+	 $this->assign('keyword', $_REQUEST['keyword']);
 	 }
-	 if (isset($_GET['id']) && intval($_GET['id'])) {
-	 $where .= " AND con_id=" . $_GET['id'];
-	 $this->assign('con_id', $_GET['id']);
+	 if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
+	 $where .= " AND con_id=" . $_REQUEST['id'];
+	 $this->assign('con_id', $_REQUEST['id']);
 	 }
 
 
@@ -188,26 +188,26 @@ class itemsAction extends baseAction
         //搜索
         $where = '1=1 AND data_state=1';
 
-        if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+        if (isset($_REQUEST['keyword']) && trim($_REQUEST['keyword'])) {
             //            $where .= " AND (title like '%{$_REQUEST['keyword']}%' OR contract like '%{$_REQUEST['keyword']}%') ";
-            $where .= " AND (title like '%{$_GET['keyword']}%' ) ";
-            $this->assign('keyword', $_GET['keyword']);
+            $where .= " AND (title like '%{$_REQUEST['keyword']}%' ) ";
+            $this->assign('keyword', $_REQUEST['keyword']);
         }
 
-        if (isset($_GET['id']) && intval($_GET['id'])) {
-            $where .= " AND con_id=" . $_GET['id'];
-            $this->assign('con_id', $_GET['id']);
+        if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
+            $where .= " AND con_id=" . $_REQUEST['id'];
+            $this->assign('con_id', $_REQUEST['id']);
         }
 
         // 分类
-        if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
-            $where .= " AND cate_name= '{$_GET['cate_id']}' ";
-            $this->assign('cate_id', $_GET['cate_id']);
+        if (isset($_REQUEST['cate_id']) && !empty($_REQUEST['cate_id'])) {
+            $where .= " AND cate_name= '{$_REQUEST['cate_id']}' ";
+            $this->assign('cate_id', $_REQUEST['cate_id']);
         }
 
 
         // 导出excel
-        if ($_GET['dosubmit'] ==2){
+        if ($_REQUEST['dosubmit'] ==2){
             $items_list = $items_mod->where($where)->order('id DESC')->select();
             foreach ($items_list as $k => $v) {
                 $items_list[$k]['add_time'] = date('Y-m-d H:i:s', $v['add_time']);
@@ -266,14 +266,14 @@ class itemsAction extends baseAction
 
 		//        var_dump($_REQUEST);
 		M('commission')->where("item_id='{$_REQUEST['item_id']}' AND shop_id={$_REQUEST['shop_id']} ")->setInc('click');
-		$_GET['add_time'] = $_GET['update_time'] = time();
-		$_GET['op_time'] = date('Y-m-d H:i:s');
-		$_GET['status'] = $_GET['data_state'] = 1;
-		$_GET['add_time'] = time();
-		$_GET['add_time'] = time();
-		M('push_log')->add($_GET);
+		$_REQUEST['add_time'] = $_REQUEST['update_time'] = time();
+		$_REQUEST['op_time'] = date('Y-m-d H:i:s');
+		$_REQUEST['status'] = $_REQUEST['data_state'] = 1;
+		$_REQUEST['add_time'] = time();
+		$_REQUEST['add_time'] = time();
+		M('push_log')->add($_REQUEST);
 
-		var_dump("这是跳转页面,您是由{$_GET['sid']}({$_GET['sname']}-{$_GET['user_id']})推广的,我要到商城购物去喽~~");
+		var_dump("这是跳转页面,您是由{$_REQUEST['sid']}({$_REQUEST['sname']}-{$_REQUEST['user_id']})推广的,我要到商城购物去喽~~");
 		//		$this->assign('sort', $sort);
 		//		$this->display();
 		//        redirect('http://baidu.com');
@@ -303,14 +303,14 @@ class itemsAction extends baseAction
 	 //                $where .= " AND (platform_id ={$role_id}) ";
 	 //            }
 	 //        }
-	 if (isset($_GET['keyword']) && trim($_GET['keyword'])) {
+	 if (isset($_REQUEST['keyword']) && trim($_REQUEST['keyword'])) {
 	 //            $where .= " AND (title like '%{$_REQUEST['keyword']}%' OR contract like '%{$_REQUEST['keyword']}%') ";
-	 $where .= " AND (title like '%{$_GET['keyword']}%' ) ";
-	 $this->assign('keyword', $_GET['keyword']);
+	 $where .= " AND (title like '%{$_REQUEST['keyword']}%' ) ";
+	 $this->assign('keyword', $_REQUEST['keyword']);
 	 }
-	 if (isset($_GET['id']) && intval($_GET['id'])) {
-	 $where .= " AND con_id=" . $_GET['id'];
-	 $this->assign('con_id', $_GET['id']);
+	 if (isset($_REQUEST['id']) && intval($_REQUEST['id'])) {
+	 $where .= " AND con_id=" . $_REQUEST['id'];
+	 $this->assign('con_id', $_REQUEST['id']);
 	 }
 
 	 $count = $commission_mod->where($where)->count();
@@ -338,11 +338,11 @@ class itemsAction extends baseAction
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 
-        if ($_GET['id']){
-            $files = M('file')->where(" item_id='{$_GET['item_id']}' AND shop_id='{$_GET['shop_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
-//            var_dump($_GET);
-            if ($_GET['json']){
-                $url = $this->site_root .u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_GET['item_id'],'commission_id'=>$_GET['id'],'con_id'=>$_GET['con_id'],'shop_id'=>$_GET['shop_id'],'bank_id'=>$_GET['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']));
+        if ($_REQUEST['id']){
+            $files = M('file')->where(" item_id='{$_REQUEST['item_id']}' AND shop_id='{$_REQUEST['shop_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
+//            var_dump($_REQUEST);
+            if ($_REQUEST['json']){
+                $url = $this->site_root .u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'con_id'=>$_REQUEST['con_id'],'shop_id'=>$_REQUEST['shop_id'],'bank_id'=>$_REQUEST['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']));
 
                 $res['data'] = $files;
                 $res['url'] = $url;
@@ -361,9 +361,9 @@ class itemsAction extends baseAction
         }
 
 
-        if ($_GET['commission_id']){
-//            $where .= " AND commission_id=" . $_GET['commission_id'];
-            $where .= " AND id in ({$_GET['commission_id']}) " ;
+        if ($_REQUEST['commission_id']){
+//            $where .= " AND commission_id=" . $_REQUEST['commission_id'];
+            $where .= " AND id in ({$_REQUEST['commission_id']}) " ;
         }
 
         if ($_SESSION['admin_info']['role_id'] !=1 ) {
@@ -388,24 +388,24 @@ class itemsAction extends baseAction
 
 
 		// 分类
-		if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
-			$where .= " AND cate_name= '{$_GET['cate_id']}' ";
-			$this->assign('cate_id', $_GET['cate_id']);
+		if (isset($_REQUEST['cate_id']) && !empty($_REQUEST['cate_id'])) {
+			$where .= " AND cate_name= '{$_REQUEST['cate_id']}' ";
+			$this->assign('cate_id', $_REQUEST['cate_id']);
 		}
 
 
 		$order = 'id DESC';
         // 分类
-        if (isset($_GET['order']) && !empty($_GET['order'])) {
-            if ($_GET['order'] == 1){
+        if (isset($_REQUEST['order']) && !empty($_REQUEST['order'])) {
+            if ($_REQUEST['order'] == 1){
                 $order = 'price DESC';
-            }elseif ($_GET['order'] == 2){
+            }elseif ($_REQUEST['order'] == 2){
                 $order = 'commission DESC';
-            }elseif ($_GET['order'] == 3){
+            }elseif ($_REQUEST['order'] == 3){
                 $order = 'rate DESC';
             }
 
-            $this->assign('order', $_GET['order'] );
+            $this->assign('order', $_REQUEST['order'] );
         }
 
 
@@ -414,7 +414,8 @@ class itemsAction extends baseAction
 		$this->assign('cates', $cates);
 
 		$count = $commission_mod->where($where)->count();
-		$p = new Page($count, 10);
+        $this->assign('count', $count);
+		$p = new Page($count, 5);
 		$commission_list = $commission_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order($order)->select();
 
 //        var_dump($commission_mod->getLastSql());
@@ -431,7 +432,7 @@ class itemsAction extends baseAction
             $commission_list[$k]['file'] = M('file')->where(" item_id='{$val['item_id']}' AND shop_id='{$val['shop_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
 
 			// 分润  根据分行设置 暂时屏蔽
-						$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$bank_id} ")->find() ?: array();
+            $profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}' AND  shop_id={$val['shop_id']} AND  role_id={$bank_id} ")->find() ?: array();
 //			$profit = M('commission')->where(" con_id<1 AND item_id='{$val['item_id']}'  AND  shop_id={$val['shop_id']}   ")->order('id desc')->find() ?: array();
 //            var_dump(M('commission')->getLastSql());exit;
 			$commission_list[$k]['commission2'] = $profit['commission']?:$val['commission'];
@@ -497,12 +498,12 @@ class itemsAction extends baseAction
 				$this->error(L('operation_failure'));
 			}
 		} else {
-			//		$items_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error(L('please_select'));
+			//		$items_id = isset($_REQUEST['id']) && intval($_REQUEST['id']) ? intval($_REQUEST['id']) : $this->error(L('please_select'));
 			//			$files = M()->where($where)->select($options);
-			if (empty($_GET['origin_id'])) {
+			if (empty($_REQUEST['origin_id'])) {
 				$this->error('非法请求，参数错误');
 			}
-			$files = M('file')->where(" 1=1 AND data_state=1  AND origin_id={$_GET['origin_id']} ")->order('id DESC')->select();
+			$files = M('file')->where(" 1=1 AND data_state=1  AND origin_id={$_REQUEST['origin_id']} ")->order('id DESC')->select();
 			$this->assign('files', $files);
 		}
 
@@ -533,7 +534,7 @@ class itemsAction extends baseAction
 	 $this->error(L('operation_failure'));
 	 }
 	 }
-	 $items_id = isset($_GET['id']) && intval($_GET['id']) ? intval($_GET['id']) : $this->error(L('please_select'));
+	 $items_id = isset($_REQUEST['id']) && intval($_REQUEST['id']) ? intval($_REQUEST['id']) : $this->error(L('please_select'));
 
 	 $items_info = $items_mod->relation('items_tags')->where('id=' . $items_id)->find();
 	 foreach ($items_info['items_tags'] as $tag) {
@@ -716,7 +717,7 @@ class itemsAction extends baseAction
 		$album_items_mod = D('album_items');
 		$items_user_mod = D('items_user');
 
-		if ((!isset($_GET['id']) || empty($_GET['id'])) && (!isset($_REQUEST['id']) || empty($_REQUEST['id']))) {
+		if ((!isset($_REQUEST['id']) || empty($_REQUEST['id'])) && (!isset($_REQUEST['id']) || empty($_REQUEST['id']))) {
 			$this->error('请选择要删除的商品！');
 		}
 		if (isset($_REQUEST['id'])) {
@@ -964,11 +965,11 @@ class itemsAction extends baseAction
 
 		//搜索
 		$where = 'type="item,index" ';
-		$keyword = isset($_GET['keyword']) && trim($_GET['keyword']) ? trim($_GET['keyword']) : '';
-		$time_start = isset($_GET['time_start']) && trim($_GET['time_start']) ? trim($_GET['time_start']) : '';
-		$time_end = isset($_GET['time_end']) && trim($_GET['time_end']) ? trim($_GET['time_end']) : '';
-		$status = isset($_GET['status']) ? intval($_GET['status']) : '-1';
-		$uname = isset($_GET['uname']) && trim($_GET['uname']) ? trim($_GET['uname']) : '';
+		$keyword = isset($_REQUEST['keyword']) && trim($_REQUEST['keyword']) ? trim($_REQUEST['keyword']) : '';
+		$time_start = isset($_REQUEST['time_start']) && trim($_REQUEST['time_start']) ? trim($_REQUEST['time_start']) : '';
+		$time_end = isset($_REQUEST['time_end']) && trim($_REQUEST['time_end']) ? trim($_REQUEST['time_end']) : '';
+		$status = isset($_REQUEST['status']) ? intval($_REQUEST['status']) : '-1';
+		$uname = isset($_REQUEST['uname']) && trim($_REQUEST['uname']) ? trim($_REQUEST['uname']) : '';
 
 		if ($keyword) {
 			$where .= " AND " . $prex . "user_comments.info LIKE '%" . $keyword . "%'";
@@ -1015,14 +1016,14 @@ class itemsAction extends baseAction
 	function comments_delete()
 	{
 		$mod = D('user_comments');
-		if ((!isset($_GET['id']) || empty($_GET['id'])) && (!isset($_REQUEST['id']) || empty($_REQUEST['id']))) {
+		if ((!isset($_REQUEST['id']) || empty($_REQUEST['id'])) && (!isset($_REQUEST['id']) || empty($_REQUEST['id']))) {
 			$this->error('请选择要删除的记录！');
 		}
 		if (isset($_REQUEST['id']) && is_array($_REQUEST['id'])) {
 			$ids = implode(',', $_REQUEST['id']);
 			$mod->delete($ids);
 		} else {
-			$id = intval($_GET['id']);
+			$id = intval($_REQUEST['id']);
 			$mod->where('id=' . $id)->delete();
 		}
 		$this->success(L('operation_success'));
@@ -1067,7 +1068,7 @@ class itemsAction extends baseAction
 			$keywords = isset($_REQUEST['keywords']) && trim($_REQUEST['keywords']) ? trim($_REQUEST['keywords']) : $this->error('请填写关键词');
 			$pages = isset($_REQUEST['pages']) && intval($_REQUEST['pages']) ? intval($_REQUEST['pages']) : 1;
 
-			$p = isset($_GET['p']) && intval($_GET['p']) ? intval($_GET['p']) : 1;//当前页
+			$p = isset($_REQUEST['p']) && intval($_REQUEST['p']) ? intval($_REQUEST['p']) : 1;//当前页
 			$this->assign('data', $_REQUEST);
 			$this->assign('p', $p);
 
