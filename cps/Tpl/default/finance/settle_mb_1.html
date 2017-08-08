@@ -1,67 +1,35 @@
 <!-- 引入头部 -->
 <include file="public:header_mb" />
-
-<title>收入明细</title>
-</head>
-
+<title>收入明细</title></head>
 <div id="wrapper" class="secondpage incomepage">
-<!-- 引入导航 -->
+    <!-- 引入导航 -->
     <include file="public:leftMenu_mb" />
-
-<!-- Top Bar Start -->
-    <!-- <div class="topnavbar"> -->
-            <!-- <a href="baobiao_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
-        <!-- LOGO -->
-        <!-- 收入明细 -->
-        <!-- Button mobile view to collapse sidebar menu -->
-    <!-- </div> -->
-
-
-    <div class="content-page">
-
+    <div class="content-page ">
         <div class="content">
-
-        
-            <div class="row liblist contentlist">
-            <if condition="$order_list">
-            
-            <div id="pages" class="promotiondate">{$page}</div>
-            <volist name="order_list" id="val">
-                <div class="singlelib">
-                    <div class="promotiondate">
-                        <span class="info">{$val.order_time|date='Y-m-d',###}</span> 
-                        <span class="status">
-                        <if condition=" $val.settle_status4_btc && $val.settle_status3_ctb && $val.settle_status2_cts && $val.settle_status1_stc ">
-                        已结算
-                        <else />
-                        待结算
-                        </if>
-                        
-
-                        </span>
+            <div class="row liblist contentlist orderlist"  data-flag=3  maxrow='{$count}' nextrow='10' >
+                <if condition="$order_list">
+                    <!-- <div id="pages" class="promotiondate">{$page}</div> -->
+                    <volist name="order_list" id="val">
+                        <div class="singlelib">
+                            <div class="promotiondate">
+                                <span class="info">{$val.order_time|date='Y-m-d',###}</span>
+                                <span class="status">
+                                    <if condition=" $val.settle_status4_btc && $val.settle_status3_ctb && $val.settle_status2_cts && $val.settle_status1_stc ">已结算
+                                        <else />待结算</if></span>
+                            </div>
+                            <div class="libdetials">
+                                <p class="ordername">{$val.title}</p>
+                                <span class="num">¥{$val.commission}</span></div>
+                        </div>
+                    </volist>
+                    <else />
+                    <div class="singlelib">
+                        <div class="promotiondate">
+                            <span class="info">暂无信息</span></div>
                     </div>
-                    <div class="libdetials">
-                        <p class="ordername">{$val.title}</p>
-                        <span class="num">¥19</span>
-                    </div>
-                </div>
-            </volist>
-            <else />
-                <div class="singlelib">
-                    <div class="promotiondate">
-                        <span class="info">暂无信息</span> 
-                        
-                    </div>
-                </div>
-
-            </if>
-
-
+                </if>
+            </div>
         </div>
-
     </div>
-</div>
-
-
-<!-- 引入尾部 -->
-<include file="public:footer_mb" />
+    <!-- 引入尾部 -->
+    <include file="public:footer_mb" />

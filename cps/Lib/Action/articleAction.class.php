@@ -46,7 +46,7 @@ class articleAction extends baseAction
         $this->assign('count', $count);
         $p = new Page($count, 5);
         // $article_list = $article_mod->where($where)->limit($p->firstRow.','.$p->listRows)->order('add_time DESC,ordid ASC')->select();
-        $article_list = $article_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC,ordid ASC')->select();
+        $article_list = $article_mod->field('id,title')->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC,ordid ASC')->select();
 //        var_dump($article_mod->getLastSql());
 //        exit;
         $key = 1;
@@ -87,8 +87,10 @@ class articleAction extends baseAction
             $this->assign('article', $article_info);
         }
 
+
         //网站信息/应用资讯
         $page = $p->show();
+
         $this->assign('page', $page);
         $this->assign('article_list', $article_list);
 

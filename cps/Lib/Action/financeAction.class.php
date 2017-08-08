@@ -138,9 +138,6 @@ class financeAction extends baseAction {
                 $push_list[$k]['commission'] = M('commission')->where('id=' . $val['commission_id'])->find() ?: '';
             }*/
 
-
-
-
             $this->assign('push_list', $push_list);
             $this->display('push_mb');exit;
         }
@@ -425,10 +422,9 @@ class financeAction extends baseAction {
 		import("ORG.Util.Page");
 		$count = $orderlist_mod->where($where)->count();
         $this->assign('count', $count);
-		$p = new Page($count, 5);
+		$p = new Page($count, 10);
 		$order_list = $orderlist_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id desc')->select();
 
-		$key = 1;
 		foreach ($order_list as $k => $val) {
 			$order_list[$k]['key'] = ++$p->firstRow;
 			$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';

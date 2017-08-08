@@ -16,8 +16,10 @@ jQuery(document).ready(function(){
     if ($(this).scrollTop() + $(window).height() + 10 >= $(document).height() && $(this).scrollTop() > 10) {  
           //当前要加载的页码  
           var type = checkContentType();
+          // alert('scrollTop~~~'+type);
           // TODO jieqiangtest
-		  // alert('scrollTop~~~'+type);
+		  // console.log('aaaaa=='+$(this).scrollTop()+'==bb=='+$(window).height()+'==cc=='+$(document).height() );
+		  
           //先出加载动画
           //在加载程序的最后 移除加载动画 
           loadSingle(type);  
@@ -32,7 +34,7 @@ function checkContentType(){
 	if ($('.contentlist').hasClass('goodslist')) {
 		// var type =  'commission' ;
 		var type =  'goodslist' ;
-	}else if ($('.contentlist').hasClass('msglist')) {
+	}else if ($('.contentlist').hasClass('article')) {
 		var type =  'article' ;
 	}else if ($('.contentlist').hasClass('orderlist')) {
 		var type =  'orderlist' ;
@@ -110,35 +112,40 @@ function loadSingle(type){
     //这个地方放置 动态加载的语句. 如果加载速度不快的话。建议加一个局部菊花效果. 用ajax重写Content
     var rowlength = 5;
     var nextrow = $('.'+type).attr('nextrow') ? Number($('.'+type).attr('nextrow')) : rowlength ;
-    var maxrow = $('.'+type).attr('maxrow') ? Number($('.'+type).attr('maxrow')) : false ;
+    var maxrow = $('.'+type).attr('maxrow') ? Number($('.'+type).attr('maxrow')) : 10 ;
     //maxrow需要直接写入到 type 这个div 的 maxrow属性里 如<div class='type' maxrow='100'></div>
     var done = $('.'+type).attr('done') ? $('.'+type).attr('done') : false ;
 
-    var url = 'cps.php?m=index&a=index&json=1&nextrow='+nextrow+'&type='+type;
+    var url = 'cps.php?m=api&a=index&json=1&nextrow='+nextrow+'&type='+type;
+    // alert('loadSingle~~~nextrow=='+nextrow+'==maxrow=='+maxrow+'==done=='+done+'==url=='+url);
     if (!done) {
     	//先出加载动画
 	    loadingstart(type);
 	    if (maxrow>nextrow) {
 		    $.get(url,function(data,status){
+		    	// alert(data);
+
 		    	var json = JSON.parse(data);
 				var items = json.data;
 				var admin_info = json.admin_info;
 				var items_html = '';
 
 				if (type == 'goodslist') {
+					// 佣金
 					// console.log(items);
 					for(var o in items){
 						items_html = items_html+'<div class="singlegoods"><div class="thumbs"><img class="wid" src="'+items[o].img+'"></div><div class="goodsinfo"><span class="goodstitle">'+items[o].title+'</span><span class="goodsdetials">价格:<span class="num">'+items[o].price+'</span></span><span class="goodsdetials importantinfo">佣金:<span class="num">'+items[o].commission2+'</span> <span class="linespace"></span>佣金比例:<span class="num">'+items[o].rate2+'%</span></span><button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this,'+items[o].id+',\''+items[o].item_id+'\',\''+items[o].shop_id+'\','+items[o].commission2+','+items[o].rate2+','+items[o].price+',\''+items[o].title+'\',\''+items[o].img+'\',\''+admin_info.id+'\',\''+admin_info.pid+'\',\''+admin_info.user_id+'\');" promoteid="goodsid">立即推广</button></div></div>' 
 				    } 
-			    }else if (type == 'msglist') {
+			    }else if (type == 'article') {
+					// 文章
 					// console.log(items);
 					for(var o in items){
-						items_html = items_html+'<div class="singlegoods"><div class="thumbs"><img class="wid" src="'+items[o].img+'"></div><div class="goodsinfo"><span class="goodstitle">'+items[o].title+'</span><span class="goodsdetials">价格:<span class="num">'+items[o].price+'</span></span><span class="goodsdetials importantinfo">佣金:<span class="num">'+items[o].commission2+'</span> <span class="linespace"></span>佣金比例:<span class="num">'+items[o].rate2+'%</span></span><button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this,'+items[o].id+',\''+items[o].item_id+'\',\''+items[o].shop_id+'\','+items[o].commission2+','+items[o].rate2+','+items[o].price+',\''+items[o].title+'\',\''+items[o].img+'\',\''+admin_info.id+'\',\''+admin_info.pid+'\',\''+admin_info.user_id+'\');" promoteid="goodsid">立即推广</button></div></div>' 
+						items_html = items_html+'<a href="/cps.php?m=article&a=edit&id='+items[o].id+'"><div class="settingsingle"><i class="settingicon ti-comment-alt"></i>'+items[o].title+'<i class="settingenter ti-angle-right"></i></div></a><div class="settingline"></div>' 
 				    } 
 			    }else if (type == 'orderlist') {
 					// console.log(items);
 					for(var o in items){
-						items_html = items_html+'<div class="singlegoods"><div class="thumbs"><img class="wid" src="'+items[o].img+'"></div><div class="goodsinfo"><span class="goodstitle">'+items[o].title+'</span><span class="goodsdetials">价格:<span class="num">'+items[o].price+'</span></span><span class="goodsdetials importantinfo">佣金:<span class="num">'+items[o].commission2+'</span> <span class="linespace"></span>佣金比例:<span class="num">'+items[o].rate2+'%</span></span><button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this,'+items[o].id+',\''+items[o].item_id+'\',\''+items[o].shop_id+'\','+items[o].commission2+','+items[o].rate2+','+items[o].price+',\''+items[o].title+'\',\''+items[o].img+'\',\''+admin_info.id+'\',\''+admin_info.pid+'\',\''+admin_info.user_id+'\');" promoteid="goodsid">立即推广</button></div></div>' 
+						items_html = items_html+'<div class="singlelib"><div class="promotiondate"><span class="info">'+items[o].order_time+'</span><span class="status">'+items[o].settle_status+'</span></div><div class="libdetials"><p class="ordername">'+items[o].title+'</p><span class="num">¥'+items[o].commission+'</span></div></div>' 
 				    } 
 			    }
 			    // $('.'+type).append(data);
@@ -148,6 +155,8 @@ function loadSingle(type){
 			    loadingend();
 		    });
 	    }else{
+	    	// 加载完毕
+	    	// alert('111加载完毕');
 		    $('.'+type).append("<br /><p style='text-align:center;color:#888'>已经加载全部</p >");
 			$('.'+type).attr('done','done');
 			//移除加载动画
