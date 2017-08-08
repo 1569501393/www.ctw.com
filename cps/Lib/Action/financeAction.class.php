@@ -424,7 +424,8 @@ class financeAction extends baseAction {
 		}
 		import("ORG.Util.Page");
 		$count = $orderlist_mod->where($where)->count();
-		$p = new Page($count, 10);
+        $this->assign('count', $count);
+		$p = new Page($count, 5);
 		$order_list = $orderlist_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id desc')->select();
 
 		$key = 1;

@@ -43,7 +43,8 @@ class articleAction extends baseAction
 
         import("ORG.Util.Page");
         $count = $article_mod->where($where)->count();
-        $p = new Page($count, 20);
+        $this->assign('count', $count);
+        $p = new Page($count, 5);
         // $article_list = $article_mod->where($where)->limit($p->firstRow.','.$p->listRows)->order('add_time DESC,ordid ASC')->select();
         $article_list = $article_mod->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC,ordid ASC')->select();
 //        var_dump($article_mod->getLastSql());

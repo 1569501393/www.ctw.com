@@ -1,121 +1,44 @@
 <!-- 引入头部 -->
 <include file="public:header_mb" />
 <title>消息列表</title>
-
-<style type="text/css">
-.messagepage .indicator {
-    max-width: 100%;
-}
-</style>
-</head>
-
+<style type="text/css">.messagepage .indicator { max-width: 100%; }</style></head>
 <div id="wrapper" class="secondpage">
-<!-- 引入导航 -->
+    <!-- 引入导航 -->
     <include file="public:leftMenu_mb" />
-
-    <!-- <div class="topnavbar"> -->
-            <!-- <a href="account_mb.php"><i class="backicon glyphicon glyphicon-chevron-left"></i></a> -->
-        <!-- LOGO -->
-        <!-- 消息列表 -->
-        <!-- Button mobile view to collapse sidebar menu -->
-    <!-- </div> -->
-
-
-
     <div class="content-page messagepage">
-
         <div class="content">
-
-
             <div class="row">
-            
-                    <ul class="nav nav-tabs tabs">
-                        <li class="active tab"  width=100%>
-                            <a href="#personal" data-toggle="tab" aria-expanded="false" > 
-                                <span class="visible-xs">个人消息</span> 
-                                <span class="hidden-xs">个人消息</span> 
-                            </a> 
-                        </li> 
-                    </ul>
-
-                    <!-- <ul class="nav nav-tabs tabs">
-                        <li class="active tab">
-                            <a href="#personal" data-toggle="tab" aria-expanded="false"> 
-                                <span class="visible-xs">个人消息</span> 
-                                <span class="hidden-xs">个人消息</span> 
-                            </a> 
-                        </li> 
-                        <li class="tab"> 
-                            <a href="#system" data-toggle="tab" aria-expanded="false"> 
-                                <span class="visible-xs">系统通知</span> 
-                                <span class="hidden-xs">系统通知</span> 
-                            </a> 
-                        </li> 
-                    </ul>  -->
-
-                    <!-- <ul class="nav nav-tabs tabs">
-                        <li class="active tab" width=100%>
-                            <a href="#personal" data-toggle="tab" aria-expanded="false"> 
-                                <span class="visible-xs">个人消息</span> 
-                                <span class="hidden-xs">个人消息</span> 
-                            </a> 
-                        </li> 
-                    </ul> --> 
-                    <div class="tab-content"> 
-
-                        <div class="tab-pane setting active" id="personal"> 
-
-                            <if condition="$article_list">
+                <ul class="nav nav-tabs tabs">
+                    <li class="active tab" width=100%>
+                        <a href="#personal" data-toggle="tab" aria-expanded="false">
+                            <span class="visible-xs">个人消息</span>
+                            <span class="hidden-xs">个人消息</span></a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <!-- <div class="tab-pane setting active" id="personal"> -->
+                    <div class="tab-pane setting active msglist contentlist" data-flag=2  maxrow='{$count}' nextrow='5'  style="margin-top: 133px;"  >
+                        <if condition="$article_list">
                             <volist name="article_list" id="val">
-
-                            <a href="{:u('article/edit',array('id'=>$val['id']))}">
-                                <div class="settingsingle">
-
-                                    <!-- <div class="redpoint"></div> -->
-
-                                    <i class="settingicon ti-comment-alt"></i>{$val.title}<i class="settingenter ti-angle-right"></i>
-                                </div>
-                            </a>
-                            <div class="settingline"></div>
-
-                            </volist>
-                            <else />
-                                <a href="">
+                                <a href="{:u('article/edit',array('id'=>$val['id']))}">
                                     <div class="settingsingle">
-                                    <div class="redpoint"></div>
-                                        <i class="settingicon ti-comment-alt"></i>暂无公告
+                                        <!-- <div class="redpoint"></div> -->
+                                        <i class="settingicon ti-comment-alt"></i>{$val.title}
                                         <i class="settingenter ti-angle-right"></i></div>
                                 </a>
-
-                            </if>
-
-                        </div>
-                        <!-- <div class="tab-pane setting" id="system">
-
-                            <a href="message_mb.php">
+                                <div class="settingline"></div>
+                            </volist>
+                            <else />
+                            <a href="">
                                 <div class="settingsingle">
-                                    <i class="settingicon ti-comment-alt"></i>这里写上消息名称<i class="settingenter ti-angle-right"></i>
-                                </div>
+                                    <div class="redpoint"></div>
+                                    <i class="settingicon ti-comment-alt"></i>暂无公告
+                                    <i class="settingenter ti-angle-right"></i></div>
                             </a>
-
-                            <div class="settingline"></div>
-                            <a href="message_mb.php">
-                                <div class="settingsingle">
-                                    <i class="settingicon ti-comment-alt"></i>这里写上消息名称<i class="settingenter ti-angle-right"></i>
-                                </div>
-                            </a>
-
-
-                        </div>  -->
-                    </div> 
-
-           
-
+                        </if>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-    </div>
-
-
-            <!-- 引入头部 -->
+        <!-- 引入头部 -->
         <include file="public:footer_mb" />
