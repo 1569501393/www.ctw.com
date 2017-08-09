@@ -133,18 +133,18 @@ function loadSingle(type){
 				if (type == 'goodslist') {
 					// 佣金
 					// console.log(items);
-					for(var o in items){
+					for(var o=0;o<items.length;o++){
 						items_html = items_html+'<div class="singlegoods"><div class="thumbs"><img class="wid" src="'+items[o].img+'"></div><div class="goodsinfo"><span class="goodstitle">'+items[o].title+'</span><span class="goodsdetials">价格:<span class="num">'+items[o].price+'</span></span><span class="goodsdetials importantinfo">佣金:<span class="num">'+items[o].commission2+'</span> <span class="linespace"></span>佣金比例:<span class="num">'+items[o].rate2+'%</span></span><button type="button" class="btn btn-default btn-rounded waves-effect waves-light right" onclick="promote(this,'+items[o].id+',\''+items[o].item_id+'\',\''+items[o].shop_id+'\','+items[o].commission2+','+items[o].rate2+','+items[o].price+',\''+items[o].title+'\',\''+items[o].img+'\',\''+admin_info.id+'\',\''+admin_info.pid+'\',\''+admin_info.user_id+'\');" promoteid="goodsid">立即推广</button></div></div>' 
 				    } 
 			    }else if (type == 'article') {
 					// 文章
 					// console.log(items);
-					for(var o in items){
+					for(var o=0;o<items.length;o++){
 						items_html = items_html+'<a href="/cps.php?m=article&a=edit&id='+items[o].id+'"><div class="settingsingle"><i class="settingicon ti-comment-alt"></i>'+items[o].title+'<i class="settingenter ti-angle-right"></i></div></a><div class="settingline"></div>' 
 				    } 
 			    }else if (type == 'orderlist') {
 					// console.log(items);
-					for(var o in items){
+					for(var o=0;o<items.length;o++){
 						items_html = items_html+'<div class="singlelib"><div class="promotiondate"><span class="info">'+items[o].order_time+'</span><span class="status">'+items[o].settle_status+'</span></div><div class="libdetials"><p class="ordername">'+items[o].title+'</p><span class="num">¥'+items[o].commission+'</span></div></div>' 
 				    } 
 			    }
