@@ -152,6 +152,7 @@ class financeAction extends baseAction {
             if ($_SESSION['admin_info']['role_id'] ==3 ) {
 //				$platform_id = get_platform_id($_SESSION['admin_info']['id']);
                 $where .= " AND uid<2 AND shop_id=" . $_SESSION['admin_info']['id'];
+                $where .= " AND platform_id=1 ";
             }else{
                 $platform_id = get_platform_id($_SESSION['admin_info']);
                 $where .= " AND platform_id=" . $platform_id;

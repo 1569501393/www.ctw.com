@@ -286,10 +286,17 @@ File: Helper clasess
   max-height: 380px;
   min-height: 380px;
 }
-.thumb-sm {
+/*.thumb-sm {
   height: 32px;
   width: 32px;
+}*/
+
+.thumb-sm {
+  height: 140px;
+  width: 140px;
+  align: left;
 }
+
 .thumb-md {
   height: 48px;
   width: 48px;

@@ -8,9 +8,9 @@ class articleAction extends baseAction
 //		$article_cate_mod = D('article_cate');
         //搜索
         $where = '1=1 AND data_state=1  ';
-        if (($_SESSION['admin_info']['role_id'] != 1)) {
+        /*if (($_SESSION['admin_info']['role_id'] != 1)) {
             $where = "1=1 AND (platform_id={$_SESSION['admin_info']['role_id'] } OR platform_id=0 ) ";
-        }
+        }*/
         // $where = '1=1 AND cate_id!=9 ';
 
         // 判断是否是商城管理员
@@ -44,9 +44,9 @@ class articleAction extends baseAction
         import("ORG.Util.Page");
         $count = $article_mod->where($where)->count();
         $this->assign('count', $count);
-        $p = new Page($count, 5);
+        $p = new Page($count, 12);
         // $article_list = $article_mod->where($where)->limit($p->firstRow.','.$p->listRows)->order('add_time DESC,ordid ASC')->select();
-        $article_list = $article_mod->field('id,title')->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC,ordid ASC')->select();
+        $article_list = $article_mod->field('id,title')->where($where)->limit($p->firstRow . ',' . $p->listRows)->order('id DESC')->select();
 //        var_dump($article_mod->getLastSql());
 //        exit;
         $key = 1;

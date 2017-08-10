@@ -1070,10 +1070,13 @@ CREATE TABLE `ctw_push_log` (
   `add_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `ip` varchar(255) DEFAULT NULL,
   `update_time` int(10) unsigned DEFAULT NULL COMMENT '修改时间',
-  `sid222` varchar(40) DEFAULT NULL,
+  `commission_id` int(10) DEFAULT NULL,
   `cate_name` varchar(128) NOT NULL DEFAULT '1' COMMENT '分类名称',
+  `shop_id` varchar(10) DEFAULT NULL COMMENT '商城id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='5.2.13推广记录表';
+
+
 
 -- ----------------------------
 -- Table structure for cps_role
