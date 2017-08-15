@@ -13,8 +13,35 @@
         <!-- Button mobile view to collapse sidebar menu -->
         <!-- </div> -->
         <!-- Top Bar End -->
+                        
+
         <div class="content-page">
             <div class="content">
+
+            <div class="row libdate">
+                <form name="customincome" method="GET" action="">
+                    <if condition="$start">
+                        <input type="date" class="mbdate" placeholder="{$start}" name="start" value="{$start}" />至
+                        <input type="date" class="mbdate" placeholder="{$end}" name="end" value="{$end}" />
+
+                    <else />
+                        <input type="date" class="mbdate" placeholder="{$result['begin_time']|date='Y-m-d',###}" name="start" value="{$result['begin_time']|date='Y-m-d',###}" />至
+                    <input type="date" class="mbdate" placeholder="{$result['end_time']|date='Y-m-d',###}" name="end" value="{$result['end_time']|date='Y-m-d',###}" />
+                    </if>
+
+                    
+
+                    <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                    <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+
+                    <!-- <input type="submit" class="btn waves-effect waves-light btn-primary" name="dosubmit" value="3" /> -->
+
+                    <button  class="btn waves-effect waves-light btn-primary" name="dosubmit" value="3">查询</button>
+
+                    <!-- <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button> -->
+                </form>
+            </div>
+
                 <div class="container">
                     <div class="row">
                         <div class="income">
@@ -35,8 +62,8 @@
                 <ul class="nav nav-tabs tabs">
                     <li class="tab active" style="width:33%">
                         <a href="#yesterday" data-toggle="tab" aria-expanded="false">
-                        <span class="visible-xs">昨日</span>
-                        <span class="hidden-xs">昨日</span>
+                        <span class="visible-xs"><if condition="$start">{$start}至{$end}<else />昨日</if></span>
+                        <span class="hidden-xs"><if condition="$start">{$start}至{$end}<else />昨日</if></span>
                         </a>
                     </li>
                     <li class="tab" style="width:33%">
@@ -58,19 +85,19 @@
 
                         <div class="recentsingle">
                             <h5>引入订单量</h5>
-                            <p>{$result['yesterday_sales']}</p>
+                            <p><if condition="$start">{$result['start_sales']|default=0}<else />{$result['yesterday_sales']}</if></p>
                         </div>
                         <div class="recentsingle">
                             <h5>引入订单金额</h5>
-                            <p>¥{$result['yesterday_count']}</p>
+                            <p><if condition="$start">¥{$result['start_count']|default=0}<else />¥{$result['yesterday_count']}</if></p>
                         </div>
                         <div class="recentsingle">
                             <h5>预计佣金</h5>
-                            <p>¥{$result['yesterday_money']}</p>
+                            <p><if condition="$start">¥{$result['start_money']|default=0}<else />¥{$result['yesterday_money']}</if></p>
                         </div>
 
                     <!-- <div class="row bottomfunc">
-                        <a class="btn btn-white incomebtn" href="moreincome_mb.php">查看更多</a> 
+                        <a class="btn btn-white incomebtn" href="{:u('finance/settle',array('mb'=>'3'))}">查看更多</a> 
                     </div> -->
 
                     </div>
@@ -91,7 +118,7 @@
 
 
                     <!-- <div class="row bottomfunc">
-                        <button type="button"  class="btn btn-white incomebtn" value="">查看更多</button> 
+                        <a class="btn btn-white incomebtn" href="{:u('finance/settle',array('mb'=>'3'))}">查看更多</a> 
                     </div> -->
 
                     </div>
@@ -111,7 +138,7 @@
                         </div>
 
                     <!-- <div class="row bottomfunc">
-                        <button type="button"  class="btn btn-white incomebtn" value="">查看更多</button> 
+                        <a class="btn btn-white incomebtn" href="{:u('finance/settle',array('mb'=>'3'))}">查看更多</a> 
                     </div> -->
 
 

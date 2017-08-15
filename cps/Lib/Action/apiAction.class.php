@@ -15,6 +15,36 @@ class apiAction extends Action
             // 获取分页页码
             if ($_GET['nextrow']) {
                 switch ($_GET['type']){
+                    case 'push_log' :
+                        //搜索
+                        $where = '1=1   ';
+                        $days = M('push_log')->field(" FROM_UNIXTIME(add_time,'%Y%m%d') day ")->where($where)->order('add_time desc')->group('day')->limit($_GET['nextrow'] . ',5')->select();
+//            var_dump(M('push_log')->getLastSql(),$days);exit;
+                        foreach ($days as $k=>$v){
+                            $push_list[$v['day']]['res'] = M('push_log')->field('id,item_id,add_time,bank_subid,sid,commission_id ')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->group('item_id')->order('add_time desc')->select();
+//                var_dump(M('push_log')->getLastSql());exit;
+                            foreach ($push_list[$v['day']]['res'] as $k => $val) {
+                                $push_list[$v['day']]['res'][$k]['commission'] = M('commission')->where('id=' . $val['commission_id'])->find() ?: '';
+                                // 获取佣金id,查看当天列表
+                                $push_list[$v['day']]['ids'][] = $val['commission_id'];
+                            }
+
+//                $push_list[$v['day']]['day'] = $v['day'];
+                            $push_list[$v['day']]['day'] = date('Y-m-d',$push_list[$v['day']]['res'][0]['add_time'] );
+                            $push_list[$v['day']]['ids'] = implode(',',$push_list[$v['day']]['ids']);
+                            $push_list[$v['day']]['cnt'] = count($push_list[$v['day']]['res']);
+
+//                $push_list[$v['day']]['day'] = $v['day'];
+//                var_dump(M('push_log')->getLastSql(),$days);exit;
+                        }
+                        if ($push_list) {
+                            $res['data'] = $push_list;
+                            echo json_encode($res);
+                        } else {
+                            echo "1";
+                        }
+                        break;
+
                     case 'orderlist' :
                         //搜索
                         $where = '1=1 AND data_state=1  ';

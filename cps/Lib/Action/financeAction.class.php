@@ -93,7 +93,6 @@ class financeAction extends baseAction {
 
 	// 推广管理
 	function push() {
-
         if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
             $where = " sid={$_SESSION['admin_info']['id']}" ;
             if (isset($_GET['begin_time']) && intval($_GET['begin_time'])) {
@@ -110,11 +109,14 @@ class financeAction extends baseAction {
 //                $this->assign('end_time', strtotime("+1 month"));
             }
 
-            $days = M('push_log')->field(" FROM_UNIXTIME(add_time,'%Y%m%d') day ")->where($where)->order('add_time desc')->group('day')->select();
-
+            import("ORG.Util.Page");
+//            $count = M('push_log')->where($where)->count();
+            $count = count(M('push_log')->field(" FROM_UNIXTIME(add_time,'%Y%m%d') day ")->where($where)->order('add_time desc')->group('day')->select());
+            $this->assign('count', $count);
+            $p = new Page($count, 15);
+            $days = M('push_log')->field(" FROM_UNIXTIME(add_time,'%Y%m%d') day ")->where($where)->order('add_time desc')->group('day')->limit($p->firstRow . ',' . $p->listRows)->select();
+//            var_dump(M('push_log')->getLastSql(),$days);exit;
             foreach ($days as $k=>$v){
-//                $push_list[$v['day']] = M('push_log')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->order('add_time desc')->select();
-//                $push_list[$v['day']]['res'] = M('push_log')->field('DISTINCT(item_id),add_time,bank_subid,sid,commission_id ')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->order('add_time desc')->select();
                 $push_list[$v['day']]['res'] = M('push_log')->field('id,item_id,add_time,bank_subid,sid,commission_id ')->where($where ." AND DATEDIFF({$v['day']},FROM_UNIXTIME(add_time))=0 ")->group('item_id')->order('add_time desc')->select();
 //                var_dump(M('push_log')->getLastSql());exit;
                 foreach ($push_list[$v['day']]['res'] as $k => $val) {
@@ -131,12 +133,6 @@ class financeAction extends baseAction {
 //                $push_list[$v['day']]['day'] = $v['day'];
 //                var_dump(M('push_log')->getLastSql(),$days);exit;
             }
-//            $push_list = M('push_log')->where($where)->order('add_time desc')->select();
-//            var_dump($push_list);exit;
-
-/*            foreach ($push_list as $k => $val) {
-                $push_list[$k]['commission'] = M('commission')->where('id=' . $val['commission_id'])->find() ?: '';
-            }*/
 
             $this->assign('push_list', $push_list);
             $this->display('push_mb');exit;
@@ -420,6 +416,8 @@ class financeAction extends baseAction {
 			$this->exportExcel(array(), $xlsName, $xlsCell, $xlsData, $xlsName);
 
 		}
+
+
 		import("ORG.Util.Page");
 		$count = $orderlist_mod->where($where)->count();
         $this->assign('count', $count);
@@ -446,8 +444,11 @@ class financeAction extends baseAction {
                 $this->display('settle_mb_1');
             }elseif ($_GET['mb'] == 2){
                 $this->display('settle_mb_2');
+            }elseif ($_GET['mb'] == 3){
+                $this->display('settle_mb_3');
             }else{
 
+//                var_dump($_REQUEST);
                 $where = '1=1 AND data_state=1 AND status=1 ';
                 $where .= ' AND sid = ' . $_SESSION['admin_info']['id'];
                 // 总计收入
@@ -469,10 +470,13 @@ class financeAction extends baseAction {
                 //    	var_dump($result['total_seller']);exit;
 //		$result['conversion'] = sprintf("%.2f", $result['total_sales'] / $result['show'] * 100);
 //                $result['conversion'] = round($result['total_sales'] / $result['show'] * 100, 2);
+//
+
 
                 // 昨天销售总计
                 $result['yesterday_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(sum_price)'),2);
-                // 昨天引入订单量
+//                var_dump(M('orderlist')->getLastSql());exit;
+                // 昨天引入订单量do
                 $result['yesterday_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('count(1)');
                 // 昨天引入订单金额
                 $result['yesterday_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(commission*item_count)'),2);
@@ -497,6 +501,33 @@ class financeAction extends baseAction {
                 $result['lastmonth_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('count(1)');
                 // 上个月引入订单金额
                 $result['lastmonth_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(commission*item_count)'),2);
+
+//                var_dump($result);exit;
+
+                if ($_REQUEST['start']){
+//                    var_dump(strtotime($_REQUEST['start']),$_REQUEST);exit;
+                    if (empty($_REQUEST['end'])){
+                        $this->error('请输入开始和结束时间');
+                    }
+                    $this->assign('start',$_REQUEST['start']);
+                    $this->assign('end',$_REQUEST['end']);
+
+                    $start_time = strtotime($_REQUEST['start']);
+                    $end_time = strtotime($_REQUEST['end']);
+
+                    $where .= " AND (order_time<$end_time) AND(order_time>$start_time) ";
+                    // 昨天销售总计
+                    $result['start_sales'] = round(M('orderlist')->where(" $where ")->getField('sum(sum_price)'),2);
+//                var_dump(M('orderlist')->getLastSql());exit;
+                    // 昨天引入订单量do
+                    $result['start_count'] = M('orderlist')->where(" $where  ")->getField('count(1)');
+                    // 昨天引入订单金额
+                    $result['start_money'] = round(M('orderlist')->where(" $where  ")->getField('sum(commission*item_count)'),2);
+                }
+
+                // 默认当前时间
+                $result['begin_time'] = time();
+                $result['end_time'] = strtotime("+1 year");
 
                 $this->assign('result', $result);
                 $this->display('settle_mb');

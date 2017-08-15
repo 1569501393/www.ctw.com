@@ -38,6 +38,8 @@ function checkContentType(){
 		var type =  'article' ;
 	}else if ($('.contentlist').hasClass('orderlist')) {
 		var type =  'orderlist' ;
+	}else if ($('.contentlist').hasClass('push_log')) {
+		var type =  'push_log' ;
 	}else{
 		var type =  'goodslist' ;
 	}
@@ -70,7 +72,7 @@ function promote(which,id,item_id,shop_id,commission,rate,price,title,img,sid,ba
 		var imgs = json.data;
 		var imgs_html = '';
 		//这个是弹窗
-		$('#wrapper').append("<div class='promotemask'><div class='promote portlet'><div class='portlet-heading'><h3 class='portlet-title text-dark'>"+imgs[0].origin_name+"</h3><div class='portlet-widgets'><span class='divider'></span><a href='#' data-toggle='remove'><i class='fa fa-times closepromote'></i></a></div></div></div></div>");
+		$('#wrapper').append("<div class='promotemask'><div class='promote portlet'><div class='portlet-heading'><h3 class='portlet-title text-dark'>"+title+"</h3><div class='portlet-widgets'><span class='divider'></span><a href='#' data-toggle='remove'><i class='fa fa-times closepromote'></i></a></div></div></div></div>");
 		$('.promote').append("<ul class='nav nav-tabs tabs'><li class='tab' style='width:49%'><a href='#linkshare' data-toggle='tab' aria-expanded='false'><span class='visible-xs'>链接推广</span><span class='hidden-xs'>链接推广</span></a></li><li class='tab active' style='width:49%'><a href='#imageshare' data-toggle='tab' aria-expanded='flase'><span class='visible-xs'>图片推广</span><span class='hidden-xs'>图片推广</span></a></li><div class='indicator'></div></ul><div class='tab-content'><div class='tab-pane' id='linkshare'></div><div class='tab-pane active' id='imageshare'></div></div> ");
 		
 		$('#linkshare').append("<p class='linkcontent'>"+json.url+"</p>");
@@ -146,6 +148,12 @@ function loadSingle(type){
 					// console.log(items);
 					for(var o=0;o<items.length;o++){
 						items_html = items_html+'<div class="singlelib"><div class="promotiondate"><span class="info">'+items[o].order_time+'</span><span class="status">'+items[o].settle_status+'</span></div><div class="libdetials"><p class="ordername">'+items[o].title+'</p><span class="num">¥'+items[o].commission+'</span></div></div>' 
+				    } 
+			    }else if (type == 'push_log') {
+					// 推广日志
+					console.log(items);
+					for(var o=0;o<items.length;o++){
+						items_html = items_html+'<div class="singlelib"><div class="promotiondate">分享时间:<span class="info">{$val.day}</span><a href="{:u(items/index,array(commission_id=>$val[ids]))}"><div class="enterbtn">查看商品<i class="settingenterti-angle-right"></i></div></a></div><volist name="val[res]" id="v" key="k"><a href="{:u(items/index,array(commission_id=>$v[commission_id]))}"><div class="thumbs"><img class="wid" src="{$v.commission.img}"></div></a></volist><div class="libdetials">商品数:<span class="num">{$val.cnt}</span></div><div class="bottomfunc"></div></div>' 
 				    } 
 			    }
 			    // $('.'+type).append(data);

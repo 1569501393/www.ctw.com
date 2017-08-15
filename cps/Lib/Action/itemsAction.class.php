@@ -344,7 +344,7 @@ class itemsAction extends baseAction
             if ($_REQUEST['json']){
                 $url = $this->site_root .u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'con_id'=>$_REQUEST['con_id'],'shop_id'=>$_REQUEST['shop_id'],'bank_id'=>$_REQUEST['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']));
 
-                $res['data'] = $files;
+                $res['data'] = $files?:array(array('img'=>'data/qrcode/poster_bg.jpg','item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'shop_id'=>$_REQUEST['shop_id'],'bimg'=>'data/qrcode/poster_bg.jpg','bimg'=>'data/qrcode/poster_bg.jpg',));
                 $res['url'] = $url;
                 echo json_encode($res);exit;
             }
