@@ -468,6 +468,10 @@ class contractAction extends baseAction
 						$data['cid'] = $data['cate_id'] = $data['cate_name'] = $objPHPExcel->getActiveSheet()->getCell("D" . $i)->getValue();
 						$data['price'] = $objPHPExcel->getActiveSheet()->getCell("E" . $i)->getValue();
 						$data['title'] = $objPHPExcel->getActiveSheet()->getCell("F" . $i)->getValue();
+
+                        $data['img'] = $objPHPExcel->getActiveSheet()->getCell("G" . $i)->getValue();
+                        $data['url'] = $objPHPExcel->getActiveSheet()->getCell("H" . $i)->getValue();
+
 						$data['shop_id'] = $objPHPExcel->getActiveSheet()->getCell("J" . $i)->getValue();
 							
 						$data['con_id'] = $_POST['id'];
