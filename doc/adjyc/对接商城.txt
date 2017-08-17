@@ -1,0 +1,83 @@
+21350 
+21351 2017-08-18 00:31:01 TODO debug2345 ：来源:
+21352 http://shop.adjyc.com/app/index.php?i=5&c=entry&do=order&m=ewei_shop&p=confirm
+21353 ------------
+21354 Array:
+21355 file : D:\www\users\wd2.jieqiangtec.com\addons\ewei_shop\core\mobile\order\confirm.php  ;
+21356 res :  ;
+21357 curl : http://cps.adjyc.com/cps.php?i=5&c=entry&do=shop&m=desk&p=detail&sid=20&item_id=23&commission_id=29&con_id=&shop_id=11&bank_id=12&bank_subid=18&a=buy&orde
+      r_id=144&status=1 ;
+21358 Array:
+21359 i : 5 ;
+21360 c : entry ;
+21361 do : shop ;
+21362 m : desk ;
+21363 p : detail ;
+21364 sid : 20 ;
+21365 item_id : 23 ;
+21366 commission_id : 29 ;
+21367 con_id :  ;
+21368 shop_id : 11 ;
+21369 bank_id : 12 ;
+21370 bank_subid : 18 ;
+21371 a : buy ;
+21372 order_id : 144 ;
+21373 status : 1 ;
+
+
+
+2017-08-17 22:42:58 TODO debug3 ：来源:
+http://shop.adjyc.com/app/index.php?i=5&c=entry&do=order&m=ewei_shop&p=confirm&id=23&optionid=0&total=1&cartids=
+------------
+Array:
+file : D:\www\users\wd2.jieqiangtec.com\framework\class\db.class.php query($sql, $params = array())  ;
+sql2 : REPLACE INTO `ims_core_sessions` SET `sid` =  'e8b58a3dbc8c6ce4323d196bd5792a63' , `uniacid` =  '5' , `openid` =  '117.28.146.170' , `data` =  'acid|s:1:"5";uniacid|i:5;token|a:14:{s:8:"Irs3bsru";i:1502980733;s:8:"RgzR82nz";i:1502980733;s:8:"UM5ZMlr1";i:1502980733;s:8:"c5Yy8mLh";i:1502980751;s:8:"O8xSi8bx";i:1502980751;s:8:"d52t7X28";i:1502980764;s:8:"nZopH1wv";i:1502980765;s:8:"Wk5LXRkz";i:1502980765;s:8:"m7gy8wWL";i:1502980765;s:8:"al2ZET2c";i:1502980957;s:8:"aKY2g0Rr";i:1502980957;s:8:"q33fG522";i:1502980957;s:8:"YQ3FpR4a";i:1502980978;s:8:"RJ665csX";i:1502980978;}dest_url|s:221:"http%3A%2F%2Fshop.adjyc.com%2Fapp%2Findex.php%3Fi%3D5%26c%3Dentry%26do%3Dshop%26m%3Dewei_shop%26p%3Ddetail%26id%3D23%26sid%3D20%26item_id%3D23%26commission_id%3D29%26con_id%3D%26shop_id%3D11%26bank_id%3D%26bank_subid%3D18";oauth_openid|s:28:"oZo4hw8Wt565YLamn2TJqGExQirA";oauth_acid|s:1:"5";openid|s:28:"oZo4hw8Wt565YLamn2TJqGExQirA";uid|s:3:"199";userinfo|s:832:"YToxNDp7czo5OiJzdWJzY3JpYmUiO2k6MTtzOjY6Im9wZW5pZCI7czoyODoib1pvNGh3OFd0NTY1WUxhbW4yVEpxR0V4UWlyQSI7czo4OiJuaWNrbmFtZSI7czo2OiLooZflopkiO3M6Mzoic2V4IjtpOjE7czo4OiJsYW5ndWFnZSI7czo1OiJ6aF9DTiI7czo0OiJjaXR5IjtzOjY6IuWOpumXqCI7czo4OiJwcm92aW5jZSI7czo2OiLnpo/lu7oiO3M6NzoiY291bnRyeSI7czo2OiLkuK3lm70iO3M6MTA6ImhlYWRpbWd1cmwiO3M6MTI3OiJodHRwOi8vd3gucWxvZ28uY24vbW1vcGVuL0hJbVRyOVk1YkpYT1E0TWVwdmtIMzBYR2lhODZLTFdDdU1oN3RJZW9QMUVGZUNVRmxIQW5GbmRQZUxrZzlnTmtUQVA1cExjdlJhbTBUVHhnb2Jyc1FKd2xURG5MY0NEd00vMTMyIjtzOjE0OiJzdWJzY3JpYmVfdGltZSI7aToxNDk5NzkwNjIxO3M6NjoicmVtYXJrIjtzOjA6IiI7czo3OiJncm91cGlkIjtpOjA7czoxMDoidGFnaWRfbGlzdCI7YTowOnt9czo2OiJhdmF0YXIiO3M6MTI3OiJodHRwOi8vd3gucWxvZ28uY24vbW1vcGVuL0hJbVRyOVk1YkpYT1E0TWVwdmtIMzBYR2lhODZLTFdDdU1oN3RJZW9QMUVGZUNVRmxIQW5GbmRQZUxrZzlnTmtUQVA1cExjdlJhbTBUVHhnb2Jyc1FKd2xURG5MY0NEd00vMTMyIjt9";prom|a:16:{s:1:"i";s:1:"5";s:1:"c";s:5:"entry";s:2:"do";s:4:"shop";s:1:"m";s:4:"desk";s:1:"p";s:6:"detail";s:3:"sid";s:2:"20";s:7:"item_id";s:2:"23";s:13:"commission_id";s:2:"29";s:6:"con_id";s:0:"";s:7:"shop_id";s:2:"11";s:7:"bank_id";s:0:"";s:10:"bank_subid";s:2:"18";s:5:"wxref";s:16:"mp.weixin.qq.com";s:1:"a";s:3:"buy";s:8:"order_id";s:3:"135";s:6:"status";s:1:"1";}' , `expiretime` =  '1502984578' ;
+Array:
+:sid : e8b58a3dbc8c6ce4323d196bd5792a63 ;
+:uniacid : 5 ;
+:openid : 117.28.146.170 ;
+:data : acid|s:1:"5";uniacid|i:5;token|a:14:{s:8:"Irs3bsru";i:1502980733;s:8:"RgzR82nz";i:1502980733;s:8:"UM5ZMlr1";i:1502980733;s:8:"c5Yy8mLh";i:1502980751;s:8:"O8xSi8bx";i:1502980751;s:8:"d52t7X28";i:1502980764;s:8:"nZopH1wv";i:1502980765;s:8:"Wk5LXRkz";i:1502980765;s:8:"m7gy8wWL";i:1502980765;s:8:"al2ZET2c";i:1502980957;s:8:"aKY2g0Rr";i:1502980957;s:8:"q33fG522";i:1502980957;s:8:"YQ3FpR4a";i:1502980978;s:8:"RJ665csX";i:1502980978;}dest_url|s:221:"http%3A%2F%2Fshop.adjyc.com%2Fapp%2Findex.php%3Fi%3D5%26c%3Dentry%26do%3Dshop%26m%3Dewei_shop%26p%3Ddetail%26id%3D23%26sid%3D20%26item_id%3D23%26commission_id%3D29%26con_id%3D%26shop_id%3D11%26bank_id%3D%26bank_subid%3D18";oauth_openid|s:28:"oZo4hw8Wt565YLamn2TJqGExQirA";oauth_acid|s:1:"5";openid|s:28:"oZo4hw8Wt565YLamn2TJqGExQirA";uid|s:3:"199";userinfo|s:832:"YToxNDp7czo5OiJzdWJzY3JpYmUiO2k6MTtzOjY6Im9wZW5pZCI7czoyODoib1pvNGh3OFd0NTY1WUxhbW4yVEpxR0V4UWlyQSI7czo4OiJuaWNrbmFtZSI7czo2OiLooZflopkiO3M6Mzoic2V4IjtpOjE7czo4OiJsYW5ndWFnZSI7czo1OiJ6aF9DTiI7czo0OiJjaXR5IjtzOjY6IuWOpumXqCI7czo4OiJwcm92aW5jZSI7czo2OiLnpo/lu7oiO3M6NzoiY291bnRyeSI7czo2OiLkuK3lm70iO3M6MTA6ImhlYWRpbWd1cmwiO3M6MTI3OiJodHRwOi8vd3gucWxvZ28uY24vbW1vcGVuL0hJbVRyOVk1YkpYT1E0TWVwdmtIMzBYR2lhODZLTFdDdU1oN3RJZW9QMUVGZUNVRmxIQW5GbmRQZUxrZzlnTmtUQVA1cExjdlJhbTBUVHhnb2Jyc1FKd2xURG5MY0NEd00vMTMyIjtzOjE0OiJzdWJzY3JpYmVfdGltZSI7aToxNDk5NzkwNjIxO3M6NjoicmVtYXJrIjtzOjA6IiI7czo3OiJncm91cGlkIjtpOjA7czoxMDoidGFnaWRfbGlzdCI7YTowOnt9czo2OiJhdmF0YXIiO3M6MTI3OiJodHRwOi8vd3gucWxvZ28uY24vbW1vcGVuL0hJbVRyOVk1YkpYT1E0TWVwdmtIMzBYR2lhODZLTFdDdU1oN3RJZW9QMUVGZUNVRmxIQW5GbmRQZUxrZzlnTmtUQVA1cExjdlJhbTBUVHhnb2Jyc1FKd2xURG5MY0NEd00vMTMyIjt9";prom|a:16:{s:1:"i";s:1:"5";s:1:"c";s:5:"entry";s:2:"do";s:4:"shop";s:1:"m";s:4:"desk";s:1:"p";s:6:"detail";s:3:"sid";s:2:"20";s:7:"item_id";s:2:"23";s:13:"commission_id";s:2:"29";s:6:"con_id";s:0:"";s:7:"shop_id";s:2:"11";s:7:"bank_id";s:0:"";s:10:"bank_subid";s:2:"18";s:5:"wxref";s:16:"mp.weixin.qq.com";s:1:"a";s:3:"buy";s:8:"order_id";s:3:"135";s:6:"status";s:1:"1";} ;
+:expiretime : 1502984578 ;
+Array:
+i : 5 ;
+c : entry ;
+do : shop ;
+m : desk ;
+p : detail ;
+sid : 20 ;
+item_id : 23 ;
+commission_id : 29 ;
+con_id :  ;
+shop_id : 11 ;
+bank_id :  ;
+bank_subid : 18 ;
+wxref : mp.weixin.qq.com ;
+a : buy ;
+order_id : 135 ;
+status : 1 ;
+
+D:\www\users\wd2.jieqiangtec.com\framework\function\global.func.php
+
+
+34336 2017-08-17 22:46:57 TODO debug2345 ：来源:
+34337 http://shop.adjyc.com/app/index.php?i=5&c=entry&do=order&m=ewei_shop&p=confirm
+34338 ------------
+34339 Array:
+34340 file : D:\www\users\wd2.jieqiangtec.com\addons\ewei_shop\core\mobile\order\confirm.php  ;
+34341 res :  ;
+34342 curl : http://cps.adjyc.com/cps.php?i=5&c=entry&do=shop&m=desk&p=detail&sid=20&item_id=23&commission_id=29&con_id=&shop_id=11&bank_id=&bank_subid=18&wxref=mp.weixin.qq.com&a=buy&order_id=136&status=1 ;
+34343 Array:
+34344 i : 5 ;
+34345 c : entry ;
+34346 do : shop ;
+34347 m : desk ;
+34348 p : detail ;
+34349 sid : 20 ;
+34350 item_id : 23 ;
+34351 commission_id : 29 ;
+34352 con_id :  ;
+34353 shop_id : 11 ;
+34354 bank_id :  ;
+34355 bank_subid : 18 ;
+34356 wxref : mp.weixin.qq.com ;
+34357 a : buy ;
