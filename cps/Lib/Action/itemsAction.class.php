@@ -50,6 +50,9 @@ class itemsAction extends baseAction
 		$text = "{$_REQUEST['user_id']}向您推荐好货 \n {$_REQUEST['title']} ";
 		// $qrcode = $APP_URL.__ROOT__.'/data'.$qrcode; // 二维码  jiu
 		//		$qrcode = $this->create_qrcode(U('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'shop_id'=>$_REQUEST['shop_id'],'con_id'=>$_REQUEST['con_id'],'rate'=>$_REQUEST['rate'],'cate_id'=>$_REQUEST['cate_id'] )));
+
+        // 重置bank_id
+        $_REQUEST['bank_id'] = get_platform_id($_SESSION['admin_info']);
 		$qrcode = $this->create_qrcode($APP_URL . U('desk/prom', $_REQUEST)); //生产二维码
 
 //		$qrcode = $this->create_qrcode("{$_REQUEST['url']}?sid={$_SESSION['admin_info']['id']}&item_id={$_REQUEST['item_id']}&commission_id={$_REQUEST['id']}&shop_id={$_REQUEST['shop_id']}&con_id={$_REQUEST['con_id']}&bank_id={$_REQUEST['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}"); //生产二维码
