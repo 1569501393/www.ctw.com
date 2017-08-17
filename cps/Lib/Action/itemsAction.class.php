@@ -335,6 +335,7 @@ class itemsAction extends baseAction
 	// 推广商品
 	function index()
 	{
+
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 
@@ -342,7 +343,8 @@ class itemsAction extends baseAction
             $files = M('file')->where(" item_id='{$_REQUEST['item_id']}' AND shop_id='{$_REQUEST['shop_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
 //            var_dump($_REQUEST);
             if ($_REQUEST['json']){
-                $url = $this->site_root .u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'con_id'=>$_REQUEST['con_id'],'shop_id'=>$_REQUEST['shop_id'],'bank_id'=>$_REQUEST['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']));
+                $bank_id = get_platform_id($_SESSION['admin_info']);
+                $url = $this->site_root .u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'con_id'=>$_REQUEST['con_id'],'shop_id'=>$_REQUEST['shop_id'],'bank_id'=>$bank_id,'bank_subid'=>$_SESSION['admin_info']['pid']));
 
                 $res['data'] = $files?:array(array('img'=>'data/qrcode/poster_bg.jpg','item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'shop_id'=>$_REQUEST['shop_id'],'bimg'=>'data/qrcode/poster_bg.jpg','bimg'=>'data/qrcode/poster_bg.jpg',));
                 $res['url'] = $url;
