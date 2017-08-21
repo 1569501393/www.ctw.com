@@ -50,6 +50,9 @@ class itemsAction extends baseAction
 		$text = "{$_REQUEST['user_id']}向您推荐好货 \n {$_REQUEST['title']} ";
 		// $qrcode = $APP_URL.__ROOT__.'/data'.$qrcode; // 二维码  jiu
 		//		$qrcode = $this->create_qrcode(U('items/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'shop_id'=>$_REQUEST['shop_id'],'con_id'=>$_REQUEST['con_id'],'rate'=>$_REQUEST['rate'],'cate_id'=>$_REQUEST['cate_id'] )));
+
+        // 重置bank_id
+        $_REQUEST['bank_id'] = get_platform_id($_SESSION['admin_info']);
 		$qrcode = $this->create_qrcode($APP_URL . U('desk/prom', $_REQUEST)); //生产二维码
 
 //		$qrcode = $this->create_qrcode("{$_REQUEST['url']}?sid={$_SESSION['admin_info']['id']}&item_id={$_REQUEST['item_id']}&commission_id={$_REQUEST['id']}&shop_id={$_REQUEST['shop_id']}&con_id={$_REQUEST['con_id']}&bank_id={$_REQUEST['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}"); //生产二维码
@@ -335,6 +338,7 @@ class itemsAction extends baseAction
 	// 推广商品
 	function index()
 	{
+
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 
@@ -342,9 +346,10 @@ class itemsAction extends baseAction
             $files = M('file')->where(" item_id='{$_REQUEST['item_id']}' AND shop_id='{$_REQUEST['shop_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
 //            var_dump($_REQUEST);
             if ($_REQUEST['json']){
-                $url = $this->site_root .u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'con_id'=>$_REQUEST['con_id'],'shop_id'=>$_REQUEST['shop_id'],'bank_id'=>$_REQUEST['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid']));
+                $bank_id = get_platform_id($_SESSION['admin_info']);
+                $url = $this->site_root .u('desk/prom',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'con_id'=>$_REQUEST['con_id'],'shop_id'=>$_REQUEST['shop_id'],'bank_id'=>$bank_id,'bank_subid'=>$_SESSION['admin_info']['pid']));
 
-                $res['data'] = $files;
+                $res['data'] = $files?:array(array('img'=>'data/qrcode/poster_bg.jpg','item_id'=>$_REQUEST['item_id'],'commission_id'=>$_REQUEST['id'],'shop_id'=>$_REQUEST['shop_id'],'bimg'=>'data/qrcode/poster_bg.jpg','bimg'=>'data/qrcode/poster_bg.jpg',));
                 $res['url'] = $url;
                 echo json_encode($res);exit;
             }
