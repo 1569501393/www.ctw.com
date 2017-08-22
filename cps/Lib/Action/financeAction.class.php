@@ -364,6 +364,21 @@ class financeAction extends baseAction {
 			$this->assign('seller_name', $_GET['seller_name']);
 		}
 
+        if ($_REQUEST['start']){
+//                    var_dump(strtotime($_REQUEST['start']),$_REQUEST);exit;
+            if (empty($_REQUEST['end'])){
+                $this->error('请输入开始和结束时间');
+            }
+            $this->assign('start',$_REQUEST['start']);
+            $this->assign('end',$_REQUEST['end']);
+
+            $start_time = strtotime($_REQUEST['start']);
+            $end_time = strtotime($_REQUEST['end']);
+
+            $where .= " AND (order_time<$end_time) AND(order_time>$start_time) ";
+        }
+
+
 		// 分类
 		if (isset($_GET['cate_id']) && !empty($_GET['cate_id'])) {
 			$where .= " AND cate_name= '{$_GET['cate_id']}' ";
@@ -440,19 +455,28 @@ class financeAction extends baseAction {
 		$this->assign('order_list', $order_list);
         // 角色，用户
         if ($_SESSION['admin_info']['role_id'] == 6) { // 客户经理 6
+
+            // 默认当前时间
+            /*$result['begin_time'] = time();
+            $result['end_time'] = strtotime("+1 year");*/
+            $result['begin_time'] = strtotime("-1 week");
+            $result['end_time'] = time();
+
+
             if ($_GET['mb'] == 1){
-                $this->display('settle_mb_1');
+                $this->assign('result', $result);
+                $this->display('settle_mb_1');exit;
             }elseif ($_GET['mb'] == 2){
                 $this->display('settle_mb_2');
-            }elseif ($_GET['mb'] == 3){
+            }/*elseif ($_GET['mb'] == 3){
                 $this->display('settle_mb_3');
-            }else{
+            }*/else{
 
 //                var_dump($_REQUEST);
                 $where = '1=1 AND data_state=1 AND status=1 ';
                 $where .= ' AND sid = ' . $_SESSION['admin_info']['id'];
-                // 总计收入
-                $result['total_commission'] = round(M('orderlist')->where(" $where   ")->getField('SUM(commission)'),2);
+                // 总计收入可结算金额
+                $result['total_commission_settle'] = round(M('orderlist')->where(" $where AND settle_status3_ctb=1 AND settle_status4_btc=1 AND settle_status2_cts=1 AND settle_status1_stc=1    ")->getField('SUM(commission)'),2);
 
                 // 年度总计收入
                 $year = date('Y');
@@ -502,7 +526,7 @@ class financeAction extends baseAction {
                 // 上个月引入订单金额
                 $result['lastmonth_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(commission*item_count)'),2);
 
-//                var_dump($result);exit;
+//                var_dump('TODO jieqiang',$result);
 
                 if ($_REQUEST['start']){
 //                    var_dump(strtotime($_REQUEST['start']),$_REQUEST);exit;
@@ -525,11 +549,15 @@ class financeAction extends baseAction {
                     $result['start_money'] = round(M('orderlist')->where(" $where  ")->getField('sum(commission*item_count)'),2);
                 }
 
-                // 默认当前时间
-                $result['begin_time'] = time();
-                $result['end_time'] = strtotime("+1 year");
 
+
+//                 var_dump($result);
                 $this->assign('result', $result);
+
+                if ($_GET['mb'] == 3){
+                    // var_dump($order_list);
+                    $this->display('settle_mb_3');exit;
+                }
                 $this->display('settle_mb');
             }
         }else{

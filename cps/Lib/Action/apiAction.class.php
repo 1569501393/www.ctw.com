@@ -45,6 +45,34 @@ class apiAction extends Action
                         }
                         break;
 
+                    case 'settlelist' :
+
+                        //搜索
+                        $where = '1=1 AND data_state=1 AND status=1 ';
+                        // 角色，用户
+                        $where .= ' AND sid = '.$_SESSION['admin_info']['id'];
+                        $orderlist_mod =M('orderlist');
+                        $order_list = $orderlist_mod->where($where)->limit($_GET['nextrow'] . ',10')->order('id desc')->select();
+                        foreach ($order_list as $k => $val) {
+                            /*$order_list[$k]['platform_name'] = D('admin')->where('id=' . $val['platform_id'])->getField('user_id') ?: '全部';
+                            $order_list[$k]['settle_status'] = ($val['settle_status3_ctb'] && $val['settle_status4_btc']) ?:0;
+                            $order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
+                            $order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
+
+                            $item = M('items')->where(" item_id='{$val['item_id']}' AND shop_id={$val['shop_id']} ")->find();
+                            $order_list[$k]['url'] = $item['url'];
+                            $order_list[$k]['img'] = $item['img'];*/
+                            $order_list[$k]['order_time'] = date('Y-m-d',$val['order_time']);
+                            $order_list[$k]['status'] = ($val['settle_status4_btc'] && $val['settle_status3_ctb'] && $val['settle_status2_cts'] && $val['settle_status1_stc'])?'已结算':'待结算';
+
+                        }
+                        if ($order_list) {
+                            $res['data'] = $order_list;
+                            echo json_encode($res);
+                        } else {
+                            echo "1";
+                        }
+                        break;
                     case 'orderlist' :
                         //搜索
                         $where = '1=1 AND data_state=1  ';
@@ -52,13 +80,15 @@ class apiAction extends Action
                         $where .= " AND status=1 AND (platform_id={$platform_id} OR platform_id=0) ";
 //                        $article_list = M('article')->field('id,title')->where($where)->limit($_GET['nextrow'] . ',5')->order('id DESC')->select();
                         $order_list = M('orderlist')->field('id,title,order_time,commission,commission2')->where($where)->limit($_GET['nextrow'] . ',5')->order('id DESC')->select();
-//                        var_dump(M('article')->getLastSql());
+//                        var_dump(M('orderlist')->getLastSql());
 
                         foreach ($order_list as $k => $val) {
-                            $order_list[$k]['settle_status'] = ($val['settle_status3_ctb'] && $val['settle_status4_btc'] && $val.settle_status2_cts && $val.settle_status1_stc ) ?'已结算':'待结算';
+                            $order_list[$k]['settle_status'] = ($val['settle_status3_ctb'] && $val['settle_status4_btc'] && $val.settle_status2_cts && $val['settle_status1_stc'] ) ?'已结算':'待结算';
                             $order_list[$k]['order_time'] = date('Y-m-d',$val['order_time']);
                             $order_list[$k]['commission2'] = $val['commission2']?:$val['commission'];
                         }
+
+
 
                         if ($order_list) {
                             $res['data'] = $order_list;

@@ -6,7 +6,30 @@
     <include file="public:leftMenu_mb" />
     <div class="content-page ">
         <div class="content">
-            <div class="row liblist contentlist orderlist"  data-flag=3  maxrow='{$count}' nextrow='10' >
+
+        <div class="row libdate">
+            <form name="customincome" method="GET" action="">
+                <if condition="$start">
+                    <input type="date" class="mbdate" placeholder="{$start}" name="start" value="{$start}" />至
+                    <input type="date" class="mbdate" placeholder="{$end}" name="end" value="{$end}" />
+
+                <else />
+                    <input type="date" class="mbdate" placeholder="{$result['begin_time']|date='Y-m-d',###}" name="start" value="{$result['begin_time']|date='Y-m-d',###}" />至
+                <input type="date" class="mbdate" placeholder="{$result['end_time']|date='Y-m-d',###}" name="end" value="{$result['end_time']|date='Y-m-d',###}" />
+                </if>
+
+                <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
+                <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
+                <input type="hidden" name="mb" value="1" />
+
+                <button  class="btn waves-effect waves-light btn-primary" name="dosubmit" value="3">查询</button>
+            </form>
+        </div>
+
+
+        <div class="container">
+            <!-- <div class="row liblist contentlist orderlist"  data-flag=3  maxrow='{$count}' nextrow='10' > -->
+            <div class="row contentlist settlelist" data-flag=2  maxrow='{$count}' nextrow='10' >
                 <if condition="$order_list">
                     <!-- <div id="pages" class="promotiondate">{$page}</div> -->
                     <volist name="order_list" id="val">
@@ -29,6 +52,8 @@
                     </div>
                 </if>
             </div>
+
+        </div>
         </div>
     </div>
     <!-- 引入尾部 -->

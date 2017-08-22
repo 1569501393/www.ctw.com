@@ -18,7 +18,7 @@
         <div class="content-page">
             <div class="content">
 
-            <div class="row libdate">
+            <!-- <div class="row libdate">
                 <form name="customincome" method="GET" action="">
                     <if condition="$start">
                         <input type="date" class="mbdate" placeholder="{$start}" name="start" value="{$start}" />至
@@ -29,25 +29,19 @@
                     <input type="date" class="mbdate" placeholder="{$result['end_time']|date='Y-m-d',###}" name="end" value="{$result['end_time']|date='Y-m-d',###}" />
                     </if>
 
-                    
-
                     <input type="hidden" name="m" value="{$Think.MODULE_NAME}" />
                     <input type="hidden" name="a" value="{$Think.ACTION_NAME}" />
 
-                    <!-- <input type="submit" class="btn waves-effect waves-light btn-primary" name="dosubmit" value="3" /> -->
-
                     <button  class="btn waves-effect waves-light btn-primary" name="dosubmit" value="3">查询</button>
-
-                    <!-- <button class="btn btn-primary waves-effect waves-light" name="dosubmit" value="1">查询</button> -->
                 </form>
-            </div>
+            </div> -->
 
                 <div class="container">
                     <div class="row">
                         <div class="income">
                             <div class="incomehalf">
                                 <h4>可结算金额</h4>
-                                <p>¥{$result['total_commission']}</p>
+                                <p>¥{$result['total_commission_settle']}</p>
                             </div>
                             <div class="incomehalf">
                                 <h4>年度收入总额</h4>
@@ -62,8 +56,8 @@
                 <ul class="nav nav-tabs tabs">
                     <li class="tab active" style="width:33%">
                         <a href="#yesterday" data-toggle="tab" aria-expanded="false">
-                        <span class="visible-xs"><if condition="$start">{$start}至{$end}<else />昨日</if></span>
-                        <span class="hidden-xs"><if condition="$start">{$start}至{$end}<else />昨日</if></span>
+                        <span class="visible-xs"><if condition="$start">{$start}-<!-- 至{$end} --><else />昨日</if></span>
+                        <span class="hidden-xs"><if condition="$start">{$start}-<!-- 至{$end} --><else />昨日</if></span>
                         </a>
                     </li>
                     <li class="tab" style="width:33%">
@@ -96,9 +90,9 @@
                             <p><if condition="$start">¥{$result['start_money']|default=0}<else />¥{$result['yesterday_money']}</if></p>
                         </div>
 
-                    <!-- <div class="row bottomfunc">
+                    <div class="row bottomfunc">
                         <a class="btn btn-white incomebtn" href="{:u('finance/settle',array('mb'=>'3'))}">查看更多</a> 
-                    </div> -->
+                    </div>
 
                     </div>
                     <div class="tab-pane " id="weekly">
@@ -117,9 +111,9 @@
                         </div>
 
 
-                    <!-- <div class="row bottomfunc">
+                    <div class="row bottomfunc">
                         <a class="btn btn-white incomebtn" href="{:u('finance/settle',array('mb'=>'3'))}">查看更多</a> 
-                    </div> -->
+                    </div>
 
                     </div>
                     <div class="tab-pane " id="monthly">
@@ -137,9 +131,9 @@
                             <p>¥{$result['lastmonth_money']}</p>
                         </div>
 
-                    <!-- <div class="row bottomfunc">
+                    <div class="row bottomfunc">
                         <a class="btn btn-white incomebtn" href="{:u('finance/settle',array('mb'=>'3'))}">查看更多</a> 
-                    </div> -->
+                    </div>
 
 
                     </div>
@@ -148,15 +142,25 @@
 
             </dir>
                     <div class="row setting">
-                        <a href="{:u('finance/settle',array('mb'=>'1'))}">
+                        <!-- <a href="{:u('finance/settle',array('mb'=>'1'))}">
                             <div class="settingsingle">收入明细
                                 <i class="settingenter ti-angle-right"></i></div>
-                        </a>
+                        </a> -->
                         <!-- <div class="settingline"></div>
                         <a href="{:u('finance/settle',array('mb'=>'2'))}">
                             <div class="settingsingle">订单明细
                                 <i class="settingenter ti-angle-right"></i></div>
                         </a> -->
+
+                        <?php
+                            $result['begin_time'] = date('Y-m-d',$result['begin_time']);
+                            $result['end_time'] = date('Y-m-d',$result['end_time']);
+                        ?>
+                        <a href="{:u('finance/settle',array('mb'=>'1','start'=>$result['begin_time'],'end'=>$result['end_time']))}">
+                            <div class="settingsingle">收入明细
+                                <i class="settingenter ti-angle-right"></i></div>
+                        </a>
+                    
                     </div>
                 </div>
             </div>

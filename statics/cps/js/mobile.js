@@ -38,6 +38,8 @@ function checkContentType(){
 		var type =  'article' ;
 	}else if ($('.contentlist').hasClass('orderlist')) {
 		var type =  'orderlist' ;
+	}else if ($('.contentlist').hasClass('settlelist')) {
+		var type =  'settlelist' ;
 	}else if ($('.contentlist').hasClass('push_log')) {
 		var type =  'push_log' ;
 	}else{
@@ -149,6 +151,11 @@ function loadSingle(type){
 					for(var o=0;o<items.length;o++){
 						items_html = items_html+'<div class="singlelib"><div class="promotiondate"><span class="info">'+items[o].order_time+'</span><span class="status">'+items[o].settle_status+'</span></div><div class="libdetials"><p class="ordername">'+items[o].title+'</p><span class="num">¥'+items[o].commission+'</span></div></div>' 
 				    } 
+			    }else if (type == 'settlelist') {
+					console.log(items);
+					for(var o=0;o<items.length;o++){
+						items_html = items_html+'<div class="singlelib"><div class="promotiondate"><span class="info">'+items[o].order_time+'</span><span class="status">'+items[o].status+'</span></div><div class="libdetials"><p class="ordername">'+items[o].title+'</p><span class="num">¥'+items[o].commission+'</span></div></div>' 
+				    } 
 			    }else if (type == 'push_log') {
 					// 推广日志
 					console.log(items);
@@ -166,6 +173,7 @@ function loadSingle(type){
 	    	// 加载完毕
 	    	// alert('111加载完毕');
 		    $('.'+type).append("<br /><p style='text-align:center;color:#888'>已经加载全部</p >");
+		    // $('.'+type).append("<p style='text-align:center;color:#888'>已经加载全部</p >");
 			$('.'+type).attr('done','done');
 			//移除加载动画
 			loadingend();
