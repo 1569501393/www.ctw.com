@@ -79,11 +79,11 @@
 
                         <div class="recentsingle">
                             <h5>引入订单量</h5>
-                            <p><if condition="$start">{$result['start_sales']|default=0}<else />{$result['yesterday_sales']}</if></p>
+                            <p><if condition="$start">{$result['start_count']|default=0}<else />{$result['yesterday_count']}</if></p>
                         </div>
                         <div class="recentsingle">
                             <h5>引入订单金额</h5>
-                            <p><if condition="$start">¥{$result['start_count']|default=0}<else />¥{$result['yesterday_count']}</if></p>
+                            <p><if condition="$start">¥{$result['start_sales']|default=0}<else />¥{$result['yesterday_sales']}</if></p>
                         </div>
                         <div class="recentsingle">
                             <h5>预计佣金</h5>
@@ -99,11 +99,11 @@
 
                         <div class="recentsingle">
                             <h5>引入订单量</h5>
-                            <p>{$result['lastweek_sales']}</p>
+                            <p>{$result['lastweek_count']}</p>
                         </div>
                         <div class="recentsingle">
                             <h5>引入订单金额</h5>
-                            <p>¥{$result['lastweek_count']}</p>
+                            <p>¥{$result['lastweek_sales']}</p>
                         </div>
                         <div class="recentsingle">
                             <h5>预计佣金</h5>
@@ -120,11 +120,11 @@
 
                         <div class="recentsingle">
                             <h5>引入订单量</h5>
-                            <p>{$result['lastmonth_sales']}</p>
+                            <p>{$result['lastmonth_count']}</p>
                         </div>
                         <div class="recentsingle">
                             <h5>引入订单金额</h5>
-                            <p>¥{$result['lastmonth_count']}</p>
+                            <p>¥{$result['lastmonth_sales']}</p>
                         </div>
                         <div class="recentsingle">
                             <h5>预计佣金</h5>

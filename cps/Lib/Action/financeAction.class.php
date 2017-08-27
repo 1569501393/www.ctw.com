@@ -375,7 +375,7 @@ class financeAction extends baseAction {
             $start_time = strtotime($_REQUEST['start']);
             $end_time = strtotime($_REQUEST['end']);
 
-            $where .= " AND (order_time<$end_time) AND(order_time>$start_time) ";
+            $where .= " AND (order_time<=$end_time) AND(order_time>=$start_time) ";
         }
 
 
@@ -476,13 +476,13 @@ class financeAction extends baseAction {
                 $where = '1=1 AND data_state=1 AND status=1 ';
                 $where .= ' AND sid = ' . $_SESSION['admin_info']['id'];
                 // 总计收入可结算金额
-                $result['total_commission_settle'] = round(M('orderlist')->where(" $where AND settle_status3_ctb=1 AND settle_status4_btc=1 AND settle_status2_cts=1 AND settle_status1_stc=1    ")->getField('SUM(commission)'),2);
+                $result['total_commission_settle'] = round(M('orderlist')->where(" $where AND settle_status3_ctb=1 AND settle_status4_btc=1 AND settle_status2_cts=1 AND settle_status1_stc=1    ")->getField('SUM(commission2)'),2);
 
                 // 年度总计收入
                 $year = date('Y');
                 $newyear = strtotime("$year-01-01 0:0:0");
 //                var_dump($newyear);
-                $result['total_commission'] = round(M('orderlist')->where(" $where AND order_time>$newyear  ")->getField('SUM(commission)'),2);
+                $result['total_commission'] = round(M('orderlist')->where(" $where AND order_time>=$newyear  ")->getField('SUM(commission2)'),2);
 
                 // 销售单数
 //                $result['total_sales'] = M('orderlist')->where(" $where ")->getField('count(1)');
@@ -503,53 +503,72 @@ class financeAction extends baseAction {
                 // 昨天引入订单量do
                 $result['yesterday_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('count(1)');
                 // 昨天引入订单金额
-                $result['yesterday_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(commission*item_count)'),2);
+                $result['yesterday_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=1 ")->getField('sum(commission2*item_count)'),2);
 
                /* // 今日销售总计
                 $result['today_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(sum_price)'),2);
                 // 今日引入订单量
                 $result['today_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('count(1)');
                 // 今日引入订单金额
-                $result['today_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(commission*item_count)'),2);*/
+                $result['today_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))=0 ")->getField('sum(commission2*item_count)'),2);*/
 
                 // 上周
                 $result['lastweek_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(sum_price)'),2);
                 // 上周引入订单量
                 $result['lastweek_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('count(1)');
                 // 上周引入订单金额
-                $result['lastweek_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(commission*item_count)'),2);
+                $result['lastweek_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=7 ")->getField('sum(commission2*item_count)'),2);
 
                 // 上个月销售总计
                 $result['lastmonth_sales'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(sum_price)'),2);
                 // 上个月引入订单量
                 $result['lastmonth_count'] = M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('count(1)');
                 // 上个月引入订单金额
-                $result['lastmonth_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(commission*item_count)'),2);
+                $result['lastmonth_money'] = round(M('orderlist')->where(" $where AND DATEDIFF(NOW(),FROM_UNIXTIME(order_time))<=30 ")->getField('sum(commission2*item_count)'),2);
 
 //                var_dump('TODO jieqiang',$result);
 
-                if ($_REQUEST['start']){
+                if ($_GET['mb'] == 3){
+                    if ($_REQUEST['start']){
 //                    var_dump(strtotime($_REQUEST['start']),$_REQUEST);exit;
-                    if (empty($_REQUEST['end'])){
-                        $this->error('请输入开始和结束时间');
+                        if (empty($_REQUEST['end'])){
+                            $this->error('请输入开始和结束时间');
+                        }
+                        $this->assign('start',$_REQUEST['start']);
+                        $this->assign('end',$_REQUEST['end']);
+
+                        $start_time = strtotime($_REQUEST['start']);
+                        // 截止今天23:59:59
+                        $end_time = strtotime($_REQUEST['end']);
+
+                        $end_time += 86399; // $end_time += 24*3600-1;
+
+
+                        /*$where .= " AND (order_time<=$end_time) AND(order_time>=$start_time) ";
+                        // 昨天销售总计
+                        $result['start_sales'] = round(M('orderlist')->where(" $where ")->getField('sum(sum_price)'),2);
+//                var_dump(M('orderlist')->getLastSql());exit;
+                        // 昨天引入订单量do
+                        $result['start_count'] = M('orderlist')->where(" $where  ")->getField('count(1)');
+                        // 昨天引入订单金额
+                        $result['start_money'] = round(M('orderlist')->where(" $where  ")->getField('sum(commission2*item_count)'),2);*/
+                    }else{
+                        $start_time = $result['begin_time'];
+                        $end_time = $result['end_time'];
                     }
-                    $this->assign('start',$_REQUEST['start']);
-                    $this->assign('end',$_REQUEST['end']);
 
-                    $start_time = strtotime($_REQUEST['start']);
-                    $end_time = strtotime($_REQUEST['end']);
+//                    var_dump($end_time);
 
-                    $where .= " AND (order_time<$end_time) AND(order_time>$start_time) ";
-                    // 昨天销售总计
+                    $where .= " AND (order_time<=$end_time) AND(order_time>=$start_time) ";
+                    // 自定义销售总计
                     $result['start_sales'] = round(M('orderlist')->where(" $where ")->getField('sum(sum_price)'),2);
 //                var_dump(M('orderlist')->getLastSql());exit;
-                    // 昨天引入订单量do
+                    // 自定义引入订单量do
                     $result['start_count'] = M('orderlist')->where(" $where  ")->getField('count(1)');
-                    // 昨天引入订单金额
-                    $result['start_money'] = round(M('orderlist')->where(" $where  ")->getField('sum(commission*item_count)'),2);
+                    // 自定义引入订单金额
+                    $result['start_money'] = round(M('orderlist')->where(" $where  ")->getField('sum(commission2*item_count)'),2);
+
                 }
-
-
 
 //                 var_dump($result);
                 $this->assign('result', $result);

@@ -252,6 +252,7 @@ class deskAction extends Action
         $_GET['title'] = $_GET['title'] ?: $item_info['title'];
         //		$_GET['cate_id'] = $_GET['cate_id']?:$item_info['cate_id'];
         $_GET['cate_name'] = $_GET['cate_name'] ?: $item_info['cate_name'];
+        $_GET['seller_name'] = $_GET['seller_name'] ?: M('admin')->where(" id={$_GET['sid']}  ")->getField('user_name');
         //		var_dump($_GET);exit;
         // 查找订单号
         $order_has = M('orderlist')->where(" shop_id={$_GET['shop_id']} AND order_id='{$_GET['order_id']}' ")->find();

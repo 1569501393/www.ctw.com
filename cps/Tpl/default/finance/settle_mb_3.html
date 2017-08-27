@@ -72,7 +72,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="yesterday">
 
-                        <div class="recentsingle">
+                        <!-- <div class="recentsingle">
                             <h5>引入订单量</h5>
                             <p><if condition="$start">{$result['start_sales']|default=0}<else />{$result['yesterday_sales']}</if></p>
                         </div>
@@ -83,7 +83,21 @@
                         <div class="recentsingle">
                             <h5>预计佣金</h5>
                             <p><if condition="$start">¥{$result['start_money']|default=0}<else />¥{$result['yesterday_money']}</if></p>
+                        </div> -->
+
+                        <div class="recentsingle">
+                            <h5>引入订单量</h5>
+                            <p>{$result['start_count']|default=0}</p>
                         </div>
+                        <div class="recentsingle">
+                            <h5>引入订单金额</h5>
+                            <p>¥{$result['start_sales']|default=0}</p>
+                        </div>
+                        <div class="recentsingle">
+                            <h5>预计佣金</h5>
+                            <p>¥{$result['start_money']|default=0}</p>
+                        </div>
+                        
 
                     <!-- <div class="row bottomfunc">
                         <a class="btn btn-white incomebtn" href="{:u('finance/settle',array('mb'=>'3'))}">查看更多</a> 
