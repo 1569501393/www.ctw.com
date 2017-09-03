@@ -346,6 +346,9 @@ class itemsAction extends baseAction
 
         if ($_REQUEST['id']){
             $files = M('file')->where(" item_id='{$_REQUEST['item_id']}' AND shop_id='{$_REQUEST['shop_id']}' AND status=1 AND data_state=1 ")->select() ?: array();
+            foreach ($files as $k=>$v){
+                $files[$k]['commission_id'] = $_REQUEST['id'];
+            }
 //            var_dump($_REQUEST);
             if ($_REQUEST['json']){
                 $bank_id = get_platform_id($_SESSION['admin_info']);
@@ -448,7 +451,7 @@ class itemsAction extends baseAction
 		}
 
 
-		//		var_dump($commission_list);exit;
+//				var_dump($commission_list);exit;
 
 		$page = $p->show();
 		$this->assign('page', $page);
