@@ -374,6 +374,7 @@ class financeAction extends baseAction {
 
             $start_time = strtotime($_REQUEST['start']);
             $end_time = strtotime($_REQUEST['end']);
+            $end_time += 86399; // $end_time += 24*3600-1;
 
             $where .= " AND (order_time<=$end_time) AND(order_time>=$start_time) ";
         }
@@ -476,7 +477,8 @@ class financeAction extends baseAction {
                 $where = '1=1 AND data_state=1 AND status=1 ';
                 $where .= ' AND sid = ' . $_SESSION['admin_info']['id'];
                 // 总计收入可结算金额
-                $result['total_commission_settle'] = round(M('orderlist')->where(" $where AND settle_status3_ctb=1 AND settle_status4_btc=1 AND settle_status2_cts=1 AND settle_status1_stc=1    ")->getField('SUM(commission2)'),2);
+//                $result['total_commission_settle'] = round(M('orderlist')->where(" $where AND settle_status3_ctb=1 AND settle_status4_btc=1 AND settle_status2_cts=1 AND settle_status1_stc=1    ")->getField('SUM(commission2)'),2);
+                $result['total_commission_settle'] = round(M('orderlist')->where(" $where AND settle_status3_ctb=1 AND settle_status4_btc=1 ")->getField('SUM(commission2)'),2);
 
                 // 年度总计收入
                 $year = date('Y');
@@ -540,9 +542,7 @@ class financeAction extends baseAction {
                         $start_time = strtotime($_REQUEST['start']);
                         // 截止今天23:59:59
                         $end_time = strtotime($_REQUEST['end']);
-
                         $end_time += 86399; // $end_time += 24*3600-1;
-
 
                         /*$where .= " AND (order_time<=$end_time) AND(order_time>=$start_time) ";
                         // 昨天销售总计

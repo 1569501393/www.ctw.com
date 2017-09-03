@@ -4,6 +4,7 @@ class itemsAction extends baseAction
 {
 	public function create_qrcode($value)
 	{
+//        var_dump($value);exit;
 		//        $matrixPointSize = I('size', 12, 'intval'); //获取生成二维码的大小，默认4
 		$matrixPointSize = I('size', 4, 'intval'); //获取生成二维码的大小，默认4
 		//		$matrixPointSize = I('size',7,'intval'); //获取生成二维码的大小，默认4
@@ -53,6 +54,7 @@ class itemsAction extends baseAction
 
         // 重置bank_id
         $_REQUEST['bank_id'] = get_platform_id($_SESSION['admin_info']);
+
 		$qrcode = $this->create_qrcode($APP_URL . U('desk/prom', $_REQUEST)); //生产二维码
 
 //		$qrcode = $this->create_qrcode("{$_REQUEST['url']}?sid={$_SESSION['admin_info']['id']}&item_id={$_REQUEST['item_id']}&commission_id={$_REQUEST['id']}&shop_id={$_REQUEST['shop_id']}&con_id={$_REQUEST['con_id']}&bank_id={$_REQUEST['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}"); //生产二维码

@@ -49,13 +49,18 @@
                         <div class="singlelib">
                             <div class="promotiondate">
                                 <span class="info">{$val.order_time|date='Y-m-d',###}</span>
-                                <span class="status">
+                                <!-- <span class="status">
                                     <if condition=" $val.settle_status4_btc && $val.settle_status3_ctb && $val.settle_status2_cts && $val.settle_status1_stc ">已结算
+                                        <else />待结算</if></span> -->
+
+                                <span class="status">
+                                    <if condition=" $val.settle_status4_btc && $val.settle_status3_ctb ">已结算
                                         <else />待结算</if></span>
+
                             </div>
                             <div class="libdetials">
                                 <p class="ordername">{$val.title}</p>
-                                <span class="num">¥{$val.commission}</span></div>
+                                <span class="num">¥{$val.commission2}</span></div>
                         </div>
                     </volist>
                     <else />
