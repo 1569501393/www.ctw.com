@@ -106,33 +106,29 @@
                                 
                             </textarea>
                             <br/></td>
-
-                                                    <!-- <td>
-                                                        <textarea id="mytext{$val['item_id']}" rows="6">{$val.url}?sid={$_SESSION['admin_info']['id']}&sname={$_SESSION['admin_info']['user_name']}&item_id={$val['item_id']}&commission_id={$val['id']}&con_id={$val['con_id']}&rate={$val['rate']}&cate_id={$val['cate_id']}&cate_name={$val['cate_name']}&shop_id={$val['shop_id']}&bank_id={$val['bank_id']}&bank_subid={$_SESSION['admin_info']['pid']}&user_id={$_SESSION['admin_info']['user_id']}</textarea>
-                                                        <br/></td> -->
-                                                    <td>
-                                                        <empty name="val['file'] ">
-                                                            <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title']))}" target="_blank">默认图片</a>
-                                                            <else />
-                                                            <volist name="val['file']" id="sval">
-                                                                <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title'],'img'=>$sval['img']))}" target="_blank">
-                                                                    <!-- <img src="{$sval.simg}" width="30px"> -->
-                                                                    <notempty name="sval['simg'] ">
-                                                                        <img src="{$sval.simg}" width="30px">
-                                                                        <else />
-                                                                        <img src="{$sval.img}" width="30px"></notempty>
-                                                                    <!-- 推广图片 --></a>&nbsp;&nbsp;</volist>
-                                                        </empty>
-                                                    </td>
-                                                </tr>
-                                            </volist>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div id="pages">{$page}</div></div>
-                        </div>
-                        <!-- end col --></div>
-                </div>
-                <!-- container --></div>
-            <!-- content --></div>
-        <include file="public:footer" />
+                            <td>
+                                <empty name="val['file'] ">
+                                    <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title']))}" target="_blank">默认图片</a>
+                                <else />
+                                    <volist name="val['file']" id="sval">
+                                        <a href="{:u('items/create_poster',array('sid'=>$_SESSION['admin_info']['id'],'item_id'=>$val['item_id'],'commission_id'=>$val['id'],'con_id'=>$val['con_id'],'shop_id'=>$val['shop_id'],'bank_id'=>$val['bank_id'],'bank_subid'=>$_SESSION['admin_info']['pid'],'user_id'=>$_SESSION['admin_info']['user_id'],'title'=>$val['title'],'img'=>$sval['img']))}" target="_blank">
+                                            <!-- <img src="{$sval.simg}" width="30px"> -->
+                                            <notempty name="sval['simg'] ">
+                                                <img src="{$sval.simg}" width="30px">
+                                                <else />
+                                                <img src="{$sval.img}" width="30px"></notempty>
+                                            <!-- 推广图片 --></a>&nbsp;&nbsp;</volist>
+                                </empty>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+        <div id="pages">{$page}</div></div>
+</div>
+<!-- end col --></div>
+</div>
+<!-- container --></div>
+<!-- content --></div>
+<include file="public:footer" />

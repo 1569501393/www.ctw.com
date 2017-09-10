@@ -2,7 +2,6 @@
 class financeAction extends baseAction {
 	// 佣金管理
 	function commission() {
-
 		//		$items_mod = M('items');
 		$commission_mod = M('commission');
 		import("ORG.Util.Page");
@@ -321,6 +320,7 @@ class financeAction extends baseAction {
 			$order_list[$k]['img'] = $item['img'];
 
 			$order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
+			$order_list[$k]['rate'] = $val['commission']/$val['item_price']?:$order_list[$k]['rate'];
 			$order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
 		}
 		$page = $p->show();
@@ -446,6 +446,9 @@ class financeAction extends baseAction {
 			$order_list[$k]['settle_status'] = ($val['settle_status3_ctb'] && $val['settle_status4_btc']) ?:0;
 			$order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
 			$order_list[$k]['commission2'] = $val['commission2']*$val['item_count']?:$order_list[$k]['commission'];
+
+			$order_list[$k]['rate2'] = $val['commission2']/$val['item_price']?:$order_list[$k]['rate'];
+			$order_list[$k]['rate'] = $val['commission']/$val['item_price']?:$order_list[$k]['rate'];
 
 			$item = M('items')->where(" item_id='{$val['item_id']}' AND shop_id={$val['shop_id']} ")->find();
 			$order_list[$k]['url'] = $item['url'];
