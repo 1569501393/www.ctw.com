@@ -102,7 +102,7 @@
                                                 <!-- {$val.title|default="默认商品名称"} -->
                                                 <a href="{$val.url}" target="_blank" class="text-dark">
                                                 <img src="{$val.img}" class="thumb-sm pull-left m-r-10" alt="">
-                                                        {$val.title}(¥{$val.item_price|default="4,888"})</a>
+                                                        {$val.title|msubstr=###,0,52,'utf-8',true}(¥{$val.item_price|default="4,888"})</a>
                                                     <br />
 
                                                     <font color="red">

@@ -34,16 +34,23 @@
 function msubstr($str, $start = 0, $length, $charset = "utf-8", $suffix = true)
 {
     if (function_exists("mb_substr")) {
-        if ($suffix)
-            return mb_substr($str, $start, $length, $charset) . "...";
-        else
+        if ($suffix) {
+//            var_dump($length,mb_strlen($str,$charset));
+            if ($length < mb_strlen($str, $charset)) {
+                return mb_substr($str, $start, $length, $charset) . "...";
+            } else {
+                return $str;
+            }
+        } else {
             return mb_substr($str, $start, $length, $charset);
+        }
 
     } elseif (function_exists('iconv_substr')) {
-        if ($suffix)
-            return iconv_substr($str, $start, $length, $charset) . "...";
-        else
-            return iconv_substr($str, $start, $length, $charset);
+        if ($suffix) {
+            return mb_substr($str, $start, $length, $charset) . "...";
+        } else {
+            return mb_substr($str, $start, $length, $charset);
+        }
 
     }
 
@@ -60,7 +67,7 @@ function msubstr($str, $start = 0, $length, $charset = "utf-8", $suffix = true)
 
     $slice = join("", array_slice($match[0], $start, $length));
 
-    if ($suffix) return $slice . "…";
+    if ($suffix) return $slice . "…...";
 
     return $slice;
 
