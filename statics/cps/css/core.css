@@ -73,15 +73,17 @@ a:focus {
   outline: 0;
   text-decoration: none;
 }
-.container {
+/*注释*/
+/*.container {
   width: auto;
-}
+}*/
 .container-alt {
   margin-left: auto;
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
 }
+
 /* Footer */
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -1210,10 +1212,11 @@ body.fixed-left .side-menu.left {
   padding-bottom: 70px;
   position: fixed;
 }
-.content-page {
+/*注释*/
+/*.content-page {
   margin-left: 240px;
   overflow: hidden;
-}
+}*/
 .content-page > .content {
   margin-bottom: 60px;
   margin-top: 60px;
