@@ -1,6 +1,29 @@
 ﻿sqlora@sina.com
 jieyancai666
 
+微信支付的接口说明如下：
+
+
+JS API网页支付参数
+
+支付授权目录: http://wx.adjyc.com/payment/wechat/ 和 http://wx.adjyc.com/app/
+
+支付请求实例: http://wx.adjyc.com/payment/wechat/pay.php
+
+共享收货地址: 选择"是"
+
+
+Native原生支付
+
+支付回调URL: http://wx.adjyc.com/payment/wechat/native.php
+
+维权通知URL: http://wx.adjyc.com/payment/wechat/rights.php
+
+警告通知URL: http://wx.adjyc.com/payment/wechat/warning.php
+
+
+
+
 
 eshop支付目录
 http://shop2.jieqiangtec.com/mobile/
